@@ -61,10 +61,10 @@ RESOURCES += \
     resources.qrc
 
 
-win32: LIBS += -L'C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/lib/x64/' -lnvml
+win32: LIBS += -L'C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1/lib/x64/' -lnvml
 
-INCLUDEPATH += 'C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/include'
-DEPENDPATH += 'C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v8.0/include'
+INCLUDEPATH += 'C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1/include'
+DEPENDPATH += 'C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1/include'
 
 win32: INCLUDEPATH += $$PWD/nvapi
 
