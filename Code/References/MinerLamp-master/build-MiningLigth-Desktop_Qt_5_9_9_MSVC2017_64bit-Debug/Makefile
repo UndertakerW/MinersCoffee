@@ -230,6 +230,7 @@ Makefile: ..\MinerLamp-master\MiningLigth.pro D:\APP\Qt6\5.9.9\msvc2017_64\mkspe
 		D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\qt_config.prf \
 		D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\win32-msvc\qmake.conf \
 		D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\spec_post.prf \
+		.qmake.stash \
 		D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\exclusive_builds.prf \
 		D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\common\msvc-version.conf \
 		D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\toolchain.prf \
@@ -416,6 +417,7 @@ D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\qt_functions.prf:
 D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\qt_config.prf:
 D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\win32-msvc\qmake.conf:
 D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\spec_post.prf:
+.qmake.stash:
 D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\exclusive_builds.prf:
 D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\common\msvc-version.conf:
 D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\toolchain.prf:
