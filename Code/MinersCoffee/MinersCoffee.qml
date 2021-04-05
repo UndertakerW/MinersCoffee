@@ -5,6 +5,6 @@ Item {
     width: Constants.width
     height: Constants.height
 
-    Screen01 {
+    OCScreen {
     }
 }
