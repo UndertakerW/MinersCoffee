@@ -1,0 +1,11 @@
+Hardware
+NVIDIA GeForce GPU
+
+Software
+Windows10 20H2
+Qt 5.99
+MSVC 2017 64-bit
+NVIDIA GPU Computing Toolkit CUDA v11.1
+
+Note:
+After BUILD, copy contents in MinersCoffee\Code\References\MinerLamp-master\lib\ to the BUILD directory.
