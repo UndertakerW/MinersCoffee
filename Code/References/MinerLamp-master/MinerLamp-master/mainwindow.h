@@ -188,7 +188,11 @@ private slots:
 
     void on_pushButtonEthminerBrowser_clicked();
 
+    // timer for hash rate graph
     void onHrChartTimer();
+
+    // timer for temporature graph
+    void onTempChartTimer();
 
 private:
 
@@ -220,15 +224,26 @@ private:
 
     Highlighter* _highlighter;
 
+    // hashrate displaying
     QChart* _chart;
     QLineSeries* _series;
     QDateTimeAxis *_axisX;
 
+    // temporature displaying
+    QChart* _chartTemp;
+    QLineSeries* _seriesTemp;
+    QDateTimeAxis *_axisXTemp;
+
     QTimer _hrChartTimer;
+    QTimer _tempChartTimer;
 
     double _currentHashRate = 0.0;
     double _maxChartHashRate = 0.0;
     int _plotsCntr = 0;
+
+    double _currentTempRate = 0.0;
+    double _maxChartTempRate = 0.0;
+    int _plotsCntrTemp = 0;
 
     //QThreads
     autoStart* _starter;

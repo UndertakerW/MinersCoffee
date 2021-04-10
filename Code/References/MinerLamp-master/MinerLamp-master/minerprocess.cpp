@@ -73,6 +73,7 @@ MinerProcess::MinerProcess(QSettings* settings):
     connect(&_miner, &QProcess::readyReadStandardOutput,
             this, &MinerProcess::onReadyToReadStdout);
 
+    // read hashrate once the process start
     connect(&_miner, &QProcess::readyReadStandardError,
             this, &MinerProcess::onReadyToReadStderr);
 

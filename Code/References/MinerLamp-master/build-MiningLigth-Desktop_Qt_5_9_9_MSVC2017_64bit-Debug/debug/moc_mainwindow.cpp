@@ -368,8 +368,8 @@ void amdMonitorThrd::gpuInfoSignal(unsigned int _t1, unsigned int _t2, unsigned 
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[48];
-    char stringdata0[862];
+    QByteArrayData data[49];
+    char stringdata0[879];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -425,7 +425,8 @@ QT_MOC_LITERAL(43, 754, 17), // "averageHashRate6H"
 QT_MOC_LITERAL(44, 772, 18), // "averageHashRate12H"
 QT_MOC_LITERAL(45, 791, 18), // "averageHashRate24H"
 QT_MOC_LITERAL(46, 810, 36), // "on_pushButtonEthminerBrowser_..."
-QT_MOC_LITERAL(47, 847, 14) // "onHrChartTimer"
+QT_MOC_LITERAL(47, 847, 14), // "onHrChartTimer"
+QT_MOC_LITERAL(48, 862, 16) // "onTempChartTimer"
 
     },
     "MainWindow\0setIcon\0\0iconActivated\0"
@@ -453,7 +454,7 @@ QT_MOC_LITERAL(47, 847, 14) // "onHrChartTimer"
     "averageHashRate6H\0averageHashRate12H\0"
     "averageHashRate24H\0"
     "on_pushButtonEthminerBrowser_clicked\0"
-    "onHrChartTimer"
+    "onHrChartTimer\0onTempChartTimer"
 };
 #undef QT_MOC_LITERAL
 
@@ -463,7 +464,7 @@ static const uint qt_meta_data_MainWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      22,   14, // methods
+      23,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -471,28 +472,29 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  124,    2, 0x08 /* Private */,
-       3,    1,  125,    2, 0x08 /* Private */,
-       6,    0,  128,    2, 0x08 /* Private */,
-       7,    1,  129,    2, 0x08 /* Private */,
-       9,    1,  132,    2, 0x08 /* Private */,
-      10,    1,  135,    2, 0x08 /* Private */,
-      12,    0,  138,    2, 0x08 /* Private */,
-      13,    1,  139,    2, 0x08 /* Private */,
-      14,    0,  142,    2, 0x08 /* Private */,
-      15,   12,  143,    2, 0x08 /* Private */,
-      28,   12,  168,    2, 0x08 /* Private */,
-      29,    0,  193,    2, 0x08 /* Private */,
-      30,    0,  194,    2, 0x08 /* Private */,
-      31,    1,  195,    2, 0x08 /* Private */,
-      32,    1,  198,    2, 0x08 /* Private */,
-      33,    1,  201,    2, 0x08 /* Private */,
-      34,    1,  204,    2, 0x08 /* Private */,
-      35,    0,  207,    2, 0x08 /* Private */,
-      36,    1,  208,    2, 0x08 /* Private */,
-      38,    7,  211,    2, 0x08 /* Private */,
-      46,    0,  226,    2, 0x08 /* Private */,
-      47,    0,  227,    2, 0x08 /* Private */,
+       1,    0,  129,    2, 0x08 /* Private */,
+       3,    1,  130,    2, 0x08 /* Private */,
+       6,    0,  133,    2, 0x08 /* Private */,
+       7,    1,  134,    2, 0x08 /* Private */,
+       9,    1,  137,    2, 0x08 /* Private */,
+      10,    1,  140,    2, 0x08 /* Private */,
+      12,    0,  143,    2, 0x08 /* Private */,
+      13,    1,  144,    2, 0x08 /* Private */,
+      14,    0,  147,    2, 0x08 /* Private */,
+      15,   12,  148,    2, 0x08 /* Private */,
+      28,   12,  173,    2, 0x08 /* Private */,
+      29,    0,  198,    2, 0x08 /* Private */,
+      30,    0,  199,    2, 0x08 /* Private */,
+      31,    1,  200,    2, 0x08 /* Private */,
+      32,    1,  203,    2, 0x08 /* Private */,
+      33,    1,  206,    2, 0x08 /* Private */,
+      34,    1,  209,    2, 0x08 /* Private */,
+      35,    0,  212,    2, 0x08 /* Private */,
+      36,    1,  213,    2, 0x08 /* Private */,
+      38,    7,  216,    2, 0x08 /* Private */,
+      46,    0,  231,    2, 0x08 /* Private */,
+      47,    0,  232,    2, 0x08 /* Private */,
+      48,    0,  233,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -515,6 +517,7 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void, QMetaType::Double,   37,
     QMetaType::Void, QMetaType::Double, QMetaType::Double, QMetaType::Double, QMetaType::Double, QMetaType::Double, QMetaType::Double, QMetaType::Double,   39,   40,   41,   42,   43,   44,   45,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -549,6 +552,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 19: _t->onPoolUserInfo((*reinterpret_cast< double(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3])),(*reinterpret_cast< double(*)>(_a[4])),(*reinterpret_cast< double(*)>(_a[5])),(*reinterpret_cast< double(*)>(_a[6])),(*reinterpret_cast< double(*)>(_a[7]))); break;
         case 20: _t->on_pushButtonEthminerBrowser_clicked(); break;
         case 21: _t->onHrChartTimer(); break;
+        case 22: _t->onTempChartTimer(); break;
         default: ;
         }
     }
@@ -579,13 +583,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 22)
+        if (_id < 23)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 22;
+        _id -= 23;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 22)
+        if (_id < 23)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 22;
+        _id -= 23;
     }
     return _id;
 }

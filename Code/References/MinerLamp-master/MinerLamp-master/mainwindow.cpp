@@ -51,10 +51,14 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->setupUi(this);
 
+    // debug box test
+    ui->debugBox->setText(QString("hello world!"));
     _process->setLogControl(ui->textEdit);
 
     connect(_process, &MinerProcess::emitStarted, this, &MainWindow::onMinerStarted);
     connect(_process, &MinerProcess::emitStoped, this, &MainWindow::onMinerStoped);
+
+    // update hash rate
     connect(_process, &MinerProcess::emitHashRate, this, &MainWindow::onHashrate);
     connect(_process, &MinerProcess::emitError, this, &MainWindow::onError);
 
@@ -77,6 +81,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     if(nvDll)
     {
+        // retrieve gpu info to panel
         _nvMonitorThrd = new nvMonitorThrd(this);
         connect(_nvMonitorThrd, &nvMonitorThrd::gpuInfoSignal, this, &MainWindow::onNvMonitorInfo);
         _nvMonitorThrd->start();
@@ -126,8 +131,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     _chart = new QChart();
+    _chartTemp = new QChart();
 
-    // Customize chart background
+    // customize chart background
     QLinearGradient backgroundGradient;
     backgroundGradient.setStart(QPointF(0, 0));
     backgroundGradient.setFinalStop(QPointF(0, 1));
@@ -139,6 +145,7 @@ MainWindow::MainWindow(QWidget *parent) :
     _chart->setBackgroundBrush(backgroundGradient);
     _chart->legend()->hide();
 
+    //set the color of the graph
     QPen pen(QColor(255, 165, 0));
     pen.setWidth(2);
 
@@ -161,7 +168,7 @@ MainWindow::MainWindow(QWidget *parent) :
     _axisX->setTitleFont(labelsFont);
     _chart->axisY()->setTitleFont(labelsFont);
 
-    // Customize axis label colors
+    // customize axis label colors
     QBrush axisBrush(Qt::white);
     _axisX->setLabelsBrush(axisBrush);
     _chart->axisY()->setLabelsBrush(axisBrush);
@@ -176,10 +183,72 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->graphicsView->setChart(_chart);
 
-
+    // graph will be drawn every time interval
     connect(&_hrChartTimer, &QTimer::timeout, this, &MainWindow::onHrChartTimer);
+
+    // set time interval
     _hrChartTimer.setInterval(1000);
     _hrChartTimer.start();
+
+
+    // customize the temporature diagram
+    // customize chart background
+    QLinearGradient backgroundGradient_temp;
+    backgroundGradient_temp.setStart(QPointF(0, 0));
+    backgroundGradient_temp.setFinalStop(QPointF(0, 1));
+    backgroundGradient_temp.setColorAt(0.0, QRgb(0x909090));
+    backgroundGradient_temp.setColorAt(1.0, QRgb(0x101010));
+    backgroundGradient_temp.setCoordinateMode(QGradient::StretchToDeviceMode);
+
+    _chartTemp->setAnimationOptions(QChart::NoAnimation);
+    _chartTemp->setBackgroundBrush(backgroundGradient_temp);
+    _chartTemp->legend()->hide();
+
+    //set the color of the graph
+    QPen penTemp(QColor(255, 165, 0));
+    penTemp.setWidth(2);
+
+    _seriesTemp = new QLineSeries();
+    _seriesTemp->setPen(penTemp);
+
+    _seriesTemp->append(QDateTime::currentDateTime().toMSecsSinceEpoch(),0);
+    _chartTemp->addSeries(_seriesTemp);
+    _chartTemp->createDefaultAxes();
+
+    _axisXTemp = new QDateTimeAxis;
+    _axisXTemp->setTickCount(15);
+    _axisXTemp->setFormat("hh:mm:ss");
+    _axisXTemp->setTitleText("Time");
+    _chartTemp->axisY()->setTitleText("Temp in degree");
+    _chartTemp->axisY()->setRange(0, 1);
+
+    QFont labelsFont_temp;
+    labelsFont_temp.setPixelSize(14);
+    _axisXTemp->setTitleFont(labelsFont_temp);
+    _chartTemp->axisY()->setTitleFont(labelsFont_temp);
+
+    // customize axis label colors
+    QBrush axisBrush_temp(Qt::white);
+    _axisXTemp->setLabelsBrush(axisBrush);
+    _chartTemp->axisY()->setLabelsBrush(axisBrush);
+
+    _axisXTemp->setTitleBrush(QBrush(Qt::blue));
+    _chartTemp->axisY()->setTitleBrush(QBrush(Qt::yellow));
+
+    _chartTemp->setAxisX(_axisXTemp);
+    _seriesTemp->attachAxis(_axisXTemp);
+    _axisXTemp->setRange(QDateTime::currentDateTime(), QDateTime::currentDateTime().addSecs(30));
+
+
+    ui->graphicsViewTemp->setChart(_chartTemp);
+
+    // graph will be drawn every time interval
+    connect(&_tempChartTimer, &QTimer::timeout, this, &MainWindow::onTempChartTimer);
+
+    // set time interval
+    _tempChartTimer.setInterval(1000);
+    _tempChartTimer.start();
+
 
     ui->lcdNumberHashRate->display("0.00");
 
@@ -190,9 +259,10 @@ MainWindow::MainWindow(QWidget *parent) :
         _starter->start();
     }
 
-    ui->pushButtonShowHideLog->setChecked(true);
+    ui->pushButtonShowHideLog->setChecked(false);
     ui->pushButtonPool->setChecked(false);
     ui->groupBoxPools->hide();
+    ui->textEdit->hide();
 
 
     int pos = ui->lineEditArgs->text().indexOf("-O ");
@@ -776,8 +846,10 @@ void MainWindow::on_pushButtonEthminerBrowser_clicked()
 
 void MainWindow::onHrChartTimer()
 {
+    //draw the dynamic graph
     _series->append(QDateTime::currentDateTime().toMSecsSinceEpoch(), _currentHashRate);
 
+    //diaplay the proper range of the x-axis;
     if(_plotsCntr >= 25)
     {
         _axisX->setRange(QDateTime::currentDateTime().addSecs(-25)
@@ -786,6 +858,7 @@ void MainWindow::onHrChartTimer()
     else
         _plotsCntr++;
 
+    //set height of y-axis
     if(_currentHashRate > _maxChartHashRate)
     {
         _maxChartHashRate = _currentHashRate;
@@ -793,4 +866,43 @@ void MainWindow::onHrChartTimer()
     }
 }
 
+void MainWindow::onTempChartTimer()
+{
+    // need api to retrieve temporature
 
+    static bool flip = false;
+    flip = !flip;
+
+    _currentTempRate = flip ? 10 : 0;
+
+    QPen penTemp(QColor(255, 0, 0));
+
+    if(flip){
+        penTemp.setColor(QColor(255, 150, 0));
+        penTemp.setWidth(2);
+    }
+    else{
+        penTemp.setWidth(1);
+    }
+
+    _seriesTemp->setPen(penTemp);
+
+    //draw the dynamic graph
+    _seriesTemp->append(QDateTime::currentDateTime().toMSecsSinceEpoch(), _currentTempRate);
+
+    //diaplay the proper range of the x-axis;
+    if(_plotsCntrTemp >= 25)
+    {
+        _axisXTemp->setRange(QDateTime::currentDateTime().addSecs(-25)
+                         , QDateTime::currentDateTime().addSecs(5));
+    }
+    else
+        _plotsCntrTemp++;
+
+    //set height of y-axis
+    if(_currentTempRate > _maxChartTempRate)
+    {
+        _maxChartTempRate = _currentTempRate;
+        _chartTemp->axisY()->setRange(0, _maxChartTempRate + 1);
+    }
+}
