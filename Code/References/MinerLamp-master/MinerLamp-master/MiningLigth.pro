@@ -25,7 +25,6 @@ DEFINES += QT_DEPRECATED_WARNINGS NVIDIA AMD
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    gpu_monitor.cpp \
         main.cpp \
         mainwindow.cpp \
     minerprocess.cpp \
@@ -39,7 +38,6 @@ SOURCES += \
     hashratecharview.cpp
 
 HEADERS += \
-    gpu_monitor.h \
         mainwindow.h \
     minerprocess.h \
     highlighter.h \

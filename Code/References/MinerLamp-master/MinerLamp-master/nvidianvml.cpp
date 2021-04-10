@@ -169,24 +169,6 @@ int nvidiaNVML::getMaxSupportedMemClock(unsigned int index)
     return max;
 }
 
-std::vector<gpu_info> nvidiaNVML::getStatus()
-{
-    std::vector<gpu_info> gpu_infos;
-    unsigned int gpuCount = getGPUCount();
-    for(unsigned int i = 0; i < gpuCount; i++)
-    {
-        gpu_info gi;
-        gi.num = i;
-        gi.temp = getGPUTemp(i);
-        gi.gpuclock = getGPUClock(i);
-        gi.memclock = getMemClock(i);
-        gi.power = getPowerDraw(i);
-        gi.fanspeed = getFanSpeed(i);
-        gpu_infos.push_back(gi);
-    }
-    return gpu_infos;
-}
-
 int nvidiaNVML::getHigherTemp()
 {
     unsigned int maxTemp = 0;
