@@ -632,6 +632,7 @@ void MainWindow::onNvMonitorInfo(unsigned int gpucount
                                  , unsigned int totalpowerdraw)
 {
 
+
     ui->lcdNumberMaxGPUTemp->setPalette(getTempColor(maxgputemp));
     ui->lcdNumberMinGPUTemp->setPalette(getTempColor(mingputemp));
 
@@ -657,6 +658,77 @@ void MainWindow::onNvMonitorInfo(unsigned int gpucount
     ui->lcdNumberTotalPowerDraw->display((double)totalpowerdraw / 1000);
 
 }
+
+gpu_info MainWindow::getAverage(const std::vector<gpu_info>& gpu_infos)
+{
+    gpu_info gi;
+    gi.num = -1;
+    unsigned int temp = 0;
+    unsigned int gpuclock = 0;
+    unsigned int memclock = 0;
+    unsigned int power = 0;
+    unsigned int fanspeed = 0;
+    for (int i = 0; i < gpu_infos.size(); i++) {
+        temp += gpu_infos[i].temp;
+        gpuclock += gpu_infos[i].gpuclock;
+        memclock += gpu_infos[i].memclock;
+        power += gpu_infos[i].power;
+        fanspeed += gpu_infos[i].fanspeed;
+    }
+    gi.temp = temp / gpu_infos.size();
+    gi.gpuclock = gpuclock / gpu_infos.size();
+    gi.memclock = memclock / gpu_infos.size();
+    gi.power = power / gpu_infos.size();
+    gi.fanspeed = fanspeed / gpu_infos.size();
+    return gi;
+}
+
+gpu_info MainWindow::getWorst(const std::vector<gpu_info> &gpu_infos)
+{
+    gpu_info gi;
+    gi.num = -1;
+    unsigned int temp = 0;
+    unsigned int gpuclock = 1000000000;
+    unsigned int memclock = 1000000000;
+    unsigned int power = 1000000000;
+    unsigned int fanspeed = 1000000000;
+    unsigned int hashrate = 1000000000;
+    for (int i = 0; i < gpu_infos.size(); i++) {
+        if (gpu_infos[i].temp > temp) temp = gpu_infos[i].temp;
+        if (gpu_infos[i].gpuclock < gpuclock) gpuclock = gpu_infos[i].gpuclock;
+        if (gpu_infos[i].memclock < memclock) memclock = gpu_infos[i].memclock;
+        if (gpu_infos[i].power < power) power = gpu_infos[i].power;
+        if (gpu_infos[i].fanspeed < fanspeed) fanspeed = gpu_infos[i].fanspeed;
+        if (gpu_infos[i].hashrate < hashrate) {
+            hashrate = gpu_infos[i].hashrate;
+            gi.num = i;
+        }
+    }
+    gi.temp = temp;
+    gi.gpuclock = gpuclock;
+    gi.memclock = memclock;
+    gi.power = power;
+    gi.fanspeed = fanspeed;
+    gi.hashrate = hashrate;
+    return gi;
+}
+
+/*
+void MainWindow::onNvMonitorInfo(unsigned int current_gpu
+                                 , unsigned int gpu_count
+                                 , std::vector<gpu_info> gpu_infos)
+{
+
+    // max -> worst
+    // min -> current GPU
+    gpu_info avg_info = getAverage(gpu_infos);
+    gpu_info worst_info = getWorst(gpu_infos);
+
+    ui->lcdNumberMaxGPUTemp->setPalette(getTempColor(avg_info.temp));
+    ui->lcdNumberMinGPUTemp->setPalette(getTempColor(gpu_infos[current_gpu].temp));
+
+}
+*/
 
 void MainWindow::onAMDMonitorInfo(unsigned int gpucount, unsigned int maxgputemp, unsigned int mingputemp, unsigned int maxfanspeed, unsigned int minfanspeed, unsigned int maxmemclock, unsigned int minmemclock, unsigned int maxgpuclock, unsigned int mingpuclock, unsigned int maxpowerdraw, unsigned int minpowerdraw, unsigned int totalpowerdraw)
 {
@@ -684,94 +756,6 @@ void MainWindow::onAMDMonitorInfo(unsigned int gpucount, unsigned int maxgputemp
 
 }
 
-
-
-nvMonitorThrd::nvMonitorThrd(QObject * /*pParent*/)
-{
-
-
-}
-
-void nvMonitorThrd::run()
-{
-    nvidiaNVML nvml;
-    if(!nvml.initNVML()) return;
-
-    while(1)
-    {
-        unsigned int gpucount = nvml.getGPUCount();
-
-        unsigned int maxTemp = nvml.getHigherTemp();
-        unsigned int minTemp = nvml.getLowerTemp();
-        unsigned int maxfanspeed = nvml.getHigherFanSpeed();
-        unsigned int minfanspeed = nvml.getLowerFanSpeed();
-        unsigned int maxmemclock = nvml.getMemMaxClock();
-        unsigned int minmemclock = nvml.getMemLowerClock();
-        unsigned int maxgpuclock = nvml.getGPUMaxClock();
-        unsigned int mingpuclock = nvml.getGPUMinClock();
-        unsigned int maxpowerdraw = nvml.getMaxPowerDraw();
-        unsigned int minpowerdraw = nvml.getMinPowerDraw();
-        unsigned int totalpowerdraw = nvml.getPowerDrawSum();
-
-        emit gpuInfoSignal(gpucount
-                           , maxTemp
-                           , minTemp
-                           , maxfanspeed
-                           , minfanspeed
-                           , maxmemclock
-                           , minmemclock
-                           , maxgpuclock
-                           , mingpuclock
-                           , maxpowerdraw
-                           , minpowerdraw
-                           , totalpowerdraw);
-
-        QThread::sleep(5);
-    }
-
-    nvml.shutDownNVML();
-}
-
-
-amdMonitorThrd::amdMonitorThrd(QObject *)
-{
-
-}
-
-void amdMonitorThrd::run()
-{
-    _amd = new amdapi_adl();
-
-    if(_amd && _amd->isInitialized())
-    {
-        while(1)
-        {
-            unsigned int gpucount = _amd->getGPUCount();
-            unsigned int maxTemp =  _amd->getHigherTemp();
-            unsigned int minTemp =  _amd->getLowerTemp();
-            unsigned int maxfanspeed = _amd->getHigherFanSpeed();
-            unsigned int minfanspeed = _amd->getLowerFanSpeed();
-
-            emit gpuInfoSignal(gpucount
-                               , maxTemp
-                               , minTemp
-                               , maxfanspeed
-                               , minfanspeed
-                               , 0
-                               , 0
-                               , 0
-                               , 0
-                               , 0
-                               , 0
-                               , 0);
-
-            QThread::sleep(5);
-        }
-    }
-
-    if(_amd != Q_NULLPTR)
-        delete _amd;
-}
 
 void MainWindow::on_pushButtonOC_clicked()
 {
