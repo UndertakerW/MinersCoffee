@@ -48,6 +48,8 @@ MainWindow::MainWindow(QWidget *parent) :
     _settings = new QSettings(QString(QDir::currentPath() + QDir::separator() + "minerlamp.ini"), QSettings::IniFormat);
 
     _process = new MinerProcess(_settings);
+    _gpuInfoLayout = new QList<QHBoxLayout * >();
+    _gpuInfoLCD = new QList<QList<QLCDNumber *> *>();
 
     ui->setupUi(this);
 
@@ -128,6 +130,49 @@ MainWindow::MainWindow(QWidget *parent) :
     _trayIcon->show();
 
     setupEditor();
+
+    // test code
+    for(int i=0;i<3;i++){
+        QList<QLCDNumber *> * LCDAtRow = new QList<QLCDNumber *>();
+        QHBoxLayout * row = new QHBoxLayout();
+        QLabel * deviceTemp = new QLabel(QString("device ")+QString::number(i)+QString(" :"));
+        QLCDNumber * deviceTempLCD = new QLCDNumber();
+        deviceTempLCD->display(QString::number(i*10));
+        QLabel * fanSpeed = new QLabel("fan speed");
+        QLCDNumber * fanSpeedLCD = new QLCDNumber();
+        fanSpeedLCD->display(QString::number(i*10));
+        QLabel * gpuClock = new QLabel("GPU clock");
+        QLCDNumber * gpuClockLCD = new QLCDNumber();
+        gpuClockLCD->display(QString::number(i*10));
+        QLabel * memClock = new QLabel("Mem Clock");
+        QLCDNumber * memClockLCD = new QLCDNumber();
+        memClockLCD->display(QString::number(i*10));
+
+        row->addWidget(deviceTemp);
+        row->addWidget(deviceTempLCD);
+        row->addWidget(fanSpeed);
+        row->addWidget(fanSpeedLCD);
+        row->addWidget(gpuClock);
+        row->addWidget(gpuClockLCD);
+        row->addWidget(memClock);
+        row->addWidget(memClockLCD);
+
+        LCDAtRow->append(deviceTempLCD);
+        LCDAtRow->append(fanSpeedLCD);
+        LCDAtRow->append(gpuClockLCD);
+        LCDAtRow->append(memClockLCD);
+
+        // set all the items to layout
+        _gpuInfoLayout->append(row);
+        _gpuInfoLCD->append(LCDAtRow);
+
+        ui->gridLayoutDevicesInfo->addLayout(row, i, 0);
+    }
+     QWidget * temp = _gpuInfoLayout->at(0)->itemAt(0)->widget();
+     QLabel * ll = dynamic_cast<QLabel*> (temp);
+     ll->setText("just a test");
+     QLCDNumber * kk = _gpuInfoLCD->at(1)->at(1);
+     kk->display("99");
 
 
     _chart = new QChart();
@@ -283,6 +328,8 @@ MainWindow::~MainWindow()
 
     delete _process;
     delete _settings;
+    delete _gpuInfoLayout;
+    delete _gpuInfoLCD;
     delete ui;
 }
 
