@@ -713,6 +713,7 @@ gpu_info MainWindow::getWorst(const std::vector<gpu_info> &gpu_infos)
     return gi;
 }
 
+/*
 void MainWindow::onNvMonitorInfo(unsigned int current_gpu
                                  , unsigned int gpu_count
                                  , std::vector<gpu_info> gpu_infos)
@@ -727,6 +728,7 @@ void MainWindow::onNvMonitorInfo(unsigned int current_gpu
     ui->lcdNumberMinGPUTemp->setPalette(getTempColor(gpu_infos[current_gpu].temp));
 
 }
+*/
 
 void MainWindow::onAMDMonitorInfo(unsigned int gpucount, unsigned int maxgputemp, unsigned int mingputemp, unsigned int maxfanspeed, unsigned int minfanspeed, unsigned int maxmemclock, unsigned int minmemclock, unsigned int maxgpuclock, unsigned int mingpuclock, unsigned int maxpowerdraw, unsigned int minpowerdraw, unsigned int totalpowerdraw)
 {
