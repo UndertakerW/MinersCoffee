@@ -1,4 +1,5 @@
 #include "gpu_monitor.h"
+#include "nvidianvml.h"
 
 gpu_monitor::gpu_monitor(QObject * /*parent*/) {}
 
@@ -85,4 +86,10 @@ void amdMonitorThrd::run()
 
     if(_amd != Q_NULLPTR)
         delete _amd;
+}
+
+std::vector<gpu_info> amdMonitorThrd::getStatus()
+{
+    std::vector<gpu_info> gpu_infos;
+    return gpu_infos;
 }

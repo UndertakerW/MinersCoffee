@@ -23,9 +23,10 @@
 #include <QScrollBar>
 #include <vector>
 
-#include "nvidianvml.h"
 #include "nvidiaapi.h"
 #include "amdapi_adl.h"
+
+class nvidiaNVML;
 
 class gpu_info {
 public:
@@ -40,10 +41,15 @@ public:
 
 class gpu_monitor : public QThread
 {
+    Q_OBJECT
+
+protected:
+    float refresh_rate = 3;
+
 public:
     gpu_monitor(QObject* p = Q_NULLPTR);
 
-    virtual std::vector<gpu_info> getStatus();
+    virtual std::vector<gpu_info> getStatus() = 0;
 
 signals:
 
@@ -64,10 +70,7 @@ signals:
 
 class nvMonitorThrd : public gpu_monitor
 {
-    Q_OBJECT
-
 private:
-    float refresh_rate = 3;
     nvidiaNVML* nvml;
 
 public:
@@ -82,7 +85,6 @@ public:
 
 class amdMonitorThrd : public gpu_monitor
 {
-    Q_OBJECT
 public:
     amdMonitorThrd(QObject* = Q_NULLPTR);
 

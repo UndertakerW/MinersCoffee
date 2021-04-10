@@ -99,12 +99,12 @@ private slots:
                          , unsigned int minpowerdraw
                          , unsigned int totalpowerdraw
                          );
-
+/*
     void onNvMonitorInfo(unsigned int current_gpu
                          , unsigned int gpu_count
                          , std::vector<gpu_info> gpu_infos
                          );
-
+*/
     void onAMDMonitorInfo(unsigned int gpucount
                           , unsigned int maxgputemp
                           , unsigned int mingputemp
