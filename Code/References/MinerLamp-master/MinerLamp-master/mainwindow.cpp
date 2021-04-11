@@ -246,42 +246,8 @@ MainWindow::MainWindow(QWidget *parent) :
     // graph will be drawn every time interval
     connect(&_tempChartTimer, &QTimer::timeout, this, &MainWindow::onTempChartTimer);
 
-
-    // effectiveness pie chart
-    _effPieChart = new QChart();
-    _effPieSlices = new QList<QPieSlice *>();
-
-//    QLinearGradient backgroundGradient_eff;
-//    backgroundGradient_eff.setStart(QPointF(0, 0));
-//    backgroundGradient_eff.setFinalStop(QPointF(0, 1));
-//    backgroundGradient_eff.setColorAt(0.0, QRgb(0x909090));
-//    backgroundGradient_eff.setColorAt(1.0, QRgb(0x101010));
-//    backgroundGradient_eff.setCoordinateMode(QGradient::StretchToDeviceMode);
-//    _effPieChart->setBackgroundBrush(backgroundGradient_eff);
-
-
-    _effPieChart->setBackgroundVisible(false);
-    _effPieChart->setAnimationOptions(QChart::AllAnimations);
-
-    _effPieChart->legend()->hide();
-    _effPieSeries = new QPieSeries();
-    _effPieSeries->append("eff", 1);
-    _effPieSeries->append("uneff", 10);
-
-    _effPieSlices->append(_effPieSeries->slices().at(0));
-    _effPieSlices->append(_effPieSeries->slices().at(1));
-
-    _effPieSlices->at(0)->setBorderWidth(0);
-    _effPieSlices->at(1)->setBorderWidth(0);
-
-
-    _effPieSeries->setLabelsVisible();
-    _effPieSeries->setHoleSize(0.35);
-
-    _effPieChart->addSeries(_effPieSeries);
-
-    ui->graphicsViewEff->setChart(_effPieChart);
-
+    // initialize pie chart
+    initializePieChart();
 
     // set time interval
     _tempChartTimer.setInterval(1000);
@@ -950,7 +916,6 @@ void MainWindow::refreshDevicesInfo()
     else {
         _effPieSlices->at(0)->setValue(1);
     }
-    ui->debugBox->append(QString::number(_effPieSlices->at(0)->value()));
 
     // fetch devices number
     int deviceNum = ui->spinBoxMax0MHs->value();
@@ -1039,4 +1004,46 @@ void MainWindow::onRefreshDeviceInfoTimer()
 {
     refreshDevicesInfo();
 }
+
+void MainWindow::initializePieChart(){
+
+    // effectiveness pie chart
+    _effPieChart = new QChart();
+    _effPieSlices = new QList<QPieSlice *>();
+
+//    QLinearGradient backgroundGradient_eff;
+//    backgroundGradient_eff.setStart(QPointF(0, 0));
+//    backgroundGradient_eff.setFinalStop(QPointF(0, 1));
+//    backgroundGradient_eff.setColorAt(0.0, QRgb(0x909090));
+//    backgroundGradient_eff.setColorAt(1.0, QRgb(0x101010));
+//    backgroundGradient_eff.setCoordinateMode(QGradient::StretchToDeviceMode);
+//    _effPieChart->setBackgroundBrush(backgroundGradient_eff);
+
+
+    _effPieChart->setBackgroundVisible(false);
+    _effPieChart->setAnimationOptions(QChart::AllAnimations);
+
+    _effPieChart->legend()->setAlignment(Qt::AlignRight);
+    _effPieSeries = new QPieSeries();
+    _effPieSeries->append("eff", 1);
+    _effPieSeries->append("uneff", 10);
+
+    _effPieSlices->append(_effPieSeries->slices().at(0));
+    _effPieSlices->append(_effPieSeries->slices().at(1));
+
+    for(int i=0;i<2;i++){
+        _effPieSlices->at(i)->setBorderWidth(5);
+        _effPieSlices->at(i)->setLabelVisible(false);
+//        connect(_effPieSlices->at(i), SIGNAL(QPieSlice::hovered(QPieSlice*, bool)), this, SLOT(MainWindow::onMouseHoverSlice(QPieSlice*, bool)));
+    }
+
+    connect(_effPieSlices->at(0), SIGNAL(QPieSlice::hovered(QPieSlice*, bool)), this, SLOT(MainWindow::onMouseHoverSlice(QPieSlice*, bool)));
+
+    _effPieSeries->setHoleSize(0.35);
+
+    _effPieChart->addSeries(_effPieSeries);
+
+    ui->graphicsViewEff->setChart(_effPieChart, false);
+}
+
 
