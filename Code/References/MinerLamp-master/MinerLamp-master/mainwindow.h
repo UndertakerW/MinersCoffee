@@ -10,6 +10,9 @@
 #include <QtCharts/QCategoryAxis>
 #include <QDateTimeAxis>
 #include <QTimer>
+#include <QLabel>
+#include <QHBoxLayout>
+#include <QLCDNumber>
 
 #include "minerprocess.h"
 #include "highlighter.h"
@@ -54,6 +57,10 @@ public:
     gpu_info getAverage(const std::vector<gpu_info>& gpu_infos);
     gpu_info getWorst(const std::vector<gpu_info>& gpu_infos);
 
+private:
+    QList<QWidget *> * _gpuInfoList;
+    int _deviceCount = 0;
+
 protected:
     void closeEvent(QCloseEvent *event) Q_DECL_OVERRIDE;
 
@@ -68,6 +75,7 @@ private:
     void setupToolTips();
     void loadParameters();
     void saveParameters();
+    void refreshDevicesInfo();
 
 
     nvidiaAPI* _nvapi;
@@ -145,11 +153,14 @@ private slots:
 
     void on_pushButtonEthminerBrowser_clicked();
 
-    // timer for hash rate graph
+    // timer to hash rate graph
     void onHrChartTimer();
 
-    // timer for temporature graph
+    // timer to temporature graph
     void onTempChartTimer();
+
+    // timer to refresh device info
+    void onRefreshDeviceInfoTimer();
 
 private:
 
@@ -193,6 +204,7 @@ private:
 
     QTimer _hrChartTimer;
     QTimer _tempChartTimer;
+    QTimer _refreshDeviceTimer;
 
     double _currentHashRate = 0.0;
     double _maxChartHashRate = 0.0;
