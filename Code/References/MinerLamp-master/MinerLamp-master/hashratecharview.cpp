@@ -28,33 +28,25 @@ void hashrateCharView::setChart(QChart *chart)
     QChartView::setChart(chart);
 }
 
-void hashrateCharView::setChart(QChart *chart, bool tooltip){
-    setChart(chart);
-    showToolTip = tooltip;
-}
-
 void hashrateCharView::mouseMoveEvent(QMouseEvent *event)
 {
 
-    if(showToolTip){
-        QPointF point = chart()->mapToValue(event->pos());
+    QPointF point = chart()->mapToValue(event->pos());
 
-        QDateTimeAxis *axisX = qobject_cast<QDateTimeAxis *>(chart()->axisX());
+    QDateTimeAxis *axisX = qobject_cast<QDateTimeAxis *>(chart()->axisX());
 
 
-        QToolTip::showText(event->globalPos(),
-                           QString::number(point.y()),
-                           this, rect() );
+    QToolTip::showText(event->globalPos(),
+                       QString::number(point.y()),
+                       this, rect() );
 
-        QChartView::mouseMoveEvent(event);
-    }
+    QChartView::mouseMoveEvent(event);
 
 }
 
 
 void hashrateCharView::wheelEvent(QWheelEvent *event)
 {
-
     if(event->angleDelta().y() > 0)
     {
         chart()->zoomIn();
