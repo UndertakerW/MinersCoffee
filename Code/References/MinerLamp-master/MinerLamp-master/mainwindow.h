@@ -165,6 +165,9 @@ private slots:
     // timer to refresh device info
     void onRefreshDeviceInfoTimer();
 
+    // pie slice
+    void onMouseHoverSlice(QPieSlice * slice, bool status);
+
 private:
 
     void onMinerStarted();

@@ -279,6 +279,8 @@ MainWindow::MainWindow(QWidget *parent) :
     if(pos > 0)
         ui->lineEditAccount->setText(ui->lineEditArgs->text().mid(pos + 3
                                                                   , ui->lineEditArgs->text().indexOf(" 0x") > 0 ? 42 : 40));
+
+    ui->debugBox->append("hello 1");
 }
 
 MainWindow::~MainWindow()
@@ -1011,39 +1013,54 @@ void MainWindow::initializePieChart(){
     _effPieChart = new QChart();
     _effPieSlices = new QList<QPieSlice *>();
 
-//    QLinearGradient backgroundGradient_eff;
-//    backgroundGradient_eff.setStart(QPointF(0, 0));
-//    backgroundGradient_eff.setFinalStop(QPointF(0, 1));
-//    backgroundGradient_eff.setColorAt(0.0, QRgb(0x909090));
-//    backgroundGradient_eff.setColorAt(1.0, QRgb(0x101010));
-//    backgroundGradient_eff.setCoordinateMode(QGradient::StretchToDeviceMode);
-//    _effPieChart->setBackgroundBrush(backgroundGradient_eff);
-
-
     _effPieChart->setBackgroundVisible(false);
     _effPieChart->setAnimationOptions(QChart::AllAnimations);
 
     _effPieChart->legend()->setAlignment(Qt::AlignRight);
+    _effPieChart->legend()->resize(1,1);
     _effPieSeries = new QPieSeries();
     _effPieSeries->append("eff", 1);
     _effPieSeries->append("uneff", 10);
 
     _effPieSlices->append(_effPieSeries->slices().at(0));
     _effPieSlices->append(_effPieSeries->slices().at(1));
+    _effPieChart->setAcceptHoverEvents(true);
 
     for(int i=0;i<2;i++){
         _effPieSlices->at(i)->setBorderWidth(5);
         _effPieSlices->at(i)->setLabelVisible(false);
-//        connect(_effPieSlices->at(i), SIGNAL(QPieSlice::hovered(QPieSlice*, bool)), this, SLOT(MainWindow::onMouseHoverSlice(QPieSlice*, bool)));
     }
 
-    connect(_effPieSlices->at(0), SIGNAL(QPieSlice::hovered(QPieSlice*, bool)), this, SLOT(MainWindow::onMouseHoverSlice(QPieSlice*, bool)));
 
     _effPieSeries->setHoleSize(0.35);
 
     _effPieChart->addSeries(_effPieSeries);
 
-    ui->graphicsViewEff->setChart(_effPieChart, false);
+    connect(_effPieSeries, &QPieSeries::hovered, this, &MainWindow::onMouseHoverSlice);
+
+    ui->graphicsViewEff->setChart(_effPieChart);
 }
 
+void MainWindow::onMouseHoverSlice(QPieSlice * slice, bool status){
+    ui->debugBox->append(slice->label());
+    QString sliceLabel = slice->label();
+
+    // index of "eff"   in _effPieSlices is 0
+    // index of "uneff" in _effPieSlices is 1
+    if(status){
+        if(sliceLabel == "eff"){
+            _effPieSlices->at(0)->setBorderWidth(0);
+            _effPieSlices->at(1)->setBorderWidth(10);
+        }
+        else{
+            _effPieSlices->at(0)->setBorderWidth(10);
+            _effPieSlices->at(1)->setBorderWidth(0);
+        }
+    }
+    else{
+        _effPieSlices->at(0)->setBorderWidth(5);
+        _effPieSlices->at(1)->setBorderWidth(5);
+    }
+
+}
 

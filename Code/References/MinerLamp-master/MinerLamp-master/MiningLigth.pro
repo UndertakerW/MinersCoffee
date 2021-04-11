@@ -4,7 +4,9 @@
 #
 #-------------------------------------------------
 
-QT       += core gui network charts
+QT       += \
+        core gui network charts\
+        Charts
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -38,6 +40,7 @@ SOURCES += \
     nanopoolapi.cpp \
     amdapi_adl.cpp \
     hashratecharview.cpp \
+    piesliceeff.cpp \
     urlapi.cpp
 
 HEADERS += \
@@ -53,6 +56,7 @@ HEADERS += \
     nanopoolapi.h \
     amdapi_adl.h \
     hashratecharview.h \
+    piesliceeff.h \
     structures.h \
     urlapi.h
 

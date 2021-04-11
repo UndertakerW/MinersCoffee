@@ -1,6 +1,9 @@
+#include <QtCharts/QPieSlice>
+
 #include "piesliceeff.h"
 
-pieSliceEff::pieSliceEff()
-{
+//piesliceEff::piesliceEff(QWidget * parent) :
+//    QPieSlice(parent)
+//{
 
-}
+//}

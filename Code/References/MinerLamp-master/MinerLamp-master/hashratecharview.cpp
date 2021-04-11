@@ -28,15 +28,15 @@ void hashrateCharView::setChart(QChart *chart)
     QChartView::setChart(chart);
 }
 
-void hashrateCharView::setChart(QChart *chart, bool tooltip){
+void hashrateCharView::setChart(QChart *chart, int mode){
     setChart(chart);
-    showToolTip = tooltip;
+    graphMode = mode;
 }
 
 void hashrateCharView::mouseMoveEvent(QMouseEvent *event)
 {
 
-    if(showToolTip){
+    if(graphMode == 0){
         QPointF point = chart()->mapToValue(event->pos());
 
         QDateTimeAxis *axisX = qobject_cast<QDateTimeAxis *>(chart()->axisX());
@@ -46,6 +46,9 @@ void hashrateCharView::mouseMoveEvent(QMouseEvent *event)
                            QString::number(point.y()),
                            this, rect() );
 
+        QChartView::mouseMoveEvent(event);
+    }
+    else if(graphMode == 1){
         QChartView::mouseMoveEvent(event);
     }
 
