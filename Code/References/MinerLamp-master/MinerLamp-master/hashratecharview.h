@@ -14,11 +14,13 @@ public:
     hashrateCharView(QChart *chart, QWidget *parent = Q_NULLPTR);
 
     void setChart(QChart *chart);
+    void setChart(QChart *chart, bool tooltip);
 protected:
     void mouseMoveEvent(QMouseEvent *event);
     void wheelEvent(QWheelEvent* event);
 private:
     QDateTime _startTime;
+    bool showToolTip = true;
 };
 
 #endif // HASHRATECHARVIEW_H
