@@ -25,6 +25,7 @@
 
 #include "nvidiaapi.h"
 #include "amdapi_adl.h"
+#include "url_api.h"
 
 class nvidiaNVML;
 
@@ -39,15 +40,22 @@ public:
     float hashrate;
 };
 
-class gpu_monitor : public QThread
+class GPUMonitor : public QThread
 {
     Q_OBJECT
 
 protected:
     float refresh_rate = 3;
 
+    UrlAPI* urlAPI;
+    std::string api_str;
+
+    const std::string api_NBMiner = "http://localhost:22333/api/v1/status";
+
 public:
-    gpu_monitor(QObject* p = Q_NULLPTR);
+    GPUMonitor(QObject* p = Q_NULLPTR);
+
+    void SetAPI(std::string core);
 
     virtual std::vector<gpu_info> getStatus() = 0;
 
@@ -68,7 +76,7 @@ signals:
 };
 
 
-class nvMonitorThrd : public gpu_monitor
+class nvMonitorThrd : public GPUMonitor
 {
 private:
     nvidiaNVML* nvml;
@@ -83,7 +91,7 @@ public:
 
 };
 
-class amdMonitorThrd : public gpu_monitor
+class amdMonitorThrd : public GPUMonitor
 {
 public:
     amdMonitorThrd(QObject* = Q_NULLPTR);

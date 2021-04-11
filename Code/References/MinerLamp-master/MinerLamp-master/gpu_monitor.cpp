@@ -1,7 +1,16 @@
 #include "gpu_monitor.h"
 #include "nvidianvml.h"
 
-gpu_monitor::gpu_monitor(QObject * /*parent*/) {}
+GPUMonitor::GPUMonitor(QObject * /*parent*/)
+{
+    urlAPI = new UrlAPI();
+}
+
+void GPUMonitor::SetAPI(std::string core)
+{
+    if (core == "NBMiner")
+        api_str = api_NBMiner;
+}
 
 nvMonitorThrd::nvMonitorThrd(QObject * /*parent*/) {}
 
@@ -47,7 +56,14 @@ void nvMonitorThrd::run()
 
 std::vector<gpu_info> nvMonitorThrd::getStatus()
 {
-    return nvml->getStatus();
+    // Default API
+    if (api_str == "")
+        api_str = api_NBMiner;
+    std::vector<gpu_info> gpu_infos = nvml->getStatus();
+    std::string buffer;
+    LPCSTR url = api_str.c_str();
+    urlAPI->GetURLInternal(url, buffer);
+    return gpu_infos;
 }
 
 

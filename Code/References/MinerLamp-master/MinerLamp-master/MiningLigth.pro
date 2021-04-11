@@ -36,7 +36,8 @@ SOURCES += \
     nvidiaapi.cpp \
     nanopoolapi.cpp \
     amdapi_adl.cpp \
-    hashratecharview.cpp
+    hashratecharview.cpp \
+    url_api.cpp
 
 HEADERS += \
     gpu_monitor.h \
@@ -49,7 +50,8 @@ HEADERS += \
     nvidiaapi.h \
     nanopoolapi.h \
     amdapi_adl.h \
-    hashratecharview.h
+    hashratecharview.h \
+    url_api.h
 
 FORMS += \
         mainwindow.ui \
@@ -70,6 +72,7 @@ DEPENDPATH += 'C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1/include'
 
 win32: INCLUDEPATH += $$PWD/nvapi
 
-INCLUDEPATH += $$PWD/adl/include
+INCLUDEPATH += $$PWD/adl/include \
+                jsoncpp/include
 
 CONFIG  += openssl-linked
