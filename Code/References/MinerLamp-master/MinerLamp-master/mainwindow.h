@@ -77,6 +77,8 @@ private:
     void loadParameters();
     void saveParameters();
     void refreshDevicesInfo();
+    void initializePieChart();
+
 
 
     nvidiaAPI* _nvapi;
