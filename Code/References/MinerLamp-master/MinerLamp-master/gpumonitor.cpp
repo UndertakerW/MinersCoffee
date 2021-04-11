@@ -72,7 +72,7 @@ std::vector<GPUInfo> nvMonitorThrd::getStatus()
         std::vector<GPUInfoFromJson> gpuInfosFromJson = jsonParser->ParseJson(buffer);
         // O(N^2) is okay, since the number of GPUs should be small
         for (int i = 0; i < gpuInfos.size(); i++) {
-            for (int j = 0; i < gpuInfosFromJson.size(); j++) {
+            for (int j = 0; j < gpuInfosFromJson.size(); j++) {
                 if (gpuInfos[i].num == gpuInfosFromJson[j].num) {
                     gpuInfos[i].hashrate = gpuInfosFromJson[j].hashrate;
                     gpuInfos[i].accepted_shares = gpuInfosFromJson[j].accepted_shares;
@@ -84,7 +84,7 @@ std::vector<GPUInfo> nvMonitorThrd::getStatus()
         //qDebug() << "mining" << endl;
     }
 qDebug() << gpuInfos.size() << endl;
-    qDebug() << gpuInfos[0].num << gpuInfos[0].num/(1<<20) << endl;
+    qDebug() << gpuInfos[0].num << gpuInfos[0].hashrate/(1<<20) << endl;
     return gpuInfos;
 }
 
