@@ -130,12 +130,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     setupEditor();
 
-    // dynamic generate device number info
-    refreshDevicesInfo();
-    connect(&_refreshDeviceTimer, &QTimer::timeout, this, &MainWindow::onRefreshDeviceInfoTimer);
-    _refreshDeviceTimer.setInterval(1000);
-    _refreshDeviceTimer.start();
-
     _chart = new QChart();
     _chartTemp = new QChart();
 
@@ -147,7 +141,7 @@ MainWindow::MainWindow(QWidget *parent) :
     backgroundGradient.setColorAt(1.0, QRgb(0x101010));
     backgroundGradient.setCoordinateMode(QGradient::ObjectBoundingMode);
 
-    _chart->setAnimationOptions(QChart::NoAnimation);
+    _chart->setAnimationOptions(QChart::SeriesAnimations);
     _chart->setBackgroundBrush(backgroundGradient);
     _chart->legend()->hide();
 
@@ -206,9 +200,10 @@ MainWindow::MainWindow(QWidget *parent) :
     backgroundGradient_temp.setColorAt(1.0, QRgb(0x101010));
     backgroundGradient_temp.setCoordinateMode(QGradient::StretchToDeviceMode);
 
-    _chartTemp->setAnimationOptions(QChart::NoAnimation);
+    _chartTemp->setAnimationOptions(QChart::SeriesAnimations);
     _chartTemp->setBackgroundBrush(backgroundGradient_temp);
     _chartTemp->legend()->hide();
+
 
     //set the color of the graph
     QPen penTemp(QColor(255, 165, 0));
@@ -251,9 +246,52 @@ MainWindow::MainWindow(QWidget *parent) :
     // graph will be drawn every time interval
     connect(&_tempChartTimer, &QTimer::timeout, this, &MainWindow::onTempChartTimer);
 
+
+    // effectiveness pie chart
+    _effPieChart = new QChart();
+    _effPieSlices = new QList<QPieSlice *>();
+
+//    QLinearGradient backgroundGradient_eff;
+//    backgroundGradient_eff.setStart(QPointF(0, 0));
+//    backgroundGradient_eff.setFinalStop(QPointF(0, 1));
+//    backgroundGradient_eff.setColorAt(0.0, QRgb(0x909090));
+//    backgroundGradient_eff.setColorAt(1.0, QRgb(0x101010));
+//    backgroundGradient_eff.setCoordinateMode(QGradient::StretchToDeviceMode);
+//    _effPieChart->setBackgroundBrush(backgroundGradient_eff);
+
+
+    _effPieChart->setBackgroundVisible(false);
+    _effPieChart->setAnimationOptions(QChart::AllAnimations);
+
+    _effPieChart->legend()->hide();
+    _effPieSeries = new QPieSeries();
+    _effPieSeries->append("eff", 1);
+    _effPieSeries->append("uneff", 10);
+
+    _effPieSlices->append(_effPieSeries->slices().at(0));
+    _effPieSlices->append(_effPieSeries->slices().at(1));
+
+    _effPieSlices->at(0)->setBorderWidth(0);
+    _effPieSlices->at(1)->setBorderWidth(0);
+
+
+    _effPieSeries->setLabelsVisible();
+    _effPieSeries->setHoleSize(0.35);
+
+    _effPieChart->addSeries(_effPieSeries);
+
+    ui->graphicsViewEff->setChart(_effPieChart);
+
+
     // set time interval
     _tempChartTimer.setInterval(1000);
     _tempChartTimer.start();
+
+    // dynamic generate device number info
+    refreshDevicesInfo();
+    connect(&_refreshDeviceTimer, &QTimer::timeout, this, &MainWindow::onRefreshDeviceInfoTimer);
+    _refreshDeviceTimer.setInterval(1000);
+    _refreshDeviceTimer.start();
 
 
     ui->lcdNumberHashRate->display("0.00");
@@ -900,6 +938,17 @@ void MainWindow::onTempChartTimer()
 
 void MainWindow::refreshDevicesInfo()
 {
+    // effectiveness pie chart
+    static bool flip = false;
+    flip = !flip;
+    if(flip){
+        _effPieSlices->at(0)->setValue(10);
+    }
+    else {
+        _effPieSlices->at(0)->setValue(1);
+    }
+    ui->debugBox->append(QString::number(_effPieSlices->at(0)->value()));
+
     // fetch devices number
     int deviceNum = ui->spinBoxMax0MHs->value();
     if(deviceNum < 0){

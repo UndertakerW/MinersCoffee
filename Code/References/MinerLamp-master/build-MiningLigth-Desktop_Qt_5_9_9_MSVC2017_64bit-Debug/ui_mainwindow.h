@@ -24,6 +24,7 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QSpinBox>
+#include <QtWidgets/QSplitter>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -35,7 +36,7 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
-    QGridLayout *gridLayout_10;
+    QGridLayout *gridLayout_8;
     QLabel *label_2;
     QLineEdit *lineEditMinerPath;
     QPushButton *pushButtonEthminerBrowser;
@@ -45,40 +46,20 @@ public:
     QPushButton *pushButtonHelp;
     QCheckBox *checkBoxAutoStart;
     QLCDNumber *lcdNumberHashRate;
-    QGroupBox *groupBox;
-    QGridLayout *gridLayout_5;
-    hashrateCharView *graphicsView;
-    QGroupBox *groupBox_2;
-    QGridLayout *gridLayout_6;
-    hashrateCharView *graphicsViewTemp;
-    QCheckBox *checkBoxOnlyShare;
-    QPushButton *pushButtonShowHideLog;
-    QPushButton *pushButtonPool;
-    QTextEdit *textEdit;
-    QGroupBox *groupBoxAMD;
-    QGridLayout *gridLayout_2;
-    QLabel *label_28;
-    QLCDNumber *lcdNumber_AMD_MaxTemp;
-    QLabel *label_31;
-    QLCDNumber *lcdNumber_AMD_MinPoxer;
-    QLCDNumber *lcdNumber_AMD_MaxMemClock;
-    QLabel *label_AMD_GPUCount;
-    QLCDNumber *lcdNumber_AMD_MinClock;
-    QLabel *label_30;
-    QLCDNumber *lcdNumber_AMD_MinMemClock;
-    QLCDNumber *lcdNumber_AMD_MaxFan;
-    QLabel *label_33;
-    QLCDNumber *lcdNumber_AMD_GPUCount;
-    QLCDNumber *lcdNumber_AMD_MaxClock;
-    QLabel *label_24;
-    QLabel *label_25;
-    QLabel *label_27;
-    QLCDNumber *lcdNumber_AMD_MinFan;
-    QLabel *label_29;
-    QLCDNumber *lcdNumber_AMD_MinTemp;
-    QLabel *label_32;
-    QLCDNumber *lcdNumber_AMD_MaxPower;
-    QLabel *label_26;
+    QSplitter *splitter_4;
+    QGroupBox *groupBoxWatchdog;
+    QGridLayout *gridLayout;
+    QSpinBox *spinBoxDelay;
+    QSpinBox *spinBoxDelay0MHs;
+    QLabel *label_7;
+    QSpinBox *spinBoxDelayNoHash;
+    QLabel *label_4;
+    QLabel *label_5;
+    QSpinBox *spinBoxMax0MHs;
+    QLabel *label_3;
+    QVBoxLayout *verticalLayout;
+    QLabel *label_23;
+    QTextEdit *debugBox;
     QGroupBox *groupBoxNvidia;
     QGridLayout *gridLayout_3;
     QLCDNumber *lcdNumberTotalPowerDraw;
@@ -106,9 +87,51 @@ public:
     QLCDNumber *lcdNumberMinGPUClock;
     QLCDNumber *lcdNumberMaxMemClock;
     QLabel *label_10;
+    QGroupBox *groupBoxAMD;
+    QGridLayout *gridLayout_2;
+    QLabel *label_28;
+    QLCDNumber *lcdNumber_AMD_MaxTemp;
+    QLabel *label_31;
+    QLCDNumber *lcdNumber_AMD_MinPoxer;
+    QLCDNumber *lcdNumber_AMD_MaxMemClock;
+    QLabel *label_AMD_GPUCount;
+    QLCDNumber *lcdNumber_AMD_MinClock;
+    QLabel *label_30;
+    QLCDNumber *lcdNumber_AMD_MinMemClock;
+    QLCDNumber *lcdNumber_AMD_MaxFan;
+    QLabel *label_33;
+    QLCDNumber *lcdNumber_AMD_GPUCount;
+    QLCDNumber *lcdNumber_AMD_MaxClock;
+    QLabel *label_24;
+    QLabel *label_25;
+    QLabel *label_27;
+    QLCDNumber *lcdNumber_AMD_MinFan;
+    QLabel *label_29;
+    QLCDNumber *lcdNumber_AMD_MinTemp;
+    QLabel *label_32;
+    QLCDNumber *lcdNumber_AMD_MaxPower;
+    QLabel *label_26;
+    QSplitter *splitter_2;
+    QSplitter *splitter_3;
     QGroupBox *groupBoxDevicesInfo;
     QGridLayout *gridLayout_9;
     QGridLayout *gridLayoutDevicesInfo;
+    QSplitter *splitter;
+    QWidget *widget;
+    QVBoxLayout *verticalLayout_2;
+    QGroupBox *groupBox;
+    QGridLayout *gridLayout_5;
+    hashrateCharView *graphicsView;
+    QGroupBox *groupBox_2;
+    QGridLayout *gridLayout_6;
+    hashrateCharView *graphicsViewTemp;
+    QGroupBox *groupBoxEffectiveness;
+    QGridLayout *gridLayout_7;
+    hashrateCharView *graphicsViewEff;
+    QCheckBox *checkBoxOnlyShare;
+    QPushButton *pushButtonShowHideLog;
+    QPushButton *pushButtonPool;
+    QTextEdit *textEdit;
     QGroupBox *groupBoxPools;
     QGridLayout *gridLayout_4;
     QRadioButton *radioButtonNaopool;
@@ -124,19 +147,6 @@ public:
     QLabel *label_20;
     QLCDNumber *lcdNumberAvrgHr6H;
     QRadioButton *radioButtonDwarfPool;
-    QGroupBox *groupBoxWatchdog;
-    QGridLayout *gridLayout;
-    QSpinBox *spinBoxDelay;
-    QSpinBox *spinBoxDelay0MHs;
-    QLabel *label_7;
-    QSpinBox *spinBoxDelayNoHash;
-    QLabel *label_4;
-    QLabel *label_5;
-    QSpinBox *spinBoxMax0MHs;
-    QLabel *label_3;
-    QVBoxLayout *verticalLayout;
-    QLabel *label_23;
-    QTextEdit *debugBox;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -356,19 +366,19 @@ public:
 "}"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        gridLayout_10 = new QGridLayout(centralWidget);
-        gridLayout_10->setSpacing(6);
-        gridLayout_10->setContentsMargins(11, 11, 11, 11);
-        gridLayout_10->setObjectName(QStringLiteral("gridLayout_10"));
+        gridLayout_8 = new QGridLayout(centralWidget);
+        gridLayout_8->setSpacing(6);
+        gridLayout_8->setContentsMargins(11, 11, 11, 11);
+        gridLayout_8->setObjectName(QStringLiteral("gridLayout_8"));
         label_2 = new QLabel(centralWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
 
-        gridLayout_10->addWidget(label_2, 0, 0, 1, 1);
+        gridLayout_8->addWidget(label_2, 0, 0, 1, 1);
 
         lineEditMinerPath = new QLineEdit(centralWidget);
         lineEditMinerPath->setObjectName(QStringLiteral("lineEditMinerPath"));
 
-        gridLayout_10->addWidget(lineEditMinerPath, 0, 1, 1, 1);
+        gridLayout_8->addWidget(lineEditMinerPath, 0, 1, 1, 1);
 
         pushButtonEthminerBrowser = new QPushButton(centralWidget);
         pushButtonEthminerBrowser->setObjectName(QStringLiteral("pushButtonEthminerBrowser"));
@@ -378,32 +388,32 @@ public:
         sizePolicy.setHeightForWidth(pushButtonEthminerBrowser->sizePolicy().hasHeightForWidth());
         pushButtonEthminerBrowser->setSizePolicy(sizePolicy);
 
-        gridLayout_10->addWidget(pushButtonEthminerBrowser, 0, 2, 1, 1);
+        gridLayout_8->addWidget(pushButtonEthminerBrowser, 0, 2, 1, 1);
 
         pushButton = new QPushButton(centralWidget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
 
-        gridLayout_10->addWidget(pushButton, 0, 3, 1, 1);
+        gridLayout_8->addWidget(pushButton, 0, 3, 1, 1);
 
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
 
-        gridLayout_10->addWidget(label, 1, 0, 1, 1);
+        gridLayout_8->addWidget(label, 1, 0, 1, 1);
 
         lineEditArgs = new QLineEdit(centralWidget);
         lineEditArgs->setObjectName(QStringLiteral("lineEditArgs"));
 
-        gridLayout_10->addWidget(lineEditArgs, 1, 1, 1, 1);
+        gridLayout_8->addWidget(lineEditArgs, 1, 1, 1, 1);
 
         pushButtonHelp = new QPushButton(centralWidget);
         pushButtonHelp->setObjectName(QStringLiteral("pushButtonHelp"));
 
-        gridLayout_10->addWidget(pushButtonHelp, 1, 3, 1, 1);
+        gridLayout_8->addWidget(pushButtonHelp, 1, 3, 1, 1);
 
         checkBoxAutoStart = new QCheckBox(centralWidget);
         checkBoxAutoStart->setObjectName(QStringLiteral("checkBoxAutoStart"));
 
-        gridLayout_10->addWidget(checkBoxAutoStart, 2, 0, 1, 1);
+        gridLayout_8->addWidget(checkBoxAutoStart, 2, 0, 1, 1);
 
         lcdNumberHashRate = new QLCDNumber(centralWidget);
         lcdNumberHashRate->setObjectName(QStringLiteral("lcdNumberHashRate"));
@@ -414,196 +424,98 @@ public:
         lcdNumberHashRate->setSizePolicy(sizePolicy1);
         lcdNumberHashRate->setDigitCount(7);
 
-        gridLayout_10->addWidget(lcdNumberHashRate, 2, 3, 1, 1);
+        gridLayout_8->addWidget(lcdNumberHashRate, 2, 3, 1, 1);
 
-        groupBox = new QGroupBox(centralWidget);
-        groupBox->setObjectName(QStringLiteral("groupBox"));
-        gridLayout_5 = new QGridLayout(groupBox);
-        gridLayout_5->setSpacing(6);
-        gridLayout_5->setContentsMargins(11, 11, 11, 11);
-        gridLayout_5->setObjectName(QStringLiteral("gridLayout_5"));
-        graphicsView = new hashrateCharView(groupBox);
-        graphicsView->setObjectName(QStringLiteral("graphicsView"));
-        graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-
-        gridLayout_5->addWidget(graphicsView, 0, 0, 1, 1);
-
-
-        gridLayout_10->addWidget(groupBox, 7, 0, 1, 4);
-
-        groupBox_2 = new QGroupBox(centralWidget);
-        groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
-        gridLayout_6 = new QGridLayout(groupBox_2);
-        gridLayout_6->setSpacing(6);
-        gridLayout_6->setContentsMargins(11, 11, 11, 11);
-        gridLayout_6->setObjectName(QStringLiteral("gridLayout_6"));
-        graphicsViewTemp = new hashrateCharView(groupBox_2);
-        graphicsViewTemp->setObjectName(QStringLiteral("graphicsViewTemp"));
-        graphicsViewTemp->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-
-        gridLayout_6->addWidget(graphicsViewTemp, 0, 0, 1, 1);
-
-
-        gridLayout_10->addWidget(groupBox_2, 8, 0, 1, 4);
-
-        checkBoxOnlyShare = new QCheckBox(centralWidget);
-        checkBoxOnlyShare->setObjectName(QStringLiteral("checkBoxOnlyShare"));
-
-        gridLayout_10->addWidget(checkBoxOnlyShare, 9, 0, 1, 2);
-
-        pushButtonShowHideLog = new QPushButton(centralWidget);
-        pushButtonShowHideLog->setObjectName(QStringLiteral("pushButtonShowHideLog"));
-        pushButtonShowHideLog->setCheckable(true);
-
-        gridLayout_10->addWidget(pushButtonShowHideLog, 9, 2, 1, 1);
-
-        pushButtonPool = new QPushButton(centralWidget);
-        pushButtonPool->setObjectName(QStringLiteral("pushButtonPool"));
-        pushButtonPool->setEnabled(true);
-        pushButtonPool->setCheckable(true);
-
-        gridLayout_10->addWidget(pushButtonPool, 9, 3, 1, 1);
-
-        textEdit = new QTextEdit(centralWidget);
-        textEdit->setObjectName(QStringLiteral("textEdit"));
-        textEdit->setReadOnly(true);
-
-        gridLayout_10->addWidget(textEdit, 10, 0, 1, 4);
-
-        groupBoxAMD = new QGroupBox(centralWidget);
-        groupBoxAMD->setObjectName(QStringLiteral("groupBoxAMD"));
+        splitter_4 = new QSplitter(centralWidget);
+        splitter_4->setObjectName(QStringLiteral("splitter_4"));
+        splitter_4->setOrientation(Qt::Vertical);
+        groupBoxWatchdog = new QGroupBox(splitter_4);
+        groupBoxWatchdog->setObjectName(QStringLiteral("groupBoxWatchdog"));
         QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Fixed);
         sizePolicy2.setHorizontalStretch(0);
         sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(groupBoxAMD->sizePolicy().hasHeightForWidth());
-        groupBoxAMD->setSizePolicy(sizePolicy2);
+        sizePolicy2.setHeightForWidth(groupBoxWatchdog->sizePolicy().hasHeightForWidth());
+        groupBoxWatchdog->setSizePolicy(sizePolicy2);
+        groupBoxWatchdog->setCheckable(true);
+        groupBoxWatchdog->setChecked(false);
+        gridLayout = new QGridLayout(groupBoxWatchdog);
+        gridLayout->setSpacing(6);
+        gridLayout->setContentsMargins(11, 11, 11, 11);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        spinBoxDelay = new QSpinBox(groupBoxWatchdog);
+        spinBoxDelay->setObjectName(QStringLiteral("spinBoxDelay"));
+        spinBoxDelay->setMinimum(1);
+
+        gridLayout->addWidget(spinBoxDelay, 0, 3, 1, 1);
+
+        spinBoxDelay0MHs = new QSpinBox(groupBoxWatchdog);
+        spinBoxDelay0MHs->setObjectName(QStringLiteral("spinBoxDelay0MHs"));
+        spinBoxDelay0MHs->setMinimum(1);
+        spinBoxDelay0MHs->setMaximum(600);
+        spinBoxDelay0MHs->setValue(20);
+
+        gridLayout->addWidget(spinBoxDelay0MHs, 1, 1, 1, 1);
+
+        label_7 = new QLabel(groupBoxWatchdog);
+        label_7->setObjectName(QStringLiteral("label_7"));
+
+        gridLayout->addWidget(label_7, 1, 2, 1, 1);
+
+        spinBoxDelayNoHash = new QSpinBox(groupBoxWatchdog);
+        spinBoxDelayNoHash->setObjectName(QStringLiteral("spinBoxDelayNoHash"));
+        spinBoxDelayNoHash->setMinimum(30);
+        spinBoxDelayNoHash->setMaximum(600);
+        spinBoxDelayNoHash->setValue(60);
+
+        gridLayout->addWidget(spinBoxDelayNoHash, 1, 3, 1, 1);
+
+        label_4 = new QLabel(groupBoxWatchdog);
+        label_4->setObjectName(QStringLiteral("label_4"));
+
+        gridLayout->addWidget(label_4, 0, 0, 1, 1);
+
+        label_5 = new QLabel(groupBoxWatchdog);
+        label_5->setObjectName(QStringLiteral("label_5"));
+
+        gridLayout->addWidget(label_5, 0, 2, 1, 1);
+
+        spinBoxMax0MHs = new QSpinBox(groupBoxWatchdog);
+        spinBoxMax0MHs->setObjectName(QStringLiteral("spinBoxMax0MHs"));
+        spinBoxMax0MHs->setMinimum(1);
+
+        gridLayout->addWidget(spinBoxMax0MHs, 0, 1, 1, 1);
+
+        label_3 = new QLabel(groupBoxWatchdog);
+        label_3->setObjectName(QStringLiteral("label_3"));
+
+        gridLayout->addWidget(label_3, 1, 0, 1, 1);
+
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setSpacing(6);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        label_23 = new QLabel(groupBoxWatchdog);
+        label_23->setObjectName(QStringLiteral("label_23"));
+        label_23->setAlignment(Qt::AlignCenter);
+
+        verticalLayout->addWidget(label_23);
+
+        debugBox = new QTextEdit(groupBoxWatchdog);
+        debugBox->setObjectName(QStringLiteral("debugBox"));
+
+        verticalLayout->addWidget(debugBox);
+
+
+        gridLayout->addLayout(verticalLayout, 0, 4, 2, 1);
+
+        splitter_4->addWidget(groupBoxWatchdog);
+        groupBoxNvidia = new QGroupBox(splitter_4);
+        groupBoxNvidia->setObjectName(QStringLiteral("groupBoxNvidia"));
+        sizePolicy2.setHeightForWidth(groupBoxNvidia->sizePolicy().hasHeightForWidth());
+        groupBoxNvidia->setSizePolicy(sizePolicy2);
         QFont font1;
         font1.setPointSize(8);
         font1.setBold(true);
         font1.setWeight(75);
-        groupBoxAMD->setFont(font1);
-        gridLayout_2 = new QGridLayout(groupBoxAMD);
-        gridLayout_2->setSpacing(6);
-        gridLayout_2->setContentsMargins(11, 11, 11, 11);
-        gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
-        label_28 = new QLabel(groupBoxAMD);
-        label_28->setObjectName(QStringLiteral("label_28"));
-
-        gridLayout_2->addWidget(label_28, 1, 6, 1, 1);
-
-        lcdNumber_AMD_MaxTemp = new QLCDNumber(groupBoxAMD);
-        lcdNumber_AMD_MaxTemp->setObjectName(QStringLiteral("lcdNumber_AMD_MaxTemp"));
-
-        gridLayout_2->addWidget(lcdNumber_AMD_MaxTemp, 1, 3, 1, 1);
-
-        label_31 = new QLabel(groupBoxAMD);
-        label_31->setObjectName(QStringLiteral("label_31"));
-
-        gridLayout_2->addWidget(label_31, 2, 8, 1, 1);
-
-        lcdNumber_AMD_MinPoxer = new QLCDNumber(groupBoxAMD);
-        lcdNumber_AMD_MinPoxer->setObjectName(QStringLiteral("lcdNumber_AMD_MinPoxer"));
-
-        gridLayout_2->addWidget(lcdNumber_AMD_MinPoxer, 2, 11, 1, 1);
-
-        lcdNumber_AMD_MaxMemClock = new QLCDNumber(groupBoxAMD);
-        lcdNumber_AMD_MaxMemClock->setObjectName(QStringLiteral("lcdNumber_AMD_MaxMemClock"));
-
-        gridLayout_2->addWidget(lcdNumber_AMD_MaxMemClock, 1, 9, 1, 1);
-
-        label_AMD_GPUCount = new QLabel(groupBoxAMD);
-        label_AMD_GPUCount->setObjectName(QStringLiteral("label_AMD_GPUCount"));
-
-        gridLayout_2->addWidget(label_AMD_GPUCount, 1, 0, 1, 1);
-
-        lcdNumber_AMD_MinClock = new QLCDNumber(groupBoxAMD);
-        lcdNumber_AMD_MinClock->setObjectName(QStringLiteral("lcdNumber_AMD_MinClock"));
-
-        gridLayout_2->addWidget(lcdNumber_AMD_MinClock, 2, 7, 1, 1);
-
-        label_30 = new QLabel(groupBoxAMD);
-        label_30->setObjectName(QStringLiteral("label_30"));
-
-        gridLayout_2->addWidget(label_30, 1, 8, 1, 1);
-
-        lcdNumber_AMD_MinMemClock = new QLCDNumber(groupBoxAMD);
-        lcdNumber_AMD_MinMemClock->setObjectName(QStringLiteral("lcdNumber_AMD_MinMemClock"));
-
-        gridLayout_2->addWidget(lcdNumber_AMD_MinMemClock, 2, 9, 1, 1);
-
-        lcdNumber_AMD_MaxFan = new QLCDNumber(groupBoxAMD);
-        lcdNumber_AMD_MaxFan->setObjectName(QStringLiteral("lcdNumber_AMD_MaxFan"));
-
-        gridLayout_2->addWidget(lcdNumber_AMD_MaxFan, 1, 5, 1, 1);
-
-        label_33 = new QLabel(groupBoxAMD);
-        label_33->setObjectName(QStringLiteral("label_33"));
-
-        gridLayout_2->addWidget(label_33, 2, 10, 1, 1);
-
-        lcdNumber_AMD_GPUCount = new QLCDNumber(groupBoxAMD);
-        lcdNumber_AMD_GPUCount->setObjectName(QStringLiteral("lcdNumber_AMD_GPUCount"));
-        lcdNumber_AMD_GPUCount->setDigitCount(2);
-
-        gridLayout_2->addWidget(lcdNumber_AMD_GPUCount, 1, 1, 1, 1);
-
-        lcdNumber_AMD_MaxClock = new QLCDNumber(groupBoxAMD);
-        lcdNumber_AMD_MaxClock->setObjectName(QStringLiteral("lcdNumber_AMD_MaxClock"));
-
-        gridLayout_2->addWidget(lcdNumber_AMD_MaxClock, 1, 7, 1, 1);
-
-        label_24 = new QLabel(groupBoxAMD);
-        label_24->setObjectName(QStringLiteral("label_24"));
-
-        gridLayout_2->addWidget(label_24, 1, 2, 1, 1);
-
-        label_25 = new QLabel(groupBoxAMD);
-        label_25->setObjectName(QStringLiteral("label_25"));
-
-        gridLayout_2->addWidget(label_25, 2, 2, 1, 1);
-
-        label_27 = new QLabel(groupBoxAMD);
-        label_27->setObjectName(QStringLiteral("label_27"));
-
-        gridLayout_2->addWidget(label_27, 1, 4, 1, 1);
-
-        lcdNumber_AMD_MinFan = new QLCDNumber(groupBoxAMD);
-        lcdNumber_AMD_MinFan->setObjectName(QStringLiteral("lcdNumber_AMD_MinFan"));
-
-        gridLayout_2->addWidget(lcdNumber_AMD_MinFan, 2, 5, 1, 1);
-
-        label_29 = new QLabel(groupBoxAMD);
-        label_29->setObjectName(QStringLiteral("label_29"));
-
-        gridLayout_2->addWidget(label_29, 2, 6, 1, 1);
-
-        lcdNumber_AMD_MinTemp = new QLCDNumber(groupBoxAMD);
-        lcdNumber_AMD_MinTemp->setObjectName(QStringLiteral("lcdNumber_AMD_MinTemp"));
-
-        gridLayout_2->addWidget(lcdNumber_AMD_MinTemp, 2, 3, 1, 1);
-
-        label_32 = new QLabel(groupBoxAMD);
-        label_32->setObjectName(QStringLiteral("label_32"));
-
-        gridLayout_2->addWidget(label_32, 1, 10, 1, 1);
-
-        lcdNumber_AMD_MaxPower = new QLCDNumber(groupBoxAMD);
-        lcdNumber_AMD_MaxPower->setObjectName(QStringLiteral("lcdNumber_AMD_MaxPower"));
-
-        gridLayout_2->addWidget(lcdNumber_AMD_MaxPower, 1, 11, 1, 1);
-
-        label_26 = new QLabel(groupBoxAMD);
-        label_26->setObjectName(QStringLiteral("label_26"));
-
-        gridLayout_2->addWidget(label_26, 2, 4, 1, 1);
-
-
-        gridLayout_10->addWidget(groupBoxAMD, 5, 0, 1, 4);
-
-        groupBoxNvidia = new QGroupBox(centralWidget);
-        groupBoxNvidia->setObjectName(QStringLiteral("groupBoxNvidia"));
-        sizePolicy2.setHeightForWidth(groupBoxNvidia->sizePolicy().hasHeightForWidth());
-        groupBoxNvidia->setSizePolicy(sizePolicy2);
         groupBoxNvidia->setFont(font1);
         gridLayout_3 = new QGridLayout(groupBoxNvidia);
         gridLayout_3->setSpacing(6);
@@ -739,11 +651,137 @@ public:
 
         gridLayout_3->addWidget(label_10, 0, 10, 1, 1);
 
+        splitter_4->addWidget(groupBoxNvidia);
+        groupBoxAMD = new QGroupBox(splitter_4);
+        groupBoxAMD->setObjectName(QStringLiteral("groupBoxAMD"));
+        sizePolicy2.setHeightForWidth(groupBoxAMD->sizePolicy().hasHeightForWidth());
+        groupBoxAMD->setSizePolicy(sizePolicy2);
+        groupBoxAMD->setFont(font1);
+        gridLayout_2 = new QGridLayout(groupBoxAMD);
+        gridLayout_2->setSpacing(6);
+        gridLayout_2->setContentsMargins(11, 11, 11, 11);
+        gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
+        label_28 = new QLabel(groupBoxAMD);
+        label_28->setObjectName(QStringLiteral("label_28"));
 
-        gridLayout_10->addWidget(groupBoxNvidia, 4, 0, 1, 4);
+        gridLayout_2->addWidget(label_28, 1, 6, 1, 1);
 
-        groupBoxDevicesInfo = new QGroupBox(centralWidget);
+        lcdNumber_AMD_MaxTemp = new QLCDNumber(groupBoxAMD);
+        lcdNumber_AMD_MaxTemp->setObjectName(QStringLiteral("lcdNumber_AMD_MaxTemp"));
+
+        gridLayout_2->addWidget(lcdNumber_AMD_MaxTemp, 1, 3, 1, 1);
+
+        label_31 = new QLabel(groupBoxAMD);
+        label_31->setObjectName(QStringLiteral("label_31"));
+
+        gridLayout_2->addWidget(label_31, 2, 8, 1, 1);
+
+        lcdNumber_AMD_MinPoxer = new QLCDNumber(groupBoxAMD);
+        lcdNumber_AMD_MinPoxer->setObjectName(QStringLiteral("lcdNumber_AMD_MinPoxer"));
+
+        gridLayout_2->addWidget(lcdNumber_AMD_MinPoxer, 2, 11, 1, 1);
+
+        lcdNumber_AMD_MaxMemClock = new QLCDNumber(groupBoxAMD);
+        lcdNumber_AMD_MaxMemClock->setObjectName(QStringLiteral("lcdNumber_AMD_MaxMemClock"));
+
+        gridLayout_2->addWidget(lcdNumber_AMD_MaxMemClock, 1, 9, 1, 1);
+
+        label_AMD_GPUCount = new QLabel(groupBoxAMD);
+        label_AMD_GPUCount->setObjectName(QStringLiteral("label_AMD_GPUCount"));
+
+        gridLayout_2->addWidget(label_AMD_GPUCount, 1, 0, 1, 1);
+
+        lcdNumber_AMD_MinClock = new QLCDNumber(groupBoxAMD);
+        lcdNumber_AMD_MinClock->setObjectName(QStringLiteral("lcdNumber_AMD_MinClock"));
+
+        gridLayout_2->addWidget(lcdNumber_AMD_MinClock, 2, 7, 1, 1);
+
+        label_30 = new QLabel(groupBoxAMD);
+        label_30->setObjectName(QStringLiteral("label_30"));
+
+        gridLayout_2->addWidget(label_30, 1, 8, 1, 1);
+
+        lcdNumber_AMD_MinMemClock = new QLCDNumber(groupBoxAMD);
+        lcdNumber_AMD_MinMemClock->setObjectName(QStringLiteral("lcdNumber_AMD_MinMemClock"));
+
+        gridLayout_2->addWidget(lcdNumber_AMD_MinMemClock, 2, 9, 1, 1);
+
+        lcdNumber_AMD_MaxFan = new QLCDNumber(groupBoxAMD);
+        lcdNumber_AMD_MaxFan->setObjectName(QStringLiteral("lcdNumber_AMD_MaxFan"));
+
+        gridLayout_2->addWidget(lcdNumber_AMD_MaxFan, 1, 5, 1, 1);
+
+        label_33 = new QLabel(groupBoxAMD);
+        label_33->setObjectName(QStringLiteral("label_33"));
+
+        gridLayout_2->addWidget(label_33, 2, 10, 1, 1);
+
+        lcdNumber_AMD_GPUCount = new QLCDNumber(groupBoxAMD);
+        lcdNumber_AMD_GPUCount->setObjectName(QStringLiteral("lcdNumber_AMD_GPUCount"));
+        lcdNumber_AMD_GPUCount->setDigitCount(2);
+
+        gridLayout_2->addWidget(lcdNumber_AMD_GPUCount, 1, 1, 1, 1);
+
+        lcdNumber_AMD_MaxClock = new QLCDNumber(groupBoxAMD);
+        lcdNumber_AMD_MaxClock->setObjectName(QStringLiteral("lcdNumber_AMD_MaxClock"));
+
+        gridLayout_2->addWidget(lcdNumber_AMD_MaxClock, 1, 7, 1, 1);
+
+        label_24 = new QLabel(groupBoxAMD);
+        label_24->setObjectName(QStringLiteral("label_24"));
+
+        gridLayout_2->addWidget(label_24, 1, 2, 1, 1);
+
+        label_25 = new QLabel(groupBoxAMD);
+        label_25->setObjectName(QStringLiteral("label_25"));
+
+        gridLayout_2->addWidget(label_25, 2, 2, 1, 1);
+
+        label_27 = new QLabel(groupBoxAMD);
+        label_27->setObjectName(QStringLiteral("label_27"));
+
+        gridLayout_2->addWidget(label_27, 1, 4, 1, 1);
+
+        lcdNumber_AMD_MinFan = new QLCDNumber(groupBoxAMD);
+        lcdNumber_AMD_MinFan->setObjectName(QStringLiteral("lcdNumber_AMD_MinFan"));
+
+        gridLayout_2->addWidget(lcdNumber_AMD_MinFan, 2, 5, 1, 1);
+
+        label_29 = new QLabel(groupBoxAMD);
+        label_29->setObjectName(QStringLiteral("label_29"));
+
+        gridLayout_2->addWidget(label_29, 2, 6, 1, 1);
+
+        lcdNumber_AMD_MinTemp = new QLCDNumber(groupBoxAMD);
+        lcdNumber_AMD_MinTemp->setObjectName(QStringLiteral("lcdNumber_AMD_MinTemp"));
+
+        gridLayout_2->addWidget(lcdNumber_AMD_MinTemp, 2, 3, 1, 1);
+
+        label_32 = new QLabel(groupBoxAMD);
+        label_32->setObjectName(QStringLiteral("label_32"));
+
+        gridLayout_2->addWidget(label_32, 1, 10, 1, 1);
+
+        lcdNumber_AMD_MaxPower = new QLCDNumber(groupBoxAMD);
+        lcdNumber_AMD_MaxPower->setObjectName(QStringLiteral("lcdNumber_AMD_MaxPower"));
+
+        gridLayout_2->addWidget(lcdNumber_AMD_MaxPower, 1, 11, 1, 1);
+
+        label_26 = new QLabel(groupBoxAMD);
+        label_26->setObjectName(QStringLiteral("label_26"));
+
+        gridLayout_2->addWidget(label_26, 2, 4, 1, 1);
+
+        splitter_4->addWidget(groupBoxAMD);
+        splitter_2 = new QSplitter(splitter_4);
+        splitter_2->setObjectName(QStringLiteral("splitter_2"));
+        splitter_2->setOrientation(Qt::Vertical);
+        splitter_3 = new QSplitter(splitter_2);
+        splitter_3->setObjectName(QStringLiteral("splitter_3"));
+        splitter_3->setOrientation(Qt::Vertical);
+        groupBoxDevicesInfo = new QGroupBox(splitter_3);
         groupBoxDevicesInfo->setObjectName(QStringLiteral("groupBoxDevicesInfo"));
+        groupBoxDevicesInfo->setMaximumSize(QSize(16777215, 16777127));
         gridLayout_9 = new QGridLayout(groupBoxDevicesInfo);
         gridLayout_9->setSpacing(6);
         gridLayout_9->setContentsMargins(11, 11, 11, 11);
@@ -754,8 +792,89 @@ public:
 
         gridLayout_9->addLayout(gridLayoutDevicesInfo, 0, 0, 1, 1);
 
+        splitter_3->addWidget(groupBoxDevicesInfo);
+        splitter = new QSplitter(splitter_3);
+        splitter->setObjectName(QStringLiteral("splitter"));
+        splitter->setOrientation(Qt::Horizontal);
+        widget = new QWidget(splitter);
+        widget->setObjectName(QStringLiteral("widget"));
+        verticalLayout_2 = new QVBoxLayout(widget);
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
+        groupBox = new QGroupBox(widget);
+        groupBox->setObjectName(QStringLiteral("groupBox"));
+        gridLayout_5 = new QGridLayout(groupBox);
+        gridLayout_5->setSpacing(6);
+        gridLayout_5->setContentsMargins(11, 11, 11, 11);
+        gridLayout_5->setObjectName(QStringLiteral("gridLayout_5"));
+        graphicsView = new hashrateCharView(groupBox);
+        graphicsView->setObjectName(QStringLiteral("graphicsView"));
+        graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 
-        gridLayout_10->addWidget(groupBoxDevicesInfo, 6, 0, 1, 4);
+        gridLayout_5->addWidget(graphicsView, 0, 0, 1, 1);
+
+
+        verticalLayout_2->addWidget(groupBox);
+
+        groupBox_2 = new QGroupBox(widget);
+        groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
+        gridLayout_6 = new QGridLayout(groupBox_2);
+        gridLayout_6->setSpacing(6);
+        gridLayout_6->setContentsMargins(11, 11, 11, 11);
+        gridLayout_6->setObjectName(QStringLiteral("gridLayout_6"));
+        graphicsViewTemp = new hashrateCharView(groupBox_2);
+        graphicsViewTemp->setObjectName(QStringLiteral("graphicsViewTemp"));
+        graphicsViewTemp->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+
+        gridLayout_6->addWidget(graphicsViewTemp, 0, 0, 1, 1);
+
+
+        verticalLayout_2->addWidget(groupBox_2);
+
+        splitter->addWidget(widget);
+        groupBoxEffectiveness = new QGroupBox(splitter);
+        groupBoxEffectiveness->setObjectName(QStringLiteral("groupBoxEffectiveness"));
+        gridLayout_7 = new QGridLayout(groupBoxEffectiveness);
+        gridLayout_7->setSpacing(6);
+        gridLayout_7->setContentsMargins(11, 11, 11, 11);
+        gridLayout_7->setObjectName(QStringLiteral("gridLayout_7"));
+        graphicsViewEff = new hashrateCharView(groupBoxEffectiveness);
+        graphicsViewEff->setObjectName(QStringLiteral("graphicsViewEff"));
+
+        gridLayout_7->addWidget(graphicsViewEff, 0, 0, 1, 1);
+
+        splitter->addWidget(groupBoxEffectiveness);
+        splitter_3->addWidget(splitter);
+        splitter_2->addWidget(splitter_3);
+        splitter_4->addWidget(splitter_2);
+
+        gridLayout_8->addWidget(splitter_4, 3, 0, 1, 4);
+
+        checkBoxOnlyShare = new QCheckBox(centralWidget);
+        checkBoxOnlyShare->setObjectName(QStringLiteral("checkBoxOnlyShare"));
+
+        gridLayout_8->addWidget(checkBoxOnlyShare, 4, 0, 1, 2);
+
+        pushButtonShowHideLog = new QPushButton(centralWidget);
+        pushButtonShowHideLog->setObjectName(QStringLiteral("pushButtonShowHideLog"));
+        pushButtonShowHideLog->setCheckable(true);
+
+        gridLayout_8->addWidget(pushButtonShowHideLog, 4, 2, 1, 1);
+
+        pushButtonPool = new QPushButton(centralWidget);
+        pushButtonPool->setObjectName(QStringLiteral("pushButtonPool"));
+        pushButtonPool->setEnabled(true);
+        pushButtonPool->setCheckable(true);
+
+        gridLayout_8->addWidget(pushButtonPool, 4, 3, 1, 1);
+
+        textEdit = new QTextEdit(centralWidget);
+        textEdit->setObjectName(QStringLiteral("textEdit"));
+        textEdit->setReadOnly(true);
+
+        gridLayout_8->addWidget(textEdit, 5, 0, 1, 4);
 
         groupBoxPools = new QGroupBox(centralWidget);
         groupBoxPools->setObjectName(QStringLiteral("groupBoxPools"));
@@ -842,85 +961,7 @@ public:
         gridLayout_4->addWidget(radioButtonDwarfPool, 0, 4, 1, 1);
 
 
-        gridLayout_10->addWidget(groupBoxPools, 11, 0, 1, 4);
-
-        groupBoxWatchdog = new QGroupBox(centralWidget);
-        groupBoxWatchdog->setObjectName(QStringLiteral("groupBoxWatchdog"));
-        sizePolicy2.setHeightForWidth(groupBoxWatchdog->sizePolicy().hasHeightForWidth());
-        groupBoxWatchdog->setSizePolicy(sizePolicy2);
-        groupBoxWatchdog->setCheckable(true);
-        groupBoxWatchdog->setChecked(false);
-        gridLayout = new QGridLayout(groupBoxWatchdog);
-        gridLayout->setSpacing(6);
-        gridLayout->setContentsMargins(11, 11, 11, 11);
-        gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        spinBoxDelay = new QSpinBox(groupBoxWatchdog);
-        spinBoxDelay->setObjectName(QStringLiteral("spinBoxDelay"));
-        spinBoxDelay->setMinimum(1);
-
-        gridLayout->addWidget(spinBoxDelay, 0, 3, 1, 1);
-
-        spinBoxDelay0MHs = new QSpinBox(groupBoxWatchdog);
-        spinBoxDelay0MHs->setObjectName(QStringLiteral("spinBoxDelay0MHs"));
-        spinBoxDelay0MHs->setMinimum(1);
-        spinBoxDelay0MHs->setMaximum(600);
-        spinBoxDelay0MHs->setValue(20);
-
-        gridLayout->addWidget(spinBoxDelay0MHs, 1, 1, 1, 1);
-
-        label_7 = new QLabel(groupBoxWatchdog);
-        label_7->setObjectName(QStringLiteral("label_7"));
-
-        gridLayout->addWidget(label_7, 1, 2, 1, 1);
-
-        spinBoxDelayNoHash = new QSpinBox(groupBoxWatchdog);
-        spinBoxDelayNoHash->setObjectName(QStringLiteral("spinBoxDelayNoHash"));
-        spinBoxDelayNoHash->setMinimum(30);
-        spinBoxDelayNoHash->setMaximum(600);
-        spinBoxDelayNoHash->setValue(60);
-
-        gridLayout->addWidget(spinBoxDelayNoHash, 1, 3, 1, 1);
-
-        label_4 = new QLabel(groupBoxWatchdog);
-        label_4->setObjectName(QStringLiteral("label_4"));
-
-        gridLayout->addWidget(label_4, 0, 0, 1, 1);
-
-        label_5 = new QLabel(groupBoxWatchdog);
-        label_5->setObjectName(QStringLiteral("label_5"));
-
-        gridLayout->addWidget(label_5, 0, 2, 1, 1);
-
-        spinBoxMax0MHs = new QSpinBox(groupBoxWatchdog);
-        spinBoxMax0MHs->setObjectName(QStringLiteral("spinBoxMax0MHs"));
-        spinBoxMax0MHs->setMinimum(1);
-
-        gridLayout->addWidget(spinBoxMax0MHs, 0, 1, 1, 1);
-
-        label_3 = new QLabel(groupBoxWatchdog);
-        label_3->setObjectName(QStringLiteral("label_3"));
-
-        gridLayout->addWidget(label_3, 1, 0, 1, 1);
-
-        verticalLayout = new QVBoxLayout();
-        verticalLayout->setSpacing(6);
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        label_23 = new QLabel(groupBoxWatchdog);
-        label_23->setObjectName(QStringLiteral("label_23"));
-        label_23->setAlignment(Qt::AlignCenter);
-
-        verticalLayout->addWidget(label_23);
-
-        debugBox = new QTextEdit(groupBoxWatchdog);
-        debugBox->setObjectName(QStringLiteral("debugBox"));
-
-        verticalLayout->addWidget(debugBox);
-
-
-        gridLayout->addLayout(verticalLayout, 0, 4, 2, 1);
-
-
-        gridLayout_10->addWidget(groupBoxWatchdog, 3, 0, 1, 4);
+        gridLayout_8->addWidget(groupBoxPools, 6, 0, 1, 2);
 
         MainWindow->setCentralWidget(centralWidget);
 
@@ -938,23 +979,12 @@ public:
         label->setText(QApplication::translate("MainWindow", "Command line:", Q_NULLPTR));
         pushButtonHelp->setText(QApplication::translate("MainWindow", "About", Q_NULLPTR));
         checkBoxAutoStart->setText(QApplication::translate("MainWindow", "Auto start miner", Q_NULLPTR));
-        groupBox->setTitle(QApplication::translate("MainWindow", "Hashrate chart", Q_NULLPTR));
-        groupBox_2->setTitle(QApplication::translate("MainWindow", "Temporature chart", Q_NULLPTR));
-        checkBoxOnlyShare->setText(QApplication::translate("MainWindow", "Only display share info", Q_NULLPTR));
-        pushButtonShowHideLog->setText(QApplication::translate("MainWindow", "Hide log", Q_NULLPTR));
-        pushButtonPool->setText(QApplication::translate("MainWindow", "Pool", Q_NULLPTR));
-        groupBoxAMD->setTitle(QApplication::translate("MainWindow", "AMD", Q_NULLPTR));
-        label_28->setText(QApplication::translate("MainWindow", "Max GPU clock:", Q_NULLPTR));
-        label_31->setText(QApplication::translate("MainWindow", "Min mem clock:", Q_NULLPTR));
-        label_AMD_GPUCount->setText(QApplication::translate("MainWindow", "Devices number:", Q_NULLPTR));
-        label_30->setText(QApplication::translate("MainWindow", "Max mem clock:", Q_NULLPTR));
-        label_33->setText(QApplication::translate("MainWindow", "Min power draw:", Q_NULLPTR));
-        label_24->setText(QApplication::translate("MainWindow", "Max GPU temp:", Q_NULLPTR));
-        label_25->setText(QApplication::translate("MainWindow", "Min GPU temp:", Q_NULLPTR));
-        label_27->setText(QApplication::translate("MainWindow", "Max Speed fan:", Q_NULLPTR));
-        label_29->setText(QApplication::translate("MainWindow", "Min GPU clock:", Q_NULLPTR));
-        label_32->setText(QApplication::translate("MainWindow", "Max power draw:", Q_NULLPTR));
-        label_26->setText(QApplication::translate("MainWindow", "Min fan speed:", Q_NULLPTR));
+        groupBoxWatchdog->setTitle(QApplication::translate("MainWindow", "Watchdog options (restart miner in case of error)", Q_NULLPTR));
+        label_7->setText(QApplication::translate("MainWindow", "Delay before no hash:", Q_NULLPTR));
+        label_4->setText(QApplication::translate("MainWindow", "Max consecutive 0MH/s:", Q_NULLPTR));
+        label_5->setText(QApplication::translate("MainWindow", "Delay before restart:", Q_NULLPTR));
+        label_3->setText(QApplication::translate("MainWindow", "Delay before monitoring for 0MH/s:", Q_NULLPTR));
+        label_23->setText(QApplication::translate("MainWindow", "debug output", Q_NULLPTR));
         groupBoxNvidia->setTitle(QApplication::translate("MainWindow", "nVidia", Q_NULLPTR));
         label_17->setText(QApplication::translate("MainWindow", "Min GPU clock:", Q_NULLPTR));
         label_15->setText(QApplication::translate("MainWindow", "Min power draw:", Q_NULLPTR));
@@ -969,7 +999,25 @@ public:
         pushButtonOC->setText(QApplication::translate("MainWindow", "OverClocking", Q_NULLPTR));
         label_18->setText(QApplication::translate("MainWindow", "Total power draw:", Q_NULLPTR));
         label_10->setText(QApplication::translate("MainWindow", "Max mem clock:", Q_NULLPTR));
+        groupBoxAMD->setTitle(QApplication::translate("MainWindow", "AMD", Q_NULLPTR));
+        label_28->setText(QApplication::translate("MainWindow", "Max GPU clock:", Q_NULLPTR));
+        label_31->setText(QApplication::translate("MainWindow", "Min mem clock:", Q_NULLPTR));
+        label_AMD_GPUCount->setText(QApplication::translate("MainWindow", "Devices number:", Q_NULLPTR));
+        label_30->setText(QApplication::translate("MainWindow", "Max mem clock:", Q_NULLPTR));
+        label_33->setText(QApplication::translate("MainWindow", "Min power draw:", Q_NULLPTR));
+        label_24->setText(QApplication::translate("MainWindow", "Max GPU temp:", Q_NULLPTR));
+        label_25->setText(QApplication::translate("MainWindow", "Min GPU temp:", Q_NULLPTR));
+        label_27->setText(QApplication::translate("MainWindow", "Max Speed fan:", Q_NULLPTR));
+        label_29->setText(QApplication::translate("MainWindow", "Min GPU clock:", Q_NULLPTR));
+        label_32->setText(QApplication::translate("MainWindow", "Max power draw:", Q_NULLPTR));
+        label_26->setText(QApplication::translate("MainWindow", "Min fan speed:", Q_NULLPTR));
         groupBoxDevicesInfo->setTitle(QApplication::translate("MainWindow", "Devices Info", Q_NULLPTR));
+        groupBox->setTitle(QApplication::translate("MainWindow", "Hashrate chart", Q_NULLPTR));
+        groupBox_2->setTitle(QApplication::translate("MainWindow", "Temporature chart", Q_NULLPTR));
+        groupBoxEffectiveness->setTitle(QApplication::translate("MainWindow", "Effectiveness", Q_NULLPTR));
+        checkBoxOnlyShare->setText(QApplication::translate("MainWindow", "Only display share info", Q_NULLPTR));
+        pushButtonShowHideLog->setText(QApplication::translate("MainWindow", "Hide log", Q_NULLPTR));
+        pushButtonPool->setText(QApplication::translate("MainWindow", "Pool", Q_NULLPTR));
         groupBoxPools->setTitle(QApplication::translate("MainWindow", "Pools", Q_NULLPTR));
         radioButtonNaopool->setText(QApplication::translate("MainWindow", "Nanopool", Q_NULLPTR));
         label_21->setText(QApplication::translate("MainWindow", "Average Hashrate\n"
@@ -981,12 +1029,6 @@ public:
         label_19->setText(QApplication::translate("MainWindow", "Balance:", Q_NULLPTR));
         label_20->setText(QApplication::translate("MainWindow", "Current Calculated Hashrate:", Q_NULLPTR));
         radioButtonDwarfPool->setText(QApplication::translate("MainWindow", "Dwarfpool", Q_NULLPTR));
-        groupBoxWatchdog->setTitle(QApplication::translate("MainWindow", "Watchdog options (restart miner in case of error)", Q_NULLPTR));
-        label_7->setText(QApplication::translate("MainWindow", "Delay before no hash:", Q_NULLPTR));
-        label_4->setText(QApplication::translate("MainWindow", "Max consecutive 0MH/s:", Q_NULLPTR));
-        label_5->setText(QApplication::translate("MainWindow", "Delay before restart:", Q_NULLPTR));
-        label_3->setText(QApplication::translate("MainWindow", "Delay before monitoring for 0MH/s:", Q_NULLPTR));
-        label_23->setText(QApplication::translate("MainWindow", "debug output", Q_NULLPTR));
     } // retranslateUi
 
 };
