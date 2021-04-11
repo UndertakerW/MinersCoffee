@@ -45,7 +45,8 @@ OBJECTS_DIR   = debug
 
 ####### Files
 
-SOURCES       = ..\MinerLamp-master\gpu_monitor.cpp \
+SOURCES       = ..\MinerLamp-master\gpumonitor.cpp \
+		..\MinerLamp-master\jsonparser.cpp \
 		..\MinerLamp-master\main.cpp \
 		..\MinerLamp-master\mainwindow.cpp \
 		..\MinerLamp-master\minerprocess.cpp \
@@ -57,8 +58,8 @@ SOURCES       = ..\MinerLamp-master\gpu_monitor.cpp \
 		..\MinerLamp-master\nanopoolapi.cpp \
 		..\MinerLamp-master\amdapi_adl.cpp \
 		..\MinerLamp-master\hashratecharview.cpp \
-		..\MinerLamp-master\url_api.cpp debug\qrc_resources.cpp \
-		debug\moc_gpu_monitor.cpp \
+		..\MinerLamp-master\urlapi.cpp debug\qrc_resources.cpp \
+		debug\moc_gpumonitor.cpp \
 		debug\moc_mainwindow.cpp \
 		debug\moc_minerprocess.cpp \
 		debug\moc_highlighter.cpp \
@@ -66,7 +67,8 @@ SOURCES       = ..\MinerLamp-master\gpu_monitor.cpp \
 		debug\moc_nvocdialog.cpp \
 		debug\moc_nvidiaapi.cpp \
 		debug\moc_nanopoolapi.cpp
-OBJECTS       = debug\gpu_monitor.obj \
+OBJECTS       = debug\gpumonitor.obj \
+		debug\jsonparser.obj \
 		debug\main.obj \
 		debug\mainwindow.obj \
 		debug\minerprocess.obj \
@@ -78,9 +80,9 @@ OBJECTS       = debug\gpu_monitor.obj \
 		debug\nanopoolapi.obj \
 		debug\amdapi_adl.obj \
 		debug\hashratecharview.obj \
-		debug\url_api.obj \
+		debug\urlapi.obj \
 		debug\qrc_resources.obj \
-		debug\moc_gpu_monitor.obj \
+		debug\moc_gpumonitor.obj \
 		debug\moc_mainwindow.obj \
 		debug\moc_minerprocess.obj \
 		debug\moc_highlighter.obj \
@@ -89,7 +91,8 @@ OBJECTS       = debug\gpu_monitor.obj \
 		debug\moc_nvidiaapi.obj \
 		debug\moc_nanopoolapi.obj
 
-DIST          =  ..\MinerLamp-master\gpu_monitor.h \
+DIST          =  ..\MinerLamp-master\gpumonitor.h \
+		..\MinerLamp-master\jsonparser.h \
 		..\MinerLamp-master\mainwindow.h \
 		..\MinerLamp-master\minerprocess.h \
 		..\MinerLamp-master\highlighter.h \
@@ -100,7 +103,9 @@ DIST          =  ..\MinerLamp-master\gpu_monitor.h \
 		..\MinerLamp-master\nanopoolapi.h \
 		..\MinerLamp-master\amdapi_adl.h \
 		..\MinerLamp-master\hashratecharview.h \
-		..\MinerLamp-master\url_api.h ..\MinerLamp-master\gpu_monitor.cpp \
+		..\MinerLamp-master\structures.h \
+		..\MinerLamp-master\urlapi.h ..\MinerLamp-master\gpumonitor.cpp \
+		..\MinerLamp-master\jsonparser.cpp \
 		..\MinerLamp-master\main.cpp \
 		..\MinerLamp-master\mainwindow.cpp \
 		..\MinerLamp-master\minerprocess.cpp \
@@ -112,7 +117,7 @@ DIST          =  ..\MinerLamp-master\gpu_monitor.h \
 		..\MinerLamp-master\nanopoolapi.cpp \
 		..\MinerLamp-master\amdapi_adl.cpp \
 		..\MinerLamp-master\hashratecharview.cpp \
-		..\MinerLamp-master\url_api.cpp
+		..\MinerLamp-master\urlapi.cpp
 QMAKE_TARGET  = MinerLamp
 DESTDIR        = debug\ #avoid trailing-slash linebreak
 TARGET         = MinerLamp.exe
@@ -189,7 +194,7 @@ all: Makefile.Debug  $(DESTDIR_TARGET)
 
 $(DESTDIR_TARGET): ui_mainwindow.h ui_helpdialog.h ui_nvocdialog.h $(OBJECTS) debug\MinerLamp_resource.res
 	$(LINKER) $(LFLAGS) /MANIFEST:embed /OUT:$(DESTDIR_TARGET) @<<
-debug\gpu_monitor.obj debug\main.obj debug\mainwindow.obj debug\minerprocess.obj debug\highlighter.obj debug\helpdialog.obj debug\nvidianvml.obj debug\nvocdialog.obj debug\nvidiaapi.obj debug\nanopoolapi.obj debug\amdapi_adl.obj debug\hashratecharview.obj debug\url_api.obj debug\qrc_resources.obj debug\moc_gpu_monitor.obj debug\moc_mainwindow.obj debug\moc_minerprocess.obj debug\moc_highlighter.obj debug\moc_helpdialog.obj debug\moc_nvocdialog.obj debug\moc_nvidiaapi.obj debug\moc_nanopoolapi.obj
+debug\gpumonitor.obj debug\jsonparser.obj debug\main.obj debug\mainwindow.obj debug\minerprocess.obj debug\highlighter.obj debug\helpdialog.obj debug\nvidianvml.obj debug\nvocdialog.obj debug\nvidiaapi.obj debug\nanopoolapi.obj debug\amdapi_adl.obj debug\hashratecharview.obj debug\urlapi.obj debug\qrc_resources.obj debug\moc_gpumonitor.obj debug\moc_mainwindow.obj debug\moc_minerprocess.obj debug\moc_highlighter.obj debug\moc_helpdialog.obj debug\moc_nvocdialog.obj debug\moc_nvidiaapi.obj debug\moc_nanopoolapi.obj
 $(LIBS)
 <<
 
@@ -202,10 +207,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) MinerLamp.zip $(SOURCES) $(DIST) ..\MinerLamp-master\MiningLigth.pro D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\spec_pre.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\common\angle.conf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\common\msvc-desktop.conf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\qconfig.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3danimation.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3danimation_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dcore.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dcore_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dextras.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dextras_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dinput.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dinput_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dlogic.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dlogic_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquick.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquick_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickanimation.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickextras.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickextras_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickinput.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickinput_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickrender.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickrender_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickscene2d.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3drender.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3drender_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_accessibility_support_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_axbase.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_axbase_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_axcontainer.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_axcontainer_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_axserver.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_axserver_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_bluetooth.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_bluetooth_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_bootstrap_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_charts.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_charts_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_concurrent.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_concurrent_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_core.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_core_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_datavisualization.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_datavisualization_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_dbus.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_dbus_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_designer.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_designer_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_designercomponents_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_egl_support_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_fb_support_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_gamepad.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_gamepad_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_gui.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_gui_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_help.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_help_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_location.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_location_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_multimedia.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_multimedia_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_multimediawidgets.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_network.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_network_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_networkauth.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_networkauth_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_nfc.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_nfc_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_opengl.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_opengl_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_openglextensions.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_openglextensions_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_packetprotocol_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_positioning.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_positioning_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_printsupport.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_printsupport_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_purchasing.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_purchasing_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_qml.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_qml_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_qmldebug_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_qmldevtools_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_qmltest.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_qmltest_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_quick.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_quick_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_quickcontrols2.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_quickparticles_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_quickwidgets.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_quickwidgets_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_remoteobjects.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_remoteobjects_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_repparser.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_repparser_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_script.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_script_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_scripttools.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_scripttools_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_scxml.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_scxml_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_sensors.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_sensors_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_serialbus.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_serialbus_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_serialport.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_serialport_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_sql.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_sql_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_svg.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_svg_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_testlib.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_testlib_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_texttospeech.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_texttospeech_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_theme_support_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_uiplugin.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_uitools.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_uitools_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_webchannel.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_webchannel_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_webengine.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_webengine_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_webenginecore.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_webenginecore_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_webenginecoreheaders_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_webenginewidgets.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_webenginewidgets_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_websockets.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_websockets_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_webview.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_webview_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_widgets.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_widgets_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_winextras.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_winextras_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_xml.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_xml_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_xmlpatterns.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_zlib_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\qt_functions.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\qt_config.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\win32-msvc\qmake.conf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\spec_post.prf .qmake.stash D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\exclusive_builds.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\common\msvc-version.conf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\toolchain.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\default_pre.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\win32\default_pre.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\resolve_config.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\exclusive_builds_post.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\default_post.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\build_pass.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\qml_debug.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\precompile_header.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\warn_on.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\qt.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\resources.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\moc.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\win32\opengl.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\uic.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\qmake_use.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\file_copies.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\win32\windows.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\testcase_targets.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\exceptions.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\yacc.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\lex.prf ..\MinerLamp-master\MiningLigth.pro ..\MinerLamp-master\resources.qrc D:\APP\Qt6\5.9.9\msvc2017_64\lib\qtmaind.prl D:\APP\Qt6\5.9.9\msvc2017_64\lib\Qt5Chartsd.prl D:\APP\Qt6\5.9.9\msvc2017_64\lib\Qt5Widgetsd.prl D:\APP\Qt6\5.9.9\msvc2017_64\lib\Qt5Guid.prl D:\APP\Qt6\5.9.9\msvc2017_64\lib\Qt5Networkd.prl D:\APP\Qt6\5.9.9\msvc2017_64\lib\Qt5Cored.prl   ..\MinerLamp-master\resources.qrc D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\data\dummy.cpp ..\MinerLamp-master\gpu_monitor.h ..\MinerLamp-master\mainwindow.h ..\MinerLamp-master\minerprocess.h ..\MinerLamp-master\highlighter.h ..\MinerLamp-master\helpdialog.h ..\MinerLamp-master\nvidianvml.h ..\MinerLamp-master\nvocdialog.h ..\MinerLamp-master\nvidiaapi.h ..\MinerLamp-master\nanopoolapi.h ..\MinerLamp-master\amdapi_adl.h ..\MinerLamp-master\hashratecharview.h ..\MinerLamp-master\url_api.h ..\MinerLamp-master\gpu_monitor.cpp ..\MinerLamp-master\main.cpp ..\MinerLamp-master\mainwindow.cpp ..\MinerLamp-master\minerprocess.cpp ..\MinerLamp-master\highlighter.cpp ..\MinerLamp-master\helpdialog.cpp ..\MinerLamp-master\nvidianvml.cpp ..\MinerLamp-master\nvocdialog.cpp ..\MinerLamp-master\nvidiaapi.cpp ..\MinerLamp-master\nanopoolapi.cpp ..\MinerLamp-master\amdapi_adl.cpp ..\MinerLamp-master\hashratecharview.cpp ..\MinerLamp-master\url_api.cpp ..\MinerLamp-master\mainwindow.ui ..\MinerLamp-master\helpdialog.ui ..\MinerLamp-master\nvocdialog.ui    
+	$(ZIP) MinerLamp.zip $(SOURCES) $(DIST) ..\MinerLamp-master\MiningLigth.pro D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\spec_pre.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\common\angle.conf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\common\msvc-desktop.conf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\qconfig.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3danimation.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3danimation_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dcore.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dcore_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dextras.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dextras_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dinput.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dinput_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dlogic.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dlogic_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquick.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquick_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickanimation.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickextras.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickextras_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickinput.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickinput_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickrender.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickrender_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickscene2d.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3drender.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3drender_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_accessibility_support_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_axbase.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_axbase_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_axcontainer.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_axcontainer_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_axserver.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_axserver_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_bluetooth.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_bluetooth_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_bootstrap_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_charts.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_charts_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_concurrent.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_concurrent_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_core.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_core_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_datavisualization.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_datavisualization_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_dbus.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_dbus_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_designer.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_designer_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_designercomponents_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_egl_support_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_fb_support_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_gamepad.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_gamepad_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_gui.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_gui_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_help.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_help_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_location.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_location_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_multimedia.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_multimedia_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_multimediawidgets.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_network.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_network_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_networkauth.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_networkauth_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_nfc.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_nfc_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_opengl.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_opengl_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_openglextensions.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_openglextensions_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_packetprotocol_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_positioning.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_positioning_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_printsupport.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_printsupport_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_purchasing.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_purchasing_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_qml.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_qml_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_qmldebug_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_qmldevtools_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_qmltest.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_qmltest_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_quick.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_quick_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_quickcontrols2.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_quickparticles_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_quickwidgets.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_quickwidgets_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_remoteobjects.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_remoteobjects_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_repparser.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_repparser_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_script.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_script_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_scripttools.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_scripttools_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_scxml.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_scxml_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_sensors.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_sensors_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_serialbus.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_serialbus_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_serialport.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_serialport_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_sql.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_sql_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_svg.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_svg_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_testlib.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_testlib_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_texttospeech.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_texttospeech_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_theme_support_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_uiplugin.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_uitools.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_uitools_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_webchannel.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_webchannel_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_webengine.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_webengine_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_webenginecore.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_webenginecore_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_webenginecoreheaders_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_webenginewidgets.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_webenginewidgets_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_websockets.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_websockets_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_webview.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_webview_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_widgets.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_widgets_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_winextras.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_winextras_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_xml.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_xml_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_xmlpatterns.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_zlib_private.pri D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\qt_functions.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\qt_config.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\win32-msvc\qmake.conf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\spec_post.prf .qmake.stash D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\exclusive_builds.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\common\msvc-version.conf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\toolchain.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\default_pre.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\win32\default_pre.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\resolve_config.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\exclusive_builds_post.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\default_post.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\build_pass.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\qml_debug.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\precompile_header.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\warn_on.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\qt.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\resources.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\moc.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\win32\opengl.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\uic.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\qmake_use.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\file_copies.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\win32\windows.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\testcase_targets.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\exceptions.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\yacc.prf D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\lex.prf ..\MinerLamp-master\MiningLigth.pro ..\MinerLamp-master\resources.qrc D:\APP\Qt6\5.9.9\msvc2017_64\lib\qtmaind.prl D:\APP\Qt6\5.9.9\msvc2017_64\lib\Qt5Chartsd.prl D:\APP\Qt6\5.9.9\msvc2017_64\lib\Qt5Widgetsd.prl D:\APP\Qt6\5.9.9\msvc2017_64\lib\Qt5Guid.prl D:\APP\Qt6\5.9.9\msvc2017_64\lib\Qt5Networkd.prl D:\APP\Qt6\5.9.9\msvc2017_64\lib\Qt5Cored.prl   ..\MinerLamp-master\resources.qrc D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\data\dummy.cpp ..\MinerLamp-master\gpumonitor.h ..\MinerLamp-master\jsonparser.h ..\MinerLamp-master\mainwindow.h ..\MinerLamp-master\minerprocess.h ..\MinerLamp-master\highlighter.h ..\MinerLamp-master\helpdialog.h ..\MinerLamp-master\nvidianvml.h ..\MinerLamp-master\nvocdialog.h ..\MinerLamp-master\nvidiaapi.h ..\MinerLamp-master\nanopoolapi.h ..\MinerLamp-master\amdapi_adl.h ..\MinerLamp-master\hashratecharview.h ..\MinerLamp-master\structures.h ..\MinerLamp-master\urlapi.h ..\MinerLamp-master\gpumonitor.cpp ..\MinerLamp-master\jsonparser.cpp ..\MinerLamp-master\main.cpp ..\MinerLamp-master\mainwindow.cpp ..\MinerLamp-master\minerprocess.cpp ..\MinerLamp-master\highlighter.cpp ..\MinerLamp-master\helpdialog.cpp ..\MinerLamp-master\nvidianvml.cpp ..\MinerLamp-master\nvocdialog.cpp ..\MinerLamp-master\nvidiaapi.cpp ..\MinerLamp-master\nanopoolapi.cpp ..\MinerLamp-master\amdapi_adl.cpp ..\MinerLamp-master\hashratecharview.cpp ..\MinerLamp-master\urlapi.cpp ..\MinerLamp-master\mainwindow.ui ..\MinerLamp-master\helpdialog.ui ..\MinerLamp-master\nvocdialog.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) debug\gpu_monitor.obj debug\main.obj debug\mainwindow.obj debug\minerprocess.obj debug\highlighter.obj debug\helpdialog.obj debug\nvidianvml.obj debug\nvocdialog.obj debug\nvidiaapi.obj debug\nanopoolapi.obj debug\amdapi_adl.obj debug\hashratecharview.obj debug\url_api.obj debug\qrc_resources.obj debug\moc_gpu_monitor.obj debug\moc_mainwindow.obj debug\moc_minerprocess.obj debug\moc_highlighter.obj debug\moc_helpdialog.obj debug\moc_nvocdialog.obj debug\moc_nvidiaapi.obj debug\moc_nanopoolapi.obj
+	-$(DEL_FILE) debug\gpumonitor.obj debug\jsonparser.obj debug\main.obj debug\mainwindow.obj debug\minerprocess.obj debug\highlighter.obj debug\helpdialog.obj debug\nvidianvml.obj debug\nvocdialog.obj debug\nvidiaapi.obj debug\nanopoolapi.obj debug\amdapi_adl.obj debug\hashratecharview.obj debug\urlapi.obj debug\qrc_resources.obj debug\moc_gpumonitor.obj debug\moc_mainwindow.obj debug\moc_minerprocess.obj debug\moc_highlighter.obj debug\moc_helpdialog.obj debug\moc_nvocdialog.obj debug\moc_nvidiaapi.obj debug\moc_nanopoolapi.obj
 	-$(DEL_FILE) debug\MinerLamp0.exp debug\MinerLamp.vc.pdb debug\MinerLamp0.ilk debug\MinerLamp0.idb
 	-$(DEL_FILE) debug\MinerLamp_resource.res
 
@@ -239,10 +244,10 @@ compiler_moc_predefs_clean:
 debug\moc_predefs.h: D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\data\dummy.cpp
 	cl -BxD:\APP\Qt6\5.9.9\msvc2017_64\bin\qmake.exe -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zi -MDd -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -E D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\data\dummy.cpp 2>NUL >debug\moc_predefs.h
 
-compiler_moc_header_make_all: debug\moc_gpu_monitor.cpp debug\moc_mainwindow.cpp debug\moc_minerprocess.cpp debug\moc_highlighter.cpp debug\moc_helpdialog.cpp debug\moc_nvocdialog.cpp debug\moc_nvidiaapi.cpp debug\moc_nanopoolapi.cpp
+compiler_moc_header_make_all: debug\moc_gpumonitor.cpp debug\moc_mainwindow.cpp debug\moc_minerprocess.cpp debug\moc_highlighter.cpp debug\moc_helpdialog.cpp debug\moc_nvocdialog.cpp debug\moc_nvidiaapi.cpp debug\moc_nanopoolapi.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) debug\moc_gpu_monitor.cpp debug\moc_mainwindow.cpp debug\moc_minerprocess.cpp debug\moc_highlighter.cpp debug\moc_helpdialog.cpp debug\moc_nvocdialog.cpp debug\moc_nvidiaapi.cpp debug\moc_nanopoolapi.cpp
-debug\moc_gpu_monitor.cpp: D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QMainWindow \
+	-$(DEL_FILE) debug\moc_gpumonitor.cpp debug\moc_mainwindow.cpp debug\moc_minerprocess.cpp debug\moc_highlighter.cpp debug\moc_helpdialog.cpp debug\moc_nvocdialog.cpp debug\moc_nvidiaapi.cpp debug\moc_nanopoolapi.cpp
+debug\moc_gpumonitor.cpp: D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QMainWindow \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qmainwindow.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qtwidgetsglobal.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qtguiglobal.h \
@@ -434,11 +439,13 @@ debug\moc_gpu_monitor.cpp: D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QMainW
 		..\MinerLamp-master\adl_sdk.h \
 		..\MinerLamp-master\adl_structures.h \
 		..\MinerLamp-master\adl_defines.h \
-		..\MinerLamp-master\url_api.h \
-		..\MinerLamp-master\gpu_monitor.h \
+		..\MinerLamp-master\urlapi.h \
+		..\MinerLamp-master\structures.h \
+		..\MinerLamp-master\jsonparser.h \
+		..\MinerLamp-master\gpumonitor.h \
 		debug\moc_predefs.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\bin\moc.exe
-	D:\APP\Qt6\5.9.9\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include debug/moc_predefs.h -ID:/APP/Qt6/5.9.9/msvc2017_64/mkspecs/win32-msvc -ID:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master -I"C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1/include" -ID:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/nvapi -ID:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/adl/include -ID:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/jsoncpp/include -ID:/APP/Qt6/5.9.9/msvc2017_64/include -ID:/APP/Qt6/5.9.9/msvc2017_64/include/QtCharts -ID:/APP/Qt6/5.9.9/msvc2017_64/include/QtWidgets -ID:/APP/Qt6/5.9.9/msvc2017_64/include/QtGui -ID:/APP/Qt6/5.9.9/msvc2017_64/include/QtANGLE -ID:/APP/Qt6/5.9.9/msvc2017_64/include/QtNetwork -ID:/APP/Qt6/5.9.9/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt" ..\MinerLamp-master\gpu_monitor.h -o debug\moc_gpu_monitor.cpp
+	D:\APP\Qt6\5.9.9\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include debug/moc_predefs.h -ID:/APP/Qt6/5.9.9/msvc2017_64/mkspecs/win32-msvc -ID:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master -I"C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1/include" -ID:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/nvapi -ID:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/adl/include -ID:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/jsoncpp/include -ID:/APP/Qt6/5.9.9/msvc2017_64/include -ID:/APP/Qt6/5.9.9/msvc2017_64/include/QtCharts -ID:/APP/Qt6/5.9.9/msvc2017_64/include/QtWidgets -ID:/APP/Qt6/5.9.9/msvc2017_64/include/QtGui -ID:/APP/Qt6/5.9.9/msvc2017_64/include/QtANGLE -ID:/APP/Qt6/5.9.9/msvc2017_64/include/QtNetwork -ID:/APP/Qt6/5.9.9/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt" ..\MinerLamp-master\gpumonitor.h -o debug\moc_gpumonitor.cpp
 
 debug\moc_mainwindow.cpp: D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QMainWindow \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qmainwindow.h \
@@ -663,7 +670,7 @@ debug\moc_mainwindow.cpp: D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QMainWi
 		..\MinerLamp-master\adl_sdk.h \
 		..\MinerLamp-master\adl_structures.h \
 		..\MinerLamp-master\adl_defines.h \
-		..\MinerLamp-master\gpu_monitor.h \
+		..\MinerLamp-master\gpumonitor.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QDebug \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QMessageBox \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qmessagebox.h \
@@ -685,7 +692,9 @@ debug\moc_mainwindow.cpp: D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QMainWi
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QScrollBar \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qscrollbar.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qabstractslider.h \
-		..\MinerLamp-master\url_api.h \
+		..\MinerLamp-master\urlapi.h \
+		..\MinerLamp-master\structures.h \
+		..\MinerLamp-master\jsonparser.h \
 		..\MinerLamp-master\mainwindow.h \
 		debug\moc_predefs.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\bin\moc.exe
@@ -1136,7 +1145,7 @@ debug\moc_nvocdialog.cpp: D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QDialog
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qicon.h \
 		..\MinerLamp-master\nvidianvml.h \
 		"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.1\include\nvml.h" \
-		..\MinerLamp-master\gpu_monitor.h \
+		..\MinerLamp-master\gpumonitor.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QMainWindow \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qmainwindow.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qtabwidget.h \
@@ -1228,7 +1237,9 @@ debug\moc_nvocdialog.cpp: D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QDialog
 		..\MinerLamp-master\adl_sdk.h \
 		..\MinerLamp-master\adl_structures.h \
 		..\MinerLamp-master\adl_defines.h \
-		..\MinerLamp-master\url_api.h \
+		..\MinerLamp-master\urlapi.h \
+		..\MinerLamp-master\structures.h \
+		..\MinerLamp-master\jsonparser.h \
 		..\MinerLamp-master\nvocdialog.h \
 		debug\moc_predefs.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\bin\moc.exe
@@ -1563,7 +1574,7 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 
 ####### Compile
 
-debug\gpu_monitor.obj: ..\MinerLamp-master\gpu_monitor.cpp ../MinerLamp-master/gpu_monitor.h \
+debug\gpumonitor.obj: ..\MinerLamp-master\gpumonitor.cpp ../MinerLamp-master/gpumonitor.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QMainWindow \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qmainwindow.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qtwidgetsglobal.h \
@@ -1756,9 +1767,86 @@ debug\gpu_monitor.obj: ..\MinerLamp-master\gpu_monitor.cpp ../MinerLamp-master/g
 		..\MinerLamp-master\adl_sdk.h \
 		..\MinerLamp-master\adl_structures.h \
 		..\MinerLamp-master\adl_defines.h \
-		../MinerLamp-master/url_api.h \
+		../MinerLamp-master/urlapi.h \
+		../MinerLamp-master/structures.h \
+		../MinerLamp-master/jsonparser.h \
 		../MinerLamp-master/nvidianvml.h \
 		"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.1\include\nvml.h"
+
+debug\jsonparser.obj: ..\MinerLamp-master\jsonparser.cpp D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QDebug \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qdebug.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qalgorithms.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qglobal.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qconfig-bootstrapped.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qconfig.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qtcore-config.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qsystemdetection.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qprocessordetection.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qcompilerdetection.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qtypeinfo.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qsysinfo.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qlogging.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qflags.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qatomic.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qbasicatomic.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qatomic_bootstrap.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qgenericatomic.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qatomic_cxx11.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qatomic_msvc.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qglobalstatic.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qmutex.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qnumeric.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qversiontagging.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qhash.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qchar.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qiterator.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qlist.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qrefcount.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qarraydata.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qhashfunctions.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qpair.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qbytearraylist.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qbytearray.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qnamespace.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qstring.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qstringbuilder.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qstringlist.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qregexp.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qstringmatcher.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qmap.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qtextstream.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qiodevice.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qobject.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qobjectdefs.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qobjectdefs_impl.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qcoreevent.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qscopedpointer.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qmetatype.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qvarlengtharray.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qcontainerfwd.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qobject_impl.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qlocale.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qvariant.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qshareddata.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qvector.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qpoint.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qset.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qcontiguouscache.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qsharedpointer.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
+		..\MinerLamp-master\json\json.h \
+		..\MinerLamp-master\jsoncpp.cpp \
+		..\MinerLamp-master\jsoncpp\include\json\config.h \
+		..\MinerLamp-master\jsoncpp\include\json\allocator.h \
+		..\MinerLamp-master\jsoncpp\include\json\version.h \
+		..\MinerLamp-master\jsoncpp\include\json\assertions.h \
+		..\MinerLamp-master\jsoncpp\include\json\reader.h \
+		..\MinerLamp-master\jsoncpp\include\json\json_features.h \
+		..\MinerLamp-master\jsoncpp\include\json\forwards.h \
+		..\MinerLamp-master\jsoncpp\include\json\value.h \
+		..\MinerLamp-master\jsoncpp\include\json\writer.h \
+		../MinerLamp-master/jsonparser.h \
+		../MinerLamp-master/structures.h
 
 debug\main.obj: ..\MinerLamp-master\main.cpp ../MinerLamp-master/mainwindow.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QMainWindow \
@@ -1984,7 +2072,7 @@ debug\main.obj: ..\MinerLamp-master\main.cpp ../MinerLamp-master/mainwindow.h \
 		..\MinerLamp-master\adl_sdk.h \
 		..\MinerLamp-master\adl_structures.h \
 		..\MinerLamp-master\adl_defines.h \
-		../MinerLamp-master/gpu_monitor.h \
+		../MinerLamp-master/gpumonitor.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QDebug \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QMessageBox \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qmessagebox.h \
@@ -2006,7 +2094,9 @@ debug\main.obj: ..\MinerLamp-master\main.cpp ../MinerLamp-master/mainwindow.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QScrollBar \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qscrollbar.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qabstractslider.h \
-		../MinerLamp-master/url_api.h \
+		../MinerLamp-master/urlapi.h \
+		../MinerLamp-master/structures.h \
+		../MinerLamp-master/jsonparser.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QApplication \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qapplication.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qcoreapplication.h \
@@ -2239,7 +2329,7 @@ debug\mainwindow.obj: ..\MinerLamp-master\mainwindow.cpp ../MinerLamp-master/mai
 		..\MinerLamp-master\adl_sdk.h \
 		..\MinerLamp-master\adl_structures.h \
 		..\MinerLamp-master\adl_defines.h \
-		../MinerLamp-master/gpu_monitor.h \
+		../MinerLamp-master/gpumonitor.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QDebug \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QMessageBox \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qmessagebox.h \
@@ -2261,7 +2351,9 @@ debug\mainwindow.obj: ..\MinerLamp-master\mainwindow.cpp ../MinerLamp-master/mai
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QScrollBar \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qscrollbar.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qabstractslider.h \
-		../MinerLamp-master/url_api.h \
+		../MinerLamp-master/urlapi.h \
+		../MinerLamp-master/structures.h \
+		../MinerLamp-master/jsonparser.h \
 		ui_mainwindow.h \
 		../MinerLamp-master/helpdialog.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QDialog \
@@ -2615,7 +2707,7 @@ debug\helpdialog.obj: ..\MinerLamp-master\helpdialog.cpp ../MinerLamp-master/hel
 
 debug\nvidianvml.obj: ..\MinerLamp-master\nvidianvml.cpp ../MinerLamp-master/nvidianvml.h \
 		"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.1\include\nvml.h" \
-		../MinerLamp-master/gpu_monitor.h \
+		../MinerLamp-master/gpumonitor.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QMainWindow \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qmainwindow.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qtwidgetsglobal.h \
@@ -2808,7 +2900,9 @@ debug\nvidianvml.obj: ..\MinerLamp-master\nvidianvml.cpp ../MinerLamp-master/nvi
 		..\MinerLamp-master\adl_sdk.h \
 		..\MinerLamp-master\adl_structures.h \
 		..\MinerLamp-master\adl_defines.h \
-		../MinerLamp-master/url_api.h
+		../MinerLamp-master/urlapi.h \
+		../MinerLamp-master/structures.h \
+		../MinerLamp-master/jsonparser.h
 
 debug\nvocdialog.obj: ..\MinerLamp-master\nvocdialog.cpp ../MinerLamp-master/nvocdialog.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QDialog \
@@ -2917,7 +3011,7 @@ debug\nvocdialog.obj: ..\MinerLamp-master\nvocdialog.cpp ../MinerLamp-master/nvo
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qicon.h \
 		../MinerLamp-master/nvidianvml.h \
 		"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.1\include\nvml.h" \
-		../MinerLamp-master/gpu_monitor.h \
+		../MinerLamp-master/gpumonitor.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QMainWindow \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qmainwindow.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qtabwidget.h \
@@ -3009,7 +3103,9 @@ debug\nvocdialog.obj: ..\MinerLamp-master\nvocdialog.cpp ../MinerLamp-master/nvo
 		..\MinerLamp-master\adl_sdk.h \
 		..\MinerLamp-master\adl_structures.h \
 		..\MinerLamp-master\adl_defines.h \
-		../MinerLamp-master/url_api.h \
+		../MinerLamp-master/urlapi.h \
+		../MinerLamp-master/structures.h \
+		../MinerLamp-master/jsonparser.h \
 		ui_nvocdialog.h
 
 debug\nvidiaapi.obj: ..\MinerLamp-master\nvidiaapi.cpp ../MinerLamp-master/nvidiaapi.h \
@@ -3399,11 +3495,11 @@ debug\hashratecharview.obj: ..\MinerLamp-master\hashratecharview.cpp D:\APP\Qt6\
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QDateTime \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qdatetime.h
 
-debug\url_api.obj: ..\MinerLamp-master\url_api.cpp ../MinerLamp-master/url_api.h
+debug\urlapi.obj: ..\MinerLamp-master\urlapi.cpp ../MinerLamp-master/urlapi.h
 
 debug\qrc_resources.obj: debug\qrc_resources.cpp 
 
-debug\moc_gpu_monitor.obj: debug\moc_gpu_monitor.cpp 
+debug\moc_gpumonitor.obj: debug\moc_gpumonitor.cpp 
 
 debug\moc_mainwindow.obj: debug\moc_mainwindow.cpp 
 

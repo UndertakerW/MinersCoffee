@@ -483,6 +483,9 @@ void MainWindow::on_pushButton_clicked()
             _process->setRestartOption(ui->groupBoxWatchdog->isChecked());
             _process->setDelayBeforeNoHash(ui->spinBoxDelayNoHash->value());
             _process->start(ui->lineEditMinerPath->text(), ui->lineEditArgs->text());
+            if (core == "")
+                core = "NBMiner";
+            _nvMonitorThrd->SetAPI(core);
         }
         else
             _process->stop();
@@ -659,9 +662,9 @@ void MainWindow::onNvMonitorInfo(unsigned int gpucount
 
 }
 
-gpu_info MainWindow::getAverage(const std::vector<gpu_info>& gpu_infos)
+GPUInfo MainWindow::getAverage(const std::vector<GPUInfo>& gpu_infos)
 {
-    gpu_info gi;
+    GPUInfo gi;
     gi.num = -1;
     unsigned int temp = 0;
     unsigned int gpuclock = 0;
@@ -683,9 +686,9 @@ gpu_info MainWindow::getAverage(const std::vector<gpu_info>& gpu_infos)
     return gi;
 }
 
-gpu_info MainWindow::getWorst(const std::vector<gpu_info> &gpu_infos)
+GPUInfo MainWindow::getWorst(const std::vector<GPUInfo> &gpu_infos)
 {
-    gpu_info gi;
+    GPUInfo gi;
     gi.num = -1;
     unsigned int temp = 0;
     unsigned int gpuclock = 1000000000;
