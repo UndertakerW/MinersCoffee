@@ -25,7 +25,8 @@ DEFINES += QT_DEPRECATED_WARNINGS NVIDIA AMD
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    gpu_monitor.cpp \
+    gpumonitor.cpp \
+    jsonparser.cpp \
         main.cpp \
         mainwindow.cpp \
     minerprocess.cpp \
@@ -36,10 +37,12 @@ SOURCES += \
     nvidiaapi.cpp \
     nanopoolapi.cpp \
     amdapi_adl.cpp \
-    hashratecharview.cpp
+    hashratecharview.cpp \
+    urlapi.cpp
 
 HEADERS += \
-    gpu_monitor.h \
+    gpumonitor.h \
+    jsonparser.h \
         mainwindow.h \
     minerprocess.h \
     highlighter.h \
@@ -49,7 +52,9 @@ HEADERS += \
     nvidiaapi.h \
     nanopoolapi.h \
     amdapi_adl.h \
-    hashratecharview.h
+    hashratecharview.h \
+    structures.h \
+    urlapi.h
 
 FORMS += \
         mainwindow.ui \
@@ -70,6 +75,7 @@ DEPENDPATH += 'C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1/include'
 
 win32: INCLUDEPATH += $$PWD/nvapi
 
-INCLUDEPATH += $$PWD/adl/include
+INCLUDEPATH += $$PWD/adl/include \
+                jsoncpp/include
 
 CONFIG  += openssl-linked

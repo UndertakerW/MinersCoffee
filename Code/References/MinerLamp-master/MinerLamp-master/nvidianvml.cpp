@@ -36,6 +36,25 @@ void nvidiaNVML::shutDownNVML()
     nvmlShutdown();
 }
 
+std::string nvidiaNVML::getGPUName(unsigned int index)
+{
+    nvmlReturn_t result;
+
+    nvmlDevice_t device;
+    char buffer[50];
+
+    result = nvmlDeviceGetHandleByIndex(index, &device);
+    if(result != NVML_SUCCESS )
+    {
+        qDebug() << nvmlErrorString(result);
+        return "";
+    }
+
+    result = nvmlDeviceGetName(device, buffer, 50);
+
+    return std::string(buffer);
+}
+
 int nvidiaNVML::getGPUTemp(unsigned int index)
 {
     nvmlReturn_t result;
@@ -169,19 +188,20 @@ int nvidiaNVML::getMaxSupportedMemClock(unsigned int index)
     return max;
 }
 
-std::vector<gpu_info> nvidiaNVML::getStatus()
+std::vector<GPUInfo> nvidiaNVML::getStatus()
 {
-    std::vector<gpu_info> gpu_infos;
+    std::vector<GPUInfo> gpu_infos;
     unsigned int gpuCount = getGPUCount();
     for(unsigned int i = 0; i < gpuCount; i++)
     {
-        gpu_info gi;
+        GPUInfo gi;
         gi.num = i;
         gi.temp = getGPUTemp(i);
         gi.gpuclock = getGPUClock(i);
         gi.memclock = getMemClock(i);
         gi.power = getPowerDraw(i);
         gi.fanspeed = getFanSpeed(i);
+        gi.name = getGPUName(i);
         gpu_infos.push_back(gi);
     }
     return gpu_infos;

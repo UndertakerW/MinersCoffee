@@ -21,7 +21,7 @@
 #include "nvapi.h"
 #include "nvidiaapi.h"
 #include "amdapi_adl.h"
-#include "gpu_monitor.h"
+#include "gpumonitor.h"
 
 QT_CHARTS_USE_NAMESPACE
 
@@ -55,8 +55,8 @@ public:
 
     void setVisible(bool visible) Q_DECL_OVERRIDE;
     void startMiner();
-    gpu_info getAverage(const std::vector<gpu_info>& gpu_infos);
-    gpu_info getWorst(const std::vector<gpu_info>& gpu_infos);
+    GPUInfo getAverage(const std::vector<GPUInfo>& gpu_infos);
+    GPUInfo getWorst(const std::vector<GPUInfo>& gpu_infos);
 
 private:
     QList<QWidget *> * _gpuInfoList;
@@ -228,6 +228,8 @@ private:
     amdMonitorThrd* _amdMonitorThrd;
 
     nanopoolAPI* _nano;
+
+    std::string core;
 };
 
 #endif // MAINWINDOW_H

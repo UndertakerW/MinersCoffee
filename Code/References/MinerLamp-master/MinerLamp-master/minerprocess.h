@@ -7,7 +7,6 @@
 #include <QThread>
 #include <QSettings>
 
-
 class MinerProcess;
 class donateThrd;
 

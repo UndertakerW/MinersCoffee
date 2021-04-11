@@ -3,7 +3,8 @@
 
 
 #include <nvml.h>
-#include "gpu_monitor.h"
+#include <string>
+#include "gpumonitor.h"
 
 class nvidiaNVML
 {
@@ -16,6 +17,7 @@ public:
 
     void shutDownNVML();
 
+    std::string getGPUName(unsigned int index);
     int getGPUTemp(unsigned int index);
     int getFanSpeed(unsigned int index);
     int getMemClock(unsigned int index);
@@ -41,7 +43,7 @@ public:
 
     int getPowerDrawSum();
 
-    std::vector<gpu_info> getStatus();
+    std::vector<GPUInfo> getStatus();
 
     void setClock(unsigned int index);
 
