@@ -8,7 +8,6 @@
 #include <QtCharts/QChartView>
 #include <QtCharts/QLineSeries>
 #include <QtCharts/QCategoryAxis>
-#include <QtCharts/QPieSeries>
 #include <QDateTimeAxis>
 #include <QTimer>
 #include <QLabel>
@@ -202,11 +201,6 @@ private:
     QChart* _chartTemp;
     QLineSeries* _seriesTemp;
     QDateTimeAxis *_axisXTemp;
-
-    // effectiveness pie chart
-    QChart* _effPieChart;
-    QPieSeries * _effPieSeries;
-    QList<QPieSlice *> * _effPieSlices;
 
     QTimer _hrChartTimer;
     QTimer _tempChartTimer;
