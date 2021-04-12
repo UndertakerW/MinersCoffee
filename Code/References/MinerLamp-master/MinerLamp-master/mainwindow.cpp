@@ -7,7 +7,6 @@
 #include "nanopoolapi.h"
 #include "hashratecharview.h"
 
-
 #include <QDebug>
 #include <QMessageBox>
 #include <QMenu>
@@ -19,6 +18,7 @@
 #include <QDateTimeAxis>
 #include <QBarCategoryAxis>
 #include <QScrollBar>
+#include <QFrame>
 
 #define MINERPATH           "minerpath"
 #define MINERARGS           "minerargs"
@@ -53,7 +53,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     // debug box test
-    ui->debugBox->setText(QString("test: you can change the number in Max consecutive 0MH/s to adjust device info"));
     _process->setLogControl(ui->textEdit);
 
     connect(_process, &MinerProcess::emitStarted, this, &MainWindow::onMinerStarted);
@@ -920,10 +919,11 @@ void MainWindow::refreshDevicesInfo()
     }
 
     // fetch devices number
-    int deviceNum = ui->spinBoxMax0MHs->value();
-    if(deviceNum < 0){
-        deviceNum = 0;
-    }
+    int deviceNum = 2;
+//    int deviceNum = ui->spinBoxMax0MHs->value();
+//    if(deviceNum < 0){
+//        deviceNum = 0;
+//    }
 
     if(deviceNum < _deviceCount){
         for(int i = _deviceCount-1; i >= deviceNum; i--){
@@ -1016,8 +1016,11 @@ void MainWindow::initializePieChart(){
     _effPieChart->setBackgroundVisible(false);
     _effPieChart->setAnimationOptions(QChart::AllAnimations);
 
-    _effPieChart->legend()->setAlignment(Qt::AlignRight);
-    _effPieChart->legend()->resize(1,1);
+//    _effPieChart->legend()->setAlignment(Qt::AlignRight);
+    _effPieChart->legend()->hide();
+
+    _effPieChart->resize(1,1);
+    ui->debugBox->append(QString::number(_effPieChart->legend()->size().height())+" "+QString::number(_effPieChart->legend()->size().width()));
     _effPieSeries = new QPieSeries();
     _effPieSeries->append("eff", 1);
     _effPieSeries->append("uneff", 10);
@@ -1036,13 +1039,32 @@ void MainWindow::initializePieChart(){
 
     _effPieChart->addSeries(_effPieSeries);
 
+    // pay attention to memory leak
+    _effCenterLabel = new QLabel(ui->graphicsViewEff);
+    _effCenterLabel->setVisible(true);
+    _effCenterLabel->setText("num%");
+    QFont font = _effCenterLabel->font();
+    font.setBold(true);
+    font.setPointSize(20);
+    _effCenterLabel->setFont(font);
+    _effCenterLabel->setStyleSheet("QLabel { background-color : rgba(255, 0, 0, 0); color : blue;}");
+    ui->gridLayoutEff->addWidget(_effCenterLabel, 0, 0, Qt::AlignCenter);
+
     connect(_effPieSeries, &QPieSeries::hovered, this, &MainWindow::onMouseHoverSlice);
 
-    ui->graphicsViewEff->setChart(_effPieChart);
+//    _effPieChart->layout()->setContentsMargins(0,0,0,0);
+//    _effPieChart->setMargins({0, 0, 0, 0});
+    _effPieChart->setBackgroundRoundness(0);
+
+    ui->graphicsViewEff->setChart(_effPieChart, 1);
+    ui->gridLayoutEff->layout()->setMargin(0);
+    ui->graphicsViewEff->setPieCenterLabel(_effCenterLabel);
+
+//    connect(ui->graphicsViewEff, &hashrateCharView::resizeEvent, this, &MainWindow::resizePieEffLabel);
+
 }
 
 void MainWindow::onMouseHoverSlice(QPieSlice * slice, bool status){
-    ui->debugBox->append(slice->label());
     QString sliceLabel = slice->label();
 
     // index of "eff"   in _effPieSlices is 0
@@ -1063,4 +1085,3 @@ void MainWindow::onMouseHoverSlice(QPieSlice * slice, bool status){
     }
 
 }
-
