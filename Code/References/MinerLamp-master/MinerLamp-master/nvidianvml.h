@@ -3,7 +3,7 @@
 
 
 #include <nvml.h>
-#include "gpu_monitor.h"
+
 
 class nvidiaNVML
 {
@@ -41,7 +41,6 @@ public:
 
     int getPowerDrawSum();
 
-    std::vector<gpu_info> getStatus();
 
     void setClock(unsigned int index);
 
