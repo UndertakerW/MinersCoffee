@@ -17,6 +17,7 @@
 #include "nvapi.h"
 #include "nvidiaapi.h"
 #include "amdapi_adl.h"
+#include "gpu_monitor.h"
 
 QT_CHARTS_USE_NAMESPACE
 
@@ -39,57 +40,6 @@ signals:
 
 
 
-class nvMonitorThrd : public QThread
-{
-    Q_OBJECT
-public:
-    nvMonitorThrd(QObject* = Q_NULLPTR);
-
-    void run();
-
-signals:
-
-    void gpuInfoSignal(unsigned int gpucount
-                       , unsigned int maxgputemp
-                       , unsigned int mingputemp
-                       , unsigned int maxfanspeed
-                       , unsigned int minfanspeed
-                       , unsigned int maxmemclock
-                       , unsigned int minmemclock
-                       , unsigned int maxgpuclock
-                       , unsigned int mingpuclock
-                       , unsigned int maxpowerdraw
-                       , unsigned int minpowerdraw
-                       , unsigned int totalpowerdraw);
-
-};
-
-class amdMonitorThrd : public QThread
-{
-    Q_OBJECT
-public:
-    amdMonitorThrd(QObject* = Q_NULLPTR);
-
-    void run();
-
-signals:
-
-    void gpuInfoSignal(unsigned int gpucount
-                       , unsigned int maxgputemp
-                       , unsigned int mingputemp
-                       , unsigned int maxfanspeed
-                       , unsigned int minfanspeed
-                       , unsigned int maxmemclock
-                       , unsigned int minmemclock
-                       , unsigned int maxgpuclock
-                       , unsigned int mingpuclock
-                       , unsigned int maxpowerdraw
-                       , unsigned int minpowerdraw
-                       , unsigned int totalpowerdraw);
-private:
-    amdapi_adl* _amd;
-
-};
 
 class MainWindow : public QMainWindow
 {
@@ -101,6 +51,8 @@ public:
 
     void setVisible(bool visible) Q_DECL_OVERRIDE;
     void startMiner();
+    gpu_info getAverage(const std::vector<gpu_info>& gpu_infos);
+    gpu_info getWorst(const std::vector<gpu_info>& gpu_infos);
 
 protected:
     void closeEvent(QCloseEvent *event) Q_DECL_OVERRIDE;
@@ -146,6 +98,11 @@ private slots:
                          , unsigned int maxpowerdraw
                          , unsigned int minpowerdraw
                          , unsigned int totalpowerdraw
+                         );
+
+    void onNvMonitorInfo(unsigned int current_gpu
+                         , unsigned int gpu_count
+                         , std::vector<gpu_info> gpu_infos
                          );
 
     void onAMDMonitorInfo(unsigned int gpucount
