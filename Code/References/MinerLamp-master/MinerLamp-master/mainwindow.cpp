@@ -48,12 +48,13 @@ MainWindow::MainWindow(QWidget *parent) :
     _settings = new QSettings(QString(QDir::currentPath() + QDir::separator() + "minerlamp.ini"), QSettings::IniFormat);
 
     _process = new MinerProcess(_settings);
-    _gpuInfoList = new QList<QWidget * >();
+    _gpuInfoLayout = new QList<QHBoxLayout * >();
+    _gpuInfoLCD = new QList<QList<QLCDNumber *> *>();
 
     ui->setupUi(this);
 
     // debug box test
-    ui->debugBox->setText(QString("test: you can change the number in Max consecutive 0MH/s to adjust device info"));
+    ui->debugBox->setText(QString("hello world!"));
     _process->setLogControl(ui->textEdit);
 
     connect(_process, &MinerProcess::emitStarted, this, &MainWindow::onMinerStarted);
@@ -130,11 +131,49 @@ MainWindow::MainWindow(QWidget *parent) :
 
     setupEditor();
 
-    // dynamic generate device number info
-    refreshDevicesInfo();
-    connect(&_refreshDeviceTimer, &QTimer::timeout, this, &MainWindow::onRefreshDeviceInfoTimer);
-    _refreshDeviceTimer.setInterval(1000);
-    _refreshDeviceTimer.start();
+    // test code
+    for(int i=0;i<3;i++){
+        QList<QLCDNumber *> * LCDAtRow = new QList<QLCDNumber *>();
+        QHBoxLayout * row = new QHBoxLayout();
+        QLabel * deviceTemp = new QLabel(QString("device ")+QString::number(i)+QString(" :"));
+        QLCDNumber * deviceTempLCD = new QLCDNumber();
+        deviceTempLCD->display(QString::number(i*10));
+        QLabel * fanSpeed = new QLabel("fan speed");
+        QLCDNumber * fanSpeedLCD = new QLCDNumber();
+        fanSpeedLCD->display(QString::number(i*10));
+        QLabel * gpuClock = new QLabel("GPU clock");
+        QLCDNumber * gpuClockLCD = new QLCDNumber();
+        gpuClockLCD->display(QString::number(i*10));
+        QLabel * memClock = new QLabel("Mem Clock");
+        QLCDNumber * memClockLCD = new QLCDNumber();
+        memClockLCD->display(QString::number(i*10));
+
+        row->addWidget(deviceTemp);
+        row->addWidget(deviceTempLCD);
+        row->addWidget(fanSpeed);
+        row->addWidget(fanSpeedLCD);
+        row->addWidget(gpuClock);
+        row->addWidget(gpuClockLCD);
+        row->addWidget(memClock);
+        row->addWidget(memClockLCD);
+
+        LCDAtRow->append(deviceTempLCD);
+        LCDAtRow->append(fanSpeedLCD);
+        LCDAtRow->append(gpuClockLCD);
+        LCDAtRow->append(memClockLCD);
+
+        // set all the items to layout
+        _gpuInfoLayout->append(row);
+        _gpuInfoLCD->append(LCDAtRow);
+
+        ui->gridLayoutDevicesInfo->addLayout(row, i, 0);
+    }
+     QWidget * temp = _gpuInfoLayout->at(0)->itemAt(0)->widget();
+     QLabel * ll = dynamic_cast<QLabel*> (temp);
+     ll->setText("just a test");
+     QLCDNumber * kk = _gpuInfoLCD->at(1)->at(1);
+     kk->display("99");
+
 
     _chart = new QChart();
     _chartTemp = new QChart();
@@ -289,7 +328,8 @@ MainWindow::~MainWindow()
 
     delete _process;
     delete _settings;
-    delete _gpuInfoList;
+    delete _gpuInfoLayout;
+    delete _gpuInfoLCD;
     delete ui;
 }
 
@@ -913,94 +953,3 @@ void MainWindow::onTempChartTimer()
         _chartTemp->axisY()->setRange(0, _maxChartTempRate + 1);
     }
 }
-
-void MainWindow::refreshDevicesInfo()
-{
-    // fetch devices number
-    int deviceNum = ui->spinBoxMax0MHs->value();
-    if(deviceNum < 0){
-        deviceNum = 0;
-    }
-
-    if(deviceNum < _deviceCount){
-        for(int i = _deviceCount-1; i >= deviceNum; i--){
-            QWidget * parentWidget = _gpuInfoList->at(i);
-            QLayout * layout = _gpuInfoList->at(i)->findChild<QHBoxLayout *>();
-            QLayoutItem * item;
-            QWidget * widget;
-
-            parentWidget->hide();
-
-            // notice each QWidget of _gpuInfoList only contains one child of type QHBoxLayout
-            // and in this child, it only contains QWidgets
-            while ((item = layout->takeAt(0))) {
-                if ((widget = item->widget()) != 0) {
-                    widget->hide();
-                    delete widget;
-                }
-                else {
-                    delete item;
-                }
-            }
-
-            _gpuInfoList->removeAt(i);
-            delete layout;
-            delete parentWidget;
-        }
-        _deviceCount = deviceNum;
-    }
-    else if(deviceNum > _deviceCount){
-        for(int i = _deviceCount; i <= deviceNum-1; i++){
-            QWidget * parentWidget = new QWidget();
-            QHBoxLayout * row = new QHBoxLayout(parentWidget);
-            QLabel * deviceTemp = new QLabel(QString("device ")+QString::number(i)+QString(" :"));
-            QLCDNumber * deviceTempLCD = new QLCDNumber();
-            QLabel * fanSpeed = new QLabel("fan speed");
-            QLCDNumber * fanSpeedLCD = new QLCDNumber();
-            QLabel * gpuClock = new QLabel("GPU clock");
-            QLCDNumber * gpuClockLCD = new QLCDNumber();
-            QLabel * memClock = new QLabel("Mem Clock");
-            QLCDNumber * memClockLCD = new QLCDNumber();
-
-            row->addWidget(deviceTemp);
-            row->addWidget(deviceTempLCD);
-            row->addWidget(fanSpeed);
-            row->addWidget(fanSpeedLCD);
-            row->addWidget(gpuClock);
-            row->addWidget(gpuClockLCD);
-            row->addWidget(memClock);
-            row->addWidget(memClockLCD);
-
-            _gpuInfoList->append(parentWidget);
-            ui->gridLayoutDevicesInfo->addWidget(parentWidget);
-        }
-        _deviceCount = deviceNum;
-    }
-
-    for(int i=0;i<_deviceCount;i++){
-        // fetch each device
-        int deviceTemp = i*10 + i;
-        int fanSpeed = i*10 + i;
-        int gpuClock = i*10 + i;
-        int memClock = i*10 + i;
-        QList<int> tempHolder;
-        tempHolder.append(deviceTemp);
-        tempHolder.append(fanSpeed);
-        tempHolder.append(gpuClock);
-        tempHolder.append(memClock);
-
-        for(int j = 1; j<=3;j++){
-            QHBoxLayout * layoutPtr = _gpuInfoList->at(i)->findChild<QHBoxLayout *>();
-            QWidget * castWidgetPtr = layoutPtr->itemAt(j*2-1)->widget();
-            QLCDNumber * castLCDPtr = dynamic_cast<QLCDNumber *>(castWidgetPtr);
-            castLCDPtr->display(tempHolder.at(j));
-        }
-    }
-
-}
-
-void MainWindow::onRefreshDeviceInfoTimer()
-{
-    refreshDevicesInfo();
-}
-

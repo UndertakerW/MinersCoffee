@@ -106,8 +106,8 @@ public:
     void startMiner();
 
 private:
-    QList<QWidget *> * _gpuInfoList;
-    int _deviceCount = 0;
+    QList<QHBoxLayout *> * _gpuInfoLayout;
+    QList<QList<QLCDNumber *> *> * _gpuInfoLCD;
 
 protected:
     void closeEvent(QCloseEvent *event) Q_DECL_OVERRIDE;
@@ -123,7 +123,6 @@ private:
     void setupToolTips();
     void loadParameters();
     void saveParameters();
-    void refreshDevicesInfo();
 
 
     nvidiaAPI* _nvapi;
@@ -196,14 +195,11 @@ private slots:
 
     void on_pushButtonEthminerBrowser_clicked();
 
-    // timer to hash rate graph
+    // timer for hash rate graph
     void onHrChartTimer();
 
-    // timer to temporature graph
+    // timer for temporature graph
     void onTempChartTimer();
-
-    // timer to refresh device info
-    void onRefreshDeviceInfoTimer();
 
 private:
 
@@ -247,7 +243,6 @@ private:
 
     QTimer _hrChartTimer;
     QTimer _tempChartTimer;
-    QTimer _refreshDeviceTimer;
 
     double _currentHashRate = 0.0;
     double _maxChartHashRate = 0.0;
