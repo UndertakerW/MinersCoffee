@@ -10,9 +10,6 @@
 #include <QtCharts/QCategoryAxis>
 #include <QDateTimeAxis>
 #include <QTimer>
-#include <QLabel>
-#include <QHBoxLayout>
-#include <QLCDNumber>
 
 #include "minerprocess.h"
 #include "highlighter.h"
@@ -104,10 +101,6 @@ public:
 
     void setVisible(bool visible) Q_DECL_OVERRIDE;
     void startMiner();
-
-private:
-    QList<QHBoxLayout *> * _gpuInfoLayout;
-    QList<QList<QLCDNumber *> *> * _gpuInfoLCD;
 
 protected:
     void closeEvent(QCloseEvent *event) Q_DECL_OVERRIDE;
