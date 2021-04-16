@@ -316,6 +316,11 @@ Coin::Coin(QString coin_name)
     name = coin_name;
 }
 
+Pool::Pool(QString pool_name)
+{
+    name = pool_name;
+}
+
 void Coin::AddCore(Core* core, QString cmd)
 {
     cores.append(core);

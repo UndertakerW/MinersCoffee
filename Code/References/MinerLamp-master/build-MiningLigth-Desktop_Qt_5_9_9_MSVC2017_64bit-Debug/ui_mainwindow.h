@@ -42,7 +42,7 @@ public:
     QLineEdit *lineEditArgs;
     QGridLayout *gridLayout_8;
     QHBoxLayout *horizontalLayout_2;
-    QLabel *labelCrypto;
+    QLabel *labelCoin;
     QComboBox *comboBoxCoin;
     QLabel *labelCore;
     QComboBox *comboBoxCore;
@@ -50,8 +50,8 @@ public:
     QComboBox *comboBoxPool;
     QLabel *labelWallet;
     QLineEdit *lineEditWallet;
-    QLabel *labelName;
-    QLineEdit *lineEditMinerName;
+    QLabel *labelWorker;
+    QLineEdit *lineEditWorker;
     QCheckBox *checkBoxAutoStart;
     QGroupBox *groupBoxWatchdog;
     QGridLayout *gridLayout;
@@ -397,20 +397,20 @@ public:
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        labelCrypto = new QLabel(centralWidget);
-        labelCrypto->setObjectName(QStringLiteral("labelCrypto"));
+        labelCoin = new QLabel(centralWidget);
+        labelCoin->setObjectName(QStringLiteral("labelCoin"));
         QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Preferred);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(labelCrypto->sizePolicy().hasHeightForWidth());
-        labelCrypto->setSizePolicy(sizePolicy1);
-        labelCrypto->setMinimumSize(QSize(0, 31));
-        labelCrypto->setMaximumSize(QSize(50, 16777215));
+        sizePolicy1.setHeightForWidth(labelCoin->sizePolicy().hasHeightForWidth());
+        labelCoin->setSizePolicy(sizePolicy1);
+        labelCoin->setMinimumSize(QSize(0, 31));
+        labelCoin->setMaximumSize(QSize(50, 16777215));
         QFont font1;
         font1.setPointSize(12);
-        labelCrypto->setFont(font1);
+        labelCoin->setFont(font1);
 
-        horizontalLayout_2->addWidget(labelCrypto);
+        horizontalLayout_2->addWidget(labelCoin);
 
         comboBoxCoin = new QComboBox(centralWidget);
         comboBoxCoin->setObjectName(QStringLiteral("comboBoxCoin"));
@@ -478,24 +478,24 @@ public:
 
         horizontalLayout_2->addWidget(lineEditWallet);
 
-        labelName = new QLabel(centralWidget);
-        labelName->setObjectName(QStringLiteral("labelName"));
-        sizePolicy1.setHeightForWidth(labelName->sizePolicy().hasHeightForWidth());
-        labelName->setSizePolicy(sizePolicy1);
-        labelName->setMinimumSize(QSize(0, 31));
-        labelName->setMaximumSize(QSize(50, 16777215));
-        labelName->setFont(font1);
+        labelWorker = new QLabel(centralWidget);
+        labelWorker->setObjectName(QStringLiteral("labelWorker"));
+        sizePolicy1.setHeightForWidth(labelWorker->sizePolicy().hasHeightForWidth());
+        labelWorker->setSizePolicy(sizePolicy1);
+        labelWorker->setMinimumSize(QSize(0, 31));
+        labelWorker->setMaximumSize(QSize(50, 16777215));
+        labelWorker->setFont(font1);
 
-        horizontalLayout_2->addWidget(labelName);
+        horizontalLayout_2->addWidget(labelWorker);
 
-        lineEditMinerName = new QLineEdit(centralWidget);
-        lineEditMinerName->setObjectName(QStringLiteral("lineEditMinerName"));
-        sizePolicy.setHeightForWidth(lineEditMinerName->sizePolicy().hasHeightForWidth());
-        lineEditMinerName->setSizePolicy(sizePolicy);
-        lineEditMinerName->setMinimumSize(QSize(0, 31));
-        lineEditMinerName->setFont(font1);
+        lineEditWorker = new QLineEdit(centralWidget);
+        lineEditWorker->setObjectName(QStringLiteral("lineEditWorker"));
+        sizePolicy.setHeightForWidth(lineEditWorker->sizePolicy().hasHeightForWidth());
+        lineEditWorker->setSizePolicy(sizePolicy);
+        lineEditWorker->setMinimumSize(QSize(0, 31));
+        lineEditWorker->setFont(font1);
 
-        horizontalLayout_2->addWidget(lineEditMinerName);
+        horizontalLayout_2->addWidget(lineEditWorker);
 
 
         gridLayout_8->addLayout(horizontalLayout_2, 0, 0, 1, 6);
@@ -1085,7 +1085,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Miner's Lamp", Q_NULLPTR));
-        labelCrypto->setText(QApplication::translate("MainWindow", "Coin", Q_NULLPTR));
+        labelCoin->setText(QApplication::translate("MainWindow", "Coin", Q_NULLPTR));
         comboBoxCoin->clear();
         comboBoxCoin->insertItems(0, QStringList()
          << QApplication::translate("MainWindow", "ETH", Q_NULLPTR)
@@ -1107,7 +1107,7 @@ public:
          << QApplication::translate("MainWindow", "nicehash", Q_NULLPTR)
         );
         labelWallet->setText(QApplication::translate("MainWindow", "Wallet", Q_NULLPTR));
-        labelName->setText(QApplication::translate("MainWindow", "Name", Q_NULLPTR));
+        labelWorker->setText(QApplication::translate("MainWindow", "Worker", Q_NULLPTR));
         checkBoxAutoStart->setText(QApplication::translate("MainWindow", "Auto start miner", Q_NULLPTR));
         groupBoxWatchdog->setTitle(QApplication::translate("MainWindow", "Watchdog options (restart miner in case of error)", Q_NULLPTR));
         label_5->setText(QApplication::translate("MainWindow", "Delay before restart:", Q_NULLPTR));
