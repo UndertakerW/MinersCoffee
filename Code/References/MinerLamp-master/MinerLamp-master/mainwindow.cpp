@@ -481,6 +481,9 @@ void MainWindow::setupToolTips()
 
 void MainWindow::on_pushButton_clicked()
 {
+
+
+
     saveParameters();
     if(ui->lineEditMinerPath->text().isEmpty() || ui->lineEditArgs->text().isEmpty()) return;
 
