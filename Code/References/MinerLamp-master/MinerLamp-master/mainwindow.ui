@@ -233,7 +233,7 @@ QPushButton:disabled
     <item row="0" column="0" colspan="6">
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
-       <widget class="QLabel" name="labelCrypto">
+       <widget class="QLabel" name="labelCoin">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
           <horstretch>0</horstretch>
@@ -476,7 +476,7 @@ QPushButton:disabled
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="labelName">
+       <widget class="QLabel" name="labelWorker">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
           <horstretch>0</horstretch>
@@ -501,12 +501,12 @@ QPushButton:disabled
          </font>
         </property>
         <property name="text">
-         <string>Name</string>
+         <string>Worker</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEditMinerName">
+       <widget class="QLineEdit" name="lineEditWorker">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
           <horstretch>0</horstretch>
