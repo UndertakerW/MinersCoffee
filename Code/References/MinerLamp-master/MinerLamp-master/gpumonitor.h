@@ -30,6 +30,7 @@
 #include "jsonparser.h"
 
 class nvidiaNVML;
+class Core;
 
 class GPUMonitor : public QThread
 {
@@ -42,14 +43,14 @@ protected:
     std::string api_str;
     JsonParser* jsonParser = nullptr;
 
-    const std::string api_NBMiner = "http://localhost:22333/api/v1/status";
-
 public:
     GPUMonitor(QObject* p = Q_NULLPTR);
 
-    void SetAPI(std::string core);
+    void SetAPI(Core* core);
 
-    virtual std::vector<GPUInfo> getStatus() = 0;
+    virtual std::vector<GPUInfo> getGPUStatus() = 0;
+
+    virtual MiningInfo getMiningStatus();
 
 signals:
 
@@ -78,8 +79,7 @@ public:
 
     void run() override;
 
-    std::vector<GPUInfo> getStatus() override;
-
+    std::vector<GPUInfo> getGPUStatus() override;
 
 };
 
@@ -90,7 +90,7 @@ public:
 
     void run() override;
 
-    std::vector<GPUInfo> getStatus() override;
+    std::vector<GPUInfo> getGPUStatus() override;
 
 private:
     amdapi_adl* _amd;

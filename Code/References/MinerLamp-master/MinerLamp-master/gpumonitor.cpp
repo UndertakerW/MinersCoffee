@@ -1,18 +1,57 @@
 #include "gpumonitor.h"
 #include "nvidianvml.h"
 #include "jsonparser.h"
+#include "mainwindow.h"
+#include "constants.h"
 
 GPUMonitor::GPUMonitor(QObject * /*parent*/)
 {
     urlAPI = new UrlAPI();
 }
 
-void GPUMonitor::SetAPI(std::string core)
+void GPUMonitor::SetAPI(Core* core)
 {
-    if (core == "NBMiner") {
-        api_str = api_NBMiner;
+    api_str = core->api.toStdString();
+    if (core->name == "NBMiner") {
         jsonParser = new NBMinerJsonParser();
     }
+}
+
+MiningInfo GPUMonitor::getMiningStatus()
+{
+
+    std::vector<GPUInfo> gpuInfos = getGPUStatus();
+
+    // From Mining Core
+    // Default API
+    if (api_str == "")
+        api_str = api_nbminer.toStdString();
+    std::string buffer;
+    LPCSTR url = api_str.c_str();
+    urlAPI->GetURLInternal(url, buffer);
+    if (jsonParser) {
+        std::vector<GPUInfo> gpuInfosFromJson = jsonParser->ParseJsonForGPU(buffer);
+        // O(N^2) is okay, since the number of GPUs should be small
+        for (int i = 0; i < gpuInfos.size(); i++) {
+            for (int j = 0; j < gpuInfosFromJson.size(); j++) {
+                if (gpuInfos[i].num == gpuInfosFromJson[j].num) {
+                    gpuInfos[i].hashrate = gpuInfosFromJson[j].hashrate;
+                    gpuInfos[i].accepted_shares = gpuInfosFromJson[j].accepted_shares;
+                    gpuInfos[i].invalid_shares = gpuInfosFromJson[j].invalid_shares;
+                    gpuInfos[i].rejected_shares = gpuInfosFromJson[j].rejected_shares;
+                }
+            }
+        }
+
+        //qDebug() << "mining" << endl;
+    }
+    //qDebug() << gpuInfos.size() << endl;
+    //qDebug() << gpuInfos[0].num << gpuInfos[0].hashrate/(1<<20) << endl;
+
+    MiningInfo miningInfo = jsonParser->ParseJsonForMining(buffer);
+
+    miningInfo.gpuInfos = gpuInfos;
+    return miningInfo;
 }
 
 nvMonitorThrd::nvMonitorThrd(QObject * /*parent*/) {}
@@ -24,7 +63,7 @@ void nvMonitorThrd::run()
 
     while(1)
     {
-        std::vector<GPUInfo> gpuInfos = getStatus();
+        MiningInfo miningInfo = getMiningStatus();
 
         unsigned int gpucount = nvml->getGPUCount();
 
@@ -59,32 +98,10 @@ void nvMonitorThrd::run()
     nvml->shutDownNVML();
 }
 
-std::vector<GPUInfo> nvMonitorThrd::getStatus()
+std::vector<GPUInfo> nvMonitorThrd::getGPUStatus()
 {
-    // Default API
-    if (api_str == "")
-        api_str = api_NBMiner;
+    // From NVIDIA GPU Driver
     std::vector<GPUInfo> gpuInfos = nvml->getStatus();
-    std::string buffer;
-    LPCSTR url = api_str.c_str();
-    urlAPI->GetURLInternal(url, buffer);
-    if (jsonParser) {
-        std::vector<GPUInfoFromJson> gpuInfosFromJson = jsonParser->ParseJson(buffer);
-        // O(N^2) is okay, since the number of GPUs should be small
-        for (int i = 0; i < gpuInfos.size(); i++) {
-            for (int j = 0; j < gpuInfosFromJson.size(); j++) {
-                if (gpuInfos[i].num == gpuInfosFromJson[j].num) {
-                    gpuInfos[i].hashrate = gpuInfosFromJson[j].hashrate;
-                    gpuInfos[i].accepted_shares = gpuInfosFromJson[j].accepted_shares;
-                    gpuInfos[i].invalid_shares = gpuInfosFromJson[j].invalid_shares;
-                    gpuInfos[i].rejected_shares = gpuInfosFromJson[j].rejected_shares;
-                }
-            }
-        }
-        //qDebug() << "mining" << endl;
-    }
-qDebug() << gpuInfos.size() << endl;
-    qDebug() << gpuInfos[0].num << gpuInfos[0].hashrate/(1<<20) << endl;
     return gpuInfos;
 }
 
@@ -126,7 +143,7 @@ void amdMonitorThrd::run()
         delete _amd;
 }
 
-std::vector<GPUInfo> amdMonitorThrd::getStatus()
+std::vector<GPUInfo> amdMonitorThrd::getGPUStatus()
 {
     std::vector<GPUInfo> gpu_infos;
     return gpu_infos;

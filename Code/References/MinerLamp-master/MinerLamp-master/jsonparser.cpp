@@ -8,9 +8,9 @@ JsonParser::JsonParser() {}
 
 NBMinerJsonParser::NBMinerJsonParser() {}
 
-std::vector<GPUInfoFromJson> NBMinerJsonParser::ParseJson(std::string json)
+std::vector<GPUInfo> NBMinerJsonParser::ParseJsonForGPU(std::string json)
 {
-    std::vector<GPUInfoFromJson> gpuInfos;
+    std::vector<GPUInfo> gpuInfos;
 
     Json::Reader reader;
     Json::Value root;
@@ -25,7 +25,7 @@ std::vector<GPUInfoFromJson> NBMinerJsonParser::ParseJson(std::string json)
 
     for (unsigned int i = 0; i < root["miner"]["devices"].size(); i++)
     {
-        GPUInfoFromJson gpuInfo;
+        GPUInfo gpuInfo;
         gpuInfo.num = root["miner"]["devices"][i]["id"].asUInt();
         gpuInfo.hashrate = root["miner"]["devices"][i]["hashrate_raw"].asDouble(); //20M 153216.05915418
         gpuInfo.accepted_shares = root["miner"]["devices"][i]["accepted_shares"].asUInt();
@@ -36,4 +36,25 @@ std::vector<GPUInfoFromJson> NBMinerJsonParser::ParseJson(std::string json)
 
 
     return gpuInfos;
+}
+
+MiningInfo NBMinerJsonParser::ParseJsonForMining(std::string json)
+{
+    MiningInfo miningInfo;
+
+    Json::Reader reader;
+    Json::Value root;
+
+    if (!reader.parse(json, root))
+    {
+        qDebug() << "reader parse error: " << strerror(errno) << endl;
+        return miningInfo;
+    }
+
+    miningInfo.latency = root["stratum"]["latency"].asUInt();
+    miningInfo.accepted_shares = root["stratum"]["accepted_shares"].asUInt();
+    miningInfo.invalid_shares = root["stratum"]["invalid_shares"].asUInt();
+    miningInfo.rejected_shares = root["stratum"]["rejected_shares"].asUInt();
+
+    return miningInfo;
 }

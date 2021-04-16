@@ -21,4 +21,6 @@ static QString eth_nicehash = "nicehash+tcp://daggerhashimoto.eu.nicehash.com:33
 
 static QString cmd_nbminer_eth = "nbminer -a ethash -o %s -u %s.%s";
 
+const QString api_nbminer = "http://localhost:22333/api/v1/status";
+
 #endif // CONSTANTS_H

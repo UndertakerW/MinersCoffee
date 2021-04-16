@@ -361,7 +361,7 @@ void MainWindow::initializeConstants()
     Pool* pool_nicehash = new Pool("nicehash");
     pool_nicehash->cmds[coin_eth] = eth_nicehash;
 
-    Core* core_nbminer = new Core("NBMiner", path_nbminer);
+    Core* core_nbminer = new Core("NBMiner", path_nbminer, api_nbminer);
 
     coin_eth->AddPool(pool_ethermine, eth_ethermine);
     coin_eth->AddPool(pool_sparkpool, eth_sparkpool);

@@ -6,13 +6,7 @@
 #include <QMap>
 #include <QList>
 
-class MiningInfo {
-public:
-    unsigned int accepted_shares;
-    unsigned int invalid_shares;
-    unsigned int rejected_shares;
-    unsigned int latency;
-};
+
 
 class GPUInfo {
 public:
@@ -29,14 +23,13 @@ public:
     unsigned int rejected_shares;
 };
 
-class GPUInfoFromJson {
+class MiningInfo {
 public:
-    unsigned int num;
-    float hashrate = 0;
     unsigned int accepted_shares;
     unsigned int invalid_shares;
     unsigned int rejected_shares;
+    unsigned int latency;
+    std::vector<GPUInfo> gpuInfos;
 };
-
 
 #endif // STRUCTURES_H

@@ -259,11 +259,12 @@ class Core {
 public:
     QString name;
     QString path;
+    QString api;
     QMap<Coin*, QString> cmds;
     int ver;
 
 public:
-    Core(QString core_name, QString path);
+    Core(QString core_name, QString path, QString api);
 };
 
 class Pool {
