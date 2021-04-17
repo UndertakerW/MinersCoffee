@@ -305,10 +305,11 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-Core::Core(QString core_name, QString core_path)
+Core::Core(QString core_name, QString core_path, QString core_api)
 {
     name = core_name;
     path = core_path;
+    api = core_api;
 }
 
 Coin::Coin(QString coin_name)
@@ -335,9 +336,6 @@ void Coin::AddPool(Pool* pool, QString cmd)
 
 void MainWindow::initializeConstants()
 {
-    QMap<QString, Coin*> map_coins;
-    QMap<QString, Core*> map_cores;
-    QMap<QString, Core*> map_pools;
 
     Coin* coin_eth = new Coin("ETH");
 
@@ -576,8 +574,17 @@ void MainWindow::on_pushButton_clicked()
             _process->setRestartOption(ui->groupBoxWatchdog->isChecked());
             _process->setDelayBeforeNoHash(ui->spinBoxDelayNoHash->value());
             _process->start(ui->lineEditMinerPath->text(), ui->lineEditArgs->text());
-            if (core == "")
-                core = "NBMiner";
+
+            // TODO
+            if (!map_cores.contains(""/*CORE NAME*/))
+            {
+                // default core
+                core = map_cores["NBMiner"];
+            }
+            else
+            {
+                core = map_cores[""/*CORE NAME*/];
+            }
             _nvMonitorThrd->SetAPI(core);
         }
         else

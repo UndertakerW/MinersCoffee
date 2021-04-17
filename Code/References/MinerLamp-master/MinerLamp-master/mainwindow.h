@@ -25,6 +25,43 @@
 
 QT_CHARTS_USE_NAMESPACE
 
+class Core;
+class Pool;
+
+class Coin {
+public:
+    QString name;
+    QList<Core*> cores;
+    QList<Pool*> pools;
+
+public:
+    Coin(QString core_name);
+    void AddCore(Core* core, QString cmd);
+    void AddPool(Pool* pool, QString cmd);
+};
+
+class Core {
+public:
+    QString name;
+    QString path;
+    QString api;
+    QMap<Coin*, QString> cmds;
+    int ver;
+
+public:
+    Core(QString core_name, QString path, QString api);
+};
+
+class Pool {
+public:
+    QString name;
+    QMap<Coin*, QString> cmds;
+
+public:
+    Pool(QString pool_name);
+};
+
+
 namespace Ui {
 class MainWindow;
 }
@@ -169,6 +206,11 @@ private slots:
     // pie slice
     void onMouseHoverSlice(QPieSlice * slice, bool status);
 
+public:
+    QMap<QString, Coin*> map_coins;
+    QMap<QString, Core*> map_cores;
+    QMap<QString, Core*> map_pools;
+
 private:
 
     void onMinerStarted();
@@ -236,44 +278,8 @@ private:
 
     nanopoolAPI* _nano;
 
-    std::string core;
+    Core* core;
 };
 
-
-class Core;
-class Pool;
-
-class Coin {
-public:
-    QString name;
-    QList<Core*> cores;
-    QList<Pool*> pools;
-
-public:
-    Coin(QString core_name);
-    void AddCore(Core* core, QString cmd);
-    void AddPool(Pool* pool, QString cmd);
-};
-
-class Core {
-public:
-    QString name;
-    QString path;
-    QString api;
-    QMap<Coin*, QString> cmds;
-    int ver;
-
-public:
-    Core(QString core_name, QString path, QString api);
-};
-
-class Pool {
-public:
-    QString name;
-    QMap<Coin*, QString> cmds;
-
-public:
-    Pool(QString pool_name);
-};
 
 #endif // MAINWINDOW_H
