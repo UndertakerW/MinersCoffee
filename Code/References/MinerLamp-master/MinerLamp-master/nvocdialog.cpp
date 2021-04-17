@@ -133,7 +133,7 @@ void nvOCDialog::on_buttonBox_clicked(QAbstractButton *button)
                 }
                 else
                 {
-                    _nvapi->stopFanThread();
+                    _nvapi->startFanThread();
                     _nvapi->setFanSpeed(i, ui->horizontalSliderFanSpeed->value());
                 }
             }
@@ -149,7 +149,7 @@ void nvOCDialog::on_buttonBox_clicked(QAbstractButton *button)
             }
             else
             {
-                _nvapi->stopFanThread();
+                _nvapi->startFanThread();
                 _nvapi->setFanSpeed(gpu, ui->horizontalSliderFanSpeed->value());
             }
         }
