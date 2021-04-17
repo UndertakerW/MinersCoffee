@@ -32,6 +32,15 @@ nvOCDialog::nvOCDialog(nvidiaAPI *nvapi, QSettings *settings, QWidget *parent) :
     }
 
     _settings->beginGroup("nvoc");
+
+    // initialized the value of the window
+
+    // later these two value will be retrieved from settings
+    ui->spinBoxTemperature->setMaximum(200);
+    ui->spinBoxTemperature->setValue(100);
+    ui->checkBoxAutoOC->setChecked(false);
+
+
     ui->checkBoxAllDevices->setChecked(_settings->value("nvoc_applyall").toBool());
     ui->checkBoxOCMinerStart->setChecked(_settings->value("nvoc_applyonstart").toBool());
     ui->checkBoxAutoSpeedFan->setChecked(_settings->value("fanspeed0").toInt() == 101 ? true : false);
@@ -174,19 +183,24 @@ void nvOCDialog::on_checkBoxAutoSpeedFan_clicked(bool checked)
     }
 }
 
-//void nvOCDialog::on_TempLimitBox_valued()
-//{
-//    int gpu = ui->comboBoxDevice->currentIndex();
-//    int temp_limit=ui->TempLimitBox->value();
-//    _nvapi->setTempLimitOffset(gpu,temp_limit);
-//    if(ui->checkBoxAllDevices->isChecked())
-//        {
-//            for(unsigned int i = 0; i < _nvapi->getGPUCount(); i++)
-//            {
-//                  _nvapi->setTempLimitOffset(i,temp_limit);
-//              }
-//         }
-//}
+void nvOCDialog::on_spinBoxTemperature_valueChanged(int value){
+    qDebug() << "testing " << value << endl;
+    unsigned gpu = (unsigned) ui->comboBoxDevice->currentIndex();
+    unsigned int temp_limit = (unsigned) value;
+    _nvapi->setTempLimitOffset(gpu, temp_limit);
+    if(ui->checkBoxAllDevices->isChecked())
+        {
+            for(unsigned int i = 0; i < _nvapi->getGPUCount(); i++)
+            {
+                  _nvapi->setTempLimitOffset(i,temp_limit);
+              }
+         }
+}
+
+
+void nvOCDialog::on_checkBoxAutoOC_clicked(bool clicked){
+    qDebug() << "test auto oc cliked: " << clicked << endl;
+}
 
 
 //void nvOCDialog::on_AUTO_ADVISE_clicked(QAbstractButton *button)

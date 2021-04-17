@@ -22,6 +22,7 @@
 #include "nvidiaapi.h"
 #include "amdapi_adl.h"
 #include "gpumonitor.h"
+#include "nvocdialog.h"
 
 QT_CHARTS_USE_NAMESPACE
 
@@ -84,6 +85,7 @@ private:
 
     nvidiaAPI* _nvapi;
     void applyOC();
+    nvOCDialog* _dlg;
 
 
 

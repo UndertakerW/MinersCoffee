@@ -26,6 +26,7 @@ class nvOCDialog : public QDialog
     Q_OBJECT
 
 public:
+    Ui::nvOCDialog *ui;
     explicit nvOCDialog(nvidiaAPI* nvapi, QSettings* settings, QWidget *parent = 0);
     ~nvOCDialog();
 
@@ -44,6 +45,10 @@ private slots:
 
     void on_checkBoxAutoSpeedFan_clicked(bool checked);
 
+    void on_spinBoxTemperature_valueChanged(int value);
+
+    void on_checkBoxAutoOC_clicked(bool checked);
+
 private:
 
     void updateSliders(unsigned int gpu);
@@ -51,7 +56,6 @@ private:
     bool loadConfig();
     void saveConfig();
 
-    Ui::nvOCDialog *ui;
 
     QSettings* _settings;
     nvidiaNVML* _nvml;
