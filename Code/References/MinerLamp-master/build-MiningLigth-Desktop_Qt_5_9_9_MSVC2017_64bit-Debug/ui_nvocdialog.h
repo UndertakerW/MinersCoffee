@@ -20,6 +20,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLCDNumber>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
 
 QT_BEGIN_NAMESPACE
@@ -45,6 +46,7 @@ public:
     QCheckBox *checkBoxOCMinerStart;
     QDialogButtonBox *buttonBox;
     QLCDNumber *lcdNumberFanSpeed;
+    QPushButton *pushButton;
 
     void setupUi(QDialog *nvOCDialog)
     {
@@ -143,6 +145,9 @@ public:
         lcdNumberFanSpeed = new QLCDNumber(nvOCDialog);
         lcdNumberFanSpeed->setObjectName(QStringLiteral("lcdNumberFanSpeed"));
         lcdNumberFanSpeed->setGeometry(QRect(590, 220, 64, 23));
+        pushButton = new QPushButton(nvOCDialog);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setGeometry(QRect(350, 20, 93, 28));
 
         retranslateUi(nvOCDialog);
         QObject::connect(buttonBox, SIGNAL(accepted()), nvOCDialog, SLOT(accept()));
@@ -162,6 +167,7 @@ public:
         checkBoxAutoSpeedFan->setText(QApplication::translate("nvOCDialog", "Automatic speed fan", Q_NULLPTR));
         checkBoxAllDevices->setText(QApplication::translate("nvOCDialog", "Apply to all devices (current settings are applied to all devices)", Q_NULLPTR));
         checkBoxOCMinerStart->setText(QApplication::translate("nvOCDialog", "Apply on each ethminer (re)start", Q_NULLPTR));
+        pushButton->setText(QApplication::translate("nvOCDialog", "AutoAdvise", Q_NULLPTR));
     } // retranslateUi
 
 };
