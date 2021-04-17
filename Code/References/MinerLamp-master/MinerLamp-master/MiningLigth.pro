@@ -44,6 +44,7 @@ SOURCES += \
     urlapi.cpp
 
 HEADERS += \
+    constants.h \
     gpumonitor.h \
     jsonparser.h \
         mainwindow.h \

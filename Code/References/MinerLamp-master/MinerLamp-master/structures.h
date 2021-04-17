@@ -2,6 +2,9 @@
 #define STRUCTURES_H
 
 #include <string>
+#include <QString>
+#include <QMap>
+#include <QList>
 
 class MiningInfo {
 public:
@@ -34,5 +37,6 @@ public:
     unsigned int invalid_shares;
     unsigned int rejected_shares;
 };
+
 
 #endif // STRUCTURES_H

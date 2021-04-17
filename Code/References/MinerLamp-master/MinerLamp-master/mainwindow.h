@@ -78,6 +78,7 @@ private:
     void saveParameters();
     void refreshDevicesInfo();
     void initializePieChart();
+    void initializeConstants();
 
 
 
@@ -236,6 +237,42 @@ private:
     nanopoolAPI* _nano;
 
     std::string core;
+};
+
+
+class Core;
+class Pool;
+
+class Coin {
+public:
+    QString name;
+    QList<Core*> cores;
+    QList<Pool*> pools;
+
+public:
+    Coin(QString core_name);
+    void AddCore(Core* core, QString cmd);
+    void AddPool(Pool* pool, QString cmd);
+};
+
+class Core {
+public:
+    QString name;
+    QString path;
+    QMap<Coin*, QString> cmds;
+    int ver;
+
+public:
+    Core(QString core_name, QString path);
+};
+
+class Pool {
+public:
+    QString name;
+    QMap<Coin*, QString> cmds;
+
+public:
+    Pool(QString pool_name);
 };
 
 #endif // MAINWINDOW_H

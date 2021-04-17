@@ -6,6 +6,7 @@
 #include "nvocdialog.h"
 #include "nanopoolapi.h"
 #include "hashratecharview.h"
+#include "constants.h"
 
 #include <QDebug>
 #include <QMessageBox>
@@ -19,6 +20,12 @@
 #include <QBarCategoryAxis>
 #include <QScrollBar>
 #include <QFrame>
+#include <QMap>
+#include <QString>
+
+#include <string>
+#include <map>
+
 
 #define MINERPATH           "minerpath"
 #define MINERARGS           "minerargs"
@@ -298,6 +305,77 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+Core::Core(QString core_name, QString core_path)
+{
+    name = core_name;
+    path = core_path;
+}
+
+Coin::Coin(QString coin_name)
+{
+    name = coin_name;
+}
+
+Pool::Pool(QString pool_name)
+{
+    name = pool_name;
+}
+
+void Coin::AddCore(Core* core, QString cmd)
+{
+    cores.append(core);
+    core->cmds[this] = cmd;
+}
+
+void Coin::AddPool(Pool* pool, QString cmd)
+{
+    pools.append(pool);
+    pool->cmds[this] = cmd;
+}
+
+void MainWindow::initializeConstants()
+{
+    QMap<QString, Coin*> map_coins;
+    QMap<QString, Core*> map_cores;
+    QMap<QString, Core*> map_pools;
+
+    Coin* coin_eth = new Coin("ETH");
+
+    Pool* pool_ethermine = new Pool("ethermine");
+
+    Pool* pool_sparkpool = new Pool("sparkpool");
+    pool_sparkpool->cmds[coin_eth] = eth_sparkpool;
+
+    Pool* pool_f2pool = new Pool("f2pool");
+    pool_f2pool->cmds[coin_eth] = eth_f2pool;
+
+    Pool* pool_beepool = new Pool("beepool");
+    pool_beepool->cmds[coin_eth] = eth_beepool;
+
+    Pool* pool_nanopool = new Pool("nanopool");
+    pool_nanopool->cmds[coin_eth] = eth_nanopool;
+
+    Pool* pool_herominers = new Pool("herominers");
+    pool_herominers->cmds[coin_eth] = eth_herominers;
+
+    Pool* pool_nicehash = new Pool("nicehash");
+    pool_nicehash->cmds[coin_eth] = eth_nicehash;
+
+    Core* core_nbminer = new Core("NBMiner", path_nbminer);
+
+    coin_eth->AddPool(pool_ethermine, eth_ethermine);
+    coin_eth->AddPool(pool_sparkpool, eth_sparkpool);
+    coin_eth->AddPool(pool_f2pool, eth_f2pool);
+    coin_eth->AddPool(pool_beepool, eth_beepool);
+    coin_eth->AddPool(pool_nanopool, eth_nanopool);
+    coin_eth->AddPool(pool_herominers, eth_herominers);
+    coin_eth->AddPool(pool_nicehash, eth_nicehash);
+
+    coin_eth->AddCore(core_nbminer, cmd_nbminer_eth);
+
+
+}
+
 void MainWindow::loadParameters()
 {
     ui->lineEditMinerPath->setText(_settings->value(MINERPATH).toString());
@@ -481,6 +559,9 @@ void MainWindow::setupToolTips()
 
 void MainWindow::on_pushButton_clicked()
 {
+
+
+
     saveParameters();
     if(ui->lineEditMinerPath->text().isEmpty() || ui->lineEditArgs->text().isEmpty()) return;
 
