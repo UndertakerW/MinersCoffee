@@ -65,6 +65,13 @@ signals:
                        , unsigned int maxpowerdraw
                        , unsigned int minpowerdraw
                        , unsigned int totalpowerdraw);
+    void gpuInfoSignal1(unsigned int gpucount
+                       , unsigned int *Allgputemp
+                       , unsigned int *Allfanspeed
+                       , unsigned int *Allmemclock
+                       , unsigned int *Allgpuclock
+                       , unsigned int *Allpowerdraw
+                       , unsigned int totalpowerdraw);
 };
 
 
@@ -77,6 +84,7 @@ public:
     nvMonitorThrd(QObject* p = Q_NULLPTR);
 
     void run() override;
+    void mysql();
 
     std::vector<GPUInfo> getStatus() override;
 

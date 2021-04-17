@@ -11,13 +11,13 @@ MAKEFILE      = Makefile.Release
 
 CC            = cl
 CXX           = cl
-DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQT_DEPRECATED_WARNINGS -DNVIDIA -DAMD -DQT_QML_DEBUG -DQT_NO_DEBUG -DQT_CHARTS_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DNDEBUG
+DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -DWIN64 -DQT_DEPRECATED_WARNINGS -DNVIDIA -DAMD -DQT_QML_DEBUG -DQT_NO_DEBUG -DQT_CHARTS_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB -DNDEBUG
 CFLAGS        = -nologo -Zc:wchar_t -FS -Zc:strictStrings -O2 -MD -W3 -w44456 -w44457 -w44458 $(DEFINES)
 CXXFLAGS      = -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -O2 -MD -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -EHsc $(DEFINES)
-INCPATH       = -I..\MinerLamp-master -I. -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.1\include" -I..\MinerLamp-master\nvapi -I..\MinerLamp-master\adl\include -I..\MinerLamp-master\jsoncpp\include -IC:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include -IC:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCharts -IC:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets -IC:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui -IC:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtANGLE -IC:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtNetwork -IC:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore -Irelease -I. -IC:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\win32-msvc 
+INCPATH       = -I..\MinerLamp-master -I. -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.1\include" -I..\MinerLamp-master\nvapi -I..\MinerLamp-master\adl\include -I..\MinerLamp-master\jsoncpp\include -IC:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include -IC:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCharts -IC:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets -IC:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui -IC:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtANGLE -IC:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtNetwork -IC:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql -IC:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore -Irelease -I. -IC:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\win32-msvc 
 LINKER        = link
 LFLAGS        = /NOLOGO /DYNAMICBASE /NXCOMPAT /INCREMENTAL:NO /SUBSYSTEM:WINDOWS "/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" /VERSION:0.1
-LIBS          = /LIBPATH:C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\qtmain.lib /LIBPATH:C:\openssl\lib /LIBPATH:C:\Utils\my_sql\my_sql\lib /LIBPATH:C:\Utils\postgresql\pgsql\lib shell32.lib /LIBPATH:"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.1\lib\x64" "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.1\lib\x64\nvml.lib" C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\Qt5Charts.lib C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\Qt5Widgets.lib C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\Qt5Gui.lib C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\Qt5Network.lib C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\Qt5Core.lib release\MinerLamp_resource.res 
+LIBS          = /LIBPATH:C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\qtmain.lib /LIBPATH:C:\openssl\lib /LIBPATH:C:\Utils\my_sql\my_sql\lib /LIBPATH:C:\Utils\postgresql\pgsql\lib shell32.lib /LIBPATH:"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.1\lib\x64" "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.1\lib\x64\nvml.lib" C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\Qt5Charts.lib C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\Qt5Widgets.lib C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\Qt5Gui.lib C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\Qt5Network.lib C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\Qt5Sql.lib C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\Qt5Core.lib release\MinerLamp_resource.res 
 QMAKE         = C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\bin\qmake.exe
 IDC           = idc
 IDL           = midl
@@ -52,6 +52,7 @@ SOURCES       = ..\MinerLamp-master\gpumonitor.cpp \
 		..\MinerLamp-master\minerprocess.cpp \
 		..\MinerLamp-master\highlighter.cpp \
 		..\MinerLamp-master\helpdialog.cpp \
+		..\MinerLamp-master\mysql.cpp \
 		..\MinerLamp-master\nvidianvml.cpp \
 		..\MinerLamp-master\nvocdialog.cpp \
 		..\MinerLamp-master\nvidiaapi.cpp \
@@ -75,6 +76,7 @@ OBJECTS       = release\gpumonitor.obj \
 		release\minerprocess.obj \
 		release\highlighter.obj \
 		release\helpdialog.obj \
+		release\mysql.obj \
 		release\nvidianvml.obj \
 		release\nvocdialog.obj \
 		release\nvidiaapi.obj \
@@ -99,6 +101,7 @@ DIST          =  ..\MinerLamp-master\gpumonitor.h \
 		..\MinerLamp-master\minerprocess.h \
 		..\MinerLamp-master\highlighter.h \
 		..\MinerLamp-master\helpdialog.h \
+		..\MinerLamp-master\mysql.h \
 		..\MinerLamp-master\nvidianvml.h \
 		..\MinerLamp-master\nvocdialog.h \
 		..\MinerLamp-master\nvidiaapi.h \
@@ -114,6 +117,7 @@ DIST          =  ..\MinerLamp-master\gpumonitor.h \
 		..\MinerLamp-master\minerprocess.cpp \
 		..\MinerLamp-master\highlighter.cpp \
 		..\MinerLamp-master\helpdialog.cpp \
+		..\MinerLamp-master\mysql.cpp \
 		..\MinerLamp-master\nvidianvml.cpp \
 		..\MinerLamp-master\nvocdialog.cpp \
 		..\MinerLamp-master\nvidiaapi.cpp \
@@ -198,7 +202,7 @@ all: Makefile.Release  $(DESTDIR_TARGET)
 
 $(DESTDIR_TARGET): ui_mainwindow.h ui_helpdialog.h ui_nvocdialog.h $(OBJECTS) release\MinerLamp_resource.res
 	$(LINKER) $(LFLAGS) /MANIFEST:embed /OUT:$(DESTDIR_TARGET) @<<
-release\gpumonitor.obj release\jsonparser.obj release\main.obj release\mainwindow.obj release\minerprocess.obj release\highlighter.obj release\helpdialog.obj release\nvidianvml.obj release\nvocdialog.obj release\nvidiaapi.obj release\nanopoolapi.obj release\amdapi_adl.obj release\hashratecharview.obj release\piesliceeff.obj release\urlapi.obj release\qrc_resources.obj release\moc_gpumonitor.obj release\moc_mainwindow.obj release\moc_minerprocess.obj release\moc_highlighter.obj release\moc_helpdialog.obj release\moc_nvocdialog.obj release\moc_nvidiaapi.obj release\moc_nanopoolapi.obj
+release\gpumonitor.obj release\jsonparser.obj release\main.obj release\mainwindow.obj release\minerprocess.obj release\highlighter.obj release\helpdialog.obj release\mysql.obj release\nvidianvml.obj release\nvocdialog.obj release\nvidiaapi.obj release\nanopoolapi.obj release\amdapi_adl.obj release\hashratecharview.obj release\piesliceeff.obj release\urlapi.obj release\qrc_resources.obj release\moc_gpumonitor.obj release\moc_mainwindow.obj release\moc_minerprocess.obj release\moc_highlighter.obj release\moc_helpdialog.obj release\moc_nvocdialog.obj release\moc_nvidiaapi.obj release\moc_nanopoolapi.obj
 $(LIBS)
 <<
 
@@ -211,10 +215,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) MinerLamp.zip $(SOURCES) $(DIST) ..\MinerLamp-master\MiningLigth.pro C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\spec_pre.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\common\angle.conf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\common\msvc-desktop.conf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\qconfig.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3danimation.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3danimation_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dcore.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dcore_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dextras.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dextras_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dinput.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dinput_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dlogic.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dlogic_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquick.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquick_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickanimation.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickextras.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickinput.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickrender.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickscene2d.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3drender.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3drender_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_axbase.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_axserver.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_charts.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_charts_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_core.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_core_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_dbus.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_designer.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_egl_support_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_gamepad.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_gamepad_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_gui.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_help.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_help_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_location.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_location_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_network.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_network_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_nfc.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_opengl.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_positioning.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_positioning_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_qml.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_quick.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_scxml.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_scxml_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_sensors.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_serialbus.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_serialbus_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_serialport.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_sql.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_svg.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_testlib.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_theme_support_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_uitools.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_webchannel.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_webchannel_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_websockets.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_webview.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_webview_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_widgets.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_winextras.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_winextras_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_xml.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_zlib_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\qt_functions.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\qt_config.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\win32-msvc\qmake.conf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\spec_post.prf .qmake.stash C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\exclusive_builds.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\common\msvc-version.conf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\toolchain.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\default_pre.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\win32\default_pre.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\resolve_config.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\exclusive_builds_post.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\default_post.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\build_pass.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\qml_debug.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\precompile_header.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\warn_on.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\qt.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\resources.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\moc.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\win32\opengl.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\uic.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\qmake_use.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\file_copies.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\win32\windows.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\testcase_targets.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\exceptions.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\yacc.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\lex.prf ..\MinerLamp-master\MiningLigth.pro ..\MinerLamp-master\resources.qrc C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\qtmain.prl C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\Qt5Charts.prl C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\Qt5Widgets.prl C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\Qt5Gui.prl C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\Qt5Network.prl C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\Qt5Core.prl   ..\MinerLamp-master\resources.qrc C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\data\dummy.cpp ..\MinerLamp-master\gpumonitor.h ..\MinerLamp-master\jsonparser.h ..\MinerLamp-master\mainwindow.h ..\MinerLamp-master\minerprocess.h ..\MinerLamp-master\highlighter.h ..\MinerLamp-master\helpdialog.h ..\MinerLamp-master\nvidianvml.h ..\MinerLamp-master\nvocdialog.h ..\MinerLamp-master\nvidiaapi.h ..\MinerLamp-master\nanopoolapi.h ..\MinerLamp-master\amdapi_adl.h ..\MinerLamp-master\hashratecharview.h ..\MinerLamp-master\piesliceeff.h ..\MinerLamp-master\structures.h ..\MinerLamp-master\urlapi.h ..\MinerLamp-master\gpumonitor.cpp ..\MinerLamp-master\jsonparser.cpp ..\MinerLamp-master\main.cpp ..\MinerLamp-master\mainwindow.cpp ..\MinerLamp-master\minerprocess.cpp ..\MinerLamp-master\highlighter.cpp ..\MinerLamp-master\helpdialog.cpp ..\MinerLamp-master\nvidianvml.cpp ..\MinerLamp-master\nvocdialog.cpp ..\MinerLamp-master\nvidiaapi.cpp ..\MinerLamp-master\nanopoolapi.cpp ..\MinerLamp-master\amdapi_adl.cpp ..\MinerLamp-master\hashratecharview.cpp ..\MinerLamp-master\piesliceeff.cpp ..\MinerLamp-master\urlapi.cpp ..\MinerLamp-master\mainwindow.ui ..\MinerLamp-master\helpdialog.ui ..\MinerLamp-master\nvocdialog.ui    
+	$(ZIP) MinerLamp.zip $(SOURCES) $(DIST) ..\MinerLamp-master\MiningLigth.pro C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\spec_pre.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\common\angle.conf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\common\msvc-desktop.conf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\qconfig.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3danimation.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3danimation_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dcore.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dcore_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dextras.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dextras_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dinput.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dinput_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dlogic.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dlogic_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquick.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquick_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickanimation.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickextras.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickinput.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickrender.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickscene2d.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3drender.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_3drender_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_axbase.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_axserver.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_charts.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_charts_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_core.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_core_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_dbus.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_designer.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_egl_support_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_gamepad.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_gamepad_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_gui.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_help.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_help_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_location.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_location_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_network.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_network_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_nfc.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_opengl.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_positioning.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_positioning_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_qml.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_quick.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_scxml.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_scxml_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_sensors.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_serialbus.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_serialbus_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_serialport.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_sql.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_svg.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_testlib.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_theme_support_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_uitools.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_webchannel.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_webchannel_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_websockets.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_webview.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_webview_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_widgets.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_winextras.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_winextras_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_xml.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\modules\qt_lib_zlib_private.pri C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\qt_functions.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\qt_config.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\win32-msvc\qmake.conf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\spec_post.prf .qmake.stash C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\exclusive_builds.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\common\msvc-version.conf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\toolchain.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\default_pre.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\win32\default_pre.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\resolve_config.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\exclusive_builds_post.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\default_post.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\build_pass.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\qml_debug.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\precompile_header.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\warn_on.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\qt.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\resources.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\moc.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\win32\opengl.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\uic.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\qmake_use.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\file_copies.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\win32\windows.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\testcase_targets.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\exceptions.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\yacc.prf C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\lex.prf ..\MinerLamp-master\MiningLigth.pro ..\MinerLamp-master\resources.qrc C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\qtmain.prl C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\Qt5Charts.prl C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\Qt5Widgets.prl C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\Qt5Gui.prl C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\Qt5Network.prl C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\Qt5Sql.prl C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\Qt5Core.prl   ..\MinerLamp-master\resources.qrc C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\data\dummy.cpp ..\MinerLamp-master\gpumonitor.h ..\MinerLamp-master\jsonparser.h ..\MinerLamp-master\mainwindow.h ..\MinerLamp-master\minerprocess.h ..\MinerLamp-master\highlighter.h ..\MinerLamp-master\helpdialog.h ..\MinerLamp-master\mysql.h ..\MinerLamp-master\nvidianvml.h ..\MinerLamp-master\nvocdialog.h ..\MinerLamp-master\nvidiaapi.h ..\MinerLamp-master\nanopoolapi.h ..\MinerLamp-master\amdapi_adl.h ..\MinerLamp-master\hashratecharview.h ..\MinerLamp-master\piesliceeff.h ..\MinerLamp-master\structures.h ..\MinerLamp-master\urlapi.h ..\MinerLamp-master\gpumonitor.cpp ..\MinerLamp-master\jsonparser.cpp ..\MinerLamp-master\main.cpp ..\MinerLamp-master\mainwindow.cpp ..\MinerLamp-master\minerprocess.cpp ..\MinerLamp-master\highlighter.cpp ..\MinerLamp-master\helpdialog.cpp ..\MinerLamp-master\mysql.cpp ..\MinerLamp-master\nvidianvml.cpp ..\MinerLamp-master\nvocdialog.cpp ..\MinerLamp-master\nvidiaapi.cpp ..\MinerLamp-master\nanopoolapi.cpp ..\MinerLamp-master\amdapi_adl.cpp ..\MinerLamp-master\hashratecharview.cpp ..\MinerLamp-master\piesliceeff.cpp ..\MinerLamp-master\urlapi.cpp ..\MinerLamp-master\mainwindow.ui ..\MinerLamp-master\helpdialog.ui ..\MinerLamp-master\nvocdialog.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) release\gpumonitor.obj release\jsonparser.obj release\main.obj release\mainwindow.obj release\minerprocess.obj release\highlighter.obj release\helpdialog.obj release\nvidianvml.obj release\nvocdialog.obj release\nvidiaapi.obj release\nanopoolapi.obj release\amdapi_adl.obj release\hashratecharview.obj release\piesliceeff.obj release\urlapi.obj release\qrc_resources.obj release\moc_gpumonitor.obj release\moc_mainwindow.obj release\moc_minerprocess.obj release\moc_highlighter.obj release\moc_helpdialog.obj release\moc_nvocdialog.obj release\moc_nvidiaapi.obj release\moc_nanopoolapi.obj
+	-$(DEL_FILE) release\gpumonitor.obj release\jsonparser.obj release\main.obj release\mainwindow.obj release\minerprocess.obj release\highlighter.obj release\helpdialog.obj release\mysql.obj release\nvidianvml.obj release\nvocdialog.obj release\nvidiaapi.obj release\nanopoolapi.obj release\amdapi_adl.obj release\hashratecharview.obj release\piesliceeff.obj release\urlapi.obj release\qrc_resources.obj release\moc_gpumonitor.obj release\moc_mainwindow.obj release\moc_minerprocess.obj release\moc_highlighter.obj release\moc_helpdialog.obj release\moc_nvocdialog.obj release\moc_nvidiaapi.obj release\moc_nanopoolapi.obj
 	-$(DEL_FILE) release\MinerLamp0.exp
 	-$(DEL_FILE) release\MinerLamp_resource.res
 
@@ -449,7 +453,7 @@ release\moc_gpumonitor.cpp: C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QM
 		..\MinerLamp-master\gpumonitor.h \
 		release\moc_predefs.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\bin\moc.exe
-	C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include release/moc_predefs.h -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/mkspecs/win32-msvc -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master -I"C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1/include" -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/nvapi -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/adl/include -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/jsoncpp/include -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtCharts -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtWidgets -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtGui -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" ..\MinerLamp-master\gpumonitor.h -o release\moc_gpumonitor.cpp
+	C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include release/moc_predefs.h -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/mkspecs/win32-msvc -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master -I"C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1/include" -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/nvapi -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/adl/include -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/jsoncpp/include -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtCharts -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtWidgets -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtGui -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtSql -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" ..\MinerLamp-master\gpumonitor.h -o release\moc_gpumonitor.cpp
 
 release\moc_mainwindow.cpp: C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QMainWindow \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qmainwindow.h \
@@ -618,6 +622,13 @@ release\moc_mainwindow.cpp: C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QM
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qgridlayout.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QLCDNumber \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qlcdnumber.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\QSqlDatabase \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\qsqldatabase.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\qtsqlglobal.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QDebug \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QMessageBox \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qmessagebox.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qdialog.h \
 		..\MinerLamp-master\minerprocess.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QProcess \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qprocess.h \
@@ -688,10 +699,6 @@ release\moc_mainwindow.cpp: C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QM
 		..\MinerLamp-master\adl_structures.h \
 		..\MinerLamp-master\adl_defines.h \
 		..\MinerLamp-master\gpumonitor.h \
-		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QDebug \
-		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QMessageBox \
-		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qmessagebox.h \
-		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qdialog.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QMenu \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qmenu.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qaction.h \
@@ -715,7 +722,7 @@ release\moc_mainwindow.cpp: C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QM
 		..\MinerLamp-master\mainwindow.h \
 		release\moc_predefs.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\bin\moc.exe
-	C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include release/moc_predefs.h -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/mkspecs/win32-msvc -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master -I"C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1/include" -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/nvapi -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/adl/include -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/jsoncpp/include -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtCharts -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtWidgets -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtGui -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" ..\MinerLamp-master\mainwindow.h -o release\moc_mainwindow.cpp
+	C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include release/moc_predefs.h -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/mkspecs/win32-msvc -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master -I"C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1/include" -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/nvapi -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/adl/include -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/jsoncpp/include -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtCharts -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtWidgets -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtGui -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtSql -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" ..\MinerLamp-master\mainwindow.h -o release\moc_mainwindow.cpp
 
 release\moc_minerprocess.cpp: C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QObject \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qobject.h \
@@ -835,7 +842,7 @@ release\moc_minerprocess.cpp: C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QOb
 		..\MinerLamp-master\minerprocess.h \
 		release\moc_predefs.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\bin\moc.exe
-	C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include release/moc_predefs.h -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/mkspecs/win32-msvc -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master -I"C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1/include" -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/nvapi -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/adl/include -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/jsoncpp/include -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtCharts -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtWidgets -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtGui -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" ..\MinerLamp-master\minerprocess.h -o release\moc_minerprocess.cpp
+	C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include release/moc_predefs.h -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/mkspecs/win32-msvc -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master -I"C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1/include" -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/nvapi -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/adl/include -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/jsoncpp/include -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtCharts -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtWidgets -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtGui -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtSql -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" ..\MinerLamp-master\minerprocess.h -o release\moc_minerprocess.cpp
 
 release\moc_highlighter.cpp: C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QObject \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qobject.h \
@@ -946,7 +953,7 @@ release\moc_highlighter.cpp: C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QObj
 		..\MinerLamp-master\highlighter.h \
 		release\moc_predefs.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\bin\moc.exe
-	C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include release/moc_predefs.h -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/mkspecs/win32-msvc -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master -I"C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1/include" -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/nvapi -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/adl/include -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/jsoncpp/include -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtCharts -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtWidgets -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtGui -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" ..\MinerLamp-master\highlighter.h -o release\moc_highlighter.cpp
+	C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include release/moc_predefs.h -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/mkspecs/win32-msvc -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master -I"C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1/include" -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/nvapi -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/adl/include -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/jsoncpp/include -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtCharts -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtWidgets -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtGui -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtSql -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" ..\MinerLamp-master\highlighter.h -o release\moc_highlighter.cpp
 
 release\moc_helpdialog.cpp: C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QDialog \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qdialog.h \
@@ -1054,7 +1061,7 @@ release\moc_helpdialog.cpp: C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QD
 		..\MinerLamp-master\helpdialog.h \
 		release\moc_predefs.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\bin\moc.exe
-	C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include release/moc_predefs.h -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/mkspecs/win32-msvc -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master -I"C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1/include" -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/nvapi -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/adl/include -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/jsoncpp/include -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtCharts -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtWidgets -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtGui -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" ..\MinerLamp-master\helpdialog.h -o release\moc_helpdialog.cpp
+	C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include release/moc_predefs.h -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/mkspecs/win32-msvc -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master -I"C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1/include" -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/nvapi -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/adl/include -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/jsoncpp/include -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtCharts -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtWidgets -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtGui -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtSql -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" ..\MinerLamp-master\helpdialog.h -o release\moc_helpdialog.cpp
 
 release\moc_nvocdialog.cpp: C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QDialog \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qdialog.h \
@@ -1260,7 +1267,7 @@ release\moc_nvocdialog.cpp: C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QD
 		..\MinerLamp-master\nvocdialog.h \
 		release\moc_predefs.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\bin\moc.exe
-	C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include release/moc_predefs.h -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/mkspecs/win32-msvc -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master -I"C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1/include" -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/nvapi -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/adl/include -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/jsoncpp/include -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtCharts -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtWidgets -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtGui -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" ..\MinerLamp-master\nvocdialog.h -o release\moc_nvocdialog.cpp
+	C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include release/moc_predefs.h -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/mkspecs/win32-msvc -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master -I"C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1/include" -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/nvapi -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/adl/include -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/jsoncpp/include -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtCharts -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtWidgets -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtGui -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtSql -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" ..\MinerLamp-master\nvocdialog.h -o release\moc_nvocdialog.cpp
 
 release\moc_nvidiaapi.cpp: C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QMutex \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qmutex.h \
@@ -1325,7 +1332,7 @@ release\moc_nvidiaapi.cpp: C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QMutex
 		..\MinerLamp-master\nvidiaapi.h \
 		release\moc_predefs.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\bin\moc.exe
-	C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include release/moc_predefs.h -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/mkspecs/win32-msvc -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master -I"C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1/include" -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/nvapi -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/adl/include -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/jsoncpp/include -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtCharts -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtWidgets -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtGui -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" ..\MinerLamp-master\nvidiaapi.h -o release\moc_nvidiaapi.cpp
+	C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include release/moc_predefs.h -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/mkspecs/win32-msvc -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master -I"C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1/include" -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/nvapi -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/adl/include -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/jsoncpp/include -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtCharts -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtWidgets -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtGui -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtSql -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" ..\MinerLamp-master\nvidiaapi.h -o release\moc_nvidiaapi.cpp
 
 release\moc_nanopoolapi.cpp: C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QObject \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qobject.h \
@@ -1426,7 +1433,7 @@ release\moc_nanopoolapi.cpp: C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QObj
 		..\MinerLamp-master\nanopoolapi.h \
 		release\moc_predefs.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\bin\moc.exe
-	C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include release/moc_predefs.h -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/mkspecs/win32-msvc -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master -I"C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1/include" -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/nvapi -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/adl/include -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/jsoncpp/include -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtCharts -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtWidgets -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtGui -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" ..\MinerLamp-master\nanopoolapi.h -o release\moc_nanopoolapi.cpp
+	C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include release/moc_predefs.h -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/mkspecs/win32-msvc -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master -I"C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1/include" -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/nvapi -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/adl/include -ID:/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/jsoncpp/include -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtCharts -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtWidgets -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtGui -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtANGLE -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtNetwork -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtSql -IC:/Qt/Qt5.9.9/5.9.9/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" ..\MinerLamp-master\nanopoolapi.h -o release\moc_nanopoolapi.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -1606,6 +1613,13 @@ ui_mainwindow.h: ..\MinerLamp-master\mainwindow.ui \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qgridlayout.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QLCDNumber \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qlcdnumber.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\QSqlDatabase \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\qsqldatabase.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\qtsqlglobal.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QDebug \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QMessageBox \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qmessagebox.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qdialog.h \
 		..\MinerLamp-master\minerprocess.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QProcess \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qprocess.h \
@@ -1675,10 +1689,6 @@ ui_mainwindow.h: ..\MinerLamp-master\mainwindow.ui \
 		..\MinerLamp-master\adl_structures.h \
 		..\MinerLamp-master\adl_defines.h \
 		..\MinerLamp-master\gpumonitor.h \
-		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QDebug \
-		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QMessageBox \
-		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qmessagebox.h \
-		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qdialog.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QMenu \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qmenu.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qaction.h \
@@ -2163,6 +2173,13 @@ release\main.obj: ..\MinerLamp-master\main.cpp ../MinerLamp-master/mainwindow.h 
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qgridlayout.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QLCDNumber \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qlcdnumber.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\QSqlDatabase \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\qsqldatabase.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\qtsqlglobal.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QDebug \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QMessageBox \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qmessagebox.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qdialog.h \
 		../MinerLamp-master/minerprocess.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QProcess \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qprocess.h \
@@ -2233,10 +2250,6 @@ release\main.obj: ..\MinerLamp-master\main.cpp ../MinerLamp-master/mainwindow.h 
 		..\MinerLamp-master\adl_structures.h \
 		..\MinerLamp-master\adl_defines.h \
 		../MinerLamp-master/gpumonitor.h \
-		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QDebug \
-		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QMessageBox \
-		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qmessagebox.h \
-		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qdialog.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QMenu \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qmenu.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qaction.h \
@@ -2257,13 +2270,26 @@ release\main.obj: ..\MinerLamp-master\main.cpp ../MinerLamp-master/mainwindow.h 
 		../MinerLamp-master/urlapi.h \
 		../MinerLamp-master/structures.h \
 		../MinerLamp-master/jsonparser.h \
+		../MinerLamp-master/mysql.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QApplication \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qapplication.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qcoreapplication.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qeventloop.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qguiapplication.h \
-		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qinputmethod.h
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qinputmethod.h \
+		"C:/Program Files/MySQL/MySQL Server 8.0/include/mysql.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\field_types.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\my_list.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql_com.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\my_command.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\my_compress.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql\udf_registration_types.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql\client_plugin.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql\plugin_auth_common.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql_version.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql_time.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\errmsg.h"
 
 release\mainwindow.obj: ..\MinerLamp-master\mainwindow.cpp ../MinerLamp-master/mainwindow.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QMainWindow \
@@ -2433,6 +2459,13 @@ release\mainwindow.obj: ..\MinerLamp-master\mainwindow.cpp ../MinerLamp-master/m
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qgridlayout.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QLCDNumber \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qlcdnumber.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\QSqlDatabase \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\qsqldatabase.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\qtsqlglobal.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QDebug \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QMessageBox \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qmessagebox.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qdialog.h \
 		../MinerLamp-master/minerprocess.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QProcess \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qprocess.h \
@@ -2503,10 +2536,6 @@ release\mainwindow.obj: ..\MinerLamp-master\mainwindow.cpp ../MinerLamp-master/m
 		..\MinerLamp-master\adl_structures.h \
 		..\MinerLamp-master\adl_defines.h \
 		../MinerLamp-master/gpumonitor.h \
-		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QDebug \
-		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QMessageBox \
-		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qmessagebox.h \
-		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qdialog.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QMenu \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qmenu.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qaction.h \
@@ -2577,6 +2606,19 @@ release\mainwindow.obj: ..\MinerLamp-master\mainwindow.cpp ../MinerLamp-master/m
 		"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.1\include\nvml.h" \
 		../MinerLamp-master/nvocdialog.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QAbstractButton \
+		../MinerLamp-master/mysql.h \
+		"C:/Program Files/MySQL/MySQL Server 8.0/include/mysql.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\field_types.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\my_list.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql_com.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\my_command.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\my_compress.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql\udf_registration_types.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql\client_plugin.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql\plugin_auth_common.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql_version.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql_time.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\errmsg.h" \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QFrame
 
 release\minerprocess.obj: ..\MinerLamp-master\minerprocess.cpp ../MinerLamp-master/minerprocess.h \
@@ -2975,6 +3017,135 @@ release\helpdialog.obj: ..\MinerLamp-master\helpdialog.cpp ../MinerLamp-master/h
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qfontdatabase.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QPushButton \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qpushbutton.h
+
+release\mysql.obj: ..\MinerLamp-master\mysql.cpp ../MinerLamp-master/mysql.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\QSqlDatabase \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\qsqldatabase.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\qtsqlglobal.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qglobal.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qconfig-bootstrapped.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qconfig.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qtcore-config.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qsystemdetection.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qprocessordetection.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qcompilerdetection.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qtypeinfo.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qsysinfo.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qlogging.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qflags.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qatomic.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qbasicatomic.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qatomic_bootstrap.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qgenericatomic.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qatomic_cxx11.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qatomic_msvc.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qglobalstatic.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qmutex.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qnumeric.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qversiontagging.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qstring.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qchar.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qbytearray.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qrefcount.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qnamespace.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qarraydata.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qstringbuilder.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QDebug \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qdebug.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qalgorithms.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qhash.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qiterator.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qlist.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qhashfunctions.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qpair.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qbytearraylist.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qstringlist.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qregexp.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qstringmatcher.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qmap.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qtextstream.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qiodevice.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qobject.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qobjectdefs.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qobjectdefs_impl.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qcoreevent.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qscopedpointer.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qmetatype.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qvarlengtharray.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qcontainerfwd.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qobject_impl.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qlocale.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qvariant.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qshareddata.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qvector.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qpoint.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qset.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qcontiguouscache.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qsharedpointer.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QMessageBox \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qmessagebox.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qtwidgetsglobal.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qtguiglobal.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qtgui-config.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qtwidgets-config.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qdialog.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qwidget.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qwindowdefs.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qwindowdefs_win.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qmargins.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qpaintdevice.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qrect.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qsize.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qpalette.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qcolor.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qrgb.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qrgba64.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qbrush.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qmatrix.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qpolygon.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qregion.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qdatastream.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qline.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qtransform.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qpainterpath.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qimage.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qpixelformat.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qpixmap.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qfont.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qfontmetrics.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qfontinfo.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qsizepolicy.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qcursor.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qkeysequence.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qevent.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qurl.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qurlquery.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qfile.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qfiledevice.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qvector2d.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qtouchdevice.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QApplication \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qapplication.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qcoreapplication.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qeventloop.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qguiapplication.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qinputmethod.h \
+		"C:/Program Files/MySQL/MySQL Server 8.0/include/mysql.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\field_types.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\my_list.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql_com.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\my_command.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\my_compress.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql\udf_registration_types.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql\client_plugin.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql\plugin_auth_common.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql_version.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql_time.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\errmsg.h" \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\QSqlError \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\qsqlerror.h
 
 release\nvidianvml.obj: ..\MinerLamp-master\nvidianvml.cpp ../MinerLamp-master/nvidianvml.h \
 		"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.1\include\nvml.h" \
@@ -3835,6 +4006,13 @@ release\hashratecharview.obj: ..\MinerLamp-master\hashratecharview.cpp C:\Qt\Qt5
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qgridlayout.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QLCDNumber \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qlcdnumber.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\QSqlDatabase \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\qsqldatabase.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\qtsqlglobal.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QDebug \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QMessageBox \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qmessagebox.h \
+		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qdialog.h \
 		../MinerLamp-master/minerprocess.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QProcess \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qprocess.h \
@@ -3904,10 +4082,6 @@ release\hashratecharview.obj: ..\MinerLamp-master\hashratecharview.cpp C:\Qt\Qt5
 		..\MinerLamp-master\adl_structures.h \
 		..\MinerLamp-master\adl_defines.h \
 		../MinerLamp-master/gpumonitor.h \
-		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QDebug \
-		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QMessageBox \
-		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qmessagebox.h \
-		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qdialog.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QMenu \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qmenu.h \
 		C:\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qaction.h \

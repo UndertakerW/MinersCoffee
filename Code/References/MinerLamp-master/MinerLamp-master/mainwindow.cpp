@@ -6,7 +6,7 @@
 #include "nvocdialog.h"
 #include "nanopoolapi.h"
 #include "hashratecharview.h"
-
+#include "mysql.h"
 #include <QDebug>
 #include <QMessageBox>
 #include <QMenu>
@@ -62,6 +62,7 @@ MainWindow::MainWindow(QWidget *parent) :
     // update hash rate
     connect(_process, &MinerProcess::emitHashRate, this, &MainWindow::onHashrate);
     connect(_process, &MinerProcess::emitError, this, &MainWindow::onError);
+
 
 
 

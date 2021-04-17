@@ -7,7 +7,7 @@
 QT       += \
         core gui network charts\
         charts
-QT       +=  core gui sql
+QT       +=  sql
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = MinerLamp
@@ -34,6 +34,7 @@ SOURCES += \
     minerprocess.cpp \
     highlighter.cpp \
     helpdialog.cpp \
+    mysql.cpp \
     nvidianvml.cpp \
     nvocdialog.cpp \
     nvidiaapi.cpp \
@@ -50,6 +51,7 @@ HEADERS += \
     minerprocess.h \
     highlighter.h \
     helpdialog.h \
+    mysql.h \
     nvidianvml.h \
     nvocdialog.h \
     nvidiaapi.h \
