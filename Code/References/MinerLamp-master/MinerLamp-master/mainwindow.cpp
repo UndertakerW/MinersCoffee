@@ -677,7 +677,7 @@ void MainWindow::on_pushButton_clicked()
             }
 
 
-            _nvMonitorThrd->SetAPI(current_core);
+
 
             QString core_path = QCoreApplication::applicationDirPath() + current_core->path;
             QString core_args = current_core->cmds[current_coin].arg(
@@ -685,6 +685,7 @@ void MainWindow::on_pushButton_clicked()
 
             qDebug() << core_path << core_args << endl;
 
+            _process->SetAPI(current_core);
             _process->setMax0MHs(ui->spinBoxMax0MHs->value());
             _process->setRestartDelay(ui->spinBoxDelay->value());
             _process->setRestartOption(ui->groupBoxWatchdog->isChecked());
@@ -910,17 +911,12 @@ GPUInfo MainWindow::getWorst(const std::vector<GPUInfo> &gpu_infos)
         if (gpu_infos[i].memclock < memclock) memclock = gpu_infos[i].memclock;
         if (gpu_infos[i].power < power) power = gpu_infos[i].power;
         if (gpu_infos[i].fanspeed < fanspeed) fanspeed = gpu_infos[i].fanspeed;
-        if (gpu_infos[i].hashrate < hashrate) {
-            hashrate = gpu_infos[i].hashrate;
-            gi.num = i;
-        }
     }
     gi.temp = temp;
     gi.gpuclock = gpuclock;
     gi.memclock = memclock;
     gi.power = power;
     gi.fanspeed = fanspeed;
-    gi.hashrate = hashrate;
     return gi;
 }
 

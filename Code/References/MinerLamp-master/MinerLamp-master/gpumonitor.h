@@ -48,9 +48,11 @@ protected:
 public:
     GPUMonitor(QObject* p = Q_NULLPTR);
 
-    void SetAPI(Core* core);
+    //void SetAPI(Core* core);
 
-    virtual MiningInfo getStatus() = 0;
+    //virtual MiningInfo getStatus() = 0;
+
+    virtual QList<GPUInfo> getStatus() = 0;
 
 signals:
 
@@ -79,7 +81,9 @@ public:
 
     void run() override;
 
-    MiningInfo getStatus() override;
+    //MiningInfo getStatus() override;
+
+    QList<GPUInfo> getStatus() override;
 
 };
 
@@ -90,7 +94,9 @@ public:
 
     void run() override;
 
-    MiningInfo getStatus() override;
+    //MiningInfo getStatus() override;
+
+    QList<GPUInfo> getStatus() override;
 
 
 private:

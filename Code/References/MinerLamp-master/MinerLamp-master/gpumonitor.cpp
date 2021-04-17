@@ -10,14 +10,6 @@ GPUMonitor::GPUMonitor(QObject *p)
     mainWindow = (MainWindow*) p;
 }
 
-void GPUMonitor::SetAPI(Core* core)
-{
-    api_str = core->api.toStdString();
-    if (core->name == "NBMiner") {
-        jsonParser = new NBMinerJsonParser();
-    }
-}
-
 nvMonitorThrd::nvMonitorThrd(QObject *p) : GPUMonitor(p) {}
 
 void nvMonitorThrd::run()
@@ -27,7 +19,7 @@ void nvMonitorThrd::run()
 
     while(1)
     {
-        MiningInfo miningInfo = getStatus();
+        QList<GPUInfo> gpuInfos = getStatus();
 
         unsigned int gpucount = nvml->getGPUCount();
 
@@ -62,68 +54,9 @@ void nvMonitorThrd::run()
     nvml->shutDownNVML();
 }
 
-MiningInfo nvMonitorThrd::getStatus()
+QList<GPUInfo> nvMonitorThrd::getStatus()
 {
-    MiningInfo miningInfo;
-    QList<GPUInfo> gpuInfosFromDriver = nvml->getStatus();
-
-    if (api_str != "" && jsonParser && mainWindow->getMinerStatus())
-    {
-        std::string buffer;
-        LPCSTR url = api_str.c_str();
-        urlAPI->GetURLInternal(url, buffer);
-        if (buffer != "")
-        {
-            miningInfo = jsonParser->ParseJsonForMining(buffer);
-
-            // Merge the infomation from json (miner) and driver
-            // O(N^2) is okay, since the number of GPUs should be small
-            for (int i = 0; i < miningInfo.gpuInfos.size(); i++) {
-                for (int j = 0; j < gpuInfosFromDriver.size(); j++) {
-                    if (miningInfo.gpuInfos[i].num == gpuInfosFromDriver[j].num) {
-                        miningInfo.gpuInfos[i].gpuclock = gpuInfosFromDriver[j].gpuclock;
-                        miningInfo.gpuInfos[i].memclock = gpuInfosFromDriver[j].memclock;
-                        miningInfo.gpuInfos[i].power = gpuInfosFromDriver[j].power;
-                        miningInfo.gpuInfos[i].fanspeed = gpuInfosFromDriver[j].fanspeed;
-                        miningInfo.gpuInfos[i].name = gpuInfosFromDriver[j].name;
-                    }
-                }
-            }
-        }
-        else
-        {
-            miningInfo.gpuInfos = gpuInfosFromDriver;
-        }
-
-    }
-    else
-    {
-        miningInfo.gpuInfos = gpuInfosFromDriver;
-    }
-
-
-    // From Mining Core
-    // Default API
-
-    /*
-    if (api_str == "")
-        api_str = api_nbminer.toStdString();
-
-    std::string buffer;
-    LPCSTR url = api_str.c_str();
-    urlAPI->GetURLInternal(url, buffer);
-    miningInfo = jsonParser->ParseJsonForMining(buffer);
-
-    if (jsonParser) {
-        miningInfo = jsonParser->ParseJsonForMining(buffer);
-        //qDebug() << "mining" << endl;
-    }
-    */
-    //qDebug() << gpuInfos.size() << endl;
-    //qDebug() << gpuInfos[0].num << gpuInfos[0].hashrate/(1<<20) << endl;
-    qDebug() << miningInfo.latency << miningInfo.accepted_shares << miningInfo.gpuInfos[0].name << miningInfo.gpuInfos[0].gpuclock << miningInfo.gpuInfos[0].power << miningInfo.gpuInfos[0].hashrate << endl;
-
-    return miningInfo;
+    return nvml->getStatus();
 }
 
 
@@ -164,8 +97,8 @@ void amdMonitorThrd::run()
         delete _amd;
 }
 
-MiningInfo amdMonitorThrd::getStatus()
+QList<GPUInfo> amdMonitorThrd::getStatus()
 {
-    MiningInfo miningInfo;
-    return miningInfo;
+    QList<GPUInfo> gpuInfos;
+    return gpuInfos;
 }

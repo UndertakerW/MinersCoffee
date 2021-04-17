@@ -16,12 +16,18 @@ public:
     unsigned int memclock;
     unsigned int power;
     unsigned int fanspeed;
-    float hashrate = 0;
     QString name;
+};
+
+class GPUMiningInfo {
+public:
+    unsigned int num;
+    float hashrate = 0;
     unsigned int accepted_shares = 0;
     unsigned int invalid_shares = 0;
     unsigned int rejected_shares = 0;
 };
+
 
 class MiningInfo {
 public:
@@ -29,7 +35,7 @@ public:
     unsigned int invalid_shares = 0;
     unsigned int rejected_shares = 0;
     unsigned int latency = 0;
-    QList<GPUInfo> gpuInfos;
+    QList<GPUMiningInfo> gpuMiningInfos;
 };
 
 #endif // STRUCTURES_H

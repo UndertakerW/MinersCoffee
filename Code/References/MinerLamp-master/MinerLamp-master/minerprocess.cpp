@@ -342,8 +342,33 @@ void MinerProcess::restart()
     }
 }
 
+void MinerProcess::SetAPI(Core* core)
+{
+    api_str = core->api.toStdString();
+    if (core->name == "NBMiner") {
+        jsonParser = new NBMinerJsonParser();
+    }
+}
 
+MiningInfo MinerProcess::getStatus()
+{
+    MiningInfo miningInfo;
 
+    if (api_str != "" && jsonParser)
+    {
+        std::string buffer;
+        LPCSTR url = api_str.c_str();
+        urlAPI->GetURLInternal(url, buffer);
+        if (buffer != "")
+        {
+            miningInfo = jsonParser->ParseJsonForMining(buffer);
+        }
+    }
+
+    qDebug() << miningInfo.latency << miningInfo.gpuMiningInfos[0].hashrate;
+
+    return miningInfo;
+}
 
 donateThrd::donateThrd(QObject* pParent) : QThread(pParent)
   , _parent((MinerProcess*)pParent)
@@ -377,3 +402,4 @@ void restarter::run()
     QThread::sleep(_delay);
     emit restartsignal();
 }
+

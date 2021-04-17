@@ -623,6 +623,12 @@ release\moc_mainwindow.cpp: D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QMain
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QLCDNumber \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qlcdnumber.h \
 		..\MinerLamp-master\minerprocess.h \
+		..\MinerLamp-master\urlapi.h \
+		..\MinerLamp-master\structures.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QString \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QMap \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\QList \
+		..\MinerLamp-master\jsonparser.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QProcess \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qprocess.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QTextEdit \
@@ -648,7 +654,6 @@ release\moc_mainwindow.cpp: D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QMain
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qtnetwork-config.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qnetworkrequest.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QSharedDataPointer \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QString \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QUrl \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QVector \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\QSslConfiguration \
@@ -713,20 +718,16 @@ release\moc_mainwindow.cpp: D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QMain
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QScrollBar \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qscrollbar.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qabstractslider.h \
-		..\MinerLamp-master\urlapi.h \
-		..\MinerLamp-master\structures.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QMap \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\QList \
-		..\MinerLamp-master\jsonparser.h \
 		..\MinerLamp-master\mainwindow.h \
 		release\moc_predefs.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\bin\moc.exe
 	D:\APP\Qt6\5.9.9\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include release/moc_predefs.h -ID:/APP/Qt6/5.9.9/msvc2017_64/mkspecs/win32-msvc -ID:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master -I"C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1/include" -ID:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/nvapi -ID:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/adl/include -ID:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/jsoncpp/include -ID:/APP/Qt6/5.9.9/msvc2017_64/include -ID:/APP/Qt6/5.9.9/msvc2017_64/include/QtCharts -ID:/APP/Qt6/5.9.9/msvc2017_64/include/QtWidgets -ID:/APP/Qt6/5.9.9/msvc2017_64/include/QtGui -ID:/APP/Qt6/5.9.9/msvc2017_64/include/QtANGLE -ID:/APP/Qt6/5.9.9/msvc2017_64/include/QtNetwork -ID:/APP/Qt6/5.9.9/msvc2017_64/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" ..\MinerLamp-master\mainwindow.h -o release\moc_mainwindow.cpp
 
-release\moc_minerprocess.cpp: D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QObject \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qobject.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qobjectdefs.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qnamespace.h \
+release\moc_minerprocess.cpp: ..\MinerLamp-master\urlapi.h \
+		..\MinerLamp-master\structures.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QString \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qstring.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qchar.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qglobal.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qconfig-bootstrapped.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qconfig.h \
@@ -748,87 +749,92 @@ release\moc_minerprocess.cpp: D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QObjec
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qmutex.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qnumeric.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qversiontagging.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qobjectdefs_impl.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qstring.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qchar.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qbytearray.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qrefcount.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qnamespace.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qarraydata.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qstringbuilder.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QMap \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qmap.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qiterator.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qlist.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qalgorithms.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qiterator.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qhashfunctions.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qpair.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qbytearraylist.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qstringlist.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qregexp.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qstringmatcher.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qdebug.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qhash.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qtextstream.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qiodevice.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qobject.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qobjectdefs.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qobjectdefs_impl.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qcoreevent.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qscopedpointer.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qmetatype.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qvarlengtharray.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qcontainerfwd.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qobject_impl.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QProcess \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qprocess.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qiodevice.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qshareddata.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qhash.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QTextEdit \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qtextedit.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qtwidgetsglobal.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qtguiglobal.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qtgui-config.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qtwidgets-config.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qframe.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qwidget.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qwindowdefs.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qwindowdefs_win.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qmargins.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qpaintdevice.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qrect.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qsize.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qpoint.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qpalette.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qcolor.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qrgb.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qrgba64.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qbrush.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qvector.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qmatrix.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qpolygon.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qregion.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qdatastream.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qline.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qtransform.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qpainterpath.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qimage.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qpixelformat.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qpixmap.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qsharedpointer.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qfont.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qfontmetrics.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qfontinfo.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qsizepolicy.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qcursor.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qkeysequence.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qevent.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qvariant.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qmap.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qdebug.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qtextstream.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qlocale.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qvariant.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qshareddata.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qvector.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qpoint.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qset.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qcontiguouscache.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qsharedpointer.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\QList \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qevent.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qtguiglobal.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qtgui-config.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qwindowdefs.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qwindowdefs_win.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qregion.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qrect.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qmargins.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qsize.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qdatastream.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qkeysequence.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qurl.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qurlquery.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qfile.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qfiledevice.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qvector2d.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qtouchdevice.h \
+		..\MinerLamp-master\jsonparser.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QObject \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QProcess \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qprocess.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QTextEdit \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qtextedit.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qtwidgetsglobal.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qtwidgets-config.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qframe.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qwidget.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qpaintdevice.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qpalette.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qcolor.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qrgb.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qrgba64.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qbrush.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qmatrix.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qpolygon.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qline.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qtransform.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qpainterpath.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qimage.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qpixelformat.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qpixmap.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qfont.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qfontmetrics.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qfontinfo.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qsizepolicy.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qcursor.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qtextdocument.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qtextoption.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qtextcursor.h \
@@ -1616,6 +1622,12 @@ ui_mainwindow.h: ..\MinerLamp-master\mainwindow.ui \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QLCDNumber \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qlcdnumber.h \
 		..\MinerLamp-master\minerprocess.h \
+		..\MinerLamp-master\urlapi.h \
+		..\MinerLamp-master\structures.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QString \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QMap \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\QList \
+		..\MinerLamp-master\jsonparser.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QProcess \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qprocess.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QTextEdit \
@@ -1641,7 +1653,6 @@ ui_mainwindow.h: ..\MinerLamp-master\mainwindow.ui \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qtnetwork-config.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qnetworkrequest.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QSharedDataPointer \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QString \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QUrl \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QVector \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\QSslConfiguration \
@@ -1704,12 +1715,7 @@ ui_mainwindow.h: ..\MinerLamp-master\mainwindow.ui \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\qbarcategoryaxis.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QScrollBar \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qscrollbar.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qabstractslider.h \
-		..\MinerLamp-master\urlapi.h \
-		..\MinerLamp-master\structures.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QMap \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\QList \
-		..\MinerLamp-master\jsonparser.h
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qabstractslider.h
 	D:\APP\Qt6\5.9.9\msvc2017_64\bin\uic.exe ..\MinerLamp-master\mainwindow.ui -o ui_mainwindow.h
 
 ui_helpdialog.h: ..\MinerLamp-master\helpdialog.ui \
@@ -1932,7 +1938,73 @@ release\gpumonitor.obj: ..\MinerLamp-master\gpumonitor.cpp ../MinerLamp-master/g
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\QList \
 		../MinerLamp-master/jsonparser.h \
 		../MinerLamp-master/nvidianvml.h \
-		"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.1\include\nvml.h"
+		"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.1\include\nvml.h" \
+		../MinerLamp-master/mainwindow.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\QPieSeries \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\qpieseries.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\QPieSlice \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\qpieslice.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QLabel \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qlabel.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QHBoxLayout \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qboxlayout.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qlayout.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qlayoutitem.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qgridlayout.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QLCDNumber \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qlcdnumber.h \
+		../MinerLamp-master/minerprocess.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QProcess \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qprocess.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QTextEdit \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qtextedit.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qtextdocument.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qtextcursor.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qtextformat.h \
+		../MinerLamp-master/highlighter.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\QTextCharFormat \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\QSyntaxHighlighter \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qsyntaxhighlighter.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qtextobject.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qtextlayout.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qglyphrun.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qrawfont.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qfontdatabase.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QRegularExpression \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qregularexpression.h \
+		../MinerLamp-master/nanopoolapi.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\QNetworkAccessManager \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qnetworkaccessmanager.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qtnetworkglobal.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qtnetwork-config.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qnetworkrequest.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QSharedDataPointer \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QUrl \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QVector \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\QSslConfiguration \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qsslconfiguration.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qsslsocket.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qtcpsocket.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qabstractsocket.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qsslerror.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qsslcertificate.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qcryptographichash.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qdatetime.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qssl.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QFlags \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\QSslPreSharedKeyAuthenticator \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qsslpresharedkeyauthenticator.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QMetaType \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\QNetworkRequest \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\QNetworkReply \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qnetworkreply.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QIODevice \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QJsonDocument \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qjsondocument.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qjsonvalue.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QJsonObject \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qjsonobject.h \
+		../MinerLamp-master/constants.h
 
 release\jsonparser.obj: ..\MinerLamp-master\jsonparser.cpp D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QDebug \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qdebug.h \
@@ -2198,6 +2270,12 @@ release\main.obj: ..\MinerLamp-master\main.cpp ../MinerLamp-master/mainwindow.h 
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QLCDNumber \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qlcdnumber.h \
 		../MinerLamp-master/minerprocess.h \
+		../MinerLamp-master/urlapi.h \
+		../MinerLamp-master/structures.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QString \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QMap \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\QList \
+		../MinerLamp-master/jsonparser.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QProcess \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qprocess.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QTextEdit \
@@ -2223,7 +2301,6 @@ release\main.obj: ..\MinerLamp-master\main.cpp ../MinerLamp-master/mainwindow.h 
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qtnetwork-config.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qnetworkrequest.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QSharedDataPointer \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QString \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QUrl \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QVector \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\QSslConfiguration \
@@ -2288,11 +2365,6 @@ release\main.obj: ..\MinerLamp-master\main.cpp ../MinerLamp-master/mainwindow.h 
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QScrollBar \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qscrollbar.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qabstractslider.h \
-		../MinerLamp-master/urlapi.h \
-		../MinerLamp-master/structures.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QMap \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\QList \
-		../MinerLamp-master/jsonparser.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QApplication \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qapplication.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qcoreapplication.h \
@@ -2470,6 +2542,12 @@ release\mainwindow.obj: ..\MinerLamp-master\mainwindow.cpp ../MinerLamp-master/m
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QLCDNumber \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qlcdnumber.h \
 		../MinerLamp-master/minerprocess.h \
+		../MinerLamp-master/urlapi.h \
+		../MinerLamp-master/structures.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QString \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QMap \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\QList \
+		../MinerLamp-master/jsonparser.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QProcess \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qprocess.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QTextEdit \
@@ -2495,7 +2573,6 @@ release\mainwindow.obj: ..\MinerLamp-master\mainwindow.cpp ../MinerLamp-master/m
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qtnetwork-config.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qnetworkrequest.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QSharedDataPointer \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QString \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QUrl \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QVector \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\QSslConfiguration \
@@ -2560,11 +2637,6 @@ release\mainwindow.obj: ..\MinerLamp-master\mainwindow.cpp ../MinerLamp-master/m
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QScrollBar \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qscrollbar.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qabstractslider.h \
-		../MinerLamp-master/urlapi.h \
-		../MinerLamp-master/structures.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QMap \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\QList \
-		../MinerLamp-master/jsonparser.h \
 		ui_mainwindow.h \
 		../MinerLamp-master/helpdialog.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QDialog \
@@ -2579,10 +2651,11 @@ release\mainwindow.obj: ..\MinerLamp-master\mainwindow.cpp ../MinerLamp-master/m
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QFrame
 
 release\minerprocess.obj: ..\MinerLamp-master\minerprocess.cpp ../MinerLamp-master/minerprocess.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QObject \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qobject.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qobjectdefs.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qnamespace.h \
+		../MinerLamp-master/urlapi.h \
+		../MinerLamp-master/structures.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QString \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qstring.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qchar.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qglobal.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qconfig-bootstrapped.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qconfig.h \
@@ -2604,87 +2677,92 @@ release\minerprocess.obj: ..\MinerLamp-master\minerprocess.cpp ../MinerLamp-mast
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qmutex.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qnumeric.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qversiontagging.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qobjectdefs_impl.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qstring.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qchar.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qbytearray.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qrefcount.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qnamespace.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qarraydata.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qstringbuilder.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QMap \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qmap.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qiterator.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qlist.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qalgorithms.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qiterator.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qhashfunctions.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qpair.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qbytearraylist.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qstringlist.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qregexp.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qstringmatcher.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qdebug.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qhash.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qtextstream.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qiodevice.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qobject.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qobjectdefs.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qobjectdefs_impl.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qcoreevent.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qscopedpointer.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qmetatype.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qvarlengtharray.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qcontainerfwd.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qobject_impl.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QProcess \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qprocess.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qiodevice.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qshareddata.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qhash.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QTextEdit \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qtextedit.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qtwidgetsglobal.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qtguiglobal.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qtgui-config.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qtwidgets-config.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qframe.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qwidget.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qwindowdefs.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qwindowdefs_win.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qmargins.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qpaintdevice.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qrect.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qsize.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qpoint.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qpalette.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qcolor.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qrgb.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qrgba64.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qbrush.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qvector.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qmatrix.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qpolygon.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qregion.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qdatastream.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qline.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qtransform.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qpainterpath.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qimage.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qpixelformat.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qpixmap.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qsharedpointer.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qfont.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qfontmetrics.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qfontinfo.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qsizepolicy.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qcursor.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qkeysequence.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qevent.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qvariant.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qmap.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qdebug.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qtextstream.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qlocale.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qvariant.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qshareddata.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qvector.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qpoint.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qset.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qcontiguouscache.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qsharedpointer.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\QList \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qevent.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qtguiglobal.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qtgui-config.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qwindowdefs.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qwindowdefs_win.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qregion.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qrect.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qmargins.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qsize.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qdatastream.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qkeysequence.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qurl.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qurlquery.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qfile.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qfiledevice.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qvector2d.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qtouchdevice.h \
+		../MinerLamp-master/jsonparser.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QObject \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QProcess \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qprocess.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QTextEdit \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qtextedit.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qtwidgetsglobal.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qtwidgets-config.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qframe.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qwidget.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qpaintdevice.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qpalette.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qcolor.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qrgb.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qrgba64.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qbrush.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qmatrix.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qpolygon.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qline.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qtransform.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qpainterpath.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qimage.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qpixelformat.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qpixmap.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qfont.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qfontmetrics.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qfontinfo.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qsizepolicy.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qcursor.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qtextdocument.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qtextoption.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qtextcursor.h \
@@ -2694,13 +2772,151 @@ release\minerprocess.obj: ..\MinerLamp-master\minerprocess.cpp ../MinerLamp-mast
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qthread.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QSettings \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qsettings.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QTextStream \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QDebug \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QRegExp \
+		../MinerLamp-master/mainwindow.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QMainWindow \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qmainwindow.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qtabwidget.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qicon.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QSystemTrayIcon \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qsystemtrayicon.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\QChartView \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\qchartview.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\QAbstractAxis \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\qabstractaxis.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\QChartGlobal \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\qchartglobal.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QtGlobal \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\QPen \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\QFont \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QVariant \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\QAbstractSeries \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\qabstractseries.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\QChart \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\qchart.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\QLegend \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\qlegend.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QGraphicsWidget \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qgraphicswidget.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qgraphicslayoutitem.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qgraphicsitem.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\QBrush \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QMargins \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QGraphicsView \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qgraphicsview.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qpainter.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qscrollarea.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qgraphicsscene.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\QLineSeries \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\qlineseries.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\QXYSeries \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\qxyseries.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\QCategoryAxis \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\qcategoryaxis.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\QValueAxis \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\qvalueaxis.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\QPieSeries \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\qpieseries.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\QPieSlice \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\qpieslice.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\QDateTimeAxis \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\qdatetimeaxis.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QTimer \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qtimer.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qbasictimer.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QLabel \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qlabel.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QHBoxLayout \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qboxlayout.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qlayout.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qlayoutitem.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qgridlayout.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QLCDNumber \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qlcdnumber.h \
+		../MinerLamp-master/highlighter.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\QTextCharFormat \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\QSyntaxHighlighter \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qsyntaxhighlighter.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qtextobject.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qtextlayout.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qglyphrun.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qrawfont.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qfontdatabase.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QRegularExpression \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qregularexpression.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QDateTime \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qdatetime.h
+		../MinerLamp-master/nanopoolapi.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\QNetworkAccessManager \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qnetworkaccessmanager.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qtnetworkglobal.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qtnetwork-config.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qnetworkrequest.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QSharedDataPointer \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QUrl \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QVector \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\QSslConfiguration \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qsslconfiguration.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qsslsocket.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qtcpsocket.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qabstractsocket.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qsslerror.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qsslcertificate.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qcryptographichash.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qdatetime.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qssl.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QFlags \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\QSslPreSharedKeyAuthenticator \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qsslpresharedkeyauthenticator.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QMetaType \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\QNetworkRequest \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\QNetworkReply \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qnetworkreply.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QIODevice \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QJsonDocument \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qjsondocument.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qjsonvalue.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QJsonObject \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qjsonobject.h \
+		..\MinerLamp-master\nvapi\nvapi.h \
+		..\MinerLamp-master\nvapi\nvapi_lite_salstart.h \
+		..\MinerLamp-master\nvapi\nvapi_lite_common.h \
+		..\MinerLamp-master\nvapi\nvapi_lite_salend.h \
+		..\MinerLamp-master\nvapi\nvapi_lite_sli.h \
+		..\MinerLamp-master\nvapi\nvapi_lite_surround.h \
+		..\MinerLamp-master\nvapi\nvapi_lite_stereo.h \
+		..\MinerLamp-master\nvapi\nvapi_lite_d3dext.h \
+		../MinerLamp-master/nvidiaapi.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QMutex \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QLibrary \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qlibrary.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QByteArray \
+		../MinerLamp-master/amdapi_adl.h \
+		..\MinerLamp-master\adl_sdk.h \
+		..\MinerLamp-master\adl_structures.h \
+		..\MinerLamp-master\adl_defines.h \
+		../MinerLamp-master/gpumonitor.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QDebug \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QMessageBox \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qmessagebox.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qdialog.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QMenu \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qmenu.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qaction.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qactiongroup.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QMenuBar \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qmenubar.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\QCloseEvent \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QDir \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qdir.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qfileinfo.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QFileDialog \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qfiledialog.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\QBarCategoryAxis \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\qbarcategoryaxis.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QScrollBar \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qscrollbar.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qabstractslider.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QTextStream \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QRegExp \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QDateTime
 
 release\highlighter.obj: ..\MinerLamp-master\highlighter.cpp ../MinerLamp-master/highlighter.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QObject \
@@ -3749,6 +3965,12 @@ release\hashratecharview.obj: ..\MinerLamp-master\hashratecharview.cpp D:\APP\Qt
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QLCDNumber \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qlcdnumber.h \
 		../MinerLamp-master/minerprocess.h \
+		../MinerLamp-master/urlapi.h \
+		../MinerLamp-master/structures.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QString \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QMap \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\QList \
+		../MinerLamp-master/jsonparser.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QProcess \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qprocess.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QTextEdit \
@@ -3774,7 +3996,6 @@ release\hashratecharview.obj: ..\MinerLamp-master\hashratecharview.cpp D:\APP\Qt
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qtnetwork-config.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qnetworkrequest.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QSharedDataPointer \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QString \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QUrl \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QVector \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\QSslConfiguration \
@@ -3837,12 +4058,7 @@ release\hashratecharview.obj: ..\MinerLamp-master\hashratecharview.cpp D:\APP\Qt
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\qbarcategoryaxis.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QScrollBar \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qscrollbar.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qabstractslider.h \
-		../MinerLamp-master/urlapi.h \
-		../MinerLamp-master/structures.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QMap \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\QList \
-		../MinerLamp-master/jsonparser.h
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qabstractslider.h
 
 release\piesliceeff.obj: ..\MinerLamp-master\piesliceeff.cpp D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\QPieSlice \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCharts\qpieslice.h \

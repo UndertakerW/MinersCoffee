@@ -1,6 +1,10 @@
 #ifndef MINERPROCESS_H
 #define MINERPROCESS_H
 
+#include "urlapi.h"
+#include "structures.h"
+#include "jsonparser.h"
+
 #include <QObject>
 #include <QProcess>
 #include <QTextEdit>
@@ -9,6 +13,9 @@
 
 class MinerProcess;
 class donateThrd;
+
+class MainWindow;
+class Core;
 
 // waitter before to monitor for O.OOMH/s
 class zeroMHsWaitter : public QThread
@@ -89,9 +96,20 @@ public:
 
     bool isRunning(){return _isRunning;}
 
+    void SetAPI(Core* core);
+
+    MiningInfo getStatus();
+
 
 
 private:
+
+    UrlAPI* urlAPI;
+    std::string api_str;
+    JsonParser* jsonParser = nullptr;
+    MainWindow* mainWindow;
+
+
     QProcess    _miner;
     zeroMHsWaitter* _waitter;
     anyMHsWaitter*  _anyHR;
