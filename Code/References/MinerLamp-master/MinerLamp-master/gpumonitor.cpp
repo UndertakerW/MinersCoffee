@@ -20,6 +20,7 @@ nvMonitorThrd::nvMonitorThrd(QObject * /*parent*/) {}
 void nvMonitorThrd::run()
 {
     nvml = new nvidiaNVML();
+    nvidiaAPI nvapi;
     if(!nvml->initNVML()) return;
 
     while(1)
@@ -40,7 +41,13 @@ void nvMonitorThrd::run()
         unsigned int maxpowerdraw = nvml->getMaxPowerDraw();
         unsigned int minpowerdraw = nvml->getMinPowerDraw();
         unsigned int totalpowerdraw = nvml->getPowerDrawSum();
-        if(maxTemp>80) qDebug()<<"warning";
+        if(maxTemp>80){
+            for(int i=0;i<nvml->getGPUCount();i++)
+                nvapi.getGpuTemperature(i);
+            qDebug()<<"warning! process is cooling ";
+
+        }
+        //qDebug("temp::   %d",nvapi.getGpuTemperature(nvapi.getGPUCount()-1));
         emit gpuInfoSignal(gpucount
                            , maxTemp
                            , minTemp

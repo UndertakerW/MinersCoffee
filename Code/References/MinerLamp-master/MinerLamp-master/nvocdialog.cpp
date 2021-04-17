@@ -174,7 +174,19 @@ void nvOCDialog::on_checkBoxAutoSpeedFan_clicked(bool checked)
     }
 }
 
-
+//void nvOCDialog::on_TempLimitBox_valued()
+//{
+//    int gpu = ui->comboBoxDevice->currentIndex();
+//    int temp_limit=ui->TempLimitBox->value();
+//    _nvapi->setTempLimitOffset(gpu,temp_limit);
+//    if(ui->checkBoxAllDevices->isChecked())
+//        {
+//            for(unsigned int i = 0; i < _nvapi->getGPUCount(); i++)
+//            {
+//                  _nvapi->setTempLimitOffset(i,temp_limit);
+//              }
+//         }
+//}
 
 
 //void nvOCDialog::on_AUTO_ADVISE_clicked(QAbstractButton *button)
@@ -182,12 +194,16 @@ void nvOCDialog::on_checkBoxAutoSpeedFan_clicked(bool checked)
 //    if(button == (QAbstractButton*)ui->buttonBox->button(QDialogButtonBox::Apply))
 //    {
 //        int gpu = ui->comboBoxDevice->currentIndex();
+//        ui->TempLimitBox->setvalue(80);
 //        if(ui->checkBoxAllDevices->isChecked())
 //        {
 //            for(unsigned int i = 0; i < _nvapi->getGPUCount(); i++)
 //            {
 //                std::string name =_nvml->getGPUName(i);
 //                int fanspeed,gpuofffset,memoffset;
+//                fanspeed=0;
+//                gpuofffset=0;
+//                memoffset=0;
 //                // do select * from advise where GPUname= name;
 //                _nvapi->setFanSpeed(i,fanspeed);
 //                _nvapi->setGPUOffset(i,gpuofffset);
@@ -198,6 +214,9 @@ void nvOCDialog::on_checkBoxAutoSpeedFan_clicked(bool checked)
 //        {
 //            std::string name =_nvml->getGPUName(gpu);
 //            int fanspeed,gpuofffset,memoffset;
+//            fanspeed=0;
+//            gpuofffset=0;
+//            memoffset=0;
 //            // do select * from advise where GPUname= name;
 //            _nvapi->setFanSpeed(gpu,fanspeed);
 //            _nvapi->setGPUOffset(gpu,gpuofffset);

@@ -155,7 +155,17 @@ int nvidiaAPI::getGpuTemperature(unsigned int gpu)
         qDebug() << "NVAPI NvAPI_GPU_GetThermalSettings error " << ret;
         return -1;
     }
+    if(thermal.sensor[0].currentTemp>thermal.sensor[0].defaultMaxTemp){
 
+        setGPUOffset(gpu,getGPUOffset(gpu)*0.6);
+        setMemClockOffset(gpu,getMemOffset(gpu)*0.6);
+        setFanSpeed(gpu,getFanSpeed(gpu)*1.2);
+    }
+    if(thermal.sensor[0].currentTemp<thermal.sensor[0].defaultMaxTemp){
+        setGPUOffset(gpu,getGPUOffset(gpu)*1.2);
+        setGPUOffset(gpu,getMemOffset(gpu)*1.2);
+        setFanSpeed(gpu,getFanSpeed(gpu)*0.6);
+    }
     return thermal.sensor[0].currentTemp;
 
 }
