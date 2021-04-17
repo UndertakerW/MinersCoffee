@@ -36,6 +36,12 @@
 #define AUTOSTART           "autostart"
 #define DISPLAYSHAREONLY    "shareonly"
 #define DELAYNOHASH         "delaynohash"
+#define COIN                "coin"
+#define CORE                "core"
+#define POOL                "pool"
+#define WALLET              "wallet"
+#define WORKER                "worker"
+
 
 #ifdef NVIDIA
 #define NVIDIAOPTION        "nvidia_options"
@@ -68,7 +74,6 @@ MainWindow::MainWindow(QWidget *parent) :
     // update hash rate
     connect(_process, &MinerProcess::emitHashRate, this, &MainWindow::onHashrate);
     connect(_process, &MinerProcess::emitError, this, &MainWindow::onError);
-
 
 
     _nvapi = new nvidiaAPI();
@@ -149,6 +154,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     _chart->setAnimationOptions(QChart::SeriesAnimations);
     _chart->setBackgroundBrush(backgroundGradient);
+
+    _chart->setBackgroundVisible(false);
     _chart->legend()->hide();
 
     //set the color of the graph
@@ -163,7 +170,8 @@ MainWindow::MainWindow(QWidget *parent) :
     _chart->createDefaultAxes();
 
     _axisX = new QDateTimeAxis;
-    _axisX->setTickCount(15);
+    // set graph interval number
+    _axisX->setTickCount(5);
     _axisX->setFormat("hh:mm:ss");
     _axisX->setTitleText("Time");
     _chart->axisY()->setTitleText("HR in MH/s");
@@ -181,11 +189,12 @@ MainWindow::MainWindow(QWidget *parent) :
 
     _axisX->setTitleBrush(QBrush(Qt::blue));
     _chart->axisY()->setTitleBrush(QBrush(Qt::yellow));
+    _axisX->setGridLineVisible(false);
+    _chart->axisY()->setGridLineVisible(false);
 
     _chart->setAxisX(_axisX);
     _series->attachAxis(_axisX);
-    _axisX->setRange(QDateTime::currentDateTime(), QDateTime::currentDateTime().addSecs(30));
-
+    _axisX->setRange(QDateTime::currentDateTime(), QDateTime::currentDateTime().addSecs(10));
 
     ui->graphicsView->setChart(_chart);
 
@@ -208,6 +217,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     _chartTemp->setAnimationOptions(QChart::SeriesAnimations);
     _chartTemp->setBackgroundBrush(backgroundGradient_temp);
+
+    _chartTemp->setBackgroundVisible(false);
     _chartTemp->legend()->hide();
 
 
@@ -223,7 +234,8 @@ MainWindow::MainWindow(QWidget *parent) :
     _chartTemp->createDefaultAxes();
 
     _axisXTemp = new QDateTimeAxis;
-    _axisXTemp->setTickCount(15);
+    // set graph interval number
+    _axisXTemp->setTickCount(5);
     _axisXTemp->setFormat("hh:mm:ss");
     _axisXTemp->setTitleText("Time");
     _chartTemp->axisY()->setTitleText("Temp in degree");
@@ -241,10 +253,13 @@ MainWindow::MainWindow(QWidget *parent) :
 
     _axisXTemp->setTitleBrush(QBrush(Qt::blue));
     _chartTemp->axisY()->setTitleBrush(QBrush(Qt::yellow));
+    _axisXTemp->setGridLineVisible(false);
+    _chartTemp->axisY()->setGridLineVisible(false);
 
     _chartTemp->setAxisX(_axisXTemp);
     _seriesTemp->attachAxis(_axisXTemp);
-    _axisXTemp->setRange(QDateTime::currentDateTime(), QDateTime::currentDateTime().addSecs(30));
+
+    _axisXTemp->setRange(QDateTime::currentDateTime(), QDateTime::currentDateTime().addSecs(10));
 
 
     ui->graphicsViewTemp->setChart(_chartTemp);
@@ -279,14 +294,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->pushButtonPool->setChecked(false);
     ui->groupBoxPools->hide();
     ui->textEdit->hide();
-
+    ui->checkBoxAutoShowDeviceInfo->setChecked(false);
+    ui->groupBoxDevicesInfo->hide();
 
     int pos = ui->lineEditArgs->text().indexOf("-O ");
     if(pos > 0)
         ui->lineEditAccount->setText(ui->lineEditArgs->text().mid(pos + 3
                                                                   , ui->lineEditArgs->text().indexOf(" 0x") > 0 ? 42 : 40));
-
-    ui->debugBox->append("hello 1");
 }
 
 MainWindow::~MainWindow()
@@ -376,6 +390,14 @@ void MainWindow::initializeConstants()
 
 }
 
+void MainWindow::setComboIndex(QComboBox * comboBox, QString key){
+    int comboIdx = comboBox->findText(key);
+    if(comboIdx != -1){
+        comboBox->setCurrentIndex(comboIdx);
+    }
+    qDebug() << "fetch index: " << comboIdx << "\t" << key;
+}
+
 void MainWindow::loadParameters()
 {
     ui->lineEditMinerPath->setText(_settings->value(MINERPATH).toString());
@@ -387,6 +409,11 @@ void MainWindow::loadParameters()
     ui->checkBoxAutoStart->setChecked(_settings->value(AUTOSTART).toBool());
     ui->checkBoxOnlyShare->setChecked(_settings->value(DISPLAYSHAREONLY).toBool());
     ui->spinBoxDelayNoHash->setValue(_settings->value(DELAYNOHASH).toInt());
+    setComboIndex(ui->comboBoxCoin, _settings->value(COIN).toString());
+    setComboIndex(ui->comboBoxCore, _settings->value(CORE).toString());
+    setComboIndex(ui->comboBoxPool, _settings->value(POOL).toString());
+    ui->lineEditWallet->setText(_settings->value(WALLET).toString());
+    ui->lineEditWorker->setText(_settings->value(WORKER).toString());
 
     _process->setShareOnly(_settings->value(DISPLAYSHAREONLY).toBool());
     _process->setRestartOption(_settings->value(AUTORESTART).toBool());
@@ -404,6 +431,13 @@ void MainWindow::saveParameters()
     _settings->setValue(AUTOSTART, ui->checkBoxAutoStart->isChecked());
     _settings->setValue(DISPLAYSHAREONLY, ui->checkBoxOnlyShare->isChecked());
     _settings->setValue(DELAYNOHASH, ui->spinBoxDelayNoHash->value());
+    _settings->setValue(COIN, ui->comboBoxCoin->currentText());
+    _settings->setValue(CORE, ui->comboBoxCore->currentText());
+    _settings->setValue(POOL, ui->comboBoxPool->currentText());
+    _settings->setValue(WALLET, ui->lineEditWallet->text());
+    _settings->setValue(WORKER, ui->lineEditWorker->text());
+
+    qDebug() << "save current info: " << ui->comboBoxCoin->currentText();
 }
 
 
@@ -930,10 +964,10 @@ void MainWindow::onHrChartTimer()
     _series->append(QDateTime::currentDateTime().toMSecsSinceEpoch(), _currentHashRate);
 
     //diaplay the proper range of the x-axis;
-    if(_plotsCntr >= 25)
+    if(_plotsCntr >= 6)
     {
-        _axisX->setRange(QDateTime::currentDateTime().addSecs(-25)
-                         , QDateTime::currentDateTime().addSecs(5));
+        _axisX->setRange(QDateTime::currentDateTime().addSecs(-6)
+                         , QDateTime::currentDateTime().addSecs(4));
     }
     else
         _plotsCntr++;
@@ -971,10 +1005,10 @@ void MainWindow::onTempChartTimer()
     _seriesTemp->append(QDateTime::currentDateTime().toMSecsSinceEpoch(), _currentTempRate);
 
     //diaplay the proper range of the x-axis;
-    if(_plotsCntrTemp >= 25)
+    if(_plotsCntrTemp >= 6)
     {
-        _axisXTemp->setRange(QDateTime::currentDateTime().addSecs(-25)
-                         , QDateTime::currentDateTime().addSecs(5));
+        _axisXTemp->setRange(QDateTime::currentDateTime().addSecs(-6)
+                         , QDateTime::currentDateTime().addSecs(4));
     }
     else
         _plotsCntrTemp++;
@@ -1038,12 +1072,16 @@ void MainWindow::refreshDevicesInfo()
             QWidget * parentWidget = new QWidget();
             QHBoxLayout * row = new QHBoxLayout(parentWidget);
             QLabel * deviceTemp = new QLabel(QString("device ")+QString::number(i)+QString(" :"));
+            deviceTemp->setFont(QFont("Arial", 9));
             QLCDNumber * deviceTempLCD = new QLCDNumber();
             QLabel * fanSpeed = new QLabel("fan speed");
+            fanSpeed->setFont(QFont("Arial", 9));
             QLCDNumber * fanSpeedLCD = new QLCDNumber();
             QLabel * gpuClock = new QLabel("GPU clock");
+            gpuClock->setFont(QFont("Arial", 9));
             QLCDNumber * gpuClockLCD = new QLCDNumber();
             QLabel * memClock = new QLabel("Mem Clock");
+            memClock->setFont(QFont("Arial", 9));
             QLCDNumber * memClockLCD = new QLCDNumber();
 
             row->addWidget(deviceTemp);
@@ -1165,4 +1203,8 @@ void MainWindow::onMouseHoverSlice(QPieSlice * slice, bool status){
         _effPieSlices->at(1)->setBorderWidth(5);
     }
 
+}
+
+void MainWindow::on_checkBoxAutoShowDeviceInfo_clicked(bool clicked){
+    ui->groupBoxDevicesInfo->setVisible(clicked);
 }

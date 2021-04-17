@@ -1,6 +1,6 @@
 #include <windows.h>
 
-IDI_ICON1	ICON	DISCARDABLE	"E:\\C\\CSC4001\\MinersCoffee\\Code\\References\\MinerLamp-master\\MinerLamp-master\\eth_miner_lamp.ico"
+IDI_ICON1	ICON	DISCARDABLE	"D:\\MinersCoffee\\Code\\References\\MinerLamp-master\\MinerLamp-master\\eth_miner_lamp.ico"
 
 VS_VERSION_INFO VERSIONINFO
 	FILEVERSION 0,1,4,4

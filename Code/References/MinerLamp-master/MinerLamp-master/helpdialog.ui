@@ -29,6 +29,11 @@
    </item>
    <item row="0" column="1">
     <widget class="QPlainTextEdit" name="plainTextEdit">
+     <property name="font">
+      <font>
+       <family>Arial</family>
+      </font>
+     </property>
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>
      </property>
@@ -42,6 +47,11 @@
    </item>
    <item row="1" column="1">
     <widget class="QPushButton" name="pushButtonFinish">
+     <property name="font">
+      <font>
+       <family>Arial</family>
+      </font>
+     </property>
      <property name="text">
       <string>OK</string>
      </property>
@@ -49,6 +59,11 @@
    </item>
    <item row="1" column="0">
     <widget class="QCheckBox" name="checkBox">
+     <property name="font">
+      <font>
+       <family>Arial</family>
+      </font>
+     </property>
      <property name="text">
       <string>Donate 5 mins every 4 hours</string>
      </property>

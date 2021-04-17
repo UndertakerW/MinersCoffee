@@ -71,21 +71,27 @@ public:
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(label_5->sizePolicy().hasHeightForWidth());
         label_5->setSizePolicy(sizePolicy1);
+        QFont font;
+        font.setFamily(QStringLiteral("Arial"));
+        label_5->setFont(font);
 
         gridLayout->addWidget(label_5, 0, 0, 1, 1);
 
         comboBoxDevice = new QComboBox(nvOCDialog);
         comboBoxDevice->setObjectName(QStringLiteral("comboBoxDevice"));
+        comboBoxDevice->setFont(font);
 
         gridLayout->addWidget(comboBoxDevice, 0, 1, 1, 1);
 
         temperatureLimit = new QLabel(nvOCDialog);
         temperatureLimit->setObjectName(QStringLiteral("temperatureLimit"));
+        temperatureLimit->setFont(font);
 
         gridLayout->addWidget(temperatureLimit, 0, 2, 1, 1);
 
         spinBoxTemperature = new QSpinBox(nvOCDialog);
         spinBoxTemperature->setObjectName(QStringLiteral("spinBoxTemperature"));
+        spinBoxTemperature->setFont(font);
 
         gridLayout->addWidget(spinBoxTemperature, 0, 3, 1, 1);
 
@@ -93,6 +99,7 @@ public:
         label->setObjectName(QStringLiteral("label"));
         sizePolicy1.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
         label->setSizePolicy(sizePolicy1);
+        label->setFont(font);
 
         gridLayout->addWidget(label, 1, 0, 1, 1);
 
@@ -119,6 +126,7 @@ public:
         label_2->setObjectName(QStringLiteral("label_2"));
         sizePolicy1.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
         label_2->setSizePolicy(sizePolicy1);
+        label_2->setFont(font);
 
         gridLayout->addWidget(label_2, 2, 0, 1, 1);
 
@@ -139,6 +147,7 @@ public:
         label_3->setObjectName(QStringLiteral("label_3"));
         sizePolicy1.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
         label_3->setSizePolicy(sizePolicy1);
+        label_3->setFont(font);
 
         gridLayout->addWidget(label_3, 3, 0, 1, 1);
 
@@ -159,12 +168,14 @@ public:
         label_4->setObjectName(QStringLiteral("label_4"));
         sizePolicy1.setHeightForWidth(label_4->sizePolicy().hasHeightForWidth());
         label_4->setSizePolicy(sizePolicy1);
+        label_4->setFont(font);
 
         gridLayout->addWidget(label_4, 4, 0, 1, 1);
 
         checkBoxAutoSpeedFan = new QCheckBox(nvOCDialog);
         checkBoxAutoSpeedFan->setObjectName(QStringLiteral("checkBoxAutoSpeedFan"));
         checkBoxAutoSpeedFan->setEnabled(true);
+        checkBoxAutoSpeedFan->setFont(font);
 
         gridLayout->addWidget(checkBoxAutoSpeedFan, 4, 1, 1, 1);
 
@@ -182,21 +193,25 @@ public:
 
         checkBoxAllDevices = new QCheckBox(nvOCDialog);
         checkBoxAllDevices->setObjectName(QStringLiteral("checkBoxAllDevices"));
+        checkBoxAllDevices->setFont(font);
 
         gridLayout->addWidget(checkBoxAllDevices, 6, 0, 1, 2);
 
         checkBoxOCMinerStart = new QCheckBox(nvOCDialog);
         checkBoxOCMinerStart->setObjectName(QStringLiteral("checkBoxOCMinerStart"));
+        checkBoxOCMinerStart->setFont(font);
 
         gridLayout->addWidget(checkBoxOCMinerStart, 7, 0, 1, 2);
 
         checkBoxAutoOC = new QCheckBox(nvOCDialog);
         checkBoxAutoOC->setObjectName(QStringLiteral("checkBoxAutoOC"));
+        checkBoxAutoOC->setFont(font);
 
         gridLayout->addWidget(checkBoxAutoOC, 8, 0, 1, 2);
 
         buttonBox = new QDialogButtonBox(nvOCDialog);
         buttonBox->setObjectName(QStringLiteral("buttonBox"));
+        buttonBox->setFont(font);
         buttonBox->setOrientation(Qt::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::Apply|QDialogButtonBox::Close);
 

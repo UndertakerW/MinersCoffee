@@ -86,6 +86,7 @@ private:
     nvidiaAPI* _nvapi;
     void applyOC();
     nvOCDialog* _dlg;
+    void setComboIndex(QComboBox * comboBox, QString key);
 
 
 
@@ -99,6 +100,7 @@ private slots:
     void on_pushButtonHelp_clicked();
     void on_spinBoxDelay0MHs_valueChanged(int arg1);
     void onReadyToStartMiner();
+    void on_checkBoxAutoShowDeviceInfo_clicked(bool checked);
 
     void onNvMonitorInfo(unsigned int gpucount
                          , unsigned int maxgputemp

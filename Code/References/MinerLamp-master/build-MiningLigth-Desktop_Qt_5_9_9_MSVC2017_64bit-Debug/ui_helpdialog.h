@@ -47,6 +47,9 @@ public:
 
         plainTextEdit = new QPlainTextEdit(helpDialog);
         plainTextEdit->setObjectName(QStringLiteral("plainTextEdit"));
+        QFont font;
+        font.setFamily(QStringLiteral("Arial"));
+        plainTextEdit->setFont(font);
         plainTextEdit->setFrameShape(QFrame::NoFrame);
         plainTextEdit->setLineWidth(0);
         plainTextEdit->setReadOnly(true);
@@ -55,11 +58,13 @@ public:
 
         pushButtonFinish = new QPushButton(helpDialog);
         pushButtonFinish->setObjectName(QStringLiteral("pushButtonFinish"));
+        pushButtonFinish->setFont(font);
 
         gridLayout->addWidget(pushButtonFinish, 1, 1, 1, 1);
 
         checkBox = new QCheckBox(helpDialog);
         checkBox->setObjectName(QStringLiteral("checkBox"));
+        checkBox->setFont(font);
 
         gridLayout->addWidget(checkBox, 1, 0, 1, 1);
 

@@ -28,23 +28,45 @@
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+      </font>
+     </property>
      <property name="text">
       <string>Devices :</string>
      </property>
     </widget>
    </item>
    <item row="0" column="1">
-    <widget class="QComboBox" name="comboBoxDevice"/>
+    <widget class="QComboBox" name="comboBoxDevice">
+     <property name="font">
+      <font>
+       <family>Arial</family>
+      </font>
+     </property>
+    </widget>
    </item>
    <item row="0" column="2">
     <widget class="QLabel" name="temperatureLimit">
+     <property name="font">
+      <font>
+       <family>Arial</family>
+      </font>
+     </property>
      <property name="text">
       <string>TempLimit</string>
      </property>
     </widget>
    </item>
    <item row="0" column="3">
-    <widget class="QSpinBox" name="spinBoxTemperature"/>
+    <widget class="QSpinBox" name="spinBoxTemperature">
+     <property name="font">
+      <font>
+       <family>Arial</family>
+      </font>
+     </property>
+    </widget>
    </item>
    <item row="1" column="0">
     <widget class="QLabel" name="label">
@@ -53,6 +75,11 @@
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+      </font>
      </property>
      <property name="text">
       <string>Power Limit (%) :</string>
@@ -93,6 +120,11 @@
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+      </font>
+     </property>
      <property name="text">
       <string>Core Clock (MHz) :</string>
      </property>
@@ -121,6 +153,11 @@
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+      </font>
      </property>
      <property name="text">
       <string>Mem Clock (MHz) :</string>
@@ -151,6 +188,11 @@
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+      </font>
+     </property>
      <property name="text">
       <string>Fan Speed (%) :</string>
      </property>
@@ -160,6 +202,11 @@
     <widget class="QCheckBox" name="checkBoxAutoSpeedFan">
      <property name="enabled">
       <bool>true</bool>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+      </font>
      </property>
      <property name="text">
       <string>Automatic speed fan</string>
@@ -181,6 +228,11 @@
    </item>
    <item row="6" column="0" colspan="2">
     <widget class="QCheckBox" name="checkBoxAllDevices">
+     <property name="font">
+      <font>
+       <family>Arial</family>
+      </font>
+     </property>
      <property name="text">
       <string>Apply to all devices (current settings are applied to all devices)</string>
      </property>
@@ -188,6 +240,11 @@
    </item>
    <item row="7" column="0" colspan="2">
     <widget class="QCheckBox" name="checkBoxOCMinerStart">
+     <property name="font">
+      <font>
+       <family>Arial</family>
+      </font>
+     </property>
      <property name="text">
       <string>Apply on each ethminer (re)start</string>
      </property>
@@ -195,6 +252,11 @@
    </item>
    <item row="8" column="0" colspan="2">
     <widget class="QCheckBox" name="checkBoxAutoOC">
+     <property name="font">
+      <font>
+       <family>Arial</family>
+      </font>
+     </property>
      <property name="text">
       <string>Auto overclocking</string>
      </property>
@@ -202,6 +264,11 @@
    </item>
    <item row="8" column="2" colspan="3">
     <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="font">
+      <font>
+       <family>Arial</family>
+      </font>
+     </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
@@ -221,8 +288,8 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
+     <x>728</x>
+     <y>353</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -237,8 +304,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
+     <x>728</x>
+     <y>353</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>
