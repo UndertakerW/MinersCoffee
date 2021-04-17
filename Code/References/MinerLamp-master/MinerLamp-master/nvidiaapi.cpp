@@ -1,6 +1,5 @@
 #include "nvidiaapi.h"
 #include <QDebug>
-#include "Global_Listenning.h"
 
 fanSpeedThread::fanSpeedThread(nvidiaAPI *nvapi, QObject */*pParent*/) :
     _nvapi(nvapi),

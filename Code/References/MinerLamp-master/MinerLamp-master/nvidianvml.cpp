@@ -1,5 +1,4 @@
 #include "nvidianvml.h"
-#include "Global_Listenning.h"
 #include <QDebug>
 
 nvidiaNVML::nvidiaNVML()
