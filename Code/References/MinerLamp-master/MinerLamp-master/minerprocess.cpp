@@ -1,4 +1,6 @@
 #include "minerprocess.h"
+#include "mainwindow.h"
+
 #include <QTextStream>
 #include <QDebug>
 #include <QRegExp>
@@ -127,8 +129,11 @@ void MinerProcess::onReadyToReadStderr()
         return;
 
 
+    //((MainWindow*) parent())->showConsoleMsg(line);
+
     line = _outHelper;
 
+    //qDebug() << line << endl;
 
     if(line.length() > 1)
     {

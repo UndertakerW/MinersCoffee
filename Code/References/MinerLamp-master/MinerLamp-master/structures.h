@@ -16,20 +16,20 @@ public:
     unsigned int memclock;
     unsigned int power;
     unsigned int fanspeed;
-    float hashrate;
-    std::string name;
-    unsigned int accepted_shares;
-    unsigned int invalid_shares;
-    unsigned int rejected_shares;
+    float hashrate = 0;
+    QString name;
+    unsigned int accepted_shares = 0;
+    unsigned int invalid_shares = 0;
+    unsigned int rejected_shares = 0;
 };
 
 class MiningInfo {
 public:
-    unsigned int accepted_shares;
-    unsigned int invalid_shares;
-    unsigned int rejected_shares;
-    unsigned int latency;
-    std::vector<GPUInfo> gpuInfos;
+    unsigned int accepted_shares = 0;
+    unsigned int invalid_shares = 0;
+    unsigned int rejected_shares = 0;
+    unsigned int latency = 0;
+    QList<GPUInfo> gpuInfos;
 };
 
 #endif // STRUCTURES_H

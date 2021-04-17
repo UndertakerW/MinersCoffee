@@ -36,8 +36,8 @@ public:
 
 public:
     Coin(QString core_name);
-    void AddCore(Core* core, QString cmd);
-    void AddPool(Pool* pool, QString cmd);
+    void AddCore(Core* core, const QString& cmd);
+    void AddPool(Pool* pool, const QString& cmd);
 };
 
 class Core {
@@ -49,7 +49,7 @@ public:
     int ver;
 
 public:
-    Core(QString core_name, QString path, QString api);
+    Core(QString core_name, const QString& path, const QString& api);
 };
 
 class Pool {
@@ -95,6 +95,9 @@ public:
     GPUInfo getAverage(const std::vector<GPUInfo>& gpu_infos);
     GPUInfo getWorst(const std::vector<GPUInfo>& gpu_infos);
 
+    bool getMinerStatus();
+    void showConsoleMsg(QString msg);
+
 private:
     QList<QWidget *> * _gpuInfoList;
     int _deviceCount = 0;
@@ -116,8 +119,6 @@ private:
     void refreshDevicesInfo();
     void initializePieChart();
     void initializeConstants();
-
-
 
     nvidiaAPI* _nvapi;
     void applyOC();
@@ -209,9 +210,19 @@ private slots:
 public:
     QMap<QString, Coin*> map_coins;
     QMap<QString, Core*> map_cores;
-    QMap<QString, Core*> map_pools;
+    QMap<QString, Pool*> map_pools;
 
 private:
+
+    void AddCoinToMap(Coin* coin);
+    void AddCoreToMap(Core* core);
+    void AddPoolToMap(Pool* pool);
+
+    Coin* AddCoin(QString coin_name);
+    Core* AddCore(QString core_name, const QString& path, const QString& api, Coin* coin, const QString& cmd);
+    Core* AddCore(QString core_name, const QString& path, const QString& api, QString coin_name, const QString& cmd);
+    Pool* AddPool(QString pool_name, Coin* coin, const QString& cmd);
+    Pool* AddPool(QString pool_name, QString coin_name, const QString& cmd);
 
     void onMinerStarted();
     void onMinerStoped();
@@ -278,7 +289,6 @@ private:
 
     nanopoolAPI* _nano;
 
-    Core* core;
 };
 
 

@@ -31,6 +31,7 @@
 
 class nvidiaNVML;
 class Core;
+class MainWindow;
 
 class GPUMonitor : public QThread
 {
@@ -42,15 +43,14 @@ protected:
     UrlAPI* urlAPI;
     std::string api_str;
     JsonParser* jsonParser = nullptr;
+    MainWindow* mainWindow;
 
 public:
     GPUMonitor(QObject* p = Q_NULLPTR);
 
     void SetAPI(Core* core);
 
-    virtual std::vector<GPUInfo> getGPUStatus() = 0;
-
-    virtual MiningInfo getMiningStatus();
+    virtual MiningInfo getStatus() = 0;
 
 signals:
 
@@ -79,7 +79,7 @@ public:
 
     void run() override;
 
-    std::vector<GPUInfo> getGPUStatus() override;
+    MiningInfo getStatus() override;
 
 };
 
@@ -90,7 +90,8 @@ public:
 
     void run() override;
 
-    std::vector<GPUInfo> getGPUStatus() override;
+    MiningInfo getStatus() override;
+
 
 private:
     amdapi_adl* _amd;

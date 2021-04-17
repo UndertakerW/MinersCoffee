@@ -41,7 +41,7 @@ public:
     QLineEdit *lineEditMinerPath;
     QLineEdit *lineEditArgs;
     QGridLayout *gridLayout_8;
-    QHBoxLayout *horizontalLayout_2;
+    QHBoxLayout *horizontalLayoutMiningArgs;
     QLabel *labelCoin;
     QComboBox *comboBoxCoin;
     QLabel *labelCore;
@@ -394,9 +394,9 @@ public:
         gridLayout_8->setSpacing(6);
         gridLayout_8->setContentsMargins(11, 11, 11, 11);
         gridLayout_8->setObjectName(QStringLiteral("gridLayout_8"));
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setSpacing(6);
-        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        horizontalLayoutMiningArgs = new QHBoxLayout();
+        horizontalLayoutMiningArgs->setSpacing(6);
+        horizontalLayoutMiningArgs->setObjectName(QStringLiteral("horizontalLayoutMiningArgs"));
         labelCoin = new QLabel(centralWidget);
         labelCoin->setObjectName(QStringLiteral("labelCoin"));
         QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Preferred);
@@ -410,7 +410,7 @@ public:
         font1.setPointSize(12);
         labelCoin->setFont(font1);
 
-        horizontalLayout_2->addWidget(labelCoin);
+        horizontalLayoutMiningArgs->addWidget(labelCoin);
 
         comboBoxCoin = new QComboBox(centralWidget);
         comboBoxCoin->setObjectName(QStringLiteral("comboBoxCoin"));
@@ -420,7 +420,7 @@ public:
         comboBoxCoin->setMaximumSize(QSize(90, 16777215));
         comboBoxCoin->setFont(font1);
 
-        horizontalLayout_2->addWidget(comboBoxCoin);
+        horizontalLayoutMiningArgs->addWidget(comboBoxCoin);
 
         labelCore = new QLabel(centralWidget);
         labelCore->setObjectName(QStringLiteral("labelCore"));
@@ -430,14 +430,14 @@ public:
         labelCore->setMaximumSize(QSize(50, 16777215));
         labelCore->setFont(font1);
 
-        horizontalLayout_2->addWidget(labelCore);
+        horizontalLayoutMiningArgs->addWidget(labelCore);
 
         comboBoxCore = new QComboBox(centralWidget);
         comboBoxCore->setObjectName(QStringLiteral("comboBoxCore"));
         comboBoxCore->setMinimumSize(QSize(0, 31));
         comboBoxCore->setFont(font1);
 
-        horizontalLayout_2->addWidget(comboBoxCore);
+        horizontalLayoutMiningArgs->addWidget(comboBoxCore);
 
         labelPool = new QLabel(centralWidget);
         labelPool->setObjectName(QStringLiteral("labelPool"));
@@ -447,14 +447,14 @@ public:
         labelPool->setMaximumSize(QSize(50, 16777215));
         labelPool->setFont(font1);
 
-        horizontalLayout_2->addWidget(labelPool);
+        horizontalLayoutMiningArgs->addWidget(labelPool);
 
         comboBoxPool = new QComboBox(centralWidget);
         comboBoxPool->setObjectName(QStringLiteral("comboBoxPool"));
         comboBoxPool->setMinimumSize(QSize(0, 31));
         comboBoxPool->setFont(font1);
 
-        horizontalLayout_2->addWidget(comboBoxPool);
+        horizontalLayoutMiningArgs->addWidget(comboBoxPool);
 
         labelWallet = new QLabel(centralWidget);
         labelWallet->setObjectName(QStringLiteral("labelWallet"));
@@ -467,7 +467,7 @@ public:
         labelWallet->setMaximumSize(QSize(50, 16777215));
         labelWallet->setFont(font1);
 
-        horizontalLayout_2->addWidget(labelWallet);
+        horizontalLayoutMiningArgs->addWidget(labelWallet);
 
         lineEditWallet = new QLineEdit(centralWidget);
         lineEditWallet->setObjectName(QStringLiteral("lineEditWallet"));
@@ -476,7 +476,7 @@ public:
         lineEditWallet->setMinimumSize(QSize(0, 31));
         lineEditWallet->setFont(font1);
 
-        horizontalLayout_2->addWidget(lineEditWallet);
+        horizontalLayoutMiningArgs->addWidget(lineEditWallet);
 
         labelWorker = new QLabel(centralWidget);
         labelWorker->setObjectName(QStringLiteral("labelWorker"));
@@ -486,7 +486,7 @@ public:
         labelWorker->setMaximumSize(QSize(50, 16777215));
         labelWorker->setFont(font1);
 
-        horizontalLayout_2->addWidget(labelWorker);
+        horizontalLayoutMiningArgs->addWidget(labelWorker);
 
         lineEditWorker = new QLineEdit(centralWidget);
         lineEditWorker->setObjectName(QStringLiteral("lineEditWorker"));
@@ -495,10 +495,10 @@ public:
         lineEditWorker->setMinimumSize(QSize(0, 31));
         lineEditWorker->setFont(font1);
 
-        horizontalLayout_2->addWidget(lineEditWorker);
+        horizontalLayoutMiningArgs->addWidget(lineEditWorker);
 
 
-        gridLayout_8->addLayout(horizontalLayout_2, 0, 0, 1, 6);
+        gridLayout_8->addLayout(horizontalLayoutMiningArgs, 0, 0, 1, 6);
 
         checkBoxAutoStart = new QCheckBox(centralWidget);
         checkBoxAutoStart->setObjectName(QStringLiteral("checkBoxAutoStart"));
@@ -1024,6 +1024,7 @@ public:
 
         lineEditAccount = new QLineEdit(groupBoxPools);
         lineEditAccount->setObjectName(QStringLiteral("lineEditAccount"));
+        lineEditAccount->setEnabled(true);
 
         gridLayout_4->addWidget(lineEditAccount, 2, 0, 1, 5);
 
@@ -1093,7 +1094,7 @@ public:
         labelCore->setText(QApplication::translate("MainWindow", "Core", Q_NULLPTR));
         comboBoxCore->clear();
         comboBoxCore->insertItems(0, QStringList()
-         << QApplication::translate("MainWindow", "NBMiner 37.1", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "NBMiner", Q_NULLPTR)
         );
         labelPool->setText(QApplication::translate("MainWindow", "Pool", Q_NULLPTR));
         comboBoxPool->clear();

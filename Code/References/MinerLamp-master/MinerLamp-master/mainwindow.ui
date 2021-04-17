@@ -231,7 +231,7 @@ QPushButton:disabled
    </property>
    <layout class="QGridLayout" name="gridLayout_8">
     <item row="0" column="0" colspan="6">
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <layout class="QHBoxLayout" name="horizontalLayoutMiningArgs">
       <item>
        <widget class="QLabel" name="labelCoin">
         <property name="sizePolicy">
@@ -339,7 +339,7 @@ QPushButton:disabled
         </property>
         <item>
          <property name="text">
-          <string>NBMiner 37.1</string>
+          <string>NBMiner</string>
          </property>
         </item>
        </widget>
@@ -1153,6 +1153,9 @@ for last 6 hour:</string>
        </item>
        <item row="2" column="0" colspan="5">
         <widget class="QLineEdit" name="lineEditAccount">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
          <property name="text">
           <string>0xa07A8c9975145BB5371e8b3C31ACb62ad9d0698E</string>
          </property>
