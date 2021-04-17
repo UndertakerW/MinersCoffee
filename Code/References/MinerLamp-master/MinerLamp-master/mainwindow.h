@@ -22,44 +22,10 @@
 #include "nvidiaapi.h"
 #include "amdapi_adl.h"
 #include "gpumonitor.h"
+#include "structures.h"
 
 QT_CHARTS_USE_NAMESPACE
 
-class Core;
-class Pool;
-
-class Coin {
-public:
-    QString name;
-    QList<Core*> cores;
-    QList<Pool*> pools;
-
-public:
-    Coin(QString core_name);
-    void AddCore(Core* core, const QString& cmd);
-    void AddPool(Pool* pool, const QString& cmd);
-};
-
-class Core {
-public:
-    QString name;
-    QString path;
-    QString api;
-    QMap<Coin*, QString> cmds;
-    int ver;
-
-public:
-    Core(QString core_name, const QString& path, const QString& api);
-};
-
-class Pool {
-public:
-    QString name;
-    QMap<Coin*, QString> cmds;
-
-public:
-    Pool(QString pool_name);
-};
 
 
 namespace Ui {

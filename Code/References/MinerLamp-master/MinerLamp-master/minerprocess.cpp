@@ -1,5 +1,6 @@
 #include "minerprocess.h"
-#include "mainwindow.h"
+#include "structures.h"
+//#include "mainwindow.h"
 
 #include <QTextStream>
 #include <QDebug>
@@ -24,7 +25,8 @@ void anyMHsWaitter::run()
 {
     while(true)
     {
-        QThread::sleep(_delay);
+        QThread::sleep(refresh_rate);
+        MiningInfo miningInfo = _pParent->getStatus();
         if(_hashrateCount == _pParent->getCurrentHRCount())
         {
             qDebug() << "emit notHashing";
@@ -342,6 +344,7 @@ void MinerProcess::restart()
     }
 }
 
+
 void MinerProcess::SetAPI(Core* core)
 {
     api_str = core->api.toStdString();
@@ -353,7 +356,6 @@ void MinerProcess::SetAPI(Core* core)
 MiningInfo MinerProcess::getStatus()
 {
     MiningInfo miningInfo;
-
     if (api_str != "" && jsonParser)
     {
         std::string buffer;
@@ -365,7 +367,8 @@ MiningInfo MinerProcess::getStatus()
         }
     }
 
-    qDebug() << miningInfo.latency << miningInfo.gpuMiningInfos[0].hashrate;
+    if (miningInfo.gpuMiningInfos.size() > 0)
+        qDebug() << miningInfo.latency << miningInfo.gpuMiningInfos[0].hashrate;
 
     return miningInfo;
 }

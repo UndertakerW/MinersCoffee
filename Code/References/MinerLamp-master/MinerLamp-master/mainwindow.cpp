@@ -8,6 +8,8 @@
 #include "hashratecharview.h"
 #include "constants.h"
 
+#include "structures.h"
+
 #include <QDebug>
 #include <QMessageBox>
 #include <QMenu>
@@ -307,35 +309,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-Core::Core(QString core_name, const QString& core_path, const QString& core_api)
-{
-    name = core_name;
-    path = core_path;
-    api = core_api;
-}
-
-Coin::Coin(QString coin_name)
-{
-    name = coin_name;
-}
-
-Pool::Pool(QString pool_name)
-{
-    name = pool_name;
-}
-
-void Coin::AddCore(Core* core, const QString& cmd)
-{
-    cores.append(core);
-    core->cmds[this] = cmd;
-}
-
-void Coin::AddPool(Pool* pool, const QString& cmd)
-{
-    pools.append(pool);
-    pool->cmds[this] = cmd;
-}
-
 Coin* MainWindow::AddCoin(QString coin_name)
 {
     Coin* coin = new Coin(coin_name);
@@ -345,7 +318,7 @@ Coin* MainWindow::AddCoin(QString coin_name)
 
 Pool* MainWindow::AddPool(QString pool_name, Coin* coin, const QString& cmd)
 {
-    Pool* pool;
+    Pool* pool = nullptr;
     if (map_pools.contains(pool_name))
     {
         pool = map_pools[pool_name];
@@ -361,7 +334,7 @@ Pool* MainWindow::AddPool(QString pool_name, Coin* coin, const QString& cmd)
 
 Pool* MainWindow::AddPool(QString pool_name, QString coin_name, const QString& cmd)
 {
-    Pool* pool;
+    Pool* pool = nullptr;
     if (!map_coins.contains(coin_name))
     {
         qDebug() << "No coin name: " << coin_name << endl;
@@ -384,7 +357,7 @@ Pool* MainWindow::AddPool(QString pool_name, QString coin_name, const QString& c
 
 Core* MainWindow::AddCore(QString core_name, const QString& path, const QString& api, Coin* coin, const QString& cmd)
 {
-    Core* core;
+    Core* core = nullptr;
     if (map_cores.contains(core_name))
     {
         core = map_cores[core_name];
@@ -400,7 +373,7 @@ Core* MainWindow::AddCore(QString core_name, const QString& path, const QString&
 
 Core* MainWindow::AddCore(QString core_name, const QString& path, const QString& api, QString coin_name, const QString& cmd)
 {
-    Core* core;
+    Core* core = nullptr;
     if (!map_coins.contains(coin_name))
     {
         qDebug() << "No coin name: " << coin_name << endl;

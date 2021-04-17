@@ -41,6 +41,7 @@ SOURCES += \
     amdapi_adl.cpp \
     hashratecharview.cpp \
     piesliceeff.cpp \
+    structures.cpp \
     urlapi.cpp
 
 HEADERS += \

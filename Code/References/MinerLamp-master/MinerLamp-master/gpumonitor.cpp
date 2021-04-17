@@ -1,14 +1,9 @@
 #include "gpumonitor.h"
 #include "nvidianvml.h"
 #include "jsonparser.h"
-#include "mainwindow.h"
 #include "constants.h"
 
-GPUMonitor::GPUMonitor(QObject *p)
-{
-    urlAPI = new UrlAPI();
-    mainWindow = (MainWindow*) p;
-}
+GPUMonitor::GPUMonitor(QObject *p) {}
 
 nvMonitorThrd::nvMonitorThrd(QObject *p) : GPUMonitor(p) {}
 

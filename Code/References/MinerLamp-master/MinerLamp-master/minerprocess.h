@@ -60,6 +60,7 @@ public:
 
 private:
     unsigned int _delay;
+    float refresh_rate = 3;
     MinerProcess* _pParent;
 
     unsigned int _hashrateCount;
@@ -103,6 +104,8 @@ public:
 
 
 private:
+
+    float refresh_rate = 3;
 
     UrlAPI* urlAPI;
     std::string api_str;
@@ -187,5 +190,7 @@ signals:
 private:
     MinerProcess* _parent;
 };
+
+
 
 #endif // MINERPROCESS_H
