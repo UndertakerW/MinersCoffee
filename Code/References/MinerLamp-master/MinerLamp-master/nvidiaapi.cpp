@@ -15,8 +15,9 @@ void fanSpeedThread::run()
     while(!_needToStop)
     {
         int previous = 0;
-        for(uint i = 0; i < gpuCount; i++)
+        for(int i = 0; i < gpuCount; i++)
         {
+            qDebug("run %d",i);
             int gpuTemp = _nvapi->getGpuTemperature(i);
             if(gpuTemp > _downLimit)
             {
@@ -29,7 +30,7 @@ void fanSpeedThread::run()
                 }
             }
         }
-        QThread::sleep(2);
+        QThread::sleep(4);
     }
 }
 
@@ -155,20 +156,44 @@ int nvidiaAPI::getGpuTemperature(unsigned int gpu)
         qDebug() << "NVAPI NvAPI_GPU_GetThermalSettings error " << ret;
         return -1;
     }
+
+    return thermal.sensor[0].currentTemp;
+
+}
+int nvidiaAPI::ControlGpuTemperature(unsigned int gpu)
+{
+    NvAPI_Status ret;
+
+    NV_GPU_THERMAL_SETTINGS thermal = {0};
+  //  thermal.version = NV_GPU_THERMAL_SETTINGS_VER;
+
+    thermal.version = NV_GPU_THERMAL_SETTINGS_VER;
+    thermal.sensor[0].controller = NVAPI_THERMAL_CONTROLLER_GPU_INTERNAL;
+    thermal.sensor[0].target = NVAPI_THERMAL_TARGET_GPU;
+
+    ret = NvGetThermalSettings(_gpuHandles[gpu], 0, &thermal);
+    if (ret != NVAPI_OK)
+    {
+        qDebug() << "NVAPI NvAPI_GPU_ControlThermalSettings error " << ret;
+        return -1;
+    }
     if(thermal.sensor[0].currentTemp>thermal.sensor[0].defaultMaxTemp){
 
         setGPUOffset(gpu,getGPUOffset(gpu)*0.6);
+        qDebug("nvidiaapi large");
         setMemClockOffset(gpu,getMemOffset(gpu)*0.6);
         setFanSpeed(gpu,getFanSpeed(gpu)*1.2);
     }
     if(thermal.sensor[0].currentTemp<thermal.sensor[0].defaultMaxTemp){
         setGPUOffset(gpu,getGPUOffset(gpu)*1.2);
-        setGPUOffset(gpu,getMemOffset(gpu)*1.2);
+        setMemClockOffset(gpu,getMemOffset(gpu)*1.2);
+        qDebug("nvidiaapi small");
         setFanSpeed(gpu,getFanSpeed(gpu)*0.6);
     }
     return thermal.sensor[0].currentTemp;
 
 }
+
 
 int nvidiaAPI::getGPUOffset(unsigned int gpu)
 {
@@ -316,7 +341,7 @@ int nvidiaAPI::setGPUOffset(unsigned int gpu, int offset)
     pset1.pstates[0].clocks[0].freqDelta_kHz.value = deltaKHz;
     ret = NvSetPstates(_gpuHandles[gpu], &pset1);
     if (ret == NVAPI_OK) {
-        qDebug("GPU #%u: pu clock offset set to %d MHz", gpu, deltaKHz/1000);
+        qDebug("GPU #%u: gpu clock offset set to %d MHz", gpu, deltaKHz/1000);
     }
     return ret;
 

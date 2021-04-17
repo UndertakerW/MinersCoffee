@@ -145,6 +145,7 @@ void nvOCDialog::on_buttonBox_clicked(QAbstractButton *button)
                 {
                     _nvapi->startFanThread();
                     _nvapi->setFanSpeed(i, ui->horizontalSliderFanSpeed->value());
+                    _nvapi->stopFanThread();
                 }
             }
         }
@@ -162,6 +163,7 @@ void nvOCDialog::on_buttonBox_clicked(QAbstractButton *button)
             {
                 _nvapi->startFanThread();
                 _nvapi->setFanSpeed(gpu, ui->horizontalSliderFanSpeed->value());
+                _nvapi->stopFanThread();
             }
         }
         saveConfig();
@@ -200,43 +202,40 @@ void nvOCDialog::on_spinBoxTemperature_valueChanged(int value){
 
 void nvOCDialog::on_checkBoxAutoOC_clicked(bool clicked){
     qDebug() << "test auto oc cliked: " << clicked << endl;
+    if(clicked){
+        int gpu = ui->comboBoxDevice->currentIndex();
+        ui->spinBoxTemperature->setValue(80);
+        if(ui->checkBoxAllDevices->isChecked())
+        {
+            for(unsigned int i = 0; i < _nvapi->getGPUCount(); i++)
+            {
+                std::string name =_nvml->getGPUName(i);
+                int fanspeed,gpuofffset,memoffset;
+                fanspeed=0;
+                gpuofffset=0;
+                memoffset=0;
+                // do select * from advise where GPUname= name;
+                _nvapi->setFanSpeed(i,fanspeed);
+                _nvapi->setGPUOffset(i,gpuofffset);
+                _nvapi->setMemClockOffset(i,memoffset);
+            }
+        }
+        else
+        {
+            std::string name =_nvml->getGPUName(gpu);
+            int fanspeed,gpuofffset,memoffset;
+            fanspeed=0;
+            gpuofffset=0;
+            memoffset=0;
+            // do select * from advise where GPUname= name;
+            _nvapi->setFanSpeed(gpu,fanspeed);
+            _nvapi->setGPUOffset(gpu,gpuofffset);
+            _nvapi->setMemClockOffset(gpu,memoffset);
+        }
+        updateSliders(gpu);
+
+        saveConfig();
+    }
 }
 
 
-//void nvOCDialog::on_AUTO_ADVISE_clicked(QAbstractButton *button)
-//{
-//    if(button == (QAbstractButton*)ui->buttonBox->button(QDialogButtonBox::Apply))
-//    {
-//        int gpu = ui->comboBoxDevice->currentIndex();
-//        ui->TempLimitBox->setvalue(80);
-//        if(ui->checkBoxAllDevices->isChecked())
-//        {
-//            for(unsigned int i = 0; i < _nvapi->getGPUCount(); i++)
-//            {
-//                std::string name =_nvml->getGPUName(i);
-//                int fanspeed,gpuofffset,memoffset;
-//                fanspeed=0;
-//                gpuofffset=0;
-//                memoffset=0;
-//                // do select * from advise where GPUname= name;
-//                _nvapi->setFanSpeed(i,fanspeed);
-//                _nvapi->setGPUOffset(i,gpuofffset);
-//                _nvapi->setMemClockOffset(i,memoffset);
-//            }
-//        }
-//        else
-//        {
-//            std::string name =_nvml->getGPUName(gpu);
-//            int fanspeed,gpuofffset,memoffset;
-//            fanspeed=0;
-//            gpuofffset=0;
-//            memoffset=0;
-//            // do select * from advise where GPUname= name;
-//            _nvapi->setFanSpeed(gpu,fanspeed);
-//            _nvapi->setGPUOffset(gpu,gpuofffset);
-//            _nvapi->setMemClockOffset(gpu,memoffset);
-//        }
-
-//        saveConfig();
-//    }
-//}

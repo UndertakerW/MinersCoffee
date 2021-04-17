@@ -343,6 +343,7 @@ public:
     void setLED(unsigned int gpu, int color);
 
     int getGpuTemperature(unsigned int gpu);
+    int ControlGpuTemperature(unsigned int gpu);
 
     int getGPUOffset(unsigned int gpu);
     int getMemOffset(unsigned int gpu);
