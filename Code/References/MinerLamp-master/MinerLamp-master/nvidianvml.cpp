@@ -1,5 +1,4 @@
 #include "nvidianvml.h"
-#include "Global_Listenning.h"
 #include <QDebug>
 
 nvidiaNVML::nvidiaNVML()
@@ -74,18 +73,6 @@ int nvidiaNVML::getGPUTemp(unsigned int index)
 
     return temp;
 }
-
-int nvidiaNVML::getTempLimit()
-{
-    nvmlReturn_t result;
-
-    nvmlDevice_t device;
-    unsigned int temp = 0;
-
-
-    return temp;
-}
-
 
 int nvidiaNVML::getFanSpeed(unsigned int index)
 {

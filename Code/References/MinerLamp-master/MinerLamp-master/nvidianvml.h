@@ -19,7 +19,6 @@ public:
 
     std::string getGPUName(unsigned int index);
     int getGPUTemp(unsigned int index);
-    int getTempLimit();
     int getFanSpeed(unsigned int index);
     int getMemClock(unsigned int index);
     int getGPUClock(unsigned int index);

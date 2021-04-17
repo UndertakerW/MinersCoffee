@@ -1,6 +1,5 @@
 #include "nvidiaapi.h"
 #include <QDebug>
-#include "Global_Listenning.h"
 
 fanSpeedThread::fanSpeedThread(nvidiaAPI *nvapi, QObject */*pParent*/) :
     _nvapi(nvapi),
@@ -315,22 +314,7 @@ int nvidiaAPI::setGPUOffset(unsigned int gpu, int offset)
 
 int nvidiaAPI::setTempLimitOffset(unsigned int gpu, unsigned int offset)
 {
-    NvAPI_Status ret;
-    NvS32 deltaKHz = offset;
-    NV_GPU_THERMAL_SETTINGS thermal = {0};
-
-    thermal.version = NV_GPU_THERMAL_SETTINGS_VER;
-    thermal.sensor[0].controller = NVAPI_THERMAL_CONTROLLER_GPU_INTERNAL;
-    thermal.sensor[0].target = NVAPI_THERMAL_TARGET_GPU;
-    thermal.sensor[0].defaultMaxTemp=deltaKHz;
-    ret = NvGetThermalSettings(_gpuHandles[gpu], 0, &thermal);
-    if (ret != NVAPI_OK)
-    {
-        qDebug() << "NVAPI NvAPI_GPU_GetThermalSettings error " << ret;
-        return -1;
-    }
-
-    return ret;
+    return 0;
 }
 
 int nvidiaAPI::setFanSpeed(unsigned int gpu, unsigned int percent)

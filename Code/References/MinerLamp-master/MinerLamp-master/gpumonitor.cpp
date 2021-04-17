@@ -30,7 +30,6 @@ void nvMonitorThrd::run()
 
         unsigned int maxTemp = nvml->getHigherTemp();
         unsigned int minTemp = nvml->getLowerTemp();
-        unsigned int TempLimit = nvml->getTempLimit();
         unsigned int maxfanspeed = nvml->getHigherFanSpeed();
         unsigned int minfanspeed = nvml->getLowerFanSpeed();
         unsigned int maxmemclock = nvml->getMemMaxClock();
@@ -40,7 +39,7 @@ void nvMonitorThrd::run()
         unsigned int maxpowerdraw = nvml->getMaxPowerDraw();
         unsigned int minpowerdraw = nvml->getMinPowerDraw();
         unsigned int totalpowerdraw = nvml->getPowerDrawSum();
-        if(maxTemp>80) qDebug()<<"warning";
+
         emit gpuInfoSignal(gpucount
                            , maxTemp
                            , minTemp
@@ -84,9 +83,8 @@ std::vector<GPUInfo> nvMonitorThrd::getStatus()
         }
         //qDebug() << "mining" << endl;
     }
-    qDebug() << gpuInfos.size() << endl;
+qDebug() << gpuInfos.size() << endl;
     qDebug() << gpuInfos[0].num << gpuInfos[0].hashrate/(1<<20) << endl;
-
     return gpuInfos;
 }
 

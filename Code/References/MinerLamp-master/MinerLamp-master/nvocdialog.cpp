@@ -1,6 +1,5 @@
 #include "nvocdialog.h"
 #include "ui_nvocdialog.h"
-#include <string>
 #include <QDebug>
 
 nvOCDialog::nvOCDialog(nvidiaAPI *nvapi, QSettings *settings, QWidget *parent) :
@@ -146,12 +145,11 @@ void nvOCDialog::on_buttonBox_clicked(QAbstractButton *button)
             _nvapi->setMemClockOffset(gpu, ui->horizontalSliderMemOffset->value());
             if(ui->checkBoxAutoSpeedFan->isChecked())
             {
-                qDebug("ATUO  opened");
                 _nvapi->startFanThread();
             }
             else
             {
-                _nvapi->startFanThread();
+                _nvapi->stopFanThread();
                 _nvapi->setFanSpeed(gpu, ui->horizontalSliderFanSpeed->value());
             }
         }
@@ -173,37 +171,3 @@ void nvOCDialog::on_checkBoxAutoSpeedFan_clicked(bool checked)
 
     }
 }
-
-
-
-
-//void nvOCDialog::on_AUTO_ADVISE_clicked(QAbstractButton *button)
-//{
-//    if(button == (QAbstractButton*)ui->buttonBox->button(QDialogButtonBox::Apply))
-//    {
-//        int gpu = ui->comboBoxDevice->currentIndex();
-//        if(ui->checkBoxAllDevices->isChecked())
-//        {
-//            for(unsigned int i = 0; i < _nvapi->getGPUCount(); i++)
-//            {
-//                std::string name =_nvml->getGPUName(i);
-//                int fanspeed,gpuofffset,memoffset;
-//                // do select * from advise where GPUname= name;
-//                _nvapi->setFanSpeed(i,fanspeed);
-//                _nvapi->setGPUOffset(i,gpuofffset);
-//                _nvapi->setMemClockOffset(i,memoffset);
-//            }
-//        }
-//        else
-//        {
-//            std::string name =_nvml->getGPUName(gpu);
-//            int fanspeed,gpuofffset,memoffset;
-//            // do select * from advise where GPUname= name;
-//            _nvapi->setFanSpeed(gpu,fanspeed);
-//            _nvapi->setGPUOffset(gpu,gpuofffset);
-//            _nvapi->setMemClockOffset(gpu,memoffset);
-//        }
-
-//        saveConfig();
-//    }
-//}
