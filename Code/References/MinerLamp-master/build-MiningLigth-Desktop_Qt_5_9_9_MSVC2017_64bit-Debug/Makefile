@@ -218,6 +218,7 @@ Makefile: ..\MinerLamp-master\MiningLigth.pro D:\application\Qt\Qt5.9.9\5.9.9\ms
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\qt_config.prf \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\win32-msvc\qmake.conf \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\spec_post.prf \
+		.qmake.stash \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\exclusive_builds.prf \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\common\msvc-version.conf \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\toolchain.prf \
@@ -392,6 +393,7 @@ D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\qt_functions.prf:
 D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\qt_config.prf:
 D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\win32-msvc\qmake.conf:
 D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\spec_post.prf:
+.qmake.stash:
 D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\exclusive_builds.prf:
 D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\common\msvc-version.conf:
 D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\toolchain.prf:
