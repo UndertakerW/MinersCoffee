@@ -7,7 +7,7 @@
 QT       += \
         core gui network charts\
         charts
-
+QT       +=  core gui sql
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = MinerLamp

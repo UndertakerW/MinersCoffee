@@ -14,7 +14,10 @@
 #include <QLabel>
 #include <QHBoxLayout>
 #include <QLCDNumber>
-
+#include <QtSql/QSqlDatabase>
+#include <QDebug>
+#include <QMessageBox>
+#include <QMainWindow>
 #include "minerprocess.h"
 #include "highlighter.h"
 #include "nanopoolapi.h"

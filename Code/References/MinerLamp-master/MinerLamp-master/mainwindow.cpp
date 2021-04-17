@@ -19,6 +19,7 @@
 #include <QBarCategoryAxis>
 #include <QScrollBar>
 #include <QFrame>
+#include <QtSql/QSqlDatabase>
 
 #define MINERPATH           "minerpath"
 #define MINERARGS           "minerargs"
@@ -280,6 +281,7 @@ MainWindow::MainWindow(QWidget *parent) :
                                                                   , ui->lineEditArgs->text().indexOf(" 0x") > 0 ? 42 : 40));
 
     ui->debugBox->append("hello 1");
+
 }
 
 MainWindow::~MainWindow()

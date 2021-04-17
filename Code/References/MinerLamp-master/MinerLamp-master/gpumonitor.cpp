@@ -81,7 +81,7 @@ std::vector<GPUInfo> nvMonitorThrd::getStatus()
                 }
             }
         }
-        //qDebug() << "mining" << endl;
+        qDebug() << endl << "mining" << endl << endl;
     }
 qDebug() << gpuInfos.size() << endl;
     qDebug() << gpuInfos[0].num << gpuInfos[0].hashrate/(1<<20) << endl;
