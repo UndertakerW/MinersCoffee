@@ -5,7 +5,8 @@
 #include <QFile>
 #include <QSqlQueryModel>
 #include <QApplication>
-#include <QSqlError>#include <stdio.h>
+#include <QSqlError>
+#include <stdio.h>
 #include <nvidianvml.h>
 #include <WinSock.h>
 //一定要包含这个，或者winsock2.h

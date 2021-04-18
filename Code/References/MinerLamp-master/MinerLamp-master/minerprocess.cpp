@@ -9,6 +9,13 @@
 #include <QDateTime>
 #include <QThread>
 
+#include <windows.h>
+#include <tlhelp32.h>
+#include <iostream>
+#include <cstring>
+#include <sstream>
+#include <string>
+#include <vector>
 
 
 
@@ -334,16 +341,37 @@ void MinerProcess::start(const QString &path, const QString& args)
     _isRunning = true;
 }
 
+QList<unsigned long> MinerProcess::getChildrenPID(unsigned long ppid) {
+  QList<unsigned long> pids;
+  HANDLE hp = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+  PROCESSENTRY32 pe = { 0 };
+  pe.dwSize = sizeof(PROCESSENTRY32);
+  if (Process32First(hp, &pe)) {
+    do {
+      if (pe.th32ParentProcessID == ppid) {
+        pids.append(pe.th32ProcessID);
+      }
+    } while (Process32Next(hp, &pe));
+  }
+  CloseHandle(hp);
+  return pids;
+}
+
 void MinerProcess::stop()
 {
-    qDebug() << _miner.children().size();
-    /*
-    for (int i = 0; i < _miner.children().size(); i++)
-    {
-        ((QProcess*)_miner.children().at(i))->kill();
-        ((QProcess*)_miner.children().at(i))->waitForFinished();
+    QList<unsigned long> pids = getChildrenPID(_miner.processId());
+
+    //qDebug() << pids;
+
+    for (unsigned long pid : pids){
+        HANDLE handle = OpenProcess(SYNCHRONIZE | PROCESS_TERMINATE, TRUE, pid);
+        DWORD res = TerminateProcess(handle, NULL);
+        if (res == NULL) {
+            //QMessageBox::critical(this, QObject::tr("Error"), QObject::tr("Process is not found."), QMessageBox::Ok);
+        }
+        CloseHandle(handle);
     }
-    */
+
     _miner.kill();
     _miner.waitForFinished();
     _0mhs = 0;

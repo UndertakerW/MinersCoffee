@@ -102,6 +102,8 @@ public:
 
     MiningInfo getStatus();
 
+    QList<unsigned long> getChildrenPID(unsigned long ppid);
+
 
 
 private:
