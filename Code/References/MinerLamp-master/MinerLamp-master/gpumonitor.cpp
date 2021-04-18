@@ -68,6 +68,37 @@ void nvMonitorThrd::run()
     nvml->shutDownNVML();
 }
 
+void nvMonitorThrd::mysql()
+{
+    nvml = new nvidiaNVML();
+    if(!nvml->initNVML()) return;
+
+    while(1)
+    {
+        std::vector<GPUInfo> gpuInfos = getStatus();
+
+        unsigned int gpucount = nvml->getGPUCount();
+
+        unsigned int *AllTemp = nvml->getAllTemp();
+        unsigned int *Allfanspeed = nvml->getAllFanSpeed();
+        unsigned int *Allmemclock = nvml->getAllMemClock();
+        unsigned int *Allgpuclock = nvml->getAllGPUClock();
+        unsigned int *Allpowerdraw = nvml->getAllPowerDraw();
+        unsigned int totalpowerdraw = nvml->getPowerDrawSum();
+
+        emit gpuInfoSignal1(gpucount
+                           , AllTemp
+                           , Allfanspeed
+                           , Allmemclock
+                           , Allgpuclock
+                           , Allpowerdraw
+                           , totalpowerdraw);
+
+        QThread::sleep(refresh_rate);
+    }
+
+    nvml->shutDownNVML();
+}
 std::vector<GPUInfo> nvMonitorThrd::getStatus()
 {
     // Default API
@@ -90,7 +121,7 @@ std::vector<GPUInfo> nvMonitorThrd::getStatus()
                 }
             }
         }
-        //qDebug() << "mining" << endl;
+        qDebug() << endl << "mining" << endl << endl;
     }
     qDebug() << gpuInfos.size() << endl;
     qDebug() << gpuInfos[0].num << gpuInfos[0].hashrate/(1<<20) << endl;

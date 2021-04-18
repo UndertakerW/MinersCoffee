@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_GPUMonitor_t {
-    QByteArrayData data[15];
-    char stringdata0[170];
+    QByteArrayData data[22];
+    char stringdata0[251];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -45,14 +45,23 @@ QT_MOC_LITERAL(10, 105, 11), // "maxgpuclock"
 QT_MOC_LITERAL(11, 117, 11), // "mingpuclock"
 QT_MOC_LITERAL(12, 129, 12), // "maxpowerdraw"
 QT_MOC_LITERAL(13, 142, 12), // "minpowerdraw"
-QT_MOC_LITERAL(14, 155, 14) // "totalpowerdraw"
+QT_MOC_LITERAL(14, 155, 14), // "totalpowerdraw"
+QT_MOC_LITERAL(15, 170, 14), // "gpuInfoSignal1"
+QT_MOC_LITERAL(16, 185, 5), // "uint*"
+QT_MOC_LITERAL(17, 191, 10), // "Allgputemp"
+QT_MOC_LITERAL(18, 202, 11), // "Allfanspeed"
+QT_MOC_LITERAL(19, 214, 11), // "Allmemclock"
+QT_MOC_LITERAL(20, 226, 11), // "Allgpuclock"
+QT_MOC_LITERAL(21, 238, 12) // "Allpowerdraw"
 
     },
     "GPUMonitor\0gpuInfoSignal\0\0gpucount\0"
     "maxgputemp\0mingputemp\0maxfanspeed\0"
     "minfanspeed\0maxmemclock\0minmemclock\0"
     "maxgpuclock\0mingpuclock\0maxpowerdraw\0"
-    "minpowerdraw\0totalpowerdraw"
+    "minpowerdraw\0totalpowerdraw\0gpuInfoSignal1\0"
+    "uint*\0Allgputemp\0Allfanspeed\0Allmemclock\0"
+    "Allgpuclock\0Allpowerdraw"
 };
 #undef QT_MOC_LITERAL
 
@@ -62,18 +71,20 @@ static const uint qt_meta_data_GPUMonitor[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       2,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       1,       // signalCount
+       2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,   12,   19,    2, 0x06 /* Public */,
+       1,   12,   24,    2, 0x06 /* Public */,
+      15,    7,   49,    2, 0x06 /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt,    3,    4,    5,    6,    7,    8,    9,   10,   11,   12,   13,   14,
+    QMetaType::Void, QMetaType::UInt, 0x80000000 | 16, 0x80000000 | 16, 0x80000000 | 16, 0x80000000 | 16, 0x80000000 | 16, QMetaType::UInt,    3,   17,   18,   19,   20,   21,   14,
 
        0        // eod
 };
@@ -85,6 +96,7 @@ void GPUMonitor::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->gpuInfoSignal((*reinterpret_cast< uint(*)>(_a[1])),(*reinterpret_cast< uint(*)>(_a[2])),(*reinterpret_cast< uint(*)>(_a[3])),(*reinterpret_cast< uint(*)>(_a[4])),(*reinterpret_cast< uint(*)>(_a[5])),(*reinterpret_cast< uint(*)>(_a[6])),(*reinterpret_cast< uint(*)>(_a[7])),(*reinterpret_cast< uint(*)>(_a[8])),(*reinterpret_cast< uint(*)>(_a[9])),(*reinterpret_cast< uint(*)>(_a[10])),(*reinterpret_cast< uint(*)>(_a[11])),(*reinterpret_cast< uint(*)>(_a[12]))); break;
+        case 1: _t->gpuInfoSignal1((*reinterpret_cast< uint(*)>(_a[1])),(*reinterpret_cast< uint*(*)>(_a[2])),(*reinterpret_cast< uint*(*)>(_a[3])),(*reinterpret_cast< uint*(*)>(_a[4])),(*reinterpret_cast< uint*(*)>(_a[5])),(*reinterpret_cast< uint*(*)>(_a[6])),(*reinterpret_cast< uint(*)>(_a[7]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -93,6 +105,13 @@ void GPUMonitor::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
             typedef void (GPUMonitor::*_t)(unsigned int , unsigned int , unsigned int , unsigned int , unsigned int , unsigned int , unsigned int , unsigned int , unsigned int , unsigned int , unsigned int , unsigned int );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&GPUMonitor::gpuInfoSignal)) {
                 *result = 0;
+                return;
+            }
+        }
+        {
+            typedef void (GPUMonitor::*_t)(unsigned int , unsigned int * , unsigned int * , unsigned int * , unsigned int * , unsigned int * , unsigned int );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&GPUMonitor::gpuInfoSignal1)) {
+                *result = 1;
                 return;
             }
         }
@@ -124,13 +143,13 @@ int GPUMonitor::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 2)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 2;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 1)
+        if (_id < 2)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 1;
+        _id -= 2;
     }
     return _id;
 }
@@ -140,6 +159,13 @@ void GPUMonitor::gpuInfoSignal(unsigned int _t1, unsigned int _t2, unsigned int 
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)), const_cast<void*>(reinterpret_cast<const void*>(&_t4)), const_cast<void*>(reinterpret_cast<const void*>(&_t5)), const_cast<void*>(reinterpret_cast<const void*>(&_t6)), const_cast<void*>(reinterpret_cast<const void*>(&_t7)), const_cast<void*>(reinterpret_cast<const void*>(&_t8)), const_cast<void*>(reinterpret_cast<const void*>(&_t9)), const_cast<void*>(reinterpret_cast<const void*>(&_t10)), const_cast<void*>(reinterpret_cast<const void*>(&_t11)), const_cast<void*>(reinterpret_cast<const void*>(&_t12)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
+}
+
+// SIGNAL 1
+void GPUMonitor::gpuInfoSignal1(unsigned int _t1, unsigned int * _t2, unsigned int * _t3, unsigned int * _t4, unsigned int * _t5, unsigned int * _t6, unsigned int _t7)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)), const_cast<void*>(reinterpret_cast<const void*>(&_t3)), const_cast<void*>(reinterpret_cast<const void*>(&_t4)), const_cast<void*>(reinterpret_cast<const void*>(&_t5)), const_cast<void*>(reinterpret_cast<const void*>(&_t6)), const_cast<void*>(reinterpret_cast<const void*>(&_t7)) };
+    QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE
