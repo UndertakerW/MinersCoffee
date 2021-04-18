@@ -61,6 +61,8 @@ MainWindow::MainWindow(QWidget *parent) :
     _process = new MinerProcess(_settings);
     _gpusinfo = new std::vector<GPUInfo>();
     _gpuInfoList = new QList<QWidget * >();
+    _mysqlProcess = new MYSQLcon();
+//    _mysqlProcess->start();
 
     ui->setupUi(this);
 
@@ -98,7 +100,7 @@ MainWindow::MainWindow(QWidget *parent) :
         _nvMonitorThrd = new nvMonitorThrd(this);
         connect(_nvMonitorThrd, &nvMonitorThrd::gpuInfoSignal, this, &MainWindow::onNvMonitorInfo);
 
-        qRegisterMetaType<std::vector<GPUInfo>>("std::vector<GPUInfo>");
+        qRegisterMetaType<QList<GPUInfo>>("QList<GPUInfo>");
         connect(_nvMonitorThrd, &nvMonitorThrd::gpusInfoSignalRefresh, this, &MainWindow::onGpusInfoRecieved);
         _nvMonitorThrd->start();
 
@@ -147,6 +149,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     _chart = new QChart();
     _chartTemp = new QChart();
+    _chartHistory = new QChart();
 
     // customize chart background
     QLinearGradient backgroundGradient;
@@ -211,7 +214,7 @@ MainWindow::MainWindow(QWidget *parent) :
     _hrChartTimer.start();
 
 
-    // customize the temporature diagram
+    // customize the temperature diagram
     // customize chart background
     QLinearGradient backgroundGradient_temp;
     backgroundGradient_temp.setStart(QPointF(0, 0));
@@ -252,8 +255,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // customize axis label colors
     QBrush axisBrush_temp(Qt::white);
-    _axisXTemp->setLabelsBrush(axisBrush);
-    _chartTemp->axisY()->setLabelsBrush(axisBrush);
+    _axisXTemp->setLabelsBrush(axisBrush_temp);
+    _chartTemp->axisY()->setLabelsBrush(axisBrush_temp);
 
     _axisXTemp->setTitleBrush(QBrush(Qt::blue));
     _chartTemp->axisY()->setTitleBrush(QBrush(Qt::yellow));
@@ -276,11 +279,6 @@ MainWindow::MainWindow(QWidget *parent) :
     // set time interval
     _tempChartTimer.setInterval(1000);
     _tempChartTimer.start();
-
-    // dynamic generate device number info
-//    connect(&_refreshDeviceTimer, &QTimer::timeout, this, &MainWindow::onRefreshDeviceInfoTimer);
-//    _refreshDeviceTimer.setInterval(100);
-//    _refreshDeviceTimer.start();
     
 
     ui->lcdNumberHashRate->display("0.00");
@@ -306,9 +304,16 @@ MainWindow::MainWindow(QWidget *parent) :
         ui->lineEditAccount->setText(ui->lineEditArgs->text().mid(pos + 3
                                                                   , ui->lineEditArgs->text().indexOf(" 0x") > 0 ? 42 : 40));
 
+
     //ui->debugBox->append("hello 1");
 
     initializeConstants();
+    ui->groupBoxHistoryInfo->hide();
+    ui->checkBoxShowHistoryInfo->hide();
+
+//    plotGrapgh("111", "222");
+
+
 }
 
 MainWindow::~MainWindow()
@@ -326,6 +331,7 @@ MainWindow::~MainWindow()
     delete _gpuInfoList;
     delete _gpusinfo;
     delete ui;
+    delete _mysqlProcess;
 }
 
 
@@ -1294,6 +1300,7 @@ void MainWindow::onGpusInfoRecieved(QList<GPUInfo> gpusinfo){
     refreshDeviceInfo();
 }
 
+
 bool MainWindow::getMinerStatus()
 {
     return _isMinerRunning;
@@ -1302,4 +1309,70 @@ bool MainWindow::getMinerStatus()
 void MainWindow::showConsoleMsg(QString msg)
 {
     ui->debugBox->append(msg);
+}
+void MainWindow::plotGrapgh(QString dateStart, QString dateEnd){
+    static bool setGraph = false;
+
+    if(!setGraph){
+        // customize chart background
+        QLinearGradient backgroundGradient_history;
+        backgroundGradient_history.setStart(QPointF(0, 0));
+        backgroundGradient_history.setFinalStop(QPointF(0, 1));
+        backgroundGradient_history.setColorAt(0.0, QRgb(0x909090));
+        backgroundGradient_history.setColorAt(1.0, QRgb(0x101010));
+        backgroundGradient_history.setCoordinateMode(QGradient::StretchToDeviceMode);
+
+        _chartHistory->setAnimationOptions(QChart::SeriesAnimations);
+        _chartHistory->setBackgroundBrush(backgroundGradient_history);
+        _chartHistory->setBackgroundVisible(false);
+        _chartHistory->legend()->hide();
+
+        //set the color of the graph
+        QPen penHistory(QColor(255, 165, 0));
+        penHistory.setWidth(2);
+
+        _seriesHistory = new QLineSeries();
+        _seriesHistory->setPen(penHistory);
+
+        _seriesHistory->append(QDateTime::currentDateTime().toMSecsSinceEpoch(),0);
+        _chartHistory->addSeries(_seriesHistory);
+        _chartHistory->createDefaultAxes();
+
+        _axisXHistory = new QDateTimeAxis;
+        // set graph interval number
+        _axisXHistory->setTickCount(5);
+        _axisXHistory->setFormat("MM/dd");
+        _axisXHistory->setTitleText("Time");
+        _chartHistory->axisY()->setTitleText("history info");
+        _chartHistory->axisY()->setRange(0, 1);
+        QFont labelsFont_history;
+        labelsFont_history.setPixelSize(14);
+        _axisXHistory->setTitleFont(labelsFont_history);
+        _chartHistory->axisY()->setTitleFont(labelsFont_history);
+        // customize axis label colors
+        QBrush axisBrush_history(Qt::white);
+        _axisXHistory->setLabelsBrush(axisBrush_history);
+        _chartHistory->axisY()->setLabelsBrush(axisBrush_history);
+        _axisXHistory->setTitleBrush(QBrush(Qt::blue));
+        _chartHistory->axisY()->setTitleBrush(QBrush(Qt::yellow));
+        _axisXHistory->setGridLineVisible(false);
+        _chartHistory->axisY()->setGridLineVisible(false);
+        _chartHistory->setAxisX(_axisXHistory);
+        _seriesHistory->attachAxis(_axisXHistory);
+        _axisXHistory->setRange(QDateTime::currentDateTime(), QDateTime::currentDateTime().addDays(10));
+
+        ui->graphicsViewHistoryInfo->setChart(_chartHistory);
+
+        setGraph = true;
+    }
+
+    QDateTime date = QDateTime::currentDateTime();
+    qDebug() << "displaying from history: " << QLocale{QLocale::English}.toString(date, "MM/dd");
+//    qDebug() << "displaying from history second line: " << QLocale{QLocale::English}.toString(date, "MM/dd");
+    QDateTime b = QDateTime::fromString("2021-04-18 00:00:00","yyyy-MM-dd HH:mm:ss");
+    qDebug() << "displaying from history line 2: "  << b.date().toString();
+
+
+//    _mysqlProcess->Get_History()
+
 }

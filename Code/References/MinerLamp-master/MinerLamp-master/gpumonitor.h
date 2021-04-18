@@ -82,7 +82,11 @@ public:
     nvMonitorThrd(QObject* p = Q_NULLPTR);
 
     void run() override;
+
     //void mysql();
+
+//    void mysql();
+
 
     //MiningInfo getStatus() override;
 

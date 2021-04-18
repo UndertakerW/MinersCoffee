@@ -60,44 +60,13 @@ void nvMonitorThrd::run()
     nvml->shutDownNVML();
 }
 
+
 QList<GPUInfo> nvMonitorThrd::getStatus()
 {
     return nvml->getStatus();
 }
 
-/*
-void nvMonitorThrd::mysql()
-{
-    nvml = new nvidiaNVML();
-    if(!nvml->initNVML()) return;
 
-    while(1)
-    {
-        QList<GPUInfo> gpuInfos = getStatus();
-
-        unsigned int gpucount = nvml->getGPUCount();
-
-        unsigned int *AllTemp = nvml->getAllTemp();
-        unsigned int *Allfanspeed = nvml->getAllFanSpeed();
-        unsigned int *Allmemclock = nvml->getAllMemClock();
-        unsigned int *Allgpuclock = nvml->getAllGPUClock();
-        unsigned int *Allpowerdraw = nvml->getAllPowerDraw();
-        unsigned int totalpowerdraw = nvml->getPowerDrawSum();
-
-        emit gpuInfoSignal1(gpucount
-                           , AllTemp
-                           , Allfanspeed
-                           , Allmemclock
-                           , Allgpuclock
-                           , Allpowerdraw
-                           , totalpowerdraw);
-
-        QThread::sleep(refresh_rate);
-    }
-
-    nvml->shutDownNVML();
-}
-*/
 
 amdMonitorThrd::amdMonitorThrd(QObject * p) : GPUMonitor(p) {}
 

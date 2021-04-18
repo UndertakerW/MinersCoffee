@@ -27,6 +27,7 @@
 #include "gpumonitor.h"
 #include "nvocdialog.h"
 #include "structures.h"
+#include "mysql.h"
 
 QT_CHARTS_USE_NAMESPACE
 
@@ -90,6 +91,7 @@ private:
     void initializePieChart();
     void initializeConstants();
     void setLCDNumber(QWidget * widget, unsigned int value);
+    void plotGrapgh(QString dateStart, QString dateEnd);
 
     nvidiaAPI* _nvapi;
     void applyOC();
@@ -216,6 +218,7 @@ private:
     QSettings*  _settings;
     QIcon*       _icon;
     std::vector<GPUInfo>* _gpusinfo;
+    MYSQLcon * _mysqlProcess;
 
     bool _isMinerRunning;
     bool _isStartStoping;
@@ -238,10 +241,15 @@ private:
     QLineSeries* _series;
     QDateTimeAxis *_axisX;
 
-    // temporature displaying
+    // temperature displaying
     QChart* _chartTemp;
     QLineSeries* _seriesTemp;
     QDateTimeAxis *_axisXTemp;
+
+    // temperature displaying
+    QChart* _chartHistory;
+    QLineSeries* _seriesHistory;
+    QDateTimeAxis *_axisXHistory;
 
     // effectiveness pie chart
     QChart* _effPieChart;
@@ -251,7 +259,7 @@ private:
 
     QTimer _hrChartTimer;
     QTimer _tempChartTimer;
-    QTimer _refreshDeviceTimer;
+//    QTimer _refreshDeviceTimer;
 
     double _currentHashRate = 0.0;
     double _maxChartHashRate = 0.0;
