@@ -29,7 +29,6 @@ public:
     unsigned int rejected_shares;
 };
 
-
 class GPUInfoFromJson {
 public:
     unsigned int num;

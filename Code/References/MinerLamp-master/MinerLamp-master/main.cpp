@@ -10,6 +10,6 @@ int main(int argc, char *argv[])
     w.show();
     MYSQLcon db;
     qDebug() << "testing";
-    db.start();
+    db.ConnectDatabase();
     return a.exec();
 }

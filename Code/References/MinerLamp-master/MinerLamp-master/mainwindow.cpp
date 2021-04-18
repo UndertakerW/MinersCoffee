@@ -676,6 +676,7 @@ void autoStart::run()
 
 
 
+
 void MainWindow::onNvMonitorInfo(unsigned int gpucount
                                  , unsigned int maxgputemp
                                  , unsigned int mingputemp
