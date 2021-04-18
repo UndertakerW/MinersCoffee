@@ -5,18 +5,20 @@
 #include <QDebug>
 #include <QMessageBox>
 #include <QApplication>
-#include <QtSQl/QSqlQuery>
+#include <QSqlQuery>
 //#include <QSqlError>
 #include <stdio.h>
+#include <QThread>
 #include <nvidianvml.h>
 #include <WinSock.h>
-
+#include "gpumonitor.h"
 #include "C:/Program Files/MySQL/MySQL Server 8.0/include/mysql.h"
 #include <Windows.h>
 
+#pragma comment(lib,"wsock32.lib")
 
 #pragma comment(lib,"libmysql.lib")
-class MYSQLcon{
+class MYSQLcon:public QThread{
 
 private:
     MYSQL mysql; //mysql连接
@@ -26,7 +28,7 @@ private:
 
 
     char field[32][32];  //存字段名二维数组
-
+    nvidiaNVML* _nvml;
     MYSQL_RES *res; //这个结构代表返回行的一个查询结果集
 
     MYSQL_ROW column; //一个行数据的类型安全(type-safe)的表示，表示数据行的列
@@ -34,11 +36,10 @@ public:
     MYSQLcon();
     void ConnectDatabase();
     void FreeConnect();
-    QStringList getAdvice(const char* type);
-    /*bool QueryDatabase1();
-    bool QueryDatabase2();
-    bool InsertData();
-    bool DeleteData();*/
+    QStringList getAdvice(char* type);
+    void InsertData(QList<GPUInfo> gpuInfos,QList<GPUMiningInfo> GPUMiningInfo,std::string name);
+    void run();
+     QStringList Get_History(char* date1,char* date2,int num);
 };
 
 
