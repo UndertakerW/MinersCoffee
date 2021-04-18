@@ -8,16 +8,17 @@
 #include <QtSQl/QSqlQuery>
 //#include <QSqlError>
 #include <stdio.h>
+#include <QThread>
 #include <nvidianvml.h>
 #include <WinSock.h>
-
+#include "gpumonitor.h"
 #include "C:/Program Files/MySQL/MySQL Server 8.0/include/mysql.h"
 #include <Windows.h>
 
 #pragma comment(lib,"wsock32.lib")
 
 #pragma comment(lib,"libmysql.lib")
-class MYSQLcon{
+class MYSQLcon:public QThread{
 
 private:
     MYSQL mysql; //mysql连接
@@ -35,11 +36,10 @@ public:
     MYSQLcon();
     void ConnectDatabase();
     void FreeConnect();
-    QStringList getAdvice(const char* type);
-    /*bool QueryDatabase1();
-    bool QueryDatabase2();
-    bool InsertData();
-    bool DeleteData();*/
+    QStringList getAdvice(char* type);
+    void InsertData();
+    void run();
+    QStringList Get_History(char* date1,char* date2,int num);
 };
 
 

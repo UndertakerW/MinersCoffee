@@ -5,9 +5,14 @@
 #include <QFile>
 #include <QSqlQueryModel>
 #include <QApplication>
-#include <QSqlError>#include <stdio.h>
+#include <QSqlError>
+#include <QThread>
+#include <stdio.h>
+#include <ctime>
 #include <nvidianvml.h>
 #include <WinSock.h>
+#include "gpumonitor.h"
+
 //一定要包含这个，或者winsock2.h
 
 #include "C:/Program Files/MySQL/MySQL Server 8.0/include/mysql.h"    //引入mysql头文件(一种方式是在vc目录里面设置，一种是文件夹拷到工程目录，然后这样包含)
@@ -19,6 +24,14 @@
 #pragma comment(lib,"libmysql.lib")
 
 MYSQLcon::MYSQLcon(){
+    mysql_init(&mysql);
+    if (!(mysql_real_connect(&mysql,"localhost", "root", "1020zxc..", "minercoffee",0,NULL,0))) {
+        mysql_close(&mysql);
+    }
+    ConnectDatabase();
+    char* l=(char*)"2021-04-18";
+    QStringList info;
+    info=Get_History(l,l,0);
 
 }
 void MYSQLcon::ConnectDatabase(){
@@ -38,16 +51,11 @@ void MYSQLcon::ConnectDatabase(){
            mysql_query(&mysql, "create database minercoffee");
            qDebug() << "mysqlhere"<<endl;
            mysql_query(&mysql, "use minercoffee");
-           qDebug() << "mysqlhere"<<endl;
-           mysql_query(&mysql, "create table gpu_table(gpu_id int PRIMARY KEY,GPU_TMP int not null,GPU_cLOCK int not null,FanSpeed int not null,PowerDraw int not null,Drawsum int not null)");
-           mysql_query(&mysql, "create table hash_table(gpu_id int PRIMARY KEY,hashrate float4 not null,accepted_shares int not null,invalid_shares int not null,rejected_shares int not null)");
-           mysql_query(&mysql, "create table main_table(Date1 date not null,Time1 time not null,gpu_id int PRIMARY KEY not null,gpu_name varchar(8) not null,FOREIGN KEY(gpu_id) REFERENCES gpu_table(gpu_id),FOREIGN KEY(gpu_id) REFERENCES hash_table(gpu_id))");
+           mysql_query(&mysql, "create table main_table(Date1 date not null,Time1 time not null,hashrate float4 not null,accepted_shares int not null,invalid_shares int not null,rejected_shares int not null,gpu_name VARCHAR(9) not null,TMP int not null,gpu_clock int not null,mem_clock int not null,FanSpeed int not null,PowerDraw int not null,gpu_id int PRIMARY KEY not null)");
            mysql_query(&mysql, "create table advise(gpu_type varchar(10) PRIMARY KEY,gpu_clock int,mem_clock int not null,power int not null,prediction int not null)");
-           qDebug() << "mysqlhere"<<endl;
            mysql_query(&mysql, "insert into advise values('3090',-300,1000,285,120)");
            mysql_query(&mysql, "insert into advise values('3080',-150,900,220,98)");
            mysql_query(&mysql, "insert into advise values('3070',-500,1100,130,60)");
-           qDebug() << "mysqlhere"<<endl;
            mysql_query(&mysql,"insert into advise values('3060Ti',-500,1200,130,60)");
            mysql_query(&mysql,"insert into advise values('2080Ti',-200,1100,150,57)");
            mysql_query(&mysql,"insert into advise values('2080super',-50,1000,175,42)");
@@ -69,211 +77,86 @@ void MYSQLcon::ConnectDatabase(){
         qDebug()<<"Connected...\n";
         char* s=(char*)"2070";
         getAdvice(s);
+
     }
 }
 QStringList MYSQLcon::getAdvice(const char* type){
     char* q=(char*)"select gpu_clock,mem_clock,power,prediction from advice where gpu_type=\'";
     char str3[100];
     sprintf(str3,"%s%s%s",q,type,"\'");
-    qDebug()<<str3<<endl;
     mysql_query(&mysql,"select gpu_clock,mem_clock,power,prediction from advise where gpu_type='2070'");
     res=mysql_store_result(&mysql);
     mysql_free_result(res);
     MYSQL_ROW   row;
     QStringList l;
     while((row=mysql_fetch_row(res))) {
-         for(unsigned int i=0 ; i <mysql_num_fields(res);i++){
-             qDebug()<<row[i]<<endl;
-             l.append(row[i]);
-         }
+        for(int i=0 ; i<mysql_num_fields(res);i++){
+            l.append(row[i]);
+        }
     }
-    mysql_free_result(res);
     return l;
+}
+void MYSQLcon::InsertData(){
 
+    std::vector<GPUInfo> gpuInfos;
+    nvMonitorThrd nvMonitorThrd;
+    gpuInfos=nvMonitorThrd.getStatus();
+    char* Ins_main=(char*)"insert into main_table values(";
+    time_t now = time(0);
+    tm *ltm = localtime(&now);
+    int year=1900 + ltm->tm_year;
+    int month=1+ltm->tm_mon;
+    char date[15];
+    sprintf(date,"%d%c%d%c%d",year,'-',month,'-',ltm->tm_mday);
+    char time[10];
+    sprintf(time,"%d%c%d%c%d",ltm->tm_hour,':',ltm->tm_min,':',ltm->tm_sec);
+    char mainline[100];
+    qDebug()<<date<<endl;
+    qDebug()<<time<<endl;
+
+    for (int i = 0; i < gpuInfos.size(); i++) {
+        //std::string na=gpuInfos[i].name;
+        //std::size_t pos =na.find("2070");
+        //std::string str3 = na.substr (pos,pos+4);
+        std::string str3="2070";
+        sprintf(mainline,"%s%c%s%c%c%c%s%c%c%f%c%d%c%d%c%d%c%c%s%c%c%d%c%d%c%d%c%d%c%d%c%d%c",Ins_main,'\'',date,'\'',',','\'',time,'\'',',',gpuInfos[i].hashrate,',',gpuInfos[i].accepted_shares,',',gpuInfos[i].invalid_shares,',',gpuInfos[i].rejected_shares,',','\'',str3.c_str(),'\'',',',gpuInfos[i].temp,',',gpuInfos[i].gpuclock,',',gpuInfos[i].memclock,',',gpuInfos[i].fanspeed,',',gpuInfos[i].power,',',gpuInfos[i].num,')');
+        qDebug()<<mainline<<endl;
+        mysql_query(&mysql,mainline);
+    }
+    mysql_close(&mysql);
+
+
+}
+void MYSQLcon::run()
+{
+    while(1){
+        QThread::sleep(6);
+        InsertData();
+    }
 }
 void MYSQLcon::FreeConnect(){
     mysql_free_result(res);
 
     mysql_close(&mysql);
 }
-/*
-bool MYSQLcon::QueryDatabase1(){
-    query.exec("select * from minercoffee"); //执行查询语句，这里是查询所有，user是表名，不用加引号，用strcpy也可以
-
-    query.exec("set names gbk"); //设置编码格式（SET NAMES GBK也行），否则cmd下中文乱码
-
-    //返回0 查询成功，返回1查询失败
-
-    if(mysql_query(&mysql, query))        //执行SQL语句
-
-    {
-
-        printf("Query failed (%s)\n",mysql_error(&mysql));
-
-        return false;
-
-    }
-
-    else
-
-    {
-
-        printf("query success\n");
-
-    }
-
-    //获取结果集
-
-    if (!(res=mysql_store_result(&mysql)))    //获得sql语句结束后返回的结果集
-
-    {
-
-        printf("Couldn't get result from %s\n", mysql_error(&mysql));
-
-        return false;
-
-    }
-
-
-
-    //打印数据行数
-
-    printf("number of dataline returned: %d\n",mysql_affected_rows(&mysql));
-
-
-
-    //获取字段的信息
-
-    char *str_field[32];  //定义一个字符串数组存储字段信息
-
-    for(int i=0;i<4;i++)   //在已知字段数量的情况下获取字段名
-
-    {
-
-        str_field[i]=mysql_fetch_field(res)->name;
-
-    }
-
-    for(int i=0;i<4;i++)   //打印字段
-
-        printf("%10s\t",str_field[i]);
-
-    printf("\n");
-
-    //打印获取的数据
-
-    while (column = mysql_fetch_row(res))   //在已知字段数量情况下，获取并打印下一行
-
-    {
-
-        printf("%10s\t%10s\t%10s\t%10s\n", column[0], column[1], column[2],column[3]);  //column是列数组
-
-    }
-
-    return true;
-}
-bool MYSQLcon::QueryDatabase2(){
-    mysql_query(&mysql,"set names gbk");
-
-    //返回0 查询成功，返回1查询失败
-
-    if(mysql_query(&mysql, "select * from minercoffee"))        //执行SQL语句
-
-    {
-
-        printf("Query failed (%s)\n",mysql_error(&mysql));
-
-        return false;
-
-    }
-
-    else
-
-    {
-
-        printf("query success\n");
-
-    }
-
+QStringList MYSQLcon::Get_History(char* date1,char* date2,int num){
+    char* Ins_main=(char*)"select avg(TMP),avg(gpu_clock),avg(mem_clock),avg(FanSpeed),avg(PowerDraw),avg(hashrate) from main_table where Date1<=";
+    char* i=(char*)" and Date1>=";
+    char* w=(char*)" and gpu_id=";
+    char lp[250];
+    //char li[250]="select avg(TMP),avg(gpu_clock),avg(mem_clock),avg(FanSpeed),avg(PowerDraw),avg(hashrate),gpu_name,avg(accepted_shares),avg(invalid_shares),avg(rejected_shares) from main_table where Date1<='2021-04-18' and Date1>='2021-04-18' and gpu_id=0";
+    sprintf(lp,"%s%c%s%c%s%c%s%c%s%d",Ins_main,'\'',date2,'\'',i,'\'',date1,'\'',w,num);
+    qDebug()<<lp<<endl;
+    mysql_query(&mysql,lp);
     res=mysql_store_result(&mysql);
-
-    //打印数据行数
-
-    printf("number of dataline returned: %d\n",mysql_affected_rows(&mysql));
-
-    for(int i=0;fd=mysql_fetch_field(res);i++)  //获取字段名
-
-        strcpy(field[i],fd->name);
-
-    int j=mysql_num_fields(res);  // 获取列数
-
-    for(int i=0;i<j;i++)  //打印字段
-
-        printf("%10s\t",field[i]);
-
-    printf("\n");
-
-    while(column=mysql_fetch_row(res))
-
-    {
-
-        for(int i=0;i<j;i++)
-
-            printf("%10s\t",column[i]);
-
-        printf("\n");
-
+    mysql_free_result(res);
+    MYSQL_ROW   row;
+    QStringList l;
+    while((row=mysql_fetch_row(res))) {
+        for(int i=0 ; i<mysql_num_fields(res);i++){
+            l.append(row[i]);
+        }
     }
-
-    return true;
+    return l;
 }
-bool InsertData(){
-    sprintf(query, "insert into user values (NULL, 'Lilei', 'wyt2588zs','lilei23@sina.cn');");  //可以想办法实现手动在控制台手动输入指令
 
-    if(mysql_query(&mysql, query))        //执行SQL语句
-
-    {
-
-        printf("Query failed (%s)\n",mysql_error(&mysql));
-
-        return false;
-
-    }
-
-    else
-
-    {
-
-        printf("Insert success\n");
-
-        return true;
-
-    }
-
-}
-bool DeleteData(){
-    char query[100];
-
-    printf("please input the sql:\n");
-
-
-    if(mysql_query(&mysql, query))        //执行SQL语句
-
-    {
-
-        printf("Query failed (%s)\n",mysql_error(&mysql));
-
-        return false;
-
-    }
-
-    else
-
-    {
-
-        printf("Insert success\n");
-
-        return true;
-
-    }
-}*/
