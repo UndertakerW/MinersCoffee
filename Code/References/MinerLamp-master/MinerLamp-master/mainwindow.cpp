@@ -7,6 +7,10 @@
 #include "nanopoolapi.h"
 #include "hashratecharview.h"
 #include "mysql.h"
+#include "constants.h"
+
+#include "structures.h"
+
 #include <QDebug>
 #include <QMessageBox>
 #include <QMenu>
@@ -302,6 +306,9 @@ MainWindow::MainWindow(QWidget *parent) :
         ui->lineEditAccount->setText(ui->lineEditArgs->text().mid(pos + 3
                                                                   , ui->lineEditArgs->text().indexOf(" 0x") > 0 ? 42 : 40));
 
+    //ui->debugBox->append("hello 1");
+
+    initializeConstants();
 }
 
 MainWindow::~MainWindow()
@@ -321,12 +328,121 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+
 void MainWindow::setComboIndex(QComboBox * comboBox, QString key){
     int comboIdx = comboBox->findText(key);
     if(comboIdx != -1){
         comboBox->setCurrentIndex(comboIdx);
     }
     qDebug() << "fetch index: " << comboIdx << "\t" << key;
+}
+
+
+Coin* MainWindow::AddCoin(QString coin_name)
+{
+    Coin* coin = new Coin(coin_name);
+    map_coins[coin_name] = coin;
+    return coin;
+}
+
+Pool* MainWindow::AddPool(QString pool_name, Coin* coin, const QString& cmd)
+{
+    Pool* pool = nullptr;
+    if (map_pools.contains(pool_name))
+    {
+        pool = map_pools[pool_name];
+    }
+    else
+    {
+        pool = new Pool(pool_name);
+        map_pools[pool_name] = pool;
+    }
+    coin->AddPool(pool, cmd);
+    return pool;
+}
+
+Pool* MainWindow::AddPool(QString pool_name, QString coin_name, const QString& cmd)
+{
+    Pool* pool = nullptr;
+    if (!map_coins.contains(coin_name))
+    {
+        qDebug() << "No coin name: " << coin_name << endl;
+        return pool;
+    }
+    Coin* coin = map_coins[coin_name];
+    if (map_pools.contains(pool_name))
+    {
+        pool = map_pools[pool_name];
+    }
+    else
+    {
+        pool = new Pool(pool_name);
+        map_pools[pool_name] = pool;
+    }
+    coin->AddPool(pool, cmd);
+    return pool;
+}
+
+
+Core* MainWindow::AddCore(QString core_name, const QString& path, const QString& api, Coin* coin, const QString& cmd)
+{
+    Core* core = nullptr;
+    if (map_cores.contains(core_name))
+    {
+        core = map_cores[core_name];
+    }
+    else
+    {
+        core = new Core(core_name, path, api);
+        map_cores[core_name] = core;
+    }
+    coin->AddCore(core, cmd);
+    return core;
+}
+
+Core* MainWindow::AddCore(QString core_name, const QString& path, const QString& api, QString coin_name, const QString& cmd)
+{
+    Core* core = nullptr;
+    if (!map_coins.contains(coin_name))
+    {
+        qDebug() << "No coin name: " << coin_name << endl;
+        return core;
+    }
+    Coin* coin = map_coins[coin_name];
+    if (map_cores.contains(core_name))
+    {
+        core = map_cores[core_name];
+    }
+    else
+    {
+        core = new Core(core_name, path, api);
+        map_cores[core_name] = core;
+    }
+    coin->AddCore(core, cmd);
+    return core;
+}
+
+
+void MainWindow::initializeConstants()
+{
+
+    // Future Improvement:
+    // Separate code and data
+    // Move the constant strings in the code to a file (possibly database)
+    // In the code, use a loop to read the data file
+    // and do the same job
+
+    Coin* eth = AddCoin("ETH");
+
+    AddPool("ethermine", eth, eth_ethermine);
+    AddPool("sparkpool", eth, eth_sparkpool);
+    AddPool("f2pool", eth, eth_f2pool);
+    AddPool("beepool", eth, eth_beepool);
+    AddPool("nanopool", eth, eth_nanopool);
+    AddPool("herominers", eth, eth_herominers);
+    AddPool("nicehash", eth, eth_nicehash);
+
+    AddCore("NBMiner", path_nbminer, api_nbminer, eth, cmd_nbminer_eth);
 }
 
 
@@ -522,29 +638,82 @@ void MainWindow::setupToolTips()
         ui->groupBoxWatchdog->setToolTip("");
 }
 
-
 void MainWindow::on_pushButton_clicked()
 {
+
     saveParameters();
     if(ui->lineEditMinerPath->text().isEmpty() || ui->lineEditArgs->text().isEmpty()) return;
 
-    if(!_isStartStoping) // avoid to start/stop more than once on dbl clic
+    //saveParameters();
+
+    //if(ui->lineEditMinerPath->text().isEmpty() || ui->lineEditArgs->text().isEmpty()) return;
+
+    if(ui->lineEditWallet->text().isEmpty() || ui->lineEditWorker->text().isEmpty()) return;
+
+
+    if(!_isStartStoping) // avoid to start/stop more than once on double-click
     {
         _isStartStoping = true;
 
         if(!_isMinerRunning)
         {
+
+            Core* current_core;
+            Coin* current_coin;
+            Pool* current_pool;
+
+            if (!map_cores.contains(ui->comboBoxCore->currentText()))
+            {
+                // default core
+                current_core = map_cores["NBMiner"];
+            }
+            else
+            {
+                current_core = map_cores[ui->comboBoxCore->currentText()];
+            }
+
+            if (!map_coins.contains(ui->comboBoxCoin->currentText()))
+            {
+                // default coin
+                current_coin = map_coins["ETH"];
+            }
+            else
+            {
+                current_coin = map_coins[ui->comboBoxCoin->currentText()];
+            }
+
+            if (!map_pools.contains(ui->comboBoxPool->currentText()))
+            {
+                // default pool
+                current_pool = map_pools["sparkpool"];
+            }
+            else
+            {
+                current_pool = map_pools[ui->comboBoxPool->currentText()];
+            }
+
+
+
+
+            QString core_path = QCoreApplication::applicationDirPath() + current_core->path;
+            QString core_args = current_core->cmds[current_coin].arg(
+                        current_pool->cmds[current_coin]).arg(ui->lineEditWallet->text()).arg(ui->lineEditWorker->text());
+
+            qDebug() << core_path << core_args << endl;
+
+            _process->SetAPI(current_core);
             _process->setMax0MHs(ui->spinBoxMax0MHs->value());
             _process->setRestartDelay(ui->spinBoxDelay->value());
             _process->setRestartOption(ui->groupBoxWatchdog->isChecked());
             _process->setDelayBeforeNoHash(ui->spinBoxDelayNoHash->value());
-            _process->start(ui->lineEditMinerPath->text(), ui->lineEditArgs->text());
-            if (core == "")
-                core = "NBMiner";
-            _nvMonitorThrd->SetAPI(core);
+            _process->start(core_path, core_args);
         }
         else
+        {
+            qDebug() << "Stop mining" << endl;
             _process->stop();
+        }
+
     }
 }
 
@@ -759,17 +928,12 @@ GPUInfo MainWindow::getWorst(const std::vector<GPUInfo> &gpu_infos)
         if (gpu_infos[i].memclock < memclock) memclock = gpu_infos[i].memclock;
         if (gpu_infos[i].power < power) power = gpu_infos[i].power;
         if (gpu_infos[i].fanspeed < fanspeed) fanspeed = gpu_infos[i].fanspeed;
-        if (gpu_infos[i].hashrate < hashrate) {
-            hashrate = gpu_infos[i].hashrate;
-            gi.num = i;
-        }
     }
     gi.temp = temp;
     gi.gpuclock = gpuclock;
     gi.memclock = memclock;
     gi.power = power;
     gi.fanspeed = fanspeed;
-    gi.hashrate = hashrate;
     return gi;
 }
 
@@ -1053,7 +1217,7 @@ void MainWindow::initializePieChart(){
     _effPieChart->legend()->hide();
 
     _effPieChart->resize(1,1);
-    ui->debugBox->append(QString::number(_effPieChart->legend()->size().height())+" "+QString::number(_effPieChart->legend()->size().width()));
+    //ui->debugBox->append(QString::number(_effPieChart->legend()->size().height())+" "+QString::number(_effPieChart->legend()->size().width()));
     _effPieSeries = new QPieSeries();
     _effPieSeries->append("eff", 1);
     _effPieSeries->append("uneff", 10);
@@ -1119,6 +1283,7 @@ void MainWindow::onMouseHoverSlice(QPieSlice * slice, bool status){
 
 }
 
+
 void MainWindow::on_checkBoxAutoShowDeviceInfo_clicked(bool clicked){
     ui->groupBoxDevicesInfo->setVisible(clicked);
 }
@@ -1129,4 +1294,13 @@ void MainWindow::onGpusInfoRecieved(std::vector<GPUInfo> gpusinfo){
         _gpusinfo->push_back(gpusinfo[i]);
     }
     refreshDeviceInfo();
+
+bool MainWindow::getMinerStatus()
+{
+    return _isMinerRunning;
+}
+
+void MainWindow::showConsoleMsg(QString msg)
+{
+    ui->debugBox->append(msg);
 }

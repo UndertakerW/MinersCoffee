@@ -200,9 +200,9 @@ int nvidiaNVML::getMaxSupportedMemClock(unsigned int index)
     return max;
 }
 
-std::vector<GPUInfo> nvidiaNVML::getStatus()
+QList<GPUInfo> nvidiaNVML::getStatus()
 {
-    std::vector<GPUInfo> gpu_infos;
+    QList<GPUInfo> gpu_infos;
     unsigned int gpuCount = getGPUCount();
     for(unsigned int i = 0; i < gpuCount; i++)
     {
@@ -213,8 +213,8 @@ std::vector<GPUInfo> nvidiaNVML::getStatus()
         gi.memclock = getMemClock(i);
         gi.power = getPowerDraw(i);
         gi.fanspeed = getFanSpeed(i);
-        gi.name = getGPUName(i);
-        gpu_infos.push_back(gi);
+        gi.name = QString().fromStdString(getGPUName(i));
+        gpu_infos.append(gi);
     }
     return gpu_infos;
 }
