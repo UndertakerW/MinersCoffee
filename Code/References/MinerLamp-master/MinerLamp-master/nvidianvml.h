@@ -25,24 +25,24 @@ public:
     int getPowerDraw(unsigned int index);
 
     int getMaxSupportedMemClock(unsigned int index);
-    unsigned int* getAllTemp();
+
     int getHigherTemp();
     int getLowerTemp();
 
     int getHigherFanSpeed();
-    unsigned int* getAllFanSpeed();
+
     int getLowerFanSpeed();
 
     int getMemMaxClock();
-    unsigned int* getAllMemClock();
+
     int getMemLowerClock();
 
     int getGPUMaxClock();
-    unsigned int* getAllGPUClock();
+
     int getGPUMinClock();
 
     int getMaxPowerDraw();
-    unsigned int* getAllPowerDraw();
+
     int getMinPowerDraw();
 
     int getPowerDrawSum();

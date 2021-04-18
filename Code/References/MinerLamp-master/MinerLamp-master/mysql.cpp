@@ -71,226 +71,29 @@ void MYSQLcon::ConnectDatabase(){
         getAdvice(s);
     }
 }
-MYSQL_ROW MYSQLcon::getAdvice(char* type){
+QStringList MYSQLcon::getAdvice(char* type){
     char* q=(char*)"select gpu_clock,mem_clock,power,prediction from advice where gpu_type=\'";
     char str3[100];
     sprintf(str3,"%s%s%s",q,type,"\'");
     qDebug()<<str3<<endl;
     mysql_query(&mysql,"select gpu_clock,mem_clock,power,prediction from advise where gpu_type='2070'");
     res=mysql_store_result(&mysql);
-    /*if (res) {
-        int row_num,col_num;
-        row_num = mysql_num_rows(res);
-        col_num = mysql_num_fields(res);
-        qDebug() << "共有" << row_num << "条数据，以下为其详细内容：" << endl;
-        MYSQL_FIELD *fd;
-        while (fd = mysql_fetch_field(res)) {
-            std::cout << fd->name << "\t";
-        }
-        std::cout << std::endl;
-        MYSQL_ROW sql_row;
-        while (sql_row = mysql_fetch_row(res)) {
-            for (int i = 0; i < col_num; i++) {
-                if (sql_row[i] == NULL) std::cout << "NULL\t";
-                else std::cout << sql_row[i] << "\t";
-            }
-            std::cout << std::endl;
-        }
-    }
-    if(res!=NULL)*/
     mysql_free_result(res);
     MYSQL_ROW   row;
+    QStringList l;
     while((row=mysql_fetch_row(res))) {
-         for(unsigned int i=0 ; i <mysql_num_fields(res);i++)
-              qDebug()<<row[i]<<endl;
+        for(int i=0 ; i <mysql_num_fields(res);i++){
+            qDebug()<<row[i]<<endl;
+            l.append(row[i]);
+        }
     }
-
-    return row;
-
+    return l;
 }
-/*void MYSQLcon::FreeConnect(){
+
+void MYSQLcon::FreeConnect(){
     mysql_free_result(res);
 
     mysql_close(&mysql);
 }
 
-bool MYSQLcon::QueryDatabase1(){
-    query.exec("select * from minercoffee"); //执行查询语句，这里是查询所有，user是表名，不用加引号，用strcpy也可以
 
-    query.exec("set names gbk"); //设置编码格式（SET NAMES GBK也行），否则cmd下中文乱码
-
-    //返回0 查询成功，返回1查询失败
-
-    if(mysql_query(&mysql, query))        //执行SQL语句
-
-    {
-
-        printf("Query failed (%s)\n",mysql_error(&mysql));
-
-        return false;
-
-    }
-
-    else
-
-    {
-
-        printf("query success\n");
-
-    }
-
-    //获取结果集
-
-    if (!(res=mysql_store_result(&mysql)))    //获得sql语句结束后返回的结果集
-
-    {
-
-        printf("Couldn't get result from %s\n", mysql_error(&mysql));
-
-        return false;
-
-    }
-
-
-
-    //打印数据行数
-
-    printf("number of dataline returned: %d\n",mysql_affected_rows(&mysql));
-
-
-
-    //获取字段的信息
-
-    char *str_field[32];  //定义一个字符串数组存储字段信息
-
-    for(int i=0;i<4;i++)   //在已知字段数量的情况下获取字段名
-
-    {
-
-        str_field[i]=mysql_fetch_field(res)->name;
-
-    }
-
-    for(int i=0;i<4;i++)   //打印字段
-
-        printf("%10s\t",str_field[i]);
-
-    printf("\n");
-
-    //打印获取的数据
-
-    while (column = mysql_fetch_row(res))   //在已知字段数量情况下，获取并打印下一行
-
-    {
-
-        printf("%10s\t%10s\t%10s\t%10s\n", column[0], column[1], column[2],column[3]);  //column是列数组
-
-    }
-
-    return true;
-}
-bool MYSQLcon::QueryDatabase2(){
-    mysql_query(&mysql,"set names gbk");
-
-    //返回0 查询成功，返回1查询失败
-
-    if(mysql_query(&mysql, "select * from minercoffee"))        //执行SQL语句
-
-    {
-
-        printf("Query failed (%s)\n",mysql_error(&mysql));
-
-        return false;
-
-    }
-
-    else
-
-    {
-
-        printf("query success\n");
-
-    }
-
-    res=mysql_store_result(&mysql);
-
-    //打印数据行数
-
-    printf("number of dataline returned: %d\n",mysql_affected_rows(&mysql));
-
-    for(int i=0;fd=mysql_fetch_field(res);i++)  //获取字段名
-
-        strcpy(field[i],fd->name);
-
-    int j=mysql_num_fields(res);  // 获取列数
-
-    for(int i=0;i<j;i++)  //打印字段
-
-        printf("%10s\t",field[i]);
-
-    printf("\n");
-
-    while(column=mysql_fetch_row(res))
-
-    {
-
-        for(int i=0;i<j;i++)
-
-            printf("%10s\t",column[i]);
-
-        printf("\n");
-
-    }
-
-    return true;
-}
-bool InsertData(){
-    sprintf(query, "insert into user values (NULL, 'Lilei', 'wyt2588zs','lilei23@sina.cn');");  //可以想办法实现手动在控制台手动输入指令
-
-    if(mysql_query(&mysql, query))        //执行SQL语句
-
-    {
-
-        printf("Query failed (%s)\n",mysql_error(&mysql));
-
-        return false;
-
-    }
-
-    else
-
-    {
-
-        printf("Insert success\n");
-
-        return true;
-
-    }
-
-}
-bool DeleteData(){
-    char query[100];
-
-    printf("please input the sql:\n");
-
-
-    if(mysql_query(&mysql, query))        //执行SQL语句
-
-    {
-
-        printf("Query failed (%s)\n",mysql_error(&mysql));
-
-        return false;
-
-    }
-
-    else
-
-    {
-
-        printf("Insert success\n");
-
-        return true;
-
-    }
-}*/
