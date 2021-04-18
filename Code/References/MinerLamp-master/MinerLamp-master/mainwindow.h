@@ -112,7 +112,7 @@ private slots:
 
 
     void refreshDeviceInfo();
-    void onGpusInfoRecieved(std::vector<GPUInfo> gpusinfo);
+    void onGpusInfoRecieved(QList<GPUInfo> gpusinfo);
 
     void onNvMonitorInfo(unsigned int gpucount
                          , unsigned int maxgputemp

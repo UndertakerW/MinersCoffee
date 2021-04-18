@@ -61,6 +61,7 @@ public:
 private:
     unsigned int _delay;
     float refresh_rate = 3;
+    bool enabled = false;
     MinerProcess* _pParent;
 
     unsigned int _hashrateCount;

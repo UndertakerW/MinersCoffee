@@ -47,7 +47,7 @@ public:
 
 signals:
 
-    void gpusInfoSignalRefresh(std::vector<GPUInfo> gpusinfo);
+    void gpusInfoSignalRefresh(QList<GPUInfo> gpusinfo);
 
     void gpuInfoSignal(unsigned int gpucount
                        , unsigned int maxgputemp
@@ -61,6 +61,7 @@ signals:
                        , unsigned int maxpowerdraw
                        , unsigned int minpowerdraw
                        , unsigned int totalpowerdraw);
+    /*
     void gpuInfoSignal1(unsigned int gpucount
                        , unsigned int *Allgputemp
                        , unsigned int *Allfanspeed
@@ -68,6 +69,7 @@ signals:
                        , unsigned int *Allgpuclock
                        , unsigned int *Allpowerdraw
                        , unsigned int totalpowerdraw);
+                       */
 };
 
 
@@ -80,7 +82,7 @@ public:
     nvMonitorThrd(QObject* p = Q_NULLPTR);
 
     void run() override;
-    void mysql();
+    //void mysql();
 
     //MiningInfo getStatus() override;
 

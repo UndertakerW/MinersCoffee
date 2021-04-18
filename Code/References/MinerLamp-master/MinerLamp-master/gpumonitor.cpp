@@ -15,7 +15,7 @@ void nvMonitorThrd::run()
 
     while(1)
     {
-        QList<GPUInfo> gpuInfos = getStatus();
+        QList<GPUInfo> gpuInfos = nvml->getStatus();
 
         unsigned int gpucount = nvml->getGPUCount();
 
@@ -60,7 +60,12 @@ void nvMonitorThrd::run()
     nvml->shutDownNVML();
 }
 
+QList<GPUInfo> nvMonitorThrd::getStatus()
+{
+    return nvml->getStatus();
+}
 
+/*
 void nvMonitorThrd::mysql()
 {
     nvml = new nvidiaNVML();
@@ -68,7 +73,7 @@ void nvMonitorThrd::mysql()
 
     while(1)
     {
-        std::vector<GPUInfo> gpuInfos = getStatus();
+        QList<GPUInfo> gpuInfos = getStatus();
 
         unsigned int gpucount = nvml->getGPUCount();
 
@@ -92,7 +97,7 @@ void nvMonitorThrd::mysql()
 
     nvml->shutDownNVML();
 }
-
+*/
 
 amdMonitorThrd::amdMonitorThrd(QObject * p) : GPUMonitor(p) {}
 

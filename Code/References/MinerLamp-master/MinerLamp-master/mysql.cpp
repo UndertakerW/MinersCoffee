@@ -12,6 +12,7 @@
 #include <nvidianvml.h>
 #include <WinSock.h>
 #include "gpumonitor.h"
+#include "minerprocess.h"
 
 //一定要包含这个，或者winsock2.h
 
@@ -98,7 +99,7 @@ QStringList MYSQLcon::getAdvice(const char* type){
 }
 void MYSQLcon::InsertData(){
 
-    std::vector<GPUInfo> gpuInfos;
+    QList<GPUInfo> gpuInfos;
     nvMonitorThrd nvMonitorThrd;
     gpuInfos=nvMonitorThrd.getStatus();
     char* Ins_main=(char*)"insert into main_table values(";
@@ -114,12 +115,16 @@ void MYSQLcon::InsertData(){
     qDebug()<<date<<endl;
     qDebug()<<time<<endl;
 
+    //TODO
+    MiningInfo miningInfo;
+    MinerProcess* mp;
+    miningInfo = mp->getStatus();
     for (int i = 0; i < gpuInfos.size(); i++) {
         //std::string na=gpuInfos[i].name;
         //std::size_t pos =na.find("2070");
         //std::string str3 = na.substr (pos,pos+4);
         std::string str3="2070";
-        sprintf(mainline,"%s%c%s%c%c%c%s%c%c%f%c%d%c%d%c%d%c%c%s%c%c%d%c%d%c%d%c%d%c%d%c%d%c",Ins_main,'\'',date,'\'',',','\'',time,'\'',',',gpuInfos[i].hashrate,',',gpuInfos[i].accepted_shares,',',gpuInfos[i].invalid_shares,',',gpuInfos[i].rejected_shares,',','\'',str3.c_str(),'\'',',',gpuInfos[i].temp,',',gpuInfos[i].gpuclock,',',gpuInfos[i].memclock,',',gpuInfos[i].fanspeed,',',gpuInfos[i].power,',',gpuInfos[i].num,')');
+        sprintf(mainline,"%s%c%s%c%c%c%s%c%c%f%c%d%c%d%c%d%c%c%s%c%c%d%c%d%c%d%c%d%c%d%c%d%c",Ins_main,'\'',date,'\'',',','\'',time,'\'',',',miningInfo.gpuMiningInfos[i].hashrate,',',miningInfo.gpuMiningInfos[i].accepted_shares,',',miningInfo.gpuMiningInfos[i].invalid_shares,',',miningInfo.gpuMiningInfos[i].rejected_shares,',','\'',str3.c_str(),'\'',',',gpuInfos[i].temp,',',gpuInfos[i].gpuclock,',',gpuInfos[i].memclock,',',gpuInfos[i].fanspeed,',',gpuInfos[i].power,',',gpuInfos[i].num,')');
         qDebug()<<mainline<<endl;
         mysql_query(&mysql,mainline);
     }

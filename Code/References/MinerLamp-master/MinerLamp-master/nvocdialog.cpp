@@ -230,7 +230,7 @@ void nvOCDialog::on_checkBoxAutoOC_clicked(bool clicked){
                 gpuofffset=str;
                 l.pop_front();
                 str=atoi(l.front().toStdString().c_str());
-                memoffset=str;
+
                 _nvapi->setFanSpeed(i,fanspeed);
                 _nvapi->setGPUOffset(i,gpuofffset);
                 _nvapi->setMemClockOffset(i,memoffset);

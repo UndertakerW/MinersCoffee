@@ -15,9 +15,7 @@
 #include "C:/Program Files/MySQL/MySQL Server 8.0/include/mysql.h"
 #include <Windows.h>
 
-#pragma comment(lib,"wsock32.lib")
 
-#pragma comment(lib,"libmysql.lib")
 class MYSQLcon:public QThread{
 
 private:
@@ -36,7 +34,7 @@ public:
     MYSQLcon();
     void ConnectDatabase();
     void FreeConnect();
-    QStringList getAdvice(char* type);
+    QStringList getAdvice(const char* type);
     void InsertData();
     void run();
     QStringList Get_History(char* date1,char* date2,int num);

@@ -642,9 +642,6 @@ void MainWindow::on_pushButton_clicked()
 {
 
     saveParameters();
-    if(ui->lineEditMinerPath->text().isEmpty() || ui->lineEditArgs->text().isEmpty()) return;
-
-    //saveParameters();
 
     //if(ui->lineEditMinerPath->text().isEmpty() || ui->lineEditArgs->text().isEmpty()) return;
 
@@ -1181,7 +1178,7 @@ void MainWindow::refreshDeviceInfo()
         QHBoxLayout * layoutPtr = _gpuInfoList->at(i)->findChild<QHBoxLayout *>();
         QWidget * castWidgetPtr = layoutPtr->itemAt(0)->widget();
         QLabel * castLabel = dynamic_cast<QLabel *>(castWidgetPtr);
-        QString deviceName = _gpusinfo->at(i).name.c_str();
+        QString deviceName = _gpusinfo->at(i).name;
         castLabel->setText(deviceName);
 
         // set temperature at 2
@@ -1288,12 +1285,13 @@ void MainWindow::on_checkBoxAutoShowDeviceInfo_clicked(bool clicked){
     ui->groupBoxDevicesInfo->setVisible(clicked);
 }
 
-void MainWindow::onGpusInfoRecieved(std::vector<GPUInfo> gpusinfo){
+void MainWindow::onGpusInfoRecieved(QList<GPUInfo> gpusinfo){
     _gpusinfo->clear();
     for(int i=0;i<gpusinfo.size();i++){
         _gpusinfo->push_back(gpusinfo[i]);
     }
     refreshDeviceInfo();
+}
 
 bool MainWindow::getMinerStatus()
 {

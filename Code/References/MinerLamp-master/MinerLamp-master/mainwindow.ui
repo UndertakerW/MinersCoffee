@@ -298,38 +298,6 @@ QPushButton:disabled
         <pointsize>12</pointsize>
        </font>
       </property>
-    <item row="0" column="0" colspan="6">
-     <layout class="QHBoxLayout" name="horizontalLayoutMiningArgs">
-      <item>
-       <widget class="QLabel" name="labelCoin">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>31</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>50</width>
-          <height>16777215</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Coin</string>
-        </property>
-       </widget>
-      </item>
       <item>
        <property name="text">
         <string>ETH</string>
@@ -440,24 +408,6 @@ QPushButton:disabled
        <property name="text">
         <string>ethermine</string>
        </property>
-       <widget class="QComboBox" name="comboBoxCore">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>31</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <item>
-         <property name="text">
-          <string>NBMiner</string>
-         </property>
-        </item>
-       </widget>
       </item>
       <item>
        <property name="text">
@@ -1538,8 +1488,6 @@ for last 6 hour:</string>
           <font>
            <family>Arial</family>
           </font>
-         <property name="enabled">
-          <bool>true</bool>
          </property>
          <property name="text">
           <string>0xa07A8c9975145BB5371e8b3C31ACb62ad9d0698E</string>

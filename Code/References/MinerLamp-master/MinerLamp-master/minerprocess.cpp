@@ -23,10 +23,25 @@ anyMHsWaitter::anyMHsWaitter(unsigned int delay, QObject *pParent) : QThread(pPa
 
 void anyMHsWaitter::run()
 {
-    while(true)
+    while(1)
     {
-        QThread::sleep(refresh_rate);
-        MiningInfo miningInfo = _pParent->getStatus();
+        if (!enabled)
+        {
+            MiningInfo miningInfo = _pParent->getStatus();
+            if (miningInfo.latency > 0)
+            {
+                enabled = true;
+            }
+        }
+
+        else
+        {
+            QThread::sleep(refresh_rate);
+            MiningInfo miningInfo = _pParent->getStatus();
+        }
+
+        sleep(refresh_rate);
+/*
         if(_hashrateCount == _pParent->getCurrentHRCount())
         {
             qDebug() << "emit notHashing";
@@ -34,6 +49,7 @@ void anyMHsWaitter::run()
             //break;
         }
         _hashrateCount = _pParent->getCurrentHRCount();
+*/
     }
 }
 
@@ -78,8 +94,8 @@ MinerProcess::MinerProcess(QSettings* settings):
             this, &MinerProcess::onReadyToReadStdout);
 
     // read hashrate once the process start
-    connect(&_miner, &QProcess::readyReadStandardError,
-            this, &MinerProcess::onReadyToReadStderr);
+    //connect(&_miner, &QProcess::readyReadStandardError,
+            //this, &MinerProcess::onReadyToReadStderr);
 
     connect(&_miner, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished),
             this, &MinerProcess::onExit);
@@ -121,6 +137,8 @@ void MinerProcess::onReadyToReadStdout()
 
 void MinerProcess::onReadyToReadStderr()
 {
+
+/*
     QByteArray array = _miner.readAllStandardError();
 
     QString line(array);
@@ -202,6 +220,8 @@ void MinerProcess::onReadyToReadStderr()
             return;
         }
     }
+
+    */
 }
 
 void MinerProcess::onExit()
@@ -316,6 +336,14 @@ void MinerProcess::start(const QString &path, const QString& args)
 
 void MinerProcess::stop()
 {
+    qDebug() << _miner.children().size();
+    /*
+    for (int i = 0; i < _miner.children().size(); i++)
+    {
+        ((QProcess*)_miner.children().at(i))->kill();
+        ((QProcess*)_miner.children().at(i))->waitForFinished();
+    }
+    */
     _miner.kill();
     _miner.waitForFinished();
     _0mhs = 0;
