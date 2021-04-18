@@ -22,9 +22,11 @@
 #include "nvidiaapi.h"
 #include "amdapi_adl.h"
 #include "gpumonitor.h"
-#include "nvocdialog.h"
+#include "structures.h"
 
 QT_CHARTS_USE_NAMESPACE
+
+
 
 namespace Ui {
 class MainWindow;
@@ -59,6 +61,9 @@ public:
     GPUInfo getAverage(const std::vector<GPUInfo>& gpu_infos);
     GPUInfo getWorst(const std::vector<GPUInfo>& gpu_infos);
 
+    bool getMinerStatus();
+    void showConsoleMsg(QString msg);
+
 private:
     QList<QWidget *> * _gpuInfoList;
     int _deviceCount = 0;
@@ -81,12 +86,8 @@ private:
     void initializePieChart();
     void initializeConstants();
 
-
-
     nvidiaAPI* _nvapi;
     void applyOC();
-    nvOCDialog* _dlg;
-    void setComboIndex(QComboBox * comboBox, QString key);
 
 
 
@@ -100,7 +101,6 @@ private slots:
     void on_pushButtonHelp_clicked();
     void on_spinBoxDelay0MHs_valueChanged(int arg1);
     void onReadyToStartMiner();
-    void on_checkBoxAutoShowDeviceInfo_clicked(bool checked);
 
     void onNvMonitorInfo(unsigned int gpucount
                          , unsigned int maxgputemp
@@ -173,7 +173,22 @@ private slots:
     // pie slice
     void onMouseHoverSlice(QPieSlice * slice, bool status);
 
+public:
+    QMap<QString, Coin*> map_coins;
+    QMap<QString, Core*> map_cores;
+    QMap<QString, Pool*> map_pools;
+
 private:
+
+    void AddCoinToMap(Coin* coin);
+    void AddCoreToMap(Core* core);
+    void AddPoolToMap(Pool* pool);
+
+    Coin* AddCoin(QString coin_name);
+    Core* AddCore(QString core_name, const QString& path, const QString& api, Coin* coin, const QString& cmd);
+    Core* AddCore(QString core_name, const QString& path, const QString& api, QString coin_name, const QString& cmd);
+    Pool* AddPool(QString pool_name, Coin* coin, const QString& cmd);
+    Pool* AddPool(QString pool_name, QString coin_name, const QString& cmd);
 
     void onMinerStarted();
     void onMinerStoped();
@@ -240,43 +255,7 @@ private:
 
     nanopoolAPI* _nano;
 
-    std::string core;
 };
 
-
-class Core;
-class Pool;
-
-class Coin {
-public:
-    QString name;
-    QList<Core*> cores;
-    QList<Pool*> pools;
-
-public:
-    Coin(QString core_name);
-    void AddCore(Core* core, QString cmd);
-    void AddPool(Pool* pool, QString cmd);
-};
-
-class Core {
-public:
-    QString name;
-    QString path;
-    QMap<Coin*, QString> cmds;
-    int ver;
-
-public:
-    Core(QString core_name, QString path);
-};
-
-class Pool {
-public:
-    QString name;
-    QMap<Coin*, QString> cmds;
-
-public:
-    Pool(QString pool_name);
-};
 
 #endif // MAINWINDOW_H

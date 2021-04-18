@@ -44,7 +44,7 @@ public:
 
     int getPowerDrawSum();
 
-    std::vector<GPUInfo> getStatus();
+    QList<GPUInfo> getStatus();
 
     void setClock(unsigned int index);
 
