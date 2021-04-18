@@ -82,9 +82,10 @@ QStringList MYSQLcon::getAdvice(char* type){
     MYSQL_ROW   row;
     QStringList l;
     while((row=mysql_fetch_row(res))) {
-         for(unsigned int i=0 ; i <mysql_num_fields(res);i++)
-              qDebug()<<row[i]<<endl;
-//              l.append(row[i]);
+         for(unsigned int i=0 ; i <mysql_num_fields(res);i++){
+             qDebug()<<row[i]<<endl;
+             l.append(row[i]);
+         }
     }
     mysql_free_result(res);
     return l;

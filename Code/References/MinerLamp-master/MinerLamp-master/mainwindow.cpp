@@ -20,6 +20,7 @@
 #include <QScrollBar>
 #include <QFrame>
 #include <QtSql/QSqlDatabase>
+#include <QMetaType>
 
 #define MINERPATH           "minerpath"
 #define MINERARGS           "minerargs"
@@ -54,6 +55,7 @@ MainWindow::MainWindow(QWidget *parent) :
     _settings = new QSettings(QString(QDir::currentPath() + QDir::separator() + "minerlamp.ini"), QSettings::IniFormat);
 
     _process = new MinerProcess(_settings);
+    _gpusinfo = new std::vector<GPUInfo>();
     _gpuInfoList = new QList<QWidget * >();
 
     ui->setupUi(this);
@@ -91,6 +93,9 @@ MainWindow::MainWindow(QWidget *parent) :
         // retrieve gpu info to panel
         _nvMonitorThrd = new nvMonitorThrd(this);
         connect(_nvMonitorThrd, &nvMonitorThrd::gpuInfoSignal, this, &MainWindow::onNvMonitorInfo);
+
+        qRegisterMetaType<std::vector<GPUInfo>>("std::vector<GPUInfo>");
+        connect(_nvMonitorThrd, &nvMonitorThrd::gpusInfoSignalRefresh, this, &MainWindow::onGpusInfoRecieved);
         _nvMonitorThrd->start();
 
         if(_nvapi->libLoaded())
@@ -269,10 +274,9 @@ MainWindow::MainWindow(QWidget *parent) :
     _tempChartTimer.start();
 
     // dynamic generate device number info
-    refreshDevicesInfo();
-    connect(&_refreshDeviceTimer, &QTimer::timeout, this, &MainWindow::onRefreshDeviceInfoTimer);
-    _refreshDeviceTimer.setInterval(1000);
-    _refreshDeviceTimer.start();
+//    connect(&_refreshDeviceTimer, &QTimer::timeout, this, &MainWindow::onRefreshDeviceInfoTimer);
+//    _refreshDeviceTimer.setInterval(100);
+//    _refreshDeviceTimer.start();
     
 
     ui->lcdNumberHashRate->display("0.00");
@@ -313,6 +317,7 @@ MainWindow::~MainWindow()
     delete _process;
     delete _settings;
     delete _gpuInfoList;
+    delete _gpusinfo;
     delete ui;
 }
 
@@ -711,6 +716,8 @@ void MainWindow::onNvMonitorInfo(unsigned int gpucount
 
     ui->lcdNumberTotalPowerDraw->display((double)totalpowerdraw / 1000);
 
+    _currentTempRate = maxgputemp;
+
 }
 
 GPUInfo MainWindow::getAverage(const std::vector<GPUInfo>& gpu_infos)
@@ -906,25 +913,6 @@ void MainWindow::onHrChartTimer()
 
 void MainWindow::onTempChartTimer()
 {
-    // need api to retrieve temporature
-
-    static bool flip = false;
-    flip = !flip;
-
-    _currentTempRate = flip ? 10 : 0;
-
-    QPen penTemp(QColor(255, 0, 0));
-
-    if(flip){
-        penTemp.setColor(QColor(255, 150, 0));
-        penTemp.setWidth(2);
-    }
-    else{
-        penTemp.setWidth(1);
-    }
-
-    _seriesTemp->setPen(penTemp);
-
     //draw the dynamic graph
     _seriesTemp->append(QDateTime::currentDateTime().toMSecsSinceEpoch(), _currentTempRate);
 
@@ -941,12 +929,13 @@ void MainWindow::onTempChartTimer()
     if(_currentTempRate > _maxChartTempRate)
     {
         _maxChartTempRate = _currentTempRate;
-        _chartTemp->axisY()->setRange(0, _maxChartTempRate + 1);
+        _chartTemp->axisY()->setRange(_maxChartTempRate-5, _currentTempRate+5);
     }
 }
 
-void MainWindow::refreshDevicesInfo()
+void MainWindow::refreshDeviceInfo()
 {
+    qDebug() << "refreshing  222";
     // effectiveness pie chart
     static bool flip = false;
     flip = !flip;
@@ -958,13 +947,10 @@ void MainWindow::refreshDevicesInfo()
     }
 
     // fetch devices number
-    int deviceNum = 2;
-//    int deviceNum = ui->spinBoxMax0MHs->value();
-//    if(deviceNum < 0){
-//        deviceNum = 0;
-//    }
+    int deviceNum = _gpusinfo->size();
 
     if(deviceNum < _deviceCount){
+        qDebug() << "removing extra";
         for(int i = _deviceCount-1; i >= deviceNum; i--){
             QWidget * parentWidget = _gpuInfoList->at(i);
             QLayout * layout = _gpuInfoList->at(i)->findChild<QHBoxLayout *>();
@@ -992,13 +978,15 @@ void MainWindow::refreshDevicesInfo()
         _deviceCount = deviceNum;
     }
     else if(deviceNum > _deviceCount){
+        qDebug() << "adding extra";
         for(int i = _deviceCount; i <= deviceNum-1; i++){
             QWidget * parentWidget = new QWidget();
             QHBoxLayout * row = new QHBoxLayout(parentWidget);
-            QLabel * deviceTemp = new QLabel(QString("device ")+QString::number(i)+QString(" :"));
+            QLabel * deviceNumLabel = new QLabel();
+            deviceNumLabel->setFont(QFont("Arial", 9));
+            QLabel * deviceTemp = new QLabel("temperature");
             deviceTemp->setFont(QFont("Arial", 9));
             QLCDNumber * deviceTempLCD = new QLCDNumber();
-
             QLabel * fanSpeed = new QLabel("fan speed");
             fanSpeed->setFont(QFont("Arial", 9));
             QLCDNumber * fanSpeedLCD = new QLCDNumber();
@@ -1009,14 +997,15 @@ void MainWindow::refreshDevicesInfo()
             memClock->setFont(QFont("Arial", 9));
             QLCDNumber * memClockLCD = new QLCDNumber();
 
-            row->addWidget(deviceTemp);
-            row->addWidget(deviceTempLCD);
-            row->addWidget(fanSpeed);
-            row->addWidget(fanSpeedLCD);
-            row->addWidget(gpuClock);
-            row->addWidget(gpuClockLCD);
-            row->addWidget(memClock);
-            row->addWidget(memClockLCD);
+            row->addWidget(deviceNumLabel); //0
+            row->addWidget(deviceTemp);     //1
+            row->addWidget(deviceTempLCD);  //2
+            row->addWidget(fanSpeed);       //3
+            row->addWidget(fanSpeedLCD);    //4
+            row->addWidget(gpuClock);       //5
+            row->addWidget(gpuClockLCD);    //6
+            row->addWidget(memClock);       //7
+            row->addWidget(memClockLCD);    //8
 
             _gpuInfoList->append(parentWidget);
             ui->gridLayoutDevicesInfo->addWidget(parentWidget);
@@ -1026,29 +1015,30 @@ void MainWindow::refreshDevicesInfo()
 
     for(int i=0;i<_deviceCount;i++){
         // fetch each device
-        int deviceTemp = i*10 + i;
-        int fanSpeed = i*10 + i;
-        int gpuClock = i*10 + i;
-        int memClock = i*10 + i;
-        QList<int> tempHolder;
-        tempHolder.append(deviceTemp);
-        tempHolder.append(fanSpeed);
-        tempHolder.append(gpuClock);
-        tempHolder.append(memClock);
+        QHBoxLayout * layoutPtr = _gpuInfoList->at(i)->findChild<QHBoxLayout *>();
+        QWidget * castWidgetPtr = layoutPtr->itemAt(0)->widget();
+        QLabel * castLabel = dynamic_cast<QLabel *>(castWidgetPtr);
+        QString deviceName = _gpusinfo->at(i).name.c_str();
+        castLabel->setText(deviceName);
 
-        for(int j = 1; j<=3;j++){
-            QHBoxLayout * layoutPtr = _gpuInfoList->at(i)->findChild<QHBoxLayout *>();
-            QWidget * castWidgetPtr = layoutPtr->itemAt(j*2-1)->widget();
-            QLCDNumber * castLCDPtr = dynamic_cast<QLCDNumber *>(castWidgetPtr);
-            castLCDPtr->display(tempHolder.at(j));
-        }
+        // set temperature at 2
+        setLCDNumber(layoutPtr->itemAt(2)->widget(), _gpusinfo->at(i).temp);
+
+        // set fanspeed at 4
+        setLCDNumber(layoutPtr->itemAt(4)->widget(), _gpusinfo->at(i).fanspeed);
+
+        //set gpu clock at 6
+        setLCDNumber(layoutPtr->itemAt(6)->widget(), _gpusinfo->at(i).gpuclock);
+
+        // set memclock at 8
+        setLCDNumber(layoutPtr->itemAt(8)->widget(), _gpusinfo->at(i).memclock);
+
     }
-
 }
 
-void MainWindow::onRefreshDeviceInfoTimer()
-{
-    refreshDevicesInfo();
+void MainWindow::setLCDNumber(QWidget * widget, unsigned int value){
+    QLCDNumber * castLCDNumber = dynamic_cast<QLCDNumber *>(widget);
+    castLCDNumber->display(QString::number(value));
 }
 
 void MainWindow::initializePieChart(){
@@ -1132,4 +1122,12 @@ void MainWindow::onMouseHoverSlice(QPieSlice * slice, bool status){
 
 void MainWindow::on_checkBoxAutoShowDeviceInfo_clicked(bool clicked){
     ui->groupBoxDevicesInfo->setVisible(clicked);
+}
+
+void MainWindow::onGpusInfoRecieved(std::vector<GPUInfo> gpusinfo){
+    _gpusinfo->clear();
+    for(int i=0;i<gpusinfo.size();i++){
+        _gpusinfo->push_back(gpusinfo[i]);
+    }
+    refreshDeviceInfo();
 }

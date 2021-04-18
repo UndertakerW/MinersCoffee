@@ -40,10 +40,10 @@ nvOCDialog::nvOCDialog(nvidiaAPI *nvapi, QSettings *settings, QWidget *parent) :
     ui->spinBoxTemperature->setValue(100);
     ui->checkBoxAutoOC->setChecked(false);
 
-
     ui->checkBoxAllDevices->setChecked(_settings->value("nvoc_applyall").toBool());
     ui->checkBoxOCMinerStart->setChecked(_settings->value("nvoc_applyonstart").toBool());
     ui->checkBoxAutoSpeedFan->setChecked(_settings->value("fanspeed0").toInt() == 101 ? true : false);
+    ui->spinBoxTemperature->setValue(_settings->value("temp_limit").toInt());
     if(_settings->value("fanspeed0").toInt() == 101) ui->horizontalSliderFanSpeed->hide();
     _settings->endGroup();
 }
@@ -102,6 +102,7 @@ void nvOCDialog::saveConfig()
 
     _settings->beginGroup("nvoc");
     _settings->setValue("nvoc_applyall", ui->checkBoxAllDevices->isChecked());
+    _settings->setValue("temp_limit", ui->spinBoxTemperature->value());
     _settings->setValue("nvoc_applyonstart", ui->checkBoxOCMinerStart->isChecked());
 
     if(ui->checkBoxAllDevices->isChecked())

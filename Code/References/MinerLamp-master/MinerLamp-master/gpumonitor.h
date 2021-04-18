@@ -53,6 +53,8 @@ public:
 
 signals:
 
+    void gpusInfoSignalRefresh(std::vector<GPUInfo> gpusinfo);
+
     void gpuInfoSignal(unsigned int gpucount
                        , unsigned int maxgputemp
                        , unsigned int mingputemp

@@ -59,6 +59,7 @@ public:
 
     void setVisible(bool visible) Q_DECL_OVERRIDE;
     void startMiner();
+
     GPUInfo getAverage(const std::vector<GPUInfo>& gpu_infos);
     GPUInfo getWorst(const std::vector<GPUInfo>& gpu_infos);
 
@@ -80,9 +81,9 @@ private:
     void setupToolTips();
     void loadParameters();
     void saveParameters();
-    void refreshDevicesInfo();
     void initializePieChart();
     void initializeConstants();
+    void setLCDNumber(QWidget * widget, unsigned int value);
 
 
 
@@ -105,6 +106,10 @@ private slots:
     void onReadyToStartMiner();
     void on_checkBoxAutoShowDeviceInfo_clicked(bool checked);
 
+
+    void refreshDeviceInfo();
+    void onGpusInfoRecieved(std::vector<GPUInfo> gpusinfo);
+
     void onNvMonitorInfo(unsigned int gpucount
                          , unsigned int maxgputemp
                          , unsigned int mingputemp
@@ -118,6 +123,8 @@ private slots:
                          , unsigned int minpowerdraw
                          , unsigned int totalpowerdraw
                          );
+
+
 /*
     void onNvMonitorInfo(unsigned int current_gpu
                          , unsigned int gpu_count
@@ -171,7 +178,7 @@ private slots:
     void onTempChartTimer();
 
     // timer to refresh device info
-    void onRefreshDeviceInfoTimer();
+//    void onRefreshDeviceInfoTimer();
 
     // pie slice
     void onMouseHoverSlice(QPieSlice * slice, bool status);
@@ -189,6 +196,7 @@ private:
     MinerProcess* _process;
     QSettings*  _settings;
     QIcon*       _icon;
+    std::vector<GPUInfo>* _gpusinfo;
 
     bool _isMinerRunning;
     bool _isStartStoping;

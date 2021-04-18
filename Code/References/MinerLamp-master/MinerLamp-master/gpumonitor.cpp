@@ -62,6 +62,8 @@ void nvMonitorThrd::run()
                            , minpowerdraw
                            , totalpowerdraw);
 
+        emit gpusInfoSignalRefresh(gpuInfos);
+
         QThread::sleep(refresh_rate);
     }
 
