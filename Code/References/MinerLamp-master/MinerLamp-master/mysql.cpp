@@ -71,7 +71,7 @@ void MYSQLcon::ConnectDatabase(){
         getAdvice(s);
     }
 }
-QStringList MYSQLcon::getAdvice(char* type){
+QStringList MYSQLcon::getAdvice(const char* type){
     char* q=(char*)"select gpu_clock,mem_clock,power,prediction from advice where gpu_type=\'";
     char str3[100];
     sprintf(str3,"%s%s%s",q,type,"\'");

@@ -35,7 +35,7 @@ public:
     MYSQLcon();
     void ConnectDatabase();
     void FreeConnect();
-    QStringList getAdvice(char* type);
+    QStringList getAdvice(const char* type);
     /*bool QueryDatabase1();
     bool QueryDatabase2();
     bool InsertData();

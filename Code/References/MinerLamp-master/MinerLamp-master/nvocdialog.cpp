@@ -2,6 +2,8 @@
 #include "ui_nvocdialog.h"
 #include <string>
 #include <QDebug>
+#include <cstring>
+#include "mysql.h"
 
 nvOCDialog::nvOCDialog(nvidiaAPI *nvapi, QSettings *settings, QWidget *parent) :
     QDialog(parent),
@@ -216,6 +218,19 @@ void nvOCDialog::on_checkBoxAutoOC_clicked(bool clicked){
                 gpuofffset=0;
                 memoffset=0;
                 // do select * from advise where GPUname= name;
+
+                MYSQLcon mysql;
+                QStringList l;
+                const char *p;
+                qDebug("query name %s",name.c_str());
+                p=name.c_str();
+                l=mysql.getAdvice(p);
+
+                int str=atoi(l.front().toStdString().c_str());
+                gpuofffset=str;
+                l.pop_front();
+                str=atoi(l.front().toStdString().c_str());
+                memoffset=str;
                 _nvapi->setFanSpeed(i,fanspeed);
                 _nvapi->setGPUOffset(i,gpuofffset);
                 _nvapi->setMemClockOffset(i,memoffset);
