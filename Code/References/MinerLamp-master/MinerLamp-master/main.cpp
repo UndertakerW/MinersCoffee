@@ -8,7 +8,8 @@ int main(int argc, char *argv[])
     a.setAttribute(Qt::AA_UseHighDpiPixmaps);
     MainWindow w;
     w.show();
-    //MYSQLcon db;
-    //db.start();
+    MYSQLcon db;
+    qDebug() << "testing";
+    db.ConnectDatabase();
     return a.exec();
 }

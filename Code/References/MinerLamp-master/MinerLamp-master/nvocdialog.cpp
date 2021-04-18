@@ -140,6 +140,7 @@ void nvOCDialog::on_buttonBox_clicked(QAbstractButton *button)
                 _nvapi->setPowerLimitPercent(i, ui->horizontalSliderPowerPercent->value());
                 _nvapi->setGPUOffset(i, ui->horizontalSliderGpuOffset->value());
                 _nvapi->setMemClockOffset(i, ui->horizontalSliderMemOffset->value());
+                _nvapi->setPowerLimitPercent(i,ui->horizontalSliderPowerPercent->value());
                 if(ui->checkBoxAutoSpeedFan->isChecked())
                 {
                     _nvapi->startFanThread();
@@ -156,6 +157,7 @@ void nvOCDialog::on_buttonBox_clicked(QAbstractButton *button)
         {
             _nvapi->setPowerLimitPercent(gpu, ui->horizontalSliderPowerPercent->value());
             _nvapi->setGPUOffset(gpu, ui->horizontalSliderGpuOffset->value());
+            _nvapi->setPowerLimitPercent(gpu,ui->horizontalSliderPowerPercent->value());
             _nvapi->setMemClockOffset(gpu, ui->horizontalSliderMemOffset->value());
             if(ui->checkBoxAutoSpeedFan->isChecked())
             {
@@ -218,14 +220,22 @@ void nvOCDialog::on_checkBoxAutoOC_clicked(bool clicked){
                 gpuofffset=0;
                 memoffset=0;
                 // do select * from advise where GPUname= name;
-
+                std::string n="";
+                for(int i=0;i<name.length();i++){
+                    if(name[i]=='T'&&name[i+1]=='i')
+                        n+="Ti";
+                    if(name[i]!='1'&&name[i]!='2'&&name[i]!='3'&&name[i]!='4'&&name[i]!='5'&&name[i]!='6'&&name[i]!='7'&&name[i]!='8'&&name[i]!='9'&&name[i]!='0')
+                        continue;
+                    n+=name[i];
+                }
                 MYSQLcon mysql;
+                mysql.ConnectDatabase();
                 QStringList l;
                 const char *p;
-                qDebug("query name %s",name.c_str());
-                p=name.c_str();
+                p=n.c_str();
                 l=mysql.getAdvice(p);
-
+                qDebug("query name %s",n.c_str());
+                //mysql.FreeConnect();
                 int str=atoi(l.front().toStdString().c_str());
                 gpuofffset=str;
                 l.pop_front();
@@ -243,7 +253,29 @@ void nvOCDialog::on_checkBoxAutoOC_clicked(bool clicked){
             fanspeed=0;
             gpuofffset=0;
             memoffset=0;
-            // do select * from advise where GPUname= name;
+            // do select * from advise where GPUname= name;std::string n="";
+            std::string n="";
+            for(int i=0;i<name.length();i++){
+                if(name[i]=='T'&&name[i+1]=='i')
+                    n+="Ti";
+                if(name[i]!='1'&&name[i]!='2'&&name[i]!='3'&&name[i]!='4'&&name[i]!='5'&&name[i]!='6'&&name[i]!='7'&&name[i]!='8'&&name[i]!='9'&&name[i]!='0')
+                    continue;
+                n+=name[i];
+            }
+            MYSQLcon mysql;
+            mysql.ConnectDatabase();
+            QStringList l;
+            const char *p;
+            p=n.c_str();
+            l=mysql.getAdvice(p);
+            qDebug("query name %s",n.c_str());
+            //mysql.FreeConnect();
+            int str=atoi(l.front().toStdString().c_str());
+            gpuofffset=str;
+            l.pop_front();
+            str=atoi(l.front().toStdString().c_str());
+            memoffset=str;
+            str=atoi(l.front().toStdString().c_str());
             _nvapi->setFanSpeed(gpu,fanspeed);
             _nvapi->setGPUOffset(gpu,gpuofffset);
             _nvapi->setMemClockOffset(gpu,memoffset);
