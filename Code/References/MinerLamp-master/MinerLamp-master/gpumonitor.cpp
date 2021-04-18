@@ -1,25 +1,37 @@
 #include "gpumonitor.h"
 #include "nvidianvml.h"
 #include "jsonparser.h"
-#include "constants.h"
 
-GPUMonitor::GPUMonitor(QObject *p) {}
+GPUMonitor::GPUMonitor(QObject * /*parent*/)
+{
+    urlAPI = new UrlAPI();
+}
 
-nvMonitorThrd::nvMonitorThrd(QObject *p) : GPUMonitor(p) {}
+void GPUMonitor::SetAPI(std::string core)
+{
+    if (core == "NBMiner") {
+        api_str = api_NBMiner;
+        jsonParser = new NBMinerJsonParser();
+    }
+}
+
+nvMonitorThrd::nvMonitorThrd(QObject * /*parent*/) {}
 
 void nvMonitorThrd::run()
 {
     nvml = new nvidiaNVML();
+    nvidiaAPI nvapi;
     if(!nvml->initNVML()) return;
 
     while(1)
     {
-        QList<GPUInfo> gpuInfos = getStatus();
+        std::vector<GPUInfo> gpuInfos = getStatus();
 
         unsigned int gpucount = nvml->getGPUCount();
 
         unsigned int maxTemp = nvml->getHigherTemp();
         unsigned int minTemp = nvml->getLowerTemp();
+        unsigned int TempLimit = nvml->getTempLimit();
         unsigned int maxfanspeed = nvml->getHigherFanSpeed();
         unsigned int minfanspeed = nvml->getLowerFanSpeed();
         unsigned int maxmemclock = nvml->getMemMaxClock();
@@ -29,7 +41,14 @@ void nvMonitorThrd::run()
         unsigned int maxpowerdraw = nvml->getMaxPowerDraw();
         unsigned int minpowerdraw = nvml->getMinPowerDraw();
         unsigned int totalpowerdraw = nvml->getPowerDrawSum();
+        if(maxTemp>80){
+            for(int i=0;i<nvml->getGPUCount();i++){
+                nvapi.ControlGpuTemperature(i);
+            }
+            qDebug()<<"warning! process is cooling ";
 
+        }
+        //qDebug("temp::   %d",nvapi.getGpuTemperature(nvapi.getGPUCount()-1));
         emit gpuInfoSignal(gpucount
                            , maxTemp
                            , minTemp
@@ -49,13 +68,38 @@ void nvMonitorThrd::run()
     nvml->shutDownNVML();
 }
 
-QList<GPUInfo> nvMonitorThrd::getStatus()
+std::vector<GPUInfo> nvMonitorThrd::getStatus()
 {
-    return nvml->getStatus();
+    // Default API
+    if (api_str == "")
+        api_str = api_NBMiner;
+    std::vector<GPUInfo> gpuInfos = nvml->getStatus();
+    std::string buffer;
+    LPCSTR url = api_str.c_str();
+    urlAPI->GetURLInternal(url, buffer);
+    if (jsonParser) {
+        std::vector<GPUInfoFromJson> gpuInfosFromJson = jsonParser->ParseJson(buffer);
+        // O(N^2) is okay, since the number of GPUs should be small
+        for (int i = 0; i < gpuInfos.size(); i++) {
+            for (int j = 0; j < gpuInfosFromJson.size(); j++) {
+                if (gpuInfos[i].num == gpuInfosFromJson[j].num) {
+                    gpuInfos[i].hashrate = gpuInfosFromJson[j].hashrate;
+                    gpuInfos[i].accepted_shares = gpuInfosFromJson[j].accepted_shares;
+                    gpuInfos[i].invalid_shares = gpuInfosFromJson[j].invalid_shares;
+                    gpuInfos[i].rejected_shares = gpuInfosFromJson[j].rejected_shares;
+                }
+            }
+        }
+        //qDebug() << "mining" << endl;
+    }
+    qDebug() << gpuInfos.size() << endl;
+    qDebug() << gpuInfos[0].num << gpuInfos[0].hashrate/(1<<20) << endl;
+
+    return gpuInfos;
 }
 
 
-amdMonitorThrd::amdMonitorThrd(QObject * p) : GPUMonitor(p) {}
+amdMonitorThrd::amdMonitorThrd(QObject * /*parent*/) {}
 
 void amdMonitorThrd::run()
 {
@@ -92,8 +136,8 @@ void amdMonitorThrd::run()
         delete _amd;
 }
 
-QList<GPUInfo> amdMonitorThrd::getStatus()
+std::vector<GPUInfo> amdMonitorThrd::getStatus()
 {
-    QList<GPUInfo> gpuInfos;
-    return gpuInfos;
+    std::vector<GPUInfo> gpu_infos;
+    return gpu_infos;
 }

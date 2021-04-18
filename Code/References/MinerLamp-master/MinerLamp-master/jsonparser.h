@@ -12,17 +12,14 @@ class JsonParser
 {
 public:
     JsonParser();
-    //virtual std::vector<GPUInfo> ParseJsonForGPU(std::string json) = 0;
-    virtual MiningInfo ParseJsonForMining(std::string json) = 0;
+    virtual std::vector<GPUInfoFromJson> ParseJson(std::string json) = 0;
 };
 
 class NBMinerJsonParser : public JsonParser
 {
 public:
     NBMinerJsonParser();
-    //std::vector<GPUInfo> ParseJsonForGPU(std::string json) override;
-    MiningInfo ParseJsonForMining(std::string json) override;
-
+    std::vector<GPUInfoFromJson> ParseJson(std::string json) override;
 };
 
 #endif // JSONPARSER_H

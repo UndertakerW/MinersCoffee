@@ -6,42 +6,13 @@
 #include <QMap>
 #include <QList>
 
-class Core;
-class Pool;
-
-class Coin {
+class MiningInfo {
 public:
-    QString name;
-    QList<Core*> cores;
-    QList<Pool*> pools;
-
-public:
-    Coin(QString core_name);
-    void AddCore(Core* core, const QString& cmd);
-    void AddPool(Pool* pool, const QString& cmd);
+    unsigned int accepted_shares;
+    unsigned int invalid_shares;
+    unsigned int rejected_shares;
+    unsigned int latency;
 };
-
-class Core {
-public:
-    QString name;
-    QString path;
-    QString api;
-    QMap<Coin*, QString> cmds;
-    int ver;
-
-public:
-    Core(QString core_name, const QString& path, const QString& api);
-};
-
-class Pool {
-public:
-    QString name;
-    QMap<Coin*, QString> cmds;
-
-public:
-    Pool(QString pool_name);
-};
-
 
 class GPUInfo {
 public:
@@ -51,26 +22,21 @@ public:
     unsigned int memclock;
     unsigned int power;
     unsigned int fanspeed;
-    QString name;
+    float hashrate;
+    std::string name;
+    unsigned int accepted_shares;
+    unsigned int invalid_shares;
+    unsigned int rejected_shares;
 };
 
-class GPUMiningInfo {
+class GPUInfoFromJson {
 public:
     unsigned int num;
     float hashrate = 0;
-    unsigned int accepted_shares = 0;
-    unsigned int invalid_shares = 0;
-    unsigned int rejected_shares = 0;
+    unsigned int accepted_shares;
+    unsigned int invalid_shares;
+    unsigned int rejected_shares;
 };
 
-
-class MiningInfo {
-public:
-    unsigned int accepted_shares = 0;
-    unsigned int invalid_shares = 0;
-    unsigned int rejected_shares = 0;
-    unsigned int latency = 0;
-    QList<GPUMiningInfo> gpuMiningInfos;
-};
 
 #endif // STRUCTURES_H

@@ -1,7 +1,4 @@
 #include "minerprocess.h"
-#include "structures.h"
-//#include "mainwindow.h"
-
 #include <QTextStream>
 #include <QDebug>
 #include <QRegExp>
@@ -25,8 +22,7 @@ void anyMHsWaitter::run()
 {
     while(true)
     {
-        QThread::sleep(refresh_rate);
-        MiningInfo miningInfo = _pParent->getStatus();
+        QThread::sleep(_delay);
         if(_hashrateCount == _pParent->getCurrentHRCount())
         {
             qDebug() << "emit notHashing";
@@ -131,11 +127,8 @@ void MinerProcess::onReadyToReadStderr()
         return;
 
 
-    //((MainWindow*) parent())->showConsoleMsg(line);
-
     line = _outHelper;
 
-    //qDebug() << line << endl;
 
     if(line.length() > 1)
     {
@@ -345,33 +338,7 @@ void MinerProcess::restart()
 }
 
 
-void MinerProcess::SetAPI(Core* core)
-{
-    api_str = core->api.toStdString();
-    if (core->name == "NBMiner") {
-        jsonParser = new NBMinerJsonParser();
-    }
-}
 
-MiningInfo MinerProcess::getStatus()
-{
-    MiningInfo miningInfo;
-    if (api_str != "" && jsonParser)
-    {
-        std::string buffer;
-        LPCSTR url = api_str.c_str();
-        urlAPI->GetURLInternal(url, buffer);
-        if (buffer != "")
-        {
-            miningInfo = jsonParser->ParseJsonForMining(buffer);
-        }
-    }
-
-    if (miningInfo.gpuMiningInfos.size() > 0)
-        qDebug() << miningInfo.latency << miningInfo.gpuMiningInfos[0].hashrate;
-
-    return miningInfo;
-}
 
 donateThrd::donateThrd(QObject* pParent) : QThread(pParent)
   , _parent((MinerProcess*)pParent)
@@ -405,4 +372,3 @@ void restarter::run()
     QThread::sleep(_delay);
     emit restartsignal();
 }
-

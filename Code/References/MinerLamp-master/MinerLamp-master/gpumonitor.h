@@ -25,7 +25,9 @@
 
 #include "nvidiaapi.h"
 #include "amdapi_adl.h"
+#include "urlapi.h"
 #include "structures.h"
+#include "jsonparser.h"
 
 class nvidiaNVML;
 
@@ -36,14 +38,18 @@ class GPUMonitor : public QThread
 protected:
     float refresh_rate = 3;
 
+    UrlAPI* urlAPI;
+    std::string api_str;
+    JsonParser* jsonParser = nullptr;
+
+    const std::string api_NBMiner = "http://localhost:22333/api/v1/status";
+
 public:
     GPUMonitor(QObject* p = Q_NULLPTR);
 
-    //void SetAPI(Core* core);
+    void SetAPI(std::string core);
 
-    //virtual MiningInfo getStatus() = 0;
-
-    virtual QList<GPUInfo> getStatus() = 0;
+    virtual std::vector<GPUInfo> getStatus() = 0;
 
 signals:
 
@@ -72,9 +78,8 @@ public:
 
     void run() override;
 
-    //MiningInfo getStatus() override;
+    std::vector<GPUInfo> getStatus() override;
 
-    QList<GPUInfo> getStatus() override;
 
 };
 
@@ -85,10 +90,7 @@ public:
 
     void run() override;
 
-    //MiningInfo getStatus() override;
-
-    QList<GPUInfo> getStatus() override;
-
+    std::vector<GPUInfo> getStatus() override;
 
 private:
     amdapi_adl* _amd;

@@ -8,8 +8,6 @@
 #include "hashratecharview.h"
 #include "constants.h"
 
-#include "structures.h"
-
 #include <QDebug>
 #include <QMessageBox>
 #include <QMenu>
@@ -38,6 +36,12 @@
 #define AUTOSTART           "autostart"
 #define DISPLAYSHAREONLY    "shareonly"
 #define DELAYNOHASH         "delaynohash"
+#define COIN                "coin"
+#define CORE                "core"
+#define POOL                "pool"
+#define WALLET              "wallet"
+#define WORKER                "worker"
+
 
 #ifdef NVIDIA
 #define NVIDIAOPTION        "nvidia_options"
@@ -70,7 +74,6 @@ MainWindow::MainWindow(QWidget *parent) :
     // update hash rate
     connect(_process, &MinerProcess::emitHashRate, this, &MainWindow::onHashrate);
     connect(_process, &MinerProcess::emitError, this, &MainWindow::onError);
-
 
 
     _nvapi = new nvidiaAPI();
@@ -151,6 +154,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     _chart->setAnimationOptions(QChart::SeriesAnimations);
     _chart->setBackgroundBrush(backgroundGradient);
+
+    _chart->setBackgroundVisible(false);
     _chart->legend()->hide();
 
     //set the color of the graph
@@ -165,7 +170,8 @@ MainWindow::MainWindow(QWidget *parent) :
     _chart->createDefaultAxes();
 
     _axisX = new QDateTimeAxis;
-    _axisX->setTickCount(15);
+    // set graph interval number
+    _axisX->setTickCount(5);
     _axisX->setFormat("hh:mm:ss");
     _axisX->setTitleText("Time");
     _chart->axisY()->setTitleText("HR in MH/s");
@@ -183,11 +189,12 @@ MainWindow::MainWindow(QWidget *parent) :
 
     _axisX->setTitleBrush(QBrush(Qt::blue));
     _chart->axisY()->setTitleBrush(QBrush(Qt::yellow));
+    _axisX->setGridLineVisible(false);
+    _chart->axisY()->setGridLineVisible(false);
 
     _chart->setAxisX(_axisX);
     _series->attachAxis(_axisX);
-    _axisX->setRange(QDateTime::currentDateTime(), QDateTime::currentDateTime().addSecs(30));
-
+    _axisX->setRange(QDateTime::currentDateTime(), QDateTime::currentDateTime().addSecs(10));
 
     ui->graphicsView->setChart(_chart);
 
@@ -210,6 +217,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     _chartTemp->setAnimationOptions(QChart::SeriesAnimations);
     _chartTemp->setBackgroundBrush(backgroundGradient_temp);
+
+    _chartTemp->setBackgroundVisible(false);
     _chartTemp->legend()->hide();
 
 
@@ -225,7 +234,8 @@ MainWindow::MainWindow(QWidget *parent) :
     _chartTemp->createDefaultAxes();
 
     _axisXTemp = new QDateTimeAxis;
-    _axisXTemp->setTickCount(15);
+    // set graph interval number
+    _axisXTemp->setTickCount(5);
     _axisXTemp->setFormat("hh:mm:ss");
     _axisXTemp->setTitleText("Time");
     _chartTemp->axisY()->setTitleText("Temp in degree");
@@ -243,10 +253,13 @@ MainWindow::MainWindow(QWidget *parent) :
 
     _axisXTemp->setTitleBrush(QBrush(Qt::blue));
     _chartTemp->axisY()->setTitleBrush(QBrush(Qt::yellow));
+    _axisXTemp->setGridLineVisible(false);
+    _chartTemp->axisY()->setGridLineVisible(false);
 
     _chartTemp->setAxisX(_axisXTemp);
     _seriesTemp->attachAxis(_axisXTemp);
-    _axisXTemp->setRange(QDateTime::currentDateTime(), QDateTime::currentDateTime().addSecs(30));
+
+    _axisXTemp->setRange(QDateTime::currentDateTime(), QDateTime::currentDateTime().addSecs(10));
 
 
     ui->graphicsViewTemp->setChart(_chartTemp);
@@ -281,16 +294,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->pushButtonPool->setChecked(false);
     ui->groupBoxPools->hide();
     ui->textEdit->hide();
-
+    ui->checkBoxAutoShowDeviceInfo->setChecked(false);
+    ui->groupBoxDevicesInfo->hide();
 
     int pos = ui->lineEditArgs->text().indexOf("-O ");
     if(pos > 0)
         ui->lineEditAccount->setText(ui->lineEditArgs->text().mid(pos + 3
                                                                   , ui->lineEditArgs->text().indexOf(" 0x") > 0 ? 42 : 40));
-
-    //ui->debugBox->append("hello 1");
-
-    initializeConstants();
 }
 
 MainWindow::~MainWindow()
@@ -309,111 +319,83 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-Coin* MainWindow::AddCoin(QString coin_name)
+Core::Core(QString core_name, QString core_path)
 {
-    Coin* coin = new Coin(coin_name);
-    map_coins[coin_name] = coin;
-    return coin;
+    name = core_name;
+    path = core_path;
 }
 
-Pool* MainWindow::AddPool(QString pool_name, Coin* coin, const QString& cmd)
+Coin::Coin(QString coin_name)
 {
-    Pool* pool = nullptr;
-    if (map_pools.contains(pool_name))
-    {
-        pool = map_pools[pool_name];
-    }
-    else
-    {
-        pool = new Pool(pool_name);
-        map_pools[pool_name] = pool;
-    }
-    coin->AddPool(pool, cmd);
-    return pool;
+    name = coin_name;
 }
 
-Pool* MainWindow::AddPool(QString pool_name, QString coin_name, const QString& cmd)
+Pool::Pool(QString pool_name)
 {
-    Pool* pool = nullptr;
-    if (!map_coins.contains(coin_name))
-    {
-        qDebug() << "No coin name: " << coin_name << endl;
-        return pool;
-    }
-    Coin* coin = map_coins[coin_name];
-    if (map_pools.contains(pool_name))
-    {
-        pool = map_pools[pool_name];
-    }
-    else
-    {
-        pool = new Pool(pool_name);
-        map_pools[pool_name] = pool;
-    }
-    coin->AddPool(pool, cmd);
-    return pool;
+    name = pool_name;
 }
 
-
-Core* MainWindow::AddCore(QString core_name, const QString& path, const QString& api, Coin* coin, const QString& cmd)
+void Coin::AddCore(Core* core, QString cmd)
 {
-    Core* core = nullptr;
-    if (map_cores.contains(core_name))
-    {
-        core = map_cores[core_name];
-    }
-    else
-    {
-        core = new Core(core_name, path, api);
-        map_cores[core_name] = core;
-    }
-    coin->AddCore(core, cmd);
-    return core;
+    cores.append(core);
+    core->cmds[this] = cmd;
 }
 
-Core* MainWindow::AddCore(QString core_name, const QString& path, const QString& api, QString coin_name, const QString& cmd)
+void Coin::AddPool(Pool* pool, QString cmd)
 {
-    Core* core = nullptr;
-    if (!map_coins.contains(coin_name))
-    {
-        qDebug() << "No coin name: " << coin_name << endl;
-        return core;
-    }
-    Coin* coin = map_coins[coin_name];
-    if (map_cores.contains(core_name))
-    {
-        core = map_cores[core_name];
-    }
-    else
-    {
-        core = new Core(core_name, path, api);
-        map_cores[core_name] = core;
-    }
-    coin->AddCore(core, cmd);
-    return core;
+    pools.append(pool);
+    pool->cmds[this] = cmd;
 }
-
 
 void MainWindow::initializeConstants()
 {
+    QMap<QString, Coin*> map_coins;
+    QMap<QString, Core*> map_cores;
+    QMap<QString, Core*> map_pools;
 
-    // Future Improvement:
-    // Separate code and data
-    // Move the constant strings in the code to a file (possibly database)
-    // In the code, use a loop to read the data file
-    // and do the same job
+    Coin* coin_eth = new Coin("ETH");
 
-    Coin* eth = AddCoin("ETH");
+    Pool* pool_ethermine = new Pool("ethermine");
 
-    AddPool("ethermine", eth, eth_ethermine);
-    AddPool("sparkpool", eth, eth_sparkpool);
-    AddPool("f2pool", eth, eth_f2pool);
-    AddPool("beepool", eth, eth_beepool);
-    AddPool("nanopool", eth, eth_nanopool);
-    AddPool("herominers", eth, eth_herominers);
-    AddPool("nicehash", eth, eth_nicehash);
+    Pool* pool_sparkpool = new Pool("sparkpool");
+    pool_sparkpool->cmds[coin_eth] = eth_sparkpool;
 
-    AddCore("NBMiner", path_nbminer, api_nbminer, eth, cmd_nbminer_eth);
+    Pool* pool_f2pool = new Pool("f2pool");
+    pool_f2pool->cmds[coin_eth] = eth_f2pool;
+
+    Pool* pool_beepool = new Pool("beepool");
+    pool_beepool->cmds[coin_eth] = eth_beepool;
+
+    Pool* pool_nanopool = new Pool("nanopool");
+    pool_nanopool->cmds[coin_eth] = eth_nanopool;
+
+    Pool* pool_herominers = new Pool("herominers");
+    pool_herominers->cmds[coin_eth] = eth_herominers;
+
+    Pool* pool_nicehash = new Pool("nicehash");
+    pool_nicehash->cmds[coin_eth] = eth_nicehash;
+
+    Core* core_nbminer = new Core("NBMiner", path_nbminer);
+
+    coin_eth->AddPool(pool_ethermine, eth_ethermine);
+    coin_eth->AddPool(pool_sparkpool, eth_sparkpool);
+    coin_eth->AddPool(pool_f2pool, eth_f2pool);
+    coin_eth->AddPool(pool_beepool, eth_beepool);
+    coin_eth->AddPool(pool_nanopool, eth_nanopool);
+    coin_eth->AddPool(pool_herominers, eth_herominers);
+    coin_eth->AddPool(pool_nicehash, eth_nicehash);
+
+    coin_eth->AddCore(core_nbminer, cmd_nbminer_eth);
+
+
+}
+
+void MainWindow::setComboIndex(QComboBox * comboBox, QString key){
+    int comboIdx = comboBox->findText(key);
+    if(comboIdx != -1){
+        comboBox->setCurrentIndex(comboIdx);
+    }
+    qDebug() << "fetch index: " << comboIdx << "\t" << key;
 }
 
 void MainWindow::loadParameters()
@@ -427,6 +409,11 @@ void MainWindow::loadParameters()
     ui->checkBoxAutoStart->setChecked(_settings->value(AUTOSTART).toBool());
     ui->checkBoxOnlyShare->setChecked(_settings->value(DISPLAYSHAREONLY).toBool());
     ui->spinBoxDelayNoHash->setValue(_settings->value(DELAYNOHASH).toInt());
+    setComboIndex(ui->comboBoxCoin, _settings->value(COIN).toString());
+    setComboIndex(ui->comboBoxCore, _settings->value(CORE).toString());
+    setComboIndex(ui->comboBoxPool, _settings->value(POOL).toString());
+    ui->lineEditWallet->setText(_settings->value(WALLET).toString());
+    ui->lineEditWorker->setText(_settings->value(WORKER).toString());
 
     _process->setShareOnly(_settings->value(DISPLAYSHAREONLY).toBool());
     _process->setRestartOption(_settings->value(AUTORESTART).toBool());
@@ -444,6 +431,13 @@ void MainWindow::saveParameters()
     _settings->setValue(AUTOSTART, ui->checkBoxAutoStart->isChecked());
     _settings->setValue(DISPLAYSHAREONLY, ui->checkBoxOnlyShare->isChecked());
     _settings->setValue(DELAYNOHASH, ui->spinBoxDelayNoHash->value());
+    _settings->setValue(COIN, ui->comboBoxCoin->currentText());
+    _settings->setValue(CORE, ui->comboBoxCore->currentText());
+    _settings->setValue(POOL, ui->comboBoxPool->currentText());
+    _settings->setValue(WALLET, ui->lineEditWallet->text());
+    _settings->setValue(WORKER, ui->lineEditWorker->text());
+
+    qDebug() << "save current info: " << ui->comboBoxCoin->currentText();
 }
 
 
@@ -596,81 +590,32 @@ void MainWindow::setupToolTips()
         ui->groupBoxWatchdog->setToolTip("");
 }
 
+
 void MainWindow::on_pushButton_clicked()
 {
 
+
+
     saveParameters();
+    if(ui->lineEditMinerPath->text().isEmpty() || ui->lineEditArgs->text().isEmpty()) return;
 
-    //if(ui->lineEditMinerPath->text().isEmpty() || ui->lineEditArgs->text().isEmpty()) return;
-
-    if(ui->lineEditWallet->text().isEmpty() || ui->lineEditWorker->text().isEmpty()) return;
-
-
-
-
-    if(!_isStartStoping) // avoid to start/stop more than once on double-click
+    if(!_isStartStoping) // avoid to start/stop more than once on dbl clic
     {
         _isStartStoping = true;
 
         if(!_isMinerRunning)
         {
-
-            Core* current_core;
-            Coin* current_coin;
-            Pool* current_pool;
-
-            if (!map_cores.contains(ui->comboBoxCore->currentText()))
-            {
-                // default core
-                current_core = map_cores["NBMiner"];
-            }
-            else
-            {
-                current_core = map_cores[ui->comboBoxCore->currentText()];
-            }
-
-            if (!map_coins.contains(ui->comboBoxCoin->currentText()))
-            {
-                // default coin
-                current_coin = map_coins["ETH"];
-            }
-            else
-            {
-                current_coin = map_coins[ui->comboBoxCoin->currentText()];
-            }
-
-            if (!map_pools.contains(ui->comboBoxPool->currentText()))
-            {
-                // default pool
-                current_pool = map_pools["sparkpool"];
-            }
-            else
-            {
-                current_pool = map_pools[ui->comboBoxPool->currentText()];
-            }
-
-
-
-
-            QString core_path = QCoreApplication::applicationDirPath() + current_core->path;
-            QString core_args = current_core->cmds[current_coin].arg(
-                        current_pool->cmds[current_coin]).arg(ui->lineEditWallet->text()).arg(ui->lineEditWorker->text());
-
-            qDebug() << core_path << core_args << endl;
-
-            _process->SetAPI(current_core);
             _process->setMax0MHs(ui->spinBoxMax0MHs->value());
             _process->setRestartDelay(ui->spinBoxDelay->value());
             _process->setRestartOption(ui->groupBoxWatchdog->isChecked());
             _process->setDelayBeforeNoHash(ui->spinBoxDelayNoHash->value());
-            _process->start(core_path, core_args);
+            _process->start(ui->lineEditMinerPath->text(), ui->lineEditArgs->text());
+            if (core == "")
+                core = "NBMiner";
+            _nvMonitorThrd->SetAPI(core);
         }
         else
-        {
-            qDebug() << "Stop mining" << endl;
             _process->stop();
-        }
-
     }
 }
 
@@ -884,12 +829,17 @@ GPUInfo MainWindow::getWorst(const std::vector<GPUInfo> &gpu_infos)
         if (gpu_infos[i].memclock < memclock) memclock = gpu_infos[i].memclock;
         if (gpu_infos[i].power < power) power = gpu_infos[i].power;
         if (gpu_infos[i].fanspeed < fanspeed) fanspeed = gpu_infos[i].fanspeed;
+        if (gpu_infos[i].hashrate < hashrate) {
+            hashrate = gpu_infos[i].hashrate;
+            gi.num = i;
+        }
     }
     gi.temp = temp;
     gi.gpuclock = gpuclock;
     gi.memclock = memclock;
     gi.power = power;
     gi.fanspeed = fanspeed;
+    gi.hashrate = hashrate;
     return gi;
 }
 
@@ -1014,10 +964,10 @@ void MainWindow::onHrChartTimer()
     _series->append(QDateTime::currentDateTime().toMSecsSinceEpoch(), _currentHashRate);
 
     //diaplay the proper range of the x-axis;
-    if(_plotsCntr >= 25)
+    if(_plotsCntr >= 6)
     {
-        _axisX->setRange(QDateTime::currentDateTime().addSecs(-25)
-                         , QDateTime::currentDateTime().addSecs(5));
+        _axisX->setRange(QDateTime::currentDateTime().addSecs(-6)
+                         , QDateTime::currentDateTime().addSecs(4));
     }
     else
         _plotsCntr++;
@@ -1055,10 +1005,10 @@ void MainWindow::onTempChartTimer()
     _seriesTemp->append(QDateTime::currentDateTime().toMSecsSinceEpoch(), _currentTempRate);
 
     //diaplay the proper range of the x-axis;
-    if(_plotsCntrTemp >= 25)
+    if(_plotsCntrTemp >= 6)
     {
-        _axisXTemp->setRange(QDateTime::currentDateTime().addSecs(-25)
-                         , QDateTime::currentDateTime().addSecs(5));
+        _axisXTemp->setRange(QDateTime::currentDateTime().addSecs(-6)
+                         , QDateTime::currentDateTime().addSecs(4));
     }
     else
         _plotsCntrTemp++;
@@ -1122,12 +1072,16 @@ void MainWindow::refreshDevicesInfo()
             QWidget * parentWidget = new QWidget();
             QHBoxLayout * row = new QHBoxLayout(parentWidget);
             QLabel * deviceTemp = new QLabel(QString("device ")+QString::number(i)+QString(" :"));
+            deviceTemp->setFont(QFont("Arial", 9));
             QLCDNumber * deviceTempLCD = new QLCDNumber();
             QLabel * fanSpeed = new QLabel("fan speed");
+            fanSpeed->setFont(QFont("Arial", 9));
             QLCDNumber * fanSpeedLCD = new QLCDNumber();
             QLabel * gpuClock = new QLabel("GPU clock");
+            gpuClock->setFont(QFont("Arial", 9));
             QLCDNumber * gpuClockLCD = new QLCDNumber();
             QLabel * memClock = new QLabel("Mem Clock");
+            memClock->setFont(QFont("Arial", 9));
             QLCDNumber * memClockLCD = new QLCDNumber();
 
             row->addWidget(deviceTemp);
@@ -1185,7 +1139,7 @@ void MainWindow::initializePieChart(){
     _effPieChart->legend()->hide();
 
     _effPieChart->resize(1,1);
-    //ui->debugBox->append(QString::number(_effPieChart->legend()->size().height())+" "+QString::number(_effPieChart->legend()->size().width()));
+    ui->debugBox->append(QString::number(_effPieChart->legend()->size().height())+" "+QString::number(_effPieChart->legend()->size().width()));
     _effPieSeries = new QPieSeries();
     _effPieSeries->append("eff", 1);
     _effPieSeries->append("uneff", 10);
@@ -1251,12 +1205,6 @@ void MainWindow::onMouseHoverSlice(QPieSlice * slice, bool status){
 
 }
 
-bool MainWindow::getMinerStatus()
-{
-    return _isMinerRunning;
-}
-
-void MainWindow::showConsoleMsg(QString msg)
-{
-    ui->debugBox->append(msg);
+void MainWindow::on_checkBoxAutoShowDeviceInfo_clicked(bool clicked){
+    ui->groupBoxDevicesInfo->setVisible(clicked);
 }
