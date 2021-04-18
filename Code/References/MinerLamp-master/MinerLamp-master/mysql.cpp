@@ -29,9 +29,6 @@ MYSQLcon::MYSQLcon(){
         mysql_close(&mysql);
     }
     ConnectDatabase();
-    char* l=(char*)"2021-04-18";
-    QStringList info;
-    info=Get_History(l,l,0);
 
 }
 void MYSQLcon::ConnectDatabase(){
@@ -75,16 +72,17 @@ void MYSQLcon::ConnectDatabase(){
     else
     {
         qDebug()<<"Connected...\n";
-        char* s=(char*)"2070";
+        char* s=(char*)"1060";
         getAdvice(s);
 
     }
 }
 QStringList MYSQLcon::getAdvice(char* type){
-    char* q=(char*)"select gpu_clock,mem_clock,power,prediction from advice where gpu_type=\'";
+    char* q=(char*)"select gpu_clock,mem_clock,power,prediction from advise where gpu_type=\'";
     char str3[100];
     sprintf(str3,"%s%s%s",q,type,"\'");
-    mysql_query(&mysql,"select gpu_clock,mem_clock,power,prediction from advise where gpu_type='2070'");
+    qDebug()<<str3<<endl;
+    mysql_query(&mysql,str3);
     res=mysql_store_result(&mysql);
     mysql_free_result(res);
     MYSQL_ROW   row;
