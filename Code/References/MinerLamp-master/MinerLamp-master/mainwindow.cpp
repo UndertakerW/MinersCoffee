@@ -6,8 +6,7 @@
 #include "nvocdialog.h"
 #include "nanopoolapi.h"
 #include "hashratecharview.h"
-#include "constants.h"
-
+#include "mysql.h"
 #include <QDebug>
 #include <QMessageBox>
 #include <QMenu>
@@ -20,12 +19,7 @@
 #include <QBarCategoryAxis>
 #include <QScrollBar>
 #include <QFrame>
-#include <QMap>
-#include <QString>
-
-#include <string>
-#include <map>
-
+#include <QtSql/QSqlDatabase>
 
 #define MINERPATH           "minerpath"
 #define MINERARGS           "minerargs"
@@ -40,8 +34,7 @@
 #define CORE                "core"
 #define POOL                "pool"
 #define WALLET              "wallet"
-#define WORKER                "worker"
-
+#define WORKER              "worker"
 
 #ifdef NVIDIA
 #define NVIDIAOPTION        "nvidia_options"
@@ -74,6 +67,8 @@ MainWindow::MainWindow(QWidget *parent) :
     // update hash rate
     connect(_process, &MinerProcess::emitHashRate, this, &MainWindow::onHashrate);
     connect(_process, &MinerProcess::emitError, this, &MainWindow::onError);
+
+
 
 
     _nvapi = new nvidiaAPI();
@@ -181,6 +176,8 @@ MainWindow::MainWindow(QWidget *parent) :
     labelsFont.setPixelSize(14);
     _axisX->setTitleFont(labelsFont);
     _chart->axisY()->setTitleFont(labelsFont);
+    _axisX->setGridLineVisible(false);
+    _chart->axisY()->setGridLineVisible(false);
 
     // customize axis label colors
     QBrush axisBrush(Qt::white);
@@ -189,12 +186,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
     _axisX->setTitleBrush(QBrush(Qt::blue));
     _chart->axisY()->setTitleBrush(QBrush(Qt::yellow));
-    _axisX->setGridLineVisible(false);
-    _chart->axisY()->setGridLineVisible(false);
 
     _chart->setAxisX(_axisX);
     _series->attachAxis(_axisX);
     _axisX->setRange(QDateTime::currentDateTime(), QDateTime::currentDateTime().addSecs(10));
+
 
     ui->graphicsView->setChart(_chart);
 
@@ -217,7 +213,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     _chartTemp->setAnimationOptions(QChart::SeriesAnimations);
     _chartTemp->setBackgroundBrush(backgroundGradient_temp);
-
     _chartTemp->setBackgroundVisible(false);
     _chartTemp->legend()->hide();
 
@@ -258,7 +253,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     _chartTemp->setAxisX(_axisXTemp);
     _seriesTemp->attachAxis(_axisXTemp);
-
     _axisXTemp->setRange(QDateTime::currentDateTime(), QDateTime::currentDateTime().addSecs(10));
 
 
@@ -279,7 +273,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(&_refreshDeviceTimer, &QTimer::timeout, this, &MainWindow::onRefreshDeviceInfoTimer);
     _refreshDeviceTimer.setInterval(1000);
     _refreshDeviceTimer.start();
-
+    
 
     ui->lcdNumberHashRate->display("0.00");
 
@@ -294,13 +288,16 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->pushButtonPool->setChecked(false);
     ui->groupBoxPools->hide();
     ui->textEdit->hide();
+
     ui->checkBoxAutoShowDeviceInfo->setChecked(false);
     ui->groupBoxDevicesInfo->hide();
+
 
     int pos = ui->lineEditArgs->text().indexOf("-O ");
     if(pos > 0)
         ui->lineEditAccount->setText(ui->lineEditArgs->text().mid(pos + 3
                                                                   , ui->lineEditArgs->text().indexOf(" 0x") > 0 ? 42 : 40));
+
 }
 
 MainWindow::~MainWindow()
@@ -319,77 +316,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-Core::Core(QString core_name, QString core_path)
-{
-    name = core_name;
-    path = core_path;
-}
-
-Coin::Coin(QString coin_name)
-{
-    name = coin_name;
-}
-
-Pool::Pool(QString pool_name)
-{
-    name = pool_name;
-}
-
-void Coin::AddCore(Core* core, QString cmd)
-{
-    cores.append(core);
-    core->cmds[this] = cmd;
-}
-
-void Coin::AddPool(Pool* pool, QString cmd)
-{
-    pools.append(pool);
-    pool->cmds[this] = cmd;
-}
-
-void MainWindow::initializeConstants()
-{
-    QMap<QString, Coin*> map_coins;
-    QMap<QString, Core*> map_cores;
-    QMap<QString, Core*> map_pools;
-
-    Coin* coin_eth = new Coin("ETH");
-
-    Pool* pool_ethermine = new Pool("ethermine");
-
-    Pool* pool_sparkpool = new Pool("sparkpool");
-    pool_sparkpool->cmds[coin_eth] = eth_sparkpool;
-
-    Pool* pool_f2pool = new Pool("f2pool");
-    pool_f2pool->cmds[coin_eth] = eth_f2pool;
-
-    Pool* pool_beepool = new Pool("beepool");
-    pool_beepool->cmds[coin_eth] = eth_beepool;
-
-    Pool* pool_nanopool = new Pool("nanopool");
-    pool_nanopool->cmds[coin_eth] = eth_nanopool;
-
-    Pool* pool_herominers = new Pool("herominers");
-    pool_herominers->cmds[coin_eth] = eth_herominers;
-
-    Pool* pool_nicehash = new Pool("nicehash");
-    pool_nicehash->cmds[coin_eth] = eth_nicehash;
-
-    Core* core_nbminer = new Core("NBMiner", path_nbminer);
-
-    coin_eth->AddPool(pool_ethermine, eth_ethermine);
-    coin_eth->AddPool(pool_sparkpool, eth_sparkpool);
-    coin_eth->AddPool(pool_f2pool, eth_f2pool);
-    coin_eth->AddPool(pool_beepool, eth_beepool);
-    coin_eth->AddPool(pool_nanopool, eth_nanopool);
-    coin_eth->AddPool(pool_herominers, eth_herominers);
-    coin_eth->AddPool(pool_nicehash, eth_nicehash);
-
-    coin_eth->AddCore(core_nbminer, cmd_nbminer_eth);
-
-
-}
-
 void MainWindow::setComboIndex(QComboBox * comboBox, QString key){
     int comboIdx = comboBox->findText(key);
     if(comboIdx != -1){
@@ -397,6 +323,7 @@ void MainWindow::setComboIndex(QComboBox * comboBox, QString key){
     }
     qDebug() << "fetch index: " << comboIdx << "\t" << key;
 }
+
 
 void MainWindow::loadParameters()
 {
@@ -593,9 +520,6 @@ void MainWindow::setupToolTips()
 
 void MainWindow::on_pushButton_clicked()
 {
-
-
-
     saveParameters();
     if(ui->lineEditMinerPath->text().isEmpty() || ui->lineEditArgs->text().isEmpty()) return;
 
@@ -1074,6 +998,7 @@ void MainWindow::refreshDevicesInfo()
             QLabel * deviceTemp = new QLabel(QString("device ")+QString::number(i)+QString(" :"));
             deviceTemp->setFont(QFont("Arial", 9));
             QLCDNumber * deviceTempLCD = new QLCDNumber();
+
             QLabel * fanSpeed = new QLabel("fan speed");
             fanSpeed->setFont(QFont("Arial", 9));
             QLCDNumber * fanSpeedLCD = new QLCDNumber();

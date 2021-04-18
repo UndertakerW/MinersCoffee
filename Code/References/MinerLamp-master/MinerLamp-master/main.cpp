@@ -9,6 +9,7 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
     MYSQLcon db;
+    qDebug() << "testing";
     db.ConnectDatabase();
     return a.exec();
 }

@@ -248,6 +248,7 @@ Makefile: ..\MinerLamp-master\MiningLigth.pro D:\application\Qt\Qt5.9.9\5.9.9\ms
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\Qt5Widgets.prl \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\Qt5Gui.prl \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\Qt5Network.prl \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\Qt5Sql.prl \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\Qt5Core.prl
 	$(QMAKE) -o Makefile ..\MinerLamp-master\MiningLigth.pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug"
 D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\mkspecs\features\spec_pre.prf:
@@ -423,6 +424,7 @@ D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\Qt5Charts.prl:
 D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\Qt5Widgets.prl:
 D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\Qt5Gui.prl:
 D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\Qt5Network.prl:
+D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\Qt5Sql.prl:
 D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\lib\Qt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\MinerLamp-master\MiningLigth.pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug"

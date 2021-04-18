@@ -71,49 +71,31 @@ void MYSQLcon::ConnectDatabase(){
         getAdvice(s);
     }
 }
-MYSQL_ROW MYSQLcon::getAdvice(char* type){
+QStringList MYSQLcon::getAdvice(char* type){
     char* q=(char*)"select gpu_clock,mem_clock,power,prediction from advice where gpu_type=\'";
     char str3[100];
     sprintf(str3,"%s%s%s",q,type,"\'");
     qDebug()<<str3<<endl;
     mysql_query(&mysql,"select gpu_clock,mem_clock,power,prediction from advise where gpu_type='2070'");
     res=mysql_store_result(&mysql);
-    /*if (res) {
-        int row_num,col_num;
-        row_num = mysql_num_rows(res);
-        col_num = mysql_num_fields(res);
-        qDebug() << "共有" << row_num << "条数据，以下为其详细内容：" << endl;
-        MYSQL_FIELD *fd;
-        while (fd = mysql_fetch_field(res)) {
-            std::cout << fd->name << "\t";
-        }
-        std::cout << std::endl;
-        MYSQL_ROW sql_row;
-        while (sql_row = mysql_fetch_row(res)) {
-            for (int i = 0; i < col_num; i++) {
-                if (sql_row[i] == NULL) std::cout << "NULL\t";
-                else std::cout << sql_row[i] << "\t";
-            }
-            std::cout << std::endl;
-        }
-    }
-    if(res!=NULL)*/
     mysql_free_result(res);
     MYSQL_ROW   row;
+    QStringList l;
     while((row=mysql_fetch_row(res))) {
          for(unsigned int i=0 ; i <mysql_num_fields(res);i++)
               qDebug()<<row[i]<<endl;
+//              l.append(row[i]);
     }
-
-    return row;
+    mysql_free_result(res);
+    return l;
 
 }
-/*void MYSQLcon::FreeConnect(){
+void MYSQLcon::FreeConnect(){
     mysql_free_result(res);
 
     mysql_close(&mysql);
 }
-
+/*
 bool MYSQLcon::QueryDatabase1(){
     query.exec("select * from minercoffee"); //执行查询语句，这里是查询所有，user是表名，不用加引号，用strcpy也可以
 

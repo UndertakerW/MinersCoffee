@@ -5,7 +5,7 @@
 #include <QDebug>
 #include <QMessageBox>
 #include <QApplication>
-#include <QSqlQuery>
+#include <QtSQl/QSqlQuery>
 //#include <QSqlError>
 #include <stdio.h>
 #include <nvidianvml.h>
