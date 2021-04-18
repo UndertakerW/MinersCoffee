@@ -8,6 +8,7 @@
 #include <QSqlQuery>
 //#include <QSqlError>
 #include <stdio.h>
+#include <QThread>
 #include <nvidianvml.h>
 #include <WinSock.h>
 #include "gpumonitor.h"
@@ -17,7 +18,7 @@
 #pragma comment(lib,"wsock32.lib")
 
 #pragma comment(lib,"libmysql.lib")
-class MYSQLcon{
+class MYSQLcon:public QThread{
 
 private:
     MYSQL mysql; //mysql连接
@@ -38,7 +39,7 @@ public:
     QStringList getAdvice(char* type);
     void InsertData();
     void run();
-    std::vector<GPUInfo> Get_History(char *date1,char *date2,int num);
+     QStringList Get_History(char* date1,char* date2,int num);
 };
 
 

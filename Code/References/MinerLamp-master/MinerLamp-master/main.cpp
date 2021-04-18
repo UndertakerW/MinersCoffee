@@ -9,6 +9,6 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
     MYSQLcon db;
-    db.ConnectDatabase();
+    db.start();
     return a.exec();
 }

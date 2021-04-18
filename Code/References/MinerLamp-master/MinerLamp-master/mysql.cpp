@@ -28,6 +28,11 @@ MYSQLcon::MYSQLcon(){
     if (!(mysql_real_connect(&mysql,"localhost", "root", "1020zxc..", "minercoffee",0,NULL,0))) {
         mysql_close(&mysql);
     }
+    ConnectDatabase();
+    char* l=(char*)"2021-04-18";
+    QStringList info;
+    info=Get_History(l,l,0);
+
 }
 void MYSQLcon::ConnectDatabase(){
     mysql_init(&mysql);  //连接mysql，数据库
@@ -47,7 +52,7 @@ void MYSQLcon::ConnectDatabase(){
            qDebug() << "mysqlhere"<<endl;
            mysql_query(&mysql, "use minercoffee");
            qDebug() << "mysqlhere"<<endl;
-           mysql_query(&mysql, "create table main_table(Date1 date not null,Time1 time not null,hashrate float4 not null,accepted_shares int not null,invalid_shares int not null,rejected_shares int not null,TMP int not null,gpu_clock int not null,mem_clock int not null,FanSpeed int not null,PowerDraw int not null,gpu_id int PRIMARY KEY not null)");
+           mysql_query(&mysql, "create table main_table(Date1 date not null,Time1 time not null,hashrate float4 not null,accepted_shares int not null,invalid_shares int not null,rejected_shares int not null,gpu_name VARCHAR(9) not null,TMP int not null,gpu_clock int not null,mem_clock int not null,FanSpeed int not null,PowerDraw int not null,gpu_id int PRIMARY KEY not null)");
            mysql_query(&mysql, "create table advise(gpu_type varchar(10) PRIMARY KEY,gpu_clock int,mem_clock int not null,power int not null,prediction int not null)");
            qDebug() << "mysqlhere"<<endl;
            mysql_query(&mysql, "insert into advise values('3090',-300,1000,285,120)");
@@ -68,8 +73,6 @@ void MYSQLcon::ConnectDatabase(){
            mysql_query(&mysql,"insert into advise values('1070',null,450,115,30)");
            mysql_query(&mysql,"insert into advise values('1060',null,900,80,23)");
        }
-       InsertData();
-       run();
 
     }
     else
@@ -77,8 +80,7 @@ void MYSQLcon::ConnectDatabase(){
         qDebug()<<"Connected...\n";
         char* s=(char*)"2070";
         getAdvice(s);
-        InsertData();
-        run();
+
     }
 }
 QStringList MYSQLcon::getAdvice(char* type){
@@ -91,7 +93,7 @@ QStringList MYSQLcon::getAdvice(char* type){
     MYSQL_ROW   row;
     QStringList l;
     while((row=mysql_fetch_row(res))) {
-        for(int i=0 ; i <mysql_num_fields(res);i++){
+        for(int i=0 ; i<mysql_num_fields(res);i++){
             l.append(row[i]);
         }
     }
@@ -114,11 +116,18 @@ void MYSQLcon::InsertData(){
     char mainline[100];
     qDebug()<<date<<endl;
     qDebug()<<time<<endl;
+
     for (int i = 0; i < gpuInfos.size(); i++) {
-        sprintf(mainline,"%s%c%s%c%c%c%s%c%c%d%c%d%c%d%c%d%c%d%c%d%c%d%c%d%c%d%c%d%c",Ins_main,'\'',date,'\'',',','\'',time,'\'',',',gpuInfos[i].hashrate,',',gpuInfos[i].accepted_shares,',',gpuInfos[i].invalid_shares,',',gpuInfos[i].rejected_shares,',',gpuInfos[i].temp,',',gpuInfos[i].gpuclock,',',gpuInfos[i].memclock,',',gpuInfos[i].fanspeed,',',gpuInfos[i].power,',',gpuInfos[i].num,')');
+        //std::string na=gpuInfos[i].name;
+        //std::size_t pos =na.find("2070");
+        //std::string str3 = na.substr (pos,pos+4);
+        std::string str3="2070";
+        sprintf(mainline,"%s%c%s%c%c%c%s%c%c%f%c%d%c%d%c%d%c%c%s%c%c%d%c%d%c%d%c%d%c%d%c%d%c",Ins_main,'\'',date,'\'',',','\'',time,'\'',',',gpuInfos[i].hashrate,',',gpuInfos[i].accepted_shares,',',gpuInfos[i].invalid_shares,',',gpuInfos[i].rejected_shares,',','\'',str3.c_str(),'\'',',',gpuInfos[i].temp,',',gpuInfos[i].gpuclock,',',gpuInfos[i].memclock,',',gpuInfos[i].fanspeed,',',gpuInfos[i].power,',',gpuInfos[i].num,')');
         qDebug()<<mainline<<endl;
         mysql_query(&mysql,mainline);
     }
+    mysql_close(&mysql);
+
 
 }
 void MYSQLcon::run()
@@ -133,28 +142,24 @@ void MYSQLcon::FreeConnect(){
 
     mysql_close(&mysql);
 }
-std::vector<GPUInfo> MYSQLcon::Get_History(char *date1,char *date2,int num){
-    char* Ins_main=(char*)"select avg(TMP),avg(gpu_clock),avg(mem_clock),avg(FanSpeed),avg(PowerDraw),avg(hashrate) from main_table where Date1<='";
-    char *i=(char*)"\' and Date1>=\'";
-    char *w=(char*)"' and gpu_id='";
-    char line[250];
-    char li[168]="select avg(TMP),avg(gpu_clock),avg(mem_clock),avg(FanSpeed),avg(PowerDraw),avg(hashrate) from main_table where Date1<='2021-04-18' and Date1>='2021-04-18' and gpu_id=0";
-    //sprintf(line,'%s%s%s%s%s%s',Ins_main,date2,i,date1,w,(char*)num);
-    mysql_query(&mysql,li);
+QStringList MYSQLcon::Get_History(char* date1,char* date2,int num){
+    char* Ins_main=(char*)"select avg(TMP),avg(gpu_clock),avg(mem_clock),avg(FanSpeed),avg(PowerDraw),avg(hashrate) from main_table where Date1<=";
+    char* i=(char*)" and Date1>=";
+    char* w=(char*)" and gpu_id=";
+    char lp[100];
+    //char li[250]="select avg(TMP),avg(gpu_clock),avg(mem_clock),avg(FanSpeed),avg(PowerDraw),avg(hashrate),gpu_name,avg(accepted_shares),avg(invalid_shares),avg(rejected_shares) from main_table where Date1<='2021-04-18' and Date1>='2021-04-18' and gpu_id=0";
+    sprintf(lp,"%s%c%s%c%s%c%s%c%s%d",Ins_main,'\'',date2,'\'',i,'\'',date1,'\'',w,num);
+    qDebug()<<lp<<endl;
+    mysql_query(&mysql,lp);
     res=mysql_store_result(&mysql);
     mysql_free_result(res);
     MYSQL_ROW   row;
-    std::vector<GPUInfo> l;
+    QStringList l;
     while((row=mysql_fetch_row(res))) {
-            l[num].num=num;
-            l[num].temp=atoi(row[0]);
-            qDebug()<<l[num].temp<<endl;
-            l[num].gpuclock=atoi(row[1]);
-            l[num].memclock=atoi(row[2]);
-            l[num].fanspeed=atoi(row[3]);
-            l[num].power=atoi(row[4]);
-            l[num].hashrate=atof(row[5]);
+        for(int i=0 ; i<mysql_num_fields(res);i++){
+            l.append(row[i]);
         }
+    }
     return l;
 }
 

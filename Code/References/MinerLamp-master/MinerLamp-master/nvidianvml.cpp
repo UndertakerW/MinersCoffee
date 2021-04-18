@@ -220,17 +220,6 @@ int nvidiaNVML::getHigherTemp()
     return maxTemp;
 }
 
-unsigned int* nvidiaNVML::getAllTemp()
-{
-    unsigned int gpuCount = getGPUCount();
-    unsigned int  *Alltemp;
-    for(unsigned int i = 0; i < gpuCount; i++)
-    {
-        unsigned int temp = getGPUTemp(i);
-        *(Alltemp+i)=temp;
-    }
-    return Alltemp;
-}
 
 int nvidiaNVML::getLowerTemp()
 {
@@ -258,17 +247,6 @@ int nvidiaNVML::getHigherFanSpeed()
     return maxSpeed;
 }
 
-unsigned int* nvidiaNVML::getAllFanSpeed()
-{
-    unsigned int gpuCount = getGPUCount();
-    unsigned int  *AllFanSpeed;
-    for(unsigned int i = 0; i < gpuCount; i++)
-    {
-        unsigned int temp = getFanSpeed(i);
-        *(AllFanSpeed+i)=temp;
-    }
-    return AllFanSpeed;
-}
 
 int nvidiaNVML::getLowerFanSpeed()
 {
@@ -297,17 +275,7 @@ int nvidiaNVML::getMemMaxClock()
     return maxClock;
 
 }
-unsigned int* nvidiaNVML::getAllMemClock()
-{
-    unsigned int gpuCount = getGPUCount();
-    unsigned int *AllMemClock;
-    for(unsigned int i = 0; i < gpuCount; i++)
-    {
-        unsigned int temp = getMemClock(i);
-        AllMemClock[i]=temp;
-    }
-    return AllMemClock;
-}
+
 int nvidiaNVML::getMemLowerClock()
 {
     unsigned int minClock = 1000000;
@@ -334,17 +302,7 @@ int nvidiaNVML::getGPUMaxClock()
     }
     return maxClock;
 }
-unsigned int* nvidiaNVML::getAllGPUClock()
-{
-    unsigned int gpuCount = getGPUCount();
-    unsigned int *AllGPUClock;
-    for(unsigned int i = 0; i < gpuCount; i++)
-    {
-        unsigned int temp = getGPUClock(i);
-        AllGPUClock[i]=temp;
-    }
-    return AllGPUClock;
-}
+
 int nvidiaNVML::getGPUMinClock()
 {
     unsigned int minClock = 1000000;
@@ -370,17 +328,7 @@ int nvidiaNVML::getMaxPowerDraw()
     }
     return maxWatt;
 }
-unsigned int* nvidiaNVML::getAllPowerDraw()
-{
-    unsigned int gpuCount = getGPUCount();
-    unsigned int *AllPowerDraw;
-    for(unsigned int i = 0; i < gpuCount; i++)
-    {
-        unsigned int temp = getPowerDraw(i);
-        *(AllPowerDraw+i)=temp;
-    }
-    return AllPowerDraw;
-}
+
 int nvidiaNVML::getMinPowerDraw()
 {
     unsigned int minWatt = 1000000;

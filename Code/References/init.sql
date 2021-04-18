@@ -4,31 +4,23 @@ drop database if exists minercoffee;
 create database minercoffee;
 use minercoffee;
 drop table if exists main_table;
-create table gpu_table(
-	gpu_id int PRIMARY KEY,
-	TMP int not null,
-    gpu_clock int not null,
-    mem_clock int not null,
-    FanSpeed int not null,
-    PowerDraw int not null
-);
-create table hash_table(
-    gpu_id int PRIMARY KEY,
-    hashrate float4 not null,
-	accepted_shares int not null,
-    invalid_shares int not null,
-    rejected_shares int not null
-);
 create table main_table(
 	Date1 date not null,
 	Time1 time not null,
-	gpu_id int PRIMARY KEY not null,
-	gpu_name varchar(50) not null,
-	FOREIGN KEY(gpu_id) REFERENCES gpu_table(gpu_id),
-	FOREIGN KEY(gpu_id) REFERENCES hash_table(gpu_id)
+    hashrate float4 not null,
+	accepted_shares int not null,
+    invalid_shares int not null,
+    rejected_shares int not null,
+    gpu_name TEXT not null,
+    TMP int not null,
+    gpu_clock int not null,
+    mem_clock int not null,
+    FanSpeed int not null,
+    PowerDraw int not null,
+	gpu_id int not null,
+    primary key(gpu_id,Date1,Time1)
 );
 create table advise(gpu_type varchar(10) PRIMARY KEY,gpu_clock int,mem_clock int not null,power int not null,prediction int not null);
-
 insert into advise values('3090',-300,1000,285,120);
 insert into advise values('3080',-150,900,220,98);
 insert into advise values('3070',-500,1100,130,60);
@@ -45,8 +37,10 @@ insert into advise values('1080',null,800,125,43);
 insert into advise values('1070Ti',null,500,135,30);
 insert into advise values('1070',null,450,115,30);
 insert into advise values('1060',null,900,80,23);
-insert into main_table values(,null,900,80,23);
 show tables;
 select * from main_table;
-insert into main_table values('2021-4-18','16:41:42',0,'GeForce RTX 2070 with Max-Q Design')
-select gpu_clock,mem_clock,power,prediction from advise where gpu_type='2070'
+select gpu_clock,mem_clock,power,prediction from advise where gpu_type='2070';
+insert into main_table values('2021-4-18','17:25:36',-536870912,0,0,0,45,300,405,0,11961,0) ;
+insert into main_table values('2021-4-18','17:24:30',-536870912,0,0,0,46,300,405,0,11556,0) ;
+select avg(TMP),avg(gpu_clock),avg(mem_clock),avg(FanSpeed),avg(PowerDraw),avg(hashrate) from main_table where Date1<='2021-04-18' and Date1>='2021-04-18' and gpu_id=0;
+select avg(TMP),avg(gpu_clock),avg(mem_clock),avg(FanSpeed),avg(PowerDraw),avg(hashrate) from main_table where Date1<='2021-04-18' and Date1>='2021-04-18' and gpu_id=0;
