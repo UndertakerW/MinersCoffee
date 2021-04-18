@@ -39,7 +39,7 @@ public:
     QStringList getAdvice(char* type);
     void InsertData();
     void run();
-     QStringList Get_History(char* date1,char* date2,int num);
+    QStringList Get_History(char* date1,char* date2,int num);
 };
 
 

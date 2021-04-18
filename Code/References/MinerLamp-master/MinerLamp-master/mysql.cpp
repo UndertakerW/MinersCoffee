@@ -51,14 +51,11 @@ void MYSQLcon::ConnectDatabase(){
            mysql_query(&mysql, "create database minercoffee");
            qDebug() << "mysqlhere"<<endl;
            mysql_query(&mysql, "use minercoffee");
-           qDebug() << "mysqlhere"<<endl;
            mysql_query(&mysql, "create table main_table(Date1 date not null,Time1 time not null,hashrate float4 not null,accepted_shares int not null,invalid_shares int not null,rejected_shares int not null,gpu_name VARCHAR(9) not null,TMP int not null,gpu_clock int not null,mem_clock int not null,FanSpeed int not null,PowerDraw int not null,gpu_id int PRIMARY KEY not null)");
            mysql_query(&mysql, "create table advise(gpu_type varchar(10) PRIMARY KEY,gpu_clock int,mem_clock int not null,power int not null,prediction int not null)");
-           qDebug() << "mysqlhere"<<endl;
            mysql_query(&mysql, "insert into advise values('3090',-300,1000,285,120)");
            mysql_query(&mysql, "insert into advise values('3080',-150,900,220,98)");
            mysql_query(&mysql, "insert into advise values('3070',-500,1100,130,60)");
-           qDebug() << "mysqlhere"<<endl;
            mysql_query(&mysql,"insert into advise values('3060Ti',-500,1200,130,60)");
            mysql_query(&mysql,"insert into advise values('2080Ti',-200,1100,150,57)");
            mysql_query(&mysql,"insert into advise values('2080super',-50,1000,175,42)");
@@ -133,7 +130,7 @@ void MYSQLcon::InsertData(){
 void MYSQLcon::run()
 {
     while(1){
-        QThread::sleep(60);
+        QThread::sleep(6);
         InsertData();
     }
 }
@@ -146,7 +143,7 @@ QStringList MYSQLcon::Get_History(char* date1,char* date2,int num){
     char* Ins_main=(char*)"select avg(TMP),avg(gpu_clock),avg(mem_clock),avg(FanSpeed),avg(PowerDraw),avg(hashrate) from main_table where Date1<=";
     char* i=(char*)" and Date1>=";
     char* w=(char*)" and gpu_id=";
-    char lp[100];
+    char lp[250];
     //char li[250]="select avg(TMP),avg(gpu_clock),avg(mem_clock),avg(FanSpeed),avg(PowerDraw),avg(hashrate),gpu_name,avg(accepted_shares),avg(invalid_shares),avg(rejected_shares) from main_table where Date1<='2021-04-18' and Date1>='2021-04-18' and gpu_id=0";
     sprintf(lp,"%s%c%s%c%s%c%s%c%s%d",Ins_main,'\'',date2,'\'',i,'\'',date1,'\'',w,num);
     qDebug()<<lp<<endl;
