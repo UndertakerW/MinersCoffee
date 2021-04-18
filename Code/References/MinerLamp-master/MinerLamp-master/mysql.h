@@ -10,7 +10,7 @@
 #include <stdio.h>
 #include <nvidianvml.h>
 #include <WinSock.h>
-
+#include "gpumonitor.h"
 #include "C:/Program Files/MySQL/MySQL Server 8.0/include/mysql.h"
 #include <Windows.h>
 
@@ -36,10 +36,9 @@ public:
     void ConnectDatabase();
     void FreeConnect();
     QStringList getAdvice(char* type);
-    /*bool QueryDatabase1();
-    bool QueryDatabase2();
-    bool InsertData();
-    bool DeleteData();*/
+    void InsertData();
+    void run();
+    std::vector<GPUInfo> Get_History(char *date1,char *date2,int num);
 };
 
 
