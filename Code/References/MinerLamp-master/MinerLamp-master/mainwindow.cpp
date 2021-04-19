@@ -62,7 +62,6 @@ MainWindow::MainWindow(QWidget *parent) :
     _gpusinfo = new std::vector<GPUInfo>();
     _gpuInfoList = new QList<QWidget * >();
     _mysqlProcess = new MYSQLcon();
-//    _mysqlProcess->start();
 
     ui->setupUi(this);
 
@@ -308,10 +307,10 @@ MainWindow::MainWindow(QWidget *parent) :
     //ui->debugBox->append("hello 1");
 
     initializeConstants();
-    ui->groupBoxHistoryInfo->hide();
+//    ui->groupBoxHistoryInfo->hide();
     ui->checkBoxShowHistoryInfo->hide();
 
-//    plotGrapgh("111", "222");
+    plotGrapgh("111", "222");
 
 
 }
@@ -1366,13 +1365,38 @@ void MainWindow::plotGrapgh(QString dateStart, QString dateEnd){
         setGraph = true;
     }
 
-    QDateTime date = QDateTime::currentDateTime();
-    qDebug() << "displaying from history: " << QLocale{QLocale::English}.toString(date, "MM/dd");
+//    QDateTime date = QDateTime::currentDateTime();
+//    qDebug() << "displaying from history: " << QLocale{QLocale::English}.toString(date, "MM/dd");
 //    qDebug() << "displaying from history second line: " << QLocale{QLocale::English}.toString(date, "MM/dd");
-    QDateTime b = QDateTime::fromString("2021-04-18 00:00:00","yyyy-MM-dd HH:mm:ss");
-    qDebug() << "displaying from history line 2: "  << b.date().toString();
+//    QDateTime b = QDateTime::fromString("2021-04-18 00:00:00","yyyy-MM-dd HH:mm:ss");
+//    qDebug() << "displaying from history line 2: "  << b.date().toString();
+
+    qDebug() << "before get history";
+//    QStringList gpuInfoList = _mysqlProcess->Get_History("2021-04-19", "2021-04-26", 10);
+    qDebug() << "after get history";
+
+//    int infoListSize = infoPtr->size();
+
+//    for(int i=0; i<infoListSize; i++){
+//        // Date1 0, Time1 1, TMP 2, gpu_clock 3, mem_clock 4, FanSpeed 5, PowerDraw 6, hashrate 7
+//        QDateTime x_coordinate = QDateTime::fromString(infoList[i][0]+" "+infoList[i][1],"yyyy-MM-dd HH:mm:ss");
+//        qDebug() << "row" << i << " " << x_coordinate.toString()
+//        _seriesHistory->append(x_coordinate.toMSecsSinceEpoch(), infoList[i][2].toInt());
+//    }
+
+//    QDateTime x_axis_start = QDateTime::fromString(infoList[0][0]+" "+infoList[0][1],"yyyy-MM-dd HH:mm:ss");
+//    QDateTime x_axis_end = QDateTime::fromString(infoList[infoListSize-1][0]+" "+infoList[infoListSize-1][1],"yyyy-MM-dd HH:mm:ss");
+
+//    qDebug() << x_axis_start.toString() << " vs " << x_axis_end.toString();
+
+//    if(x_axis_start < x_axis_end){
+//        QDateTime temp = x_axis_start;
+//        x_axis_start = x_axis_end;
+//        x_axis_end = temp;
+//        qDebug() << "smaller than";
+//    }
 
 
-//    _mysqlProcess->Get_History()
+//    _axisXHistory->setRange(x_axis_start.addDays(-1), x_axis_end.addDays(1));
 
 }

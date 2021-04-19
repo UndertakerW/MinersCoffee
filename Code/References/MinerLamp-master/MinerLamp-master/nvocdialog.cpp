@@ -231,7 +231,7 @@ void nvOCDialog::on_checkBoxAutoOC_clicked(bool clicked){
                 MYSQLcon mysql;
                 mysql.ConnectDatabase();
                 QStringList l;
-                char *p;
+                const char *p;
                 p=n.c_str();
                 l=mysql.getAdvice(p);
                 qDebug("query name %s",n.c_str());

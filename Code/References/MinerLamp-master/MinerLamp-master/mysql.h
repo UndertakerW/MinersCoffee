@@ -36,10 +36,10 @@ public:
     MYSQLcon();
     void ConnectDatabase();
     void FreeConnect();
-    QStringList getAdvice(char* type);
+    QStringList getAdvice(const char* type);
     void InsertData(QList<GPUInfo> gpuInfos,QList<GPUMiningInfo> GPUMiningInfo,std::string name);
-    void run();
-     QStringList Get_History(char* date1,char* date2,int num);
+//    void run();
+     QStringList Get_History(const char* date1,const char* date2,int num);
 };
 
 

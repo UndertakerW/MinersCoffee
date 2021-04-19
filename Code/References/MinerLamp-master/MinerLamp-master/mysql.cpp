@@ -26,7 +26,7 @@
 
 MYSQLcon::MYSQLcon(){
     mysql_init(&mysql);
-    if (!(mysql_real_connect(&mysql,"localhost", "root", "1020zxc..", "minercoffee",0,NULL,0))) {
+    if (!(mysql_real_connect(&mysql,"localhost", "root", "MaoYu", "minercoffee",0,NULL,0))) {
         mysql_close(&mysql);
     }
     ConnectDatabase();
@@ -37,13 +37,13 @@ void MYSQLcon::ConnectDatabase(){
 
     //返回false则连接失败，返回true则连接成功
 
-    if (!(mysql_real_connect(&mysql,"localhost", "root", "1020zxc..", "minercoffee",0,NULL,0))) //中间分别是主机，用户名，密码，数据库名，端口号（可以写默认0或者3306等），可以先写成参数再传进去
+    if (!(mysql_real_connect(&mysql,"localhost", "root", "MaoYu", "minercoffee",0,NULL,0))) //中间分别是主机，用户名，密码，数据库名，端口号（可以写默认0或者3306等），可以先写成参数再传进去
     {
 
        qDebug()<<"Error connecting to database:%s\n",mysql_error(&mysql);
        mysql_close(&mysql);
        mysql_init(&mysql);
-       if(mysql_real_connect(&mysql,"localhost", "root", "1020zxc..", "mysql",0,NULL,0)){
+       if(mysql_real_connect(&mysql,"localhost", "root", "MaoYu", "mysql",0,NULL,0)){
            mysql_query(&mysql, "use sys");
            mysql_query(&mysql, "drop database if exists minercoffee");
            mysql_query(&mysql, "create database minercoffee");
@@ -79,7 +79,7 @@ void MYSQLcon::ConnectDatabase(){
 
     }
 }
-QStringList MYSQLcon::getAdvice(char* type){
+QStringList MYSQLcon::getAdvice(const char* type){
     char* q=(char*)"select gpu_clock,mem_clock,power,prediction from advice where gpu_type=\'";
     char str3[100];
     sprintf(str3,"%s%s%s",q,type,"\'");
@@ -139,7 +139,7 @@ void MYSQLcon::FreeConnect(){
 
     mysql_close(&mysql);
 }
-QStringList MYSQLcon::Get_History(char* date1,char* date2,int num){
+QStringList MYSQLcon::Get_History(const char* date1,const char* date2,int num){
     char* Ins_main=(char*)"select avg(TMP),avg(gpu_clock),avg(mem_clock),avg(FanSpeed),avg(PowerDraw),avg(hashrate) from main_table where Date1<=";
     char* i=(char*)" and Date1>=";
     char* w=(char*)" and gpu_id=";
