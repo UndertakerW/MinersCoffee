@@ -76,9 +76,10 @@ void MYSQLcon::ConnectDatabase(){
     }
 }
 QStringList MYSQLcon::getAdvice(const char* type){
-    char* q=(char*)"select gpu_clock,mem_clock,power,prediction from advice where gpu_type=\'";
-    char str3[100];
+    char* q=(char*)"select gpu_clock,mem_clock,power,prediction from advise where gpu_type=\'";
+    char str3[150];
     sprintf(str3,"%s%s%s",q,type,"\'");
+    qDebug()<<str3;
     mysql_query(&mysql,str3);
     res=mysql_store_result(&mysql);
     mysql_free_result(res);
@@ -86,7 +87,8 @@ QStringList MYSQLcon::getAdvice(const char* type){
     QStringList l;
     while((row=mysql_fetch_row(res))) {
         for(int i=0 ; i<mysql_num_fields(res);i++){
-            l.append(row[i]);
+            char *u=row[i];
+            l.append(u);
         }
     }
     return l;
@@ -139,7 +141,7 @@ void MYSQLcon::FreeConnect(){
     mysql_close(&mysql);
 }
 QStringList MYSQLcon::Get_History(const char* date1,const char* date2,int num){
-    char* Ins_main=(char*)"select avg(TMP), avg(gpu_clock), avg(mem_clock), avg(FanSpeed), avg(PowerDraw), avg(hashrate), gpu_name, avg(accepted_shares), avg(invalid_shares), avg(rejected_shares) from main_table where Date1<=";
+    char* Ins_main=(char*)"select gpu_id,Date1,avg(TMP), avg(gpu_clock), avg(mem_clock), avg(FanSpeed), avg(PowerDraw), avg(hashrate), gpu_name, avg(accepted_shares), avg(invalid_shares), avg(rejected_shares) from main_table group by Date1 having Date1<=";
     char* i=(char*)" and Date1>=";
     char* w=(char*)" and gpu_id=";
     char lp[300];
