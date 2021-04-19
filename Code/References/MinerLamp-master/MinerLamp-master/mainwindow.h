@@ -218,7 +218,7 @@ private:
     MinerProcess* _process;
     QSettings*  _settings;
     QIcon*       _icon;
-    std::vector<GPUInfo>* _gpusinfo;
+    QList<GPUInfo>* _gpusinfo;
     MYSQLcon * _mysqlProcess;
 
     bool _isMinerRunning;
@@ -249,7 +249,8 @@ private:
 
     // temperature displaying
     QChart* _chartHistory;
-    QLineSeries* _seriesHistory;
+    QLineSeries* _seriesHistoryTemp;
+    QLineSeries* _seriesHistoryGpuClock;
     QDateTimeAxis *_axisXHistory;
 
     // effectiveness pie chart

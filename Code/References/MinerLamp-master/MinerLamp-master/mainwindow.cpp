@@ -59,7 +59,7 @@ MainWindow::MainWindow(QWidget *parent) :
     _settings = new QSettings(QString(QDir::currentPath() + QDir::separator() + "minerlamp.ini"), QSettings::IniFormat);
 
     _process = new MinerProcess(_settings);
-    _gpusinfo = new std::vector<GPUInfo>();
+    _gpusinfo = new QList<GPUInfo>();
     _gpuInfoList = new QList<QWidget * >();
     _mysqlProcess = new MYSQLcon();
 
@@ -278,7 +278,7 @@ MainWindow::MainWindow(QWidget *parent) :
     // set time interval
     _tempChartTimer.setInterval(1000);
     _tempChartTimer.start();
-    
+
 
     ui->lcdNumberHashRate->display("0.00");
 
@@ -1206,6 +1206,10 @@ void MainWindow::refreshDeviceInfo()
         setLCDNumber(layoutPtr->itemAt(8)->widget(), _gpusinfo->at(i).memclock);
 
     }
+
+    // save data into mysql
+    QList<GPUInfo> gpuInfoHolder = *_gpusinfo;
+    _mysqlProcess->InsertData(gpuInfoHolder);
 }
 
 void MainWindow::setLCDNumber(QWidget * widget, unsigned int value){
@@ -1333,11 +1337,21 @@ void MainWindow::plotGrapgh(QString dateStart, QString dateEnd){
         QPen penHistory(QColor(255, 165, 0));
         penHistory.setWidth(2);
 
-        _seriesHistory = new QLineSeries();
-        _seriesHistory->setPen(penHistory);
+        QPen penGpuClock(QColor(165, 0, 255));
+        penHistory.setWidth(2);
 
-        _seriesHistory->append(QDateTime::currentDateTime().toMSecsSinceEpoch(),0);
-        _chartHistory->addSeries(_seriesHistory);
+
+        // temperature
+        _seriesHistoryTemp = new QLineSeries();
+        _seriesHistoryTemp->setPen(penHistory);
+
+        // gpu_clock
+        _seriesHistoryGpuClock = new QLineSeries();
+        _seriesHistoryGpuClock->setPen(penGpuClock);
+
+        _seriesHistoryTemp->append(QDateTime::currentDateTime().toMSecsSinceEpoch(),0);
+        _chartHistory->addSeries(_seriesHistoryTemp);
+        _chartHistory->addSeries(_seriesHistoryGpuClock);
         _chartHistory->createDefaultAxes();
 
         _axisXHistory = new QDateTimeAxis;
@@ -1360,7 +1374,8 @@ void MainWindow::plotGrapgh(QString dateStart, QString dateEnd){
         _axisXHistory->setGridLineVisible(false);
         _chartHistory->axisY()->setGridLineVisible(false);
         _chartHistory->setAxisX(_axisXHistory);
-        _seriesHistory->attachAxis(_axisXHistory);
+        _seriesHistoryTemp->attachAxis(_axisXHistory);
+        _seriesHistoryGpuClock->attachAxis(_axisXHistory);
         _axisXHistory->setRange(QDateTime::currentDateTime(), QDateTime::currentDateTime().addDays(10));
 
         ui->graphicsViewHistoryInfo->setChart(_chartHistory);
@@ -1374,24 +1389,37 @@ void MainWindow::plotGrapgh(QString dateStart, QString dateEnd){
 //    QDateTime b = QDateTime::fromString("2021-04-18 00:00:00","yyyy-MM-dd HH:mm:ss");
 //    qDebug() << "displaying from history line 2: "  << b.date().toString();
 
+    // retrieve infoList
     qDebug() << "before get history";
-//    QStringList gpuInfoList = _mysqlProcess->Get_History("2021-04-19", "2021-04-26", 10);
-    qDebug() << "after get history";
+    QStringList gpuInfoList = _mysqlProcess->Get_History("2021-04-19", "2021-04-26", 10);
+    qDebug() << "after get history with size: " << gpuInfoList.size();
 
-//    int infoListSize = infoPtr->size();
+    int gpuInfoListSize = gpuInfoList.size();
 
-    for(int i=0; i<6; i++){
-        // Date1 0, Time1 1, TMP 2, gpu_clock 3, mem_clock 4, FanSpeed 5, PowerDraw 6, hashrate 7
-        QDateTime x_coordinate = QDateTime::fromString("2021-04-2"+QString::number(i)+" 00:00:00","yyyy-MM-dd HH:mm:ss");
-        _seriesHistory->append(x_coordinate.toMSecsSinceEpoch(), i*i*i);
+    if(gpuInfoListSize == 0){
+        return;
+    }
+
+    // append points
+    for(int i=0; i<gpuInfoListSize/12; i++){
+        // Date1 1,avg(TMP) 2, avg(gpu_clock) 3, avg(mem_clock) 4, avg(FanSpeed) 5, avg(PowerDraw) 6
+        // avg(hashrate) 7, gpu_name 8, avg(accepted_shares) 9, avg(invalid_shares) 10, avg(rejected_shares) 11
+        qDebug() << "date time " << gpuInfoList[i*12+1];
+        QDateTime x_coordinate = QDateTime::fromString(gpuInfoList[i*12+1]+" 00:00:00","yyyy-MM-dd HH:mm:ss");
+        double temperature = gpuInfoList[i*12+2].toDouble();
+        double gpuClock = gpuInfoList[i*12+3].toDouble();
+        _seriesHistoryTemp->append(x_coordinate.toMSecsSinceEpoch(), temperature);
+        _seriesHistoryGpuClock->append(x_coordinate.toMSecsSinceEpoch(), gpuClock);
     }
 
 //    QDateTime x_axis_start = QDateTime::fromString(infoList[0][0]+" "+infoList[0][1],"yyyy-MM-dd HH:mm:ss");
 //    QDateTime x_axis_end = QDateTime::fromString(infoList[infoListSize-1][0]+" "+infoList[infoListSize-1][1],"yyyy-MM-dd HH:mm:ss");
 
-    QDateTime x_axis_start = QDateTime::fromString("2021-04-20 00:00:00","yyyy-MM-dd HH:mm:ss");
-    QDateTime x_axis_end = QDateTime::fromString("2021-04-25 00:00:00","yyyy-MM-dd HH:mm:ss");
-    _chartHistory->axisY()->setRange(0, 125);
+    // set x-axis
+    QDateTime x_axis_start = QDateTime::fromString(gpuInfoList[0] + " 00:00:00","yyyy-MM-dd HH:mm:ss");
+    QDateTime x_axis_end = QDateTime::fromString(gpuInfoList[gpuInfoListSize/12] + " 00:00:00","yyyy-MM-dd HH:mm:ss");
+    _chartHistory->axisY()->setRange(0, 100);
+
 
 //    qDebug() << x_axis_start.toString() << " vs " << x_axis_end.toString();
 
@@ -1401,7 +1429,6 @@ void MainWindow::plotGrapgh(QString dateStart, QString dateEnd){
 //        x_axis_end = temp;
 //        qDebug() << "smaller than";
 //    }
-
 
     _axisXHistory->setRange(x_axis_start, x_axis_end);
 

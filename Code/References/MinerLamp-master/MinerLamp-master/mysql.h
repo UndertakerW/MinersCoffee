@@ -34,12 +34,13 @@ private:
     MYSQL_ROW column; //一个行数据的类型安全(type-safe)的表示，表示数据行的列
 public:
     MYSQLcon();
+    ~MYSQLcon();
     void ConnectDatabase();
     void FreeConnect();
     QStringList getAdvice(const char* type);
     void InsertData(QList<GPUInfo> gpuInfos);
 //    void run();
-     QStringList Get_History(const char* date1,const char* date2,int num);
+    QStringList Get_History(const char* date1,const char* date2,int num);
 };
 
 

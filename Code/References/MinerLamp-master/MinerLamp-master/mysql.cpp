@@ -26,7 +26,7 @@
 
 MYSQLcon::MYSQLcon(){
     mysql_init(&mysql);
-    if (!(mysql_real_connect(&mysql,"localhost", "root", "1020zxc..", "minercoffee",0,NULL,0))) {
+    if (!(mysql_real_connect(&mysql,"localhost", "root", "MaoYu", "minercoffee",0,NULL,0))) {
         mysql_close(&mysql);
     }
     ConnectDatabase();
@@ -37,13 +37,13 @@ void MYSQLcon::ConnectDatabase(){
 
     //返回false则连接失败，返回true则连接成功
 
-    if (!(mysql_real_connect(&mysql,"localhost", "root", "1020zxc..", "minercoffee",0,NULL,0))) //中间分别是主机，用户名，密码，数据库名，端口号（可以写默认0或者3306等），可以先写成参数再传进去
+    if (!(mysql_real_connect(&mysql,"localhost", "root", "MaoYu", "minercoffee",0,NULL,0))) //中间分别是主机，用户名，密码，数据库名，端口号（可以写默认0或者3306等），可以先写成参数再传进去
     {
 
        qDebug()<<"Error connecting to database:%s\n",mysql_error(&mysql);
        mysql_close(&mysql);
        mysql_init(&mysql);
-       if(mysql_real_connect(&mysql,"localhost", "root", "1020zxc..", "mysql",0,NULL,0)){
+       if(mysql_real_connect(&mysql,"localhost", "root", "MaoYu", "mysql",0,NULL,0)){
            mysql_query(&mysql, "use sys");
            mysql_query(&mysql, "drop database if exists minercoffee");
            mysql_query(&mysql, "create database minercoffee");
@@ -119,13 +119,11 @@ void MYSQLcon::InsertData(QList<GPUInfo> gpuInfos){
         }
         const char *p;
         p=n.c_str();
-        sprintf(mainline,"%s%c%s%c%c%c%s%c%c%f%c%d%c%d%c%d%c%c%s%c%c%d%c%d%c%d%c%d%c%d%c%d%c",Ins_main,'\'',date,'\'',',','\'',time,'\'',',',3.5,',',6,',',6,',',6,',','\'',p,'\'',',',gpuInfos[i].temp,',',gpuInfos[i].gpuclock,',',gpuInfos[i].memclock,',',gpuInfos[i].fanspeed,',',gpuInfos[i].power,',',gpuInfos[i].num,')');
+        sprintf(mainline,"%s%c%s%c%c%c%s%c%c%f%c%d%c%d%c%d%c%c%s%c%c%d%c%d%c%d%c%d%c%d%c%d%c;",Ins_main,'\'',date,'\'',',','\'',time,'\'',',',3.5,',',6,',',6,',',6,',','\'',p,'\'',',',gpuInfos[i].temp,',',gpuInfos[i].gpuclock,',',gpuInfos[i].memclock,',',gpuInfos[i].fanspeed,',',gpuInfos[i].power,',',gpuInfos[i].num,')');
         //sprintf(mainline,"%s%c%s%c%c%c%s%c%c%f%c%d%c%d%c%d%c%c%s%c%c%d%c%d%c%d%c%d%c%d%c%d%c",Ins_main,'\'',date,'\'',',','\'',time,'\'',',',GPUMiningInfo[i].hashrate,',',GPUMiningInfo[i].accepted_shares,',',GPUMiningInfo[i].invalid_shares,',',GPUMiningInfo[i].rejected_shares,',','\'',p,'\'',',',gpuInfos[i].temp,',',gpuInfos[i].gpuclock,',',gpuInfos[i].memclock,',',gpuInfos[i].fanspeed,',',gpuInfos[i].power,',',gpuInfos[i].num,')');
         qDebug()<<mainline<<endl;
         mysql_query(&mysql,mainline);
     }
-    mysql_close(&mysql);
-
 
 }
 /*void MYSQLcon::run()
@@ -160,4 +158,8 @@ QStringList MYSQLcon::Get_History(const char* date1,const char* date2,int num){
         }
     }
     return l;
+}
+
+MYSQLcon::~MYSQLcon(){
+    mysql_close(&mysql);
 }
