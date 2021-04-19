@@ -230,161 +230,7 @@ QPushButton:disabled
     <bool>true</bool>
    </property>
    <layout class="QGridLayout" name="gridLayout_10">
-    <item row="2" column="10">
-     <widget class="QLineEdit" name="lineEditArgs">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>0</width>
-        <height>0</height>
-       </size>
-      </property>
-     </widget>
-    </item>
-    <item row="8" column="14">
-     <widget class="QPushButton" name="pushButtonPool">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="font">
-       <font>
-        <family>Arial</family>
-        <pointsize>-1</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Pool</string>
-      </property>
-      <property name="checkable">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="7" column="0" colspan="15">
-     <widget class="QSplitter" name="splitter_2">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-      <widget class="QGroupBox" name="groupBoxDevicesInfo">
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>16777127</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-        </font>
-       </property>
-       <property name="title">
-        <string>Devices Info</string>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_9">
-        <item row="0" column="0">
-         <layout class="QGridLayout" name="gridLayoutDevicesInfo"/>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QSplitter" name="splitter">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <widget class="QWidget" name="layoutWidget">
-        <layout class="QVBoxLayout" name="verticalLayout_2">
-         <item>
-          <widget class="QGroupBox" name="groupBox">
-           <property name="font">
-            <font>
-             <family>Arial</family>
-            </font>
-           </property>
-           <property name="title">
-            <string>Hashrate chart</string>
-           </property>
-           <layout class="QGridLayout" name="gridLayout_5">
-            <item row="0" column="0">
-             <widget class="hashrateCharView" name="graphicsView">
-              <property name="horizontalScrollBarPolicy">
-               <enum>Qt::ScrollBarAsNeeded</enum>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item>
-          <widget class="QGroupBox" name="groupBox_2">
-           <property name="font">
-            <font>
-             <family>Arial</family>
-            </font>
-           </property>
-           <property name="title">
-            <string>Temperature chart</string>
-           </property>
-           <layout class="QGridLayout" name="gridLayout_6">
-            <item row="0" column="0">
-             <widget class="hashrateCharView" name="graphicsViewTemp">
-              <property name="horizontalScrollBarPolicy">
-               <enum>Qt::ScrollBarAsNeeded</enum>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QGroupBox" name="groupBoxEffectiveness">
-        <property name="font">
-         <font>
-          <family>Arial</family>
-         </font>
-        </property>
-        <property name="title">
-         <string>Effectiveness</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_7">
-         <item row="1" column="0">
-          <layout class="QGridLayout" name="gridLayoutEff">
-           <item row="0" column="0">
-            <widget class="hashrateCharView" name="graphicsViewEff"/>
-           </item>
-           <item row="1" column="0">
-            <widget class="QGroupBox" name="groupBoxHistoryInfo">
-             <property name="font">
-              <font>
-               <family>Arial</family>
-              </font>
-             </property>
-             <property name="title">
-              <string>History</string>
-             </property>
-             <layout class="QGridLayout" name="gridLayout_8">
-              <item row="0" column="0">
-               <widget class="hashrateCharView" name="graphicsViewHistoryInfo">
-                <property name="horizontalScrollBarPolicy">
-                 <enum>Qt::ScrollBarAsNeeded</enum>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </widget>
-      </widget>
-     </widget>
-    </item>
-    <item row="1" column="12" colspan="2">
+    <item row="1" column="13" colspan="2">
      <widget class="QLineEdit" name="lineEditWorker">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -405,446 +251,20 @@ QPushButton:disabled
       </property>
      </widget>
     </item>
-    <item row="8" column="13">
-     <widget class="QPushButton" name="pushButtonShowHideLog">
-      <property name="font">
-       <font>
-        <family>Arial</family>
-        <pointsize>-1</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Hide log</string>
-      </property>
-      <property name="checkable">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="0" colspan="2">
-     <widget class="QCheckBox" name="checkBoxAutoStart">
-      <property name="font">
-       <font>
-        <family>Arial</family>
-       </font>
-      </property>
-      <property name="text">
-       <string>Auto start miner</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="11">
-     <widget class="QPushButton" name="pushButton">
-      <property name="font">
-       <font>
-        <family>Arial</family>
-        <pointsize>-1</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Start mining</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="0" rowspan="2" colspan="9">
-     <widget class="QGroupBox" name="groupBoxWatchdog">
+    <item row="2" column="10">
+     <widget class="QLineEdit" name="lineEditArgs">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
       </property>
-      <property name="font">
-       <font>
-        <family>Arial</family>
-       </font>
-      </property>
-      <property name="title">
-       <string>Watchdog options (restart miner in case of error)</string>
-      </property>
-      <property name="checkable">
-       <bool>true</bool>
-      </property>
-      <property name="checked">
-       <bool>false</bool>
-      </property>
-      <layout class="QGridLayout" name="gridLayout">
-       <item row="1" column="1">
-        <widget class="QSpinBox" name="spinBoxDelay0MHs">
-         <property name="font">
-          <font>
-           <family>Arial</family>
-          </font>
-         </property>
-         <property name="minimum">
-          <number>1</number>
-         </property>
-         <property name="maximum">
-          <number>600</number>
-         </property>
-         <property name="value">
-          <number>20</number>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QSpinBox" name="spinBoxMax0MHs">
-         <property name="font">
-          <font>
-           <family>Arial</family>
-          </font>
-         </property>
-         <property name="minimum">
-          <number>1</number>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="3">
-        <widget class="QSpinBox" name="spinBoxDelayNoHash">
-         <property name="font">
-          <font>
-           <family>Arial</family>
-          </font>
-         </property>
-         <property name="minimum">
-          <number>30</number>
-         </property>
-         <property name="maximum">
-          <number>600</number>
-         </property>
-         <property name="value">
-          <number>60</number>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="2">
-        <widget class="QLabel" name="label_5">
-         <property name="font">
-          <font>
-           <family>Arial</family>
-          </font>
-         </property>
-         <property name="text">
-          <string>Delay before restart:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="4" rowspan="2">
-        <layout class="QVBoxLayout" name="verticalLayout">
-         <item>
-          <widget class="QLabel" name="label_23">
-           <property name="font">
-            <font>
-             <family>Arial</family>
-            </font>
-           </property>
-           <property name="text">
-            <string>debug output</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QTextEdit" name="debugBox"/>
-         </item>
-        </layout>
-       </item>
-       <item row="0" column="3">
-        <widget class="QSpinBox" name="spinBoxDelay">
-         <property name="font">
-          <font>
-           <family>Arial</family>
-          </font>
-         </property>
-         <property name="minimum">
-          <number>1</number>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_3">
-         <property name="font">
-          <font>
-           <family>Arial</family>
-          </font>
-         </property>
-         <property name="text">
-          <string>Delay before monitoring for 0MH/s:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="2">
-        <widget class="QLabel" name="label_7">
-         <property name="font">
-          <font>
-           <family>Arial</family>
-          </font>
-         </property>
-         <property name="text">
-          <string>Delay before no hash:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_4">
-         <property name="font">
-          <font>
-           <family>Arial</family>
-          </font>
-         </property>
-         <property name="text">
-          <string>Max consecutive 0MH/s:</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item row="2" column="2" colspan="2">
-     <widget class="QCheckBox" name="checkBoxAutoShowDeviceInfo">
-      <property name="font">
-       <font>
-        <family>Arial</family>
-       </font>
-      </property>
-      <property name="text">
-       <string>Show device info</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="7">
-     <widget class="QLabel" name="labelWallet">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
       <property name="maximumSize">
-       <size>
-        <width>60</width>
-        <height>16777215</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <family>Arial</family>
-        <pointsize>12</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Wallet</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="11">
-     <widget class="QLabel" name="labelWorker">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="minimumSize">
        <size>
         <width>0</width>
-        <height>31</height>
+        <height>0</height>
        </size>
       </property>
-      <property name="maximumSize">
-       <size>
-        <width>100</width>
-        <height>16777215</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <family>Arial</family>
-        <pointsize>12</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Worker</string>
-      </property>
-     </widget>
-    </item>
-    <item row="10" column="0" colspan="9">
-     <widget class="QGroupBox" name="groupBoxPools">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="font">
-       <font>
-        <family>Arial</family>
-       </font>
-      </property>
-      <property name="title">
-       <string>Pools</string>
-      </property>
-      <layout class="QGridLayout" name="gridLayout_4">
-       <item row="3" column="2">
-        <widget class="QLCDNumber" name="lcdNumberBalance">
-         <property name="smallDecimalPoint">
-          <bool>false</bool>
-         </property>
-         <property name="digitCount">
-          <number>12</number>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="5">
-        <widget class="QLCDNumber" name="lcdNumber_4">
-         <property name="digitCount">
-          <number>6</number>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="6">
-        <widget class="QPushButton" name="pushButtonDisplayPoolStats">
-         <property name="font">
-          <font>
-           <family>Arial</family>
-           <pointsize>-1</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Refresh</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="label_19">
-         <property name="font">
-          <font>
-           <family>Arial</family>
-          </font>
-         </property>
-         <property name="text">
-          <string>Balance:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0">
-        <widget class="QLabel" name="label_20">
-         <property name="font">
-          <font>
-           <family>Arial</family>
-          </font>
-         </property>
-         <property name="text">
-          <string>Current Calculated Hashrate:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="2">
-        <widget class="QLabel" name="label_21">
-         <property name="font">
-          <font>
-           <family>Arial</family>
-          </font>
-         </property>
-         <property name="text">
-          <string>Average Hashrate
-for last 6 hour:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="4">
-        <widget class="QRadioButton" name="radioButtonDwarfPool">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="font">
-          <font>
-           <family>Arial</family>
-          </font>
-         </property>
-         <property name="text">
-          <string>Dwarfpool</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0" colspan="5">
-        <widget class="QLineEdit" name="lineEditAccount">
-         <property name="font">
-          <font>
-           <family>Arial</family>
-          </font>
-         </property>
-         <property name="text">
-          <string>0xa07A8c9975145BB5371e8b3C31ACb62ad9d0698E</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0">
-        <widget class="QRadioButton" name="radioButtonNaopool">
-         <property name="font">
-          <font>
-           <family>Arial</family>
-          </font>
-         </property>
-         <property name="text">
-          <string>Nanopool</string>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="1">
-        <widget class="QLCDNumber" name="lcdNumberCalculatedHR">
-         <property name="digitCount">
-          <number>6</number>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="4">
-        <widget class="QLabel" name="label_22">
-         <property name="font">
-          <font>
-           <family>Arial</family>
-          </font>
-         </property>
-         <property name="text">
-          <string>Last Reported Hashrate:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="3">
-        <widget class="QLCDNumber" name="lcdNumberAvrgHr6H">
-         <property name="digitCount">
-          <number>6</number>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="2">
-        <widget class="QRadioButton" name="radioButtonEthermine">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="font">
-          <font>
-           <family>Arial</family>
-          </font>
-         </property>
-         <property name="text">
-          <string>Ethermine</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
      </widget>
     </item>
     <item row="1" column="6">
@@ -895,195 +315,6 @@ for last 6 hour:</string>
         <string>nicehash</string>
        </property>
       </item>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QComboBox" name="comboBoxCoin">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>31</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>90</width>
-        <height>16777215</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <item>
-       <property name="text">
-        <string>ETH</string>
-       </property>
-      </item>
-     </widget>
-    </item>
-    <item row="9" column="0" colspan="15">
-     <widget class="QTextEdit" name="textEdit">
-      <property name="font">
-       <font>
-        <family>Arial</family>
-       </font>
-      </property>
-      <property name="readOnly">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="12">
-     <widget class="QPushButton" name="pushButtonEthminerBrowser">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="font">
-       <font>
-        <family>Arial</family>
-        <pointsize>-1</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>...</string>
-      </property>
-     </widget>
-    </item>
-    <item row="8" column="0" colspan="3">
-     <widget class="QCheckBox" name="checkBoxOnlyShare">
-      <property name="font">
-       <font>
-        <family>Arial</family>
-       </font>
-      </property>
-      <property name="text">
-       <string>Only display share info</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="12">
-     <widget class="QLCDNumber" name="lcdNumberHashRate">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="font">
-       <font>
-        <family>Arial</family>
-       </font>
-      </property>
-      <property name="digitCount">
-       <number>7</number>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="9">
-     <widget class="QLineEdit" name="lineEditMinerPath">
-      <property name="maximumSize">
-       <size>
-        <width>0</width>
-        <height>0</height>
-       </size>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="labelCoin">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>31</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>50</width>
-        <height>16777215</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <family>Arial</family>
-        <pointsize>12</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Coin</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="3" colspan="2">
-     <widget class="QComboBox" name="comboBoxCore">
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>31</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <item>
-       <property name="text">
-        <string>NBMiner 37.1</string>
-       </property>
-      </item>
-     </widget>
-    </item>
-    <item row="1" column="5">
-     <widget class="QLabel" name="labelPool">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>31</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>50</width>
-        <height>16777215</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <family>Arial</family>
-        <pointsize>12</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Pool</string>
-      </property>
      </widget>
     </item>
     <item row="5" column="0" colspan="14">
@@ -1315,8 +546,431 @@ for last 6 hour:</string>
       </layout>
      </widget>
     </item>
-    <item row="1" column="2">
-     <widget class="QLabel" name="labelCore">
+    <item row="10" column="0" colspan="9">
+     <widget class="QGroupBox" name="groupBoxPools">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+       </font>
+      </property>
+      <property name="title">
+       <string>Pools</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="3" column="2">
+        <widget class="QLCDNumber" name="lcdNumberBalance">
+         <property name="smallDecimalPoint">
+          <bool>false</bool>
+         </property>
+         <property name="digitCount">
+          <number>12</number>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="5">
+        <widget class="QLCDNumber" name="lcdNumber_4">
+         <property name="digitCount">
+          <number>6</number>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="6">
+        <widget class="QPushButton" name="pushButtonDisplayPoolStats">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+           <pointsize>-1</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Refresh</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_19">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Balance:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_20">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Current Calculated Hashrate:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="2">
+        <widget class="QLabel" name="label_21">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Average Hashrate
+for last 6 hour:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="4">
+        <widget class="QRadioButton" name="radioButtonDwarfPool">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Dwarfpool</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0" colspan="5">
+        <widget class="QLineEdit" name="lineEditAccount">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>0xa07A8c9975145BB5371e8b3C31ACb62ad9d0698E</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QRadioButton" name="radioButtonNaopool">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Nanopool</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLCDNumber" name="lcdNumberCalculatedHR">
+         <property name="digitCount">
+          <number>6</number>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="4">
+        <widget class="QLabel" name="label_22">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Last Reported Hashrate:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="3">
+        <widget class="QLCDNumber" name="lcdNumberAvrgHr6H">
+         <property name="digitCount">
+          <number>6</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QRadioButton" name="radioButtonEthermine">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Ethermine</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="3" column="11">
+     <widget class="QPushButton" name="pushButton">
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>-1</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Start mining</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="6">
+     <widget class="QCheckBox" name="checkBoxShowHistoryInfo">
+      <property name="font">
+       <font>
+        <family>Arial</family>
+       </font>
+      </property>
+      <property name="text">
+       <string>show history info</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0" rowspan="2" colspan="9">
+     <widget class="QGroupBox" name="groupBoxWatchdog">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+       </font>
+      </property>
+      <property name="title">
+       <string>Watchdog options (restart miner in case of error)</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="1">
+        <widget class="QSpinBox" name="spinBoxMax0MHs">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+          </font>
+         </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QLabel" name="label_5">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Delay before restart:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_3">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Delay before monitoring for 0MH/s:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="3">
+        <widget class="QSpinBox" name="spinBoxDelayNoHash">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+          </font>
+         </property>
+         <property name="minimum">
+          <number>30</number>
+         </property>
+         <property name="maximum">
+          <number>600</number>
+         </property>
+         <property name="value">
+          <number>60</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QSpinBox" name="spinBoxDelay0MHs">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+          </font>
+         </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>600</number>
+         </property>
+         <property name="value">
+          <number>20</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QLabel" name="label_7">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Delay before no hash:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_4">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+          </font>
+         </property>
+         <property name="text">
+          <string>Max consecutive 0MH/s:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3">
+        <widget class="QSpinBox" name="spinBoxDelay">
+         <property name="font">
+          <font>
+           <family>Arial</family>
+          </font>
+         </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="3" column="12">
+     <widget class="QLCDNumber" name="lcdNumberHashRate">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+       </font>
+      </property>
+      <property name="digitCount">
+       <number>7</number>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="13">
+     <widget class="QPushButton" name="pushButtonShowHideLog">
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>-1</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Hide log</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="0" colspan="15">
+     <widget class="QTextEdit" name="textEdit">
+      <property name="font">
+       <font>
+        <family>Arial</family>
+       </font>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="2" colspan="2">
+     <widget class="QCheckBox" name="checkBoxAutoShowDeviceInfo">
+      <property name="font">
+       <font>
+        <family>Arial</family>
+       </font>
+      </property>
+      <property name="text">
+       <string>Show device info</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="0" colspan="3">
+     <widget class="QCheckBox" name="checkBoxOnlyShare">
+      <property name="font">
+       <font>
+        <family>Arial</family>
+       </font>
+      </property>
+      <property name="text">
+       <string>Only display share info</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="8" colspan="4">
+     <widget class="QLineEdit" name="lineEditWallet">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>300</width>
+        <height>31</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="labelCoin">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
         <horstretch>0</horstretch>
@@ -1344,7 +998,268 @@ for last 6 hour:</string>
        </font>
       </property>
       <property name="text">
-       <string>Core</string>
+       <string>Coin</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="7">
+     <widget class="QLabel" name="labelWallet">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>60</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Wallet</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="3" colspan="2">
+     <widget class="QComboBox" name="comboBoxCore">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>31</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <item>
+       <property name="text">
+        <string>NBMiner 37.1</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="4" column="12">
+     <widget class="QPushButton" name="pushButtonEthminerBrowser">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>-1</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>...</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="8">
+     <widget class="QDateTimeEdit" name="dateTimeEditHistoryStartTime">
+      <property name="cursor">
+       <cursorShape>IBeamCursor</cursorShape>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="12">
+     <widget class="QPushButton" name="pushButtonSearchHistory">
+      <property name="text">
+       <string>Display</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QComboBox" name="comboBoxCoin">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>31</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>90</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <item>
+       <property name="text">
+        <string>ETH</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="4" column="11">
+     <widget class="QPushButton" name="pushButtonHelp">
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>-1</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>About</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="9">
+     <widget class="QLineEdit" name="lineEditMinerPath">
+      <property name="maximumSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="0" colspan="15">
+     <widget class="QSplitter" name="splitter_2">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <widget class="QGroupBox" name="groupBoxDevicesInfo">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777127</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+        </font>
+       </property>
+       <property name="title">
+        <string>Devices Info</string>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_9">
+        <item row="0" column="0">
+         <layout class="QGridLayout" name="gridLayoutDevicesInfo"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QSplitter" name="splitter">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <widget class="QWidget" name="layoutWidget">
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QGroupBox" name="groupBox">
+           <property name="font">
+            <font>
+             <family>Arial</family>
+            </font>
+           </property>
+           <property name="title">
+            <string>Hashrate chart</string>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_5">
+            <item row="0" column="0">
+             <widget class="hashrateCharView" name="graphicsView">
+              <property name="horizontalScrollBarPolicy">
+               <enum>Qt::ScrollBarAsNeeded</enum>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_2">
+           <property name="font">
+            <font>
+             <family>Arial</family>
+            </font>
+           </property>
+           <property name="title">
+            <string>Temperature chart</string>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_6">
+            <item row="0" column="0">
+             <widget class="hashrateCharView" name="graphicsViewTemp">
+              <property name="horizontalScrollBarPolicy">
+               <enum>Qt::ScrollBarAsNeeded</enum>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QGroupBox" name="groupBoxEffectiveness">
+        <property name="font">
+         <font>
+          <family>Arial</family>
+         </font>
+        </property>
+        <property name="title">
+         <string>Effectiveness</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_7">
+         <item row="1" column="0">
+          <layout class="QGridLayout" name="gridLayoutEff">
+           <item row="0" column="0">
+            <widget class="hashrateCharView" name="graphicsViewEff"/>
+           </item>
+           <item row="1" column="0">
+            <widget class="QGroupBox" name="groupBoxHistoryInfo">
+             <property name="font">
+              <font>
+               <family>Arial</family>
+              </font>
+             </property>
+             <property name="title">
+              <string>History</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_8">
+              <item row="0" column="0">
+               <widget class="hashrateCharView" name="graphicsViewHistoryInfo">
+                <property name="horizontalScrollBarPolicy">
+                 <enum>Qt::ScrollBarAsNeeded</enum>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </widget>
+    </item>
+    <item row="2" column="11">
+     <widget class="QDateTimeEdit" name="dateTimeEditHistoryEndTime">
+      <property name="cursor">
+       <cursorShape>IBeamCursor</cursorShape>
       </property>
      </widget>
     </item>
@@ -1540,22 +1455,10 @@ for last 6 hour:</string>
       </layout>
      </widget>
     </item>
-    <item row="2" column="4" colspan="2">
-     <widget class="QCheckBox" name="checkBoxShowHistoryInfo">
-      <property name="font">
-       <font>
-        <family>Arial</family>
-       </font>
-      </property>
-      <property name="text">
-       <string>show history info</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="8">
-     <widget class="QLineEdit" name="lineEditWallet">
+    <item row="1" column="2">
+     <widget class="QLabel" name="labelCore">
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
@@ -1566,15 +1469,108 @@ for last 6 hour:</string>
         <height>31</height>
        </size>
       </property>
+      <property name="maximumSize">
+       <size>
+        <width>50</width>
+        <height>16777215</height>
+       </size>
+      </property>
       <property name="font">
        <font>
+        <family>Arial</family>
         <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
+      </property>
+      <property name="text">
+       <string>Core</string>
       </property>
      </widget>
     </item>
-    <item row="4" column="11">
-     <widget class="QPushButton" name="pushButtonHelp">
+    <item row="1" column="5">
+     <widget class="QLabel" name="labelPool">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>31</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>50</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Pool</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0" colspan="2">
+     <widget class="QCheckBox" name="checkBoxAutoStart">
+      <property name="font">
+       <font>
+        <family>Arial</family>
+       </font>
+      </property>
+      <property name="text">
+       <string>Auto start miner</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="12">
+     <widget class="QLabel" name="labelWorker">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>31</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>100</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Worker</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="14">
+     <widget class="QPushButton" name="pushButtonPool">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="font">
        <font>
         <family>Arial</family>
@@ -1582,7 +1578,10 @@ for last 6 hour:</string>
        </font>
       </property>
       <property name="text">
-       <string>About</string>
+       <string>Pool</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
       </property>
      </widget>
     </item>

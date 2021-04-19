@@ -308,7 +308,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     initializeConstants();
 //    ui->groupBoxHistoryInfo->hide();
-    ui->checkBoxShowHistoryInfo->hide();
+    ui->dateTimeEditHistoryStartTime->hide();
+    ui->dateTimeEditHistoryEndTime->hide();
+    ui->pushButtonSearchHistory->hide();
 
     plotGrapgh("111", "222");
 
@@ -490,7 +492,6 @@ void MainWindow::saveParameters()
     _settings->setValue(WALLET, ui->lineEditWallet->text());
     _settings->setValue(WORKER, ui->lineEditWorker->text());
 
-    qDebug() << "save current info: " << ui->comboBoxCoin->currentText();
 }
 
 
@@ -1095,13 +1096,18 @@ void MainWindow::onTempChartTimer()
     if(_currentTempRate > _maxChartTempRate)
     {
         _maxChartTempRate = _currentTempRate;
-        _chartTemp->axisY()->setRange(_maxChartTempRate-5, _currentTempRate+5);
+        _chartTemp->axisY()->setRange(_maxChartTempRate-5, _maxChartTempRate+5);
+    }
+
+    qDebug() << "temp comparing: " << _currentTempRate << " vs " << _maxChartTempRate;
+    if(_currentTempRate <= _maxChartTempRate-5){
+        qDebug() << "setting lower bound: " << _currentTempRate-2;
+        _chartTemp->axisY()->setRange(_currentTempRate-2, _currentTempRate+8);
     }
 }
 
 void MainWindow::refreshDeviceInfo()
 {
-    qDebug() << "refreshing  222";
     // effectiveness pie chart
     static bool flip = false;
     flip = !flip;
@@ -1305,10 +1311,7 @@ bool MainWindow::getMinerStatus()
     return _isMinerRunning;
 }
 
-void MainWindow::showConsoleMsg(QString msg)
-{
-    ui->debugBox->append(msg);
-}
+
 void MainWindow::plotGrapgh(QString dateStart, QString dateEnd){
     static bool setGraph = false;
 
@@ -1377,15 +1380,18 @@ void MainWindow::plotGrapgh(QString dateStart, QString dateEnd){
 
 //    int infoListSize = infoPtr->size();
 
-//    for(int i=0; i<infoListSize; i++){
-//        // Date1 0, Time1 1, TMP 2, gpu_clock 3, mem_clock 4, FanSpeed 5, PowerDraw 6, hashrate 7
-//        QDateTime x_coordinate = QDateTime::fromString(infoList[i][0]+" "+infoList[i][1],"yyyy-MM-dd HH:mm:ss");
-//        qDebug() << "row" << i << " " << x_coordinate.toString()
-//        _seriesHistory->append(x_coordinate.toMSecsSinceEpoch(), infoList[i][2].toInt());
-//    }
+    for(int i=0; i<6; i++){
+        // Date1 0, Time1 1, TMP 2, gpu_clock 3, mem_clock 4, FanSpeed 5, PowerDraw 6, hashrate 7
+        QDateTime x_coordinate = QDateTime::fromString("2021-04-2"+QString::number(i)+" 00:00:00","yyyy-MM-dd HH:mm:ss");
+        _seriesHistory->append(x_coordinate.toMSecsSinceEpoch(), i*i*i);
+    }
 
 //    QDateTime x_axis_start = QDateTime::fromString(infoList[0][0]+" "+infoList[0][1],"yyyy-MM-dd HH:mm:ss");
 //    QDateTime x_axis_end = QDateTime::fromString(infoList[infoListSize-1][0]+" "+infoList[infoListSize-1][1],"yyyy-MM-dd HH:mm:ss");
+
+    QDateTime x_axis_start = QDateTime::fromString("2021-04-20 00:00:00","yyyy-MM-dd HH:mm:ss");
+    QDateTime x_axis_end = QDateTime::fromString("2021-04-25 00:00:00","yyyy-MM-dd HH:mm:ss");
+    _chartHistory->axisY()->setRange(0, 125);
 
 //    qDebug() << x_axis_start.toString() << " vs " << x_axis_end.toString();
 
@@ -1397,6 +1403,16 @@ void MainWindow::plotGrapgh(QString dateStart, QString dateEnd){
 //    }
 
 
-//    _axisXHistory->setRange(x_axis_start.addDays(-1), x_axis_end.addDays(1));
+    _axisXHistory->setRange(x_axis_start, x_axis_end);
 
+}
+
+void MainWindow::on_checkBoxShowHistoryInfo_clicked(bool clicked){
+    ui->dateTimeEditHistoryStartTime->setVisible(clicked);
+    ui->dateTimeEditHistoryEndTime->setVisible(clicked);
+    ui->pushButtonSearchHistory->setVisible(clicked);
+}
+
+void MainWindow::on_pushButtonSearchHistory_clicked(){
+    qDebug() << "search time: " << ui->dateTimeEditHistoryStartTime->text() << " ->" << ui->dateTimeEditHistoryEndTime->text();
 }

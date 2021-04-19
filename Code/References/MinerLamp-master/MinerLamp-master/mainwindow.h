@@ -68,7 +68,6 @@ public:
     GPUInfo getWorst(const std::vector<GPUInfo>& gpu_infos);
 
     bool getMinerStatus();
-    void showConsoleMsg(QString msg);
 
 private:
     QList<QWidget *> * _gpuInfoList;
@@ -111,6 +110,8 @@ private slots:
     void on_spinBoxDelay0MHs_valueChanged(int arg1);
     void onReadyToStartMiner();
     void on_checkBoxAutoShowDeviceInfo_clicked(bool checked);
+    void on_checkBoxShowHistoryInfo_clicked(bool checked);
+    void on_pushButtonSearchHistory_clicked();
 
 
     void refreshDeviceInfo();
