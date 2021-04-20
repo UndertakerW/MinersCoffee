@@ -14,6 +14,7 @@
 #include "gpumonitor.h"
 #include "C:/Program Files/MySQL/MySQL Server 8.0/include/mysql.h"
 #include <Windows.h>
+#include <QtCharts/QLineSeries>
 
 #pragma comment(lib,"wsock32.lib")
 
@@ -39,8 +40,20 @@ public:
     void FreeConnect();
     QStringList getAdvice(const char* type);
     void InsertData(QList<GPUInfo> gpuInfos);
-//    void run();
+    void run() override;
     QStringList Get_History(const char* date1,const char* date2,int num);
+    void Get_HistoryNew(const char* date1,const char* date2,int num);
+    QStringList * searchResultBuffer;
+    QStringList * searchConditionBuffer;
+    void InsertDataNew();
+
+    int _insert;
+    int _retrieve;
+    int _insertBusy;
+    int _retrieveBusy;
+    QList<GPUInfo> * _gpusInfoBuffer;
+    QList<QtCharts::QLineSeries *> * _seriesPtr;
+    QtCharts::QChart* _chartHistory;
 };
 
 

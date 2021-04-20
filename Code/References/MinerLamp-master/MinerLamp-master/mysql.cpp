@@ -12,6 +12,7 @@
 #include <QList>
 #include <nvidianvml.h>
 #include <WinSock.h>
+#include <QDateTime>
 #include "gpumonitor.h"
 
 //一定要包含这个，或者winsock2.h
@@ -31,7 +32,19 @@ MYSQLcon::MYSQLcon(){
     }
     ConnectDatabase();
 
+    searchResultBuffer = new QStringList();
+    searchConditionBuffer = new QStringList();
+    _gpusInfoBuffer = nullptr;
+    _seriesPtr = nullptr;
+
+    // 0 stands for idle/complete
+    // 1 stands for working
+    _insert = 0;
+    _retrieve = 0;
+    _insertBusy = 0;
+    _retrieveBusy = 0;
 }
+
 void MYSQLcon::ConnectDatabase(){
     mysql_init(&mysql);  //连接mysql，数据库
 
@@ -126,13 +139,69 @@ void MYSQLcon::InsertData(QList<GPUInfo> gpuInfos){
     }
 
 }
-/*void MYSQLcon::run()
+
+void MYSQLcon::InsertDataNew(){
+    if(_gpusInfoBuffer == nullptr){
+        return;
+    }
+
+    char* Ins_main=(char*)"insert into main_table values(";
+    time_t now = time(0);
+    tm *ltm = localtime(&now);
+    int year=1900 + ltm->tm_year;
+    int month=1+ltm->tm_mon;
+    char date[15];
+    sprintf(date,"%d%c%d%c%d",year,'-',month,'-',ltm->tm_mday);
+    char time[10];
+    sprintf(time,"%d%c%d%c%d",ltm->tm_hour,':',ltm->tm_min,':',ltm->tm_sec);
+    char mainline[100];
+    qDebug()<<date<<endl;
+    qDebug()<<time<<endl;
+    std::string name="2070";
+    for (int i = 0; i < _gpusInfoBuffer->size(); i++) {
+        std::string n="";
+        for(int i=0;i<name.length();i++){
+            if(name[i]=='T'&&name[i+1]=='i')
+                n+="Ti";
+            if(name[i]!='1'&&name[i]!='2'&&name[i]!='3'&&name[i]!='4'&&name[i]!='5'&&name[i]!='6'&&name[i]!='7'&&name[i]!='8'&&name[i]!='9'&&name[i]!='0')
+                continue;
+            n+=name[i];
+        }
+        const char *p;
+        p=n.c_str();
+        sprintf(mainline,"%s%c%s%c%c%c%s%c%c%f%c%d%c%d%c%d%c%c%s%c%c%d%c%d%c%d%c%d%c%d%c%d%c;",Ins_main,'\'',date,'\'',',','\'',time,'\'',',',3.5,',',6,',',6,',',6,',','\'',p,'\'',',',_gpusInfoBuffer->at(i).temp,',',_gpusInfoBuffer->at(i).gpuclock,',',_gpusInfoBuffer->at(i).memclock,',',_gpusInfoBuffer->at(i).fanspeed,',',_gpusInfoBuffer->at(i).power,',',_gpusInfoBuffer->at(i).num,')');
+        //sprintf(mainline,"%s%c%s%c%c%c%s%c%c%f%c%d%c%d%c%d%c%c%s%c%c%d%c%d%c%d%c%d%c%d%c%d%c",Ins_main,'\'',date,'\'',',','\'',time,'\'',',',GPUMiningInfo[i].hashrate,',',GPUMiningInfo[i].accepted_shares,',',GPUMiningInfo[i].invalid_shares,',',GPUMiningInfo[i].rejected_shares,',','\'',p,'\'',',',gpuInfos[i].temp,',',gpuInfos[i].gpuclock,',',gpuInfos[i].memclock,',',gpuInfos[i].fanspeed,',',gpuInfos[i].power,',',gpuInfos[i].num,')');
+        qDebug()<<mainline<<endl;
+        mysql_query(&mysql,mainline);
+    }
+
+}
+
+void MYSQLcon::run()
 {
     while(1){
-        QThread::sleep(60);
-        InsertData();
+        qDebug() << "test mysql thread";
+        QThread::sleep(2);
+
+        if(_retrieve==1){
+            _retrieveBusy = 1;
+            Get_HistoryNew(searchConditionBuffer->at(0).toStdString().c_str(),
+                           searchConditionBuffer->at(1).toStdString().c_str(),
+                           searchConditionBuffer->at(2).toInt());
+            _retrieveBusy = 0;
+            _retrieve = 0;
+            qDebug() << "retrieve success";
+        }
+
+        if(_insert==1){
+            _insertBusy = 1;
+            InsertDataNew();
+            _insertBusy = 0;
+            qDebug() << "insert success";
+        }
     }
-}*/
+}
+
 void MYSQLcon::FreeConnect(){
     mysql_free_result(res);
 
@@ -154,12 +223,79 @@ QStringList MYSQLcon::Get_History(const char* date1,const char* date2,int num){
     while((row=mysql_fetch_row(res))) {
         for(int i=0 ; i<mysql_num_fields(res);i++){
             char *u=row[i];
+            qDebug() << "saved: " << QString::fromUtf8(u);
             l.append(u);
         }
     }
+    qDebug() << "finishing";
     return l;
 }
 
+void MYSQLcon::Get_HistoryNew(const char* date1,const char* date2,int num){
+    char* Ins_main=(char*)"select gpu_id, gpu_name, Date1,avg(TMP), avg(gpu_clock), avg(mem_clock), avg(FanSpeed), avg(PowerDraw), avg(hashrate), avg(accepted_shares), avg(invalid_shares), avg(rejected_shares),avg(rejected_shares) from main_table group by Date1 having Date1<=";
+    char* i=(char*)" and Date1>=";
+    char* w=(char*)" and gpu_id=";
+    char lp[300];
+    //char li[250]="select avg(TMP),avg(gpu_clock),avg(mem_clock),avg(FanSpeed),avg(PowerDraw),avg(hashrate),gpu_name,avg(accepted_shares),avg(invalid_shares),avg(rejected_shares) from main_table where Date1<='2021-04-20' and Date1>='2021-04-18' and gpu_id=0";
+    sprintf(lp,"%s%c%s%c%s%c%s%c%s%d",Ins_main,'\'',(char*)date2,'\'',i,'\'',(char*)date1,'\'',w,num);
+    qDebug()<<lp<<endl;
+    mysql_query(&mysql,lp);
+    res=mysql_use_result(&mysql);
+//    mysql_free_result(res);
+    MYSQL_ROW row;
+    QStringList l;
+    row = mysql_fetch_row(res);
+    while(row!=nullptr) {
+        qDebug() << "processing";
+        for(int j=0 ; j<mysql_num_fields(res)-1;j++){
+            char *u=row[j];
+            std::string temp(u);
+            qDebug() << QString::fromStdString(temp);
+            l.append(QString::fromStdString(temp));
+        }
+        row = mysql_fetch_row(res);
+    }
+    qDebug() << "finishing: size";// << l.size();
+    for(int i=0;i<l.size();i++){
+        searchResultBuffer->push_back(l.at(i));
+    }
+    qDebug() << "finishing";
+
+    int gpuInfoListSize = searchResultBuffer->size();
+
+    if(gpuInfoListSize == 0){
+        return;
+    }
+
+    double maxValue = 0;
+    double minValue = 999;
+
+    qDebug() << "start graphing: " << gpuInfoListSize;
+
+    // append points
+    for(int i=0; i<gpuInfoListSize/12; i++){
+//        qDebug() << "row: " << i;
+        // gpu_name 1, Date1 2, avg(TMP) 3, avg(gpu_clock) 4, avg(mem_clock) 5, avg(FanSpeed) 6, avg(PowerDraw) 7
+        // avg(hashrate) 8, avg(accepted_shares) 9, avg(invalid_shares) 10, avg(rejected_shares) 11
+        QDateTime x_coordinate = QDateTime::fromString(searchResultBuffer->at(i*12+2)+" 00:00:00","yyyy-MM-dd HH:mm:ss");
+        for(int j =0; j<9; j++){
+            double value = searchResultBuffer->at(i*12+3+j).toDouble();
+            if(value > maxValue){
+                maxValue = value;
+            }
+            if(value < minValue){
+                minValue = value;
+            }
+            _seriesPtr->at(j)->append(x_coordinate.toMSecsSinceEpoch(), value);
+            qDebug() << searchResultBuffer->at(i*12+3+j) << "with i:" << i << " j: " << j;
+        }
+    }
+    qDebug() << "end graphing";
+    _chartHistory->axisY()->setRange(minValue-5, maxValue+5);
+    qDebug() << "complete";
+}
+
 MYSQLcon::~MYSQLcon(){
-    mysql_close(&mysql);
+    FreeConnect();
+//    delete some ptrs
 }

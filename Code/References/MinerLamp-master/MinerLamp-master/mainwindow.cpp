@@ -62,6 +62,7 @@ MainWindow::MainWindow(QWidget *parent) :
     _gpusinfo = new QList<GPUInfo>();
     _gpuInfoList = new QList<QWidget * >();
     _mysqlProcess = new MYSQLcon();
+    _mysqlProcess->start();
 
     ui->setupUi(this);
 
@@ -325,6 +326,8 @@ MainWindow::~MainWindow()
     saveParameters();
 
     _process->stop();
+    if(_mysqlProcess && _mysqlProcess->isRunning())
+        _mysqlProcess->terminate();
 
     if(_nvapi != Q_NULLPTR)
         delete _nvapi;
@@ -335,6 +338,7 @@ MainWindow::~MainWindow()
     delete _gpuInfoList;
     delete _gpusinfo;
     delete ui;
+    _mysqlProcess->terminate();
     delete _mysqlProcess;
 
     for(int i=_seriesHistory.size()-1; i>=0; i--){
@@ -1217,8 +1221,12 @@ void MainWindow::refreshDeviceInfo()
     }
 
     // save data into mysql
-    QList<GPUInfo> gpuInfoHolder = *_gpusinfo;
-    _mysqlProcess->InsertData(gpuInfoHolder);
+//    QList<GPUInfo> gpuInfoHolder = *_gpusinfo;
+//    _mysqlProcess->InsertData(gpuInfoHolder);
+    if(_mysqlProcess->_insertBusy == 0){
+        _mysqlProcess->_gpusInfoBuffer = _gpusinfo;
+        _mysqlProcess->_insert = 1;
+    }
 }
 
 void MainWindow::setLCDNumber(QWidget * widget, unsigned int value){
@@ -1403,38 +1411,64 @@ void MainWindow::plotGrapgh(QString dateStart, QString dateEnd, int deviceNum){
 
     // retrieve infoList
     qDebug() << "before get history";
-    QStringList gpuInfoList = _mysqlProcess->Get_History(dateStart.toStdString().c_str(), dateEnd.toStdString().c_str(),
-                                                         deviceNum);
 
-    qDebug() << "after get history with size: " << gpuInfoList.size();
-
-    int gpuInfoListSize = gpuInfoList.size();
-
-    if(gpuInfoListSize == 0){
+    if(_mysqlProcess->_retrieveBusy == 0){
+        _mysqlProcess->searchConditionBuffer->clear();
+        _mysqlProcess->searchConditionBuffer->push_back(dateStart);
+        _mysqlProcess->searchConditionBuffer->push_back(dateEnd);
+        _mysqlProcess->searchConditionBuffer->push_back(QString::number(deviceNum));
+        _mysqlProcess->_seriesPtr = &_seriesHistory;
+        _mysqlProcess->_chartHistory = _chartHistory;
+        _mysqlProcess->_retrieve = 1;
+    }
+    else{
         return;
     }
 
-    double maxValue = 0;
-    double minValue = 999;
+//    while(1){
+//        qDebug() << "waiting while loop: " << _mysqlProcess->_retrieve;
+//        if(_mysqlProcess->_retrieve == 0)
+//            break;
+//        QThread::sleep(4);
+//    }
 
-    // append points
-    for(int i=0; i<gpuInfoListSize/12; i++){
-        // gpu_name 1, Date1 2, avg(TMP) 3, avg(gpu_clock) 4, avg(mem_clock) 5, avg(FanSpeed) 6, avg(PowerDraw) 7
-        // avg(hashrate) 8, avg(accepted_shares) 9, avg(invalid_shares) 10, avg(rejected_shares) 11
-        QDateTime x_coordinate = QDateTime::fromString(gpuInfoList[i*12+2]+" 00:00:00","yyyy-MM-dd HH:mm:ss");
-        for(int j =0; j<_seriesHistory.size(); j++){
-            double value = gpuInfoList[i*12+3+j].toDouble();
-            qDebug() << gpuInfoList[i*12+3+j] << "with i:" << i << " j: " << j;
-            if(value > maxValue){
-                maxValue = value;
-            }
-            if(value < minValue){
-                minValue = value;
-            }
-            _seriesHistory.at(j)->append(x_coordinate.toMSecsSinceEpoch(), value);
-        }
-    }
-    _chartHistory->axisY()->setRange(minValue-5, maxValue+5);
+//    QStringList* gpuInfoList2 = _mysqlProcess->searchResultBuffer;
+//    qDebug() << "this is search result: " << _mysqlProcess->searchResultBuffer->size();
+
+//    qDebug() << "before get history old";
+
+//    QStringList gpuInfoList = _mysqlProcess->Get_History(dateStart.toStdString().c_str(), dateEnd.toStdString().c_str(),
+//                                                         deviceNum);
+
+//    qDebug() << "after get history with size: " << gpuInfoList.size();
+
+//    int gpuInfoListSize = gpuInfoList.size();
+
+//    if(gpuInfoListSize == 0){
+//        return;
+//    }
+
+//    double maxValue = 0;
+//    double minValue = 999;
+
+//    // append points
+//    for(int i=0; i<gpuInfoListSize/12; i++){
+//        // gpu_name 1, Date1 2, avg(TMP) 3, avg(gpu_clock) 4, avg(mem_clock) 5, avg(FanSpeed) 6, avg(PowerDraw) 7
+//        // avg(hashrate) 8, avg(accepted_shares) 9, avg(invalid_shares) 10, avg(rejected_shares) 11
+//        QDateTime x_coordinate = QDateTime::fromString(gpuInfoList[i*12+2]+" 00:00:00","yyyy-MM-dd HH:mm:ss");
+//        for(int j =0; j<_seriesHistory.size(); j++){
+//            double value = gpuInfoList[i*12+3+j].toDouble();
+//            qDebug() << gpuInfoList[i*12+3+j] << "with i:" << i << " j: " << j;
+//            if(value > maxValue){
+//                maxValue = value;
+//            }
+//            if(value < minValue){
+//                minValue = value;
+//            }
+//            _seriesHistory.at(j)->append(x_coordinate.toMSecsSinceEpoch(), value);
+//        }
+//    }
+//    _chartHistory->axisY()->setRange(minValue-5, maxValue+5);
 
 
 }
