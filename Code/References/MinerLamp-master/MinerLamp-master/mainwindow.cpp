@@ -307,12 +307,15 @@ MainWindow::MainWindow(QWidget *parent) :
     //ui->debugBox->append("hello 1");
 
     initializeConstants();
-//    ui->groupBoxHistoryInfo->hide();
+    ui->groupBoxHistoryInfo->hide();
     ui->dateTimeEditHistoryStartTime->hide();
     ui->dateTimeEditHistoryEndTime->hide();
     ui->pushButtonSearchHistory->hide();
+    ui->spinBoxHistoryDeviceNum->hide();
+    ui->labelHistoryDeviceNum->hide();
 
-    plotGrapgh("111", "222");
+    ui->dateTimeEditHistoryStartTime->setDateTime(QDateTime::currentDateTime());
+    ui->dateTimeEditHistoryEndTime->setDateTime(QDateTime::currentDateTime().addDays(5));
 
 
 }
@@ -333,6 +336,12 @@ MainWindow::~MainWindow()
     delete _gpusinfo;
     delete ui;
     delete _mysqlProcess;
+
+    for(int i=_seriesHistory.size()-1; i>=0; i--){
+        QLineSeries * tempPtr = _seriesHistory.at(i);
+        _seriesHistory.removeAt(i);
+        delete tempPtr;
+    }
 }
 
 
@@ -1316,7 +1325,7 @@ bool MainWindow::getMinerStatus()
 }
 
 
-void MainWindow::plotGrapgh(QString dateStart, QString dateEnd){
+void MainWindow::plotGrapgh(QString dateStart, QString dateEnd, int deviceNum){
     static bool setGraph = false;
 
     if(!setGraph){
@@ -1333,25 +1342,15 @@ void MainWindow::plotGrapgh(QString dateStart, QString dateEnd){
         _chartHistory->setBackgroundVisible(false);
         _chartHistory->legend()->hide();
 
-        //set the color of the graph
-        QPen penHistory(QColor(255, 165, 0));
-        penHistory.setWidth(2);
+        for(int i=0;i<9;i++){
+            QPen penHistory(QColor((i*i*i)%255, qrand()%255, qrand()%255));
+            penHistory.setWidth(2);
+            QLineSeries* lineSeries = new QLineSeries();
+            lineSeries->setPen(penHistory);
+            _seriesHistory.push_back(lineSeries);
+            _chartHistory->addSeries(lineSeries);
+        }
 
-        QPen penGpuClock(QColor(165, 0, 255));
-        penHistory.setWidth(2);
-
-
-        // temperature
-        _seriesHistoryTemp = new QLineSeries();
-        _seriesHistoryTemp->setPen(penHistory);
-
-        // gpu_clock
-        _seriesHistoryGpuClock = new QLineSeries();
-        _seriesHistoryGpuClock->setPen(penGpuClock);
-
-        _seriesHistoryTemp->append(QDateTime::currentDateTime().toMSecsSinceEpoch(),0);
-        _chartHistory->addSeries(_seriesHistoryTemp);
-        _chartHistory->addSeries(_seriesHistoryGpuClock);
         _chartHistory->createDefaultAxes();
 
         _axisXHistory = new QDateTimeAxis;
@@ -1374,8 +1373,9 @@ void MainWindow::plotGrapgh(QString dateStart, QString dateEnd){
         _axisXHistory->setGridLineVisible(false);
         _chartHistory->axisY()->setGridLineVisible(false);
         _chartHistory->setAxisX(_axisXHistory);
-        _seriesHistoryTemp->attachAxis(_axisXHistory);
-        _seriesHistoryGpuClock->attachAxis(_axisXHistory);
+        for(int i=0;i<9;i++){
+            _seriesHistory.at(i)->attachAxis(_axisXHistory);
+        }
         _axisXHistory->setRange(QDateTime::currentDateTime(), QDateTime::currentDateTime().addDays(10));
 
         ui->graphicsViewHistoryInfo->setChart(_chartHistory);
@@ -1383,15 +1383,15 @@ void MainWindow::plotGrapgh(QString dateStart, QString dateEnd){
         setGraph = true;
     }
 
-//    QDateTime date = QDateTime::currentDateTime();
-//    qDebug() << "displaying from history: " << QLocale{QLocale::English}.toString(date, "MM/dd");
-//    qDebug() << "displaying from history second line: " << QLocale{QLocale::English}.toString(date, "MM/dd");
-//    QDateTime b = QDateTime::fromString("2021-04-18 00:00:00","yyyy-MM-dd HH:mm:ss");
-//    qDebug() << "displaying from history line 2: "  << b.date().toString();
+    for(int i=0;i<9;i++){
+        _seriesHistory.at(i)->clear();
+    }
 
     // retrieve infoList
     qDebug() << "before get history";
-    QStringList gpuInfoList = _mysqlProcess->Get_History("2021-04-19", "2021-04-26", 10);
+    QStringList gpuInfoList = _mysqlProcess->Get_History(dateStart.toStdString().c_str(), dateEnd.toStdString().c_str(),
+                                                         deviceNum);
+
     qDebug() << "after get history with size: " << gpuInfoList.size();
 
     int gpuInfoListSize = gpuInfoList.size();
@@ -1400,35 +1400,39 @@ void MainWindow::plotGrapgh(QString dateStart, QString dateEnd){
         return;
     }
 
+    double maxValue = 0;
+    double minValue = 999;
+
     // append points
     for(int i=0; i<gpuInfoListSize/12; i++){
-        // Date1 1,avg(TMP) 2, avg(gpu_clock) 3, avg(mem_clock) 4, avg(FanSpeed) 5, avg(PowerDraw) 6
-        // avg(hashrate) 7, gpu_name 8, avg(accepted_shares) 9, avg(invalid_shares) 10, avg(rejected_shares) 11
-        qDebug() << "date time " << gpuInfoList[i*12+1];
-        QDateTime x_coordinate = QDateTime::fromString(gpuInfoList[i*12+1]+" 00:00:00","yyyy-MM-dd HH:mm:ss");
-        double temperature = gpuInfoList[i*12+2].toDouble();
-        double gpuClock = gpuInfoList[i*12+3].toDouble();
-        _seriesHistoryTemp->append(x_coordinate.toMSecsSinceEpoch(), temperature);
-        _seriesHistoryGpuClock->append(x_coordinate.toMSecsSinceEpoch(), gpuClock);
+        // gpu_name 1, Date1 2, avg(TMP) 3, avg(gpu_clock) 4, avg(mem_clock) 5, avg(FanSpeed) 6, avg(PowerDraw) 7
+        // avg(hashrate) 8, avg(accepted_shares) 9, avg(invalid_shares) 10, avg(rejected_shares) 11
+        QDateTime x_coordinate = QDateTime::fromString(gpuInfoList[i*12+2]+" 00:00:00","yyyy-MM-dd HH:mm:ss");
+        for(int j =0; j<_seriesHistory.size(); j++){
+            double value = gpuInfoList[i*12+3+j].toDouble();
+            if(value > maxValue){
+                maxValue = value;
+            }
+            if(value < minValue){
+                minValue = value;
+            }
+            _seriesHistory.at(j)->append(x_coordinate.toMSecsSinceEpoch(), value);
+        }
     }
 
-//    QDateTime x_axis_start = QDateTime::fromString(infoList[0][0]+" "+infoList[0][1],"yyyy-MM-dd HH:mm:ss");
-//    QDateTime x_axis_end = QDateTime::fromString(infoList[infoListSize-1][0]+" "+infoList[infoListSize-1][1],"yyyy-MM-dd HH:mm:ss");
-
     // set x-axis
-    QDateTime x_axis_start = QDateTime::fromString(gpuInfoList[0] + " 00:00:00","yyyy-MM-dd HH:mm:ss");
-    QDateTime x_axis_end = QDateTime::fromString(gpuInfoList[gpuInfoListSize/12] + " 00:00:00","yyyy-MM-dd HH:mm:ss");
-    _chartHistory->axisY()->setRange(0, 100);
+    QDateTime x_axis_start = QDateTime::fromString(gpuInfoList[2] + " 00:00:00","yyyy-MM-dd HH:mm:ss");
+    QDateTime x_axis_end = QDateTime::fromString(gpuInfoList[gpuInfoListSize-12+2] + " 00:00:00","yyyy-MM-dd HH:mm:ss");
+    _chartHistory->axisY()->setRange(minValue-5, maxValue+5);
 
 
-//    qDebug() << x_axis_start.toString() << " vs " << x_axis_end.toString();
+    qDebug() << x_axis_start.toString() << " vs " << x_axis_end.toString();
 
-//    if(x_axis_start < x_axis_end){
-//        QDateTime temp = x_axis_start;
-//        x_axis_start = x_axis_end;
-//        x_axis_end = temp;
-//        qDebug() << "smaller than";
-//    }
+    if(x_axis_start > x_axis_end){
+        QDateTime temp = x_axis_start;
+        x_axis_start = x_axis_end;
+        x_axis_end = temp;
+    }
 
     _axisXHistory->setRange(x_axis_start, x_axis_end);
 
@@ -1438,8 +1442,17 @@ void MainWindow::on_checkBoxShowHistoryInfo_clicked(bool clicked){
     ui->dateTimeEditHistoryStartTime->setVisible(clicked);
     ui->dateTimeEditHistoryEndTime->setVisible(clicked);
     ui->pushButtonSearchHistory->setVisible(clicked);
+    ui->spinBoxHistoryDeviceNum->setVisible(clicked);
+    ui->labelHistoryDeviceNum->setVisible(clicked);
+    if(clicked == false){
+        ui->groupBoxHistoryInfo->hide();
+    }
 }
 
 void MainWindow::on_pushButtonSearchHistory_clicked(){
-    qDebug() << "search time: " << ui->dateTimeEditHistoryStartTime->text() << " ->" << ui->dateTimeEditHistoryEndTime->text();
+    qDebug() << "search time: " << ui->dateTimeEditHistoryStartTime->text() << " ->" << ui->dateTimeEditHistoryEndTime->text()
+             << " " << ui->spinBoxHistoryDeviceNum->text().toInt();
+    ui->groupBoxHistoryInfo->show();
+    plotGrapgh(ui->dateTimeEditHistoryStartTime->text(), ui->dateTimeEditHistoryEndTime->text(),
+               ui->spinBoxHistoryDeviceNum->text().toInt());
 }

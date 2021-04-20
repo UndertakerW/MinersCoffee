@@ -90,7 +90,7 @@ private:
     void initializePieChart();
     void initializeConstants();
     void setLCDNumber(QWidget * widget, unsigned int value);
-    void plotGrapgh(QString dateStart, QString dateEnd);
+    void plotGrapgh(QString dateStart, QString dateEnd, int deviceNum);
 
     nvidiaAPI* _nvapi;
     void applyOC();
@@ -249,8 +249,9 @@ private:
 
     // temperature displaying
     QChart* _chartHistory;
-    QLineSeries* _seriesHistoryTemp;
-    QLineSeries* _seriesHistoryGpuClock;
+//    QLineSeries* _seriesHistoryTemp;
+//    QLineSeries* _seriesHistoryGpuClock;
+    QList<QLineSeries *> _seriesHistory;
     QDateTimeAxis *_axisXHistory;
 
     // effectiveness pie chart

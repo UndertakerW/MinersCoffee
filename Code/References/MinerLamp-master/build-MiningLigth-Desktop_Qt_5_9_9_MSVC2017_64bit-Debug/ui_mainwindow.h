@@ -56,8 +56,8 @@ public:
     QDateTimeEdit *dateTimeEditHistoryStartTime;
     QLineEdit *lineEditArgs;
     QDateTimeEdit *dateTimeEditHistoryEndTime;
-    QLabel *label_34;
-    QSpinBox *spinBoxDeviceNum;
+    QLabel *labelHistoryDeviceNum;
+    QSpinBox *spinBoxHistoryDeviceNum;
     QPushButton *pushButtonSearchHistory;
     QGroupBox *groupBoxWatchdog;
     QGridLayout *gridLayout;
@@ -171,7 +171,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(1238, 1060);
+        MainWindow->resize(1250, 1060);
         QFont font;
         font.setFamily(QStringLiteral("Tahoma"));
         font.setPointSize(10);
@@ -539,16 +539,16 @@ public:
 
         gridLayout_10->addWidget(dateTimeEditHistoryEndTime, 2, 10, 1, 1);
 
-        label_34 = new QLabel(centralWidget);
-        label_34->setObjectName(QStringLiteral("label_34"));
-        label_34->setFont(font3);
+        labelHistoryDeviceNum = new QLabel(centralWidget);
+        labelHistoryDeviceNum->setObjectName(QStringLiteral("labelHistoryDeviceNum"));
+        labelHistoryDeviceNum->setFont(font3);
 
-        gridLayout_10->addWidget(label_34, 2, 11, 1, 1);
+        gridLayout_10->addWidget(labelHistoryDeviceNum, 2, 11, 1, 1);
 
-        spinBoxDeviceNum = new QSpinBox(centralWidget);
-        spinBoxDeviceNum->setObjectName(QStringLiteral("spinBoxDeviceNum"));
+        spinBoxHistoryDeviceNum = new QSpinBox(centralWidget);
+        spinBoxHistoryDeviceNum->setObjectName(QStringLiteral("spinBoxHistoryDeviceNum"));
 
-        gridLayout_10->addWidget(spinBoxDeviceNum, 2, 12, 1, 1);
+        gridLayout_10->addWidget(spinBoxHistoryDeviceNum, 2, 12, 1, 1);
 
         pushButtonSearchHistory = new QPushButton(centralWidget);
         pushButtonSearchHistory->setObjectName(QStringLiteral("pushButtonSearchHistory"));
@@ -1233,7 +1233,9 @@ public:
         checkBoxAutoStart->setText(QApplication::translate("MainWindow", "Auto start miner", Q_NULLPTR));
         checkBoxAutoShowDeviceInfo->setText(QApplication::translate("MainWindow", "Show device info", Q_NULLPTR));
         checkBoxShowHistoryInfo->setText(QApplication::translate("MainWindow", "show history info", Q_NULLPTR));
-        label_34->setText(QApplication::translate("MainWindow", "Device#", Q_NULLPTR));
+        dateTimeEditHistoryStartTime->setDisplayFormat(QApplication::translate("MainWindow", "yyyy-M-d", Q_NULLPTR));
+        dateTimeEditHistoryEndTime->setDisplayFormat(QApplication::translate("MainWindow", "yyyy-M-d", Q_NULLPTR));
+        labelHistoryDeviceNum->setText(QApplication::translate("MainWindow", "Device#", Q_NULLPTR));
         pushButtonSearchHistory->setText(QApplication::translate("MainWindow", "Display", Q_NULLPTR));
         groupBoxWatchdog->setTitle(QApplication::translate("MainWindow", "Watchdog options (restart miner in case of error)", Q_NULLPTR));
         label_5->setText(QApplication::translate("MainWindow", "Delay before restart:", Q_NULLPTR));

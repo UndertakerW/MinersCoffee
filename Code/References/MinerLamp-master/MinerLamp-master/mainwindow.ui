@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1238</width>
+    <width>1250</width>
     <height>1060</height>
    </rect>
   </property>
@@ -584,6 +584,9 @@ QPushButton:disabled
       <property name="cursor">
        <cursorShape>IBeamCursor</cursorShape>
       </property>
+      <property name="displayFormat">
+       <string>yyyy-M-d</string>
+      </property>
      </widget>
     </item>
     <item row="2" column="9">
@@ -603,10 +606,14 @@ QPushButton:disabled
      </widget>
     </item>
     <item row="2" column="10">
-     <widget class="QDateTimeEdit" name="dateTimeEditHistoryEndTime"/>
+     <widget class="QDateTimeEdit" name="dateTimeEditHistoryEndTime">
+      <property name="displayFormat">
+       <string>yyyy-M-d</string>
+      </property>
+     </widget>
     </item>
     <item row="2" column="11">
-     <widget class="QLabel" name="label_34">
+     <widget class="QLabel" name="labelHistoryDeviceNum">
       <property name="font">
        <font>
         <family>Arial</family>
@@ -618,7 +625,7 @@ QPushButton:disabled
      </widget>
     </item>
     <item row="2" column="12">
-     <widget class="QSpinBox" name="spinBoxDeviceNum"/>
+     <widget class="QSpinBox" name="spinBoxHistoryDeviceNum"/>
     </item>
     <item row="2" column="13">
      <widget class="QPushButton" name="pushButtonSearchHistory">

@@ -139,7 +139,7 @@ void MYSQLcon::FreeConnect(){
     mysql_close(&mysql);
 }
 QStringList MYSQLcon::Get_History(const char* date1,const char* date2,int num){
-    char* Ins_main=(char*)"select gpu_id,Date1,avg(TMP), avg(gpu_clock), avg(mem_clock), avg(FanSpeed), avg(PowerDraw), avg(hashrate), gpu_name, avg(accepted_shares), avg(invalid_shares), avg(rejected_shares) from main_table group by Date1 having Date1<=";
+    char* Ins_main=(char*)"select gpu_id, gpu_name, Date1,avg(TMP), avg(gpu_clock), avg(mem_clock), avg(FanSpeed), avg(PowerDraw), avg(hashrate), avg(accepted_shares), avg(invalid_shares), avg(rejected_shares) from main_table group by Date1 having Date1<=";
     char* i=(char*)" and Date1>=";
     char* w=(char*)" and gpu_id=";
     char lp[300];
