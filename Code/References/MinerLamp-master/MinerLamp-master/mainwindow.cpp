@@ -1387,6 +1387,20 @@ void MainWindow::plotGrapgh(QString dateStart, QString dateEnd, int deviceNum){
         _seriesHistory.at(i)->clear();
     }
 
+    // set x-axis
+    QDateTime x_axis_start = QDateTime::fromString(dateStart + " 00:00:00","yyyy-MM-dd HH:mm:ss");
+    QDateTime x_axis_end = QDateTime::fromString(dateEnd + " 00:00:00","yyyy-MM-dd HH:mm:ss");
+
+
+
+    qDebug() << x_axis_start.toString() << " vs " << x_axis_end.toString();
+
+    if(x_axis_start > x_axis_end){
+        return;
+    }
+
+    _axisXHistory->setRange(x_axis_start, x_axis_end);
+
     // retrieve infoList
     qDebug() << "before get history";
     QStringList gpuInfoList = _mysqlProcess->Get_History(dateStart.toStdString().c_str(), dateEnd.toStdString().c_str(),
@@ -1410,6 +1424,7 @@ void MainWindow::plotGrapgh(QString dateStart, QString dateEnd, int deviceNum){
         QDateTime x_coordinate = QDateTime::fromString(gpuInfoList[i*12+2]+" 00:00:00","yyyy-MM-dd HH:mm:ss");
         for(int j =0; j<_seriesHistory.size(); j++){
             double value = gpuInfoList[i*12+3+j].toDouble();
+            qDebug() << gpuInfoList[i*12+3+j] << "with i:" << i << " j: " << j;
             if(value > maxValue){
                 maxValue = value;
             }
@@ -1419,22 +1434,8 @@ void MainWindow::plotGrapgh(QString dateStart, QString dateEnd, int deviceNum){
             _seriesHistory.at(j)->append(x_coordinate.toMSecsSinceEpoch(), value);
         }
     }
-
-    // set x-axis
-    QDateTime x_axis_start = QDateTime::fromString(gpuInfoList[2] + " 00:00:00","yyyy-MM-dd HH:mm:ss");
-    QDateTime x_axis_end = QDateTime::fromString(gpuInfoList[gpuInfoListSize-12+2] + " 00:00:00","yyyy-MM-dd HH:mm:ss");
     _chartHistory->axisY()->setRange(minValue-5, maxValue+5);
 
-
-    qDebug() << x_axis_start.toString() << " vs " << x_axis_end.toString();
-
-    if(x_axis_start > x_axis_end){
-        QDateTime temp = x_axis_start;
-        x_axis_start = x_axis_end;
-        x_axis_end = temp;
-    }
-
-    _axisXHistory->setRange(x_axis_start, x_axis_end);
 
 }
 
@@ -1450,9 +1451,22 @@ void MainWindow::on_checkBoxShowHistoryInfo_clicked(bool clicked){
 }
 
 void MainWindow::on_pushButtonSearchHistory_clicked(){
+    ui->pushButtonSearchHistory->hide();
     qDebug() << "search time: " << ui->dateTimeEditHistoryStartTime->text() << " ->" << ui->dateTimeEditHistoryEndTime->text()
              << " " << ui->spinBoxHistoryDeviceNum->text().toInt();
     ui->groupBoxHistoryInfo->show();
     plotGrapgh(ui->dateTimeEditHistoryStartTime->text(), ui->dateTimeEditHistoryEndTime->text(),
                ui->spinBoxHistoryDeviceNum->text().toInt());
+}
+
+void MainWindow::on_dateTimeEditHistoryStartTime_dateTimeChanged(const QDateTime &datetime){
+    if(ui->dateTimeEditHistoryStartTime->isVisible()){
+        ui->pushButtonSearchHistory->show();
+    }
+}
+
+void MainWindow::on_dateTimeEditHistoryEndTime_dateTimeChanged(const QDateTime &datetime){
+    if(ui->dateTimeEditHistoryEndTime->isVisible()){
+        ui->pushButtonSearchHistory->show();
+    }
 }

@@ -96,6 +96,7 @@ private:
     void applyOC();
     nvOCDialog* _dlg;
     void setComboIndex(QComboBox * comboBox, QString key);
+    bool searchLock = false;
 
 
 
@@ -112,6 +113,8 @@ private slots:
     void on_checkBoxAutoShowDeviceInfo_clicked(bool checked);
     void on_checkBoxShowHistoryInfo_clicked(bool checked);
     void on_pushButtonSearchHistory_clicked();
+    void on_dateTimeEditHistoryStartTime_dateTimeChanged(const QDateTime &datetime);
+    void on_dateTimeEditHistoryEndTime_dateTimeChanged(const QDateTime &datetime);
 
 
     void refreshDeviceInfo();
