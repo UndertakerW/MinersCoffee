@@ -115,6 +115,7 @@ private slots:
     void on_pushButtonSearchHistory_clicked();
     void on_dateTimeEditHistoryStartTime_dateTimeChanged(const QDateTime &datetime);
     void on_dateTimeEditHistoryEndTime_dateTimeChanged(const QDateTime &datetime);
+    void on_spinBoxHistoryDeviceNum_valueChanged(int arg1);
 
 
     void refreshDeviceInfo();

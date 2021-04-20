@@ -1470,3 +1470,9 @@ void MainWindow::on_dateTimeEditHistoryEndTime_dateTimeChanged(const QDateTime &
         ui->pushButtonSearchHistory->show();
     }
 }
+
+void MainWindow::on_spinBoxHistoryDeviceNum_valueChanged(int arg1){
+    if(ui->spinBoxHistoryDeviceNum->isVisible()){
+        ui->pushButtonSearchHistory->show();
+    }
+}
