@@ -232,7 +232,7 @@ QStringList MYSQLcon::Get_History(const char* date1,const char* date2,int num){
 }
 
 void MYSQLcon::Get_HistoryNew(const char* date1,const char* date2,int num){
-    char* Ins_main=(char*)"select gpu_id, gpu_name, Date1,avg(TMP), avg(gpu_clock), avg(mem_clock), avg(FanSpeed), avg(PowerDraw), avg(hashrate), avg(accepted_shares), avg(invalid_shares), avg(rejected_shares),avg(rejected_shares) from main_table group by Date1 having Date1<=";
+    char* Ins_main=(char*)"select gpu_id, gpu_name, Date1,avg(TMP), avg(gpu_clock), avg(mem_clock), avg(FanSpeed), avg(PowerDraw), avg(hashrate), avg(accepted_shares), avg(invalid_shares), avg(rejected_shares) from main_table group by Date1 having Date1<=";
     char* i=(char*)" and Date1>=";
     char* w=(char*)" and gpu_id=";
     char lp[300];
@@ -240,21 +240,23 @@ void MYSQLcon::Get_HistoryNew(const char* date1,const char* date2,int num){
     sprintf(lp,"%s%c%s%c%s%c%s%c%s%d",Ins_main,'\'',(char*)date2,'\'',i,'\'',(char*)date1,'\'',w,num);
     qDebug()<<lp<<endl;
     mysql_query(&mysql,lp);
-    res=mysql_use_result(&mysql);
-//    mysql_free_result(res);
+     MYSQL_RES * newRes=mysql_use_result(&mysql);
     MYSQL_ROW row;
     QStringList l;
-    row = mysql_fetch_row(res);
-    while(row!=nullptr) {
-        qDebug() << "processing";
-        for(int j=0 ; j<mysql_num_fields(res)-1;j++){
+    row = mysql_fetch_row(newRes);
+    int cnt = 1;
+    while(row != nullptr) {
+        qDebug() << "processing: " << cnt;
+        cnt++;
+        for(int j=0 ; j<mysql_num_fields(newRes);j++){
             char *u=row[j];
             std::string temp(u);
             qDebug() << QString::fromStdString(temp);
             l.append(QString::fromStdString(temp));
         }
-        row = mysql_fetch_row(res);
+        row = mysql_fetch_row(newRes);
     }
+//    mysql_free_result(newRes);
     qDebug() << "finishing: size";// << l.size();
     for(int i=0;i<l.size();i++){
         searchResultBuffer->push_back(l.at(i));
@@ -272,12 +274,21 @@ void MYSQLcon::Get_HistoryNew(const char* date1,const char* date2,int num){
 
     qDebug() << "start graphing: " << gpuInfoListSize;
 
+    // clear points
+    for(int j =0; j<9; j++){
+        _seriesPtr->at(j)->clear();
+    }
+
+
     // append points
     for(int i=0; i<gpuInfoListSize/12; i++){
 //        qDebug() << "row: " << i;
         // gpu_name 1, Date1 2, avg(TMP) 3, avg(gpu_clock) 4, avg(mem_clock) 5, avg(FanSpeed) 6, avg(PowerDraw) 7
         // avg(hashrate) 8, avg(accepted_shares) 9, avg(invalid_shares) 10, avg(rejected_shares) 11
         QDateTime x_coordinate = QDateTime::fromString(searchResultBuffer->at(i*12+2)+" 00:00:00","yyyy-MM-dd HH:mm:ss");
+
+        qDebug() << "x_coordinate: " << searchResultBuffer->at(i*12+2)+" 00:00:00";
+
         for(int j =0; j<9; j++){
             double value = searchResultBuffer->at(i*12+3+j).toDouble();
             if(value > maxValue){
@@ -290,9 +301,25 @@ void MYSQLcon::Get_HistoryNew(const char* date1,const char* date2,int num){
             qDebug() << searchResultBuffer->at(i*12+3+j) << "with i:" << i << " j: " << j;
         }
     }
+
     qDebug() << "end graphing";
     _chartHistory->axisY()->setRange(minValue-5, maxValue+5);
     qDebug() << "complete";
+
+    QDateTime x_startTime = QDateTime::fromString(searchResultBuffer->at(2)+" 23:59:59","yyyy-MM-dd HH:mm:ss");
+    QDateTime x_endTime = QDateTime::fromString(searchResultBuffer->at(gpuInfoListSize-12+1)+" 23:59:59","yyyy-MM-dd HH:mm:ss");
+
+    if(x_startTime > x_endTime){
+        QDateTime temp = x_startTime;
+        x_startTime = x_endTime;
+        x_endTime = temp;
+    }
+
+    qDebug() << "complete end: " << x_endTime << " vs " << searchResultBuffer->at(gpuInfoListSize-12+1)+" 00:00:00";
+
+    _chartHistory->axisX()->setRange(x_startTime, x_endTime);
+
+    searchResultBuffer->clear();
 }
 
 MYSQLcon::~MYSQLcon(){
