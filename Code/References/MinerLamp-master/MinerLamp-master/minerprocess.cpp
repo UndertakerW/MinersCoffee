@@ -35,6 +35,7 @@ void anyMHsWaitter::run()
         if (!enabled)
         {
             MiningInfo miningInfo = _pParent->getStatus();
+            qDebug() << "not start yet: " << miningInfo.latency;
             if (miningInfo.latency > 0)
             {
                 enabled = true;
@@ -44,8 +45,11 @@ void anyMHsWaitter::run()
         else
         {
             QThread::sleep(refresh_rate);
-            MiningInfo miningInfo = _pParent->getStatus();
+//            MiningInfo miningInfo = _pParent->getStatus();
         }
+
+        _pParent->refreshMingInfo();
+
 
         sleep(refresh_rate);
 /*
@@ -114,6 +118,7 @@ MinerProcess::MinerProcess(QSettings* settings):
 
     _anyHR = new anyMHsWaitter(_delayBeforeNoHash, this);
     connect(_anyHR, SIGNAL(notHashing()), this, SLOT(onNoHashing()));
+    _anyHR->start();
 
 
     _donate = new donateThrd(this);
@@ -126,6 +131,9 @@ MinerProcess::MinerProcess(QSettings* settings):
 
 MinerProcess::~MinerProcess()
 {
+    if(_anyHR && _anyHR->isRunning()) _anyHR->terminate();
+    delete  _anyHR;
+
     if(_donate && _donate->isRunning()) _donate->terminate();
 
 }
@@ -462,3 +470,8 @@ void restarter::run()
     emit restartsignal();
 }
 
+void MinerProcess::refreshMingInfo(){
+    MiningInfo mingInfo = getStatus();
+    emit emitMiningInfo(mingInfo);
+    qDebug() << "sending mingInfo signal";
+}

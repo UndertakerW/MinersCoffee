@@ -60,6 +60,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     _process = new MinerProcess(_settings);
     _gpusinfo = new QList<GPUInfo>();
+    _miningInfo = new MiningInfo();
     _gpuInfoList = new QList<QWidget * >();
     _mysqlProcess = new MYSQLcon();
     _mysqlProcess->start();
@@ -75,6 +76,10 @@ MainWindow::MainWindow(QWidget *parent) :
     // update hash rate
     connect(_process, &MinerProcess::emitHashRate, this, &MainWindow::onHashrate);
     connect(_process, &MinerProcess::emitError, this, &MainWindow::onError);
+
+    qRegisterMetaType<MiningInfo>("MiningInfo");
+    // update miningInfo
+    connect(_process, &MinerProcess::emitMiningInfo, this, &MainWindow::onRecievedMiningInfo);
 
 
 
@@ -1225,6 +1230,7 @@ void MainWindow::refreshDeviceInfo()
 //    _mysqlProcess->InsertData(gpuInfoHolder);
     if(_mysqlProcess->_insertBusy == 0){
         _mysqlProcess->_gpusInfoBuffer = _gpusinfo;
+        _mysqlProcess->_miningInfoBuffer = _miningInfo;
         _mysqlProcess->_insert = 1;
     }
 }
@@ -1381,7 +1387,9 @@ void MainWindow::plotGrapgh(QString dateStart, QString dateEnd, int deviceNum){
         _axisXHistory->setGridLineVisible(false);
         _chartHistory->axisY()->setGridLineVisible(false);
         _chartHistory->setAxisX(_axisXHistory);
-        for(int i=0;i<9;i++){
+
+        // push 5 lines in the graph
+        for(int i=0;i<5;i++){
             _seriesHistory.at(i)->attachAxis(_axisXHistory);
         }
         _axisXHistory->setRange(QDateTime::currentDateTime(), QDateTime::currentDateTime().addDays(10));
@@ -1391,7 +1399,8 @@ void MainWindow::plotGrapgh(QString dateStart, QString dateEnd, int deviceNum){
         setGraph = true;
     }
 
-    for(int i=0;i<9;i++){
+    // there are 5 lines in the series
+    for(int i=0;i<5;i++){
         _seriesHistory.at(i)->clear();
     }
 
@@ -1407,9 +1416,6 @@ void MainWindow::plotGrapgh(QString dateStart, QString dateEnd, int deviceNum){
         return;
     }
 
-//    _axisXHistory->setRange(x_axis_start, x_axis_end);
-
-    // retrieve infoList
     qDebug() << "before get history";
 
     if(_mysqlProcess->_retrieveBusy == 0){
@@ -1424,52 +1430,6 @@ void MainWindow::plotGrapgh(QString dateStart, QString dateEnd, int deviceNum){
     else{
         return;
     }
-
-//    while(1){
-//        qDebug() << "waiting while loop: " << _mysqlProcess->_retrieve;
-//        if(_mysqlProcess->_retrieve == 0)
-//            break;
-//        QThread::sleep(4);
-//    }
-
-//    QStringList* gpuInfoList2 = _mysqlProcess->searchResultBuffer;
-//    qDebug() << "this is search result: " << _mysqlProcess->searchResultBuffer->size();
-
-//    qDebug() << "before get history old";
-
-//    QStringList gpuInfoList = _mysqlProcess->Get_History(dateStart.toStdString().c_str(), dateEnd.toStdString().c_str(),
-//                                                         deviceNum);
-
-//    qDebug() << "after get history with size: " << gpuInfoList.size();
-
-//    int gpuInfoListSize = gpuInfoList.size();
-
-//    if(gpuInfoListSize == 0){
-//        return;
-//    }
-
-//    double maxValue = 0;
-//    double minValue = 999;
-
-//    // append points
-//    for(int i=0; i<gpuInfoListSize/12; i++){
-//        // gpu_name 1, Date1 2, avg(TMP) 3, avg(gpu_clock) 4, avg(mem_clock) 5, avg(FanSpeed) 6, avg(PowerDraw) 7
-//        // avg(hashrate) 8, avg(accepted_shares) 9, avg(invalid_shares) 10, avg(rejected_shares) 11
-//        QDateTime x_coordinate = QDateTime::fromString(gpuInfoList[i*12+2]+" 00:00:00","yyyy-MM-dd HH:mm:ss");
-//        for(int j =0; j<_seriesHistory.size(); j++){
-//            double value = gpuInfoList[i*12+3+j].toDouble();
-//            qDebug() << gpuInfoList[i*12+3+j] << "with i:" << i << " j: " << j;
-//            if(value > maxValue){
-//                maxValue = value;
-//            }
-//            if(value < minValue){
-//                minValue = value;
-//            }
-//            _seriesHistory.at(j)->append(x_coordinate.toMSecsSinceEpoch(), value);
-//        }
-//    }
-//    _chartHistory->axisY()->setRange(minValue-5, maxValue+5);
-
 
 }
 
@@ -1509,4 +1469,14 @@ void MainWindow::on_spinBoxHistoryDeviceNum_valueChanged(int arg1){
     if(ui->spinBoxHistoryDeviceNum->isVisible()){
         ui->pushButtonSearchHistory->show();
     }
+}
+
+void MainWindow::onRecievedMiningInfo(MiningInfo miningInfo){
+    qDebug() << "recieving mingInfo signal";
+    _miningInfo->latency = miningInfo.latency;
+    _miningInfo->gpuMiningInfos = miningInfo.gpuMiningInfos;
+    _miningInfo->invalid_shares = miningInfo.invalid_shares;
+    _miningInfo->accepted_shares = miningInfo.accepted_shares;
+    _miningInfo->rejected_shares = miningInfo.rejected_shares;
+    qDebug() << "saving changes";
 }

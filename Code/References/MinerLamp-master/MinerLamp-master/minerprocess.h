@@ -167,6 +167,7 @@ public slots:
     void onDonate();
     void onBackToNormal();
     void onReadyToRestart();
+    void refreshMingInfo();
 
 signals:
 
@@ -174,6 +175,7 @@ signals:
     void emitStoped();
     void emitHashRate(QString& hashrate);
     void emitError();
+    void emitMiningInfo(MiningInfo mingInfo);
 
 };
 

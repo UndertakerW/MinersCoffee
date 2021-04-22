@@ -295,17 +295,17 @@ QPushButton:disabled
     <item row="2" column="7">
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QDateTimeEdit" name="dateTimeEditHistoryEndTime">
+       <widget class="QDateTimeEdit" name="dateTimeEditHistoryStartTime">
+        <property name="cursor">
+         <cursorShape>IBeamCursor</cursorShape>
+        </property>
         <property name="displayFormat">
          <string>yyyy/MM/dd</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QDateTimeEdit" name="dateTimeEditHistoryStartTime">
-        <property name="cursor">
-         <cursorShape>IBeamCursor</cursorShape>
-        </property>
+       <widget class="QDateTimeEdit" name="dateTimeEditHistoryEndTime">
         <property name="displayFormat">
          <string>yyyy/MM/dd</string>
         </property>

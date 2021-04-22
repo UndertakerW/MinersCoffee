@@ -43,8 +43,8 @@ public:
     QComboBox *comboBoxPool;
     QCheckBox *checkBoxOnlyShare;
     QHBoxLayout *horizontalLayout;
-    QDateTimeEdit *dateTimeEditHistoryEndTime;
     QDateTimeEdit *dateTimeEditHistoryStartTime;
+    QDateTimeEdit *dateTimeEditHistoryEndTime;
     QLineEdit *lineEditArgs;
     QCheckBox *checkBoxAutoShowDeviceInfo;
     QLineEdit *lineEditWorker;
@@ -414,16 +414,16 @@ public:
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        dateTimeEditHistoryEndTime = new QDateTimeEdit(centralWidget);
-        dateTimeEditHistoryEndTime->setObjectName(QStringLiteral("dateTimeEditHistoryEndTime"));
-
-        horizontalLayout->addWidget(dateTimeEditHistoryEndTime);
-
         dateTimeEditHistoryStartTime = new QDateTimeEdit(centralWidget);
         dateTimeEditHistoryStartTime->setObjectName(QStringLiteral("dateTimeEditHistoryStartTime"));
         dateTimeEditHistoryStartTime->setCursor(QCursor(Qt::IBeamCursor));
 
         horizontalLayout->addWidget(dateTimeEditHistoryStartTime);
+
+        dateTimeEditHistoryEndTime = new QDateTimeEdit(centralWidget);
+        dateTimeEditHistoryEndTime->setObjectName(QStringLiteral("dateTimeEditHistoryEndTime"));
+
+        horizontalLayout->addWidget(dateTimeEditHistoryEndTime);
 
 
         gridLayout_11->addLayout(horizontalLayout, 2, 7, 1, 1);
@@ -1277,8 +1277,8 @@ public:
          << QApplication::translate("MainWindow", "nicehash", Q_NULLPTR)
         );
         checkBoxOnlyShare->setText(QApplication::translate("MainWindow", "Only display share info", Q_NULLPTR));
-        dateTimeEditHistoryEndTime->setDisplayFormat(QApplication::translate("MainWindow", "yyyy/MM/dd", Q_NULLPTR));
         dateTimeEditHistoryStartTime->setDisplayFormat(QApplication::translate("MainWindow", "yyyy/MM/dd", Q_NULLPTR));
+        dateTimeEditHistoryEndTime->setDisplayFormat(QApplication::translate("MainWindow", "yyyy/MM/dd", Q_NULLPTR));
         checkBoxAutoShowDeviceInfo->setText(QApplication::translate("MainWindow", "Show device info", Q_NULLPTR));
         pushButtonPool->setText(QApplication::translate("MainWindow", "Pool", Q_NULLPTR));
         pushButtonShowHideLog->setText(QApplication::translate("MainWindow", "Hide log", Q_NULLPTR));

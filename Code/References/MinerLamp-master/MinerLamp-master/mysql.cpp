@@ -18,6 +18,7 @@ MYSQLcon::MYSQLcon(){
     searchResultBuffer = new QStringList();
     searchConditionBuffer = new QStringList();
     _gpusInfoBuffer = nullptr;
+    _miningInfoBuffer = nullptr;
     _seriesPtr = nullptr;
 
     // 0 stands for idle/complete
@@ -75,6 +76,7 @@ QStringList MYSQLcon::getAdvice(const char* type){
 
 
 void MYSQLcon::InsertDataNew(){
+    // insert gpuInfo
     if(_gpusInfoBuffer == nullptr){
         return;
     }
@@ -85,15 +87,22 @@ void MYSQLcon::InsertDataNew(){
     int year=1900 + ltm->tm_year;
     int month=1+ltm->tm_mon;
     char date[15];
+
+
     sprintf(date,"%d%c%d%c%d",year,'/',month,'/',ltm->tm_mday);
     char time[10];
     sprintf(time,"%d%c%d%c%d",ltm->tm_hour,':',ltm->tm_min,':',ltm->tm_sec);
     char mainline[100];
-    qDebug()<<date<<endl;
+
+
     QString currentDate = QDate().currentDate().toString("yyyy/MM/dd");
+    QString currentTime = QTime().currentTime().toString("hh:mm:ss");
+
+
+    qDebug()<<"current time: " << currentTime;
     qDebug()<<time<<endl;
-    std::string name="2070";
     for (int i = 0; i < _gpusInfoBuffer->size(); i++) {
+        std::string name=_gpusInfoBuffer->at(i).name.toStdString();
         std::string n="";
         for(int i=0;i<name.length();i++){
             if(name[i]=='T'&&name[i+1]=='i')
@@ -107,10 +116,73 @@ void MYSQLcon::InsertDataNew(){
 
         sprintf(mainline,"%s%c%s%c%c%c%s%c%c%f%c%d%c%d%c%d%c%c%s%c%c%d%c%d%c%d%c%d%c%d%c%d%c;",Ins_main,'\'',currentDate.toStdString().c_str(),'\'',',','\'',time,'\'',',',3.5,',',6,',',6,',',6,',','\'',p,'\'',',',_gpusInfoBuffer->at(i).temp,',',_gpusInfoBuffer->at(i).gpuclock,',',_gpusInfoBuffer->at(i).memclock,',',_gpusInfoBuffer->at(i).fanspeed,',',_gpusInfoBuffer->at(i).power,',',_gpusInfoBuffer->at(i).num,')');
         qDebug() << "new mainline: " << mainline;
-        QString insertQuery(mainline);
+
+
+        QString insertQuery_maintable("insert into main_table values( '" + currentDate +"', "
+                                      +"'"+currentTime+"', "
+                                      +"'"+QString(p)+"', "
+                                      +QString::number(_gpusInfoBuffer->at(i).temp)+", "
+                                      +QString::number(_gpusInfoBuffer->at(i).gpuclock)+", "
+                                      +QString::number(_gpusInfoBuffer->at(i).memclock)+", "
+                                      +QString::number(_gpusInfoBuffer->at(i).fanspeed)+", "
+                                      +QString::number(_gpusInfoBuffer->at(i).power)+", "
+                                      +QString::number(_gpusInfoBuffer->at(i).num)
+                                      +")"
+                    );
+
+
+        qDebug() << "insert to maintable: " << insertQuery_maintable;
+
+        QString insertQuery(insertQuery_maintable);
         QSqlQuery sql_query(_db);
         sql_query.exec(insertQuery);
     }
+
+    // insert miningInfo
+    if(_miningInfoBuffer == nullptr){
+        return;
+    }
+
+    qDebug() << "processing insert mining info";
+    qDebug() << "mingInfo latency: " << _miningInfoBuffer->latency;
+
+    // not valid miningInfo then return
+    if(_miningInfoBuffer->latency <= 0){
+        return;
+    }
+
+    // insert data into miningInfoOverall
+    QString insertQuery("insert into miningInfoOverall values( '" +currentDate + "', "
+                        +"'"+currentTime + "', "
+                        +QString::number(_miningInfoBuffer->accepted_shares)+", "
+                        +QString::number(_miningInfoBuffer->invalid_shares)+", "
+                        +QString::number(_miningInfoBuffer->rejected_shares)+", "
+                        +QString::number(_miningInfoBuffer->latency)
+                        +");"
+    );
+
+    QSqlQuery sql_query(_db);
+    sql_query.exec(insertQuery);
+
+    // insert data into miningInfoDevices
+    for(int i=0;i<_miningInfoBuffer->gpuMiningInfos.size();i++){
+        qDebug() << "device id: " << _miningInfoBuffer->gpuMiningInfos.at(i).num;
+        QList<GPUMiningInfo>* deviceInfo = &_miningInfoBuffer->gpuMiningInfos;
+        QString insertQuery_device("insert into miningInfoDevices values( '" +currentDate + "', "
+                            +"'"+currentTime + "', "
+                            +QString::number(deviceInfo->at(i).num)+", "
+                            +QString::number(deviceInfo->at(i).hashrate)+", "
+                            +QString::number(deviceInfo->at(i).rejected_shares)+", "
+                            +QString::number(deviceInfo->at(i).rejected_shares)
+                            +");"
+        );
+
+        sql_query.exec(insertQuery_device);
+
+    }
+
+    qDebug() << "insert miningInfo query: " << insertQuery << " size: " << _miningInfoBuffer->gpuMiningInfos.size();
+
 
 }
 
@@ -141,40 +213,28 @@ void MYSQLcon::run()
 
 
 void MYSQLcon::Get_HistoryNew(const char* date1,const char* date2,int num){
-    char* Ins_main=(char*)"select gpu_id, gpu_name, Date1,avg(TMP), avg(gpu_clock), avg(mem_clock), avg(FanSpeed), avg(PowerDraw), avg(hashrate), avg(accepted_shares), avg(invalid_shares), avg(rejected_shares) from main_table group by Date1 having Date1<=";
-    char* i=(char*)" and Date1>=";
-    char* w=(char*)" and gpu_id=";
-    char lp[300];
-    sprintf(lp,"%s%c%s%c%s%c%s%c%s%d",Ins_main,'\'',(char*)date2,'\'',i,'\'',(char*)date1,'\'',w,num);
-    qDebug()<<lp<<endl;
-    QStringList retrievedInfo;
+    QString retrieveQueryline("select gpu_id, gpu_name, Date1,avg(TMP), avg(gpu_clock), avg(mem_clock), "
+                               "avg(FanSpeed), avg(PowerDraw) "
+                               "from main_table group by Date1 having Date1<= '"
+                               +QString(date2)+"' and Date1>='"
+                               +QString(date1)+"' and gpu_id="
+                               +QString::number(num)
+                );
 
-
-    QString retrieveQuery(lp);
+    QString retrieveQuery(retrieveQueryline);
     QSqlQuery sql_query(_db);
     sql_query.exec(retrieveQuery);
     QStringList retrieveHistory;
-    qDebug() << "the query is: " << lp;
+    qDebug() << "the query is: " << retrieveQueryline;
 
-    int newCnt = 0;
-    // column size = 12
-    int column_size = 12;
+    // column size = 8
+    int column_size = 8;
     while(sql_query.next()){
-        newCnt++;
         for(int j=0;j<column_size;j++){
-            retrievedInfo.append(sql_query.value(j).toString());
+            searchResultBuffer->push_back(sql_query.value(j).toString());
         }
         qDebug() << "row: "<< sql_query.value(0).toString() << " " << sql_query.value(1).toString() << " " << sql_query.value(2).toString();
     }
-
-
-
-//    mysql_free_result(newRes);
-    qDebug() << "finishing: size";// << l.size();
-    for(int k=0;k<retrievedInfo.size();k++){
-        searchResultBuffer->push_back(retrievedInfo.at(k));
-    }
-    qDebug() << "finishing";
 
     int gpuInfoListSize = searchResultBuffer->size();
 
@@ -185,26 +245,22 @@ void MYSQLcon::Get_HistoryNew(const char* date1,const char* date2,int num){
     double maxValue = 0;
     double minValue = 999;
 
-    qDebug() << "start graphing: " << gpuInfoListSize;
-
+    // graphing
     // clear points
-    for(int j =0; j<9; j++){
+    // there are 5 line in the graph
+    for(int j =0; j<5; j++){
         _seriesPtr->at(j)->clear();
     }
 
 
     // append points
-    for(int k=0; k<gpuInfoListSize/12; k++){
-//        qDebug() << "row: " << i;
+    for(int k=0; k<gpuInfoListSize/8; k++){
         // gpu_name 1, Date1 2, avg(TMP) 3, avg(gpu_clock) 4, avg(mem_clock) 5, avg(FanSpeed) 6, avg(PowerDraw) 7
-        // avg(hashrate) 8, avg(accepted_shares) 9, avg(invalid_shares) 10, avg(rejected_shares) 11
-        QDateTime x_coordinate = QDateTime::fromString(searchResultBuffer->at(k*12+2)+" 00:00:00","yyyy/MM/dd HH:mm:ss");
+        QDateTime x_coordinate = QDateTime::fromString(searchResultBuffer->at(k*8+2)+" 00:00:00","yyyy/MM/dd HH:mm:ss");
 
-//        qDebug() << "x_coordinate: " << searchResultBuffer->at(k*12+2)+" 00:00:00";
-        qDebug() << "x_coordinate: " << x_coordinate.toString();
-
-        for(int j =0; j<9; j++){
-            double value = searchResultBuffer->at(k*12+3+j).toDouble();
+        // plot 5 line from TMP to PowerDraw
+        for(int j =0; j<5; j++){
+            double value = searchResultBuffer->at(k*8+3+j).toDouble();
             if(value > maxValue){
                 maxValue = value;
             }
@@ -212,7 +268,7 @@ void MYSQLcon::Get_HistoryNew(const char* date1,const char* date2,int num){
                 minValue = value;
             }
             _seriesPtr->at(j)->append(x_coordinate.toMSecsSinceEpoch(), value);
-            qDebug() << searchResultBuffer->at(k*12+3+j) << "with i:" << k << " j: " << j;
+            qDebug() << searchResultBuffer->at(k*8+3+j) << "with i:" << k << " j: " << j;
         }
     }
 
@@ -221,7 +277,7 @@ void MYSQLcon::Get_HistoryNew(const char* date1,const char* date2,int num){
     qDebug() << "complete";
 
     QDateTime x_startTime = QDateTime::fromString(searchResultBuffer->at(2)+" 00:00:00","yyyy/MM/dd HH:mm:ss");
-    QDateTime x_endTime = QDateTime::fromString(searchResultBuffer->at(gpuInfoListSize-12+2)+" 00:00:00","yyyy/MM/dd HH:mm:ss");
+    QDateTime x_endTime = QDateTime::fromString(searchResultBuffer->at(gpuInfoListSize-8+2)+" 00:00:00","yyyy/MM/dd HH:mm:ss");
 
     if(x_startTime > x_endTime){
         QDateTime temp = x_startTime;
@@ -229,7 +285,7 @@ void MYSQLcon::Get_HistoryNew(const char* date1,const char* date2,int num){
         x_endTime = temp;
     }
 
-    qDebug() << "start time: " << searchResultBuffer->at(2) << " -> " <<searchResultBuffer->at(gpuInfoListSize-12+2);
+    qDebug() << "start time: " << searchResultBuffer->at(2) << " -> " <<searchResultBuffer->at(gpuInfoListSize-8+2);
 
     _chartHistory->axisX()->setRange(x_startTime.addDays(-1), x_endTime.addDays(1));
 

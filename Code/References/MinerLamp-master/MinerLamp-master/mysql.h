@@ -35,6 +35,7 @@ public:
     int _insertBusy;
     int _retrieveBusy;
     QList<GPUInfo> * _gpusInfoBuffer;
+    MiningInfo* _miningInfoBuffer;
     QList<QtCharts::QLineSeries *> * _seriesPtr;
     QtCharts::QChart* _chartHistory;
 };

@@ -215,6 +215,7 @@ private:
     void onMinerStoped();
     void onHashrate(QString& hashrate);
     void onError();
+    void onRecievedMiningInfo(MiningInfo mingInfo);
 
     const QColor getTempColor(unsigned int temp);
 
@@ -223,6 +224,7 @@ private:
     QSettings*  _settings;
     QIcon*       _icon;
     QList<GPUInfo>* _gpusinfo;
+    MiningInfo* _miningInfo;
     MYSQLcon * _mysqlProcess;
 
     bool _isMinerRunning;
