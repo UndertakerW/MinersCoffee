@@ -58,7 +58,6 @@ public:
     QHBoxLayout *horizontalLayout_4;
     QLabel *labelCoin;
     QComboBox *comboBoxCoin;
-    QCheckBox *checkBoxShowHistoryInfo;
     QLabel *labelCore;
     QTextEdit *textEdit;
     QLCDNumber *lcdNumberHashRate;
@@ -170,6 +169,9 @@ public:
     QLCDNumber *lcdNumberMinGPUClock;
     QLCDNumber *lcdNumberMaxMemClock;
     QLabel *label_10;
+    QCheckBox *checkBoxShowHistoryInfo;
+    QComboBox *comboBoxHistoryDataOption;
+    QCheckBox *checkBoxHistoryMiningInfoOverall;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -541,12 +543,6 @@ public:
 
 
         gridLayout_11->addLayout(horizontalLayout_4, 1, 0, 1, 2);
-
-        checkBoxShowHistoryInfo = new QCheckBox(centralWidget);
-        checkBoxShowHistoryInfo->setObjectName(QStringLiteral("checkBoxShowHistoryInfo"));
-        checkBoxShowHistoryInfo->setFont(font2);
-
-        gridLayout_11->addWidget(checkBoxShowHistoryInfo, 2, 5, 1, 1);
 
         labelCore = new QLabel(centralWidget);
         labelCore->setObjectName(QStringLiteral("labelCore"));
@@ -1221,6 +1217,22 @@ public:
 
         gridLayout_11->addWidget(groupBoxNvidia, 6, 0, 1, 12);
 
+        checkBoxShowHistoryInfo = new QCheckBox(centralWidget);
+        checkBoxShowHistoryInfo->setObjectName(QStringLiteral("checkBoxShowHistoryInfo"));
+        checkBoxShowHistoryInfo->setFont(font2);
+
+        gridLayout_11->addWidget(checkBoxShowHistoryInfo, 2, 3, 1, 1);
+
+        comboBoxHistoryDataOption = new QComboBox(centralWidget);
+        comboBoxHistoryDataOption->setObjectName(QStringLiteral("comboBoxHistoryDataOption"));
+
+        gridLayout_11->addWidget(comboBoxHistoryDataOption, 2, 5, 1, 1);
+
+        checkBoxHistoryMiningInfoOverall = new QCheckBox(centralWidget);
+        checkBoxHistoryMiningInfoOverall->setObjectName(QStringLiteral("checkBoxHistoryMiningInfoOverall"));
+
+        gridLayout_11->addWidget(checkBoxHistoryMiningInfoOverall, 2, 6, 1, 1);
+
         MainWindow->setCentralWidget(centralWidget);
         lineEditWallet->raise();
         splitter_2->raise();
@@ -1254,9 +1266,11 @@ public:
         pushButtonSearchHistory->raise();
         pushButtonEthminerBrowser->raise();
         lcdNumberHashRate->raise();
-        checkBoxShowHistoryInfo->raise();
         checkBoxAutoStart->raise();
         checkBoxAutoShowDeviceInfo->raise();
+        checkBoxShowHistoryInfo->raise();
+        comboBoxHistoryDataOption->raise();
+        checkBoxHistoryMiningInfoOverall->raise();
 
         retranslateUi(MainWindow);
 
@@ -1294,7 +1308,6 @@ public:
         comboBoxCoin->insertItems(0, QStringList()
          << QApplication::translate("MainWindow", "ETH", Q_NULLPTR)
         );
-        checkBoxShowHistoryInfo->setText(QApplication::translate("MainWindow", "show history info", Q_NULLPTR));
         labelCore->setText(QApplication::translate("MainWindow", "Core", Q_NULLPTR));
         pushButton->setText(QApplication::translate("MainWindow", "Start mining", Q_NULLPTR));
         groupBoxDevicesInfo->setTitle(QApplication::translate("MainWindow", "Devices Info", Q_NULLPTR));
@@ -1349,6 +1362,13 @@ public:
         pushButtonOC->setText(QApplication::translate("MainWindow", "OverClocking", Q_NULLPTR));
         label_18->setText(QApplication::translate("MainWindow", "Total power draw:", Q_NULLPTR));
         label_10->setText(QApplication::translate("MainWindow", "Max mem clock:", Q_NULLPTR));
+        checkBoxShowHistoryInfo->setText(QApplication::translate("MainWindow", "show history info", Q_NULLPTR));
+        comboBoxHistoryDataOption->clear();
+        comboBoxHistoryDataOption->insertItems(0, QStringList()
+         << QApplication::translate("MainWindow", "GPUs information", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "mining information", Q_NULLPTR)
+        );
+        checkBoxHistoryMiningInfoOverall->setText(QApplication::translate("MainWindow", "overall", Q_NULLPTR));
     } // retranslateUi
 
 };

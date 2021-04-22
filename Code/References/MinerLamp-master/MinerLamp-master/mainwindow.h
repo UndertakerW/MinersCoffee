@@ -96,7 +96,7 @@ private:
     void applyOC();
     nvOCDialog* _dlg;
     void setComboIndex(QComboBox * comboBox, QString key);
-    bool searchLock = false;
+    bool _searchHistoryMiningOverall;
 
 
 
@@ -116,7 +116,8 @@ private slots:
     void on_dateTimeEditHistoryStartTime_dateTimeChanged(const QDateTime &datetime);
     void on_dateTimeEditHistoryEndTime_dateTimeChanged(const QDateTime &datetime);
     void on_spinBoxHistoryDeviceNum_valueChanged(int arg1);
-
+    void on_comboBoxHistoryDataOption_currentIndexChanged(int index);
+    void on_checkBoxHistoryMiningInfoOverall_clicked(bool clicked);
 
     void refreshDeviceInfo();
     void onGpusInfoRecieved(QList<GPUInfo> gpusinfo);

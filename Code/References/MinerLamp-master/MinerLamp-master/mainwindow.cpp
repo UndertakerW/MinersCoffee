@@ -310,8 +310,6 @@ MainWindow::MainWindow(QWidget *parent) :
                                                                   , ui->lineEditArgs->text().indexOf(" 0x") > 0 ? 42 : 40));
 
 
-    //ui->debugBox->append("hello 1");
-
     initializeConstants();
     ui->groupBoxHistoryInfo->hide();
     ui->dateTimeEditHistoryStartTime->hide();
@@ -319,11 +317,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->pushButtonSearchHistory->hide();
     ui->spinBoxHistoryDeviceNum->hide();
     ui->labelHistoryDeviceNum->hide();
+    ui->checkBoxHistoryMiningInfoOverall->hide();
+    ui->comboBoxHistoryDataOption->hide();
 
     ui->dateTimeEditHistoryStartTime->setDateTime(QDateTime::currentDateTime());
     ui->dateTimeEditHistoryEndTime->setDateTime(QDateTime::currentDateTime().addDays(5));
-
-
+    _searchHistoryMiningOverall = false;
 }
 
 MainWindow::~MainWindow()
@@ -1338,7 +1337,12 @@ bool MainWindow::getMinerStatus()
     return _isMinerRunning;
 }
 
-
+/*
+* plotGraph: parameter deviceNum
+*  = natural_number < 999 stands for display information of device# natural_number
+*  = 999 stands for display overall mingInfo
+*  = negative_number stands for display miningInfo of device# -(negative_number+1)
+*/
 void MainWindow::plotGrapgh(QString dateStart, QString dateEnd, int deviceNum){
     static bool setGraph = false;
 
@@ -1408,10 +1412,6 @@ void MainWindow::plotGrapgh(QString dateStart, QString dateEnd, int deviceNum){
     QDateTime x_axis_start = QDateTime::fromString(dateStart + " 00:00:00","yyyy/MM/dd HH:mm:ss");
     QDateTime x_axis_end = QDateTime::fromString(dateEnd + " 00:00:00","yyyy/MM/dd HH:mm:ss");
 
-
-
-    qDebug() << x_axis_start.toString() << " vs " << x_axis_end.toString();
-
     if(x_axis_start > x_axis_end){
         return;
     }
@@ -1439,6 +1439,15 @@ void MainWindow::on_checkBoxShowHistoryInfo_clicked(bool clicked){
     ui->pushButtonSearchHistory->setVisible(clicked);
     ui->spinBoxHistoryDeviceNum->setVisible(clicked);
     ui->labelHistoryDeviceNum->setVisible(clicked);
+    ui->comboBoxHistoryDataOption->setVisible(clicked);
+    ui->checkBoxHistoryMiningInfoOverall->setVisible(clicked);
+    _searchHistoryMiningOverall = false;
+
+    // index 0 stands for GPUs information
+    if(ui->comboBoxHistoryDataOption->currentIndex()==0){
+        ui->checkBoxHistoryMiningInfoOverall->hide();
+    }
+
     if(clicked == false){
         ui->groupBoxHistoryInfo->hide();
     }
@@ -1449,8 +1458,26 @@ void MainWindow::on_pushButtonSearchHistory_clicked(){
     qDebug() << "search time: " << ui->dateTimeEditHistoryStartTime->text() << " ->" << ui->dateTimeEditHistoryEndTime->text()
              << " " << ui->spinBoxHistoryDeviceNum->text().toInt();
     ui->groupBoxHistoryInfo->show();
-    plotGrapgh(ui->dateTimeEditHistoryStartTime->text(), ui->dateTimeEditHistoryEndTime->text(),
-               ui->spinBoxHistoryDeviceNum->text().toInt());
+
+    // index 0 stands for GPUs information
+    if(ui->comboBoxHistoryDataOption->currentIndex()==0){
+        plotGrapgh(ui->dateTimeEditHistoryStartTime->text(), ui->dateTimeEditHistoryEndTime->text(),
+                   ui->spinBoxHistoryDeviceNum->text().toInt());
+    }
+    // index 1 stands for the mining info
+    else if(ui->comboBoxHistoryDataOption->currentIndex()==1){
+        // plotGraph: parameter deviceNum = 999 stands for display overall mingInfo
+        if(_searchHistoryMiningOverall){
+            plotGrapgh(ui->dateTimeEditHistoryStartTime->text(), ui->dateTimeEditHistoryEndTime->text(), 999);
+        }
+        // plotGraph: parameter deviceNum = negative_number stands for display miningInfo of device# -(negative_number+1)
+        else{
+            plotGrapgh(ui->dateTimeEditHistoryStartTime->text(), ui->dateTimeEditHistoryEndTime->text(),
+                       -(ui->spinBoxHistoryDeviceNum->text().toInt()+1));
+        }
+    }
+
+
 }
 
 void MainWindow::on_dateTimeEditHistoryStartTime_dateTimeChanged(const QDateTime &datetime){
@@ -1479,4 +1506,29 @@ void MainWindow::onRecievedMiningInfo(MiningInfo miningInfo){
     _miningInfo->accepted_shares = miningInfo.accepted_shares;
     _miningInfo->rejected_shares = miningInfo.rejected_shares;
     qDebug() << "saving changes";
+}
+
+void MainWindow::on_comboBoxHistoryDataOption_currentIndexChanged(int index){
+    qDebug() << "index changed: " << index;
+    // index: 0 GPUs information
+    //        1 mining information
+    ui->pushButtonSearchHistory->show();
+    if(index == 0){
+        ui->checkBoxHistoryMiningInfoOverall->hide();
+        ui->labelHistoryDeviceNum->show();
+        ui->spinBoxHistoryDeviceNum->show();
+        ui->pushButtonSearchHistory->show();
+    }
+    if(index == 1){
+        ui->checkBoxHistoryMiningInfoOverall->show();
+        ui->checkBoxHistoryMiningInfoOverall->setChecked(false);
+        _searchHistoryMiningOverall = false;
+    }
+}
+
+void MainWindow::on_checkBoxHistoryMiningInfoOverall_clicked(bool clicked){
+    ui->spinBoxHistoryDeviceNum->setVisible(!clicked);
+    ui->labelHistoryDeviceNum->setVisible(!clicked);
+    ui->pushButtonSearchHistory->show();
+    _searchHistoryMiningOverall = clicked;
 }
