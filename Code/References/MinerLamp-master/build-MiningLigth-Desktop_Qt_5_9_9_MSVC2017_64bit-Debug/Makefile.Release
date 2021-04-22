@@ -732,6 +732,28 @@ release\moc_mainwindow.cpp: D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qabstractbutton.h \
 		..\MinerLamp-master\nvidianvml.h \
 		"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.1\include\nvml.h" \
+		..\MinerLamp-master\mysql.h \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QApplication \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qapplication.h \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qcoreapplication.h \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qeventloop.h \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qguiapplication.h \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qinputmethod.h \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\QSqlQuery \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\qsqlquery.h \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\field_types.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\my_list.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql_com.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\my_command.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\my_compress.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql\udf_registration_types.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql\client_plugin.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql\plugin_auth_common.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql_version.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql_time.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\errmsg.h" \
 		..\MinerLamp-master\mainwindow.h \
 		release\moc_predefs.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\bin\moc.exe
@@ -1736,7 +1758,29 @@ ui_mainwindow.h: ..\MinerLamp-master\mainwindow.ui \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QAbstractButton \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qabstractbutton.h \
 		..\MinerLamp-master\nvidianvml.h \
-		"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.1\include\nvml.h"
+		"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.1\include\nvml.h" \
+		..\MinerLamp-master\mysql.h \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QApplication \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qapplication.h \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qcoreapplication.h \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qeventloop.h \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qguiapplication.h \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qinputmethod.h \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\QSqlQuery \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\qsqlquery.h \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\field_types.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\my_list.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql_com.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\my_command.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\my_compress.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql\udf_registration_types.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql\client_plugin.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql\plugin_auth_common.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql_version.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql_time.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\errmsg.h"
 	D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\bin\uic.exe ..\MinerLamp-master\mainwindow.ui -o ui_mainwindow.h
 
 ui_helpdialog.h: ..\MinerLamp-master\helpdialog.ui \
@@ -2337,8 +2381,8 @@ release\main.obj: ..\MinerLamp-master\main.cpp ../MinerLamp-master/mainwindow.h 
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qguiapplication.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qinputmethod.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSQl\QSqlQuery \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSQl\qsqlquery.h \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\QSqlQuery \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\qsqlquery.h \
 		"C:/Program Files/MySQL/MySQL Server 8.0/include/mysql.h" \
 		"C:\Program Files\MySQL\MySQL Server 8.0\include\field_types.h" \
 		"C:\Program Files\MySQL\MySQL Server 8.0\include\my_list.h" \
@@ -2625,8 +2669,7 @@ release\mainwindow.obj: ..\MinerLamp-master\mainwindow.cpp ../MinerLamp-master/m
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qabstractbutton.h \
 		../MinerLamp-master/nvidianvml.h \
 		"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.1\include\nvml.h" \
-		ui_mainwindow.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QAction \
+		../MinerLamp-master/mysql.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QApplication \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qapplication.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qcoreapplication.h \
@@ -2634,6 +2677,22 @@ release\mainwindow.obj: ..\MinerLamp-master\mainwindow.cpp ../MinerLamp-master/m
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qguiapplication.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qinputmethod.h \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\QSqlQuery \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\qsqlquery.h \
+		"C:/Program Files/MySQL/MySQL Server 8.0/include/mysql.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\field_types.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\my_list.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql_com.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\my_command.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\my_compress.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql\udf_registration_types.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql\client_plugin.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql\plugin_auth_common.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql_version.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql_time.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\errmsg.h" \
+		ui_mainwindow.h \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QAction \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QButtonGroup \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qbuttongroup.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QCheckBox \
@@ -2649,6 +2708,8 @@ release\mainwindow.obj: ..\MinerLamp-master\mainwindow.cpp ../MinerLamp-master/m
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qtabbar.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qrubberband.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qabstractitemmodel.h \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QDateTimeEdit \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qdatetimeedit.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QGridLayout \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QGroupBox \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qgroupbox.h \
@@ -2671,21 +2732,6 @@ release\mainwindow.obj: ..\MinerLamp-master\mainwindow.cpp ../MinerLamp-master/m
 		../MinerLamp-master/hashratecharview.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QDateTime \
 		../MinerLamp-master/helpdialog.h \
-		../MinerLamp-master/mysql.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSQl\QSqlQuery \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSQl\qsqlquery.h \
-		"C:/Program Files/MySQL/MySQL Server 8.0/include/mysql.h" \
-		"C:\Program Files\MySQL\MySQL Server 8.0\include\field_types.h" \
-		"C:\Program Files\MySQL\MySQL Server 8.0\include\my_list.h" \
-		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql_com.h" \
-		"C:\Program Files\MySQL\MySQL Server 8.0\include\my_command.h" \
-		"C:\Program Files\MySQL\MySQL Server 8.0\include\my_compress.h" \
-		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql\udf_registration_types.h" \
-		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql\client_plugin.h" \
-		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql\plugin_auth_common.h" \
-		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql_version.h" \
-		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql_time.h" \
-		"C:\Program Files\MySQL\MySQL Server 8.0\include\errmsg.h" \
 		../MinerLamp-master/constants.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QFrame
 
@@ -3206,8 +3252,10 @@ release\mysql.obj: ..\MinerLamp-master\mysql.cpp ../MinerLamp-master/mysql.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qguiapplication.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qinputmethod.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSQl\QSqlQuery \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSQl\qsqlquery.h \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\QSqlQuery \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\qsqlquery.h \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QThread \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qthread.h \
 		../MinerLamp-master/nvidianvml.h \
 		"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.1\include\nvml.h" \
 		../MinerLamp-master/gpumonitor.h \
@@ -3219,8 +3267,6 @@ release\mysql.obj: ..\MinerLamp-master\mysql.cpp ../MinerLamp-master/mysql.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qsettings.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QSystemTrayIcon \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qsystemtrayicon.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QThread \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qthread.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCharts\QChartView \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCharts\qchartview.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCharts\QAbstractAxis \
@@ -3321,7 +3367,9 @@ release\mysql.obj: ..\MinerLamp-master\mysql.cpp ../MinerLamp-master/mysql.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\qsqlquerymodel.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qabstractitemmodel.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\QSqlError \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\qsqlerror.h
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\qsqlerror.h \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QDateTime \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qdatetime.h
 
 release\nvidianvml.obj: ..\MinerLamp-master\nvidianvml.cpp ../MinerLamp-master/nvidianvml.h \
 		"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.1\include\nvml.h" \
@@ -3773,8 +3821,8 @@ release\nvocdialog.obj: ..\MinerLamp-master\nvocdialog.cpp ../MinerLamp-master/n
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\QSqlDatabase \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\qsqldatabase.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\qtsqlglobal.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSQl\QSqlQuery \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSQl\qsqlquery.h \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\QSqlQuery \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\qsqlquery.h \
 		"C:/Program Files/MySQL/MySQL Server 8.0/include/mysql.h" \
 		"C:\Program Files\MySQL\MySQL Server 8.0\include\field_types.h" \
 		"C:\Program Files\MySQL\MySQL Server 8.0\include\my_list.h" \
@@ -4312,7 +4360,29 @@ release\hashratecharview.obj: ..\MinerLamp-master\hashratecharview.cpp D:\applic
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QAbstractButton \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qabstractbutton.h \
 		../MinerLamp-master/nvidianvml.h \
-		"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.1\include\nvml.h"
+		"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.1\include\nvml.h" \
+		../MinerLamp-master/mysql.h \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QApplication \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qapplication.h \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qcoreapplication.h \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qeventloop.h \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qguiapplication.h \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qinputmethod.h \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\QSqlQuery \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\qsqlquery.h \
+		"C:/Program Files/MySQL/MySQL Server 8.0/include/mysql.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\field_types.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\my_list.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql_com.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\my_command.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\my_compress.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql\udf_registration_types.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql\client_plugin.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql\plugin_auth_common.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql_version.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\mysql_time.h" \
+		"C:\Program Files\MySQL\MySQL Server 8.0\include\errmsg.h"
 
 release\piesliceeff.obj: ..\MinerLamp-master\piesliceeff.cpp D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCharts\QPieSlice \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCharts\qpieslice.h \

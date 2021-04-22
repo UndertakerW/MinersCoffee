@@ -1396,8 +1396,8 @@ void MainWindow::plotGrapgh(QString dateStart, QString dateEnd, int deviceNum){
     }
 
     // set x-axis
-    QDateTime x_axis_start = QDateTime::fromString(dateStart + " 00:00:00","yyyy-MM-dd HH:mm:ss");
-    QDateTime x_axis_end = QDateTime::fromString(dateEnd + " 00:00:00","yyyy-MM-dd HH:mm:ss");
+    QDateTime x_axis_start = QDateTime::fromString(dateStart + " 00:00:00","yyyy/MM/dd HH:mm:ss");
+    QDateTime x_axis_end = QDateTime::fromString(dateEnd + " 00:00:00","yyyy/MM/dd HH:mm:ss");
 
 
 
@@ -1407,7 +1407,7 @@ void MainWindow::plotGrapgh(QString dateStart, QString dateEnd, int deviceNum){
         return;
     }
 
-    _axisXHistory->setRange(x_axis_start, x_axis_end);
+//    _axisXHistory->setRange(x_axis_start, x_axis_end);
 
     // retrieve infoList
     qDebug() << "before get history";

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1250</width>
+    <width>1294</width>
     <height>1060</height>
    </rect>
   </property>
@@ -925,7 +925,7 @@ QPushButton:disabled
     <item row="2" column="10">
      <widget class="QDateTimeEdit" name="dateTimeEditHistoryEndTime">
       <property name="displayFormat">
-       <string>yyyy-M-d</string>
+       <string>yyyy/MM/dd</string>
       </property>
      </widget>
     </item>
@@ -997,7 +997,7 @@ QPushButton:disabled
        <cursorShape>IBeamCursor</cursorShape>
       </property>
       <property name="displayFormat">
-       <string>yyyy-M-d</string>
+       <string>yyyy/MM/dd</string>
       </property>
      </widget>
     </item>

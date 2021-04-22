@@ -229,7 +229,6 @@ void nvOCDialog::on_checkBoxAutoOC_clicked(bool clicked){
                     n+=name[i];
                 }
                 MYSQLcon mysql;
-                mysql.ConnectDatabase();
                 QStringList l;
                 const char *p;
                 p=n.c_str();
@@ -263,7 +262,6 @@ void nvOCDialog::on_checkBoxAutoOC_clicked(bool clicked){
                 n+=name[i];
             }
             MYSQLcon mysql;
-            mysql.ConnectDatabase();
             QStringList l;
             const char *p;
             p=n.c_str();

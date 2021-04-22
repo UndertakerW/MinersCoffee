@@ -6,46 +6,29 @@
 #include <QMessageBox>
 #include <QApplication>
 #include <QSqlQuery>
-//#include <QSqlError>
+#include <QSqlError>
 #include <stdio.h>
 #include <QThread>
 #include <nvidianvml.h>
-#include <WinSock.h>
 #include "gpumonitor.h"
-#include "C:/Program Files/MySQL/MySQL Server 8.0/include/mysql.h"
 #include <Windows.h>
 #include <QtCharts/QLineSeries>
 
-#pragma comment(lib,"wsock32.lib")
-
-#pragma comment(lib,"libmysql.lib")
 class MYSQLcon:public QThread{
 
 private:
-    MYSQL mysql; //mysql连接
+    QSqlDatabase _db;
 
-    MYSQL_FIELD *fd;  //字段列数组
-    QSqlQuery query;
-
-
-    char field[32][32];  //存字段名二维数组
-    nvidiaNVML* _nvml;
-    MYSQL_RES *res; //这个结构代表返回行的一个查询结果集
-
-    MYSQL_ROW column; //一个行数据的类型安全(type-safe)的表示，表示数据行的列
 public:
     MYSQLcon();
     ~MYSQLcon();
-    void ConnectDatabase();
-    void FreeConnect();
     QStringList getAdvice(const char* type);
-    void InsertData(QList<GPUInfo> gpuInfos);
     void run() override;
-    QStringList Get_History(const char* date1,const char* date2,int num);
     void Get_HistoryNew(const char* date1,const char* date2,int num);
+    void InsertDataNew();
+
     QStringList * searchResultBuffer;
     QStringList * searchConditionBuffer;
-    void InsertDataNew();
 
     int _insert;
     int _retrieve;

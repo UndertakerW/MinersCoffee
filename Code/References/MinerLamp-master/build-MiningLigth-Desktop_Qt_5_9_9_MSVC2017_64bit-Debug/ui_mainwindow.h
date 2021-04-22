@@ -171,7 +171,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(1250, 1060);
+        MainWindow->resize(1294, 1060);
         QFont font;
         font.setFamily(QStringLiteral("Tahoma"));
         font.setPointSize(10);
@@ -1253,10 +1253,10 @@ public:
         pushButtonShowHideLog->setText(QApplication::translate("MainWindow", "Hide log", Q_NULLPTR));
         labelHistoryDeviceNum->setText(QApplication::translate("MainWindow", "Device#", Q_NULLPTR));
         pushButtonHelp->setText(QApplication::translate("MainWindow", "About", Q_NULLPTR));
-        dateTimeEditHistoryEndTime->setDisplayFormat(QApplication::translate("MainWindow", "yyyy-M-d", Q_NULLPTR));
+        dateTimeEditHistoryEndTime->setDisplayFormat(QApplication::translate("MainWindow", "yyyy/MM/dd", Q_NULLPTR));
         pushButtonEthminerBrowser->setText(QApplication::translate("MainWindow", "...", Q_NULLPTR));
         labelPool->setText(QApplication::translate("MainWindow", "Pool", Q_NULLPTR));
-        dateTimeEditHistoryStartTime->setDisplayFormat(QApplication::translate("MainWindow", "yyyy-M-d", Q_NULLPTR));
+        dateTimeEditHistoryStartTime->setDisplayFormat(QApplication::translate("MainWindow", "yyyy/MM/dd", Q_NULLPTR));
         labelWorker->setText(QApplication::translate("MainWindow", "Worker", Q_NULLPTR));
         groupBoxAMD->setTitle(QApplication::translate("MainWindow", "AMD", Q_NULLPTR));
         label_28->setText(QApplication::translate("MainWindow", "Max GPU clock:", Q_NULLPTR));
