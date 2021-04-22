@@ -11,19 +11,8 @@
 #include <ctime>
 #include <QList>
 #include <nvidianvml.h>
-#include <WinSock.h>
 #include <QDateTime>
 #include "gpumonitor.h"
-
-//一定要包含这个，或者winsock2.h
-
-//#include "C:/Program Files/MySQL/MySQL Server 8.0/include/mysql.h"    //引入mysql头文件(一种方式是在vc目录里面设置，一种是文件夹拷到工程目录，然后这样包含)
-
-#include <Windows.h>
-
-#pragma comment(lib,"wsock32.lib")
-
-#pragma comment(lib,"libmysql.lib")
 
 MYSQLcon::MYSQLcon(){
     searchResultBuffer = new QStringList();
