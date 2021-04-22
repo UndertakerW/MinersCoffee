@@ -239,6 +239,8 @@ void MYSQLcon::Get_HistoryNew(const char* date1,const char* date2,int num){
 MYSQLcon::~MYSQLcon(){
     _db.commit();
     _db.close();
+
 //    delete some ptrs
+    delete _gpusInfoBuffer;
 
 }
