@@ -1,4 +1,4 @@
-#include "database.h"
+#include "mysql.h"
 #include <QtSql/QSqlDatabase>
 #include <QDebug>
 #include <QMessageBox>
@@ -14,7 +14,7 @@
 #include <QDateTime>
 #include "gpumonitor.h"
 
-Database::Database(){
+MYSQLcon::MYSQLcon(){
     searchResultBuffer = new QStringList();
     searchConditionBuffer = new QStringList();
     _gpusInfoBuffer = nullptr;
@@ -45,7 +45,7 @@ Database::Database(){
 }
 
 
-QStringList Database::getAdvice(const char* type){
+QStringList MYSQLcon::getAdvice(const char* type){
     char* q=(char*)"select gpu_clock,mem_clock,power,prediction from advise where gpu_type=\'";
     char str3[150];
     sprintf(str3,"%s%s%s",q,type,"\'");
@@ -73,7 +73,7 @@ QStringList Database::getAdvice(const char* type){
 }
 
 
-void Database::InsertDataNew(){
+void MYSQLcon::InsertDataNew(){
     // insert gpuInfo
     if(_gpusInfoBuffer == nullptr){
         return;
@@ -160,7 +160,7 @@ void Database::InsertDataNew(){
 
 }
 
-void Database::run()
+void MYSQLcon::run()
 {
     while(1){
         qDebug() << "test mysql thread";
@@ -186,7 +186,7 @@ void Database::run()
 }
 
 
-void Database::Get_HistoryNew(const char* date1,const char* date2,int num){
+void MYSQLcon::Get_HistoryNew(const char* date1,const char* date2,int num){
     QString retrieveQueryline;
     int column_size;
     int line_num;
@@ -305,7 +305,7 @@ void Database::Get_HistoryNew(const char* date1,const char* date2,int num){
     searchResultBuffer->clear();
 }
 
-Database::~Database(){
+MYSQLcon::~MYSQLcon(){
     _db.commit();
     _db.close();
 

@@ -14,14 +14,14 @@
 #include <Windows.h>
 #include <QtCharts/QLineSeries>
 
-class Database:public QThread{
+class MYSQLcon:public QThread{
 
 private:
     QSqlDatabase _db;
 
 public:
-    Database();
-    ~Database();
+    MYSQLcon();
+    ~MYSQLcon();
     QStringList getAdvice(const char* type);
     void run() override;
     void Get_HistoryNew(const char* date1,const char* date2,int num);

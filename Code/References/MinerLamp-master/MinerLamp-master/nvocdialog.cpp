@@ -3,7 +3,7 @@
 #include <string>
 #include <QDebug>
 #include <cstring>
-#include "database.h"
+#include "mysql.h"
 
 nvOCDialog::nvOCDialog(nvidiaAPI *nvapi, QSettings *settings, QWidget *parent) :
     QDialog(parent),
@@ -228,13 +228,13 @@ void nvOCDialog::on_checkBoxAutoOC_clicked(bool clicked){
                         continue;
                     n+=name[i];
                 }
-                Database db;
+                MYSQLcon mysql;
                 QStringList l;
                 const char *p;
                 p=n.c_str();
-                l=db.getAdvice(p);
+                l=mysql.getAdvice(p);
                 qDebug("query name %s",n.c_str());
-                //db.FreeConnect();
+                //mysql.FreeConnect();
                 int str=atoi(l.front().toStdString().c_str());
                 gpuofffset=str;
                 l.pop_front();
@@ -261,13 +261,13 @@ void nvOCDialog::on_checkBoxAutoOC_clicked(bool clicked){
                     continue;
                 n+=name[i];
             }
-            Database db;
+            MYSQLcon mysql;
             QStringList l;
             const char *p;
             p=n.c_str();
-            l=db.getAdvice(p);
+            l=mysql.getAdvice(p);
             qDebug("query name %s",n.c_str());
-            //db.FreeConnect();
+            //mysql.FreeConnect();
             int str=atoi(l.front().toStdString().c_str());
             gpuofffset=str;
             l.pop_front();

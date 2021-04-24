@@ -27,7 +27,6 @@ DEFINES += QT_DEPRECATED_WARNINGS NVIDIA AMD
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    database.cpp \
     gpumonitor.cpp \
     jsonparser.cpp \
         main.cpp \
@@ -35,6 +34,7 @@ SOURCES += \
     minerprocess.cpp \
     highlighter.cpp \
     helpdialog.cpp \
+    mysql.cpp \
     nvidianvml.cpp \
     nvocdialog.cpp \
     nvidiaapi.cpp \
@@ -47,13 +47,13 @@ SOURCES += \
 
 HEADERS += \
     constants.h \
-    database.h \
     gpumonitor.h \
     jsonparser.h \
         mainwindow.h \
     minerprocess.h \
     highlighter.h \
     helpdialog.h \
+    mysql.h \
     nvidianvml.h \
     nvocdialog.h \
     nvidiaapi.h \

@@ -6,7 +6,7 @@
 #include "nvocdialog.h"
 #include "nanopoolapi.h"
 #include "hashratecharview.h"
-#include "database.h"
+#include "mysql.h"
 #include "constants.h"
 
 #include "structures.h"
@@ -62,8 +62,8 @@ MainWindow::MainWindow(QWidget *parent) :
     _gpusinfo = new QList<GPUInfo>();
     _miningInfo = new MiningInfo();
     _gpuInfoList = new QList<QWidget * >();
-    _databaseProcess = new Database();
-    _databaseProcess->start();
+    _mysqlProcess = new MYSQLcon();
+    _mysqlProcess->start();
 
     ui->setupUi(this);
 
@@ -330,8 +330,8 @@ MainWindow::~MainWindow()
     saveParameters();
 
     _process->stop();
-    if(_databaseProcess && _databaseProcess->isRunning())
-        _databaseProcess->terminate();
+    if(_mysqlProcess && _mysqlProcess->isRunning())
+        _mysqlProcess->terminate();
 
     if(_nvapi != Q_NULLPTR)
         delete _nvapi;
@@ -342,8 +342,8 @@ MainWindow::~MainWindow()
     delete _gpuInfoList;
     delete _gpusinfo;
     delete ui;
-    _databaseProcess->terminate();
-    delete _databaseProcess;
+    _mysqlProcess->terminate();
+    delete _mysqlProcess;
 
     for(int i=_seriesHistory.size()-1; i>=0; i--){
         QLineSeries * tempPtr = _seriesHistory.at(i);
@@ -1226,11 +1226,11 @@ void MainWindow::refreshDeviceInfo()
 
     // save data into mysql
 //    QList<GPUInfo> gpuInfoHolder = *_gpusinfo;
-//    _databaseProcess->InsertData(gpuInfoHolder);
-    if(_databaseProcess->_insertBusy == 0){
-        _databaseProcess->_gpusInfoBuffer = _gpusinfo;
-        _databaseProcess->_miningInfoBuffer = _miningInfo;
-        _databaseProcess->_insert = 1;
+//    _mysqlProcess->InsertData(gpuInfoHolder);
+    if(_mysqlProcess->_insertBusy == 0){
+        _mysqlProcess->_gpusInfoBuffer = _gpusinfo;
+        _mysqlProcess->_miningInfoBuffer = _miningInfo;
+        _mysqlProcess->_insert = 1;
     }
 }
 
@@ -1418,14 +1418,14 @@ void MainWindow::plotGrapgh(QString dateStart, QString dateEnd, int deviceNum){
 
     qDebug() << "before get history";
 
-    if(_databaseProcess->_retrieveBusy == 0){
-        _databaseProcess->searchConditionBuffer->clear();
-        _databaseProcess->searchConditionBuffer->push_back(dateStart);
-        _databaseProcess->searchConditionBuffer->push_back(dateEnd);
-        _databaseProcess->searchConditionBuffer->push_back(QString::number(deviceNum));
-        _databaseProcess->_seriesPtr = &_seriesHistory;
-        _databaseProcess->_chartHistory = _chartHistory;
-        _databaseProcess->_retrieve = 1;
+    if(_mysqlProcess->_retrieveBusy == 0){
+        _mysqlProcess->searchConditionBuffer->clear();
+        _mysqlProcess->searchConditionBuffer->push_back(dateStart);
+        _mysqlProcess->searchConditionBuffer->push_back(dateEnd);
+        _mysqlProcess->searchConditionBuffer->push_back(QString::number(deviceNum));
+        _mysqlProcess->_seriesPtr = &_seriesHistory;
+        _mysqlProcess->_chartHistory = _chartHistory;
+        _mysqlProcess->_retrieve = 1;
     }
     else{
         return;

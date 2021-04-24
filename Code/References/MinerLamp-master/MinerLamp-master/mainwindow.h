@@ -27,7 +27,7 @@
 #include "gpumonitor.h"
 #include "nvocdialog.h"
 #include "structures.h"
-#include "database.h"
+#include "mysql.h"
 
 QT_CHARTS_USE_NAMESPACE
 
@@ -226,7 +226,7 @@ private:
     QIcon*       _icon;
     QList<GPUInfo>* _gpusinfo;
     MiningInfo* _miningInfo;
-    Database * _databaseProcess;
+    MYSQLcon * _mysqlProcess;
 
     bool _isMinerRunning;
     bool _isStartStoping;
