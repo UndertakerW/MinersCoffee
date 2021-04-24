@@ -1,5 +1,5 @@
 #include "mainwindow.h"
-#include "mysql.h"
+#include "database.h"
 #include <QApplication>
 #include <QtSql/QSqlDatabase>
 int main(int argc, char *argv[])
