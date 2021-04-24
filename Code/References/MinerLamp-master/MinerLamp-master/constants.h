@@ -25,4 +25,6 @@ static QString cmd_nbminer_eth = "-a ethash -o %1 -u %2.%3";
 
 const QString api_nbminer = "http://localhost:22333/api/v1/status";
 
+const QString sparkpool_api_str = "https://www.sparkpool.com/v1/pool/stats";
+
 #endif // CONSTANTS_H

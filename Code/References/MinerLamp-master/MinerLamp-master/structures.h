@@ -73,4 +73,15 @@ public:
     QList<GPUMiningInfo> gpuMiningInfos;
 };
 
+class PoolInfo {
+public:
+    QString pool_name;
+    QString currency;
+    float income;
+    float meanIncome24h;
+    unsigned int incomeHashrate;
+    float usd;
+    float cny;
+};
+
 #endif // STRUCTURES_H

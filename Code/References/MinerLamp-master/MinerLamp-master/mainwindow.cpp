@@ -358,7 +358,7 @@ void MainWindow::setComboIndex(QComboBox * comboBox, QString key){
     if(comboIdx != -1){
         comboBox->setCurrentIndex(comboIdx);
     }
-    qDebug() << "fetch index: " << comboIdx << "\t" << key;
+    //qDebug() << "fetch index: " << comboIdx << "\t" << key;
 }
 
 
@@ -719,7 +719,7 @@ void MainWindow::on_pushButton_clicked()
             QString core_args = current_core->cmds[current_coin].arg(
                         current_pool->cmds[current_coin]).arg(ui->lineEditWallet->text()).arg(ui->lineEditWorker->text());
 
-            qDebug() << core_path << core_args << endl;
+            //qDebug() << core_path << core_args << endl;
 
             _process->SetAPI(current_core);
             _process->setMax0MHs(ui->spinBoxMax0MHs->value());
@@ -730,7 +730,7 @@ void MainWindow::on_pushButton_clicked()
         }
         else
         {
-            qDebug() << "Stop mining" << endl;
+            //qDebug() << "Stop mining" << endl;
             _process->stop();
         }
 
@@ -1116,9 +1116,9 @@ void MainWindow::onTempChartTimer()
         _chartTemp->axisY()->setRange(_maxChartTempRate-5, _maxChartTempRate+5);
     }
 
-    qDebug() << "temp comparing: " << _currentTempRate << " vs " << _maxChartTempRate;
+    //qDebug() << "temp comparing: " << _currentTempRate << " vs " << _maxChartTempRate;
     if(_currentTempRate <= _maxChartTempRate-5){
-        qDebug() << "setting lower bound: " << _currentTempRate-2;
+        //qDebug() << "setting lower bound: " << _currentTempRate-2;
         _chartTemp->axisY()->setRange(_currentTempRate-2, _currentTempRate+8);
     }
 }
@@ -1139,7 +1139,7 @@ void MainWindow::refreshDeviceInfo()
     int deviceNum = _gpusinfo->size();
 
     if(deviceNum < _deviceCount){
-        qDebug() << "removing extra";
+        //qDebug() << "removing extra";
         for(int i = _deviceCount-1; i >= deviceNum; i--){
             QWidget * parentWidget = _gpuInfoList->at(i);
             QLayout * layout = _gpuInfoList->at(i)->findChild<QHBoxLayout *>();
@@ -1167,7 +1167,7 @@ void MainWindow::refreshDeviceInfo()
         _deviceCount = deviceNum;
     }
     else if(deviceNum > _deviceCount){
-        qDebug() << "adding extra";
+        //qDebug() << "adding extra";
         for(int i = _deviceCount; i <= deviceNum-1; i++){
             QWidget * parentWidget = new QWidget();
             QHBoxLayout * row = new QHBoxLayout(parentWidget);
@@ -1416,7 +1416,7 @@ void MainWindow::plotGrapgh(QString dateStart, QString dateEnd, int deviceNum){
         return;
     }
 
-    qDebug() << "before get history";
+    //qDebug() << "before get history";
 
     if(_databaseProcess->_retrieveBusy == 0){
         _databaseProcess->searchConditionBuffer->clear();
@@ -1455,8 +1455,8 @@ void MainWindow::on_checkBoxShowHistoryInfo_clicked(bool clicked){
 
 void MainWindow::on_pushButtonSearchHistory_clicked(){
     ui->pushButtonSearchHistory->hide();
-    qDebug() << "search time: " << ui->dateTimeEditHistoryStartTime->text() << " ->" << ui->dateTimeEditHistoryEndTime->text()
-             << " " << ui->spinBoxHistoryDeviceNum->text().toInt();
+    //qDebug() << "search time: " << ui->dateTimeEditHistoryStartTime->text() << " ->" << ui->dateTimeEditHistoryEndTime->text()
+             //<< " " << ui->spinBoxHistoryDeviceNum->text().toInt();
     ui->groupBoxHistoryInfo->show();
 
     // index 0 stands for GPUs information
@@ -1499,17 +1499,17 @@ void MainWindow::on_spinBoxHistoryDeviceNum_valueChanged(int arg1){
 }
 
 void MainWindow::onRecievedMiningInfo(MiningInfo miningInfo){
-    qDebug() << "recieving mingInfo signal";
+    //qDebug() << "recieving mingInfo signal";
     _miningInfo->latency = miningInfo.latency;
     _miningInfo->gpuMiningInfos = miningInfo.gpuMiningInfos;
     _miningInfo->invalid_shares = miningInfo.invalid_shares;
     _miningInfo->accepted_shares = miningInfo.accepted_shares;
     _miningInfo->rejected_shares = miningInfo.rejected_shares;
-    qDebug() << "saving changes";
+    //qDebug() << "saving changes";
 }
 
 void MainWindow::on_comboBoxHistoryDataOption_currentIndexChanged(int index){
-    qDebug() << "index changed: " << index;
+    //qDebug() << "index changed: " << index;
     // index: 0 GPUs information
     //        1 mining information
     ui->pushButtonSearchHistory->show();

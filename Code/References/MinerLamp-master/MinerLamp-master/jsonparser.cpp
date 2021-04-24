@@ -6,6 +6,8 @@
 
 JsonParser::JsonParser() {}
 
+MinerJsonParser::MinerJsonParser() {}
+
 NBMinerJsonParser::NBMinerJsonParser() {}
 
 MiningInfo NBMinerJsonParser::ParseJsonForMining(std::string json)
@@ -37,6 +39,36 @@ MiningInfo NBMinerJsonParser::ParseJsonForMining(std::string json)
         miningInfo.gpuMiningInfos.append(gpuInfo);
     }
 
-
     return miningInfo;
+}
+
+PoolJsonParser::PoolJsonParser() {}
+
+// Sparkpool API Only!
+QList<PoolInfo> PoolJsonParser::ParseJsonForPool(std::string json)
+{
+    QList<PoolInfo> poolInfos;
+
+    Json::Reader reader;
+    Json::Value root;
+    if (!reader.parse(json, root))
+    {
+        qDebug() << "reader parse error: " << strerror(errno) << endl;
+        return poolInfos;
+    }
+
+    for (unsigned int i = 0; i < root["data"].size(); i++)
+    {
+        PoolInfo poolInfo;
+        poolInfo.pool_name = root["data"][i]["pool"].asCString();
+        poolInfo.currency = root["data"][i]["currency"].asCString();
+        poolInfo.income = root["data"][i]["income"].asFloat();
+        poolInfo.meanIncome24h = root["data"][i]["meanIncome24h"].asFloat();
+        poolInfo.incomeHashrate = QString().fromStdString(root["data"][i]["incomeHashrate"].asString()).toUInt();
+        poolInfo.usd = root["data"][i]["usd"].asFloat();
+        poolInfo.cny = root["data"][i]["cny"].asFloat();
+        poolInfos.append(poolInfo);
+    }
+
+    return poolInfos;
 }

@@ -30,15 +30,15 @@ Database::Database(){
 
     _db = QSqlDatabase::addDatabase("QSQLITE");
     _db.setDatabaseName("./minerDatabase/minerDatabase.db");
-    qDebug() << _db.tables();
+    //qDebug() << _db.tables();
 
     if(!_db.open()){
         QMessageBox::critical(0, QObject::tr("Database error"),
                 _db.lastError().text());
-                qDebug() << "sql: connect fail";
+                //qDebug() << "sql: connect fail";
     }
     else{
-        qDebug() << "sql: connection success";
+        //qDebug() << "sql: connection success";
     }
 
 
@@ -55,7 +55,7 @@ QStringList Database::getAdvice(const char* type){
     QSqlQuery sql_query(_db);
     sql_query.exec(retrieveQuery);
     QStringList retrieveHistory;
-    qDebug() << str3;
+    //qDebug() << str3;
 
     int newCnt = 0;
 
@@ -112,7 +112,7 @@ void Database::InsertDataNew(){
         QString insertQuery(insertQuery_maintable);
         QSqlQuery sql_query(_db);
         sql_query.exec(insertQuery);
-        qDebug() << insertQuery_maintable;
+        //qDebug() << insertQuery_maintable;
     }
 
     // insert miningInfo
@@ -138,11 +138,11 @@ void Database::InsertDataNew(){
 
     QSqlQuery sql_query(_db);
     sql_query.exec(insertQuery);
-    qDebug() << insertQuery;
+    //qDebug() << insertQuery;
 
     // insert data into miningInfoDevices
     for(int i=0;i<_miningInfoBuffer->gpuMiningInfos.size();i++){
-        qDebug() << "device id: " << _miningInfoBuffer->gpuMiningInfos.at(i).num;
+        //qDebug() << "device id: " << _miningInfoBuffer->gpuMiningInfos.at(i).num;
         QList<GPUMiningInfo>* deviceInfo = &_miningInfoBuffer->gpuMiningInfos;
         QString insertQuery_device("insert into miningInfoDevices values( '" +currentDate + "', "
                             +"'"+currentTime + "', "
@@ -154,7 +154,7 @@ void Database::InsertDataNew(){
         );
 
         sql_query.exec(insertQuery_device);
-        qDebug() << insertQuery_device;
+        //qDebug() << insertQuery_device;
 
     }
 
@@ -163,7 +163,7 @@ void Database::InsertDataNew(){
 void Database::run()
 {
     while(1){
-        qDebug() << "test mysql thread";
+        //qDebug() << "test mysql thread";
         QThread::sleep(2);
 
         if(_retrieve==1){
@@ -173,14 +173,14 @@ void Database::run()
                            searchConditionBuffer->at(2).toInt());
             _retrieveBusy = 0;
             _retrieve = 0;
-            qDebug() << "retrieve success";
+            //qDebug() << "retrieve success";
         }
 
         if(_insert==1){
             _insertBusy = 1;
             InsertDataNew();
             _insertBusy = 0;
-            qDebug() << "insert success";
+            //qDebug() << "insert success";
         }
     }
 }
@@ -241,7 +241,7 @@ void Database::Get_HistoryNew(const char* date1,const char* date2,int num){
     QSqlQuery sql_query(_db);
     sql_query.exec(retrieveQuery);
     QStringList retrieveHistory;
-    qDebug() << retrieveQueryline;
+    //qDebug() << retrieveQueryline;
 
 
     while(sql_query.next()){
@@ -271,7 +271,7 @@ void Database::Get_HistoryNew(const char* date1,const char* date2,int num){
     for(int k=0; k<gpuInfoListSize/column_size; k++){
         // gpu_name 1, Date1 2, avg(TMP) 3, avg(gpu_clock) 4, avg(mem_clock) 5, avg(FanSpeed) 6, avg(PowerDraw) 7
         QDateTime x_coordinate = QDateTime::fromString(searchResultBuffer->at(k*column_size+date_index)+" 00:00:00","yyyy/MM/dd HH:mm:ss");
-        qDebug() << "date: " << x_coordinate.toString();
+        //qDebug() << "date: " << x_coordinate.toString();
         for(int j =0; j<line_num; j++){
             double value = searchResultBuffer->at(k*column_size+plot_start_index+j).toDouble();
             if(value > maxValue){
@@ -281,13 +281,13 @@ void Database::Get_HistoryNew(const char* date1,const char* date2,int num){
                 minValue = value;
             }
             _seriesPtr->at(j)->append(x_coordinate.toMSecsSinceEpoch(), value);
-            qDebug() << searchResultBuffer->at(k*column_size+plot_start_index+j) << "with i:" << k << " j: " << j;
+            //qDebug() << searchResultBuffer->at(k*column_size+plot_start_index+j) << "with i:" << k << " j: " << j;
         }
     }
 
-    qDebug() << "end graphing";
+    //qDebug() << "end graphing";
     _chartHistory->axisY()->setRange(minValue-5, maxValue+5);
-    qDebug() << "complete";
+    //qDebug() << "complete";
 
     QDateTime x_startTime = QDateTime::fromString(searchResultBuffer->at(date_index)+" 00:00:00","yyyy/MM/dd HH:mm:ss");
     QDateTime x_endTime = QDateTime::fromString(searchResultBuffer->at(gpuInfoListSize-column_size+date_index)+" 00:00:00","yyyy/MM/dd HH:mm:ss");
@@ -298,7 +298,7 @@ void Database::Get_HistoryNew(const char* date1,const char* date2,int num){
         x_endTime = temp;
     }
 
-    qDebug() << "start time: " << searchResultBuffer->at(date_index) << " -> " <<searchResultBuffer->at(gpuInfoListSize-column_size+date_index);
+    //qDebug() << "start time: " << searchResultBuffer->at(date_index) << " -> " <<searchResultBuffer->at(gpuInfoListSize-column_size+date_index);
 
     _chartHistory->axisX()->setRange(x_startTime.addDays(-1), x_endTime.addDays(1));
 

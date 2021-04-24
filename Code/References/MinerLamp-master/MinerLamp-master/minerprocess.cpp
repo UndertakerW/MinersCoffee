@@ -1,5 +1,6 @@
 #include "minerprocess.h"
 #include "structures.h"
+#include "constants.h"
 //#include "mainwindow.h"
 
 #include <QTextStream>
@@ -17,7 +18,24 @@
 #include <string>
 #include <vector>
 
+PoolInfoThread::PoolInfoThread(float ref_rate, QObject *pParent) : QThread(pParent)
+  , _pParent((MinerProcess*)pParent)
+{
+    if (ref_rate > 0)
+    {
+        refresh_rate = ref_rate;
+    }
+}
 
+void PoolInfoThread::run()
+{
+    while(1)
+    {
+        _pParent->getPoolStatus();
+
+        QThread::sleep(refresh_rate);
+    }
+}
 
 anyMHsWaitter::anyMHsWaitter(unsigned int delay, QObject *pParent) : QThread(pParent)
   , _pParent((MinerProcess*)pParent)
@@ -32,10 +50,11 @@ void anyMHsWaitter::run()
 {
     while(1)
     {
+
         if (!enabled)
         {
             MiningInfo miningInfo = _pParent->getStatus();
-            qDebug() << "not start yet: " << miningInfo.latency;
+            //qDebug() << "not start yet: " << miningInfo.latency;
             if (miningInfo.latency > 0)
             {
                 enabled = true;
@@ -44,14 +63,20 @@ void anyMHsWaitter::run()
 
         else
         {
-            QThread::sleep(refresh_rate);
-//            MiningInfo miningInfo = _pParent->getStatus();
+            // TODO
+            // if 0 MH/s for some time,
+            // then restart the core
         }
 
-        _pParent->refreshMingInfo();
+        _pParent->refreshMiningInfo();
+        _pParent->getPoolStatus();
+
+        QThread::sleep(refresh_rate);
 
 
-        sleep(refresh_rate);
+
+
+        //sleep(refresh_rate);
 /*
         if(_hashrateCount == _pParent->getCurrentHRCount())
         {
@@ -120,12 +145,19 @@ MinerProcess::MinerProcess(QSettings* settings):
     connect(_anyHR, SIGNAL(notHashing()), this, SLOT(onNoHashing()));
     _anyHR->start();
 
+    _poolInfoThread = new PoolInfoThread(60, this);
+    _poolInfoThread->start();
 
     _donate = new donateThrd(this);
     connect(_donate, SIGNAL(donate()), this, SLOT(onDonate()));
     connect(_donate, SIGNAL(backToNormal()), this, SLOT(onBackToNormal()));
     // connect(_donate, &donateThrd::finished, this, &MinerProcess::deleteLater);
     _donate->start();
+
+    // Init Pool Json Parser
+    // Default: Sparkpool
+    poolJsonParser = new PoolJsonParser();
+    pool_api_str = sparkpool_api_str.toStdString();
 
 }
 
@@ -134,8 +166,11 @@ MinerProcess::~MinerProcess()
     if(_anyHR && _anyHR->isRunning()) _anyHR->terminate();
     delete  _anyHR;
 
-    if(_donate && _donate->isRunning()) _donate->terminate();
+    if(_poolInfoThread && _poolInfoThread->isRunning()) _poolInfoThread->terminate();
+    delete  _poolInfoThread;
 
+    if(_donate && _donate->isRunning()) _donate->terminate();
+    delete _donate;
 }
 
 void MinerProcess::onReadyToReadStdout()
@@ -411,7 +446,7 @@ void MinerProcess::restart()
 
 void MinerProcess::SetAPI(Core* core)
 {
-    api_str = core->api.toStdString();
+    core_api_str = core->api.toStdString();
     if (core->name == "NBMiner") {
         jsonParser = new NBMinerJsonParser();
     }
@@ -420,21 +455,44 @@ void MinerProcess::SetAPI(Core* core)
 MiningInfo MinerProcess::getStatus()
 {
     MiningInfo miningInfo;
-    if (api_str != "" && jsonParser)
+    if (core_api_str != "" && jsonParser)
     {
         std::string buffer;
-        LPCSTR url = api_str.c_str();
+        LPCSTR url = core_api_str.c_str();
         urlAPI->GetURLInternal(url, buffer);
         if (buffer != "")
         {
             miningInfo = jsonParser->ParseJsonForMining(buffer);
         }
     }
-
+/*
     if (miningInfo.gpuMiningInfos.size() > 0)
         qDebug() << miningInfo.latency << miningInfo.gpuMiningInfos[0].hashrate;
-
+*/
     return miningInfo;
+}
+
+// estimated average daily income (usd) = sum(hashrate) / poolInfos[x].incomeHashrate * poolInfos[x].meanIncome24h
+// estimated realtime daily income (usd) = sum(hashrate) / poolInfos[x].incomeHashrate * poolInfos[x].income
+// where poolInfos[x].currency = "ETH"
+QList<PoolInfo> MinerProcess::getPoolStatus()
+{
+    QList<PoolInfo> poolInfos;
+    if (pool_api_str != "" && poolJsonParser)
+    {
+        std::string buffer;
+        LPCSTR url = pool_api_str.c_str();
+        urlAPI->GetURLInternal(url, buffer);
+        {
+            poolInfos = poolJsonParser->ParseJsonForPool(buffer);
+        }
+    }
+
+    //if (poolInfos.size() > 0)
+        //qDebug() << poolInfos[0].currency << poolInfos[0].income << poolInfos[0].usd;
+
+    return poolInfos;
+
 }
 
 donateThrd::donateThrd(QObject* pParent) : QThread(pParent)
@@ -470,8 +528,8 @@ void restarter::run()
     emit restartsignal();
 }
 
-void MinerProcess::refreshMingInfo(){
+void MinerProcess::refreshMiningInfo(){
     MiningInfo mingInfo = getStatus();
     emit emitMiningInfo(mingInfo);
-    qDebug() << "sending mingInfo signal";
+    //qDebug() << "sending mingInfo signal";
 }

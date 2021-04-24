@@ -71,6 +71,20 @@ signals:
 
 };
 
+class PoolInfoThread : public QThread
+{
+    Q_OBJECT
+public:
+    PoolInfoThread(float refresh_rate, QObject* pParent = Q_NULLPTR);
+    void run();
+
+private:
+    float refresh_rate = 60;
+    MinerProcess* _pParent;
+
+
+};
+
 class MinerProcess : public QObject
 {
     Q_OBJECT
@@ -101,6 +115,7 @@ public:
     void SetAPI(Core* core);
 
     MiningInfo getStatus();
+    QList<PoolInfo> getPoolStatus();
 
     QList<unsigned long> getChildrenPID(unsigned long ppid);
 
@@ -111,14 +126,18 @@ private:
     float refresh_rate = 3;
 
     UrlAPI* urlAPI;
-    std::string api_str;
-    JsonParser* jsonParser = nullptr;
+    std::string core_api_str;
+    MinerJsonParser* jsonParser = nullptr;
+    std::string pool_api_str;
+    PoolJsonParser* poolJsonParser = nullptr;
     MainWindow* mainWindow;
 
 
     QProcess    _miner;
     zeroMHsWaitter* _waitter;
     anyMHsWaitter*  _anyHR;
+    PoolInfoThread* _poolInfoThread;
+
     donateThrd* _donate;
 
     QTextEdit*  _log;
@@ -167,7 +186,7 @@ public slots:
     void onDonate();
     void onBackToNormal();
     void onReadyToRestart();
-    void refreshMingInfo();
+    void refreshMiningInfo();
 
 signals:
 

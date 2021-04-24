@@ -35,7 +35,7 @@ void nvMonitorThrd::run()
             for(int i=0;i<nvml->getGPUCount();i++){
                 nvapi.ControlGpuTemperature(i);
             }
-            qDebug()<<"warning! process is cooling ";
+            //qDebug()<<"warning! process is cooling ";
 
         }
         //qDebug("temp::   %d",nvapi.getGpuTemperature(nvapi.getGPUCount()-1));
