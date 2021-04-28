@@ -1007,6 +1007,7 @@ void MainWindow::on_pushButtonOC_clicked()
     if(_nvapi->libLoaded())
     {
         nvOCDialog* dlg = new nvOCDialog(_nvapi, _settings, this);
+        dlg->_db = _databaseProcess;
         dlg->exec();
         delete dlg;
     }

@@ -46,16 +46,16 @@ Database::Database(){
 
 
 QStringList Database::getAdvice(const char* type){
-    char* q=(char*)"select gpu_clock,mem_clock,power,prediction from advise where gpu_type=\'";
-    char str3[150];
-    sprintf(str3,"%s%s%s",q,type,"\'");
-    QStringList l;
+    QString query("select gpu_clock,mem_clock,power,prediction from advise where gpu_type='"
+                  +QString(type)+"'");
 
-    QString retrieveQuery(str3);
+    qDebug() << "get advice: " << query;
+    QStringList result;
+
+    QString retrieveQuery(query);
     QSqlQuery sql_query(_db);
     sql_query.exec(retrieveQuery);
     QStringList retrieveHistory;
-    //qDebug() << str3;
 
     int newCnt = 0;
 
@@ -64,12 +64,12 @@ QStringList Database::getAdvice(const char* type){
     while(sql_query.next()){
         newCnt++;
         for(int i=0;i<row_size;i++){
-            l.append(sql_query.value(i).toString());
+            result.append(sql_query.value(i).toString());
         }
     }
 
 
-    return l;
+    return result;
 }
 
 

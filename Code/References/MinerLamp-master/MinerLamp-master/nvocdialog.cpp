@@ -228,13 +228,18 @@ void nvOCDialog::on_checkBoxAutoOC_clicked(bool clicked){
                         continue;
                     n+=name[i];
                 }
-                Database db;
+                //
+//                Database db;
                 QStringList l;
+                //
                 const char *p;
                 p=n.c_str();
-                l=db.getAdvice(p);
+                if(_db != nullptr){
+                    qDebug() << "test 1";
+                    l=_db->getAdvice(p);
+                }
                 qDebug("query name %s",n.c_str());
-                //db.FreeConnect();
+                //dbFreeConnect();
                 int str=atoi(l.front().toStdString().c_str());
                 gpuofffset=str;
                 l.pop_front();
@@ -261,11 +266,15 @@ void nvOCDialog::on_checkBoxAutoOC_clicked(bool clicked){
                     continue;
                 n+=name[i];
             }
-            Database db;
+            //
             QStringList l;
+            //
             const char *p;
             p=n.c_str();
-            l=db.getAdvice(p);
+            if(_db != nullptr){
+                qDebug() << "test 2";
+                l=_db->getAdvice(p);
+            }
             qDebug("query name %s",n.c_str());
             //db.FreeConnect();
             int str=atoi(l.front().toStdString().c_str());

@@ -6,6 +6,7 @@
 
 #include "nvidianvml.h"
 #include "nvidiaapi.h"
+#include "database.h"
 #include <QSettings>
 
 
@@ -29,6 +30,7 @@ public:
     Ui::nvOCDialog *ui;
     explicit nvOCDialog(nvidiaAPI* nvapi, QSettings* settings, QWidget *parent = 0);
     ~nvOCDialog();
+    Database * _db;
 
 private slots:
     void on_horizontalSliderPowerPercent_valueChanged(int value);
