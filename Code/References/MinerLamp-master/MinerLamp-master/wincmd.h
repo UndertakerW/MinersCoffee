@@ -26,7 +26,7 @@ public:
 
     int CheckDisk(std::string a);
 //    wmic LogicalDisk where "Caption='C:'" get FreeSpace,Size /value
-    vector<string> LocalDisk();
+    vector<vector<QString>> LocalDisk();
 
 };
 

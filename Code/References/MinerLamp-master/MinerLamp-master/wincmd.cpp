@@ -5,6 +5,9 @@
 #include <string>
 #include <array>
 #include <vector>
+#include <QFile>
+#include <QDir>
+#include <QStorageInfo>
 using namespace std;
 std::string Wincmd::UseCmd(const char* cmd) {
     std::array<char, 128> buffer;
@@ -37,63 +40,43 @@ void Wincmd::AutoManagePage(){
 
 //修改页面文件大小 最小1024MB，最大4096MB
 void Wincmd::ChangePageSize(std::string a,std::string max,std::string min){
-    std::string cmd="wmic pagefileset where name=\""+a+":\\pagefile.sys\" set InitialSize="+max+",MaximumSize="+min;
-    const char *command=cmd.c_str();
-    UseCmd(command);
-}
 
-int Wincmd::CheckDisk(std::string a){
-    std::string cmd="wmic LogicalDisk where \"Caption='"+a+":'\" get FreeSpace,Size /value";
-    const char *command=cmd.c_str();
-    int Fsize=0,size=0;
-    std::string res=UseCmd(command);
-    for(int i=0;i<res.length();i++){
-        if(i<res.length()-10){
-            if(res.substr(i,10)=="FreeSpace=") {
-                int c=i+10;
-                std::string b;
-                while (res[c]!='\n') {
-                    b+=res[c];
-                }
-                int Fsize=atoi(b.c_str());
-            }
-        }
-        if(i<res.length()-4){
-            if(res.substr(i,4)=="Size=") {
-                int c=i+4;
-                std::string b;
-                while (res[c]!='\n') {
-                    b+=res[c];
-                }
-                int size=atoi(b.c_str());
-            }
-        }
-    }
-    int fraction=Fsize*100/size;
-    return fraction;
 }
 //
 
 
-vector<string> Wincmd::LocalDisk(){
-    vector<string> v1;
-    std::string cmd="Wmic logicaldisk";
-    const char *command=cmd.c_str();
-    std::string res=UseCmd(command);
-    for(int i=0;i<res.length();i++){
-        if(i<res.length()-18){
-            if(res.substr(i,18)=="Local Fixed Disk  ") {
-                int c=i+18;
-                std::string b;
-                while (res[c]!=':') {
-                    b+=res[c];
-                }
-                string nameD=b;
-                v1.push_back(nameD);
-            }
-        }
-    }
+vector<vector<QString>> Wincmd::LocalDisk(){
+    vector<QString> v1;
+    vector<QString> v2;
+    foreach( QFileInfo drive, QDir::drives() )
+    {
+      qDebug() << "Drive: " << drive.absolutePath();
 
-    return v1;
+      QDir dir = drive.dir();
+      dir.setFilter( QDir::Dirs );
+
+//      foreach( QFileInfo rootDirs, dir.entryInfoList() )
+//        qDebug() << "  " << rootDirs.fileName();
+
+      QStorageInfo storage(drive.absolutePath());
+
+      qDebug() << storage.rootPath();
+      if (storage.isReadOnly())
+         qDebug() << "isReadOnly:" << storage.isReadOnly();
+
+      qDebug() << "name:" << storage.name();
+      v1.push_back(storage.name());
+      qDebug() << "filesystem type:" << storage.fileSystemType();
+      qDebug() << "size:" << storage.bytesTotal()/1024/1024/1024 << "GB";
+      qDebug() << "free space:" << storage.bytesAvailable()/1024/1024/1024 << "GB";
+      QString str1 = QString::number(storage.bytesTotal()/1024/1024/1024);
+      QString str2 = QString::number(storage.bytesAvailable()/1024/1024/1024);
+      v2.push_back(str1+"/"+str2);
+
+    }
+    vector<vector<QString>> q1;
+    q1.push_back(v1);
+    q1.push_back(v2);
+    return q1;
 }
 
