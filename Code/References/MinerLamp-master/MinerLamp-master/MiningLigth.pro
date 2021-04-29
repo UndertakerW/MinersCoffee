@@ -46,7 +46,6 @@ SOURCES += \
     wincmd.cpp
 
 HEADERS += \
-    Wincmd.h \
     constants.h \
     database.h \
     gpumonitor.h \
@@ -63,7 +62,8 @@ HEADERS += \
     hashratecharview.h \
     piesliceeff.h \
     structures.h \
-    urlapi.h
+    urlapi.h \
+    wincmd.h
 
 FORMS += \
         mainwindow.ui \

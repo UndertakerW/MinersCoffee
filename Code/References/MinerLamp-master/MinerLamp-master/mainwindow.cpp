@@ -9,7 +9,7 @@
 #include "database.h"
 #include "constants.h"
 #include "structures.h"
-#include "Wincmd.h"
+#include "wincmd.h"
 
 #include <QDebug>
 #include <QMessageBox>
@@ -27,6 +27,10 @@
 #include <QMetaType>
 #include <QGraphicsEffect>
 #include <QAreaSeries>
+
+#include <QDir>
+#include <QFileInfo>
+#include <QStorageInfo>
 
 #define MINERPATH           "minerpath"
 #define MINERARGS           "minerargs"
@@ -347,6 +351,42 @@ MainWindow::MainWindow(QWidget *parent) :
     _searchHistoryMiningOverall = false;
     ui->checkBoxShowSettings->setChecked(false);
     ui->groupBoxSettings->setVisible(false);
+
+    Wincmd wincmd;
+//    std::vector<string> diskinfo = wincmd.LocalDisk();
+//    for(int i=0; i<diskinfo.size();i++){
+//        qDebug() << "disk info: " << QString::fromStdString(diskinfo.at(i));
+//    }
+//    wincmd.AutoManagePage();
+
+    foreach( QFileInfo drive, QDir::drives() )
+    {
+      qDebug() << "Drive: " << drive.absolutePath();
+
+      QDir dir = drive.dir();
+      dir.setFilter( QDir::Dirs );
+
+//      foreach( QFileInfo rootDirs, dir.entryInfoList() )
+//        qDebug() << "  " << rootDirs.fileName();
+
+      QStorageInfo storage(drive.absolutePath());
+
+      qDebug() << storage.rootPath();
+      if (storage.isReadOnly())
+         qDebug() << "isReadOnly:" << storage.isReadOnly();
+
+      qDebug() << "name:" << storage.name();
+      qDebug() << "filesystem type:" << storage.fileSystemType();
+      qDebug() << "size:" << storage.bytesTotal()/1024/1024/1024 << "GB";
+      qDebug() << "free space:" << storage.bytesAvailable()/1024/1024/1024 << "GB";
+
+    }
+
+//    QProcess qpos;
+//    qpos.setWorkingDirectory("D:\\");
+//    qpos.start("git gui");
+//    qpos.waitForFinished();
+
 
 }
 
