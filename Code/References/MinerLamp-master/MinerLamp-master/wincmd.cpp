@@ -8,6 +8,7 @@
 #include <QFile>
 #include <QDir>
 #include <QStorageInfo>
+#include <QProcess>
 using namespace std;
 std::string Wincmd::UseCmd(const char* cmd) {
     std::array<char, 128> buffer;
@@ -23,26 +24,43 @@ std::string Wincmd::UseCmd(const char* cmd) {
 }
 
 //查看当前设置
-std::string Wincmd::SeeSetting(){
-    std::string cmd="wmic pagefile list /format:list";
-    const char *command=cmd.c_str();
-    return UseCmd(command);
+QString Wincmd::SeeSetting(){
+    QString cmd="wmic pagefile list /format:list";
+    QProcess p(0);
+    p.start("cmd", QStringList()<<"/c"<<cmd);
+    p.waitForStarted();
+    p.waitForFinished();
+    QString strTemp=QString::fromLocal8Bit(p.readAllStandardOutput());
+    //qDebug()<<QString::fromLocal8Bit(p.readAllStandardError());
+    return strTemp;
 }
 
 
 //取消自动管理分页文件大小
 void Wincmd::AutoManagePage(){
-    std::string cmd="wmic computersystem where name=\"%computername%\" set AutomaticManagedPagefile=False";
-    const char *command=cmd.c_str();
-    UseCmd(command);
+    QString cmd="wmic computersystem where name=\"%computername%\" set AutomaticManagedPagefile=False";
+    //const char *command=cmd.c_str();
+    QProcess p(0);
+    p.start("cmd", QStringList()<<"/c"<<cmd);
+    p.waitForStarted();
+    p.waitForFinished();
+    QString strTemp=QString::fromLocal8Bit(p.readAllStandardOutput());
+    //qDebug()<<QString::fromLocal8Bit(p.readAllStandardError());
 }
 //wmic computersystem where name="%computername%" set AutomaticManagedPagefile=False
 
 //修改页面文件大小 最小1024MB，最大4096MB
-void Wincmd::ChangePageSize(std::string a,std::string max,std::string min){
-
+void Wincmd::ChangePageSize(QString a,QString max,QString min){
+    QString cmd="wmic pagefileset where name=\""+a+":\pagefile.sys\" set InitialSize="+min+",MaximumSize="+max;
+    QProcess p(0);
+    p.start("cmd", QStringList()<<"/c"<<cmd);
+    p.waitForStarted();
+    p.waitForFinished();
+    QString strTemp=QString::fromLocal8Bit(p.readAllStandardOutput());
+    //qDebug()<<QString::fromLocal8Bit(p.readAllStandardError());
 }
 //
+//wmic pagefileset where name="C:\pagefile.sys" set InitialSize=1024,MaximumSize=4096
 
 
 vector<vector<QString>> Wincmd::LocalDisk(){

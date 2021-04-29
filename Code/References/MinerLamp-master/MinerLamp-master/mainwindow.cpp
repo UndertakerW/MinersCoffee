@@ -1663,7 +1663,7 @@ void MainWindow::on_checkBoxHistoryMiningInfoOverall_clicked(bool clicked){
 void MainWindow::on_checkBoxShowSettings_clicked(bool clicked){
     if(clicked){
         Wincmd wincmd;
-        ui->textEditSettings->setText(QString::fromStdString(wincmd.SeeSetting()));
+        ui->textEditSettings->setText((wincmd.SeeSetting()));
     }
 
     ui->groupBoxSettings->setVisible(clicked);
