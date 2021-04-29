@@ -2,7 +2,8 @@
 #define WINCMD_H
 #include <string>
 #include <QDebug>
-
+#include <vector>
+using namespace std;
 class Wincmd
 {
 public:
@@ -25,6 +26,7 @@ public:
 
     int CheckDisk(std::string a);
 //    wmic LogicalDisk where "Caption='C:'" get FreeSpace,Size /value
+    vector<string> LocalDisk();
 
 };
 
