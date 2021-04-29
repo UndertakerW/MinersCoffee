@@ -27,6 +27,7 @@
 #include <QMetaType>
 #include <QGraphicsEffect>
 #include <QAreaSeries>
+#include <QProgressBar>
 
 #include <QDir>
 #include <QFileInfo>
@@ -68,6 +69,7 @@ MainWindow::MainWindow(QWidget *parent) :
     _gpusinfo = new QList<GPUInfo>();
     _miningInfo = new MiningInfo();
     _gpuInfoList = new QList<QWidget * >();
+    _diskInfoList = new QList<QWidget * >();
     _databaseProcess = new Database();
     _databaseProcess->start();
 
@@ -351,41 +353,6 @@ MainWindow::MainWindow(QWidget *parent) :
     _searchHistoryMiningOverall = false;
     ui->checkBoxShowSettings->setChecked(false);
     ui->groupBoxSettings->setVisible(false);
-
-    Wincmd wincmd;
-//    std::vector<string> diskinfo = wincmd.LocalDisk();
-//    for(int i=0; i<diskinfo.size();i++){
-//        qDebug() << "disk info: " << QString::fromStdString(diskinfo.at(i));
-//    }
-//    wincmd.AutoManagePage();
-
-    foreach( QFileInfo drive, QDir::drives() )
-    {
-      qDebug() << "Drive: " << drive.absolutePath();
-
-      QDir dir = drive.dir();
-      dir.setFilter( QDir::Dirs );
-
-//      foreach( QFileInfo rootDirs, dir.entryInfoList() )
-//        qDebug() << "  " << rootDirs.fileName();
-
-      QStorageInfo storage(drive.absolutePath());
-
-      qDebug() << storage.rootPath();
-      if (storage.isReadOnly())
-         qDebug() << "isReadOnly:" << storage.isReadOnly();
-
-      qDebug() << "name:" << storage.name();
-      qDebug() << "filesystem type:" << storage.fileSystemType();
-      qDebug() << "size:" << storage.bytesTotal()/1024/1024/1024 << "GB";
-      qDebug() << "free space:" << storage.bytesAvailable()/1024/1024/1024 << "GB";
-
-    }
-
-//    QProcess qpos;
-//    qpos.setWorkingDirectory("D:\\");
-//    qpos.start("git gui");
-//    qpos.waitForFinished();
 
 
 }
@@ -1202,6 +1169,8 @@ void MainWindow::refreshDeviceInfo()
         _effPieSlices->at(0)->setValue(1);
     }
 
+
+    // refresh device info
     // fetch devices number
     int deviceNum = _gpusinfo->size();
 
@@ -1291,9 +1260,100 @@ void MainWindow::refreshDeviceInfo()
 
     }
 
+    Wincmd wincmd;
+    vector<vector<QString>> localDisks = wincmd.LocalDisk();
+    int diskNum = localDisks.size();
+
+    if(diskNum < _diskCount){
+        for(int i = _diskCount-1; i >= diskNum; i--){
+            QWidget * parentWidget = _diskInfoList->at(i);
+            QLayout * layout = _diskInfoList->at(i)->findChild<QHBoxLayout *>();
+            QLayoutItem * item;
+            QWidget * widget;
+
+            parentWidget->hide();
+
+            // notice each QWidget of _gpuInfoList only contains one child of type QHBoxLayout
+            // and in this child, it only contains QWidgets
+            while ((item = layout->takeAt(0))) {
+                if ((widget = item->widget()) != 0) {
+                    widget->hide();
+                    delete widget;
+                }
+                else {
+                    delete item;
+                }
+            }
+
+            _diskInfoList->removeAt(i);
+            delete layout;
+            delete parentWidget;
+        }
+        _diskCount = diskNum;
+    }
+    else if(diskNum > _diskCount){
+        for(int i = _diskCount; i <= diskNum-1; i++){
+            QWidget * parentWidget = new QWidget();
+            QHBoxLayout * row = new QHBoxLayout(parentWidget);
+            QLabel * diskNameLabel = new QLabel();
+            diskNameLabel->setFont(QFont("Arial", 9));
+            QProgressBar * diskStorageBar = new QProgressBar();
+            diskStorageBar->setStyleSheet("QProgressBar"
+                "{"
+                    "color:rgb(255,255,255);"
+                    "background-color :rgb(51,51,51);"
+                    "border : 2px;"
+                    "border-radius:4px;"
+                "}"
+
+                "QProgressBar::chunk{"
+                    "border : 2px;"
+                    "border-radius:4px;"
+                    "background-color:rgb(0,143,170);"
+                "}"
+            );
+
+            diskStorageBar->setAlignment(Qt::AlignCenter);
+
+            row->addWidget(diskNameLabel);      //0
+            row->addWidget(diskStorageBar);     //1
+
+            _diskInfoList->append(parentWidget);
+            ui->gridLayoutDiskInfo->addWidget(parentWidget);
+        }
+        _diskCount = diskNum;
+    }
+
+    for(int i=0;i<_diskCount;i++){
+        // fetch each disk
+        QHBoxLayout * layoutPtr = _diskInfoList->at(i)->findChild<QHBoxLayout *>();
+
+        // at 0
+        // set disk name
+        QWidget * castWidgetPtr = layoutPtr->itemAt(0)->widget();
+        QLabel * castLabel = dynamic_cast<QLabel *>(castWidgetPtr);
+        QString diskName = localDisks.at(0).at(i);
+        if(castLabel->text() != diskName){
+            castLabel->setText(diskName);
+        }
+
+        // at 1
+        // set storage info
+        castWidgetPtr = layoutPtr->itemAt(1)->widget();
+        QProgressBar * castprogressbar = dynamic_cast<QProgressBar *>(castWidgetPtr);
+        QString storageInfo = localDisks.at(1).at(i);
+        if(castprogressbar->text() != storageInfo){
+            QStringList info = storageInfo.split('/');
+            int free = info.at(0).toInt();
+            int total = info.at(1).toInt();
+            qDebug() << diskName << ": " << free*100/total;
+            castprogressbar->setValue(free*100/total);
+            castprogressbar->setFormat(storageInfo);
+        }
+
+    }
+
     // save data into mysql
-//    QList<GPUInfo> gpuInfoHolder = *_gpusinfo;
-//    _databaseProcess->InsertData(gpuInfoHolder);
     if(_databaseProcess->_insertBusy == 0){
         _databaseProcess->_gpusInfoBuffer = _gpusinfo;
         _databaseProcess->_miningInfoBuffer = _miningInfo;

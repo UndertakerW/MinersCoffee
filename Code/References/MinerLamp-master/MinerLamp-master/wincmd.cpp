@@ -46,37 +46,21 @@ void Wincmd::ChangePageSize(std::string a,std::string max,std::string min){
 
 
 vector<vector<QString>> Wincmd::LocalDisk(){
-    vector<QString> v1;
-    vector<QString> v2;
+    vector<QString> disknames;
+    vector<QString> diskinfo;
     foreach( QFileInfo drive, QDir::drives() )
     {
-      qDebug() << "Drive: " << drive.absolutePath();
-
       QDir dir = drive.dir();
       dir.setFilter( QDir::Dirs );
-
-//      foreach( QFileInfo rootDirs, dir.entryInfoList() )
-//        qDebug() << "  " << rootDirs.fileName();
-
       QStorageInfo storage(drive.absolutePath());
-
-      qDebug() << storage.rootPath();
-      if (storage.isReadOnly())
-         qDebug() << "isReadOnly:" << storage.isReadOnly();
-
-      qDebug() << "name:" << storage.name();
-      v1.push_back(storage.name());
-      qDebug() << "filesystem type:" << storage.fileSystemType();
-      qDebug() << "size:" << storage.bytesTotal()/1024/1024/1024 << "GB";
-      qDebug() << "free space:" << storage.bytesAvailable()/1024/1024/1024 << "GB";
-      QString str1 = QString::number(storage.bytesTotal()/1024/1024/1024);
-      QString str2 = QString::number(storage.bytesAvailable()/1024/1024/1024);
-      v2.push_back(str1+"/"+str2);
-
+      disknames.push_back(storage.rootPath());
+      QString totalSpaceGB = QString::number(storage.bytesTotal()/1024/1024/1024);
+      QString freeSpaceGB = QString::number(storage.bytesAvailable()/1024/1024/1024);
+      diskinfo.push_back(freeSpaceGB+"/"+totalSpaceGB);
     }
-    vector<vector<QString>> q1;
-    q1.push_back(v1);
-    q1.push_back(v2);
-    return q1;
+    vector<vector<QString>> result;
+    result.push_back(disknames);
+    result.push_back(diskinfo);
+    return result;
 }
 

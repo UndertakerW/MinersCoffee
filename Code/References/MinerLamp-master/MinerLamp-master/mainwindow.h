@@ -71,7 +71,9 @@ public:
 
 private:
     QList<QWidget *> * _gpuInfoList;
+    QList<QWidget *> * _diskInfoList;
     int _deviceCount = 0;
+    int _diskCount = 0;
 
 protected:
     void closeEvent(QCloseEvent *event) Q_DECL_OVERRIDE;
