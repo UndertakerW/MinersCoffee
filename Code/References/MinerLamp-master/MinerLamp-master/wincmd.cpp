@@ -4,6 +4,8 @@
 #include <stdexcept>
 #include <string>
 #include <array>
+#include <vector>
+using namespace std;
 std::string UseCmd(const char* cmd) {
     std::array<char, 128> buffer;
     std::string result;
@@ -71,3 +73,26 @@ int CheckDisk(std::string a){
     return fraction;
 }
 //
+
+
+vector<string> LocalDisk(){
+    vector<string> v1;
+    std::string cmd="Wmic logicaldisk";
+    const char *command=cmd.c_str();
+    std::string res=UseCmd(command);
+    for(int i=0;i<res.length();i++){
+        if(i<res.length()-18){
+            if(res.substr(i,18)=="Local Fixed Disk  ") {
+                int c=i+18;
+                std::string b;
+                while (res[c]!=':') {
+                    b+=res[c];
+                }
+                string nameD=b;
+                v1.push_back(nameD);
+            }
+        }
+    }
+    return v1;
+}
+

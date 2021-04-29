@@ -43,9 +43,11 @@ SOURCES += \
     hashratecharview.cpp \
     piesliceeff.cpp \
     structures.cpp \
-    urlapi.cpp
+    urlapi.cpp \
+    wincmd.cpp
 
 HEADERS += \
+    Wincmd.h \
     constants.h \
     database.h \
     gpumonitor.h \
