@@ -118,6 +118,8 @@ private slots:
     void on_spinBoxHistoryDeviceNum_valueChanged(int arg1);
     void on_comboBoxHistoryDataOption_currentIndexChanged(int index);
     void on_checkBoxHistoryMiningInfoOverall_clicked(bool clicked);
+    void on_checkBoxShowSettings_clicked(bool clickes);
+    void on_pushButtonCancelAutoPage_clicked();
 
     void refreshDeviceInfo();
     void onGpusInfoRecieved(QList<GPUInfo> gpusinfo);
@@ -252,6 +254,8 @@ private:
     // temperature displaying
     QChart* _chartTemp;
     QLineSeries* _seriesTemp;
+    QLineSeries* _seriesTempBottom;
+    QAreaSeries* _areaseriesTemp;
     QDateTimeAxis *_axisXTemp;
 
     // temperature displaying

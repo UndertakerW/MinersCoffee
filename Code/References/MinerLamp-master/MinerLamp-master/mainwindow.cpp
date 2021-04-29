@@ -8,8 +8,8 @@
 #include "hashratecharview.h"
 #include "database.h"
 #include "constants.h"
-
 #include "structures.h"
+#include "Wincmd.h"
 
 #include <QDebug>
 #include <QMessageBox>
@@ -25,6 +25,8 @@
 #include <QFrame>
 #include <QtSql/QSqlDatabase>
 #include <QMetaType>
+#include <QGraphicsEffect>
+#include <QAreaSeries>
 
 #define MINERPATH           "minerpath"
 #define MINERARGS           "minerargs"
@@ -171,7 +173,7 @@ MainWindow::MainWindow(QWidget *parent) :
     _chart->legend()->hide();
 
     //set the color of the graph
-    QPen pen(QColor(255, 165, 0));
+    QPen pen(QColor(255, 153, 0));
     pen.setWidth(2);
 
     _series = new QLineSeries();
@@ -224,9 +226,9 @@ MainWindow::MainWindow(QWidget *parent) :
     QLinearGradient backgroundGradient_temp;
     backgroundGradient_temp.setStart(QPointF(0, 0));
     backgroundGradient_temp.setFinalStop(QPointF(0, 1));
-    backgroundGradient_temp.setColorAt(0.0, QRgb(0x909090));
-    backgroundGradient_temp.setColorAt(1.0, QRgb(0x101010));
-    backgroundGradient_temp.setCoordinateMode(QGradient::StretchToDeviceMode);
+    backgroundGradient_temp.setColorAt(1.0, QColor(255, 153, 0, 0));
+    backgroundGradient_temp.setColorAt(0.0, QColor(255, 165, 0, 150));
+    backgroundGradient_temp.setCoordinateMode(QGradient::ObjectBoundingMode);
 
     _chartTemp->setAnimationOptions(QChart::SeriesAnimations);
     _chartTemp->setBackgroundBrush(backgroundGradient_temp);
@@ -236,13 +238,30 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //set the color of the graph
     QPen penTemp(QColor(255, 165, 0));
-    penTemp.setWidth(2);
+    penTemp.setWidth(3);
+    QPen penTempBottom(QColor(255, 0, 0, 0));
+    penTempBottom.setWidth(2);
 
     _seriesTemp = new QLineSeries();
     _seriesTemp->setPen(penTemp);
+    _seriesTempBottom = new QLineSeries();
+    _seriesTempBottom->setPen(penTempBottom);
+    _areaseriesTemp = new QAreaSeries(_seriesTemp, _seriesTempBottom);
+    _areaseriesTemp->setPen(penTempBottom);
+    _seriesTemp->setPointsVisible(false);
 
-    _seriesTemp->append(QDateTime::currentDateTime().toMSecsSinceEpoch(),0);
+    QLinearGradient gradient(QPointF(0, 0), QPointF(0, 1));
+    gradient.setColorAt(0.0, 0x3cc63c);
+    gradient.setColorAt(1.0, 0x26f626);
+//    gradient.setCoordinateMode(QGradient::ObjectBoundingMode);
+    _areaseriesTemp->setBrush(backgroundGradient_temp);
+
+
+//    _seriesTemp->append(QDateTime::currentDateTime().toMSecsSinceEpoch(),0);
+//    _seriesTempBottom->append(QDateTime::currentDateTime().toMSecsSinceEpoch(),0);
+//    _chartTemp->addSeries(_seriesTempBottom);
     _chartTemp->addSeries(_seriesTemp);
+    _chartTemp->addSeries(_areaseriesTemp);
     _chartTemp->createDefaultAxes();
 
     _axisXTemp = new QDateTimeAxis;
@@ -270,10 +289,13 @@ MainWindow::MainWindow(QWidget *parent) :
 
     _chartTemp->setAxisX(_axisXTemp);
     _seriesTemp->attachAxis(_axisXTemp);
+    _seriesTempBottom->attachAxis(_axisXTemp);
+    _areaseriesTemp->attachAxis(_axisXTemp);
     _axisXTemp->setRange(QDateTime::currentDateTime(), QDateTime::currentDateTime().addSecs(10));
 
 
     ui->graphicsViewTemp->setChart(_chartTemp);
+    ui->graphicsView->setRenderHint(QPainter::Antialiasing);
 
     // graph will be drawn every time interval
     connect(&_tempChartTimer, &QTimer::timeout, this, &MainWindow::onTempChartTimer);
@@ -323,6 +345,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->dateTimeEditHistoryStartTime->setDateTime(QDateTime::currentDateTime());
     ui->dateTimeEditHistoryEndTime->setDateTime(QDateTime::currentDateTime().addDays(5));
     _searchHistoryMiningOverall = false;
+    ui->checkBoxShowSettings->setChecked(false);
+    ui->groupBoxSettings->setVisible(false);
+
 }
 
 MainWindow::~MainWindow()
@@ -1100,6 +1125,7 @@ void MainWindow::onTempChartTimer()
 {
     //draw the dynamic graph
     _seriesTemp->append(QDateTime::currentDateTime().toMSecsSinceEpoch(), _currentTempRate);
+    _seriesTempBottom->append(QDateTime::currentDateTime().toMSecsSinceEpoch(), 40);
 
     //diaplay the proper range of the x-axis;
     if(_plotsCntrTemp >= 6)
@@ -1114,13 +1140,13 @@ void MainWindow::onTempChartTimer()
     if(_currentTempRate > _maxChartTempRate)
     {
         _maxChartTempRate = _currentTempRate;
-        _chartTemp->axisY()->setRange(_maxChartTempRate-5, _maxChartTempRate+5);
+        _chartTemp->axisY()->setRange(40, _maxChartTempRate+5);
     }
 
     //qDebug() << "temp comparing: " << _currentTempRate << " vs " << _maxChartTempRate;
     if(_currentTempRate <= _maxChartTempRate-5){
         //qDebug() << "setting lower bound: " << _currentTempRate-2;
-        _chartTemp->axisY()->setRange(_currentTempRate-2, _currentTempRate+8);
+        _chartTemp->axisY()->setRange(40, _currentTempRate+8);
     }
 }
 
@@ -1532,4 +1558,20 @@ void MainWindow::on_checkBoxHistoryMiningInfoOverall_clicked(bool clicked){
     ui->labelHistoryDeviceNum->setVisible(!clicked);
     ui->pushButtonSearchHistory->show();
     _searchHistoryMiningOverall = clicked;
+}
+
+void MainWindow::on_checkBoxShowSettings_clicked(bool clicked){
+    if(clicked){
+        Wincmd wincmd;
+        ui->textEditSettings->setText(QString::fromStdString(wincmd.SeeSetting()));
+    }
+
+    ui->groupBoxSettings->setVisible(clicked);
+
+}
+
+void MainWindow::on_pushButtonCancelAutoPage_clicked(){
+    Wincmd wincmd;
+    wincmd.AutoManagePage();
+    qDebug() << "auto page clicked";
 }
