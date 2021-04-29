@@ -23,9 +23,7 @@ public:
     void ChangePageSize();
 //wmic pagefileset where name="C:\pagefile.sys" set InitialSize=1024,MaximumSize=4096
 
-    int CheckDisk(std::string a);
-//    wmic LogicalDisk where "Caption='C:'" get FreeSpace,Size /value
-
+    void CheckDisk(std::string a);
 };
 
 #endif // WINCMD_H

@@ -18,10 +18,10 @@ std::string UseCmd(const char* cmd) {
 }
 
 //查看当前设置
-std::string SeeSetting(){
+void SeeSetting(){
     std::string cmd="wmic pagefile list /format:list";
     const char *command=cmd.c_str();
-    return UseCmd(command);
+    UseCmd(command);
 }
 
 
@@ -40,34 +40,11 @@ void ChangePageSize(std::string a,std::string max,std::string min){
     UseCmd(command);
 }
 
-int CheckDisk(std::string a){
+void CheckDisk(std::string a){
     std::string cmd="wmic LogicalDisk where \"Caption='"+a+":'\" get FreeSpace,Size /value";
     const char *command=cmd.c_str();
-    int Fsize=0,size=0;
     std::string res=UseCmd(command);
-    for(int i=0;i<res.length();i++){
-        if(i<res.length()-10){
-            if(res.substr(i,10)=="FreeSpace=") {
-                int c=i+10;
-                std::string b;
-                while (res[c]!='\n') {
-                    b+=res[c];
-                }
-                int Fsize=atoi(b.c_str());
-            }
-        }
-        if(i<res.length()-4){
-            if(res.substr(i,4)=="Size=") {
-                int c=i+4;
-                std::string b;
-                while (res[c]!='\n') {
-                    b+=res[c];
-                }
-                int size=atoi(b.c_str());
-            }
-        }
-    }
-    int fraction=Fsize*100/size;
-    return fraction;
+
 }
 //
+
