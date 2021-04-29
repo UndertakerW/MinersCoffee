@@ -228,23 +228,22 @@ void nvOCDialog::on_checkBoxAutoOC_clicked(bool clicked){
                         continue;
                     n+=name[i];
                 }
-                //
-//                Database db;
                 QStringList l;
                 //
                 const char *p;
                 p=n.c_str();
                 if(_db != nullptr){
-                    qDebug() << "test 1";
+                    qDebug() << "test 2";
                     l=_db->getAdvice(p);
                 }
                 qDebug("query name %s",n.c_str());
-                //dbFreeConnect();
+                //db.FreeConnect();
                 int str=atoi(l.front().toStdString().c_str());
                 gpuofffset=str;
                 l.pop_front();
                 str=atoi(l.front().toStdString().c_str());
-
+                memoffset=str;
+                str=atoi(l.front().toStdString().c_str());
                 _nvapi->setFanSpeed(i,fanspeed);
                 _nvapi->setGPUOffset(i,gpuofffset);
                 _nvapi->setMemClockOffset(i,memoffset);
