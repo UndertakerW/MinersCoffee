@@ -1257,12 +1257,20 @@ void MainWindow::refreshDeviceInfo()
 
         // set memclock at 8
         setLCDNumber(layoutPtr->itemAt(8)->widget(), _gpusinfo->at(i).memclock);
-
     }
 
     Wincmd wincmd;
     vector<vector<QString>> localDisks = wincmd.LocalDisk();
     int diskNum = localDisks.size();
+
+    // refresh combobox for change page size
+    if(diskNum != _diskCount){
+        qDebug() << "refreshing disk info";
+        ui->comboBoxChangePageSize->clear();
+        for(int i=0; i<diskNum; i++){
+            ui->comboBoxChangePageSize->addItem(localDisks.at(0).at(i));
+        }
+    }
 
     if(diskNum < _diskCount){
         for(int i = _diskCount-1; i >= diskNum; i--){
@@ -1674,4 +1682,18 @@ void MainWindow::on_pushButtonCancelAutoPage_clicked(){
     Wincmd wincmd;
     wincmd.AutoManagePage();
     qDebug() << "auto page clicked";
+}
+
+void MainWindow::on_pushButtonChangePageSize_clicked(){
+    qDebug() << "change page size: "
+             << ui->comboBoxChangePageSize->currentText()
+             << QString::number(ui->spinBoxChangePageSizeMax->value())
+             << QString::number(ui->spinBoxChangePageSizeMin->value());
+
+    Wincmd wincmd;
+    wincmd.ChangePageSize(
+                ui->comboBoxChangePageSize->currentText(),
+                QString::number(ui->spinBoxChangePageSizeMax->value()),
+                QString::number(ui->spinBoxChangePageSizeMin->value())
+                );
 }

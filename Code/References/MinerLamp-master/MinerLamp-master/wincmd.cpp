@@ -76,7 +76,7 @@ vector<vector<QString>> Wincmd::LocalDisk(){
       QString freeSpaceGB = QString::number(storage.bytesAvailable()/1024/1024/1024);
       diskinfo.push_back(freeSpaceGB+"/"+totalSpaceGB);
     }
-    vector<vector<QString>> result;
+    vector<vector<QString> > result;
     result.push_back(disknames);
     result.push_back(diskinfo);
     return result;

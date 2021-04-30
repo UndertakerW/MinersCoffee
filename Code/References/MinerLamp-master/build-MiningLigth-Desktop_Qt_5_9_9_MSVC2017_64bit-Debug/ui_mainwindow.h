@@ -65,6 +65,11 @@ public:
     QPushButton *pushButtonSearchHistory;
     QCheckBox *checkBoxShowSettings;
     QCheckBox *checkBoxAutoShowDeviceInfo;
+    QLabel *labelWallet_2;
+    QComboBox *comboBoxChangePageSize;
+    QSpinBox *spinBoxChangePageSizeMin;
+    QSpinBox *spinBoxChangePageSizeMax;
+    QPushButton *pushButtonChangePageSize;
     QPushButton *pushButtonCancelAutoPage;
     QLineEdit *lineEditArgs;
     QSplitter *splitter_3;
@@ -116,6 +121,30 @@ public:
     QGroupBox *groupBoxDiskInfo;
     QGridLayout *gridLayout_13;
     QGridLayout *gridLayoutDiskInfo;
+    QGroupBox *groupBoxAMD;
+    QGridLayout *gridLayout_2;
+    QLabel *label_25;
+    QLabel *label_26;
+    QLabel *label_27;
+    QLCDNumber *lcdNumber_AMD_MaxPower;
+    QLCDNumber *lcdNumber_AMD_MinPoxer;
+    QLabel *label_28;
+    QLCDNumber *lcdNumber_AMD_MaxMemClock;
+    QLCDNumber *lcdNumber_AMD_MinFan;
+    QLCDNumber *lcdNumber_AMD_GPUCount;
+    QLCDNumber *lcdNumber_AMD_MaxClock;
+    QLabel *label_24;
+    QLabel *label_30;
+    QLabel *label_AMD_GPUCount;
+    QLCDNumber *lcdNumber_AMD_MinTemp;
+    QLabel *label_32;
+    QLabel *label_33;
+    QLCDNumber *lcdNumber_AMD_MinClock;
+    QLCDNumber *lcdNumber_AMD_MinMemClock;
+    QLCDNumber *lcdNumber_AMD_MaxFan;
+    QLabel *label_31;
+    QLabel *label_29;
+    QLCDNumber *lcdNumber_AMD_MaxTemp;
     QSplitter *splitter_2;
     QGroupBox *groupBoxDevicesInfo;
     QGridLayout *gridLayout_9;
@@ -158,30 +187,6 @@ public:
     QLCDNumber *lcdNumber_4;
     QRadioButton *radioButtonNaopool;
     QLCDNumber *lcdNumberCalculatedHR;
-    QGroupBox *groupBoxAMD;
-    QGridLayout *gridLayout_2;
-    QLabel *label_25;
-    QLabel *label_26;
-    QLabel *label_27;
-    QLCDNumber *lcdNumber_AMD_MaxPower;
-    QLCDNumber *lcdNumber_AMD_MinPoxer;
-    QLabel *label_28;
-    QLCDNumber *lcdNumber_AMD_MaxMemClock;
-    QLCDNumber *lcdNumber_AMD_MinFan;
-    QLCDNumber *lcdNumber_AMD_GPUCount;
-    QLCDNumber *lcdNumber_AMD_MaxClock;
-    QLabel *label_24;
-    QLabel *label_30;
-    QLabel *label_AMD_GPUCount;
-    QLCDNumber *lcdNumber_AMD_MinTemp;
-    QLabel *label_32;
-    QLabel *label_33;
-    QLCDNumber *lcdNumber_AMD_MinClock;
-    QLCDNumber *lcdNumber_AMD_MinMemClock;
-    QLCDNumber *lcdNumber_AMD_MaxFan;
-    QLabel *label_31;
-    QLabel *label_29;
-    QLCDNumber *lcdNumber_AMD_MaxTemp;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -410,7 +415,7 @@ public:
         lineEditMinerPath->setObjectName(QStringLiteral("lineEditMinerPath"));
         lineEditMinerPath->setMaximumSize(QSize(0, 0));
 
-        gridLayout_12->addWidget(lineEditMinerPath, 0, 7, 1, 1);
+        gridLayout_12->addWidget(lineEditMinerPath, 0, 9, 1, 1);
 
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setSpacing(6);
@@ -492,7 +497,7 @@ public:
         labelWallet->setMaximumSize(QSize(60, 16777215));
         labelWallet->setFont(font1);
 
-        gridLayout_12->addWidget(labelWallet, 1, 5, 1, 1);
+        gridLayout_12->addWidget(labelWallet, 1, 5, 1, 2);
 
         lineEditWallet = new QLineEdit(centralWidget);
         lineEditWallet->setObjectName(QStringLiteral("lineEditWallet"));
@@ -501,7 +506,7 @@ public:
         lineEditWallet->setMinimumSize(QSize(0, 31));
         lineEditWallet->setFont(font2);
 
-        gridLayout_12->addWidget(lineEditWallet, 1, 6, 1, 1);
+        gridLayout_12->addWidget(lineEditWallet, 1, 7, 1, 2);
 
         labelWorker = new QLabel(centralWidget);
         labelWorker->setObjectName(QStringLiteral("labelWorker"));
@@ -511,7 +516,7 @@ public:
         labelWorker->setMaximumSize(QSize(100, 16777215));
         labelWorker->setFont(font1);
 
-        gridLayout_12->addWidget(labelWorker, 1, 9, 1, 1);
+        gridLayout_12->addWidget(labelWorker, 1, 11, 1, 1);
 
         lineEditWorker = new QLineEdit(centralWidget);
         lineEditWorker->setObjectName(QStringLiteral("lineEditWorker"));
@@ -520,7 +525,7 @@ public:
         lineEditWorker->setMinimumSize(QSize(0, 31));
         lineEditWorker->setFont(font2);
 
-        gridLayout_12->addWidget(lineEditWorker, 1, 10, 1, 1);
+        gridLayout_12->addWidget(lineEditWorker, 1, 12, 1, 1);
 
         checkBoxAutoStart = new QCheckBox(centralWidget);
         checkBoxAutoStart->setObjectName(QStringLiteral("checkBoxAutoStart"));
@@ -544,7 +549,7 @@ public:
         checkBoxHistoryMiningInfoOverall = new QCheckBox(centralWidget);
         checkBoxHistoryMiningInfoOverall->setObjectName(QStringLiteral("checkBoxHistoryMiningInfoOverall"));
 
-        gridLayout_12->addWidget(checkBoxHistoryMiningInfoOverall, 2, 5, 1, 1);
+        gridLayout_12->addWidget(checkBoxHistoryMiningInfoOverall, 2, 5, 1, 2);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
@@ -561,7 +566,7 @@ public:
         horizontalLayout->addWidget(dateTimeEditHistoryEndTime);
 
 
-        gridLayout_12->addLayout(horizontalLayout, 2, 6, 1, 1);
+        gridLayout_12->addLayout(horizontalLayout, 2, 7, 1, 2);
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setSpacing(6);
@@ -578,12 +583,12 @@ public:
         horizontalLayout_3->addWidget(spinBoxHistoryDeviceNum);
 
 
-        gridLayout_12->addLayout(horizontalLayout_3, 2, 9, 1, 1);
+        gridLayout_12->addLayout(horizontalLayout_3, 2, 11, 1, 1);
 
         pushButtonSearchHistory = new QPushButton(centralWidget);
         pushButtonSearchHistory->setObjectName(QStringLiteral("pushButtonSearchHistory"));
 
-        gridLayout_12->addWidget(pushButtonSearchHistory, 2, 10, 1, 1);
+        gridLayout_12->addWidget(pushButtonSearchHistory, 2, 12, 1, 1);
 
         checkBoxShowSettings = new QCheckBox(centralWidget);
         checkBoxShowSettings->setObjectName(QStringLiteral("checkBoxShowSettings"));
@@ -597,11 +602,46 @@ public:
 
         gridLayout_12->addWidget(checkBoxAutoShowDeviceInfo, 3, 2, 1, 1);
 
+        labelWallet_2 = new QLabel(centralWidget);
+        labelWallet_2->setObjectName(QStringLiteral("labelWallet_2"));
+        sizePolicy.setHeightForWidth(labelWallet_2->sizePolicy().hasHeightForWidth());
+        labelWallet_2->setSizePolicy(sizePolicy);
+        labelWallet_2->setMaximumSize(QSize(60, 16777215));
+        QFont font4;
+        font4.setFamily(QStringLiteral("Arial"));
+        font4.setPointSize(8);
+        font4.setBold(false);
+        font4.setWeight(50);
+        labelWallet_2->setFont(font4);
+
+        gridLayout_12->addWidget(labelWallet_2, 3, 3, 1, 1);
+
+        comboBoxChangePageSize = new QComboBox(centralWidget);
+        comboBoxChangePageSize->setObjectName(QStringLiteral("comboBoxChangePageSize"));
+
+        gridLayout_12->addWidget(comboBoxChangePageSize, 3, 4, 1, 1);
+
+        spinBoxChangePageSizeMin = new QSpinBox(centralWidget);
+        spinBoxChangePageSizeMin->setObjectName(QStringLiteral("spinBoxChangePageSizeMin"));
+
+        gridLayout_12->addWidget(spinBoxChangePageSizeMin, 3, 5, 1, 1);
+
+        spinBoxChangePageSizeMax = new QSpinBox(centralWidget);
+        spinBoxChangePageSizeMax->setObjectName(QStringLiteral("spinBoxChangePageSizeMax"));
+
+        gridLayout_12->addWidget(spinBoxChangePageSizeMax, 3, 6, 1, 2);
+
+        pushButtonChangePageSize = new QPushButton(centralWidget);
+        pushButtonChangePageSize->setObjectName(QStringLiteral("pushButtonChangePageSize"));
+        pushButtonChangePageSize->setFont(font3);
+
+        gridLayout_12->addWidget(pushButtonChangePageSize, 3, 8, 1, 1);
+
         pushButtonCancelAutoPage = new QPushButton(centralWidget);
         pushButtonCancelAutoPage->setObjectName(QStringLiteral("pushButtonCancelAutoPage"));
         pushButtonCancelAutoPage->setEnabled(true);
 
-        gridLayout_12->addWidget(pushButtonCancelAutoPage, 3, 10, 1, 1);
+        gridLayout_12->addWidget(pushButtonCancelAutoPage, 3, 12, 1, 1);
 
         lineEditArgs = new QLineEdit(centralWidget);
         lineEditArgs->setObjectName(QStringLiteral("lineEditArgs"));
@@ -609,7 +649,7 @@ public:
         lineEditArgs->setSizePolicy(sizePolicy1);
         lineEditArgs->setMaximumSize(QSize(0, 0));
 
-        gridLayout_12->addWidget(lineEditArgs, 4, 8, 1, 1);
+        gridLayout_12->addWidget(lineEditArgs, 4, 10, 1, 1);
 
         splitter_3 = new QSplitter(centralWidget);
         splitter_3->setObjectName(QStringLiteral("splitter_3"));
@@ -697,13 +737,13 @@ public:
 
         splitter_3->addWidget(groupBoxSettings);
 
-        gridLayout_12->addWidget(splitter_3, 5, 0, 2, 7);
+        gridLayout_12->addWidget(splitter_3, 5, 0, 2, 9);
 
         pushButton = new QPushButton(centralWidget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setFont(font3);
 
-        gridLayout_12->addWidget(pushButton, 5, 9, 1, 1);
+        gridLayout_12->addWidget(pushButton, 5, 11, 1, 1);
 
         lcdNumberHashRate = new QLCDNumber(centralWidget);
         lcdNumberHashRate->setObjectName(QStringLiteral("lcdNumberHashRate"));
@@ -715,13 +755,13 @@ public:
         lcdNumberHashRate->setFont(font3);
         lcdNumberHashRate->setDigitCount(7);
 
-        gridLayout_12->addWidget(lcdNumberHashRate, 5, 10, 1, 1);
+        gridLayout_12->addWidget(lcdNumberHashRate, 5, 12, 1, 1);
 
         pushButtonHelp = new QPushButton(centralWidget);
         pushButtonHelp->setObjectName(QStringLiteral("pushButtonHelp"));
         pushButtonHelp->setFont(font3);
 
-        gridLayout_12->addWidget(pushButtonHelp, 6, 9, 1, 1);
+        gridLayout_12->addWidget(pushButtonHelp, 6, 11, 1, 1);
 
         pushButtonEthminerBrowser = new QPushButton(centralWidget);
         pushButtonEthminerBrowser->setObjectName(QStringLiteral("pushButtonEthminerBrowser"));
@@ -732,7 +772,7 @@ public:
         pushButtonEthminerBrowser->setSizePolicy(sizePolicy3);
         pushButtonEthminerBrowser->setFont(font3);
 
-        gridLayout_12->addWidget(pushButtonEthminerBrowser, 6, 10, 1, 1);
+        gridLayout_12->addWidget(pushButtonEthminerBrowser, 6, 12, 1, 1);
 
         splitter_4 = new QSplitter(centralWidget);
         splitter_4->setObjectName(QStringLiteral("splitter_4"));
@@ -741,11 +781,6 @@ public:
         groupBoxNvidia->setObjectName(QStringLiteral("groupBoxNvidia"));
         sizePolicy1.setHeightForWidth(groupBoxNvidia->sizePolicy().hasHeightForWidth());
         groupBoxNvidia->setSizePolicy(sizePolicy1);
-        QFont font4;
-        font4.setFamily(QStringLiteral("Arial"));
-        font4.setPointSize(8);
-        font4.setBold(false);
-        font4.setWeight(50);
         groupBoxNvidia->setFont(font4);
         gridLayout_3 = new QGridLayout(groupBoxNvidia);
         gridLayout_3->setSpacing(6);
@@ -908,253 +943,7 @@ public:
 
         splitter_4->addWidget(groupBoxDiskInfo);
 
-        gridLayout_12->addWidget(splitter_4, 7, 0, 1, 11);
-
-        splitter_2 = new QSplitter(centralWidget);
-        splitter_2->setObjectName(QStringLiteral("splitter_2"));
-        splitter_2->setOrientation(Qt::Vertical);
-        groupBoxDevicesInfo = new QGroupBox(splitter_2);
-        groupBoxDevicesInfo->setObjectName(QStringLiteral("groupBoxDevicesInfo"));
-        groupBoxDevicesInfo->setMaximumSize(QSize(16777215, 16777127));
-        groupBoxDevicesInfo->setFont(font3);
-        gridLayout_9 = new QGridLayout(groupBoxDevicesInfo);
-        gridLayout_9->setSpacing(6);
-        gridLayout_9->setContentsMargins(11, 11, 11, 11);
-        gridLayout_9->setObjectName(QStringLiteral("gridLayout_9"));
-        gridLayoutDevicesInfo = new QGridLayout();
-        gridLayoutDevicesInfo->setSpacing(6);
-        gridLayoutDevicesInfo->setObjectName(QStringLiteral("gridLayoutDevicesInfo"));
-
-        gridLayout_9->addLayout(gridLayoutDevicesInfo, 0, 0, 1, 1);
-
-        splitter_2->addWidget(groupBoxDevicesInfo);
-        splitter = new QSplitter(splitter_2);
-        splitter->setObjectName(QStringLiteral("splitter"));
-        splitter->setOrientation(Qt::Horizontal);
-        layoutWidget = new QWidget(splitter);
-        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        gridLayout_10 = new QGridLayout(layoutWidget);
-        gridLayout_10->setSpacing(6);
-        gridLayout_10->setContentsMargins(11, 11, 11, 11);
-        gridLayout_10->setObjectName(QStringLiteral("gridLayout_10"));
-        gridLayout_10->setContentsMargins(0, 0, 0, 0);
-        verticalLayout_2 = new QVBoxLayout();
-        verticalLayout_2->setSpacing(6);
-        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-        groupBox = new QGroupBox(layoutWidget);
-        groupBox->setObjectName(QStringLiteral("groupBox"));
-        groupBox->setFont(font3);
-        gridLayout_5 = new QGridLayout(groupBox);
-        gridLayout_5->setSpacing(6);
-        gridLayout_5->setContentsMargins(11, 11, 11, 11);
-        gridLayout_5->setObjectName(QStringLiteral("gridLayout_5"));
-        graphicsView = new hashrateCharView(groupBox);
-        graphicsView->setObjectName(QStringLiteral("graphicsView"));
-        graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-
-        gridLayout_5->addWidget(graphicsView, 0, 0, 1, 1);
-
-
-        verticalLayout_2->addWidget(groupBox);
-
-        groupBox_2 = new QGroupBox(layoutWidget);
-        groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
-        groupBox_2->setFont(font3);
-        gridLayout_6 = new QGridLayout(groupBox_2);
-        gridLayout_6->setSpacing(6);
-        gridLayout_6->setContentsMargins(11, 11, 11, 11);
-        gridLayout_6->setObjectName(QStringLiteral("gridLayout_6"));
-        graphicsViewTemp = new hashrateCharView(groupBox_2);
-        graphicsViewTemp->setObjectName(QStringLiteral("graphicsViewTemp"));
-        graphicsViewTemp->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-
-        gridLayout_6->addWidget(graphicsViewTemp, 0, 0, 1, 1);
-
-
-        verticalLayout_2->addWidget(groupBox_2);
-
-
-        gridLayout_10->addLayout(verticalLayout_2, 0, 0, 1, 1);
-
-        verticalLayout_3 = new QVBoxLayout();
-        verticalLayout_3->setSpacing(6);
-        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
-        groupBoxEffectiveness = new QGroupBox(layoutWidget);
-        groupBoxEffectiveness->setObjectName(QStringLiteral("groupBoxEffectiveness"));
-        groupBoxEffectiveness->setFont(font3);
-        gridLayout_7 = new QGridLayout(groupBoxEffectiveness);
-        gridLayout_7->setSpacing(6);
-        gridLayout_7->setContentsMargins(11, 11, 11, 11);
-        gridLayout_7->setObjectName(QStringLiteral("gridLayout_7"));
-        gridLayoutEff = new QGridLayout();
-        gridLayoutEff->setSpacing(6);
-        gridLayoutEff->setObjectName(QStringLiteral("gridLayoutEff"));
-        graphicsViewEff = new hashrateCharView(groupBoxEffectiveness);
-        graphicsViewEff->setObjectName(QStringLiteral("graphicsViewEff"));
-
-        gridLayoutEff->addWidget(graphicsViewEff, 0, 0, 1, 1);
-
-
-        gridLayout_7->addLayout(gridLayoutEff, 1, 0, 1, 1);
-
-
-        verticalLayout_3->addWidget(groupBoxEffectiveness);
-
-        groupBoxHistoryInfo = new QGroupBox(layoutWidget);
-        groupBoxHistoryInfo->setObjectName(QStringLiteral("groupBoxHistoryInfo"));
-        groupBoxHistoryInfo->setFont(font3);
-        gridLayout_8 = new QGridLayout(groupBoxHistoryInfo);
-        gridLayout_8->setSpacing(6);
-        gridLayout_8->setContentsMargins(11, 11, 11, 11);
-        gridLayout_8->setObjectName(QStringLiteral("gridLayout_8"));
-        graphicsViewHistoryInfo = new hashrateCharView(groupBoxHistoryInfo);
-        graphicsViewHistoryInfo->setObjectName(QStringLiteral("graphicsViewHistoryInfo"));
-        graphicsViewHistoryInfo->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-
-        gridLayout_8->addWidget(graphicsViewHistoryInfo, 0, 0, 1, 1);
-
-
-        verticalLayout_3->addWidget(groupBoxHistoryInfo);
-
-
-        gridLayout_10->addLayout(verticalLayout_3, 0, 1, 1, 1);
-
-        splitter->addWidget(layoutWidget);
-        splitter_2->addWidget(splitter);
-
-        gridLayout_12->addWidget(splitter_2, 9, 0, 1, 11);
-
-        checkBoxOnlyShare = new QCheckBox(centralWidget);
-        checkBoxOnlyShare->setObjectName(QStringLiteral("checkBoxOnlyShare"));
-        checkBoxOnlyShare->setFont(font3);
-
-        gridLayout_12->addWidget(checkBoxOnlyShare, 10, 0, 1, 1);
-
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setSpacing(6);
-        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        pushButtonPool = new QPushButton(centralWidget);
-        pushButtonPool->setObjectName(QStringLiteral("pushButtonPool"));
-        pushButtonPool->setEnabled(true);
-        pushButtonPool->setFont(font3);
-        pushButtonPool->setCheckable(true);
-
-        horizontalLayout_2->addWidget(pushButtonPool);
-
-        pushButtonShowHideLog = new QPushButton(centralWidget);
-        pushButtonShowHideLog->setObjectName(QStringLiteral("pushButtonShowHideLog"));
-        pushButtonShowHideLog->setFont(font3);
-        pushButtonShowHideLog->setCheckable(true);
-
-        horizontalLayout_2->addWidget(pushButtonShowHideLog);
-
-
-        gridLayout_12->addLayout(horizontalLayout_2, 10, 10, 1, 1);
-
-        textEdit = new QTextEdit(centralWidget);
-        textEdit->setObjectName(QStringLiteral("textEdit"));
-        textEdit->setFont(font3);
-        textEdit->setReadOnly(true);
-
-        gridLayout_12->addWidget(textEdit, 11, 0, 1, 11);
-
-        groupBoxPools = new QGroupBox(centralWidget);
-        groupBoxPools->setObjectName(QStringLiteral("groupBoxPools"));
-        groupBoxPools->setEnabled(true);
-        QSizePolicy sizePolicy4(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        sizePolicy4.setHorizontalStretch(0);
-        sizePolicy4.setVerticalStretch(0);
-        sizePolicy4.setHeightForWidth(groupBoxPools->sizePolicy().hasHeightForWidth());
-        groupBoxPools->setSizePolicy(sizePolicy4);
-        groupBoxPools->setFont(font3);
-        gridLayout_4 = new QGridLayout(groupBoxPools);
-        gridLayout_4->setSpacing(6);
-        gridLayout_4->setContentsMargins(11, 11, 11, 11);
-        gridLayout_4->setObjectName(QStringLiteral("gridLayout_4"));
-        lcdNumberBalance = new QLCDNumber(groupBoxPools);
-        lcdNumberBalance->setObjectName(QStringLiteral("lcdNumberBalance"));
-        lcdNumberBalance->setSmallDecimalPoint(false);
-        lcdNumberBalance->setDigitCount(12);
-
-        gridLayout_4->addWidget(lcdNumberBalance, 3, 2, 1, 1);
-
-        radioButtonDwarfPool = new QRadioButton(groupBoxPools);
-        radioButtonDwarfPool->setObjectName(QStringLiteral("radioButtonDwarfPool"));
-        radioButtonDwarfPool->setEnabled(false);
-        radioButtonDwarfPool->setFont(font3);
-
-        gridLayout_4->addWidget(radioButtonDwarfPool, 0, 4, 1, 1);
-
-        label_19 = new QLabel(groupBoxPools);
-        label_19->setObjectName(QStringLiteral("label_19"));
-        label_19->setFont(font3);
-
-        gridLayout_4->addWidget(label_19, 3, 0, 1, 1);
-
-        label_22 = new QLabel(groupBoxPools);
-        label_22->setObjectName(QStringLiteral("label_22"));
-        label_22->setFont(font3);
-
-        gridLayout_4->addWidget(label_22, 4, 4, 1, 1);
-
-        label_20 = new QLabel(groupBoxPools);
-        label_20->setObjectName(QStringLiteral("label_20"));
-        label_20->setFont(font3);
-
-        gridLayout_4->addWidget(label_20, 4, 0, 1, 1);
-
-        lcdNumberAvrgHr6H = new QLCDNumber(groupBoxPools);
-        lcdNumberAvrgHr6H->setObjectName(QStringLiteral("lcdNumberAvrgHr6H"));
-        lcdNumberAvrgHr6H->setDigitCount(6);
-
-        gridLayout_4->addWidget(lcdNumberAvrgHr6H, 4, 3, 1, 1);
-
-        radioButtonEthermine = new QRadioButton(groupBoxPools);
-        radioButtonEthermine->setObjectName(QStringLiteral("radioButtonEthermine"));
-        radioButtonEthermine->setEnabled(false);
-        radioButtonEthermine->setFont(font3);
-
-        gridLayout_4->addWidget(radioButtonEthermine, 0, 2, 1, 1);
-
-        label_21 = new QLabel(groupBoxPools);
-        label_21->setObjectName(QStringLiteral("label_21"));
-        label_21->setFont(font3);
-
-        gridLayout_4->addWidget(label_21, 4, 2, 1, 1);
-
-        lineEditAccount = new QLineEdit(groupBoxPools);
-        lineEditAccount->setObjectName(QStringLiteral("lineEditAccount"));
-        lineEditAccount->setFont(font3);
-
-        gridLayout_4->addWidget(lineEditAccount, 2, 0, 1, 5);
-
-        pushButtonDisplayPoolStats = new QPushButton(groupBoxPools);
-        pushButtonDisplayPoolStats->setObjectName(QStringLiteral("pushButtonDisplayPoolStats"));
-        pushButtonDisplayPoolStats->setFont(font3);
-
-        gridLayout_4->addWidget(pushButtonDisplayPoolStats, 2, 6, 1, 1);
-
-        lcdNumber_4 = new QLCDNumber(groupBoxPools);
-        lcdNumber_4->setObjectName(QStringLiteral("lcdNumber_4"));
-        lcdNumber_4->setDigitCount(6);
-
-        gridLayout_4->addWidget(lcdNumber_4, 4, 5, 1, 1);
-
-        radioButtonNaopool = new QRadioButton(groupBoxPools);
-        radioButtonNaopool->setObjectName(QStringLiteral("radioButtonNaopool"));
-        radioButtonNaopool->setFont(font3);
-        radioButtonNaopool->setChecked(true);
-
-        gridLayout_4->addWidget(radioButtonNaopool, 0, 0, 1, 1);
-
-        lcdNumberCalculatedHR = new QLCDNumber(groupBoxPools);
-        lcdNumberCalculatedHR->setObjectName(QStringLiteral("lcdNumberCalculatedHR"));
-        lcdNumberCalculatedHR->setDigitCount(6);
-
-        gridLayout_4->addWidget(lcdNumberCalculatedHR, 4, 1, 1, 1);
-
-
-        gridLayout_12->addWidget(groupBoxPools, 12, 0, 1, 11);
+        gridLayout_12->addWidget(splitter_4, 7, 0, 1, 13);
 
         groupBoxAMD = new QGroupBox(centralWidget);
         groupBoxAMD->setObjectName(QStringLiteral("groupBoxAMD"));
@@ -1288,15 +1077,261 @@ public:
         gridLayout_2->addWidget(lcdNumber_AMD_MaxTemp, 1, 3, 1, 1);
 
 
-        gridLayout_12->addWidget(groupBoxAMD, 8, 0, 1, 11);
+        gridLayout_12->addWidget(groupBoxAMD, 8, 0, 1, 13);
+
+        splitter_2 = new QSplitter(centralWidget);
+        splitter_2->setObjectName(QStringLiteral("splitter_2"));
+        splitter_2->setOrientation(Qt::Vertical);
+        groupBoxDevicesInfo = new QGroupBox(splitter_2);
+        groupBoxDevicesInfo->setObjectName(QStringLiteral("groupBoxDevicesInfo"));
+        groupBoxDevicesInfo->setMaximumSize(QSize(16777215, 16777127));
+        groupBoxDevicesInfo->setFont(font3);
+        gridLayout_9 = new QGridLayout(groupBoxDevicesInfo);
+        gridLayout_9->setSpacing(6);
+        gridLayout_9->setContentsMargins(11, 11, 11, 11);
+        gridLayout_9->setObjectName(QStringLiteral("gridLayout_9"));
+        gridLayoutDevicesInfo = new QGridLayout();
+        gridLayoutDevicesInfo->setSpacing(6);
+        gridLayoutDevicesInfo->setObjectName(QStringLiteral("gridLayoutDevicesInfo"));
+
+        gridLayout_9->addLayout(gridLayoutDevicesInfo, 0, 0, 1, 1);
+
+        splitter_2->addWidget(groupBoxDevicesInfo);
+        splitter = new QSplitter(splitter_2);
+        splitter->setObjectName(QStringLiteral("splitter"));
+        splitter->setOrientation(Qt::Horizontal);
+        layoutWidget = new QWidget(splitter);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        gridLayout_10 = new QGridLayout(layoutWidget);
+        gridLayout_10->setSpacing(6);
+        gridLayout_10->setContentsMargins(11, 11, 11, 11);
+        gridLayout_10->setObjectName(QStringLiteral("gridLayout_10"));
+        gridLayout_10->setContentsMargins(0, 0, 0, 0);
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        groupBox = new QGroupBox(layoutWidget);
+        groupBox->setObjectName(QStringLiteral("groupBox"));
+        groupBox->setFont(font3);
+        gridLayout_5 = new QGridLayout(groupBox);
+        gridLayout_5->setSpacing(6);
+        gridLayout_5->setContentsMargins(11, 11, 11, 11);
+        gridLayout_5->setObjectName(QStringLiteral("gridLayout_5"));
+        graphicsView = new hashrateCharView(groupBox);
+        graphicsView->setObjectName(QStringLiteral("graphicsView"));
+        graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+
+        gridLayout_5->addWidget(graphicsView, 0, 0, 1, 1);
+
+
+        verticalLayout_2->addWidget(groupBox);
+
+        groupBox_2 = new QGroupBox(layoutWidget);
+        groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
+        groupBox_2->setFont(font3);
+        gridLayout_6 = new QGridLayout(groupBox_2);
+        gridLayout_6->setSpacing(6);
+        gridLayout_6->setContentsMargins(11, 11, 11, 11);
+        gridLayout_6->setObjectName(QStringLiteral("gridLayout_6"));
+        graphicsViewTemp = new hashrateCharView(groupBox_2);
+        graphicsViewTemp->setObjectName(QStringLiteral("graphicsViewTemp"));
+        graphicsViewTemp->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+
+        gridLayout_6->addWidget(graphicsViewTemp, 0, 0, 1, 1);
+
+
+        verticalLayout_2->addWidget(groupBox_2);
+
+
+        gridLayout_10->addLayout(verticalLayout_2, 0, 0, 1, 1);
+
+        verticalLayout_3 = new QVBoxLayout();
+        verticalLayout_3->setSpacing(6);
+        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
+        groupBoxEffectiveness = new QGroupBox(layoutWidget);
+        groupBoxEffectiveness->setObjectName(QStringLiteral("groupBoxEffectiveness"));
+        groupBoxEffectiveness->setFont(font3);
+        gridLayout_7 = new QGridLayout(groupBoxEffectiveness);
+        gridLayout_7->setSpacing(6);
+        gridLayout_7->setContentsMargins(11, 11, 11, 11);
+        gridLayout_7->setObjectName(QStringLiteral("gridLayout_7"));
+        gridLayoutEff = new QGridLayout();
+        gridLayoutEff->setSpacing(6);
+        gridLayoutEff->setObjectName(QStringLiteral("gridLayoutEff"));
+        graphicsViewEff = new hashrateCharView(groupBoxEffectiveness);
+        graphicsViewEff->setObjectName(QStringLiteral("graphicsViewEff"));
+
+        gridLayoutEff->addWidget(graphicsViewEff, 0, 0, 1, 1);
+
+
+        gridLayout_7->addLayout(gridLayoutEff, 1, 0, 1, 1);
+
+
+        verticalLayout_3->addWidget(groupBoxEffectiveness);
+
+        groupBoxHistoryInfo = new QGroupBox(layoutWidget);
+        groupBoxHistoryInfo->setObjectName(QStringLiteral("groupBoxHistoryInfo"));
+        groupBoxHistoryInfo->setFont(font3);
+        gridLayout_8 = new QGridLayout(groupBoxHistoryInfo);
+        gridLayout_8->setSpacing(6);
+        gridLayout_8->setContentsMargins(11, 11, 11, 11);
+        gridLayout_8->setObjectName(QStringLiteral("gridLayout_8"));
+        graphicsViewHistoryInfo = new hashrateCharView(groupBoxHistoryInfo);
+        graphicsViewHistoryInfo->setObjectName(QStringLiteral("graphicsViewHistoryInfo"));
+        graphicsViewHistoryInfo->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+
+        gridLayout_8->addWidget(graphicsViewHistoryInfo, 0, 0, 1, 1);
+
+
+        verticalLayout_3->addWidget(groupBoxHistoryInfo);
+
+
+        gridLayout_10->addLayout(verticalLayout_3, 0, 1, 1, 1);
+
+        splitter->addWidget(layoutWidget);
+        splitter_2->addWidget(splitter);
+
+        gridLayout_12->addWidget(splitter_2, 9, 0, 1, 13);
+
+        checkBoxOnlyShare = new QCheckBox(centralWidget);
+        checkBoxOnlyShare->setObjectName(QStringLiteral("checkBoxOnlyShare"));
+        checkBoxOnlyShare->setFont(font3);
+
+        gridLayout_12->addWidget(checkBoxOnlyShare, 10, 0, 1, 1);
+
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        pushButtonPool = new QPushButton(centralWidget);
+        pushButtonPool->setObjectName(QStringLiteral("pushButtonPool"));
+        pushButtonPool->setEnabled(true);
+        pushButtonPool->setFont(font3);
+        pushButtonPool->setCheckable(true);
+
+        horizontalLayout_2->addWidget(pushButtonPool);
+
+        pushButtonShowHideLog = new QPushButton(centralWidget);
+        pushButtonShowHideLog->setObjectName(QStringLiteral("pushButtonShowHideLog"));
+        pushButtonShowHideLog->setFont(font3);
+        pushButtonShowHideLog->setCheckable(true);
+
+        horizontalLayout_2->addWidget(pushButtonShowHideLog);
+
+
+        gridLayout_12->addLayout(horizontalLayout_2, 10, 12, 1, 1);
+
+        textEdit = new QTextEdit(centralWidget);
+        textEdit->setObjectName(QStringLiteral("textEdit"));
+        textEdit->setFont(font3);
+        textEdit->setReadOnly(true);
+
+        gridLayout_12->addWidget(textEdit, 11, 0, 1, 13);
+
+        groupBoxPools = new QGroupBox(centralWidget);
+        groupBoxPools->setObjectName(QStringLiteral("groupBoxPools"));
+        groupBoxPools->setEnabled(true);
+        QSizePolicy sizePolicy4(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy4.setHorizontalStretch(0);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(groupBoxPools->sizePolicy().hasHeightForWidth());
+        groupBoxPools->setSizePolicy(sizePolicy4);
+        groupBoxPools->setFont(font3);
+        gridLayout_4 = new QGridLayout(groupBoxPools);
+        gridLayout_4->setSpacing(6);
+        gridLayout_4->setContentsMargins(11, 11, 11, 11);
+        gridLayout_4->setObjectName(QStringLiteral("gridLayout_4"));
+        lcdNumberBalance = new QLCDNumber(groupBoxPools);
+        lcdNumberBalance->setObjectName(QStringLiteral("lcdNumberBalance"));
+        lcdNumberBalance->setSmallDecimalPoint(false);
+        lcdNumberBalance->setDigitCount(12);
+
+        gridLayout_4->addWidget(lcdNumberBalance, 3, 2, 1, 1);
+
+        radioButtonDwarfPool = new QRadioButton(groupBoxPools);
+        radioButtonDwarfPool->setObjectName(QStringLiteral("radioButtonDwarfPool"));
+        radioButtonDwarfPool->setEnabled(false);
+        radioButtonDwarfPool->setFont(font3);
+
+        gridLayout_4->addWidget(radioButtonDwarfPool, 0, 4, 1, 1);
+
+        label_19 = new QLabel(groupBoxPools);
+        label_19->setObjectName(QStringLiteral("label_19"));
+        label_19->setFont(font3);
+
+        gridLayout_4->addWidget(label_19, 3, 0, 1, 1);
+
+        label_22 = new QLabel(groupBoxPools);
+        label_22->setObjectName(QStringLiteral("label_22"));
+        label_22->setFont(font3);
+
+        gridLayout_4->addWidget(label_22, 4, 4, 1, 1);
+
+        label_20 = new QLabel(groupBoxPools);
+        label_20->setObjectName(QStringLiteral("label_20"));
+        label_20->setFont(font3);
+
+        gridLayout_4->addWidget(label_20, 4, 0, 1, 1);
+
+        lcdNumberAvrgHr6H = new QLCDNumber(groupBoxPools);
+        lcdNumberAvrgHr6H->setObjectName(QStringLiteral("lcdNumberAvrgHr6H"));
+        lcdNumberAvrgHr6H->setDigitCount(6);
+
+        gridLayout_4->addWidget(lcdNumberAvrgHr6H, 4, 3, 1, 1);
+
+        radioButtonEthermine = new QRadioButton(groupBoxPools);
+        radioButtonEthermine->setObjectName(QStringLiteral("radioButtonEthermine"));
+        radioButtonEthermine->setEnabled(false);
+        radioButtonEthermine->setFont(font3);
+
+        gridLayout_4->addWidget(radioButtonEthermine, 0, 2, 1, 1);
+
+        label_21 = new QLabel(groupBoxPools);
+        label_21->setObjectName(QStringLiteral("label_21"));
+        label_21->setFont(font3);
+
+        gridLayout_4->addWidget(label_21, 4, 2, 1, 1);
+
+        lineEditAccount = new QLineEdit(groupBoxPools);
+        lineEditAccount->setObjectName(QStringLiteral("lineEditAccount"));
+        lineEditAccount->setFont(font3);
+
+        gridLayout_4->addWidget(lineEditAccount, 2, 0, 1, 5);
+
+        pushButtonDisplayPoolStats = new QPushButton(groupBoxPools);
+        pushButtonDisplayPoolStats->setObjectName(QStringLiteral("pushButtonDisplayPoolStats"));
+        pushButtonDisplayPoolStats->setFont(font3);
+
+        gridLayout_4->addWidget(pushButtonDisplayPoolStats, 2, 6, 1, 1);
+
+        lcdNumber_4 = new QLCDNumber(groupBoxPools);
+        lcdNumber_4->setObjectName(QStringLiteral("lcdNumber_4"));
+        lcdNumber_4->setDigitCount(6);
+
+        gridLayout_4->addWidget(lcdNumber_4, 4, 5, 1, 1);
+
+        radioButtonNaopool = new QRadioButton(groupBoxPools);
+        radioButtonNaopool->setObjectName(QStringLiteral("radioButtonNaopool"));
+        radioButtonNaopool->setFont(font3);
+        radioButtonNaopool->setChecked(true);
+
+        gridLayout_4->addWidget(radioButtonNaopool, 0, 0, 1, 1);
+
+        lcdNumberCalculatedHR = new QLCDNumber(groupBoxPools);
+        lcdNumberCalculatedHR->setObjectName(QStringLiteral("lcdNumberCalculatedHR"));
+        lcdNumberCalculatedHR->setDigitCount(6);
+
+        gridLayout_4->addWidget(lcdNumberCalculatedHR, 4, 1, 1, 1);
+
+
+        gridLayout_12->addWidget(groupBoxPools, 12, 0, 1, 9);
 
         MainWindow->setCentralWidget(centralWidget);
+        splitter_4->raise();
         splitter_3->raise();
         lineEditWallet->raise();
         comboBoxCore->raise();
         labelWallet->raise();
         lineEditArgs->raise();
-        groupBoxNvidia->raise();
         comboBoxPool->raise();
         textEdit->raise();
         pushButtonHelp->raise();
@@ -1320,7 +1355,11 @@ public:
         checkBoxShowHistoryInfo->raise();
         checkBoxAutoShowDeviceInfo->raise();
         pushButtonCancelAutoPage->raise();
-        groupBoxDiskInfo->raise();
+        comboBoxChangePageSize->raise();
+        spinBoxChangePageSizeMin->raise();
+        spinBoxChangePageSizeMax->raise();
+        pushButtonChangePageSize->raise();
+        labelWallet_2->raise();
 
         retranslateUi(MainWindow);
 
@@ -1367,6 +1406,8 @@ public:
         pushButtonSearchHistory->setText(QApplication::translate("MainWindow", "Display", Q_NULLPTR));
         checkBoxShowSettings->setText(QApplication::translate("MainWindow", "show settings", Q_NULLPTR));
         checkBoxAutoShowDeviceInfo->setText(QApplication::translate("MainWindow", "Show device info", Q_NULLPTR));
+        labelWallet_2->setText(QApplication::translate("MainWindow", "Page Size", Q_NULLPTR));
+        pushButtonChangePageSize->setText(QApplication::translate("MainWindow", "apply", Q_NULLPTR));
         pushButtonCancelAutoPage->setText(QApplication::translate("MainWindow", "Cancel Auto Page", Q_NULLPTR));
         groupBoxWatchdog->setTitle(QApplication::translate("MainWindow", "Watchdog options (restart miner in case of error)", Q_NULLPTR));
         label_3->setText(QApplication::translate("MainWindow", "Delay before monitoring for 0MH/s:", Q_NULLPTR));
@@ -1392,6 +1433,18 @@ public:
         label_9->setText(QApplication::translate("MainWindow", "Max Speed fan:", Q_NULLPTR));
         label_12->setText(QApplication::translate("MainWindow", "Min mem clock:", Q_NULLPTR));
         groupBoxDiskInfo->setTitle(QApplication::translate("MainWindow", "Disk Info", Q_NULLPTR));
+        groupBoxAMD->setTitle(QApplication::translate("MainWindow", "AMD", Q_NULLPTR));
+        label_25->setText(QApplication::translate("MainWindow", "Min GPU temp:", Q_NULLPTR));
+        label_26->setText(QApplication::translate("MainWindow", "Min fan speed:", Q_NULLPTR));
+        label_27->setText(QApplication::translate("MainWindow", "Max Speed fan:", Q_NULLPTR));
+        label_28->setText(QApplication::translate("MainWindow", "Max GPU clock:", Q_NULLPTR));
+        label_24->setText(QApplication::translate("MainWindow", "Max GPU temp:", Q_NULLPTR));
+        label_30->setText(QApplication::translate("MainWindow", "Max mem clock:", Q_NULLPTR));
+        label_AMD_GPUCount->setText(QApplication::translate("MainWindow", "Devices number:", Q_NULLPTR));
+        label_32->setText(QApplication::translate("MainWindow", "Max power draw:", Q_NULLPTR));
+        label_33->setText(QApplication::translate("MainWindow", "Min power draw:", Q_NULLPTR));
+        label_31->setText(QApplication::translate("MainWindow", "Min mem clock:", Q_NULLPTR));
+        label_29->setText(QApplication::translate("MainWindow", "Min GPU clock:", Q_NULLPTR));
         groupBoxDevicesInfo->setTitle(QApplication::translate("MainWindow", "Devices Info", Q_NULLPTR));
         groupBox->setTitle(QApplication::translate("MainWindow", "Hashrate chart", Q_NULLPTR));
         groupBox_2->setTitle(QApplication::translate("MainWindow", "Temperature chart", Q_NULLPTR));
@@ -1411,18 +1464,6 @@ public:
         lineEditAccount->setText(QApplication::translate("MainWindow", "0xa07A8c9975145BB5371e8b3C31ACb62ad9d0698E", Q_NULLPTR));
         pushButtonDisplayPoolStats->setText(QApplication::translate("MainWindow", "Refresh", Q_NULLPTR));
         radioButtonNaopool->setText(QApplication::translate("MainWindow", "Nanopool", Q_NULLPTR));
-        groupBoxAMD->setTitle(QApplication::translate("MainWindow", "AMD", Q_NULLPTR));
-        label_25->setText(QApplication::translate("MainWindow", "Min GPU temp:", Q_NULLPTR));
-        label_26->setText(QApplication::translate("MainWindow", "Min fan speed:", Q_NULLPTR));
-        label_27->setText(QApplication::translate("MainWindow", "Max Speed fan:", Q_NULLPTR));
-        label_28->setText(QApplication::translate("MainWindow", "Max GPU clock:", Q_NULLPTR));
-        label_24->setText(QApplication::translate("MainWindow", "Max GPU temp:", Q_NULLPTR));
-        label_30->setText(QApplication::translate("MainWindow", "Max mem clock:", Q_NULLPTR));
-        label_AMD_GPUCount->setText(QApplication::translate("MainWindow", "Devices number:", Q_NULLPTR));
-        label_32->setText(QApplication::translate("MainWindow", "Max power draw:", Q_NULLPTR));
-        label_33->setText(QApplication::translate("MainWindow", "Min power draw:", Q_NULLPTR));
-        label_31->setText(QApplication::translate("MainWindow", "Min mem clock:", Q_NULLPTR));
-        label_29->setText(QApplication::translate("MainWindow", "Min GPU clock:", Q_NULLPTR));
     } // retranslateUi
 
 };

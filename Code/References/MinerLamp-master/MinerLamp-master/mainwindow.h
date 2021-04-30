@@ -122,6 +122,7 @@ private slots:
     void on_checkBoxHistoryMiningInfoOverall_clicked(bool clicked);
     void on_checkBoxShowSettings_clicked(bool clickes);
     void on_pushButtonCancelAutoPage_clicked();
+    void on_pushButtonChangePageSize_clicked();
 
     void refreshDeviceInfo();
     void onGpusInfoRecieved(QList<GPUInfo> gpusinfo);
