@@ -113,7 +113,6 @@ private slots:
     void on_spinBoxDelay0MHs_valueChanged(int arg1);
     void onReadyToStartMiner();
     void on_checkBoxAutoShowDeviceInfo_clicked(bool checked);
-    void on_checkBoxShowHistoryInfo_clicked(bool checked);
     void on_pushButtonSearchHistory_clicked();
     void on_dateTimeEditHistoryStartTime_dateTimeChanged(const QDateTime &datetime);
     void on_dateTimeEditHistoryEndTime_dateTimeChanged(const QDateTime &datetime);
@@ -123,6 +122,9 @@ private slots:
     void on_checkBoxShowSettings_clicked(bool clickes);
     void on_pushButtonCancelAutoPage_clicked();
     void on_pushButtonChangePageSize_clicked();
+    void on_pushButtonMonitorPage_Overview_clicked();
+    void on_pushButtonMonitorPage_Mining_clicked();
+    void on_pushButtonMonitorPage_System_clicked();
 
     void refreshDeviceInfo();
     void onGpusInfoRecieved(QList<GPUInfo> gpusinfo);

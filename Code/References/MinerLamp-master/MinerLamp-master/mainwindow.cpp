@@ -340,12 +340,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     initializeConstants();
-    ui->graphicsViewHistoryInfo->hide();
-    ui->dateTimeEditHistoryStartTime->hide();
-    ui->dateTimeEditHistoryEndTime->hide();
-    ui->pushButtonSearchHistory->hide();
-    ui->spinBoxHistoryDeviceNum->hide();
-    ui->labelHistoryDeviceNum->hide();
     ui->checkBoxHistoryMiningInfoOverall->hide();
     ui->comboBoxHistoryDataOption->hide();
 
@@ -1565,26 +1559,6 @@ void MainWindow::plotGrapgh(QString dateStart, QString dateEnd, int deviceNum){
 
 }
 
-void MainWindow::on_checkBoxShowHistoryInfo_clicked(bool clicked){
-    ui->dateTimeEditHistoryStartTime->setVisible(clicked);
-    ui->dateTimeEditHistoryEndTime->setVisible(clicked);
-    ui->pushButtonSearchHistory->setVisible(clicked);
-    ui->spinBoxHistoryDeviceNum->setVisible(clicked);
-    ui->labelHistoryDeviceNum->setVisible(clicked);
-    ui->comboBoxHistoryDataOption->setVisible(clicked);
-    ui->checkBoxHistoryMiningInfoOverall->setVisible(clicked);
-    _searchHistoryMiningOverall = false;
-
-    // index 0 stands for GPUs information
-    if(ui->comboBoxHistoryDataOption->currentIndex()==0){
-        ui->checkBoxHistoryMiningInfoOverall->hide();
-    }
-
-    if(clicked == false){
-        ui->graphicsViewHistoryInfo->hide();
-    }
-}
-
 void MainWindow::on_pushButtonSearchHistory_clicked(){
     ui->pushButtonSearchHistory->hide();
     //qDebug() << "search time: " << ui->dateTimeEditHistoryStartTime->text() << " ->" << ui->dateTimeEditHistoryEndTime->text()
@@ -1693,4 +1667,15 @@ void MainWindow::on_pushButtonChangePageSize_clicked(){
                 QString::number(ui->spinBoxChangePageSizeMax->value()),
                 QString::number(ui->spinBoxChangePageSizeMin->value())
                 );
+}
+
+void MainWindow::on_pushButtonMonitorPage_Overview_clicked(){
+    ui->stackedWidgeMonitorMain->setCurrentIndex(0);
+}
+
+void MainWindow::on_pushButtonMonitorPage_Mining_clicked(){
+    ui->stackedWidgeMonitorMain->setCurrentIndex(1);
+}
+void MainWindow::on_pushButtonMonitorPage_System_clicked(){
+    ui->stackedWidgeMonitorMain->setCurrentIndex(2);
 }
