@@ -1263,7 +1263,8 @@ void MainWindow::refreshDeviceInfo()
 
     Wincmd wincmd;
     vector<vector<QString>> localDisks = wincmd.LocalDisk();
-    int diskNum = localDisks.size();
+    int diskNum = localDisks.at(0).size();
+    qDebug() << "total size: " << diskNum;
 
     // refresh combobox for change page size
     if(diskNum != _diskCount){
@@ -1303,6 +1304,7 @@ void MainWindow::refreshDeviceInfo()
     }
     else if(diskNum > _diskCount){
         for(int i = _diskCount; i <= diskNum-1; i++){
+            qDebug() << "adding extra";
             QWidget * parentWidget = new QWidget();
             QHBoxLayout * row = new QHBoxLayout(parentWidget);
             QLabel * diskNameLabel = new QLabel();
@@ -1356,8 +1358,14 @@ void MainWindow::refreshDeviceInfo()
             QStringList info = storageInfo.split('/');
             int free = info.at(0).toInt();
             int total = info.at(1).toInt();
-            qDebug() << diskName << ": " << free*100/total;
-            castprogressbar->setValue(free*100/total);
+            int result;
+            if(total == 0){
+                result = 0;
+            }
+            else{
+                result = free*100/total;
+            }
+            castprogressbar->setValue(result);
             castprogressbar->setFormat(storageInfo);
         }
 
