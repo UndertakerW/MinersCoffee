@@ -218,6 +218,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     ui->graphicsView->setChart(_chart);
+    _chart->setMargins(QMargins(0,0,0,0));
 
     // graph will be drawn every time interval
     connect(&_hrChartTimer, &QTimer::timeout, this, &MainWindow::onHrChartTimer);
@@ -299,9 +300,9 @@ MainWindow::MainWindow(QWidget *parent) :
     _areaseriesTemp->attachAxis(_axisXTemp);
     _axisXTemp->setRange(QDateTime::currentDateTime(), QDateTime::currentDateTime().addSecs(10));
 
-
     ui->graphicsViewTemp->setChart(_chartTemp);
-    ui->graphicsView->setRenderHint(QPainter::Antialiasing);
+//    ui->graphicsView->setRenderHint(QPainter::Antialiasing);
+    _chartTemp->setBackgroundRoundness(0);
 
     // graph will be drawn every time interval
     connect(&_tempChartTimer, &QTimer::timeout, this, &MainWindow::onTempChartTimer);
@@ -1414,17 +1415,6 @@ void MainWindow::initializePieChart(){
 
     _effPieChart->addSeries(_effPieSeries);
 
-    // pay attention to memory leak
-    _effCenterLabel = new QLabel(ui->graphicsViewEff);
-    _effCenterLabel->setVisible(true);
-    _effCenterLabel->setText("num%");
-    QFont font = _effCenterLabel->font();
-    font.setBold(true);
-    font.setPointSize(20);
-    _effCenterLabel->setFont(font);
-    _effCenterLabel->setStyleSheet("QLabel { background-color : rgba(255, 0, 0, 0); color : blue;}");
-    ui->gridLayoutEff->addWidget(_effCenterLabel, 0, 0, Qt::AlignCenter);
-
     connect(_effPieSeries, &QPieSeries::hovered, this, &MainWindow::onMouseHoverSlice);
 
 //    _effPieChart->layout()->setContentsMargins(0,0,0,0);
@@ -1432,8 +1422,7 @@ void MainWindow::initializePieChart(){
     _effPieChart->setBackgroundRoundness(0);
 
     ui->graphicsViewEff->setChart(_effPieChart, 1);
-    ui->gridLayoutEff->layout()->setMargin(0);
-    ui->graphicsViewEff->setPieCenterLabel(_effCenterLabel);
+    _effPieChart->setMargins(QMargins(0,0,0,0));
 
 //    connect(ui->graphicsViewEff, &hashrateCharView::resizeEvent, this, &MainWindow::resizePieEffLabel);
 

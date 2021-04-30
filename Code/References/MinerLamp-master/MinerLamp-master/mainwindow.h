@@ -272,7 +272,6 @@ private:
     QChart* _effPieChart;
     QPieSeries * _effPieSeries;
     QList<QPieSlice *> * _effPieSlices;
-    QLabel * _effCenterLabel;
 
     QTimer _hrChartTimer;
     QTimer _tempChartTimer;
