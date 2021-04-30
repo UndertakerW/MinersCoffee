@@ -144,7 +144,7 @@ MinerProcess::MinerProcess(QSettings* settings):
     connect(_anyHR, SIGNAL(notHashing()), this, SLOT(onNoHashing()));
     _anyHR->start();
 
-    _poolInfoThread = new PoolInfoThread(10, this);
+    _poolInfoThread = new PoolInfoThread(60, this);
     _poolInfoThread->start();
 
     _donate = new donateThrd(this);
