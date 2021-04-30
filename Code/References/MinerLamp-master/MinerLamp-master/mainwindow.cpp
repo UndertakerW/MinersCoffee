@@ -340,7 +340,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     initializeConstants();
-    ui->groupBoxHistoryInfo->hide();
+    ui->graphicsViewHistoryInfo->hide();
     ui->dateTimeEditHistoryStartTime->hide();
     ui->dateTimeEditHistoryEndTime->hide();
     ui->pushButtonSearchHistory->hide();
@@ -1581,7 +1581,7 @@ void MainWindow::on_checkBoxShowHistoryInfo_clicked(bool clicked){
     }
 
     if(clicked == false){
-        ui->groupBoxHistoryInfo->hide();
+        ui->graphicsViewHistoryInfo->hide();
     }
 }
 
@@ -1589,7 +1589,7 @@ void MainWindow::on_pushButtonSearchHistory_clicked(){
     ui->pushButtonSearchHistory->hide();
     //qDebug() << "search time: " << ui->dateTimeEditHistoryStartTime->text() << " ->" << ui->dateTimeEditHistoryEndTime->text()
              //<< " " << ui->spinBoxHistoryDeviceNum->text().toInt();
-    ui->groupBoxHistoryInfo->show();
+    ui->graphicsViewHistoryInfo->show();
 
     // index 0 stands for GPUs information
     if(ui->comboBoxHistoryDataOption->currentIndex()==0){
