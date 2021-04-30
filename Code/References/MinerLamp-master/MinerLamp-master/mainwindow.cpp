@@ -68,6 +68,7 @@ MainWindow::MainWindow(QWidget *parent) :
     _process = new MinerProcess(_settings);
     _gpusinfo = new QList<GPUInfo>();
     _miningInfo = new MiningInfo();
+    _poolInfo = new PoolInfo();
     _gpuInfoList = new QList<QWidget * >();
     _diskInfoList = new QList<QWidget * >();
     _databaseProcess = new Database();
@@ -87,7 +88,12 @@ MainWindow::MainWindow(QWidget *parent) :
 
     qRegisterMetaType<MiningInfo>("MiningInfo");
     // update miningInfo
-    connect(_process, &MinerProcess::emitMiningInfo, this, &MainWindow::onRecievedMiningInfo);
+    connect(_process, &MinerProcess::emitMiningInfo, this, &MainWindow::onReceivedMiningInfo);
+
+    qRegisterMetaType<PoolInfo>("PoolInfo");
+    qRegisterMetaType<QList<PoolInfo>>("QList<PoolInfo>");
+    // update poolInfos
+    connect(_process, &MinerProcess::emitPoolInfo, this, &MainWindow::onReceivedPoolInfo);
 
 
 
@@ -710,50 +716,46 @@ void MainWindow::on_pushButton_clicked()
         if(!_isMinerRunning)
         {
 
-            Core* current_core;
-            Coin* current_coin;
-            Pool* current_pool;
-
             if (!map_cores.contains(ui->comboBoxCore->currentText()))
             {
                 // default core
-                current_core = map_cores["NBMiner"];
+                _current_core = map_cores["NBMiner"];
             }
             else
             {
-                current_core = map_cores[ui->comboBoxCore->currentText()];
+                _current_core = map_cores[ui->comboBoxCore->currentText()];
             }
 
             if (!map_coins.contains(ui->comboBoxCoin->currentText()))
             {
                 // default coin
-                current_coin = map_coins["ETH"];
+                _current_coin = map_coins["ETH"];
             }
             else
             {
-                current_coin = map_coins[ui->comboBoxCoin->currentText()];
+                _current_coin = map_coins[ui->comboBoxCoin->currentText()];
             }
 
             if (!map_pools.contains(ui->comboBoxPool->currentText()))
             {
                 // default pool
-                current_pool = map_pools["sparkpool"];
+                _current_pool = map_pools["sparkpool"];
             }
             else
             {
-                current_pool = map_pools[ui->comboBoxPool->currentText()];
+                _current_pool = map_pools[ui->comboBoxPool->currentText()];
             }
 
 
 
 
-            QString core_path = QCoreApplication::applicationDirPath() + current_core->path;
-            QString core_args = current_core->cmds[current_coin].arg(
-                        current_pool->cmds[current_coin]).arg(ui->lineEditWallet->text()).arg(ui->lineEditWorker->text());
+            QString core_path = QCoreApplication::applicationDirPath() + _current_core->path;
+            QString core_args = _current_core->cmds[_current_coin].arg(
+                        _current_pool->cmds[_current_coin]).arg(ui->lineEditWallet->text()).arg(ui->lineEditWorker->text());
 
             //qDebug() << core_path << core_args << endl;
 
-            _process->SetAPI(current_core);
+            _process->SetAPI(_current_core);
             _process->setMax0MHs(ui->spinBoxMax0MHs->value());
             _process->setRestartDelay(ui->spinBoxDelay->value());
             _process->setRestartOption(ui->groupBoxWatchdog->isChecked());
@@ -1478,7 +1480,8 @@ bool MainWindow::getMinerStatus()
 *  = 999 stands for display overall mingInfo
 *  = negative_number stands for display miningInfo of device# -(negative_number+1)
 */
-void MainWindow::plotGrapgh(QString dateStart, QString dateEnd, int deviceNum){
+void MainWindow::plotGrapgh(QString dateStart, QString dateEnd, int deviceNum)
+{
     static bool setGraph = false;
 
     if(!setGraph){
@@ -1568,7 +1571,8 @@ void MainWindow::plotGrapgh(QString dateStart, QString dateEnd, int deviceNum){
 
 }
 
-void MainWindow::on_checkBoxShowHistoryInfo_clicked(bool clicked){
+void MainWindow::on_checkBoxShowHistoryInfo_clicked(bool clicked)
+{
     ui->dateTimeEditHistoryStartTime->setVisible(clicked);
     ui->dateTimeEditHistoryEndTime->setVisible(clicked);
     ui->pushButtonSearchHistory->setVisible(clicked);
@@ -1588,7 +1592,8 @@ void MainWindow::on_checkBoxShowHistoryInfo_clicked(bool clicked){
     }
 }
 
-void MainWindow::on_pushButtonSearchHistory_clicked(){
+void MainWindow::on_pushButtonSearchHistory_clicked()
+{
     ui->pushButtonSearchHistory->hide();
     //qDebug() << "search time: " << ui->dateTimeEditHistoryStartTime->text() << " ->" << ui->dateTimeEditHistoryEndTime->text()
              //<< " " << ui->spinBoxHistoryDeviceNum->text().toInt();
@@ -1615,25 +1620,29 @@ void MainWindow::on_pushButtonSearchHistory_clicked(){
 
 }
 
-void MainWindow::on_dateTimeEditHistoryStartTime_dateTimeChanged(const QDateTime &datetime){
+void MainWindow::on_dateTimeEditHistoryStartTime_dateTimeChanged(const QDateTime &datetime)
+{
     if(ui->dateTimeEditHistoryStartTime->isVisible()){
         ui->pushButtonSearchHistory->show();
     }
 }
 
-void MainWindow::on_dateTimeEditHistoryEndTime_dateTimeChanged(const QDateTime &datetime){
+void MainWindow::on_dateTimeEditHistoryEndTime_dateTimeChanged(const QDateTime &datetime)
+{
     if(ui->dateTimeEditHistoryEndTime->isVisible()){
         ui->pushButtonSearchHistory->show();
     }
 }
 
-void MainWindow::on_spinBoxHistoryDeviceNum_valueChanged(int arg1){
+void MainWindow::on_spinBoxHistoryDeviceNum_valueChanged(int arg1)
+{
     if(ui->spinBoxHistoryDeviceNum->isVisible()){
         ui->pushButtonSearchHistory->show();
     }
 }
 
-void MainWindow::onRecievedMiningInfo(MiningInfo miningInfo){
+void MainWindow::onReceivedMiningInfo(MiningInfo miningInfo)
+{
     //qDebug() << "recieving mingInfo signal";
     _miningInfo->latency = miningInfo.latency;
     _miningInfo->gpuMiningInfos = miningInfo.gpuMiningInfos;
@@ -1641,9 +1650,48 @@ void MainWindow::onRecievedMiningInfo(MiningInfo miningInfo){
     _miningInfo->accepted_shares = miningInfo.accepted_shares;
     _miningInfo->rejected_shares = miningInfo.rejected_shares;
     //qDebug() << "saving changes";
+    EstimateOutput();
 }
 
-void MainWindow::on_comboBoxHistoryDataOption_currentIndexChanged(int index){
+void MainWindow::EstimateOutput()
+{
+    if (_miningInfo == nullptr || _poolInfo == nullptr)
+        return;
+
+    float total_hashrate = 0;
+    for (GPUMiningInfo gpuMiningInfo : qAsConst(_miningInfo->gpuMiningInfos))
+    {
+        total_hashrate += gpuMiningInfo.hashrate;
+    }
+    _est_output_coin = total_hashrate / _poolInfo->incomeHashrate * _poolInfo->meanIncome24h;
+    _est_output_cny = _est_output_coin * _poolInfo->cny;
+    _est_output_usd = _est_output_coin * _poolInfo->usd;
+
+    //qDebug() << total_hashrate << _poolInfo->incomeHashrate << _poolInfo->meanIncome24h << _est_output_coin << _est_output_cny << _est_output_usd;
+}
+
+void MainWindow::onReceivedPoolInfo(QList<PoolInfo> poolInfos)
+{
+    if (_current_coin == nullptr){
+        return;
+    }
+    for (const PoolInfo &poolInfo : poolInfos)
+    {
+        if (_current_coin->name == poolInfo.currency)
+        {
+            _poolInfo->pool_name = poolInfo.pool_name;
+            _poolInfo->currency = poolInfo.currency;
+            _poolInfo->income = poolInfo.income;
+            _poolInfo->meanIncome24h = poolInfo.meanIncome24h;
+            _poolInfo->incomeHashrate = poolInfo.incomeHashrate;
+            _poolInfo->usd = poolInfo.usd;
+            _poolInfo->cny = poolInfo.cny;
+        }
+    }
+}
+
+void MainWindow::on_comboBoxHistoryDataOption_currentIndexChanged(int index)
+{
     //qDebug() << "index changed: " << index;
     // index: 0 GPUs information
     //        1 mining information
@@ -1661,14 +1709,16 @@ void MainWindow::on_comboBoxHistoryDataOption_currentIndexChanged(int index){
     }
 }
 
-void MainWindow::on_checkBoxHistoryMiningInfoOverall_clicked(bool clicked){
+void MainWindow::on_checkBoxHistoryMiningInfoOverall_clicked(bool clicked)
+{
     ui->spinBoxHistoryDeviceNum->setVisible(!clicked);
     ui->labelHistoryDeviceNum->setVisible(!clicked);
     ui->pushButtonSearchHistory->show();
     _searchHistoryMiningOverall = clicked;
 }
 
-void MainWindow::on_checkBoxShowSettings_clicked(bool clicked){
+void MainWindow::on_checkBoxShowSettings_clicked(bool clicked)
+{
     if(clicked){
         Wincmd wincmd;
         ui->textEditSettings->setText((wincmd.SeeSetting()));
@@ -1678,13 +1728,15 @@ void MainWindow::on_checkBoxShowSettings_clicked(bool clicked){
 
 }
 
-void MainWindow::on_pushButtonCancelAutoPage_clicked(){
+void MainWindow::on_pushButtonCancelAutoPage_clicked()
+{
     Wincmd wincmd;
     wincmd.AutoManagePage();
     qDebug() << "auto page clicked";
 }
 
-void MainWindow::on_pushButtonChangePageSize_clicked(){
+void MainWindow::on_pushButtonChangePageSize_clicked()
+{
     qDebug() << "change page size: "
              << ui->comboBoxChangePageSize->currentText()
              << QString::number(ui->spinBoxChangePageSizeMax->value())

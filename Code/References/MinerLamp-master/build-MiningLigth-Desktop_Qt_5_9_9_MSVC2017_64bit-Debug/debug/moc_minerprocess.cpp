@@ -9,6 +9,7 @@
 #include "../../MinerLamp-master/minerprocess.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
+#include <QtCore/QList>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'minerprocess.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
@@ -363,8 +364,8 @@ int PoolInfoThread::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 struct qt_meta_stringdata_MinerProcess_t {
-    QByteArrayData data[17];
-    char stringdata0[201];
+    QByteArrayData data[21];
+    char stringdata0[256];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -384,20 +385,25 @@ QT_MOC_LITERAL(7, 68, 9), // "emitError"
 QT_MOC_LITERAL(8, 78, 14), // "emitMiningInfo"
 QT_MOC_LITERAL(9, 93, 10), // "MiningInfo"
 QT_MOC_LITERAL(10, 104, 8), // "mingInfo"
-QT_MOC_LITERAL(11, 113, 16), // "onReadyToMonitor"
-QT_MOC_LITERAL(12, 130, 11), // "onNoHashing"
-QT_MOC_LITERAL(13, 142, 8), // "onDonate"
-QT_MOC_LITERAL(14, 151, 14), // "onBackToNormal"
-QT_MOC_LITERAL(15, 166, 16), // "onReadyToRestart"
-QT_MOC_LITERAL(16, 183, 17) // "refreshMiningInfo"
+QT_MOC_LITERAL(11, 113, 12), // "emitPoolInfo"
+QT_MOC_LITERAL(12, 126, 15), // "QList<PoolInfo>"
+QT_MOC_LITERAL(13, 142, 9), // "poolInfos"
+QT_MOC_LITERAL(14, 152, 16), // "onReadyToMonitor"
+QT_MOC_LITERAL(15, 169, 11), // "onNoHashing"
+QT_MOC_LITERAL(16, 181, 8), // "onDonate"
+QT_MOC_LITERAL(17, 190, 14), // "onBackToNormal"
+QT_MOC_LITERAL(18, 205, 16), // "onReadyToRestart"
+QT_MOC_LITERAL(19, 222, 17), // "refreshMiningInfo"
+QT_MOC_LITERAL(20, 240, 15) // "refreshPoolInfo"
 
     },
     "MinerProcess\0emitStarted\0\0emitStoped\0"
     "emitHashRate\0QString&\0hashrate\0emitError\0"
     "emitMiningInfo\0MiningInfo\0mingInfo\0"
+    "emitPoolInfo\0QList<PoolInfo>\0poolInfos\0"
     "onReadyToMonitor\0onNoHashing\0onDonate\0"
     "onBackToNormal\0onReadyToRestart\0"
-    "refreshMiningInfo"
+    "refreshMiningInfo\0refreshPoolInfo"
 };
 #undef QT_MOC_LITERAL
 
@@ -407,27 +413,29 @@ static const uint qt_meta_data_MinerProcess[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      11,   14, // methods
+      13,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       5,       // signalCount
+       6,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   69,    2, 0x06 /* Public */,
-       3,    0,   70,    2, 0x06 /* Public */,
-       4,    1,   71,    2, 0x06 /* Public */,
-       7,    0,   74,    2, 0x06 /* Public */,
-       8,    1,   75,    2, 0x06 /* Public */,
+       1,    0,   79,    2, 0x06 /* Public */,
+       3,    0,   80,    2, 0x06 /* Public */,
+       4,    1,   81,    2, 0x06 /* Public */,
+       7,    0,   84,    2, 0x06 /* Public */,
+       8,    1,   85,    2, 0x06 /* Public */,
+      11,    1,   88,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-      11,    0,   78,    2, 0x0a /* Public */,
-      12,    0,   79,    2, 0x0a /* Public */,
-      13,    0,   80,    2, 0x0a /* Public */,
-      14,    0,   81,    2, 0x0a /* Public */,
-      15,    0,   82,    2, 0x0a /* Public */,
-      16,    0,   83,    2, 0x0a /* Public */,
+      14,    0,   91,    2, 0x0a /* Public */,
+      15,    0,   92,    2, 0x0a /* Public */,
+      16,    0,   93,    2, 0x0a /* Public */,
+      17,    0,   94,    2, 0x0a /* Public */,
+      18,    0,   95,    2, 0x0a /* Public */,
+      19,    0,   96,    2, 0x0a /* Public */,
+      20,    0,   97,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void,
@@ -435,8 +443,10 @@ static const uint qt_meta_data_MinerProcess[] = {
     QMetaType::Void, 0x80000000 | 5,    6,
     QMetaType::Void,
     QMetaType::Void, 0x80000000 | 9,   10,
+    QMetaType::Void, 0x80000000 | 12,   13,
 
  // slots: parameters
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -458,12 +468,14 @@ void MinerProcess::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 2: _t->emitHashRate((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 3: _t->emitError(); break;
         case 4: _t->emitMiningInfo((*reinterpret_cast< MiningInfo(*)>(_a[1]))); break;
-        case 5: _t->onReadyToMonitor(); break;
-        case 6: _t->onNoHashing(); break;
-        case 7: _t->onDonate(); break;
-        case 8: _t->onBackToNormal(); break;
-        case 9: _t->onReadyToRestart(); break;
-        case 10: _t->refreshMiningInfo(); break;
+        case 5: _t->emitPoolInfo((*reinterpret_cast< QList<PoolInfo>(*)>(_a[1]))); break;
+        case 6: _t->onReadyToMonitor(); break;
+        case 7: _t->onNoHashing(); break;
+        case 8: _t->onDonate(); break;
+        case 9: _t->onBackToNormal(); break;
+        case 10: _t->onReadyToRestart(); break;
+        case 11: _t->refreshMiningInfo(); break;
+        case 12: _t->refreshPoolInfo(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -503,6 +515,13 @@ void MinerProcess::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
                 return;
             }
         }
+        {
+            typedef void (MinerProcess::*_t)(QList<PoolInfo> );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&MinerProcess::emitPoolInfo)) {
+                *result = 5;
+                return;
+            }
+        }
     }
 }
 
@@ -531,13 +550,13 @@ int MinerProcess::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 11)
+        if (_id < 13)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 11;
+        _id -= 13;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 11)
+        if (_id < 13)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 11;
+        _id -= 13;
     }
     return _id;
 }
@@ -572,6 +591,13 @@ void MinerProcess::emitMiningInfo(MiningInfo _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 4, _a);
+}
+
+// SIGNAL 5
+void MinerProcess::emitPoolInfo(QList<PoolInfo> _t1)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 5, _a);
 }
 struct qt_meta_stringdata_donateThrd_t {
     QByteArrayData data[4];

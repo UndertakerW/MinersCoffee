@@ -7,7 +7,7 @@ static QString path_nbminer = "/cores/NBMiner_Win_37.1/nbminer.exe";
 
 static QString eth_ethermine = "ethproxy+tcp://asia1.ethermine.org:4444";
 
-static QString eth_sparkpool = "ethproxy+tcp://cn.sparkpool.com:3333";
+static QString eth_sparkpool = "ethproxy+tcp://cn.sparkpool.com:13333";
 
 static QString eth_f2pool = "ethproxy+tcp://eth.f2pool.com:8008";
 

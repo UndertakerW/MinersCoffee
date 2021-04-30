@@ -221,7 +221,10 @@ private:
     void onMinerStoped();
     void onHashrate(QString& hashrate);
     void onError();
-    void onRecievedMiningInfo(MiningInfo mingInfo);
+    void onReceivedMiningInfo(MiningInfo miningInfo);
+    void onReceivedPoolInfo(QList<PoolInfo> poolInfos);
+
+    void EstimateOutput();
 
     const QColor getTempColor(unsigned int temp);
 
@@ -231,6 +234,7 @@ private:
     QIcon*       _icon;
     QList<GPUInfo>* _gpusinfo;
     MiningInfo* _miningInfo;
+    PoolInfo* _poolInfo;
     Database * _databaseProcess;
 
     bool _isMinerRunning;
@@ -294,6 +298,14 @@ private:
     amdMonitorThrd* _amdMonitorThrd;
 
     nanopoolAPI* _nano;
+
+    Core* _current_core = nullptr;
+    Coin* _current_coin = nullptr;
+    Pool* _current_pool = nullptr;
+
+    float _est_output_usd;
+    float _est_output_cny;
+    float _est_output_coin;
 
 };
 

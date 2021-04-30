@@ -191,7 +191,7 @@ void nvOCDialog::on_checkBoxAutoSpeedFan_clicked(bool checked)
 }
 
 void nvOCDialog::on_spinBoxTemperature_valueChanged(int value){
-    qDebug() << "testing " << value << endl;
+    //qDebug() << "testing " << value << endl;
     unsigned gpu = (unsigned) ui->comboBoxDevice->currentIndex();
     unsigned int temp_limit = (unsigned) value;
     _nvapi->setTempLimitOffset(gpu, temp_limit);
@@ -206,7 +206,7 @@ void nvOCDialog::on_spinBoxTemperature_valueChanged(int value){
 
 
 void nvOCDialog::on_checkBoxAutoOC_clicked(bool clicked){
-    qDebug() << "test auto oc cliked: " << clicked << endl;
+    //qDebug() << "test auto oc cliked: " << clicked << endl;
     if(clicked){
         int gpu = ui->comboBoxDevice->currentIndex();
         ui->spinBoxTemperature->setValue(80);

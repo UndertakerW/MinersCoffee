@@ -31,7 +31,7 @@ void PoolInfoThread::run()
 {
     while(1)
     {
-        _pParent->getPoolStatus();
+        _pParent->refreshPoolInfo();
 
         QThread::sleep(refresh_rate);
     }
@@ -69,7 +69,6 @@ void anyMHsWaitter::run()
         }
 
         _pParent->refreshMiningInfo();
-        _pParent->getPoolStatus();
 
         QThread::sleep(refresh_rate);
 
@@ -145,7 +144,7 @@ MinerProcess::MinerProcess(QSettings* settings):
     connect(_anyHR, SIGNAL(notHashing()), this, SLOT(onNoHashing()));
     _anyHR->start();
 
-    _poolInfoThread = new PoolInfoThread(60, this);
+    _poolInfoThread = new PoolInfoThread(10, this);
     _poolInfoThread->start();
 
     _donate = new donateThrd(this);
@@ -532,4 +531,9 @@ void MinerProcess::refreshMiningInfo(){
     MiningInfo mingInfo = getStatus();
     emit emitMiningInfo(mingInfo);
     //qDebug() << "sending mingInfo signal";
+}
+
+void MinerProcess::refreshPoolInfo(){
+    QList<PoolInfo> poolInfos = getPoolStatus();
+    emit emitPoolInfo(poolInfos);
 }

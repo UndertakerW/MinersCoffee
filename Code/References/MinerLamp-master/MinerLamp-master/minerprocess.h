@@ -187,6 +187,7 @@ public slots:
     void onBackToNormal();
     void onReadyToRestart();
     void refreshMiningInfo();
+    void refreshPoolInfo();
 
 signals:
 
@@ -195,6 +196,7 @@ signals:
     void emitHashRate(QString& hashrate);
     void emitError();
     void emitMiningInfo(MiningInfo mingInfo);
+    void emitPoolInfo(QList<PoolInfo> poolInfos);
 
 };
 
