@@ -82,8 +82,7 @@ RESOURCES += \
 
 
 win32: LIBS += -L'C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1/lib/x64/' -lnvml \
-                $$PWD/lib/libmysql.lib \
-                -luser32
+                $$PWD/lib/libmysql.lib
 
 INCLUDEPATH += 'C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1/include'
 DEPENDPATH += 'C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1/include'

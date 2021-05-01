@@ -131,7 +131,6 @@ private slots:
     void on_pushButtonOCPage_clicked();
     void on_pushButtonHelpPage_clicked();
     void on_checkBoxHelpPage_clicked(bool clicked);
-    void on_pushButtonMainWindowFull_clicked(bool checked);
 
     void refreshDeviceInfo();
     void onGpusInfoRecieved(QList<GPUInfo> gpusinfo);

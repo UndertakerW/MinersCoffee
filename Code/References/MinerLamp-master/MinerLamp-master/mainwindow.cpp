@@ -28,7 +28,6 @@
 #include <QGraphicsEffect>
 #include <QAreaSeries>
 #include <QProgressBar>
-#include <Winuser.h>
 #include <QDir>
 #include <QFileInfo>
 #include <QStorageInfo>
@@ -74,25 +73,6 @@ MainWindow::MainWindow(QWidget *parent) :
     _databaseProcess->start();
 
     ui->setupUi(this);
-
-    // close window hint and use customize buttons
-    // the full button will be implement at on_pushButtonMainWindowFull_clicked(bool checked)
-    int aElements[2] = {COLOR_WINDOW, COLOR_ACTIVECAPTION};
-    DWORD aOldColors[2];
-    DWORD aNewColors[2];
-
-    aOldColors[0] = GetSysColor(aElements[0]);
-    aOldColors[1] = GetSysColor(aElements[1]);
-    aNewColors[0] = RGB(0x80, 0x80, 0x80);  // light gray
-    aNewColors[1] = RGB(0x80, 0x00, 0x80);  // dark purple
-
-    qDebug() <<"testing this";
-    SetSysColors(2, aElements, aNewColors);
-//    SetSysColors(2, aElements, aOldColors);
-    qDebug() <<"after testing this";
-
-    connect(ui->pushButtonMainWindowHide, &QPushButton::clicked, this, &QWidget::hide);
-    connect(ui->pushButtonMainWindowClose, &QPushButton::clicked, this, &QWidget::close);
 
     _helpPage = new HelpPage(_settings,
                              ui->checkBoxHelpPage,
@@ -1973,17 +1953,4 @@ void MainWindow::on_checkBoxAutoOC_clicked(bool clicked){
 
         saveConfig();
     }
-}
-
-void MainWindow::on_pushButtonMainWindowFull_clicked(bool checked){
-    static bool isMax = false;
-
-    if(!isMax){
-        this->showMaximized();
-    }
-    else{
-        this->showNormal();
-    }
-
-    isMax = !isMax;
 }
