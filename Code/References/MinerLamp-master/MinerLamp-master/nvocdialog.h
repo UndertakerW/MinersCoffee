@@ -8,15 +8,7 @@
 #include "nvidiaapi.h"
 #include "database.h"
 #include <QSettings>
-
-
-struct nvCard
-{
-    int powerOffset;
-    int memOffset;
-    int gpuOffset;
-    int fanSpeed;
-};
+#include "structures.h"
 
 namespace Ui {
 class nvOCDialog;

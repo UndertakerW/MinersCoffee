@@ -28,7 +28,7 @@
 #include <QGraphicsEffect>
 #include <QAreaSeries>
 #include <QProgressBar>
-
+#include <Winuser.h>
 #include <QDir>
 #include <QFileInfo>
 #include <QStorageInfo>
@@ -74,6 +74,26 @@ MainWindow::MainWindow(QWidget *parent) :
     _databaseProcess->start();
 
     ui->setupUi(this);
+
+    // close window hint and use customize buttons
+    // the full button will be implement at on_pushButtonMainWindowFull_clicked(bool checked)
+    int aElements[2] = {COLOR_WINDOW, COLOR_ACTIVECAPTION};
+    DWORD aOldColors[2];
+    DWORD aNewColors[2];
+
+    aOldColors[0] = GetSysColor(aElements[0]);
+    aOldColors[1] = GetSysColor(aElements[1]);
+    aNewColors[0] = RGB(0x80, 0x80, 0x80);  // light gray
+    aNewColors[1] = RGB(0x80, 0x00, 0x80);  // dark purple
+
+    qDebug() <<"testing this";
+    SetSysColors(2, aElements, aNewColors);
+//    SetSysColors(2, aElements, aOldColors);
+    qDebug() <<"after testing this";
+
+    connect(ui->pushButtonMainWindowHide, &QPushButton::clicked, this, &QWidget::hide);
+    connect(ui->pushButtonMainWindowClose, &QPushButton::clicked, this, &QWidget::close);
+
     _helpPage = new HelpPage(_settings,
                              ui->checkBoxHelpPage,
                              ui->plainTextEditHelpPage
@@ -147,6 +167,19 @@ MainWindow::MainWindow(QWidget *parent) :
         _amdMonitorThrd->start();
 
     }
+
+    _nvocPage = new NvocPage(
+                _nvapi,
+                _settings,
+                ui->spinBoxTemperature,
+                ui->checkBoxAutoOC,
+                ui->checkBoxAllDevices,
+                ui->checkBoxOCMinerStart,
+                ui->comboBoxDevice,
+                ui->checkBoxAutoSpeedFan,
+                ui->horizontalSliderFanSpeed
+                );
+    updateSliders(0);
 
     loadParameters();
 
@@ -632,7 +665,6 @@ void MainWindow::createActions()
 
     _helpAction = new QAction(tr("&About"), this);
     connect(_helpAction, &QAction::triggered, this, &MainWindow::onHelp);
-
 }
 
 void MainWindow::createTrayIcon()
@@ -1694,4 +1726,264 @@ void MainWindow::on_pushButtonOCPage_clicked(){
 
 void MainWindow::on_pushButtonHelpPage_clicked(){
     ui->stackedWidgetMain->setCurrentIndex(2);
+}
+
+void MainWindow::on_checkBoxHelpPage_clicked(bool clicked){
+    _helpPage->donateCheckBoxClicked(clicked);
+}
+
+
+
+/********************************
+ * migrate from nvocDigalog     *
+ *                              *
+ *                              *
+ ********************************/
+
+void MainWindow::on_horizontalSliderPowerPercent_valueChanged(int value)
+{
+    ui->lcdNumberPowerPercent->display(value);
+    _nvocPage->_cardList[_nvocPage->_gpuIndex].powerOffset = value;
+}
+
+void MainWindow::on_horizontalSliderGpuOffset_valueChanged(int value)
+{
+    ui->lcdNumberGpuOffset->display(value);
+    _nvocPage->_cardList[_nvocPage->_gpuIndex].gpuOffset = value;
+}
+
+void MainWindow::on_horizontalSliderMemOffset_valueChanged(int value)
+{
+    ui->lcdNumberMemClock->display(value);
+    _nvocPage->_cardList[_nvocPage->_gpuIndex].memOffset = value;
+}
+
+void MainWindow::on_horizontalSliderFanSpeed_valueChanged(int value)
+{
+    ui->lcdNumberFanSpeed->display(value);
+    _nvocPage->_cardList[_nvocPage->_gpuIndex].fanSpeed = value;
+}
+
+void MainWindow::on_comboBoxDevice_activated(int index)
+{
+   updateSliders(index);
+   _nvocPage->_gpuIndex = index;
+}
+
+void MainWindow::updateSliders(unsigned int gpu)
+{
+    int plimit      = _nvapi->getPowerLimit(gpu);
+    int gpuoffset   = _nvapi->getGPUOffset(gpu);
+    int memoffset   = _nvapi->getMemOffset(gpu);
+    int fanspeed    = _nvapi->getFanSpeed(gpu);
+
+    ui->horizontalSliderPowerPercent->setValue(plimit);
+    ui->horizontalSliderGpuOffset->setValue(gpuoffset);
+    ui->horizontalSliderMemOffset->setValue(memoffset);
+    ui->horizontalSliderFanSpeed->setValue(fanspeed);
+}
+
+void MainWindow::saveConfig()
+{
+    int deviceIndex = ui->comboBoxDevice->currentIndex();
+
+    _settings->beginGroup("nvoc");
+    _settings->setValue("nvoc_applyall", ui->checkBoxAllDevices->isChecked());
+    _settings->setValue("temp_limit", ui->spinBoxTemperature->value());
+    _settings->setValue("nvoc_applyonstart", ui->checkBoxOCMinerStart->isChecked());
+
+    if(ui->checkBoxAllDevices->isChecked())
+    {
+        for(int i = 0; i < _nvocPage->_cardList.size(); i++)
+        {
+            _settings->setValue(QString("powerlimitoffset" + QString::number(i)), _nvocPage->_cardList.at(deviceIndex).powerOffset);
+            _settings->setValue(QString("gpuoffset" + QString::number(i)), _nvocPage->_cardList.at(deviceIndex).gpuOffset);
+            _settings->setValue(QString("memoffset" + QString::number(i)), _nvocPage->_cardList.at(deviceIndex).memOffset);
+            _settings->setValue(QString("fanspeed" + QString::number(i)), ui->checkBoxAutoSpeedFan->isChecked() ? 101 : _nvocPage->_cardList.at(deviceIndex).fanSpeed);
+        }
+    }
+    else
+    {
+        _settings->setValue(QString("powerlimitoffset" + QString::number(deviceIndex)), _nvocPage->_cardList.at(deviceIndex).powerOffset);
+        _settings->setValue(QString("gpuoffset" + QString::number(deviceIndex)), _nvocPage->_cardList.at(deviceIndex).gpuOffset);
+        _settings->setValue(QString("memoffset" + QString::number(deviceIndex)), _nvocPage->_cardList.at(deviceIndex).memOffset);
+        _settings->setValue(QString("fanspeed" + QString::number(deviceIndex)), ui->checkBoxAutoSpeedFan->isChecked() ? 101 : _nvocPage->_cardList.at(deviceIndex).fanSpeed);
+    }
+    _settings->endGroup();
+}
+
+// Apply settings
+void MainWindow::on_pushButtonOCPageApply_clicked()
+{
+    int gpu = ui->comboBoxDevice->currentIndex();
+    if(ui->checkBoxAllDevices->isChecked())
+    {
+        for(unsigned int i = 0; i < _nvapi->getGPUCount(); i++)
+        {
+            _nvapi->setPowerLimitPercent(i, ui->horizontalSliderPowerPercent->value());
+            _nvapi->setGPUOffset(i, ui->horizontalSliderGpuOffset->value());
+            _nvapi->setMemClockOffset(i, ui->horizontalSliderMemOffset->value());
+            _nvapi->setPowerLimitPercent(i,ui->horizontalSliderPowerPercent->value());
+            if(ui->checkBoxAutoSpeedFan->isChecked())
+            {
+                _nvapi->startFanThread();
+            }
+            else
+            {
+                _nvapi->startFanThread();
+                _nvapi->setFanSpeed(i, ui->horizontalSliderFanSpeed->value());
+                _nvapi->stopFanThread();
+            }
+        }
+    }
+    else
+    {
+        _nvapi->setPowerLimitPercent(gpu, ui->horizontalSliderPowerPercent->value());
+        _nvapi->setGPUOffset(gpu, ui->horizontalSliderGpuOffset->value());
+        _nvapi->setPowerLimitPercent(gpu,ui->horizontalSliderPowerPercent->value());
+        _nvapi->setMemClockOffset(gpu, ui->horizontalSliderMemOffset->value());
+        if(ui->checkBoxAutoSpeedFan->isChecked())
+        {
+            qDebug("ATUO  opened");
+            _nvapi->startFanThread();
+        }
+        else
+        {
+            _nvapi->startFanThread();
+            _nvapi->setFanSpeed(gpu, ui->horizontalSliderFanSpeed->value());
+            _nvapi->stopFanThread();
+        }
+    }
+    saveConfig();
+
+}
+
+
+void MainWindow::on_checkBoxAutoSpeedFan_clicked(bool checked)
+{
+    if(checked)
+    {
+        ui->horizontalSliderFanSpeed->hide();
+
+    }
+    else
+    {
+        ui->horizontalSliderFanSpeed->show();
+
+    }
+}
+
+void MainWindow::on_spinBoxTemperature_valueChanged(int value){
+    qDebug() << "testing " << value << endl;
+    unsigned gpu = (unsigned) ui->comboBoxDevice->currentIndex();
+    unsigned int temp_limit = (unsigned) value;
+    _nvapi->setTempLimitOffset(gpu, temp_limit);
+    if(ui->checkBoxAllDevices->isChecked())
+        {
+            for(unsigned int i = 0; i < _nvapi->getGPUCount(); i++)
+            {
+                  _nvapi->setTempLimitOffset(i,temp_limit);
+              }
+         }
+}
+
+
+void MainWindow::on_checkBoxAutoOC_clicked(bool clicked){
+    qDebug() << "test auto oc cliked: " << clicked << endl;
+    if(clicked){
+        int gpu = ui->comboBoxDevice->currentIndex();
+        ui->spinBoxTemperature->setValue(80);
+        if(ui->checkBoxAllDevices->isChecked())
+        {
+            for(unsigned int i = 0; i < _nvapi->getGPUCount(); i++)
+            {
+                std::string name =_nvocPage->_nvml->getGPUName(i);
+                int fanspeed,gpuofffset,memoffset;
+                fanspeed=0;
+                gpuofffset=0;
+                memoffset=0;
+                // do select * from advise where GPUname= name;
+                std::string n="";
+                for(int i=0;i<name.length();i++){
+                    if(name[i]=='T'&&name[i+1]=='i')
+                        n+="Ti";
+                    if(name[i]!='1'&&name[i]!='2'&&name[i]!='3'&&name[i]!='4'&&name[i]!='5'&&name[i]!='6'&&name[i]!='7'&&name[i]!='8'&&name[i]!='9'&&name[i]!='0')
+                        continue;
+                    n+=name[i];
+                }
+                QStringList l;
+                //
+                const char *p;
+                p=n.c_str();
+                if(_nvocPage->_db != nullptr){
+                    qDebug() << "test 2";
+                    l=_nvocPage->_db->getAdvice(p);
+                }
+                qDebug("query name %s",n.c_str());
+                //db.FreeConnect();
+                int str=atoi(l.front().toStdString().c_str());
+                gpuofffset=str;
+                l.pop_front();
+                str=atoi(l.front().toStdString().c_str());
+                memoffset=str;
+                str=atoi(l.front().toStdString().c_str());
+                _nvapi->setFanSpeed(i,fanspeed);
+                _nvapi->setGPUOffset(i,gpuofffset);
+                _nvapi->setMemClockOffset(i,memoffset);
+            }
+        }
+        else
+        {
+            std::string name =_nvocPage->_nvml->getGPUName(gpu);
+            int fanspeed,gpuofffset,memoffset;
+            fanspeed=0;
+            gpuofffset=0;
+            memoffset=0;
+            // do select * from advise where GPUname= name;std::string n="";
+            std::string n="";
+            for(int i=0;i<name.length();i++){
+                if(name[i]=='T'&&name[i+1]=='i')
+                    n+="Ti";
+                if(name[i]!='1'&&name[i]!='2'&&name[i]!='3'&&name[i]!='4'&&name[i]!='5'&&name[i]!='6'&&name[i]!='7'&&name[i]!='8'&&name[i]!='9'&&name[i]!='0')
+                    continue;
+                n+=name[i];
+            }
+            //
+            QStringList l;
+            //
+            const char *p;
+            p=n.c_str();
+            if(_nvocPage->_db != nullptr){
+                qDebug() << "test 2";
+                l=_nvocPage->_db->getAdvice(p);
+            }
+            qDebug("query name %s",n.c_str());
+            //db.FreeConnect();
+            int str=atoi(l.front().toStdString().c_str());
+            gpuofffset=str;
+            l.pop_front();
+            str=atoi(l.front().toStdString().c_str());
+            memoffset=str;
+            str=atoi(l.front().toStdString().c_str());
+            _nvapi->setFanSpeed(gpu,fanspeed);
+            _nvapi->setGPUOffset(gpu,gpuofffset);
+            _nvapi->setMemClockOffset(gpu,memoffset);
+        }
+        updateSliders(gpu);
+
+        saveConfig();
+    }
+}
+
+void MainWindow::on_pushButtonMainWindowFull_clicked(bool checked){
+    static bool isMax = false;
+
+    if(!isMax){
+        this->showMaximized();
+    }
+    else{
+        this->showNormal();
+    }
+
+    isMax = !isMax;
 }

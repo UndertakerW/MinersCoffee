@@ -29,6 +29,7 @@
 #include "structures.h"
 #include "database.h"
 #include "helppage.h"
+#include "nvocpage.h"
 
 QT_CHARTS_USE_NAMESPACE
 
@@ -120,7 +121,7 @@ private slots:
     void on_spinBoxHistoryDeviceNum_valueChanged(int arg1);
     void on_comboBoxHistoryDataOption_currentIndexChanged(int index);
     void on_checkBoxHistoryMiningInfoOverall_clicked(bool clicked);
-    void on_checkBoxShowSettings_clicked(bool clickes);
+    void on_checkBoxShowSettings_clicked(bool clicked);
     void on_pushButtonCancelAutoPage_clicked();
     void on_pushButtonChangePageSize_clicked();
     void on_pushButtonMonitorPage_Overview_clicked();
@@ -129,6 +130,8 @@ private slots:
     void on_pushButtonMonitorPage_clicked();
     void on_pushButtonOCPage_clicked();
     void on_pushButtonHelpPage_clicked();
+    void on_checkBoxHelpPage_clicked(bool clicked);
+    void on_pushButtonMainWindowFull_clicked(bool checked);
 
     void refreshDeviceInfo();
     void onGpusInfoRecieved(QList<GPUInfo> gpusinfo);
@@ -206,6 +209,27 @@ private slots:
     // pie slice
     void onMouseHoverSlice(QPieSlice * slice, bool status);
 
+
+// migrate from nvocDialog
+private slots:
+    void on_horizontalSliderPowerPercent_valueChanged(int value);
+
+    void on_horizontalSliderGpuOffset_valueChanged(int value);
+
+    void on_horizontalSliderMemOffset_valueChanged(int value);
+
+    void on_horizontalSliderFanSpeed_valueChanged(int value);
+
+    void on_comboBoxDevice_activated(int index);
+
+    void on_pushButtonOCPageApply_clicked();
+
+    void on_checkBoxAutoSpeedFan_clicked(bool checked);
+
+    void on_spinBoxTemperature_valueChanged(int value);
+
+    void on_checkBoxAutoOC_clicked(bool checked);
+
 public:
     QMap<QString, Coin*> map_coins;
     QMap<QString, Core*> map_cores;
@@ -239,7 +263,7 @@ private:
     MiningInfo* _miningInfo;
     Database * _databaseProcess;
     HelpPage* _helpPage;
-
+    NvocPage* _nvocPage;
 
     bool _isMinerRunning;
     bool _isStartStoping;
@@ -301,6 +325,10 @@ private:
     amdMonitorThrd* _amdMonitorThrd;
 
     nanopoolAPI* _nano;
+
+    // migrate method from nvocDialog
+    void updateSliders(unsigned int gpu);
+    void saveConfig();
 
 };
 

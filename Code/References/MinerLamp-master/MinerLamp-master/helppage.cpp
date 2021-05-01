@@ -25,4 +25,5 @@ HelpPage::HelpPage(QSettings* settings, QCheckBox* donateCheckBox, QPlainTextEdi
 void HelpPage::donateCheckBoxClicked(bool checked)
 {
     _settings->setValue("donate", checked);
+    qDebug() << "saving changes";
 }
