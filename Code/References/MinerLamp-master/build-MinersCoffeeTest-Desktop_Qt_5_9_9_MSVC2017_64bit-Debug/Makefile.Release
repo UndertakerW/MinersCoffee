@@ -1855,6 +1855,7 @@ release\tst_generaltest.moc: D:\APP\Qt6\5.9.9\msvc2017_64\include\QtTest\QtTest 
 		..\MinerLamp-master\structures.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QMap \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\QList \
+		..\MinerLamp-master\jsonparser.h \
 		..\MinerLamp-master\tst_generaltest.cpp \
 		release\moc_predefs.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\bin\moc.exe
@@ -4829,6 +4830,7 @@ release\tst_generaltest.obj: ..\MinerLamp-master\tst_generaltest.cpp D:\APP\Qt6\
 		../MinerLamp-master/structures.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QMap \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\QList \
+		../MinerLamp-master/jsonparser.h \
 		release\tst_generaltest.moc
 
 release\qrc_resources.obj: release\qrc_resources.cpp 
