@@ -29,6 +29,7 @@ DEFINES += QT_DEPRECATED_WARNINGS NVIDIA AMD
 SOURCES += \
     database.cpp \
     gpumonitor.cpp \
+    helppage.cpp \
     jsonparser.cpp \
         main.cpp \
         mainwindow.cpp \
@@ -49,6 +50,7 @@ HEADERS += \
     constants.h \
     database.h \
     gpumonitor.h \
+    helppage.h \
     jsonparser.h \
         mainwindow.h \
     minerprocess.h \

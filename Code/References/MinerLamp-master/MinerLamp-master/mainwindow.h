@@ -28,6 +28,7 @@
 #include "nvocdialog.h"
 #include "structures.h"
 #include "database.h"
+#include "helppage.h"
 
 QT_CHARTS_USE_NAMESPACE
 
@@ -125,6 +126,9 @@ private slots:
     void on_pushButtonMonitorPage_Overview_clicked();
     void on_pushButtonMonitorPage_Mining_clicked();
     void on_pushButtonMonitorPage_System_clicked();
+    void on_pushButtonMonitorPage_clicked();
+    void on_pushButtonOCPage_clicked();
+    void on_pushButtonHelpPage_clicked();
 
     void refreshDeviceInfo();
     void onGpusInfoRecieved(QList<GPUInfo> gpusinfo);
@@ -234,6 +238,8 @@ private:
     QList<GPUInfo>* _gpusinfo;
     MiningInfo* _miningInfo;
     Database * _databaseProcess;
+    HelpPage* _helpPage;
+
 
     bool _isMinerRunning;
     bool _isStartStoping;

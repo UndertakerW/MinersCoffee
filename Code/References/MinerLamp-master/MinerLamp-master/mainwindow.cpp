@@ -74,6 +74,10 @@ MainWindow::MainWindow(QWidget *parent) :
     _databaseProcess->start();
 
     ui->setupUi(this);
+    _helpPage = new HelpPage(_settings,
+                             ui->checkBoxHelpPage,
+                             ui->plainTextEditHelpPage
+                );
 
     // debug box test
     _process->setLogControl(ui->textEdit);
@@ -371,6 +375,7 @@ MainWindow::~MainWindow()
     delete ui;
     _databaseProcess->terminate();
     delete _databaseProcess;
+    delete _helpPage;
 
     for(int i=_seriesHistory.size()-1; i>=0; i--){
         QLineSeries * tempPtr = _seriesHistory.at(i);
@@ -1257,7 +1262,6 @@ void MainWindow::refreshDeviceInfo()
     Wincmd wincmd;
     vector<vector<QString>> localDisks = wincmd.LocalDisk();
     int diskNum = localDisks.at(0).size();
-    qDebug() << "total size: " << diskNum;
 
     // refresh combobox for change page size
     if(diskNum != _diskCount){
@@ -1678,4 +1682,16 @@ void MainWindow::on_pushButtonMonitorPage_Mining_clicked(){
 }
 void MainWindow::on_pushButtonMonitorPage_System_clicked(){
     ui->stackedWidgeMonitorMain->setCurrentIndex(2);
+}
+
+void MainWindow::on_pushButtonMonitorPage_clicked(){
+    ui->stackedWidgetMain->setCurrentIndex(0);
+}
+
+void MainWindow::on_pushButtonOCPage_clicked(){
+    ui->stackedWidgetMain->setCurrentIndex(1);
+}
+
+void MainWindow::on_pushButtonHelpPage_clicked(){
+    ui->stackedWidgetMain->setCurrentIndex(2);
 }
