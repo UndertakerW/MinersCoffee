@@ -239,27 +239,30 @@ Makefile: ..\MinerLamp-master\MiningLigth.pro D:\APP\Qt6\5.9.9\msvc2017_64\mkspe
 		D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\resolve_config.prf \
 		D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\exclusive_builds_post.prf \
 		D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\default_post.prf \
-		D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\qml_debug.prf \
-		D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\precompile_header.prf \
+		D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\resolve_target.prf \
+		D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\testcase.prf \
 		D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\warn_on.prf \
 		D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\qt.prf \
 		D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\resources.prf \
 		D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\moc.prf \
+		D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\testlib_defines.prf \
+		D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\win32\console.prf \
 		D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\win32\opengl.prf \
 		D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\uic.prf \
+		D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\qml_debug.prf \
+		D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\precompile_header.prf \
 		D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\qmake_use.prf \
 		D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\file_copies.prf \
-		D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\win32\windows.prf \
 		D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\testcase_targets.prf \
 		D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\exceptions.prf \
 		D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\yacc.prf \
 		D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\lex.prf \
 		..\MinerLamp-master\MiningLigth.pro \
-		D:\APP\Qt6\5.9.9\msvc2017_64\lib\qtmaind.prl \
 		D:\APP\Qt6\5.9.9\msvc2017_64\lib\Qt5Charts.prl \
 		D:\APP\Qt6\5.9.9\msvc2017_64\lib\Qt5Widgets.prl \
 		D:\APP\Qt6\5.9.9\msvc2017_64\lib\Qt5Gui.prl \
 		D:\APP\Qt6\5.9.9\msvc2017_64\lib\Qt5Network.prl \
+		D:\APP\Qt6\5.9.9\msvc2017_64\lib\Qt5Test.prl \
 		D:\APP\Qt6\5.9.9\msvc2017_64\lib\Qt5Sql.prl \
 		D:\APP\Qt6\5.9.9\msvc2017_64\lib\Qt5Core.prl
 	$(QMAKE) -o Makefile ..\MinerLamp-master\MiningLigth.pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -427,27 +430,30 @@ D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\win32\default_pre.prf:
 D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\resolve_config.prf:
 D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\exclusive_builds_post.prf:
 D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\default_post.prf:
-D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\qml_debug.prf:
-D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\precompile_header.prf:
+D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\resolve_target.prf:
+D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\testcase.prf:
 D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\warn_on.prf:
 D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\qt.prf:
 D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\resources.prf:
 D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\moc.prf:
+D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\testlib_defines.prf:
+D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\win32\console.prf:
 D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\win32\opengl.prf:
 D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\uic.prf:
+D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\qml_debug.prf:
+D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\precompile_header.prf:
 D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\qmake_use.prf:
 D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\file_copies.prf:
-D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\win32\windows.prf:
 D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\testcase_targets.prf:
 D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\exceptions.prf:
 D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\yacc.prf:
 D:\APP\Qt6\5.9.9\msvc2017_64\mkspecs\features\lex.prf:
 ..\MinerLamp-master\MiningLigth.pro:
-D:\APP\Qt6\5.9.9\msvc2017_64\lib\qtmaind.prl:
 D:\APP\Qt6\5.9.9\msvc2017_64\lib\Qt5Charts.prl:
 D:\APP\Qt6\5.9.9\msvc2017_64\lib\Qt5Widgets.prl:
 D:\APP\Qt6\5.9.9\msvc2017_64\lib\Qt5Gui.prl:
 D:\APP\Qt6\5.9.9\msvc2017_64\lib\Qt5Network.prl:
+D:\APP\Qt6\5.9.9\msvc2017_64\lib\Qt5Test.prl:
 D:\APP\Qt6\5.9.9\msvc2017_64\lib\Qt5Sql.prl:
 D:\APP\Qt6\5.9.9\msvc2017_64\lib\Qt5Core.prl:
 qmake: FORCE
@@ -464,7 +470,17 @@ clean: debug-clean release-clean  FORCE
 	-$(DEL_FILE) MinerLamp0.idb
 distclean: debug-distclean release-distclean  FORCE
 	-$(DEL_FILE) Makefile
-	-$(DEL_FILE) .qmake.stash MinerLamp0.lib MinerLamp0.pdb
+	-$(DEL_FILE) D:\CUHK\Y3T2\CSC4001\project\MinersCoffee\Code\References\MinerLamp-master\build-MiningLigth-Desktop_Qt_5_9_9_MSVC2017_64bit-Debug\target_wrapper.bat .qmake.stash MinerLamp0.lib MinerLamp0.pdb
+
+debug-check:
+	@set MAKEFLAGS=$(MAKEFLAGS)
+	$(MAKE) -f $(MAKEFILE).Debug check
+release-check:
+	@set MAKEFLAGS=$(MAKEFLAGS)
+	$(MAKE) -f $(MAKEFILE).Release check
+check_all: debug-check release-check
+
+check: debug-check
 
 debug-mocclean:
 	@set MAKEFLAGS=$(MAKEFLAGS)
@@ -481,8 +497,6 @@ release-mocables:
 	@set MAKEFLAGS=$(MAKEFLAGS)
 	$(MAKE) -f $(MAKEFILE).Release mocables
 mocables: debug-mocables release-mocables
-
-check: first
 
 benchmark: first
 FORCE:

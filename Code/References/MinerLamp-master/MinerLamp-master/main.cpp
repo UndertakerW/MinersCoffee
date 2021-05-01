@@ -1,7 +1,9 @@
 #include "mainwindow.h"
-#include "database.h"
+
 #include <QApplication>
 #include <QtSql/QSqlDatabase>
+#include <QtTest>
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);

@@ -4,12 +4,13 @@
 #
 #-------------------------------------------------
 
-QT       += \
-        core gui network charts\
-        charts\
-        testlib\
-        gui\
-        sql
+QT += \
+    core \
+    gui \
+    network \
+    charts \
+    testlib \
+    sql
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += qt warn_on depend_includepath testcase
@@ -34,8 +35,8 @@ SOURCES += \
     database.cpp \
     gpumonitor.cpp \
     jsonparser.cpp \
-        main.cpp \
-        mainwindow.cpp \
+    main.cpp \
+    mainwindow.cpp \
     minerprocess.cpp \
     highlighter.cpp \
     helpdialog.cpp \
@@ -47,8 +48,7 @@ SOURCES += \
     hashratecharview.cpp \
     structures.cpp \
     urlapi.cpp \
-    wincmd.cpp \
-    tst_generaltest.cpp
+    wincmd.cpp
 
 HEADERS += \
     constants.h \
@@ -71,7 +71,7 @@ HEADERS += \
     wincmd.h
 
 FORMS += \
-        mainwindow.ui \
+    mainwindow.ui \
     helpdialog.ui \
     nvocdialog.ui
 

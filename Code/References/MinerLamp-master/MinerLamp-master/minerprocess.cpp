@@ -384,19 +384,19 @@ void MinerProcess::start(const QString &path, const QString& args)
 }
 
 QList<unsigned long> MinerProcess::getChildrenPID(unsigned long ppid) {
-  QList<unsigned long> pids;
-  HANDLE hp = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
-  PROCESSENTRY32 pe = { 0 };
-  pe.dwSize = sizeof(PROCESSENTRY32);
-  if (Process32First(hp, &pe)) {
-    do {
-      if (pe.th32ParentProcessID == ppid) {
-        pids.append(pe.th32ProcessID);
-      }
-    } while (Process32Next(hp, &pe));
-  }
-  CloseHandle(hp);
-  return pids;
+    QList<unsigned long> pids;
+    HANDLE hp = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+    PROCESSENTRY32 pe = { 0 };
+    pe.dwSize = sizeof(PROCESSENTRY32);
+    if (Process32First(hp, &pe)) {
+        do {
+            if (pe.th32ParentProcessID == ppid) {
+                pids.append(pe.th32ProcessID);
+            }
+        } while (Process32Next(hp, &pe));
+    }
+    CloseHandle(hp);
+    return pids;
 }
 
 void MinerProcess::stop()
