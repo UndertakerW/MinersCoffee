@@ -71,7 +71,8 @@ MainWindow::MainWindow(QWidget *parent) :
     _diskInfoList = new QList<QWidget * >();
     _databaseProcess = new Database();
     _databaseProcess->start();
-
+    setWindowFlags(Qt::FramelessWindowHint);
+    setAttribute(Qt::WA_TranslucentBackground);
     ui->setupUi(this);
 
     _helpPage = new HelpPage(_settings,
