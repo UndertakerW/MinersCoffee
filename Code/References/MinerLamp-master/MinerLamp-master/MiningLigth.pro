@@ -6,9 +6,13 @@
 
 QT       += \
         core gui network charts\
-        charts
-QT       +=  sql
+        charts\
+        testlib\
+        gui\
+        sql
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+
+CONFIG += qt warn_on depend_includepath testcase
 
 TARGET = MinerLamp
 TEMPLATE = app
@@ -43,14 +47,15 @@ SOURCES += \
     hashratecharview.cpp \
     structures.cpp \
     urlapi.cpp \
-    wincmd.cpp
+    wincmd.cpp \
+    tst_generaltest.cpp
 
 HEADERS += \
     constants.h \
     database.h \
     gpumonitor.h \
     jsonparser.h \
-        mainwindow.h \
+    mainwindow.h \
     minerprocess.h \
     highlighter.h \
     helpdialog.h \
