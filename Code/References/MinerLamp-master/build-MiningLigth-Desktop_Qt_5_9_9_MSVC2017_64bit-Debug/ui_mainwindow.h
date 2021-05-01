@@ -248,6 +248,7 @@ public:
     QTextEdit *textEditSettings;
     QFrame *frame_28;
     QGridLayout *gridLayout_27;
+    QPushButton *pushButtonChangePageSize;
     QFormLayout *formLayout;
     QLabel *label_43;
     QLabel *label_46;
@@ -264,16 +265,13 @@ public:
     QSpacerItem *verticalSpacer_7;
     QComboBox *comboBoxChangePageSize;
     QSpacerItem *verticalSpacer_8;
-    QFrame *frame_27;
-    QGridLayout *gridLayout_28;
-    QPushButton *pushButtonChangePageSize;
     QPushButton *pushButtonCancelAutoPage;
-    QSpacerItem *horizontalSpacer_8;
     QGroupBox *groupBox_8;
     QGridLayout *gridLayout_31;
     QHBoxLayout *horizontalLayout_29;
     QFrame *frame_29;
     QGridLayout *gridLayout_30;
+    QPushButton *pushButtonSearchHistory;
     QVBoxLayout *verticalLayout_14;
     QHBoxLayout *horizontalLayout;
     QLabel *labelHistoryDeviceNum;
@@ -293,7 +291,6 @@ public:
     QHBoxLayout *horizontalLayout_28;
     QSpacerItem *horizontalSpacer_16;
     QDateTimeEdit *dateTimeEditHistoryEndTime;
-    QPushButton *pushButtonSearchHistory;
     QFrame *frame_30;
     QGridLayout *gridLayout_8;
     hashrateCharView *graphicsViewHistoryInfo;
@@ -385,8 +382,6 @@ public:
     QGridLayout *gridLayout_38;
     QPushButton *pushButtonMonitorPage_System;
     QSpacerItem *horizontalSpacer;
-    QPushButton *pushButton_13;
-    QPushButton *pushButton_7;
     QWidget *pageOC;
     QGridLayout *gridLayout_48;
     QGridLayout *gridLayout_46;
@@ -1604,7 +1599,7 @@ public:
         horizontalLayout_19->setObjectName(QStringLiteral("horizontalLayout_19"));
         label_39 = new QLabel(frame_7);
         label_39->setObjectName(QStringLiteral("label_39"));
-        label_39->setMinimumSize(QSize(100, 0));
+        label_39->setMinimumSize(QSize(100, 80));
         QFont font4;
         font4.setFamily(QStringLiteral("Adobe Arabic"));
         font4.setPointSize(36);
@@ -1636,6 +1631,7 @@ public:
         frame_25 = new QFrame(groupBox_6);
         frame_25->setObjectName(QStringLiteral("frame_25"));
         frame_25->setMinimumSize(QSize(0, 90));
+        frame_25->setMaximumSize(QSize(16777215, 100));
         frame_25->setStyleSheet(QStringLiteral("background:#008F96;"));
         frame_25->setFrameShape(QFrame::StyledPanel);
         frame_25->setFrameShadow(QFrame::Raised);
@@ -1645,7 +1641,7 @@ public:
         horizontalLayout_20->setObjectName(QStringLiteral("horizontalLayout_20"));
         label_40 = new QLabel(frame_25);
         label_40->setObjectName(QStringLiteral("label_40"));
-        label_40->setMinimumSize(QSize(100, 0));
+        label_40->setMinimumSize(QSize(100, 50));
         label_40->setFont(font4);
         label_40->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
 
@@ -1711,6 +1707,7 @@ public:
         stackedWidgeMonitorMain->addWidget(pageMining);
         pageHistory = new QWidget();
         pageHistory->setObjectName(QStringLiteral("pageHistory"));
+        pageHistory->setStyleSheet(QStringLiteral("background-color: #5a5b5b;"));
         verticalLayout_15 = new QVBoxLayout(pageHistory);
         verticalLayout_15->setSpacing(6);
         verticalLayout_15->setContentsMargins(11, 11, 11, 11);
@@ -1781,13 +1778,26 @@ public:
         frame_28 = new QFrame(groupBox_7);
         frame_28->setObjectName(QStringLiteral("frame_28"));
         frame_28->setMinimumSize(QSize(300, 50));
-        frame_28->setStyleSheet(QStringLiteral("background:#008F96;"));
+        frame_28->setStyleSheet(QLatin1String("background:#008F96;\n"
+"color: rgb(255, 255, 255);"));
         frame_28->setFrameShape(QFrame::StyledPanel);
         frame_28->setFrameShadow(QFrame::Raised);
         gridLayout_27 = new QGridLayout(frame_28);
         gridLayout_27->setSpacing(6);
         gridLayout_27->setContentsMargins(11, 11, 11, 11);
         gridLayout_27->setObjectName(QStringLiteral("gridLayout_27"));
+        pushButtonChangePageSize = new QPushButton(frame_28);
+        pushButtonChangePageSize->setObjectName(QStringLiteral("pushButtonChangePageSize"));
+        pushButtonChangePageSize->setMinimumSize(QSize(0, 50));
+        QFont font6;
+        font6.setFamily(QStringLiteral("Arial"));
+        font6.setPointSize(11);
+        pushButtonChangePageSize->setFont(font6);
+        pushButtonChangePageSize->setStyleSheet(QLatin1String("color: rgb(3, 3, 3);\n"
+"color: rgb(255, 255, 255);"));
+
+        gridLayout_27->addWidget(pushButtonChangePageSize, 1, 0, 1, 1);
+
         formLayout = new QFormLayout();
         formLayout->setSpacing(6);
         formLayout->setObjectName(QStringLiteral("formLayout"));
@@ -1796,24 +1806,24 @@ public:
         label_43 = new QLabel(frame_28);
         label_43->setObjectName(QStringLiteral("label_43"));
         label_43->setMinimumSize(QSize(100, 90));
-        QFont font6;
-        font6.setFamily(QStringLiteral("Arial"));
-        font6.setPointSize(14);
-        label_43->setFont(font6);
+        QFont font7;
+        font7.setFamily(QStringLiteral("Arial"));
+        font7.setPointSize(14);
+        label_43->setFont(font7);
 
         formLayout->setWidget(0, QFormLayout::LabelRole, label_43);
 
         label_46 = new QLabel(frame_28);
         label_46->setObjectName(QStringLiteral("label_46"));
         label_46->setMinimumSize(QSize(100, 90));
-        label_46->setFont(font6);
+        label_46->setFont(font7);
 
         formLayout->setWidget(1, QFormLayout::LabelRole, label_46);
 
         label_45 = new QLabel(frame_28);
         label_45->setObjectName(QStringLiteral("label_45"));
         label_45->setMinimumSize(QSize(100, 90));
-        label_45->setFont(font6);
+        label_45->setFont(font7);
 
         formLayout->setWidget(2, QFormLayout::LabelRole, label_45);
 
@@ -1880,46 +1890,20 @@ public:
 
         gridLayout_27->addLayout(formLayout, 0, 0, 1, 1);
 
+        pushButtonCancelAutoPage = new QPushButton(frame_28);
+        pushButtonCancelAutoPage->setObjectName(QStringLiteral("pushButtonCancelAutoPage"));
+        pushButtonCancelAutoPage->setEnabled(true);
+        pushButtonCancelAutoPage->setMinimumSize(QSize(0, 50));
+        pushButtonCancelAutoPage->setFont(font6);
+        pushButtonCancelAutoPage->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
+
+        gridLayout_27->addWidget(pushButtonCancelAutoPage, 2, 0, 1, 1);
+
 
         horizontalLayout_23->addWidget(frame_28);
 
 
         gridLayout_29->addLayout(horizontalLayout_23, 0, 0, 1, 1);
-
-        frame_27 = new QFrame(groupBox_7);
-        frame_27->setObjectName(QStringLiteral("frame_27"));
-        frame_27->setFrameShape(QFrame::StyledPanel);
-        frame_27->setFrameShadow(QFrame::Raised);
-        gridLayout_28 = new QGridLayout(frame_27);
-        gridLayout_28->setSpacing(6);
-        gridLayout_28->setContentsMargins(11, 11, 11, 11);
-        gridLayout_28->setObjectName(QStringLiteral("gridLayout_28"));
-        pushButtonChangePageSize = new QPushButton(frame_27);
-        pushButtonChangePageSize->setObjectName(QStringLiteral("pushButtonChangePageSize"));
-        pushButtonChangePageSize->setMinimumSize(QSize(0, 50));
-        QFont font7;
-        font7.setFamily(QStringLiteral("Arial"));
-        font7.setPointSize(11);
-        pushButtonChangePageSize->setFont(font7);
-        pushButtonChangePageSize->setStyleSheet(QStringLiteral("color: rgb(3, 3, 3);"));
-
-        gridLayout_28->addWidget(pushButtonChangePageSize, 1, 0, 1, 1);
-
-        pushButtonCancelAutoPage = new QPushButton(frame_27);
-        pushButtonCancelAutoPage->setObjectName(QStringLiteral("pushButtonCancelAutoPage"));
-        pushButtonCancelAutoPage->setEnabled(true);
-        pushButtonCancelAutoPage->setMinimumSize(QSize(0, 50));
-        pushButtonCancelAutoPage->setFont(font7);
-        pushButtonCancelAutoPage->setStyleSheet(QStringLiteral("color: rgb(3, 3, 3);"));
-
-        gridLayout_28->addWidget(pushButtonCancelAutoPage, 2, 0, 1, 1);
-
-        horizontalSpacer_8 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_28->addItem(horizontalSpacer_8, 0, 0, 1, 1);
-
-
-        gridLayout_29->addWidget(frame_27, 0, 1, 1, 1);
 
 
         verticalLayout_15->addWidget(groupBox_7);
@@ -1943,6 +1927,15 @@ public:
         gridLayout_30->setContentsMargins(11, 11, 11, 11);
         gridLayout_30->setObjectName(QStringLiteral("gridLayout_30"));
         gridLayout_30->setContentsMargins(0, 0, 0, 0);
+        pushButtonSearchHistory = new QPushButton(frame_29);
+        pushButtonSearchHistory->setObjectName(QStringLiteral("pushButtonSearchHistory"));
+        pushButtonSearchHistory->setMinimumSize(QSize(0, 40));
+        pushButtonSearchHistory->setFont(font6);
+        pushButtonSearchHistory->setStyleSheet(QLatin1String("\n"
+"color: rgb(255, 255, 255);"));
+
+        gridLayout_30->addWidget(pushButtonSearchHistory, 1, 0, 1, 1);
+
         verticalLayout_14 = new QVBoxLayout();
         verticalLayout_14->setSpacing(0);
         verticalLayout_14->setObjectName(QStringLiteral("verticalLayout_14"));
@@ -2051,13 +2044,6 @@ public:
 
         gridLayout_30->addLayout(verticalLayout_14, 0, 0, 1, 1);
 
-        pushButtonSearchHistory = new QPushButton(frame_29);
-        pushButtonSearchHistory->setObjectName(QStringLiteral("pushButtonSearchHistory"));
-        pushButtonSearchHistory->setMinimumSize(QSize(0, 40));
-        pushButtonSearchHistory->setStyleSheet(QStringLiteral("color: rgb(3, 3, 3);"));
-
-        gridLayout_30->addWidget(pushButtonSearchHistory, 1, 0, 1, 1);
-
 
         horizontalLayout_29->addWidget(frame_29);
 
@@ -2074,7 +2060,7 @@ public:
         graphicsViewHistoryInfo = new hashrateCharView(frame_30);
         graphicsViewHistoryInfo->setObjectName(QStringLiteral("graphicsViewHistoryInfo"));
         graphicsViewHistoryInfo->setMinimumSize(QSize(700, 280));
-        graphicsViewHistoryInfo->setStyleSheet(QStringLiteral("background-color: #5B5A5A;"));
+        graphicsViewHistoryInfo->setStyleSheet(QStringLiteral("background-color: rgb(91, 90, 90);"));
         graphicsViewHistoryInfo->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 
         gridLayout_8->addWidget(graphicsViewHistoryInfo, 0, 0, 1, 1);
@@ -2672,22 +2658,6 @@ public:
 
         horizontalLayout_5->addItem(horizontalSpacer);
 
-        pushButton_13 = new QPushButton(frameMonitorBar);
-        pushButton_13->setObjectName(QStringLiteral("pushButton_13"));
-        pushButton_13->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/hideAsset 53.png);\n"
-"background-repeat:no-repeat;\n"
-"background-position:center;"));
-
-        horizontalLayout_5->addWidget(pushButton_13);
-
-        pushButton_7 = new QPushButton(frameMonitorBar);
-        pushButton_7->setObjectName(QStringLiteral("pushButton_7"));
-        pushButton_7->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/closeAsset 43.png);\n"
-"background-repeat:no-repeat;\n"
-"background-position:center;"));
-
-        horizontalLayout_5->addWidget(pushButton_7);
-
 
         gridLayout_40->addWidget(frameMonitorBar, 0, 0, 1, 1);
 
@@ -2731,14 +2701,14 @@ public:
         sizePolicy10.setHeightForWidth(label_51->sizePolicy().hasHeightForWidth());
         label_51->setSizePolicy(sizePolicy10);
         label_51->setMinimumSize(QSize(200, 80));
-        label_51->setFont(font7);
+        label_51->setFont(font6);
 
         gridLayout_46->addWidget(label_51, 4, 0, 1, 1);
 
         checkBoxAutoOC = new QCheckBox(pageOC);
         checkBoxAutoOC->setObjectName(QStringLiteral("checkBoxAutoOC"));
         checkBoxAutoOC->setMinimumSize(QSize(0, 30));
-        checkBoxAutoOC->setFont(font7);
+        checkBoxAutoOC->setFont(font6);
 
         gridLayout_46->addWidget(checkBoxAutoOC, 11, 0, 1, 4);
 
@@ -2760,7 +2730,7 @@ public:
         sizePolicy10.setHeightForWidth(label_52->sizePolicy().hasHeightForWidth());
         label_52->setSizePolicy(sizePolicy10);
         label_52->setMinimumSize(QSize(0, 80));
-        label_52->setFont(font7);
+        label_52->setFont(font6);
 
         gridLayout_46->addWidget(label_52, 0, 0, 1, 1);
 
@@ -2775,7 +2745,7 @@ public:
         sizePolicy10.setHeightForWidth(label_53->sizePolicy().hasHeightForWidth());
         label_53->setSizePolicy(sizePolicy10);
         label_53->setMinimumSize(QSize(0, 80));
-        label_53->setFont(font7);
+        label_53->setFont(font6);
 
         gridLayout_46->addWidget(label_53, 6, 0, 1, 2);
 
@@ -2795,7 +2765,7 @@ public:
         sizePolicy10.setHeightForWidth(label_49->sizePolicy().hasHeightForWidth());
         label_49->setSizePolicy(sizePolicy10);
         label_49->setMinimumSize(QSize(0, 80));
-        label_49->setFont(font7);
+        label_49->setFont(font6);
 
         gridLayout_46->addWidget(label_49, 5, 0, 1, 1);
 
@@ -2823,7 +2793,7 @@ public:
         checkBoxAllDevices = new QCheckBox(pageOC);
         checkBoxAllDevices->setObjectName(QStringLiteral("checkBoxAllDevices"));
         checkBoxAllDevices->setMinimumSize(QSize(0, 30));
-        checkBoxAllDevices->setFont(font7);
+        checkBoxAllDevices->setFont(font6);
 
         gridLayout_46->addWidget(checkBoxAllDevices, 9, 0, 1, 4);
 
@@ -2844,21 +2814,21 @@ public:
         sizePolicy10.setHeightForWidth(label_50->sizePolicy().hasHeightForWidth());
         label_50->setSizePolicy(sizePolicy10);
         label_50->setMinimumSize(QSize(200, 80));
-        label_50->setFont(font7);
+        label_50->setFont(font6);
 
         gridLayout_46->addWidget(label_50, 3, 0, 1, 1);
 
         checkBoxOCMinerStart = new QCheckBox(pageOC);
         checkBoxOCMinerStart->setObjectName(QStringLiteral("checkBoxOCMinerStart"));
         checkBoxOCMinerStart->setMinimumSize(QSize(0, 30));
-        checkBoxOCMinerStart->setFont(font7);
+        checkBoxOCMinerStart->setFont(font6);
 
         gridLayout_46->addWidget(checkBoxOCMinerStart, 10, 0, 1, 4);
 
         temperatureLimit = new QLabel(pageOC);
         temperatureLimit->setObjectName(QStringLiteral("temperatureLimit"));
         temperatureLimit->setMinimumSize(QSize(0, 80));
-        temperatureLimit->setFont(font7);
+        temperatureLimit->setFont(font6);
 
         gridLayout_46->addWidget(temperatureLimit, 2, 0, 1, 1);
 
@@ -2880,7 +2850,7 @@ public:
         checkBoxAutoSpeedFan->setObjectName(QStringLiteral("checkBoxAutoSpeedFan"));
         checkBoxAutoSpeedFan->setEnabled(true);
         checkBoxAutoSpeedFan->setMinimumSize(QSize(0, 30));
-        checkBoxAutoSpeedFan->setFont(font7);
+        checkBoxAutoSpeedFan->setFont(font6);
 
         gridLayout_46->addWidget(checkBoxAutoSpeedFan, 8, 0, 1, 1);
 
@@ -2945,7 +2915,7 @@ public:
         retranslateUi(MainWindow);
 
         stackedWidgetMain->setCurrentIndex(0);
-        stackedWidgeMonitorMain->setCurrentIndex(0);
+        stackedWidgeMonitorMain->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -3024,18 +2994,18 @@ public:
         checkBoxOnlyShare->setText(QApplication::translate("MainWindow", "Only display share info", Q_NULLPTR));
         groupBox_7->setTitle(QString());
         label_41->setText(QApplication::translate("MainWindow", "System Info", Q_NULLPTR));
+        pushButtonChangePageSize->setText(QApplication::translate("MainWindow", "Apply", Q_NULLPTR));
         label_43->setText(QApplication::translate("MainWindow", "Disk", Q_NULLPTR));
         label_46->setText(QApplication::translate("MainWindow", "Max Size", Q_NULLPTR));
         label_45->setText(QApplication::translate("MainWindow", "Min Size", Q_NULLPTR));
-        pushButtonChangePageSize->setText(QApplication::translate("MainWindow", "Apply", Q_NULLPTR));
         pushButtonCancelAutoPage->setText(QApplication::translate("MainWindow", "Cancel Auto Page", Q_NULLPTR));
         groupBox_8->setTitle(QString());
+        pushButtonSearchHistory->setText(QApplication::translate("MainWindow", "Display", Q_NULLPTR));
         labelHistoryDeviceNum->setText(QApplication::translate("MainWindow", "Device#", Q_NULLPTR));
         labelHistoryDeviceNum_2->setText(QApplication::translate("MainWindow", "From", Q_NULLPTR));
         dateTimeEditHistoryStartTime->setDisplayFormat(QApplication::translate("MainWindow", "yyyy/MM/dd", Q_NULLPTR));
         labelHistoryDeviceNum_3->setText(QApplication::translate("MainWindow", "to", Q_NULLPTR));
         dateTimeEditHistoryEndTime->setDisplayFormat(QApplication::translate("MainWindow", "yyyy/MM/dd", Q_NULLPTR));
-        pushButtonSearchHistory->setText(QApplication::translate("MainWindow", "Display", Q_NULLPTR));
         checkBoxAutoStart->setText(QApplication::translate("MainWindow", "Auto start miner", Q_NULLPTR));
         comboBoxHistoryDataOption->clear();
         comboBoxHistoryDataOption->insertItems(0, QStringList()
@@ -3090,8 +3060,6 @@ public:
         pushButtonMonitorPage_Overview->setText(QString());
         pushButtonMonitorPage_Mining->setText(QString());
         pushButtonMonitorPage_System->setText(QString());
-        pushButton_13->setText(QString());
-        pushButton_7->setText(QString());
         pushButtonOCPageApply->setText(QApplication::translate("MainWindow", "Apply", Q_NULLPTR));
         label_51->setText(QApplication::translate("MainWindow", "Core Clock (MHz) :", Q_NULLPTR));
         checkBoxAutoOC->setText(QApplication::translate("MainWindow", "Auto overclocking", Q_NULLPTR));

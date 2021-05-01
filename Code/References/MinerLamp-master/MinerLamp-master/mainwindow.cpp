@@ -71,8 +71,6 @@ MainWindow::MainWindow(QWidget *parent) :
     _diskInfoList = new QList<QWidget * >();
     _databaseProcess = new Database();
     _databaseProcess->start();
-    setWindowFlags(Qt::FramelessWindowHint);
-    setAttribute(Qt::WA_TranslucentBackground);
     ui->setupUi(this);
 
     _helpPage = new HelpPage(_settings,
@@ -1331,7 +1329,7 @@ void MainWindow::refreshDeviceInfo()
                 "QProgressBar::chunk{"
                     "border : 2px;"
                     "border-radius:4px;"
-                    "background-color:rgb(0,143,170);"
+                    "background-color:#008F96;"
                 "}"
             );
 
