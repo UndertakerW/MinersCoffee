@@ -78,7 +78,6 @@ RC_ICONS += \
         eth_miner_lamp.ico
 
 RESOURCES += \
-    fonts.qrc \
     resources.qrc
 
 

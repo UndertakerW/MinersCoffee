@@ -1,7 +1,0 @@
-<RCC>
-    <qresource prefix="/fonts/Berlin_Sans">
-        <file>fonts/BRLNSB.TTF</file>
-        <file>fonts/BRLNSDB.TTF</file>
-        <file>fonts/BRLNSR.TTF</file>
-    </qresource>
-</RCC>
