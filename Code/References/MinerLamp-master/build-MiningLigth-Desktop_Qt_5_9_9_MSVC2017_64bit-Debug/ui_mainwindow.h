@@ -517,7 +517,7 @@ public:
         frameMonitor->setSizePolicy(sizePolicy3);
         frameMonitor->setMinimumSize(QSize(80, 75));
         frameMonitor->setMaximumSize(QSize(160, 16777215));
-        frameMonitor->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/cleanAsset 59.png);\n"
+        frameMonitor->setStyleSheet(QString::fromUtf8("background-image: url(:/icons/icos/\345\261\225\347\244\272.png);\n"
 "background-color: rgb(0, 143, 150);\n"
 "background-repeat:no-repeat;\n"
 "background-position:center;\n"
@@ -563,7 +563,7 @@ public:
         frameOC->setObjectName(QStringLiteral("frameOC"));
         frameOC->setMinimumSize(QSize(80, 75));
         frameOC->setMaximumSize(QSize(160, 16777215));
-        frameOC->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/settAsset 50.png);\n"
+        frameOC->setStyleSheet(QString::fromUtf8("background-image: url(:/icons/icos/\350\266\205\351\242\221\350\256\276\347\275\256-20.png);\n"
 "background-repeat:no-repeat;\n"
 "background-position:center;\n"
 "background-color: rgb(0, 143, 150);\n"
@@ -606,8 +606,8 @@ public:
         frameHelp->setObjectName(QStringLiteral("frameHelp"));
         frameHelp->setMinimumSize(QSize(80, 75));
         frameHelp->setMaximumSize(QSize(160, 16777215));
-        frameHelp->setStyleSheet(QLatin1String("background:#008F96;\n"
-"background-image: url(:/icons/icos/cloudAsset 48.png);\n"
+        frameHelp->setStyleSheet(QString::fromUtf8("background:#008F96;\n"
+"background-image: url(:/icons/icos/\346\233\264\345\244\232\344\277\241\346\201\257.png);\n"
 "background-repeat:no-repeat;\n"
 "background-position:center;\n"
 "border-width: 0;\n"
@@ -701,7 +701,7 @@ public:
         sizePolicy6.setHeightForWidth(frameOverview->sizePolicy().hasHeightForWidth());
         frameOverview->setSizePolicy(sizePolicy6);
         frameOverview->setMinimumSize(QSize(50, 50));
-        frameOverview->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/worldAsset 60.png);\n"
+        frameOverview->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/homeAsset 46.png);\n"
 "background-color: rgb(0, 143, 150);\n"
 "background-repeat:no-repeat;\n"
 "background-position:center;\n"
@@ -740,7 +740,7 @@ public:
         frameMiningInfo = new QFrame(frameMonitorBar);
         frameMiningInfo->setObjectName(QStringLiteral("frameMiningInfo"));
         frameMiningInfo->setMinimumSize(QSize(50, 50));
-        frameMiningInfo->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/windAsset 51.png);\n"
+        frameMiningInfo->setStyleSheet(QString::fromUtf8("background-image: url(:/icons/icos/\347\233\221\350\247\206\345\231\250.png);\n"
 "background-color: rgb(0, 143, 150);\n"
 "background-repeat:no-repeat;\n"
 "background-position:center;\n"
@@ -779,7 +779,7 @@ public:
         frameHistory = new QFrame(frameMonitorBar);
         frameHistory->setObjectName(QStringLiteral("frameHistory"));
         frameHistory->setMinimumSize(QSize(50, 50));
-        frameHistory->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/bugAsset 47.png);\n"
+        frameHistory->setStyleSheet(QString::fromUtf8("background-image: url(:/icons/icos/\345\206\205\345\255\230.png);\n"
 "background-color: rgb(0, 143, 150);\n"
 "background-repeat:no-repeat;\n"
 "background-position:center;\n"
@@ -3125,7 +3125,7 @@ public:
         retranslateUi(MainWindow);
 
         stackedWidgetMain->setCurrentIndex(0);
-        stackedWidgetMonitorMain->setCurrentIndex(1);
+        stackedWidgetMonitorMain->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);

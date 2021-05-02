@@ -205,7 +205,7 @@ QPushButton:pressed {
             </size>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-image: url(:/icons/icos/cleanAsset 59.png);
+            <string notr="true">background-image: url(:/icons/icos/展示.png);
 background-color: rgb(0, 143, 150);
 background-repeat:no-repeat;
 background-position:center;
@@ -290,7 +290,7 @@ QPushButton:pressed {
             </size>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-image: url(:/icons/icos/settAsset 50.png);
+            <string notr="true">background-image: url(:/icons/icos/超频设置-20.png);
 background-repeat:no-repeat;
 background-position:center;
 background-color: rgb(0, 143, 150);
@@ -376,7 +376,7 @@ QPushButton:pressed {
            </property>
            <property name="styleSheet">
             <string notr="true">background:#008F96;
-background-image: url(:/icons/icos/cloudAsset 48.png);
+background-image: url(:/icons/icos/更多信息.png);
 background-repeat:no-repeat;
 background-position:center;
 border-width: 0;
@@ -579,7 +579,7 @@ QPushButton:pressed {
                   </size>
                  </property>
                  <property name="styleSheet">
-                  <string notr="true">background-image: url(:/icons/icos/worldAsset 60.png);
+                  <string notr="true">background-image: url(:/icons/icos/homeAsset 46.png);
 background-color: rgb(0, 143, 150);
 background-repeat:no-repeat;
 background-position:center;
@@ -658,7 +658,7 @@ QPushButton:pressed {
                   </size>
                  </property>
                  <property name="styleSheet">
-                  <string notr="true">background-image: url(:/icons/icos/windAsset 51.png);
+                  <string notr="true">background-image: url(:/icons/icos/监视器.png);
 background-color: rgb(0, 143, 150);
 background-repeat:no-repeat;
 background-position:center;
@@ -737,7 +737,7 @@ QPushButton:pressed {
                   </size>
                  </property>
                  <property name="styleSheet">
-                  <string notr="true">background-image: url(:/icons/icos/bugAsset 47.png);
+                  <string notr="true">background-image: url(:/icons/icos/内存.png);
 background-color: rgb(0, 143, 150);
 background-repeat:no-repeat;
 background-position:center;
@@ -841,7 +841,7 @@ QPushButton:pressed {
                <string notr="true">background:rgb(91,90,90);</string>
               </property>
               <property name="currentIndex">
-               <number>1</number>
+               <number>0</number>
               </property>
               <widget class="QWidget" name="pageOverview">
                <layout class="QVBoxLayout" name="verticalLayout_7">

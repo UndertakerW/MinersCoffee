@@ -1,8 +1,6 @@
 <RCC>
     <qresource prefix="/icons">
         <file>eth_miner_lamp.ico</file>
-        <file>icos/androidAsset 49.png</file>
-        <file>icos/arrow.png</file>
         <file>icos/bookAsset 57.png</file>
         <file>icos/bugAsset 47.png</file>
         <file>icos/bulletAsset 54.png</file>
@@ -24,6 +22,12 @@
         <file>icos/smileAsset 1.png</file>
         <file>icos/windAsset 51.png</file>
         <file>icos/worldAsset 60.png</file>
+        <file>icos/超频设置-20.png</file>
+        <file>icos/更多信息.png</file>
+        <file>icos/计算机，监视器，.png</file>
+        <file>icos/内存.png</file>
+        <file>icos/展示.png</file>
+        <file>icos/监视器.png</file>
     </qresource>
     <qresource prefix="/images">
         <file>logo.png</file>
