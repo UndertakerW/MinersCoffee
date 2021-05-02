@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1089</width>
-    <height>763</height>
+    <width>1096</width>
+    <height>754</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -39,7 +39,7 @@
    <property name="styleSheet">
     <string notr="true"/>
    </property>
-   <layout class="QGridLayout" name="gridLayout_49">
+   <layout class="QGridLayout" name="gridLayout_12">
     <property name="leftMargin">
      <number>0</number>
     </property>
@@ -55,18 +55,141 @@
     <property name="spacing">
      <number>0</number>
     </property>
-    <item row="0" column="0">
-     <layout class="QHBoxLayout" name="horizontalLayout_31">
-      <property name="spacing">
+    <item row="0" column="0" rowspan="2" colspan="3">
+     <widget class="QSplitter" name="splitter_4">
+      <property name="lineWidth">
        <number>0</number>
       </property>
-      <item>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="handleWidth">
+       <number>0</number>
+      </property>
+      <widget class="QGroupBox" name="groupBoxWestBar">
+       <property name="minimumSize">
+        <size>
+         <width>80</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>160</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QGroupBox{border : none;}</string>
+       </property>
+       <property name="title">
+        <string/>
+       </property>
        <layout class="QVBoxLayout" name="verticalLayout_16">
         <property name="spacing">
          <number>0</number>
         </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
         <item>
-         <widget class="QFrame" name="frame_33">
+         <widget class="QFrame" name="frame_36">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>80</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>160</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-image: url(:/icons/icos/logo.png);
+background-color: rgb(0, 143, 150);
+background-repeat:no-repeat;
+background-position:center;
+</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_39">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="QPushButton" name="pushButtonToggle">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+	border: none;
+	background-color: #008F96;;
+	
+}
+QPushButton:hover {
+	background-color: rgb(91,90,90);
+}
+QPushButton:pressed {	
+	background-color:#7A0000;
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QFrame" name="frameMonitor">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
             <horstretch>0</horstretch>
@@ -81,7 +204,7 @@
           </property>
           <property name="maximumSize">
            <size>
-            <width>80</width>
+            <width>160</width>
             <height>16777215</height>
            </size>
           </property>
@@ -131,7 +254,7 @@ background-position:center;
              <property name="styleSheet">
               <string notr="true">QPushButton {
 	border: none;
-	background-color: #008F96;
+	background-color: #008F96;;
 	
 }
 QPushButton:hover {
@@ -146,27 +269,11 @@ QPushButton:pressed {
              </property>
             </widget>
            </item>
-           <item row="0" column="0">
-            <widget class="QPushButton" name="pushButton_6">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>40</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">background-image: url(:/icons/icos/logo.png);</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
           </layout>
          </widget>
         </item>
         <item>
-         <widget class="QFrame" name="frame_34">
+         <widget class="QFrame" name="frameOC">
           <property name="minimumSize">
            <size>
             <width>80</width>
@@ -175,7 +282,7 @@ QPushButton:pressed {
           </property>
           <property name="maximumSize">
            <size>
-            <width>80</width>
+            <width>160</width>
             <height>16777215</height>
            </size>
           </property>
@@ -207,7 +314,7 @@ background-color: rgb(0, 143, 150);</string>
            <property name="spacing">
             <number>0</number>
            </property>
-           <item row="0" column="0">
+           <item row="2" column="0">
             <widget class="QPushButton" name="pushButtonOCPage">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
@@ -242,7 +349,7 @@ QPushButton:pressed {
          </widget>
         </item>
         <item>
-         <widget class="QFrame" name="frame_35">
+         <widget class="QFrame" name="frameHelp">
           <property name="minimumSize">
            <size>
             <width>80</width>
@@ -251,7 +358,7 @@ QPushButton:pressed {
           </property>
           <property name="maximumSize">
            <size>
-            <width>80</width>
+            <width>160</width>
             <height>16777215</height>
            </size>
           </property>
@@ -297,6 +404,9 @@ background-position:center;</string>
                <height>75</height>
               </size>
              </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
              <property name="styleSheet">
               <string notr="true">QPushButton {
 	border: none;
@@ -318,10 +428,16 @@ QPushButton:pressed {
          </widget>
         </item>
         <item>
-         <widget class="QFrame" name="frame_31">
-          <property name="maximumSize">
+         <widget class="QFrame" name="frameWestBar">
+          <property name="minimumSize">
            <size>
             <width>80</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>160</width>
             <height>16777215</height>
            </size>
           </property>
@@ -352,8 +468,8 @@ QPushButton:pressed {
          </widget>
         </item>
        </layout>
-      </item>
-      <item>
+      </widget>
+      <widget class="QWidget" name="">
        <layout class="QVBoxLayout" name="verticalLayout">
         <property name="spacing">
          <number>0</number>
@@ -385,7 +501,7 @@ color: rgb(255, 255, 255);</string>
              <number>0</number>
             </property>
             <item row="1" column="0">
-             <widget class="QStackedWidget" name="stackedWidgeMonitorMain">
+             <widget class="QStackedWidget" name="stackedWidgetMonitorMain">
               <property name="minimumSize">
                <size>
                 <width>60</width>
@@ -397,7 +513,7 @@ color: rgb(255, 255, 255);</string>
 color: rgb(255, 255, 255);</string>
               </property>
               <property name="currentIndex">
-               <number>1</number>
+               <number>0</number>
               </property>
               <widget class="QWidget" name="pageOverview">
                <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -619,7 +735,7 @@ color: rgb(255, 255, 255);</string>
                        <string notr="true">background-color: #008F96;</string>
                       </property>
                       <property name="title">
-                       <string>GroupBox</string>
+                       <string>Overview</string>
                       </property>
                       <layout class="QVBoxLayout" name="verticalLayout_5">
                        <property name="spacing">
@@ -1388,10 +1504,31 @@ Clock</string>
                    </layout>
                   </widget>
                   <widget class="QGroupBox" name="groupBoxDiskInfo">
+                   <property name="minimumSize">
+                    <size>
+                     <width>300</width>
+                     <height>0</height>
+                    </size>
+                   </property>
                    <property name="title">
                     <string>Disk Info</string>
                    </property>
                    <layout class="QGridLayout" name="gridLayout_13">
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
                     <item row="0" column="0">
                      <layout class="QGridLayout" name="gridLayoutDiskInfo">
                       <property name="spacing">
@@ -4048,7 +4185,7 @@ color: rgb(255, 255, 255);</string>
               <property name="maximumSize">
                <size>
                 <width>16777215</width>
-                <height>40</height>
+                <height>50</height>
                </size>
               </property>
               <property name="styleSheet">
@@ -4081,11 +4218,14 @@ color: rgb(255, 255, 255);</string>
                  <property name="minimumSize">
                   <size>
                    <width>50</width>
-                   <height>0</height>
+                   <height>40</height>
                   </size>
                  </property>
                  <property name="styleSheet">
-                  <string notr="true">background:#008F96;</string>
+                  <string notr="true">background-image: url(:/icons/icos/worldAsset 60.png);
+background-color: rgb(0, 143, 150);
+background-repeat:no-repeat;
+background-position:center;</string>
                  </property>
                  <property name="frameShape">
                   <enum>QFrame::StyledPanel</enum>
@@ -4127,7 +4267,6 @@ color: rgb(255, 255, 255);</string>
                      <string notr="true">QPushButton {
 	border: none;
 	background-color: rgba(0,0,0,0);
-	background-image: url(:/icons/icos/worldAsset 60.png);
 	background-repeat:no-repeat;
 	background-position:center;
 }
@@ -4151,11 +4290,14 @@ QPushButton:pressed {
                  <property name="minimumSize">
                   <size>
                    <width>50</width>
-                   <height>0</height>
+                   <height>40</height>
                   </size>
                  </property>
                  <property name="styleSheet">
-                  <string notr="true">background:#008F96;</string>
+                  <string notr="true">background-image: url(:/icons/icos/windAsset 51.png);
+background-color: rgb(0, 143, 150);
+background-repeat:no-repeat;
+background-position:center;</string>
                  </property>
                  <property name="frameShape">
                   <enum>QFrame::StyledPanel</enum>
@@ -4179,7 +4321,7 @@ QPushButton:pressed {
                   <property name="spacing">
                    <number>0</number>
                   </property>
-                  <item row="0" column="0">
+                  <item row="0" column="0" rowspan="2">
                    <widget class="QPushButton" name="pushButtonMonitorPage_Mining">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -4197,9 +4339,7 @@ QPushButton:pressed {
                      <string notr="true">QPushButton {
 	border: none;
 	background-color: rgba(0,0,0,0);
-	background-repeat:no-repeat;
 	background-position:center;
-	background-image: url(:/icons/icos/windAsset 51.png);
 }
 QPushButton:hover {
 	background-color: rgb(91,90,90);
@@ -4221,11 +4361,14 @@ QPushButton:pressed {
                  <property name="minimumSize">
                   <size>
                    <width>50</width>
-                   <height>0</height>
+                   <height>40</height>
                   </size>
                  </property>
                  <property name="styleSheet">
-                  <string notr="true">background:#008F96;</string>
+                  <string notr="true">background-image: url(:/icons/icos/bugAsset 47.png);
+background-color: rgb(0, 143, 150);
+background-repeat:no-repeat;
+background-position:center;</string>
                  </property>
                  <property name="frameShape">
                   <enum>QFrame::StyledPanel</enum>
@@ -4269,7 +4412,6 @@ QPushButton:pressed {
 	background-color: rgba(0,0,0,0);
 	background-repeat:no-repeat;
 	background-position:center;
-	background-image: url(:/icons/icos/bugAsset 47.png);
 }
 QPushButton:hover {
 	background-color: rgb(91,90,90);
@@ -4280,6 +4422,12 @@ QPushButton:pressed {
                     </property>
                     <property name="text">
                      <string/>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>0</width>
+                      <height>16</height>
+                     </size>
                     </property>
                    </widget>
                   </item>
@@ -4803,48 +4951,36 @@ QPushButton:pressed {
          </widget>
         </item>
        </layout>
-      </item>
-     </layout>
+      </widget>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="lineEditMinerPath">
+      <property name="maximumSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <widget class="QLineEdit" name="lineEditArgs">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+     </widget>
     </item>
    </layout>
-   <widget class="QLineEdit" name="lineEditMinerPath">
-    <property name="geometry">
-     <rect>
-      <x>1139</x>
-      <y>799</y>
-      <width>0</width>
-      <height>0</height>
-     </rect>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>0</width>
-      <height>0</height>
-     </size>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEditArgs">
-    <property name="geometry">
-     <rect>
-      <x>1145</x>
-      <y>805</y>
-      <width>0</width>
-      <height>0</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>0</width>
-      <height>0</height>
-     </size>
-    </property>
-   </widget>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

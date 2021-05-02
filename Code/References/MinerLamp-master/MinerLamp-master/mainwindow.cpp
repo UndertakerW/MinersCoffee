@@ -92,8 +92,7 @@ MainWindow::MainWindow(QWidget *parent) :
     // update miningInfo
     connect(_process, &MinerProcess::emitMiningInfo, this, &MainWindow::onRecievedMiningInfo);
 
-
-
+    ui->pushButtonToggle->installEventFilter(this);
 
     _nvapi = new nvidiaAPI();
 
@@ -365,7 +364,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->checkBoxShowSettings->setChecked(false);
     ui->groupBoxSettings->setVisible(false);
 
-
+    // set the current page
+    // set at monitor page at index 0
+    ui->stackedWidgetMain->setCurrentIndex(0);
+    setPushButtonColor(ui->pushButtonMonitorPage, true);
+    // set at monitor overview page at index 0
+    ui->stackedWidgetMonitorMain->setCurrentIndex(0);
+    setPushButtonColor(ui->pushButtonMonitorPage_Overview, true);
 }
 
 MainWindow::~MainWindow()
@@ -1684,31 +1689,167 @@ void MainWindow::on_pushButtonChangePageSize_clicked(){
                 );
 }
 
+
+/********************************
+ * slots to change              *
+ *                              *
+ *                              *
+ ********************************/
+
+void MainWindow::setPushButtonColor(QPushButton* pushButton, bool pressed){
+    if(pressed){
+        pushButton->setStyleSheet(
+                    "QPushButton {"
+                         "border: none;"
+                         "background-color: rgb(91,90,90);"
+                     "}"
+                     "QPushButton:hover {"
+                         "background-color: rgb(91,90,90);"
+                     "}"
+                     "QPushButton:pressed {	"
+                         "background-color:#7A0000;"
+                     "}"
+                    );
+    }
+    else{
+        pushButton->setStyleSheet(
+                    "QPushButton {"
+                         "border: none;"
+                         "background-color: #008F96;"
+                     "}"
+                     "QPushButton:hover {"
+                         "background-color: rgb(91,90,90);"
+                     "}"
+                     "QPushButton:pressed {	"
+                         "background-color:#7A0000;"
+                     "}"
+                    );
+    }
+}
+
 void MainWindow::on_pushButtonMonitorPage_Overview_clicked(){
-    ui->stackedWidgeMonitorMain->setCurrentIndex(0);
+    ui->stackedWidgetMonitorMain->setCurrentIndex(0);
+    setPushButtonColor(ui->pushButtonMonitorPage_Overview, true);
+    setPushButtonColor(ui->pushButtonMonitorPage_Mining, false);
+    setPushButtonColor(ui->pushButtonMonitorPage_System, false);
 }
 
 void MainWindow::on_pushButtonMonitorPage_Mining_clicked(){
-    ui->stackedWidgeMonitorMain->setCurrentIndex(1);
+    ui->stackedWidgetMonitorMain->setCurrentIndex(1);
+    setPushButtonColor(ui->pushButtonMonitorPage_Overview, false);
+    setPushButtonColor(ui->pushButtonMonitorPage_Mining, true);
+    setPushButtonColor(ui->pushButtonMonitorPage_System, false);
 }
 void MainWindow::on_pushButtonMonitorPage_System_clicked(){
-    ui->stackedWidgeMonitorMain->setCurrentIndex(2);
+    ui->stackedWidgetMonitorMain->setCurrentIndex(2);
+    setPushButtonColor(ui->pushButtonMonitorPage_Overview, false);
+    setPushButtonColor(ui->pushButtonMonitorPage_Mining, false);
+    setPushButtonColor(ui->pushButtonMonitorPage_System, true);
 }
 
 void MainWindow::on_pushButtonMonitorPage_clicked(){
     ui->stackedWidgetMain->setCurrentIndex(0);
+    setPushButtonColor(ui->pushButtonMonitorPage, true);
+    setPushButtonColor(ui->pushButtonOCPage, false);
+    setPushButtonColor(ui->pushButtonHelpPage, false);
+
 }
 
 void MainWindow::on_pushButtonOCPage_clicked(){
     ui->stackedWidgetMain->setCurrentIndex(1);
+    setPushButtonColor(ui->pushButtonMonitorPage, false);
+    setPushButtonColor(ui->pushButtonOCPage, true);
+    setPushButtonColor(ui->pushButtonHelpPage, false);
 }
 
 void MainWindow::on_pushButtonHelpPage_clicked(){
     ui->stackedWidgetMain->setCurrentIndex(2);
+    setPushButtonColor(ui->pushButtonMonitorPage, false);
+    setPushButtonColor(ui->pushButtonOCPage, false);
+    setPushButtonColor(ui->pushButtonHelpPage, true);
 }
 
 void MainWindow::on_checkBoxHelpPage_clicked(bool clicked){
     _helpPage->donateCheckBoxClicked(clicked);
+}
+
+bool MainWindow::eventFilter(QObject *obj, QEvent *event)
+{
+    // This function repeatedly call for those QObjects
+    // which have installed eventFilter (Step 2)
+
+    if (obj == (QObject*)ui->pushButtonToggle) {
+        if (event->type() == QEvent::Enter)
+        {
+            isAllPromptVisable(true);
+        }
+        else if(event->type() == QEvent::Leave){
+            isAllPromptVisable(false);
+        }
+        return true;
+    }else {
+        // pass the event on to the parent class
+        return QWidget::eventFilter(obj, event);
+    }
+}
+
+void MainWindow::isAllPromptVisable(bool status){
+    static QString frameMonitorStyleSheet;
+    static QString frameOCStyleSheet;
+    static QString frameHelpStyleSheet;
+    static QString frameOverviewStyleSheet;
+    static QString frameMiningInfoStyleSheet;
+    static QString frameHistoryStyleSheet;
+    static bool hasSet = false;
+
+    static QString generalFramStyle(
+                "background-repeat:no-repeat;"
+                "background-position:center;"
+                "background-color: rgb(0, 143, 150);"
+                );
+
+    if(status){
+        if(!hasSet){
+            frameMonitorStyleSheet = ui->frameMonitor->styleSheet();
+            frameOCStyleSheet = ui->frameOC->styleSheet();
+            frameHelpStyleSheet = ui->frameHelp->styleSheet();
+
+            frameOverviewStyleSheet = ui->frameOverview->styleSheet();
+            frameMiningInfoStyleSheet = ui->frameMiningInfo->styleSheet();
+            frameHistoryStyleSheet = ui->frameHistory->styleSheet();
+
+            hasSet = true;
+        }
+
+        ui->frameMonitor->setStyleSheet(generalFramStyle);
+        ui->frameOC->setStyleSheet(generalFramStyle);
+        ui->frameHelp->setStyleSheet(generalFramStyle);
+        ui->frameOverview->setStyleSheet(generalFramStyle);
+        ui->frameMiningInfo->setStyleSheet(generalFramStyle);
+        ui->frameHistory->setStyleSheet(generalFramStyle);
+
+        ui->pushButtonMonitorPage->setText("Monitor");
+        ui->pushButtonOCPage->setText("Mining");
+        ui->pushButtonHelpPage->setText("Help");
+        ui->pushButtonMonitorPage_Overview->setText("Overview");
+        ui->pushButtonMonitorPage_Mining->setText("Mining");
+        ui->pushButtonMonitorPage_System->setText("System");
+    }
+    else{
+        ui->frameMonitor->setStyleSheet(frameMonitorStyleSheet);
+        ui->frameOC->setStyleSheet(frameOCStyleSheet);
+        ui->frameHelp->setStyleSheet(frameHelpStyleSheet);
+        ui->frameOverview->setStyleSheet(frameOverviewStyleSheet);
+        ui->frameMiningInfo->setStyleSheet(frameMiningInfoStyleSheet);
+        ui->frameHistory->setStyleSheet(frameHistoryStyleSheet);
+
+        ui->pushButtonMonitorPage->setText("");
+        ui->pushButtonOCPage->setText("");
+        ui->pushButtonHelpPage->setText("");
+        ui->pushButtonMonitorPage_Overview->setText("");
+        ui->pushButtonMonitorPage_Mining->setText("");
+        ui->pushButtonMonitorPage_System->setText("");
+    }
 }
 
 

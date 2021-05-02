@@ -45,29 +45,31 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
-    QLineEdit *lineEditMinerPath;
-    QLineEdit *lineEditArgs;
-    QGridLayout *gridLayout_49;
-    QHBoxLayout *horizontalLayout_31;
+    QGridLayout *gridLayout_12;
+    QSplitter *splitter_4;
+    QGroupBox *groupBoxWestBar;
     QVBoxLayout *verticalLayout_16;
-    QFrame *frame_33;
+    QFrame *frame_36;
+    QGridLayout *gridLayout_39;
+    QPushButton *pushButtonToggle;
+    QFrame *frameMonitor;
     QGridLayout *gridLayout_33;
     QPushButton *pushButtonMonitorPage;
-    QPushButton *pushButton_6;
-    QFrame *frame_34;
+    QFrame *frameOC;
     QGridLayout *gridLayout_34;
     QPushButton *pushButtonOCPage;
-    QFrame *frame_35;
+    QFrame *frameHelp;
     QGridLayout *gridLayout_35;
     QPushButton *pushButtonHelpPage;
-    QFrame *frame_31;
+    QFrame *frameWestBar;
     QGridLayout *gridLayout_32;
     QSpacerItem *verticalSpacer_9;
+    QWidget *widget;
     QVBoxLayout *verticalLayout;
     QStackedWidget *stackedWidgetMain;
     QWidget *pageMonitor;
     QGridLayout *gridLayout_40;
-    QStackedWidget *stackedWidgeMonitorMain;
+    QStackedWidget *stackedWidgetMonitorMain;
     QWidget *pageOverview;
     QVBoxLayout *verticalLayout_7;
     QSplitter *splitter;
@@ -413,12 +415,14 @@ public:
     QPlainTextEdit *plainTextEditHelpPage;
     QCheckBox *checkBoxHelpPage;
     QFrame *frame_43;
+    QLineEdit *lineEditMinerPath;
+    QLineEdit *lineEditArgs;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(1089, 763);
+        MainWindow->resize(1096, 754);
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -436,62 +440,105 @@ public:
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         centralWidget->setEnabled(true);
         centralWidget->setStyleSheet(QStringLiteral(""));
-        lineEditMinerPath = new QLineEdit(centralWidget);
-        lineEditMinerPath->setObjectName(QStringLiteral("lineEditMinerPath"));
-        lineEditMinerPath->setGeometry(QRect(1139, 799, 0, 0));
-        lineEditMinerPath->setMaximumSize(QSize(0, 0));
-        lineEditArgs = new QLineEdit(centralWidget);
-        lineEditArgs->setObjectName(QStringLiteral("lineEditArgs"));
-        lineEditArgs->setGeometry(QRect(1145, 805, 0, 0));
-        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        gridLayout_12 = new QGridLayout(centralWidget);
+        gridLayout_12->setSpacing(0);
+        gridLayout_12->setContentsMargins(11, 11, 11, 11);
+        gridLayout_12->setObjectName(QStringLiteral("gridLayout_12"));
+        gridLayout_12->setContentsMargins(0, 0, 0, 0);
+        splitter_4 = new QSplitter(centralWidget);
+        splitter_4->setObjectName(QStringLiteral("splitter_4"));
+        splitter_4->setLineWidth(0);
+        splitter_4->setOrientation(Qt::Horizontal);
+        splitter_4->setHandleWidth(0);
+        groupBoxWestBar = new QGroupBox(splitter_4);
+        groupBoxWestBar->setObjectName(QStringLiteral("groupBoxWestBar"));
+        groupBoxWestBar->setMinimumSize(QSize(80, 0));
+        groupBoxWestBar->setMaximumSize(QSize(160, 16777215));
+        groupBoxWestBar->setStyleSheet(QStringLiteral("QGroupBox{border : none;}"));
+        verticalLayout_16 = new QVBoxLayout(groupBoxWestBar);
+        verticalLayout_16->setSpacing(0);
+        verticalLayout_16->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_16->setObjectName(QStringLiteral("verticalLayout_16"));
+        verticalLayout_16->setContentsMargins(0, 0, 0, 0);
+        frame_36 = new QFrame(groupBoxWestBar);
+        frame_36->setObjectName(QStringLiteral("frame_36"));
+        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Minimum);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(lineEditArgs->sizePolicy().hasHeightForWidth());
-        lineEditArgs->setSizePolicy(sizePolicy1);
-        lineEditArgs->setMaximumSize(QSize(0, 0));
-        gridLayout_49 = new QGridLayout(centralWidget);
-        gridLayout_49->setSpacing(0);
-        gridLayout_49->setContentsMargins(11, 11, 11, 11);
-        gridLayout_49->setObjectName(QStringLiteral("gridLayout_49"));
-        gridLayout_49->setContentsMargins(0, 0, 0, 0);
-        horizontalLayout_31 = new QHBoxLayout();
-        horizontalLayout_31->setSpacing(0);
-        horizontalLayout_31->setObjectName(QStringLiteral("horizontalLayout_31"));
-        verticalLayout_16 = new QVBoxLayout();
-        verticalLayout_16->setSpacing(0);
-        verticalLayout_16->setObjectName(QStringLiteral("verticalLayout_16"));
-        frame_33 = new QFrame(centralWidget);
-        frame_33->setObjectName(QStringLiteral("frame_33"));
-        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Maximum);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(frame_33->sizePolicy().hasHeightForWidth());
-        frame_33->setSizePolicy(sizePolicy2);
-        frame_33->setMinimumSize(QSize(80, 75));
-        frame_33->setMaximumSize(QSize(80, 16777215));
-        frame_33->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/cleanAsset 59.png);\n"
+        sizePolicy1.setHeightForWidth(frame_36->sizePolicy().hasHeightForWidth());
+        frame_36->setSizePolicy(sizePolicy1);
+        frame_36->setMinimumSize(QSize(80, 50));
+        frame_36->setMaximumSize(QSize(160, 16777215));
+        frame_36->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/logo.png);\n"
 "background-color: rgb(0, 143, 150);\n"
 "background-repeat:no-repeat;\n"
 "background-position:center;\n"
 ""));
-        frame_33->setFrameShape(QFrame::StyledPanel);
-        frame_33->setFrameShadow(QFrame::Raised);
-        gridLayout_33 = new QGridLayout(frame_33);
+        frame_36->setFrameShape(QFrame::StyledPanel);
+        frame_36->setFrameShadow(QFrame::Raised);
+        gridLayout_39 = new QGridLayout(frame_36);
+        gridLayout_39->setSpacing(0);
+        gridLayout_39->setContentsMargins(11, 11, 11, 11);
+        gridLayout_39->setObjectName(QStringLiteral("gridLayout_39"));
+        gridLayout_39->setContentsMargins(0, 0, 0, 0);
+        pushButtonToggle = new QPushButton(frame_36);
+        pushButtonToggle->setObjectName(QStringLiteral("pushButtonToggle"));
+        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(pushButtonToggle->sizePolicy().hasHeightForWidth());
+        pushButtonToggle->setSizePolicy(sizePolicy2);
+        pushButtonToggle->setMinimumSize(QSize(0, 50));
+        pushButtonToggle->setLayoutDirection(Qt::LeftToRight);
+        pushButtonToggle->setStyleSheet(QLatin1String("QPushButton {\n"
+"	border: none;\n"
+"	background-color: #008F96;;\n"
+"	\n"
+"}\n"
+"QPushButton:hover {\n"
+"	background-color: rgb(91,90,90);\n"
+"}\n"
+"QPushButton:pressed {	\n"
+"	background-color:#7A0000;\n"
+"}"));
+
+        gridLayout_39->addWidget(pushButtonToggle, 0, 0, 1, 1);
+
+
+        verticalLayout_16->addWidget(frame_36);
+
+        frameMonitor = new QFrame(groupBoxWestBar);
+        frameMonitor->setObjectName(QStringLiteral("frameMonitor"));
+        QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Maximum);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(frameMonitor->sizePolicy().hasHeightForWidth());
+        frameMonitor->setSizePolicy(sizePolicy3);
+        frameMonitor->setMinimumSize(QSize(80, 75));
+        frameMonitor->setMaximumSize(QSize(160, 16777215));
+        frameMonitor->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/cleanAsset 59.png);\n"
+"background-color: rgb(0, 143, 150);\n"
+"background-repeat:no-repeat;\n"
+"background-position:center;\n"
+""));
+        frameMonitor->setFrameShape(QFrame::StyledPanel);
+        frameMonitor->setFrameShadow(QFrame::Raised);
+        gridLayout_33 = new QGridLayout(frameMonitor);
         gridLayout_33->setSpacing(0);
         gridLayout_33->setContentsMargins(11, 11, 11, 11);
         gridLayout_33->setObjectName(QStringLiteral("gridLayout_33"));
         gridLayout_33->setContentsMargins(0, 0, 0, 0);
-        pushButtonMonitorPage = new QPushButton(frame_33);
+        pushButtonMonitorPage = new QPushButton(frameMonitor);
         pushButtonMonitorPage->setObjectName(QStringLiteral("pushButtonMonitorPage"));
-        QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(pushButtonMonitorPage->sizePolicy().hasHeightForWidth());
-        pushButtonMonitorPage->setSizePolicy(sizePolicy3);
+        QSizePolicy sizePolicy4(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy4.setHorizontalStretch(0);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(pushButtonMonitorPage->sizePolicy().hasHeightForWidth());
+        pushButtonMonitorPage->setSizePolicy(sizePolicy4);
         pushButtonMonitorPage->setMinimumSize(QSize(80, 75));
         pushButtonMonitorPage->setStyleSheet(QLatin1String("QPushButton {\n"
 "	border: none;\n"
-"	background-color: #008F96;\n"
+"	background-color: #008F96;;\n"
 "	\n"
 "}\n"
 "QPushButton:hover {\n"
@@ -503,38 +550,31 @@ public:
 
         gridLayout_33->addWidget(pushButtonMonitorPage, 1, 0, 1, 1);
 
-        pushButton_6 = new QPushButton(frame_33);
-        pushButton_6->setObjectName(QStringLiteral("pushButton_6"));
-        pushButton_6->setMinimumSize(QSize(0, 40));
-        pushButton_6->setStyleSheet(QStringLiteral("background-image: url(:/icons/icos/logo.png);"));
 
-        gridLayout_33->addWidget(pushButton_6, 0, 0, 1, 1);
+        verticalLayout_16->addWidget(frameMonitor);
 
-
-        verticalLayout_16->addWidget(frame_33);
-
-        frame_34 = new QFrame(centralWidget);
-        frame_34->setObjectName(QStringLiteral("frame_34"));
-        frame_34->setMinimumSize(QSize(80, 75));
-        frame_34->setMaximumSize(QSize(80, 16777215));
-        frame_34->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/settAsset 50.png);\n"
+        frameOC = new QFrame(groupBoxWestBar);
+        frameOC->setObjectName(QStringLiteral("frameOC"));
+        frameOC->setMinimumSize(QSize(80, 75));
+        frameOC->setMaximumSize(QSize(160, 16777215));
+        frameOC->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/settAsset 50.png);\n"
 "background-repeat:no-repeat;\n"
 "background-position:center;\n"
 "background-color: rgb(0, 143, 150);"));
-        frame_34->setFrameShape(QFrame::StyledPanel);
-        frame_34->setFrameShadow(QFrame::Raised);
-        gridLayout_34 = new QGridLayout(frame_34);
+        frameOC->setFrameShape(QFrame::StyledPanel);
+        frameOC->setFrameShadow(QFrame::Raised);
+        gridLayout_34 = new QGridLayout(frameOC);
         gridLayout_34->setSpacing(0);
         gridLayout_34->setContentsMargins(11, 11, 11, 11);
         gridLayout_34->setObjectName(QStringLiteral("gridLayout_34"));
         gridLayout_34->setContentsMargins(0, 0, 0, 0);
-        pushButtonOCPage = new QPushButton(frame_34);
+        pushButtonOCPage = new QPushButton(frameOC);
         pushButtonOCPage->setObjectName(QStringLiteral("pushButtonOCPage"));
-        QSizePolicy sizePolicy4(QSizePolicy::Expanding, QSizePolicy::Preferred);
-        sizePolicy4.setHorizontalStretch(0);
-        sizePolicy4.setVerticalStretch(0);
-        sizePolicy4.setHeightForWidth(pushButtonOCPage->sizePolicy().hasHeightForWidth());
-        pushButtonOCPage->setSizePolicy(sizePolicy4);
+        QSizePolicy sizePolicy5(QSizePolicy::Expanding, QSizePolicy::Preferred);
+        sizePolicy5.setHorizontalStretch(0);
+        sizePolicy5.setVerticalStretch(0);
+        sizePolicy5.setHeightForWidth(pushButtonOCPage->sizePolicy().hasHeightForWidth());
+        pushButtonOCPage->setSizePolicy(sizePolicy5);
         pushButtonOCPage->setMinimumSize(QSize(80, 75));
         pushButtonOCPage->setStyleSheet(QLatin1String("QPushButton {\n"
 "	border: none;\n"
@@ -547,31 +587,32 @@ public:
 "	background-color: #7A0000;\n"
 "}"));
 
-        gridLayout_34->addWidget(pushButtonOCPage, 0, 0, 1, 1);
+        gridLayout_34->addWidget(pushButtonOCPage, 2, 0, 1, 1);
 
 
-        verticalLayout_16->addWidget(frame_34);
+        verticalLayout_16->addWidget(frameOC);
 
-        frame_35 = new QFrame(centralWidget);
-        frame_35->setObjectName(QStringLiteral("frame_35"));
-        frame_35->setMinimumSize(QSize(80, 75));
-        frame_35->setMaximumSize(QSize(80, 16777215));
-        frame_35->setStyleSheet(QLatin1String("background:#008F96;\n"
+        frameHelp = new QFrame(groupBoxWestBar);
+        frameHelp->setObjectName(QStringLiteral("frameHelp"));
+        frameHelp->setMinimumSize(QSize(80, 75));
+        frameHelp->setMaximumSize(QSize(160, 16777215));
+        frameHelp->setStyleSheet(QLatin1String("background:#008F96;\n"
 "background-image: url(:/icons/icos/cloudAsset 48.png);\n"
 "background-repeat:no-repeat;\n"
 "background-position:center;"));
-        frame_35->setFrameShape(QFrame::StyledPanel);
-        frame_35->setFrameShadow(QFrame::Raised);
-        gridLayout_35 = new QGridLayout(frame_35);
+        frameHelp->setFrameShape(QFrame::StyledPanel);
+        frameHelp->setFrameShadow(QFrame::Raised);
+        gridLayout_35 = new QGridLayout(frameHelp);
         gridLayout_35->setSpacing(0);
         gridLayout_35->setContentsMargins(11, 11, 11, 11);
         gridLayout_35->setObjectName(QStringLiteral("gridLayout_35"));
         gridLayout_35->setContentsMargins(0, 0, 0, 0);
-        pushButtonHelpPage = new QPushButton(frame_35);
+        pushButtonHelpPage = new QPushButton(frameHelp);
         pushButtonHelpPage->setObjectName(QStringLiteral("pushButtonHelpPage"));
-        sizePolicy4.setHeightForWidth(pushButtonHelpPage->sizePolicy().hasHeightForWidth());
-        pushButtonHelpPage->setSizePolicy(sizePolicy4);
+        sizePolicy5.setHeightForWidth(pushButtonHelpPage->sizePolicy().hasHeightForWidth());
+        pushButtonHelpPage->setSizePolicy(sizePolicy5);
         pushButtonHelpPage->setMinimumSize(QSize(80, 75));
+        pushButtonHelpPage->setLayoutDirection(Qt::LeftToRight);
         pushButtonHelpPage->setStyleSheet(QLatin1String("QPushButton {\n"
 "	border: none;\n"
 "	background-color: rgba(0,0,0,0);\n"
@@ -586,15 +627,16 @@ public:
         gridLayout_35->addWidget(pushButtonHelpPage, 0, 0, 1, 1);
 
 
-        verticalLayout_16->addWidget(frame_35);
+        verticalLayout_16->addWidget(frameHelp);
 
-        frame_31 = new QFrame(centralWidget);
-        frame_31->setObjectName(QStringLiteral("frame_31"));
-        frame_31->setMaximumSize(QSize(80, 16777215));
-        frame_31->setStyleSheet(QStringLiteral("background:#008F96;"));
-        frame_31->setFrameShape(QFrame::StyledPanel);
-        frame_31->setFrameShadow(QFrame::Raised);
-        gridLayout_32 = new QGridLayout(frame_31);
+        frameWestBar = new QFrame(groupBoxWestBar);
+        frameWestBar->setObjectName(QStringLiteral("frameWestBar"));
+        frameWestBar->setMinimumSize(QSize(80, 0));
+        frameWestBar->setMaximumSize(QSize(160, 16777215));
+        frameWestBar->setStyleSheet(QStringLiteral("background:#008F96;"));
+        frameWestBar->setFrameShape(QFrame::StyledPanel);
+        frameWestBar->setFrameShadow(QFrame::Raised);
+        gridLayout_32 = new QGridLayout(frameWestBar);
         gridLayout_32->setSpacing(6);
         gridLayout_32->setContentsMargins(11, 11, 11, 11);
         gridLayout_32->setObjectName(QStringLiteral("gridLayout_32"));
@@ -603,15 +645,17 @@ public:
         gridLayout_32->addItem(verticalSpacer_9, 0, 0, 1, 1);
 
 
-        verticalLayout_16->addWidget(frame_31);
+        verticalLayout_16->addWidget(frameWestBar);
 
-
-        horizontalLayout_31->addLayout(verticalLayout_16);
-
-        verticalLayout = new QVBoxLayout();
+        splitter_4->addWidget(groupBoxWestBar);
+        widget = new QWidget(splitter_4);
+        widget->setObjectName(QStringLiteral("widget"));
+        verticalLayout = new QVBoxLayout(widget);
         verticalLayout->setSpacing(0);
+        verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        stackedWidgetMain = new QStackedWidget(centralWidget);
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        stackedWidgetMain = new QStackedWidget(widget);
         stackedWidgetMain->setObjectName(QStringLiteral("stackedWidgetMain"));
         stackedWidgetMain->setStyleSheet(QLatin1String("background:#5B5A5A;\n"
 "color: rgb(255, 255, 255);"));
@@ -622,10 +666,10 @@ public:
         gridLayout_40->setContentsMargins(11, 11, 11, 11);
         gridLayout_40->setObjectName(QStringLiteral("gridLayout_40"));
         gridLayout_40->setContentsMargins(0, 0, 0, 0);
-        stackedWidgeMonitorMain = new QStackedWidget(pageMonitor);
-        stackedWidgeMonitorMain->setObjectName(QStringLiteral("stackedWidgeMonitorMain"));
-        stackedWidgeMonitorMain->setMinimumSize(QSize(60, 0));
-        stackedWidgeMonitorMain->setStyleSheet(QLatin1String("background:rgb(91,90,90);\n"
+        stackedWidgetMonitorMain = new QStackedWidget(pageMonitor);
+        stackedWidgetMonitorMain->setObjectName(QStringLiteral("stackedWidgetMonitorMain"));
+        stackedWidgetMonitorMain->setMinimumSize(QSize(60, 0));
+        stackedWidgetMonitorMain->setStyleSheet(QLatin1String("background:rgb(91,90,90);\n"
 "color: rgb(255, 255, 255);"));
         pageOverview = new QWidget();
         pageOverview->setObjectName(QStringLiteral("pageOverview"));
@@ -688,11 +732,11 @@ public:
 
         lcdNumberHashRate = new QLCDNumber(frame_2);
         lcdNumberHashRate->setObjectName(QStringLiteral("lcdNumberHashRate"));
-        QSizePolicy sizePolicy5(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy5.setHorizontalStretch(0);
-        sizePolicy5.setVerticalStretch(0);
-        sizePolicy5.setHeightForWidth(lcdNumberHashRate->sizePolicy().hasHeightForWidth());
-        lcdNumberHashRate->setSizePolicy(sizePolicy5);
+        QSizePolicy sizePolicy6(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy6.setHorizontalStretch(0);
+        sizePolicy6.setVerticalStretch(0);
+        sizePolicy6.setHeightForWidth(lcdNumberHashRate->sizePolicy().hasHeightForWidth());
+        lcdNumberHashRate->setSizePolicy(sizePolicy6);
         lcdNumberHashRate->setMinimumSize(QSize(0, 50));
         lcdNumberHashRate->setFont(font1);
         lcdNumberHashRate->setDigitCount(7);
@@ -719,8 +763,8 @@ public:
 
         lcdNumberHashRate_2 = new QLCDNumber(frame_3);
         lcdNumberHashRate_2->setObjectName(QStringLiteral("lcdNumberHashRate_2"));
-        sizePolicy5.setHeightForWidth(lcdNumberHashRate_2->sizePolicy().hasHeightForWidth());
-        lcdNumberHashRate_2->setSizePolicy(sizePolicy5);
+        sizePolicy6.setHeightForWidth(lcdNumberHashRate_2->sizePolicy().hasHeightForWidth());
+        lcdNumberHashRate_2->setSizePolicy(sizePolicy6);
         lcdNumberHashRate_2->setMinimumSize(QSize(0, 50));
         lcdNumberHashRate_2->setFont(font1);
         lcdNumberHashRate_2->setDigitCount(7);
@@ -732,11 +776,11 @@ public:
 
         graphicsViewEff = new hashrateCharView(frame);
         graphicsViewEff->setObjectName(QStringLiteral("graphicsViewEff"));
-        QSizePolicy sizePolicy6(QSizePolicy::Minimum, QSizePolicy::Minimum);
-        sizePolicy6.setHorizontalStretch(0);
-        sizePolicy6.setVerticalStretch(0);
-        sizePolicy6.setHeightForWidth(graphicsViewEff->sizePolicy().hasHeightForWidth());
-        graphicsViewEff->setSizePolicy(sizePolicy6);
+        QSizePolicy sizePolicy7(QSizePolicy::Minimum, QSizePolicy::Minimum);
+        sizePolicy7.setHorizontalStretch(0);
+        sizePolicy7.setVerticalStretch(0);
+        sizePolicy7.setHeightForWidth(graphicsViewEff->sizePolicy().hasHeightForWidth());
+        graphicsViewEff->setSizePolicy(sizePolicy7);
         graphicsViewEff->setMinimumSize(QSize(100, 100));
 
         verticalLayout_2->addWidget(graphicsViewEff);
@@ -1078,8 +1122,8 @@ public:
 
         lcdNumberMaxGPUTemp = new QLCDNumber(frame_42);
         lcdNumberMaxGPUTemp->setObjectName(QStringLiteral("lcdNumberMaxGPUTemp"));
-        sizePolicy5.setHeightForWidth(lcdNumberMaxGPUTemp->sizePolicy().hasHeightForWidth());
-        lcdNumberMaxGPUTemp->setSizePolicy(sizePolicy5);
+        sizePolicy6.setHeightForWidth(lcdNumberMaxGPUTemp->sizePolicy().hasHeightForWidth());
+        lcdNumberMaxGPUTemp->setSizePolicy(sizePolicy6);
         lcdNumberMaxGPUTemp->setMinimumSize(QSize(0, 50));
         lcdNumberMaxGPUTemp->setFont(font1);
         lcdNumberMaxGPUTemp->setDigitCount(7);
@@ -1109,8 +1153,8 @@ public:
 
         lcdNumberMinGPUTemp = new QLCDNumber(frame_39);
         lcdNumberMinGPUTemp->setObjectName(QStringLiteral("lcdNumberMinGPUTemp"));
-        sizePolicy5.setHeightForWidth(lcdNumberMinGPUTemp->sizePolicy().hasHeightForWidth());
-        lcdNumberMinGPUTemp->setSizePolicy(sizePolicy5);
+        sizePolicy6.setHeightForWidth(lcdNumberMinGPUTemp->sizePolicy().hasHeightForWidth());
+        lcdNumberMinGPUTemp->setSizePolicy(sizePolicy6);
         lcdNumberMinGPUTemp->setMinimumSize(QSize(0, 50));
         lcdNumberMinGPUTemp->setFont(font1);
         lcdNumberMinGPUTemp->setDigitCount(7);
@@ -1130,10 +1174,12 @@ public:
         splitter_2->addWidget(groupBox_2);
         groupBoxDiskInfo = new QGroupBox(splitter_2);
         groupBoxDiskInfo->setObjectName(QStringLiteral("groupBoxDiskInfo"));
+        groupBoxDiskInfo->setMinimumSize(QSize(300, 0));
         gridLayout_13 = new QGridLayout(groupBoxDiskInfo);
-        gridLayout_13->setSpacing(6);
+        gridLayout_13->setSpacing(0);
         gridLayout_13->setContentsMargins(11, 11, 11, 11);
         gridLayout_13->setObjectName(QStringLiteral("gridLayout_13"));
+        gridLayout_13->setContentsMargins(0, 0, 0, 0);
         gridLayoutDiskInfo = new QGridLayout();
         gridLayoutDiskInfo->setSpacing(0);
         gridLayoutDiskInfo->setObjectName(QStringLiteral("gridLayoutDiskInfo"));
@@ -1144,7 +1190,7 @@ public:
 
         verticalLayout_7->addWidget(splitter_2);
 
-        stackedWidgeMonitorMain->addWidget(pageOverview);
+        stackedWidgetMonitorMain->addWidget(pageOverview);
         pageMining = new QWidget();
         pageMining->setObjectName(QStringLiteral("pageMining"));
         gridLayout_25 = new QGridLayout(pageMining);
@@ -1170,11 +1216,11 @@ public:
         horizontalLayout_14->setObjectName(QStringLiteral("horizontalLayout_14"));
         labelWallet = new QLabel(groupBox_4);
         labelWallet->setObjectName(QStringLiteral("labelWallet"));
-        QSizePolicy sizePolicy7(QSizePolicy::Minimum, QSizePolicy::Preferred);
-        sizePolicy7.setHorizontalStretch(0);
-        sizePolicy7.setVerticalStretch(0);
-        sizePolicy7.setHeightForWidth(labelWallet->sizePolicy().hasHeightForWidth());
-        labelWallet->setSizePolicy(sizePolicy7);
+        QSizePolicy sizePolicy8(QSizePolicy::Minimum, QSizePolicy::Preferred);
+        sizePolicy8.setHorizontalStretch(0);
+        sizePolicy8.setVerticalStretch(0);
+        sizePolicy8.setHeightForWidth(labelWallet->sizePolicy().hasHeightForWidth());
+        labelWallet->setSizePolicy(sizePolicy8);
         labelWallet->setMinimumSize(QSize(0, 30));
         labelWallet->setMaximumSize(QSize(60, 16777215));
         QFont font2;
@@ -1188,8 +1234,8 @@ public:
 
         lineEditWallet = new QLineEdit(groupBox_4);
         lineEditWallet->setObjectName(QStringLiteral("lineEditWallet"));
-        sizePolicy1.setHeightForWidth(lineEditWallet->sizePolicy().hasHeightForWidth());
-        lineEditWallet->setSizePolicy(sizePolicy1);
+        sizePolicy2.setHeightForWidth(lineEditWallet->sizePolicy().hasHeightForWidth());
+        lineEditWallet->setSizePolicy(sizePolicy2);
         lineEditWallet->setMinimumSize(QSize(650, 31));
         QFont font3;
         font3.setPointSize(12);
@@ -1205,8 +1251,8 @@ public:
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
         labelCoin = new QLabel(groupBox_4);
         labelCoin->setObjectName(QStringLiteral("labelCoin"));
-        sizePolicy7.setHeightForWidth(labelCoin->sizePolicy().hasHeightForWidth());
-        labelCoin->setSizePolicy(sizePolicy7);
+        sizePolicy8.setHeightForWidth(labelCoin->sizePolicy().hasHeightForWidth());
+        labelCoin->setSizePolicy(sizePolicy8);
         labelCoin->setMinimumSize(QSize(60, 30));
         labelCoin->setMaximumSize(QSize(50, 16777215));
         labelCoin->setFont(font2);
@@ -1215,8 +1261,8 @@ public:
 
         comboBoxCoin = new QComboBox(groupBox_4);
         comboBoxCoin->setObjectName(QStringLiteral("comboBoxCoin"));
-        sizePolicy1.setHeightForWidth(comboBoxCoin->sizePolicy().hasHeightForWidth());
-        comboBoxCoin->setSizePolicy(sizePolicy1);
+        sizePolicy2.setHeightForWidth(comboBoxCoin->sizePolicy().hasHeightForWidth());
+        comboBoxCoin->setSizePolicy(sizePolicy2);
         comboBoxCoin->setMinimumSize(QSize(150, 31));
         comboBoxCoin->setMaximumSize(QSize(90, 16777215));
         comboBoxCoin->setFont(font3);
@@ -1236,8 +1282,8 @@ public:
         horizontalLayout_12->setObjectName(QStringLiteral("horizontalLayout_12"));
         labelPool = new QLabel(groupBox_4);
         labelPool->setObjectName(QStringLiteral("labelPool"));
-        sizePolicy7.setHeightForWidth(labelPool->sizePolicy().hasHeightForWidth());
-        labelPool->setSizePolicy(sizePolicy7);
+        sizePolicy8.setHeightForWidth(labelPool->sizePolicy().hasHeightForWidth());
+        labelPool->setSizePolicy(sizePolicy8);
         labelPool->setMinimumSize(QSize(60, 30));
         labelPool->setMaximumSize(QSize(50, 16777215));
         labelPool->setFont(font2);
@@ -1260,8 +1306,8 @@ public:
         horizontalLayout_13->setObjectName(QStringLiteral("horizontalLayout_13"));
         labelWorker = new QLabel(groupBox_4);
         labelWorker->setObjectName(QStringLiteral("labelWorker"));
-        sizePolicy7.setHeightForWidth(labelWorker->sizePolicy().hasHeightForWidth());
-        labelWorker->setSizePolicy(sizePolicy7);
+        sizePolicy8.setHeightForWidth(labelWorker->sizePolicy().hasHeightForWidth());
+        labelWorker->setSizePolicy(sizePolicy8);
         labelWorker->setMinimumSize(QSize(80, 31));
         labelWorker->setMaximumSize(QSize(100, 16777215));
         labelWorker->setFont(font2);
@@ -1270,8 +1316,8 @@ public:
 
         lineEditWorker = new QLineEdit(groupBox_4);
         lineEditWorker->setObjectName(QStringLiteral("lineEditWorker"));
-        sizePolicy1.setHeightForWidth(lineEditWorker->sizePolicy().hasHeightForWidth());
-        lineEditWorker->setSizePolicy(sizePolicy1);
+        sizePolicy2.setHeightForWidth(lineEditWorker->sizePolicy().hasHeightForWidth());
+        lineEditWorker->setSizePolicy(sizePolicy2);
         lineEditWorker->setMinimumSize(QSize(150, 31));
         lineEditWorker->setFont(font3);
 
@@ -1289,8 +1335,8 @@ public:
         horizontalLayout_11->setObjectName(QStringLiteral("horizontalLayout_11"));
         labelCore = new QLabel(groupBox_4);
         labelCore->setObjectName(QStringLiteral("labelCore"));
-        sizePolicy7.setHeightForWidth(labelCore->sizePolicy().hasHeightForWidth());
-        labelCore->setSizePolicy(sizePolicy7);
+        sizePolicy8.setHeightForWidth(labelCore->sizePolicy().hasHeightForWidth());
+        labelCore->setSizePolicy(sizePolicy8);
         labelCore->setMinimumSize(QSize(80, 31));
         labelCore->setMaximumSize(QSize(50, 16777215));
         labelCore->setFont(font2);
@@ -1517,11 +1563,11 @@ public:
 
         lcdNumberCalculatedHR = new QLCDNumber(frame_17);
         lcdNumberCalculatedHR->setObjectName(QStringLiteral("lcdNumberCalculatedHR"));
-        QSizePolicy sizePolicy8(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy8.setHorizontalStretch(0);
-        sizePolicy8.setVerticalStretch(35);
-        sizePolicy8.setHeightForWidth(lcdNumberCalculatedHR->sizePolicy().hasHeightForWidth());
-        lcdNumberCalculatedHR->setSizePolicy(sizePolicy8);
+        QSizePolicy sizePolicy9(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy9.setHorizontalStretch(0);
+        sizePolicy9.setVerticalStretch(35);
+        sizePolicy9.setHeightForWidth(lcdNumberCalculatedHR->sizePolicy().hasHeightForWidth());
+        lcdNumberCalculatedHR->setSizePolicy(sizePolicy9);
         lcdNumberCalculatedHR->setDigitCount(6);
 
         horizontalLayout_32->addWidget(lcdNumberCalculatedHR);
@@ -1704,7 +1750,7 @@ public:
 
         gridLayout_25->addLayout(horizontalLayout_21, 1, 0, 1, 1);
 
-        stackedWidgeMonitorMain->addWidget(pageMining);
+        stackedWidgetMonitorMain->addWidget(pageMining);
         pageHistory = new QWidget();
         pageHistory->setObjectName(QStringLiteral("pageHistory"));
         pageHistory->setStyleSheet(QStringLiteral("background-color: #5a5b5b;"));
@@ -2074,7 +2120,7 @@ public:
 
         verticalLayout_15->addWidget(groupBox_8);
 
-        stackedWidgeMonitorMain->addWidget(pageHistory);
+        stackedWidgetMonitorMain->addWidget(pageHistory);
         page = new QWidget();
         page->setObjectName(QStringLiteral("page"));
         gridLayout_45 = new QGridLayout(page);
@@ -2114,8 +2160,8 @@ public:
 
         labelWallet_2 = new QLabel(page);
         labelWallet_2->setObjectName(QStringLiteral("labelWallet_2"));
-        sizePolicy7.setHeightForWidth(labelWallet_2->sizePolicy().hasHeightForWidth());
-        labelWallet_2->setSizePolicy(sizePolicy7);
+        sizePolicy8.setHeightForWidth(labelWallet_2->sizePolicy().hasHeightForWidth());
+        labelWallet_2->setSizePolicy(sizePolicy8);
         labelWallet_2->setMaximumSize(QSize(60, 16777215));
         QFont font9;
         font9.setFamily(QStringLiteral("Arial"));
@@ -2131,8 +2177,8 @@ public:
         splitter_3->setOrientation(Qt::Horizontal);
         groupBoxWatchdog = new QGroupBox(splitter_3);
         groupBoxWatchdog->setObjectName(QStringLiteral("groupBoxWatchdog"));
-        sizePolicy1.setHeightForWidth(groupBoxWatchdog->sizePolicy().hasHeightForWidth());
-        groupBoxWatchdog->setSizePolicy(sizePolicy1);
+        sizePolicy2.setHeightForWidth(groupBoxWatchdog->sizePolicy().hasHeightForWidth());
+        groupBoxWatchdog->setSizePolicy(sizePolicy2);
         groupBoxWatchdog->setFont(font1);
         groupBoxWatchdog->setCheckable(true);
         groupBoxWatchdog->setChecked(false);
@@ -2222,19 +2268,19 @@ public:
 
         pushButtonEthminerBrowser = new QPushButton(page);
         pushButtonEthminerBrowser->setObjectName(QStringLiteral("pushButtonEthminerBrowser"));
-        QSizePolicy sizePolicy9(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        sizePolicy9.setHorizontalStretch(0);
-        sizePolicy9.setVerticalStretch(0);
-        sizePolicy9.setHeightForWidth(pushButtonEthminerBrowser->sizePolicy().hasHeightForWidth());
-        pushButtonEthminerBrowser->setSizePolicy(sizePolicy9);
+        QSizePolicy sizePolicy10(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy10.setHorizontalStretch(0);
+        sizePolicy10.setVerticalStretch(0);
+        sizePolicy10.setHeightForWidth(pushButtonEthminerBrowser->sizePolicy().hasHeightForWidth());
+        pushButtonEthminerBrowser->setSizePolicy(sizePolicy10);
         pushButtonEthminerBrowser->setFont(font1);
 
         gridLayout_42->addWidget(pushButtonEthminerBrowser, 3, 7, 1, 1);
 
         groupBoxNvidia = new QGroupBox(page);
         groupBoxNvidia->setObjectName(QStringLiteral("groupBoxNvidia"));
-        sizePolicy1.setHeightForWidth(groupBoxNvidia->sizePolicy().hasHeightForWidth());
-        groupBoxNvidia->setSizePolicy(sizePolicy1);
+        sizePolicy2.setHeightForWidth(groupBoxNvidia->sizePolicy().hasHeightForWidth());
+        groupBoxNvidia->setSizePolicy(sizePolicy2);
         groupBoxNvidia->setFont(font9);
         gridLayout_3 = new QGridLayout(groupBoxNvidia);
         gridLayout_3->setSpacing(6);
@@ -2335,8 +2381,8 @@ public:
 
         groupBoxAMD = new QGroupBox(page);
         groupBoxAMD->setObjectName(QStringLiteral("groupBoxAMD"));
-        sizePolicy1.setHeightForWidth(groupBoxAMD->sizePolicy().hasHeightForWidth());
-        groupBoxAMD->setSizePolicy(sizePolicy1);
+        sizePolicy2.setHeightForWidth(groupBoxAMD->sizePolicy().hasHeightForWidth());
+        groupBoxAMD->setSizePolicy(sizePolicy2);
         groupBoxAMD->setFont(font9);
         gridLayout_2 = new QGridLayout(groupBoxAMD);
         gridLayout_2->setSpacing(6);
@@ -2514,8 +2560,8 @@ public:
         groupBoxPools = new QGroupBox(page);
         groupBoxPools->setObjectName(QStringLiteral("groupBoxPools"));
         groupBoxPools->setEnabled(true);
-        sizePolicy3.setHeightForWidth(groupBoxPools->sizePolicy().hasHeightForWidth());
-        groupBoxPools->setSizePolicy(sizePolicy3);
+        sizePolicy4.setHeightForWidth(groupBoxPools->sizePolicy().hasHeightForWidth());
+        groupBoxPools->setSizePolicy(sizePolicy4);
         groupBoxPools->setFont(font1);
         gridLayout_4 = new QGridLayout(groupBoxPools);
         gridLayout_4->setSpacing(6);
@@ -2533,14 +2579,14 @@ public:
 
         gridLayout_45->addLayout(gridLayout_42, 0, 0, 1, 1);
 
-        stackedWidgeMonitorMain->addWidget(page);
+        stackedWidgetMonitorMain->addWidget(page);
 
-        gridLayout_40->addWidget(stackedWidgeMonitorMain, 1, 0, 1, 1);
+        gridLayout_40->addWidget(stackedWidgetMonitorMain, 1, 0, 1, 1);
 
         frameMonitorBar = new QFrame(pageMonitor);
         frameMonitorBar->setObjectName(QStringLiteral("frameMonitorBar"));
         frameMonitorBar->setMinimumSize(QSize(0, 40));
-        frameMonitorBar->setMaximumSize(QSize(16777215, 40));
+        frameMonitorBar->setMaximumSize(QSize(16777215, 50));
         frameMonitorBar->setStyleSheet(QStringLiteral("background:#008F96;"));
         frameMonitorBar->setFrameShape(QFrame::StyledPanel);
         frameMonitorBar->setFrameShadow(QFrame::Raised);
@@ -2551,8 +2597,11 @@ public:
         horizontalLayout_5->setContentsMargins(0, 0, 0, 0);
         frameOverview = new QFrame(frameMonitorBar);
         frameOverview->setObjectName(QStringLiteral("frameOverview"));
-        frameOverview->setMinimumSize(QSize(50, 0));
-        frameOverview->setStyleSheet(QStringLiteral("background:#008F96;"));
+        frameOverview->setMinimumSize(QSize(50, 40));
+        frameOverview->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/worldAsset 60.png);\n"
+"background-color: rgb(0, 143, 150);\n"
+"background-repeat:no-repeat;\n"
+"background-position:center;"));
         frameOverview->setFrameShape(QFrame::StyledPanel);
         frameOverview->setFrameShadow(QFrame::Raised);
         gridLayout_36 = new QGridLayout(frameOverview);
@@ -2562,13 +2611,12 @@ public:
         gridLayout_36->setContentsMargins(0, 0, 0, 0);
         pushButtonMonitorPage_Overview = new QPushButton(frameOverview);
         pushButtonMonitorPage_Overview->setObjectName(QStringLiteral("pushButtonMonitorPage_Overview"));
-        sizePolicy3.setHeightForWidth(pushButtonMonitorPage_Overview->sizePolicy().hasHeightForWidth());
-        pushButtonMonitorPage_Overview->setSizePolicy(sizePolicy3);
+        sizePolicy4.setHeightForWidth(pushButtonMonitorPage_Overview->sizePolicy().hasHeightForWidth());
+        pushButtonMonitorPage_Overview->setSizePolicy(sizePolicy4);
         pushButtonMonitorPage_Overview->setMinimumSize(QSize(0, 0));
         pushButtonMonitorPage_Overview->setStyleSheet(QLatin1String("QPushButton {\n"
 "	border: none;\n"
 "	background-color: rgba(0,0,0,0);\n"
-"	background-image: url(:/icons/icos/worldAsset 60.png);\n"
 "	background-repeat:no-repeat;\n"
 "	background-position:center;\n"
 "}\n"
@@ -2586,8 +2634,11 @@ public:
 
         frameMiningInfo = new QFrame(frameMonitorBar);
         frameMiningInfo->setObjectName(QStringLiteral("frameMiningInfo"));
-        frameMiningInfo->setMinimumSize(QSize(50, 0));
-        frameMiningInfo->setStyleSheet(QStringLiteral("background:#008F96;"));
+        frameMiningInfo->setMinimumSize(QSize(50, 40));
+        frameMiningInfo->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/windAsset 51.png);\n"
+"background-color: rgb(0, 143, 150);\n"
+"background-repeat:no-repeat;\n"
+"background-position:center;"));
         frameMiningInfo->setFrameShape(QFrame::StyledPanel);
         frameMiningInfo->setFrameShadow(QFrame::Raised);
         gridLayout_37 = new QGridLayout(frameMiningInfo);
@@ -2597,15 +2648,13 @@ public:
         gridLayout_37->setContentsMargins(0, 0, 0, 0);
         pushButtonMonitorPage_Mining = new QPushButton(frameMiningInfo);
         pushButtonMonitorPage_Mining->setObjectName(QStringLiteral("pushButtonMonitorPage_Mining"));
-        sizePolicy3.setHeightForWidth(pushButtonMonitorPage_Mining->sizePolicy().hasHeightForWidth());
-        pushButtonMonitorPage_Mining->setSizePolicy(sizePolicy3);
+        sizePolicy4.setHeightForWidth(pushButtonMonitorPage_Mining->sizePolicy().hasHeightForWidth());
+        pushButtonMonitorPage_Mining->setSizePolicy(sizePolicy4);
         pushButtonMonitorPage_Mining->setMinimumSize(QSize(0, 0));
         pushButtonMonitorPage_Mining->setStyleSheet(QLatin1String("QPushButton {\n"
 "	border: none;\n"
 "	background-color: rgba(0,0,0,0);\n"
-"	background-repeat:no-repeat;\n"
 "	background-position:center;\n"
-"	background-image: url(:/icons/icos/windAsset 51.png);\n"
 "}\n"
 "QPushButton:hover {\n"
 "	background-color: rgb(91,90,90);\n"
@@ -2614,15 +2663,18 @@ public:
 "	background-color: #7A0000;\n"
 "}"));
 
-        gridLayout_37->addWidget(pushButtonMonitorPage_Mining, 0, 0, 1, 1);
+        gridLayout_37->addWidget(pushButtonMonitorPage_Mining, 0, 0, 2, 1);
 
 
         horizontalLayout_5->addWidget(frameMiningInfo);
 
         frameHistory = new QFrame(frameMonitorBar);
         frameHistory->setObjectName(QStringLiteral("frameHistory"));
-        frameHistory->setMinimumSize(QSize(50, 0));
-        frameHistory->setStyleSheet(QStringLiteral("background:#008F96;"));
+        frameHistory->setMinimumSize(QSize(50, 40));
+        frameHistory->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/bugAsset 47.png);\n"
+"background-color: rgb(0, 143, 150);\n"
+"background-repeat:no-repeat;\n"
+"background-position:center;"));
         frameHistory->setFrameShape(QFrame::StyledPanel);
         frameHistory->setFrameShadow(QFrame::Raised);
         gridLayout_38 = new QGridLayout(frameHistory);
@@ -2632,15 +2684,14 @@ public:
         gridLayout_38->setContentsMargins(0, 0, 0, 0);
         pushButtonMonitorPage_System = new QPushButton(frameHistory);
         pushButtonMonitorPage_System->setObjectName(QStringLiteral("pushButtonMonitorPage_System"));
-        sizePolicy3.setHeightForWidth(pushButtonMonitorPage_System->sizePolicy().hasHeightForWidth());
-        pushButtonMonitorPage_System->setSizePolicy(sizePolicy3);
+        sizePolicy4.setHeightForWidth(pushButtonMonitorPage_System->sizePolicy().hasHeightForWidth());
+        pushButtonMonitorPage_System->setSizePolicy(sizePolicy4);
         pushButtonMonitorPage_System->setMinimumSize(QSize(50, 0));
         pushButtonMonitorPage_System->setStyleSheet(QLatin1String("QPushButton {\n"
 "	border: none;\n"
 "	background-color: rgba(0,0,0,0);\n"
 "	background-repeat:no-repeat;\n"
 "	background-position:center;\n"
-"	background-image: url(:/icons/icos/bugAsset 47.png);\n"
 "}\n"
 "QPushButton:hover {\n"
 "	background-color: rgb(91,90,90);\n"
@@ -2648,6 +2699,7 @@ public:
 "QPushButton:pressed {	\n"
 "	background-color: #7A0000;\n"
 "}"));
+        pushButtonMonitorPage_System->setIconSize(QSize(0, 16));
 
         gridLayout_38->addWidget(pushButtonMonitorPage_System, 0, 0, 1, 1);
 
@@ -2695,11 +2747,11 @@ public:
 
         label_51 = new QLabel(pageOC);
         label_51->setObjectName(QStringLiteral("label_51"));
-        QSizePolicy sizePolicy10(QSizePolicy::Fixed, QSizePolicy::Preferred);
-        sizePolicy10.setHorizontalStretch(0);
-        sizePolicy10.setVerticalStretch(0);
-        sizePolicy10.setHeightForWidth(label_51->sizePolicy().hasHeightForWidth());
-        label_51->setSizePolicy(sizePolicy10);
+        QSizePolicy sizePolicy11(QSizePolicy::Fixed, QSizePolicy::Preferred);
+        sizePolicy11.setHorizontalStretch(0);
+        sizePolicy11.setVerticalStretch(0);
+        sizePolicy11.setHeightForWidth(label_51->sizePolicy().hasHeightForWidth());
+        label_51->setSizePolicy(sizePolicy11);
         label_51->setMinimumSize(QSize(200, 80));
         label_51->setFont(font6);
 
@@ -2727,8 +2779,8 @@ public:
 
         label_52 = new QLabel(pageOC);
         label_52->setObjectName(QStringLiteral("label_52"));
-        sizePolicy10.setHeightForWidth(label_52->sizePolicy().hasHeightForWidth());
-        label_52->setSizePolicy(sizePolicy10);
+        sizePolicy11.setHeightForWidth(label_52->sizePolicy().hasHeightForWidth());
+        label_52->setSizePolicy(sizePolicy11);
         label_52->setMinimumSize(QSize(0, 80));
         label_52->setFont(font6);
 
@@ -2742,8 +2794,8 @@ public:
 
         label_53 = new QLabel(pageOC);
         label_53->setObjectName(QStringLiteral("label_53"));
-        sizePolicy10.setHeightForWidth(label_53->sizePolicy().hasHeightForWidth());
-        label_53->setSizePolicy(sizePolicy10);
+        sizePolicy11.setHeightForWidth(label_53->sizePolicy().hasHeightForWidth());
+        label_53->setSizePolicy(sizePolicy11);
         label_53->setMinimumSize(QSize(0, 80));
         label_53->setFont(font6);
 
@@ -2762,8 +2814,8 @@ public:
 
         label_49 = new QLabel(pageOC);
         label_49->setObjectName(QStringLiteral("label_49"));
-        sizePolicy10.setHeightForWidth(label_49->sizePolicy().hasHeightForWidth());
-        label_49->setSizePolicy(sizePolicy10);
+        sizePolicy11.setHeightForWidth(label_49->sizePolicy().hasHeightForWidth());
+        label_49->setSizePolicy(sizePolicy11);
         label_49->setMinimumSize(QSize(0, 80));
         label_49->setFont(font6);
 
@@ -2771,11 +2823,11 @@ public:
 
         horizontalSliderPowerPercent = new QSlider(pageOC);
         horizontalSliderPowerPercent->setObjectName(QStringLiteral("horizontalSliderPowerPercent"));
-        QSizePolicy sizePolicy11(QSizePolicy::Expanding, QSizePolicy::Fixed);
-        sizePolicy11.setHorizontalStretch(255);
-        sizePolicy11.setVerticalStretch(0);
-        sizePolicy11.setHeightForWidth(horizontalSliderPowerPercent->sizePolicy().hasHeightForWidth());
-        horizontalSliderPowerPercent->setSizePolicy(sizePolicy11);
+        QSizePolicy sizePolicy12(QSizePolicy::Expanding, QSizePolicy::Fixed);
+        sizePolicy12.setHorizontalStretch(255);
+        sizePolicy12.setVerticalStretch(0);
+        sizePolicy12.setHeightForWidth(horizontalSliderPowerPercent->sizePolicy().hasHeightForWidth());
+        horizontalSliderPowerPercent->setSizePolicy(sizePolicy12);
         horizontalSliderPowerPercent->setMinimum(50);
         horizontalSliderPowerPercent->setMaximum(100);
         horizontalSliderPowerPercent->setOrientation(Qt::Horizontal);
@@ -2811,8 +2863,8 @@ public:
 
         label_50 = new QLabel(pageOC);
         label_50->setObjectName(QStringLiteral("label_50"));
-        sizePolicy10.setHeightForWidth(label_50->sizePolicy().hasHeightForWidth());
-        label_50->setSizePolicy(sizePolicy10);
+        sizePolicy11.setHeightForWidth(label_50->sizePolicy().hasHeightForWidth());
+        label_50->setSizePolicy(sizePolicy11);
         label_50->setMinimumSize(QSize(200, 80));
         label_50->setFont(font6);
 
@@ -2890,13 +2942,13 @@ public:
 
         verticalLayout->addWidget(stackedWidgetMain);
 
-        frame_43 = new QFrame(centralWidget);
+        frame_43 = new QFrame(widget);
         frame_43->setObjectName(QStringLiteral("frame_43"));
-        QSizePolicy sizePolicy12(QSizePolicy::Preferred, QSizePolicy::Minimum);
-        sizePolicy12.setHorizontalStretch(0);
-        sizePolicy12.setVerticalStretch(0);
-        sizePolicy12.setHeightForWidth(frame_43->sizePolicy().hasHeightForWidth());
-        frame_43->setSizePolicy(sizePolicy12);
+        QSizePolicy sizePolicy13(QSizePolicy::Preferred, QSizePolicy::Minimum);
+        sizePolicy13.setHorizontalStretch(0);
+        sizePolicy13.setVerticalStretch(0);
+        sizePolicy13.setHeightForWidth(frame_43->sizePolicy().hasHeightForWidth());
+        frame_43->setSizePolicy(sizePolicy13);
         frame_43->setMinimumSize(QSize(0, 15));
         frame_43->setStyleSheet(QStringLiteral("background:#008F96;"));
         frame_43->setFrameShape(QFrame::StyledPanel);
@@ -2904,18 +2956,30 @@ public:
 
         verticalLayout->addWidget(frame_43);
 
+        splitter_4->addWidget(widget);
 
-        horizontalLayout_31->addLayout(verticalLayout);
+        gridLayout_12->addWidget(splitter_4, 0, 0, 2, 3);
 
+        lineEditMinerPath = new QLineEdit(centralWidget);
+        lineEditMinerPath->setObjectName(QStringLiteral("lineEditMinerPath"));
+        lineEditMinerPath->setMaximumSize(QSize(0, 0));
 
-        gridLayout_49->addLayout(horizontalLayout_31, 0, 0, 1, 1);
+        gridLayout_12->addWidget(lineEditMinerPath, 1, 1, 1, 1);
+
+        lineEditArgs = new QLineEdit(centralWidget);
+        lineEditArgs->setObjectName(QStringLiteral("lineEditArgs"));
+        sizePolicy2.setHeightForWidth(lineEditArgs->sizePolicy().hasHeightForWidth());
+        lineEditArgs->setSizePolicy(sizePolicy2);
+        lineEditArgs->setMaximumSize(QSize(0, 0));
+
+        gridLayout_12->addWidget(lineEditArgs, 1, 2, 1, 1);
 
         MainWindow->setCentralWidget(centralWidget);
 
         retranslateUi(MainWindow);
 
         stackedWidgetMain->setCurrentIndex(0);
-        stackedWidgeMonitorMain->setCurrentIndex(1);
+        stackedWidgetMonitorMain->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -2924,14 +2988,15 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Miner's Lamp", Q_NULLPTR));
+        groupBoxWestBar->setTitle(QString());
+        pushButtonToggle->setText(QString());
         pushButtonMonitorPage->setText(QString());
-        pushButton_6->setText(QString());
         pushButtonOCPage->setText(QString());
         pushButtonHelpPage->setText(QString());
         groupBox->setTitle(QApplication::translate("MainWindow", "Hashrate chart", Q_NULLPTR));
         label->setText(QApplication::translate("MainWindow", "Current Hashrate", Q_NULLPTR));
         label_2->setText(QApplication::translate("MainWindow", "Estimated Income", Q_NULLPTR));
-        groupBox_3->setTitle(QApplication::translate("MainWindow", "GroupBox", Q_NULLPTR));
+        groupBox_3->setTitle(QApplication::translate("MainWindow", "Overview", Q_NULLPTR));
         label_23->setText(QApplication::translate("MainWindow", "Mem\n"
 "Clock", Q_NULLPTR));
         pushButton_2->setText(QApplication::translate("MainWindow", "up", Q_NULLPTR));

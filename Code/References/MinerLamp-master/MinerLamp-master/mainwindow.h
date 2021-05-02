@@ -70,6 +70,7 @@ public:
     GPUInfo getWorst(const std::vector<GPUInfo>& gpu_infos);
 
     bool getMinerStatus();
+    bool eventFilter(QObject *obj, QEvent *event);
 
 private:
     QList<QWidget *> * _gpuInfoList;
@@ -95,6 +96,7 @@ private:
     void initializeConstants();
     void setLCDNumber(QWidget * widget, unsigned int value);
     void plotGrapgh(QString dateStart, QString dateEnd, int deviceNum);
+    void isAllPromptVisable(bool status);
 
     nvidiaAPI* _nvapi;
     void applyOC();
@@ -229,6 +231,8 @@ private slots:
 
     void on_checkBoxAutoOC_clicked(bool checked);
 
+//    void on_pushButtonToggle_pressed();
+
 public:
     QMap<QString, Coin*> map_coins;
     QMap<QString, Core*> map_cores;
@@ -324,6 +328,8 @@ private:
     amdMonitorThrd* _amdMonitorThrd;
 
     nanopoolAPI* _nano;
+
+    void setPushButtonColor(QPushButton* pushButton, bool pressed);
 
     // migrate method from nvocDialog
     void updateSliders(unsigned int gpu);
