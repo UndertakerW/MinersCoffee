@@ -103,6 +103,7 @@ private:
     nvOCDialog* _dlg;
     void setComboIndex(QComboBox * comboBox, QString key);
     bool _searchHistoryMiningOverall;
+    void changeLabelColor(QLabel * label, QColor color);
 
 
 

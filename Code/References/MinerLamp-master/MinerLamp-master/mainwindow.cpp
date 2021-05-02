@@ -227,6 +227,8 @@ MainWindow::MainWindow(QWidget *parent) :
     labelsFont.setPixelSize(14);
     _axisX->setTitleFont(labelsFont);
     _chart->axisY()->setTitleFont(labelsFont);
+    _chart->axisY()->setLabelsFont(QFont("Berlin Sans FB", 8));
+
     _axisX->setGridLineVisible(false);
     _chart->axisY()->setGridLineVisible(false);
 
@@ -323,6 +325,7 @@ MainWindow::MainWindow(QWidget *parent) :
     labelsFont_temp.setPixelSize(14);
     _axisXTemp->setTitleFont(labelsFont_temp);
     _chartTemp->axisY()->setTitleFont(labelsFont_temp);
+    _chartTemp->axisY()->setLabelsFont(QFont("Berlin Sans FB"));
 
     // customize axis label colors
     QBrush axisBrush_temp(Qt::white);
@@ -364,8 +367,7 @@ MainWindow::MainWindow(QWidget *parent) :
     _tempChartTimer.setInterval(1000);
     _tempChartTimer.start();
 
-
-    ui->lcdNumberHashRate->display("0.00");
+    ui->labelHashRate->setText("0.00");
 
     if(ui->checkBoxAutoStart->isChecked())
     {
@@ -716,24 +718,24 @@ void MainWindow::setupEditor()
 void MainWindow::setupToolTips()
 {
 
-    ui->lcdNumberHashRate->setToolTip("Displaying the current hashrate");
+    ui->labelHashRate->setToolTip("Displaying the current hashrate");
 
     ui->lcdNumberGPUCount->setToolTip("Number of nVidia GPU(s)");
 
-    ui->lcdNumberMaxGPUTemp->setToolTip("Displaying the current higher temperature");
-    ui->lcdNumberMinGPUTemp->setToolTip("Displaying the current lower temperature");
+    ui->labelMaxGPUTemp->setToolTip("Displaying the current higher temperature");
+    ui->labelMinGPUTemp->setToolTip("Displaying the current lower temperature");
 
-    ui->lcdNumberMaxFanSpeed->setToolTip("Displaying the current higher fan speed in percent of the max speed");
-    ui->lcdNumberMinFanSpeed->setToolTip("Displaying the current lower fan speed in percent of the max speed");
+    ui->labelMaxFanSpeed->setToolTip("Displaying the current higher fan speed in percent of the max speed");
+    ui->labelMinFanSpeed->setToolTip("Displaying the current lower fan speed in percent of the max speed");
 
-    ui->lcdNumberMaxMemClock->setToolTip("Displaying the current higher memory clock");
-    ui->lcdNumberMinMemClock->setToolTip("Displaying the current lower memory clock");
+    ui->labelMaxMemClock->setToolTip("Displaying the current higher memory clock");
+    ui->labelMinMemClock->setToolTip("Displaying the current lower memory clock");
 
-    ui->lcdNumberMaxGPUClock->setToolTip("The GPU in your rig with the higher clock");
-    ui->lcdNumberMinGPUClock->setToolTip("The GPU in your rig with the lower clock");
+    ui->labelMaxGPUClock->setToolTip("The GPU in your rig with the higher clock");
+    ui->labelMinGPUClock->setToolTip("The GPU in your rig with the lower clock");
 
-    ui->lcdNumberMaxWatt->setToolTip("Displaying the current higher power draw in Watt");
-    ui->lcdNumberMinWatt->setToolTip("Displaying the current lower power draw in Watt");
+    ui->labelMaxWatt->setToolTip("Displaying the current higher power draw in Watt");
+    ui->labelMinWatt->setToolTip("Displaying the current lower power draw in Watt");
 
     ui->lcdNumberTotalPowerDraw->setToolTip("The total power used by the GPUs");
 
@@ -839,8 +841,8 @@ void MainWindow::onMinerStoped()
     _isStartStoping = false;
 
     this->setWindowTitle(QString("Miner's Lamp"));
-    ui->lcdNumberHashRate->setPalette(Qt::gray);
-    ui->lcdNumberHashRate->display("0.00");
+    changeLabelColor(ui->labelHashRate, Qt::gray);
+    ui->labelHashRate->setText("0.00");
 
     _currentHashRate = 0;
 
@@ -854,13 +856,13 @@ void MainWindow::onHashrate(QString &hashrate)
 
     this->setWindowTitle(QString("Miner's Lamp - " + hashrate + " - Restart count: " + QString::number(_errorCount)));
     if(hrValue.toDouble() == 0)
-        ui->lcdNumberHashRate->setPalette(Qt::red);
+        changeLabelColor(ui->labelHashRate, Qt::red);
     else
-        ui->lcdNumberHashRate->setPalette(Qt::green);
+        changeLabelColor(ui->labelHashRate, Qt::green);
 
     _currentHashRate = hrValue.toDouble();
 
-    ui->lcdNumberHashRate->display(hrValue);
+    ui->labelHashRate->setText(hrValue);
 
     _trayIcon->setToolTip(QString("Miner's lamp - " + hashrate));
 
@@ -947,8 +949,12 @@ void autoStart::run()
     emit readyToStartMiner();
 }
 
-
-
+void MainWindow::changeLabelColor(QLabel * label, QColor color){
+    QPalette palette = label->palette();
+    palette.setColor(label->backgroundRole(), color);
+    palette.setColor(label->foregroundRole(), color);
+    label->setPalette(palette);
+}
 
 void MainWindow::onNvMonitorInfo(unsigned int gpucount
                                  , unsigned int maxgputemp
@@ -964,28 +970,25 @@ void MainWindow::onNvMonitorInfo(unsigned int gpucount
                                  , unsigned int totalpowerdraw)
 {
 
-
-    ui->lcdNumberMaxGPUTemp->setPalette(getTempColor(maxgputemp));
-    ui->lcdNumberMinGPUTemp->setPalette(getTempColor(mingputemp));
-
-
+    changeLabelColor(ui->labelMaxGPUTemp, getTempColor(maxgputemp));
+    changeLabelColor(ui->labelMinGPUTemp, getTempColor(mingputemp));
 
     ui->lcdNumberGPUCount->display((int)gpucount);
 
-    ui->lcdNumberMaxGPUTemp->display((int)maxgputemp);
-    ui->lcdNumberMinGPUTemp->display((int)mingputemp);
+    ui->labelMaxGPUTemp->setText(QString::number((int)maxgputemp));
+    ui->labelMinGPUTemp->setText(QString::number((int)mingputemp));
 
-    ui->lcdNumberMaxFanSpeed->display((int)maxfanspeed);
-    ui->lcdNumberMinFanSpeed->display((int)minfanspeed);
+    ui->labelMaxFanSpeed->setText(QString::number((int)maxfanspeed));
+    ui->labelMinFanSpeed->setText(QString::number((int)minfanspeed));
 
-    ui->lcdNumberMaxMemClock->display((int)maxmemclock);
-    ui->lcdNumberMinMemClock->display((int)minmemclock);
+    ui->labelMaxMemClock->setText(QString::number((int)maxmemclock));
+    ui->labelMinMemClock->setText(QString::number((int)minmemclock));
 
-    ui->lcdNumberMaxGPUClock->display((int)maxgpuclock);
-    ui->lcdNumberMinGPUClock->display((int)mingpuclock);
+    ui->labelMaxGPUClock->setText(QString::number((int)maxgpuclock));
+    ui->labelMinGPUClock->setText(QString::number((int)mingpuclock));
 
-    ui->lcdNumberMaxWatt->display((double)maxpowerdraw / 1000);
-    ui->lcdNumberMinWatt->display((double)minpowerdraw / 1000);
+    ui->labelMaxWatt->setText(QString::number((double)maxpowerdraw / 1000));
+    ui->labelMinWatt->setText(QString::number((double)minpowerdraw / 1000));
 
     ui->lcdNumberTotalPowerDraw->display((double)totalpowerdraw / 1000);
 
@@ -1072,14 +1075,14 @@ void MainWindow::onAMDMonitorInfo(unsigned int gpucount, unsigned int maxgputemp
     ui->lcdNumber_AMD_MaxFan->display((int)maxfanspeed);
     ui->lcdNumber_AMD_MinFan->display((int)minfanspeed);
 
-    ui->lcdNumberMaxMemClock->display((int)maxmemclock);
-    ui->lcdNumberMinMemClock->display((int)minmemclock);
+    ui->labelMaxMemClock->setText(QString::number((int)maxmemclock));
+    ui->labelMinMemClock->setText(QString::number((int)minmemclock));
 
-    ui->lcdNumberMaxGPUClock->display((int)maxgpuclock);
-    ui->lcdNumberMinGPUClock->display((int)mingpuclock);
+    ui->labelMaxGPUClock->setText(QString::number((int)maxgpuclock));
+    ui->labelMinGPUClock->setText(QString::number((int)mingpuclock));
 
-    ui->lcdNumberMaxWatt->display((double)maxpowerdraw / 1000);
-    ui->lcdNumberMinWatt->display((double)minpowerdraw / 1000);
+    ui->labelMaxWatt->setText(QString::number((double)maxpowerdraw / 1000));
+    ui->labelMinWatt->setText(QString::number((double)minpowerdraw / 1000));
 
     ui->lcdNumberTotalPowerDraw->display((double)totalpowerdraw / 1000);
 
@@ -1167,10 +1170,11 @@ void MainWindow::onHrChartTimer()
     _seriesBottom->append(QDateTime::currentDateTime().toMSecsSinceEpoch(), -0.5);
 
     //diaplay the proper range of the x-axis;
-    if(_plotsCntr >= 6)
+    //make sure the graph stay at 10 sec
+    if(_plotsCntr >= 10)
     {
-        _axisX->setRange(QDateTime::currentDateTime().addSecs(-6)
-                         , QDateTime::currentDateTime().addSecs(4));
+        _axisX->setRange(QDateTime::currentDateTime().addSecs(-10)
+                         , QDateTime::currentDateTime().addSecs(0));
     }
     else
         _plotsCntr++;
@@ -1192,10 +1196,11 @@ void MainWindow::onTempChartTimer()
     _seriesTempBottom->append(QDateTime::currentDateTime().toMSecsSinceEpoch(), 40);
 
     //diaplay the proper range of the x-axis;
-    if(_plotsCntrTemp >= 6)
+    //make sure the graph stay at 9 sec
+    if(_plotsCntrTemp >= 9)
     {
-        _axisXTemp->setRange(QDateTime::currentDateTime().addSecs(-6)
-                         , QDateTime::currentDateTime().addSecs(4));
+        _axisXTemp->setRange(QDateTime::currentDateTime().addSecs(-9)
+                         , QDateTime::currentDateTime().addSecs(1));
     }
     else
         _plotsCntrTemp++;
@@ -1322,7 +1327,6 @@ void MainWindow::refreshDeviceInfo()
 
     // refresh combobox for change page size
     if(diskNum != _diskCount){
-        qDebug() << "refreshing disk info";
         ui->comboBoxChangePageSize->clear();
         for(int i=0; i<diskNum; i++){
             ui->comboBoxChangePageSize->addItem(localDisks.at(0).at(i));
@@ -1358,11 +1362,11 @@ void MainWindow::refreshDeviceInfo()
     }
     else if(diskNum > _diskCount){
         for(int i = _diskCount; i <= diskNum-1; i++){
-            qDebug() << "adding extra";
             QWidget * parentWidget = new QWidget();
             QHBoxLayout * row = new QHBoxLayout(parentWidget);
             QLabel * diskNameLabel = new QLabel();
-            diskNameLabel->setFont(QFont("Arial", 9));
+            diskNameLabel->setStyleSheet("color : white;");
+            diskNameLabel->setFont(QFont("Berlin Sans FB", 15));
             QProgressBar * diskStorageBar = new QProgressBar();
             diskStorageBar->setStyleSheet(
                 "QProgressBar"
@@ -1372,6 +1376,7 @@ void MainWindow::refreshDeviceInfo()
                     "border : 2px;"
                     "border-radius:4px;"
                     "height: 50px;"
+                    "width: 100px;"
                 "}"
 
                 "QProgressBar::chunk{"
@@ -1380,6 +1385,7 @@ void MainWindow::refreshDeviceInfo()
                     "background-color:#008F96;"
                 "}"
             );
+            diskStorageBar->setFont(QFont("Berlin Sans FB", 10));
 
             diskStorageBar->setAlignment(Qt::AlignCenter);
 
