@@ -1135,7 +1135,7 @@ void MainWindow::on_pushButtonDisplayPoolStats_clicked()
 
 void MainWindow::onBalance(double balance)
 {
-    ui->lcdNumberBalance->display(balance);
+    ui->labelBalance->setText(QString::number(balance));
 }
 
 void MainWindow::onPoolUserInfo(double userBalance
@@ -1146,9 +1146,9 @@ void MainWindow::onPoolUserInfo(double userBalance
                                 , double averageHashRate12H
                                 , double averageHashRate24H)
 {
-    ui->lcdNumberBalance->display(userBalance);
-    ui->lcdNumberCalculatedHR->display(currentCalcultatedHashRate);
-    ui->lcdNumberAvrgHr6H->display(averageHashRate6H);
+    ui->labelBalance->setText(QString::number(userBalance));
+    ui->labelCalculatedHR->setText(QString::number(currentCalcultatedHashRate));
+    ui->labelAvrgHr6H->setText(QString::number(averageHashRate6H));
 }
 
 
@@ -1925,25 +1925,25 @@ void MainWindow::isAllPromptVisable(bool status){
 
 void MainWindow::on_horizontalSliderPowerPercent_valueChanged(int value)
 {
-    ui->lcdNumberPowerPercent->display(value);
+    ui->labelPowerPercent->setText(QString::number(value));
     _nvocPage->_cardList[_nvocPage->_gpuIndex].powerOffset = value;
 }
 
 void MainWindow::on_horizontalSliderGpuOffset_valueChanged(int value)
 {
-    ui->lcdNumberGpuOffset->display(value);
+    ui->labelGpuOffset->setText(QString::number(value));
     _nvocPage->_cardList[_nvocPage->_gpuIndex].gpuOffset = value;
 }
 
 void MainWindow::on_horizontalSliderMemOffset_valueChanged(int value)
 {
-    ui->lcdNumberMemClock->display(value);
+    ui->labelMemClock->setText(QString::number(value));
     _nvocPage->_cardList[_nvocPage->_gpuIndex].memOffset = value;
 }
 
 void MainWindow::on_horizontalSliderFanSpeed_valueChanged(int value)
 {
-    ui->lcdNumberFanSpeed->display(value);
+    ui->labelFanSpeed->setText(QString::number(value));
     _nvocPage->_cardList[_nvocPage->_gpuIndex].fanSpeed = value;
 }
 
