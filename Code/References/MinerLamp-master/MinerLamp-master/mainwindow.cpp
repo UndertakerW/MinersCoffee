@@ -206,11 +206,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
     _axisX = new QDateTimeAxis;
     // set graph interval number
-    _axisX->setTickCount(5);
+    _axisX->setTickCount(3);
     _axisX->setFormat("hh:mm:ss");
     _axisX->setTitleText("Time");
     _chart->axisY()->setTitleText("HR in MH/s");
-    _chart->axisY()->setRange(0, 1);
+    _chart->axisY()->setRange(-0.5, 1);
 
     QFont labelsFont;
     labelsFont.setPixelSize(14);
@@ -231,6 +231,17 @@ MainWindow::MainWindow(QWidget *parent) :
     _series->attachAxis(_axisX);
     _axisX->setRange(QDateTime::currentDateTime(), QDateTime::currentDateTime().addSecs(10));
 
+    // cast the default y-axis
+    QValueAxis *axisY = qobject_cast<QValueAxis*>(_chart->axes(Qt::Vertical).first());
+    axisY->setLabelFormat("%.1f ");
+    axisY->setTickCount(4);
+
+    // hide title and labels
+    _chart->axisX()->setTitleVisible(false);
+    _chart->axisX()->setLabelsVisible(false);
+    _chart->axisX()->hide();
+    _chart->axisY()->setTitleVisible(false);
+    _chart->axisX()->setMinorGridLineVisible(false);
 
     ui->graphicsView->setChart(_chart);
     _chart->setMargins(QMargins(0,0,0,0));
@@ -275,13 +286,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QLinearGradient gradient(QPointF(0, 0), QPointF(0, 1));
     gradient.setColorAt(0.0, 0x3cc63c);
     gradient.setColorAt(1.0, 0x26f626);
-//    gradient.setCoordinateMode(QGradient::ObjectBoundingMode);
     _areaseriesTemp->setBrush(backgroundGradient_temp);
 
-
-//    _seriesTemp->append(QDateTime::currentDateTime().toMSecsSinceEpoch(),0);
-//    _seriesTempBottom->append(QDateTime::currentDateTime().toMSecsSinceEpoch(),0);
-//    _chartTemp->addSeries(_seriesTempBottom);
     _chartTemp->addSeries(_seriesTemp);
     _chartTemp->addSeries(_areaseriesTemp);
     _chartTemp->createDefaultAxes();
@@ -289,10 +295,16 @@ MainWindow::MainWindow(QWidget *parent) :
     _axisXTemp = new QDateTimeAxis;
     // set graph interval number
     _axisXTemp->setTickCount(5);
-    _axisXTemp->setFormat("hh:mm:ss");
+
+    // cast the default y-axis
+    QValueAxis *axisYTemp = qobject_cast<QValueAxis*>(_chartTemp->axes(Qt::Vertical).first());
+    axisYTemp->setLabelFormat("%.1f  ");
+
+    // set labels foramt
+    _axisXTemp->setFormat("");
     _axisXTemp->setTitleText("Time");
-    _chartTemp->axisY()->setTitleText("Temp in degree");
-    _chartTemp->axisY()->setRange(0, 1);
+    _chartTemp->axisY()->setTitleText("");
+    axisYTemp->setLabelFormat("%d ");
 
     QFont labelsFont_temp;
     labelsFont_temp.setPixelSize(14);
@@ -316,8 +328,18 @@ MainWindow::MainWindow(QWidget *parent) :
     _axisXTemp->setRange(QDateTime::currentDateTime(), QDateTime::currentDateTime().addSecs(10));
 
     ui->graphicsViewTemp->setChart(_chartTemp);
-//    ui->graphicsView->setRenderHint(QPainter::Antialiasing);
     _chartTemp->setBackgroundRoundness(0);
+
+    // hide title and labels
+    _chartTemp->axisX()->setTitleVisible(false);
+    _chartTemp->axisX()->setLabelsVisible(false);
+    _chartTemp->axisX()->hide();
+    _chartTemp->axisY()->setTitleVisible(false);
+    _chartTemp->axisX()->setMinorGridLineVisible(false);
+
+    // hide margins
+    _chartTemp->setMargins(QMargins(0,0,0,0));
+
 
     // graph will be drawn every time interval
     connect(&_tempChartTimer, &QTimer::timeout, this, &MainWindow::onTempChartTimer);
@@ -341,11 +363,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->pushButtonShowHideLog->setChecked(false);
     ui->pushButtonPool->setChecked(false);
-    ui->groupBoxPools->hide();
-    ui->textEdit->hide();
+    ui->groupBoxPools->show();
+    ui->textEdit->show();
 
     ui->checkBoxAutoShowDeviceInfo->setChecked(false);
-    ui->groupBoxDevicesInfo->hide();
+    ui->groupBoxDevicesInfo->show();
 
 
     int pos = ui->lineEditArgs->text().indexOf("-O ");

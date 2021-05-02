@@ -77,7 +77,7 @@ public:
     QHBoxLayout *horizontalLayout_30;
     QGroupBox *groupBox;
     QHBoxLayout *horizontalLayout_6;
-    hashrateCharView *graphicsView;
+    hashrateCharView *graphicsViewEff;
     QFrame *frame;
     QVBoxLayout *verticalLayout_2;
     QFrame *frame_2;
@@ -88,7 +88,7 @@ public:
     QVBoxLayout *verticalLayout_4;
     QLabel *label_2;
     QLCDNumber *lcdNumberHashRate_2;
-    hashrateCharView *graphicsViewEff;
+    hashrateCharView *graphicsView;
     QSpacerItem *verticalSpacer;
     QGroupBox *groupBox_3;
     QVBoxLayout *verticalLayout_5;
@@ -697,12 +697,16 @@ public:
         horizontalLayout_6->setSpacing(0);
         horizontalLayout_6->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
-        graphicsView = new hashrateCharView(groupBox);
-        graphicsView->setObjectName(QStringLiteral("graphicsView"));
-        graphicsView->setMinimumSize(QSize(550, 0));
-        graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+        graphicsViewEff = new hashrateCharView(groupBox);
+        graphicsViewEff->setObjectName(QStringLiteral("graphicsViewEff"));
+        QSizePolicy sizePolicy6(QSizePolicy::Minimum, QSizePolicy::Minimum);
+        sizePolicy6.setHorizontalStretch(0);
+        sizePolicy6.setVerticalStretch(0);
+        sizePolicy6.setHeightForWidth(graphicsViewEff->sizePolicy().hasHeightForWidth());
+        graphicsViewEff->setSizePolicy(sizePolicy6);
+        graphicsViewEff->setMinimumSize(QSize(500, 100));
 
-        horizontalLayout_6->addWidget(graphicsView);
+        horizontalLayout_6->addWidget(graphicsViewEff);
 
         frame = new QFrame(groupBox);
         frame->setObjectName(QStringLiteral("frame"));
@@ -732,11 +736,11 @@ public:
 
         lcdNumberHashRate = new QLCDNumber(frame_2);
         lcdNumberHashRate->setObjectName(QStringLiteral("lcdNumberHashRate"));
-        QSizePolicy sizePolicy6(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy6.setHorizontalStretch(0);
-        sizePolicy6.setVerticalStretch(0);
-        sizePolicy6.setHeightForWidth(lcdNumberHashRate->sizePolicy().hasHeightForWidth());
-        lcdNumberHashRate->setSizePolicy(sizePolicy6);
+        QSizePolicy sizePolicy7(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy7.setHorizontalStretch(0);
+        sizePolicy7.setVerticalStretch(0);
+        sizePolicy7.setHeightForWidth(lcdNumberHashRate->sizePolicy().hasHeightForWidth());
+        lcdNumberHashRate->setSizePolicy(sizePolicy7);
         lcdNumberHashRate->setMinimumSize(QSize(0, 50));
         lcdNumberHashRate->setFont(font1);
         lcdNumberHashRate->setDigitCount(7);
@@ -763,8 +767,8 @@ public:
 
         lcdNumberHashRate_2 = new QLCDNumber(frame_3);
         lcdNumberHashRate_2->setObjectName(QStringLiteral("lcdNumberHashRate_2"));
-        sizePolicy6.setHeightForWidth(lcdNumberHashRate_2->sizePolicy().hasHeightForWidth());
-        lcdNumberHashRate_2->setSizePolicy(sizePolicy6);
+        sizePolicy7.setHeightForWidth(lcdNumberHashRate_2->sizePolicy().hasHeightForWidth());
+        lcdNumberHashRate_2->setSizePolicy(sizePolicy7);
         lcdNumberHashRate_2->setMinimumSize(QSize(0, 50));
         lcdNumberHashRate_2->setFont(font1);
         lcdNumberHashRate_2->setDigitCount(7);
@@ -774,16 +778,12 @@ public:
 
         verticalLayout_2->addWidget(frame_3);
 
-        graphicsViewEff = new hashrateCharView(frame);
-        graphicsViewEff->setObjectName(QStringLiteral("graphicsViewEff"));
-        QSizePolicy sizePolicy7(QSizePolicy::Minimum, QSizePolicy::Minimum);
-        sizePolicy7.setHorizontalStretch(0);
-        sizePolicy7.setVerticalStretch(0);
-        sizePolicy7.setHeightForWidth(graphicsViewEff->sizePolicy().hasHeightForWidth());
-        graphicsViewEff->setSizePolicy(sizePolicy7);
-        graphicsViewEff->setMinimumSize(QSize(100, 100));
+        graphicsView = new hashrateCharView(frame);
+        graphicsView->setObjectName(QStringLiteral("graphicsView"));
+        graphicsView->setMinimumSize(QSize(100, 180));
+        graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 
-        verticalLayout_2->addWidget(graphicsViewEff);
+        verticalLayout_2->addWidget(graphicsView);
 
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -1074,9 +1074,10 @@ public:
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
         groupBox_2->setFont(font1);
         gridLayout_6 = new QGridLayout(groupBox_2);
-        gridLayout_6->setSpacing(6);
+        gridLayout_6->setSpacing(1);
         gridLayout_6->setContentsMargins(11, 11, 11, 11);
         gridLayout_6->setObjectName(QStringLiteral("gridLayout_6"));
+        gridLayout_6->setContentsMargins(9, 1, 1, 1);
         graphicsViewTemp = new hashrateCharView(groupBox_2);
         graphicsViewTemp->setObjectName(QStringLiteral("graphicsViewTemp"));
         graphicsViewTemp->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
@@ -1122,8 +1123,8 @@ public:
 
         lcdNumberMaxGPUTemp = new QLCDNumber(frame_42);
         lcdNumberMaxGPUTemp->setObjectName(QStringLiteral("lcdNumberMaxGPUTemp"));
-        sizePolicy6.setHeightForWidth(lcdNumberMaxGPUTemp->sizePolicy().hasHeightForWidth());
-        lcdNumberMaxGPUTemp->setSizePolicy(sizePolicy6);
+        sizePolicy7.setHeightForWidth(lcdNumberMaxGPUTemp->sizePolicy().hasHeightForWidth());
+        lcdNumberMaxGPUTemp->setSizePolicy(sizePolicy7);
         lcdNumberMaxGPUTemp->setMinimumSize(QSize(0, 50));
         lcdNumberMaxGPUTemp->setFont(font1);
         lcdNumberMaxGPUTemp->setDigitCount(7);
@@ -1153,8 +1154,8 @@ public:
 
         lcdNumberMinGPUTemp = new QLCDNumber(frame_39);
         lcdNumberMinGPUTemp->setObjectName(QStringLiteral("lcdNumberMinGPUTemp"));
-        sizePolicy6.setHeightForWidth(lcdNumberMinGPUTemp->sizePolicy().hasHeightForWidth());
-        lcdNumberMinGPUTemp->setSizePolicy(sizePolicy6);
+        sizePolicy7.setHeightForWidth(lcdNumberMinGPUTemp->sizePolicy().hasHeightForWidth());
+        lcdNumberMinGPUTemp->setSizePolicy(sizePolicy7);
         lcdNumberMinGPUTemp->setMinimumSize(QSize(0, 50));
         lcdNumberMinGPUTemp->setFont(font1);
         lcdNumberMinGPUTemp->setDigitCount(7);

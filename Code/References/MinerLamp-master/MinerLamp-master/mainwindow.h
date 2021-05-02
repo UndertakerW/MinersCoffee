@@ -294,6 +294,7 @@ private:
     QLineSeries* _seriesTemp;
     QLineSeries* _seriesTempBottom;
     QAreaSeries* _areaseriesTemp;
+    QAreaSeries* _areaseriesHash;
     QDateTimeAxis *_axisXTemp;
 
     // temperature displaying
