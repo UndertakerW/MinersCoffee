@@ -28,6 +28,11 @@
         <file>icos/内存.png</file>
         <file>icos/展示.png</file>
         <file>icos/监视器.png</file>
+        <file>icos/maximum.png</file>
+        <file>icos/minimum.png</file>
+        <file>icos/icons8-down-48.png</file>
+        <file>icos/icons8-up-48.png</file>
+        <file>icos/arrow.png</file>
     </qresource>
     <qresource prefix="/images">
         <file>logo.png</file>
