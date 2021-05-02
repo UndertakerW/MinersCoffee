@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1096</width>
-    <height>754</height>
+    <width>1145</width>
+    <height>764</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -126,7 +126,8 @@
 background-color: rgb(0, 143, 150);
 background-repeat:no-repeat;
 background-position:center;
-</string>
+border-width: 0;
+border-radius : 0;</string>
           </property>
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
@@ -213,7 +214,8 @@ QPushButton:pressed {
 background-color: rgb(0, 143, 150);
 background-repeat:no-repeat;
 background-position:center;
-</string>
+border-width: 0;
+border-radius : 0;</string>
           </property>
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
@@ -251,17 +253,23 @@ background-position:center;
                <height>75</height>
               </size>
              </property>
+             <property name="font">
+              <font>
+               <family>Berlin Sans FB</family>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
              <property name="styleSheet">
               <string notr="true">QPushButton {
 	border: none;
-	background-color: #008F96;;
-	
+	background-color: rgba(0,0,0,0);
+	color : white;
 }
 QPushButton:hover {
 	background-color: rgb(91,90,90);
 }
 QPushButton:pressed {	
-	background-color:#7A0000;
+	background-color: #7A0000;
 }</string>
              </property>
              <property name="text">
@@ -290,7 +298,9 @@ QPushButton:pressed {
            <string notr="true">background-image: url(:/icons/icos/settAsset 50.png);
 background-repeat:no-repeat;
 background-position:center;
-background-color: rgb(0, 143, 150);</string>
+background-color: rgb(0, 143, 150);
+border-width: 0;
+border-radius : 0;</string>
           </property>
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
@@ -328,10 +338,17 @@ background-color: rgb(0, 143, 150);</string>
                <height>75</height>
               </size>
              </property>
+             <property name="font">
+              <font>
+               <family>Berlin Sans FB</family>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
              <property name="styleSheet">
               <string notr="true">QPushButton {
 	border: none;
-	background-color: #008F96;
+	background-color: rgba(0,0,0,0);
+	color : white;
 }
 QPushButton:hover {
 	background-color: rgb(91,90,90);
@@ -366,7 +383,10 @@ QPushButton:pressed {
            <string notr="true">background:#008F96;
 background-image: url(:/icons/icos/cloudAsset 48.png);
 background-repeat:no-repeat;
-background-position:center;</string>
+background-position:center;
+border-width: 0;
+border-radius : 0;
+</string>
           </property>
           <property name="frameShape">
            <enum>QFrame::StyledPanel</enum>
@@ -404,6 +424,12 @@ background-position:center;</string>
                <height>75</height>
               </size>
              </property>
+             <property name="font">
+              <font>
+               <family>Berlin Sans FB</family>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
              <property name="layoutDirection">
               <enum>Qt::LeftToRight</enum>
              </property>
@@ -411,11 +437,14 @@ background-position:center;</string>
               <string notr="true">QPushButton {
 	border: none;
 	background-color: rgba(0,0,0,0);
+	color : white;
 }
 QPushButton:hover {
+	border: none;
 	background-color: rgb(91,90,90);
 }
 QPushButton:pressed {	
+	border: none;
 	background-color: #7A0000;
 }</string>
              </property>
@@ -469,7 +498,7 @@ QPushButton:pressed {
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <layout class="QVBoxLayout" name="verticalLayout">
         <property name="spacing">
          <number>0</number>
@@ -478,7 +507,7 @@ QPushButton:pressed {
          <widget class="QStackedWidget" name="stackedWidgetMain">
           <property name="styleSheet">
            <string notr="true">background:#5B5A5A;
-color: rgb(255, 255, 255);</string>
+</string>
           </property>
           <property name="currentIndex">
            <number>0</number>
@@ -509,8 +538,7 @@ color: rgb(255, 255, 255);</string>
                </size>
               </property>
               <property name="styleSheet">
-               <string notr="true">background:rgb(91,90,90);
-color: rgb(255, 255, 255);</string>
+               <string notr="true">background:rgb(91,90,90);</string>
               </property>
               <property name="currentIndex">
                <number>0</number>
@@ -534,11 +562,22 @@ color: rgb(255, 255, 255);</string>
                       </property>
                       <property name="font">
                        <font>
-                        <family>Arial</family>
+                        <family>Berlin Sans FB</family>
+                        <pointsize>10</pointsize>
+                        <weight>50</weight>
+                        <bold>false</bold>
                        </font>
                       </property>
+                      <property name="toolTip">
+                       <string/>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QGroupBox::title{
+	color : white;
+}</string>
+                      </property>
                       <property name="title">
-                       <string>Hashrate chart</string>
+                       <string>Hashrate</string>
                       </property>
                       <layout class="QHBoxLayout" name="horizontalLayout_6">
                        <property name="spacing">
@@ -554,7 +593,7 @@ color: rgb(255, 255, 255);</string>
                          </property>
                          <property name="minimumSize">
                           <size>
-                           <width>500</width>
+                           <width>400</width>
                            <height>100</height>
                           </size>
                          </property>
@@ -698,19 +737,6 @@ color: rgb(255, 255, 255);</string>
                            </widget>
                           </item>
                           <item>
-                           <widget class="hashrateCharView" name="graphicsView">
-                            <property name="minimumSize">
-                             <size>
-                              <width>100</width>
-                              <height>180</height>
-                             </size>
-                            </property>
-                            <property name="horizontalScrollBarPolicy">
-                             <enum>Qt::ScrollBarAsNeeded</enum>
-                            </property>
-                           </widget>
-                          </item>
-                          <item>
                            <spacer name="verticalSpacer">
                             <property name="orientation">
                              <enum>Qt::Vertical</enum>
@@ -723,6 +749,19 @@ color: rgb(255, 255, 255);</string>
                             </property>
                            </spacer>
                           </item>
+                          <item>
+                           <widget class="hashrateCharView" name="graphicsView">
+                            <property name="minimumSize">
+                             <size>
+                              <width>200</width>
+                              <height>180</height>
+                             </size>
+                            </property>
+                            <property name="horizontalScrollBarPolicy">
+                             <enum>Qt::ScrollBarAsNeeded</enum>
+                            </property>
+                           </widget>
+                          </item>
                          </layout>
                         </widget>
                        </item>
@@ -731,8 +770,17 @@ color: rgb(255, 255, 255);</string>
                     </item>
                     <item>
                      <widget class="QGroupBox" name="groupBox_3">
+                      <property name="font">
+                       <font>
+                        <family>Berlin Sans FB</family>
+                        <pointsize>10</pointsize>
+                       </font>
+                      </property>
                       <property name="styleSheet">
-                       <string notr="true">background-color: #008F96;</string>
+                       <string notr="true">QGroupBox::title{
+	color : white;
+}
+</string>
                       </property>
                       <property name="title">
                        <string>Overview</string>
@@ -1298,11 +1346,17 @@ Clock</string>
                   <widget class="QGroupBox" name="groupBox_2">
                    <property name="font">
                     <font>
-                     <family>Arial</family>
+                     <family>Berlin Sans FB</family>
+                     <pointsize>10</pointsize>
                     </font>
                    </property>
+                   <property name="styleSheet">
+                    <string notr="true">QGroupBox::title{
+	color : white;
+}</string>
+                   </property>
                    <property name="title">
-                    <string>Temperature chart</string>
+                    <string>Temperature</string>
                    </property>
                    <layout class="QGridLayout" name="gridLayout_6">
                     <property name="leftMargin">
@@ -1525,8 +1579,20 @@ Clock</string>
                      <height>0</height>
                     </size>
                    </property>
+                   <property name="font">
+                    <font>
+                     <family>Berlin Sans FB</family>
+                     <pointsize>10</pointsize>
+                    </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QGroupBox::title{
+	color : white;
+}
+</string>
+                   </property>
                    <property name="title">
-                    <string>Disk Info</string>
+                    <string>Disks</string>
                    </property>
                    <layout class="QGridLayout" name="gridLayout_13">
                     <property name="leftMargin">
@@ -1539,7 +1605,7 @@ Clock</string>
                      <number>0</number>
                     </property>
                     <property name="bottomMargin">
-                     <number>0</number>
+                     <number>3</number>
                     </property>
                     <property name="spacing">
                      <number>0</number>
@@ -4194,7 +4260,7 @@ color: rgb(255, 255, 255);</string>
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>40</height>
+                <height>50</height>
                </size>
               </property>
               <property name="maximumSize">
@@ -4230,17 +4296,25 @@ color: rgb(255, 255, 255);</string>
                </property>
                <item>
                 <widget class="QFrame" name="frameOverview">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="minimumSize">
                   <size>
                    <width>50</width>
-                   <height>40</height>
+                   <height>50</height>
                   </size>
                  </property>
                  <property name="styleSheet">
                   <string notr="true">background-image: url(:/icons/icos/worldAsset 60.png);
 background-color: rgb(0, 143, 150);
 background-repeat:no-repeat;
-background-position:center;</string>
+background-position:center;
+border-width: 0;
+border-radius : 0;</string>
                  </property>
                  <property name="frameShape">
                   <enum>QFrame::StyledPanel</enum>
@@ -4275,21 +4349,26 @@ background-position:center;</string>
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
-                      <height>0</height>
+                      <height>50</height>
                      </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Berlin Sans FB</family>
+                      <pointsize>10</pointsize>
+                     </font>
                     </property>
                     <property name="styleSheet">
                      <string notr="true">QPushButton {
 	border: none;
 	background-color: rgba(0,0,0,0);
-	background-repeat:no-repeat;
-	background-position:center;
+	color : white;
 }
 QPushButton:hover {
 	background-color: rgb(91,90,90);
 }
 QPushButton:pressed {	
-	background-color:#7A0000;
+	background-color: #7A0000;
 }</string>
                     </property>
                     <property name="text">
@@ -4305,14 +4384,16 @@ QPushButton:pressed {
                  <property name="minimumSize">
                   <size>
                    <width>50</width>
-                   <height>40</height>
+                   <height>50</height>
                   </size>
                  </property>
                  <property name="styleSheet">
                   <string notr="true">background-image: url(:/icons/icos/windAsset 51.png);
 background-color: rgb(0, 143, 150);
 background-repeat:no-repeat;
-background-position:center;</string>
+background-position:center;
+border-width: 0;
+border-radius : 0;</string>
                  </property>
                  <property name="frameShape">
                   <enum>QFrame::StyledPanel</enum>
@@ -4350,11 +4431,17 @@ background-position:center;</string>
                       <height>0</height>
                      </size>
                     </property>
+                    <property name="font">
+                     <font>
+                      <family>Berlin Sans FB</family>
+                      <pointsize>10</pointsize>
+                     </font>
+                    </property>
                     <property name="styleSheet">
                      <string notr="true">QPushButton {
 	border: none;
 	background-color: rgba(0,0,0,0);
-	background-position:center;
+	color : white;
 }
 QPushButton:hover {
 	background-color: rgb(91,90,90);
@@ -4376,14 +4463,16 @@ QPushButton:pressed {
                  <property name="minimumSize">
                   <size>
                    <width>50</width>
-                   <height>40</height>
+                   <height>50</height>
                   </size>
                  </property>
                  <property name="styleSheet">
                   <string notr="true">background-image: url(:/icons/icos/bugAsset 47.png);
 background-color: rgb(0, 143, 150);
 background-repeat:no-repeat;
-background-position:center;</string>
+background-position:center;
+border-width: 0;
+border-radius : 0;</string>
                  </property>
                  <property name="frameShape">
                   <enum>QFrame::StyledPanel</enum>
@@ -4421,12 +4510,17 @@ background-position:center;</string>
                       <height>0</height>
                      </size>
                     </property>
+                    <property name="font">
+                     <font>
+                      <family>Berlin Sans FB</family>
+                      <pointsize>10</pointsize>
+                     </font>
+                    </property>
                     <property name="styleSheet">
                      <string notr="true">QPushButton {
 	border: none;
 	background-color: rgba(0,0,0,0);
-	background-repeat:no-repeat;
-	background-position:center;
+	color : white;
 }
 QPushButton:hover {
 	background-color: rgb(91,90,90);

@@ -183,25 +183,36 @@ MainWindow::MainWindow(QWidget *parent) :
     QLinearGradient backgroundGradient;
     backgroundGradient.setStart(QPointF(0, 0));
     backgroundGradient.setFinalStop(QPointF(0, 1));
-    backgroundGradient.setColorAt(0.0, QRgb(0x909090));
-    backgroundGradient.setColorAt(1.0, QRgb(0x101010));
+    backgroundGradient.setColorAt(1.0, QColor(255, 153, 0, 0));
+    backgroundGradient.setColorAt(0.0, QColor(255, 165, 0, 150));
     backgroundGradient.setCoordinateMode(QGradient::ObjectBoundingMode);
 
     _chart->setAnimationOptions(QChart::SeriesAnimations);
     _chart->setBackgroundBrush(backgroundGradient);
-
     _chart->setBackgroundVisible(false);
     _chart->legend()->hide();
 
     //set the color of the graph
     QPen pen(QColor(255, 153, 0));
     pen.setWidth(2);
+    QPen penBottom(QColor(255, 0, 0, 0));
+    penBottom.setWidth(2);
 
     _series = new QLineSeries();
     _series->setPen(pen);
+    _seriesBottom = new QLineSeries();
+    _seriesBottom->setPen(pen);
+    _areaseriesHash = new QAreaSeries(_series, _seriesBottom);
+    _areaseriesHash->setPen(penBottom);
 
-    _series->append(QDateTime::currentDateTime().toMSecsSinceEpoch(),0);
+    QLinearGradient gradientHash(QPointF(0, 0), QPointF(0, 1));
+    gradientHash.setColorAt(0.0, 0x3cc63c);
+    gradientHash.setColorAt(1.0, 0x26f626);
+    _areaseriesHash->setBrush(backgroundGradient);
+
+//    _series->append(QDateTime::currentDateTime().toMSecsSinceEpoch(),0);
     _chart->addSeries(_series);
+    _chart->addSeries(_areaseriesHash);
     _chart->createDefaultAxes();
 
     _axisX = new QDateTimeAxis;
@@ -229,6 +240,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     _chart->setAxisX(_axisX);
     _series->attachAxis(_axisX);
+    _seriesBottom->attachAxis(_axisX);
+    _areaseriesHash->attachAxis(_axisX);
     _axisX->setRange(QDateTime::currentDateTime(), QDateTime::currentDateTime().addSecs(10));
 
     // cast the default y-axis
@@ -366,7 +379,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->groupBoxPools->show();
     ui->textEdit->show();
 
-    ui->checkBoxAutoShowDeviceInfo->setChecked(false);
+    ui->checkBoxAutoShowDeviceInfo->setChecked(true);
     ui->groupBoxDevicesInfo->show();
 
 
@@ -393,6 +406,7 @@ MainWindow::MainWindow(QWidget *parent) :
     // set at monitor overview page at index 0
     ui->stackedWidgetMonitorMain->setCurrentIndex(0);
     setPushButtonColor(ui->pushButtonMonitorPage_Overview, true);
+    ui->pushButtonSearchHistory->click();
 }
 
 MainWindow::~MainWindow()
@@ -1149,6 +1163,9 @@ void MainWindow::onHrChartTimer()
     //draw the dynamic graph
     _series->append(QDateTime::currentDateTime().toMSecsSinceEpoch(), _currentHashRate);
 
+    // -0.5 is the default minimun value in the y-axis
+    _seriesBottom->append(QDateTime::currentDateTime().toMSecsSinceEpoch(), -0.5);
+
     //diaplay the proper range of the x-axis;
     if(_plotsCntr >= 6)
     {
@@ -1170,6 +1187,8 @@ void MainWindow::onTempChartTimer()
 {
     //draw the dynamic graph
     _seriesTemp->append(QDateTime::currentDateTime().toMSecsSinceEpoch(), _currentTempRate);
+
+    // 40 is the default minimun value in the y-axis
     _seriesTempBottom->append(QDateTime::currentDateTime().toMSecsSinceEpoch(), 40);
 
     //diaplay the proper range of the x-axis;
@@ -1345,12 +1364,14 @@ void MainWindow::refreshDeviceInfo()
             QLabel * diskNameLabel = new QLabel();
             diskNameLabel->setFont(QFont("Arial", 9));
             QProgressBar * diskStorageBar = new QProgressBar();
-            diskStorageBar->setStyleSheet("QProgressBar"
+            diskStorageBar->setStyleSheet(
+                "QProgressBar"
                 "{"
                     "color:rgb(255,255,255);"
                     "background-color :rgb(51,51,51);"
                     "border : 2px;"
                     "border-radius:4px;"
+                    "height: 50px;"
                 "}"
 
                 "QProgressBar::chunk{"
@@ -1436,6 +1457,10 @@ void MainWindow::initializePieChart(){
     _effPieSeries = new QPieSeries();
     _effPieSeries->append("eff", 1);
     _effPieSeries->append("uneff", 10);
+    _effPieSeries->slices().at(0)->setColor(QColor(85, 0, 255));
+    _effPieSeries->slices().at(0)->setBorderColor(QColor(91,90,90));
+    _effPieSeries->slices().at(1)->setColor(QColor(85, 160, 255));
+    _effPieSeries->slices().at(1)->setBorderColor(QColor(91,90,90));
 
     _effPieSlices->append(_effPieSeries->slices().at(0));
     _effPieSlices->append(_effPieSeries->slices().at(1));
@@ -1544,8 +1569,14 @@ void MainWindow::plotGrapgh(QString dateStart, QString dateEnd, int deviceNum){
         _axisXHistory->setTickCount(5);
         _axisXHistory->setFormat("MM/dd");
         _axisXHistory->setTitleText("Time");
+        _axisXHistory->setTitleVisible(false);
         _chartHistory->axisY()->setTitleText("history info");
         _chartHistory->axisY()->setRange(0, 1);
+        _chartHistory->axisY()->setTitleVisible(false);
+
+        QValueAxis *axisY = qobject_cast<QValueAxis*>(_chartHistory->axes(Qt::Vertical).first());
+        axisY->setLabelFormat("%.d ");
+
         QFont labelsFont_history;
         labelsFont_history.setPixelSize(14);
         _axisXHistory->setTitleFont(labelsFont_history);
@@ -1559,6 +1590,7 @@ void MainWindow::plotGrapgh(QString dateStart, QString dateEnd, int deviceNum){
         _axisXHistory->setGridLineVisible(false);
         _chartHistory->axisY()->setGridLineVisible(false);
         _chartHistory->setAxisX(_axisXHistory);
+        _chartHistory->setMargins(QMargins(0,0,0,0));
 
         // push 5 lines in the graph
         for(int i=0;i<5;i++){
@@ -1604,7 +1636,7 @@ void MainWindow::plotGrapgh(QString dateStart, QString dateEnd, int deviceNum){
 void MainWindow::on_pushButtonSearchHistory_clicked(){
     ui->pushButtonSearchHistory->hide();
     //qDebug() << "search time: " << ui->dateTimeEditHistoryStartTime->text() << " ->" << ui->dateTimeEditHistoryEndTime->text()
-             //<< " " << ui->spinBoxHistoryDeviceNum->text().toInt();
+             // << " " << ui->spinBoxHistoryDeviceNum->text().toInt();
     ui->graphicsViewHistoryInfo->show();
 
     // index 0 stands for GPUs information
@@ -1828,6 +1860,9 @@ void MainWindow::isAllPromptVisable(bool status){
                 "background-repeat:no-repeat;"
                 "background-position:center;"
                 "background-color: rgb(0, 143, 150);"
+                "color : white;"
+                "border-width: 0;"
+                "border-radius : 0;"
                 );
 
     if(status){

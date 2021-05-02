@@ -287,6 +287,8 @@ private:
     // hashrate displaying
     QChart* _chart;
     QLineSeries* _series;
+    QLineSeries* _seriesBottom;
+    QAreaSeries* _areaseriesHash;
     QDateTimeAxis *_axisX;
 
     // temperature displaying
@@ -294,7 +296,6 @@ private:
     QLineSeries* _seriesTemp;
     QLineSeries* _seriesTempBottom;
     QAreaSeries* _areaseriesTemp;
-    QAreaSeries* _areaseriesHash;
     QDateTimeAxis *_axisXTemp;
 
     // temperature displaying
