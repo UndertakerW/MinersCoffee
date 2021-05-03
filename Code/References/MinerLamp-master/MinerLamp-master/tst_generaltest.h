@@ -30,6 +30,7 @@ public:
     ~GeneralTest();
 
 private:
+    void GetTestData(QList<QString>& input, QList<QString>& result, const QString& in_filename, const QString& res_filename);
     QList<QString> GetStringData(const QString& path);
     void ShowDataError(const QString& filename1, const QString& filename2);
 

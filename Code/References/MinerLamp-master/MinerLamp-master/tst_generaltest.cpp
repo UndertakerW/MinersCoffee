@@ -20,36 +20,71 @@ void GeneralTest::cleanupTestCase()
     delete w;
 }
 
+void GeneralTest::GetTestData(QList<QString> &input, QList<QString> &result,
+                              const QString &in_filename, const QString &res_filename)
+{
+    QString input_path = qApp->applicationDirPath() + "/test/" + in_filename;
+    input = GetStringData(input_path);
+    QString result_path = qApp->applicationDirPath() + "/test/" + res_filename;
+    result = GetStringData(result_path);
+    if (input.size() != result.size())
+    {
+        ShowDataError(in_filename, res_filename);
+    }
+}
+
 void GeneralTest::test_ui_MiningArgsLineEdit()
 {
-    QFETCH(QTestEventList, event);
-    QFETCH(QString, result);
+    QFETCH(QTestEventList, input_Wallet);
+    QFETCH(QTestEventList, input_Worker);
+    QFETCH(QString, result_Wallet);
+    QFETCH(QString, result_Worker);
 
     QLineEdit* lineEditWallet = w->ui->lineEditWallet;
     QLineEdit* lineEditWorker = w->ui->lineEditWorker;
 
-    event.simulate(lineEditWallet);
-    QCOMPARE(lineEditWallet->text(), result);
+    input_Wallet.simulate(lineEditWallet);
+    input_Worker.simulate(lineEditWorker);
+
+    QCOMPARE(lineEditWallet->text(), result_Wallet);
+    QCOMPARE(lineEditWorker->text(), result_Worker);
 }
 
 void GeneralTest::test_ui_MiningArgsLineEdit_data()
 {
-    QString input_path = qApp->applicationDirPath() + "/test/test_MiningArgsLineEdit_input.txt";
-    QList<QString> input = GetStringData(input_path);
-    QString result_path = qApp->applicationDirPath() + "/test/test_MiningArgsLineEdit_result.txt";
-    QList<QString> result = GetStringData(result_path);
+    QString input_filename = "test_MiningArgsLineEdit_input.txt";
+    QString result_filename = "test_MiningArgsLineEdit_result.txt";
+    QList<QString> input, result;
+    GetTestData(input, result, input_filename, result_filename);
 
-    QTest::addColumn<QTestEventList>("event");
-    QTest::addColumn<QString>("result");
+    QTest::addColumn<QTestEventList>("input_Wallet");
+    QTest::addColumn<QTestEventList>("input_Worker");
+    QTest::addColumn<QString>("result_Wallet");
+    QTest::addColumn<QString>("result_Worker");
 
-    QTestEventList list1;
-    list1.addKeyClicks("hello world");
-    QTest::newRow("item 0 ")<<list1<<QString("hello world");
+    for (int i = 0; i < input.size(); i++)
+    {
+        std::string rowName = QString("Case %1").arg(i).toStdString();
+        QStringList inputs = input[i].split(",");
+        QStringList results = result[i].split(",");
+        if (inputs.size() != 2 || results.size() != 2)
+        {
+            ShowDataError(input_filename, result_filename);
+            break;
+        }
+        QTestEventList events_Wallet;
+        events_Wallet.addKeyClick(Qt::Key_A, Qt::ControlModifier);
+        events_Wallet.addKeyClick(Qt::Key_Backspace);
+        events_Wallet.addKeyClicks(inputs[0]);
+        QTestEventList events_Worker;
+        events_Worker.addKeyClick(Qt::Key_A, Qt::ControlModifier);
+        events_Worker.addKeyClick(Qt::Key_Backspace);
+        events_Worker.addKeyClicks(inputs[1]);
 
-    QTestEventList list2;
-    list2.addKeyClicks("abs0");
-    list2.addKeyClick(Qt::Key_Backspace);
-    QTest::newRow("item 1")<<list2<<QString("abs");
+        QTest::newRow(rowName.c_str())
+                << events_Wallet << events_Worker
+                << results[0] << results[1];
+    }
 }
 
 void GeneralTest::test_ParseJsonForPool()
@@ -82,25 +117,23 @@ void GeneralTest::test_ParseJsonForPool()
 
 void GeneralTest::test_ParseJsonForPool_data()
 {
-    QString input_path = qApp->applicationDirPath() + "/test/test_ParseJsonForPool_input.txt";
-    QList<QString> input = GetStringData(input_path);
-    QString result_path = qApp->applicationDirPath() + "/test/test_ParseJsonForPool_result.txt";
-    QList<QString> result = GetStringData(result_path);
+    QString input_filename = "test_ParseJsonForPool_input.txt";
+    QString result_filename = "test_ParseJsonForPool_result.txt";
+    QList<QString> input, result;
+    GetTestData(input, result, input_filename, result_filename);
+
     QTest::addColumn<QString>("input");
     QTest::addColumn<QString>("currency");
     QTest::addColumn<float>("income");
     QTest::addColumn<float>("usd");
-    if (input.size() != result.size())
-    {
-        ShowDataError(input_path, result_path);
-    }
+
     for (int i = 0; i < input.size(); i++)
     {
         std::string rowName = QString("Case %1").arg(i).toStdString();
         QStringList results = result[i].split(",");
         if (results.size() != 3)
         {
-            ShowDataError(input_path, result_path);
+            ShowDataError(input_filename, result_filename);
             break;
         }
         QTest::newRow(rowName.c_str())
@@ -133,25 +166,22 @@ void GeneralTest::test_ParseJsonForMining()
 
 void GeneralTest::test_ParseJsonForMining_data()
 {
-    QString input_path = qApp->applicationDirPath() + "/test/test_ParseJsonForMining_input.txt";
-    QList<QString> input = GetStringData(input_path);
-    QString result_path = qApp->applicationDirPath() + "/test/test_ParseJsonForMining_result.txt";
-    QList<QString> result = GetStringData(result_path);
+    QString input_filename = "test_ParseJsonForMining_input.txt";
+    QString result_filename = "test_ParseJsonForMining_result.txt";
+    QList<QString> input, result;
+    GetTestData(input, result, input_filename, result_filename);
 
     QTest::addColumn<QString>("input");
     QTest::addColumn<unsigned int>("latency");
     QTest::addColumn<float>("gpu0_hashrate");
-    if (input.size() != result.size())
-    {
-        ShowDataError(input_path, result_path);
-    }
+
     for (int i = 0; i < input.size(); i++)
     {
         std::string rowName = QString("Case %1").arg(i).toStdString();
         QStringList results = result[i].split(",");
         if (results.size() != 2)
         {
-            ShowDataError(input_path, result_path);
+            ShowDataError(input_filename, result_filename);
             break;
         }
         QTest::newRow(rowName.c_str())
@@ -161,8 +191,10 @@ void GeneralTest::test_ParseJsonForMining_data()
 
 void GeneralTest::ShowDataError(const QString& filename1, const QString& filename2)
 {
+    QString path1 = qApp->applicationDirPath() + "/test/" + filename1;
+    QString path2 = qApp->applicationDirPath() + "/test/" + filename2;
     QMessageBox::warning(NULL, "warning",
-                         QString("Corrupted test data in\n %1 \nand/or\n %2").arg(filename1).arg(filename2));
+                         QString("Corrupted test data in\n %1 \nand/or\n %2").arg(path1).arg(path2));
 }
 
 QList<QString> GeneralTest::GetStringData(const QString& path)
