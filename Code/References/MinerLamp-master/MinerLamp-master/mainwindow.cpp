@@ -409,6 +409,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->stackedWidgetMonitorMain->setCurrentIndex(0);
     setPushButtonColor(ui->pushButtonMonitorPage_Overview, true);
     ui->pushButtonSearchHistory->click();
+
+
+    //test
+    Wincmd wincmd;
+    wincmd.SeeSetting();
 }
 
 MainWindow::~MainWindow()
@@ -1722,7 +1727,8 @@ void MainWindow::on_checkBoxHistoryMiningInfoOverall_clicked(bool clicked){
 void MainWindow::on_checkBoxShowSettings_clicked(bool clicked){
     if(clicked){
         Wincmd wincmd;
-        ui->textEditSettings->setText((wincmd.SeeSetting()));
+        //ui->textEditSettings->setText((wincmd.SeeSetting()));
+        //wincmd.SeeSetting();
     }
 
     ui->groupBoxSettings->setVisible(clicked);
