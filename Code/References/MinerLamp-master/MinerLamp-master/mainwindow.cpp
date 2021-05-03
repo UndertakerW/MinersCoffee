@@ -1463,9 +1463,9 @@ void MainWindow::initializePieChart(){
     _effPieSeries = new QPieSeries();
     _effPieSeries->append("eff", 1);
     _effPieSeries->append("uneff", 10);
-    _effPieSeries->slices().at(0)->setColor(QColor(85, 0, 255));
+    _effPieSeries->slices().at(0)->setColor(0x008F96);
     _effPieSeries->slices().at(0)->setBorderColor(QColor(91,90,90));
-    _effPieSeries->slices().at(1)->setColor(QColor(85, 160, 255));
+    _effPieSeries->slices().at(1)->setColor(QColor(51,51,51));
     _effPieSeries->slices().at(1)->setBorderColor(QColor(91,90,90));
 
     _effPieSlices->append(_effPieSeries->slices().at(0));
