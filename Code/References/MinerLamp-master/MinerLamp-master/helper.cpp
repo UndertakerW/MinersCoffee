@@ -38,3 +38,4 @@ QList<QString> Helper::GetStringData(QString path)
 
     return data;
 }
+

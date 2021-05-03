@@ -229,7 +229,7 @@ private:
 
     const QColor getTempColor(unsigned int temp);
 
-    Helper helper;
+    //Helper helper;
 
     Ui::MainWindow *ui;
     MinerProcess* _process;

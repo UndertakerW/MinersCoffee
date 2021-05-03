@@ -45,6 +45,12 @@ private slots:
     void test_ui_MiningArgsLineEdit_data();
     void test_ui_MiningArgsComboBox();
     void test_ui_MiningArgsComboBox_data();
+    void test_Database_getAdvice();
+    void test_Database_getAdvice_data();
+    void test_Database_InsertDataNew();
+    void test_Database_InsertDataNew_data();
+    void test_Database_Get_HistoryNew();
+    void test_Database_Get_HistoryNew_data();
 
 private:
     MainWindow* w;

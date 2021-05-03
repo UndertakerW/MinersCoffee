@@ -20,7 +20,6 @@ Database::Database(){
     _gpusInfoBuffer = nullptr;
     _miningInfoBuffer = nullptr;
     _seriesPtr = nullptr;
-
     // 0 stands for idle/complete
     // 1 stands for working
     _insert = 0;
@@ -30,7 +29,6 @@ Database::Database(){
 
     _db = QSqlDatabase::addDatabase("QSQLITE");
     _db.setDatabaseName("./minerDatabase/minerDatabase.db");
-    //qDebug() << _db.tables();
 
     if(!_db.open()){
         QMessageBox::critical(0, QObject::tr("Database error"),
@@ -304,7 +302,12 @@ void Database::Get_HistoryNew(const char* date1,const char* date2,int num){
 
     searchResultBuffer->clear();
 }
-
+int Database::count(){
+    QString line = QString("select count(*) from main_table");
+    QSqlQuery sql_query(_db);
+    sql_query.exec(line);
+    return sql_query.size();
+}
 Database::~Database(){
     _db.commit();
     _db.close();
