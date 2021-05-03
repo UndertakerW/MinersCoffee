@@ -8,18 +8,12 @@ HelpPage::HelpPage(QSettings* settings, QCheckBox* donateCheckBox, QPlainTextEdi
     _content(content)
 {
 
-    _content->appendHtml("<h2>Simple Qt GUI for running ethminer safely.</h2><br>");
-    _content->appendHtml("It will restart ethminer for you in case of error...");
-    _content->appendHtml("<u>https://github.com/orkblutt/MinerLamp</u><br>");
+    _content->appendHtml("<h1>Miner's Coffee</h1>");
+    _content->appendHtml("<u>Credit to https://github.com/orkblutt/MinerLamp</u><br>");
     _content->appendHtml("You'll need ethminer you can download from:");
     _content->appendHtml("<u>https://github.com/ethereum-mining/ethminer</u><br>");
-    _content->appendHtml("If you want to donate you can at this address:");
-    _content->appendHtml("<b>0xa07a8c9975145bb5371e8b3c31acb62ad9d0698e</b><br><br>");
-    _content->appendHtml("<br>Feel free to send me comment at <b>orkblutt@msn.com</b><br>");
-    _content->appendHtml("</html>");
-
-    _donateCheckBox->setChecked(_settings->value("donate", true).toBool());
-
+    _content->appendHtml("<br>Hope our program will improve your mining experience</b><br>");
+    _donateCheckBox->setChecked(_settings->value("donate", false).toBool());
 }
 
 void HelpPage::donateCheckBoxClicked(bool checked)

@@ -395,8 +395,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->checkBoxHistoryMiningInfoOverall->hide();
     ui->comboBoxHistoryDataOption->hide();
 
-    ui->dateTimeEditHistoryStartTime->setDateTime(QDateTime::currentDateTime());
-    ui->dateTimeEditHistoryEndTime->setDateTime(QDateTime::currentDateTime().addDays(5));
+    ui->dateTimeEditHistoryStartTime->setDateTime(QDateTime::currentDateTime().addDays(-5));
+    ui->dateTimeEditHistoryEndTime->setDateTime(QDateTime::currentDateTime());
     _searchHistoryMiningOverall = false;
     ui->checkBoxShowSettings->setChecked(false);
     ui->groupBoxSettings->setVisible(false);
@@ -650,7 +650,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
         hide();
         event->ignore();
         QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::MessageIcon(QSystemTrayIcon::Information);
-        _trayIcon->showMessage("Miner's lamp still running", _isMinerRunning ? "Ethminer is running" : "Ethminer isn't running", icon, 2 * 1000);
+        _trayIcon->showMessage("Miner's Coffee still running", _isMinerRunning ? "Ethminer is running" : "Ethminer isn't running", icon, 2 * 1000);
     }
 }
 
@@ -658,7 +658,7 @@ void MainWindow::setIcon()
 {
     QIcon icon(":/images/logo.png");
     _trayIcon->setIcon(icon);
-    _trayIcon->setToolTip("Miner's lamp");
+    _trayIcon->setToolTip("Miner's Coffee");
 
     setWindowIcon(icon);
 }
@@ -723,33 +723,33 @@ void MainWindow::setupEditor()
 void MainWindow::setupToolTips()
 {
 
-    ui->labelHashRate->setToolTip("Displaying the current hashrate");
+//    ui->labelHashRate->setToolTip("Displaying the current hashrate");
 
-    ui->lcdNumberGPUCount->setToolTip("Number of nVidia GPU(s)");
+//    ui->lcdNumberGPUCount->setToolTip("Number of nVidia GPU(s)");
 
-    ui->labelMaxGPUTemp->setToolTip("Displaying the current higher temperature");
-    ui->labelMinGPUTemp->setToolTip("Displaying the current lower temperature");
+//    ui->labelMaxGPUTemp->setToolTip("Displaying the current higher temperature");
+//    ui->labelMinGPUTemp->setToolTip("Displaying the current lower temperature");
 
-    ui->labelMaxFanSpeed->setToolTip("Displaying the current higher fan speed in percent of the max speed");
-    ui->labelMinFanSpeed->setToolTip("Displaying the current lower fan speed in percent of the max speed");
+//    ui->labelMaxFanSpeed->setToolTip("Displaying the current higher fan speed in percent of the max speed");
+//    ui->labelMinFanSpeed->setToolTip("Displaying the current lower fan speed in percent of the max speed");
 
-    ui->labelMaxMemClock->setToolTip("Displaying the current higher memory clock");
-    ui->labelMinMemClock->setToolTip("Displaying the current lower memory clock");
+//    ui->labelMaxMemClock->setToolTip("Displaying the current higher memory clock");
+//    ui->labelMinMemClock->setToolTip("Displaying the current lower memory clock");
 
-    ui->labelMaxGPUClock->setToolTip("The GPU in your rig with the higher clock");
-    ui->labelMinGPUClock->setToolTip("The GPU in your rig with the lower clock");
+//    ui->labelMaxGPUClock->setToolTip("The GPU in your rig with the higher clock");
+//    ui->labelMinGPUClock->setToolTip("The GPU in your rig with the lower clock");
 
-    ui->labelMaxWatt->setToolTip("Displaying the current higher power draw in Watt");
-    ui->labelMinWatt->setToolTip("Displaying the current lower power draw in Watt");
+//    ui->labelMaxWatt->setToolTip("Displaying the current higher power draw in Watt");
+//    ui->labelMinWatt->setToolTip("Displaying the current lower power draw in Watt");
 
-    ui->lcdNumberTotalPowerDraw->setToolTip("The total power used by the GPUs");
+//    ui->lcdNumberTotalPowerDraw->setToolTip("The total power used by the GPUs");
 
-    ui->pushButtonOC->setToolTip("Manage NVIDIA overclocking");
+//    ui->pushButtonOC->setToolTip("Manage NVIDIA overclocking");
 
-    if(!ui->groupBoxWatchdog->isChecked())
-        ui->groupBoxWatchdog->setToolTip("Check it to activate the following watchdog options");
-    else
-        ui->groupBoxWatchdog->setToolTip("");
+//    if(!ui->groupBoxWatchdog->isChecked())
+//        ui->groupBoxWatchdog->setToolTip("Check it to activate the following watchdog options");
+//    else
+//        ui->groupBoxWatchdog->setToolTip("");
 }
 
 void MainWindow::on_pushButton_clicked()
@@ -845,13 +845,13 @@ void MainWindow::onMinerStoped()
     _isMinerRunning = false;
     _isStartStoping = false;
 
-    this->setWindowTitle(QString("Miner's Lamp"));
+    this->setWindowTitle(QString("Miner's Coffee"));
     changeLabelColor(ui->labelHashRate, Qt::gray);
     ui->labelHashRate->setText("0.00");
 
     _currentHashRate = 0;
 
-    _trayIcon->setToolTip(QString("Miner's lamp"));
+    _trayIcon->setToolTip(QString("Miner's Coffee"));
 }
 
 void MainWindow::onHashrate(QString &hashrate)
@@ -859,7 +859,7 @@ void MainWindow::onHashrate(QString &hashrate)
 
     QString hrValue = hashrate.mid(0, hashrate.indexOf("Mh/s"));
 
-    this->setWindowTitle(QString("Miner's Lamp - " + hashrate + " - Restart count: " + QString::number(_errorCount)));
+    this->setWindowTitle(QString("Miner's Coffee - " + hashrate + " - Restart count: " + QString::number(_errorCount)));
     if(hrValue.toDouble() == 0)
         changeLabelColor(ui->labelHashRate, Qt::red);
     else
@@ -869,7 +869,7 @@ void MainWindow::onHashrate(QString &hashrate)
 
     ui->labelHashRate->setText(hrValue);
 
-    _trayIcon->setToolTip(QString("Miner's lamp - " + hashrate));
+    _trayIcon->setToolTip(QString("Miner's Coffee - " + hashrate));
 
 
 }
@@ -877,8 +877,8 @@ void MainWindow::onHashrate(QString &hashrate)
 void MainWindow::onError()
 {
     _errorCount++;
-    _trayIcon->showMessage("Miner's lamp report"
-                           , "An error has been detected in ethminer.\n" + ui->groupBoxWatchdog->isChecked() ? "Miner's lamp restarted it automaticaly" : "Check the watchdog option checkbox if you want Miner's lamp to restart it on error");
+    _trayIcon->showMessage("Miner's Coffee report"
+                           , "An error has been detected in ethminer.\n" + ui->groupBoxWatchdog->isChecked() ? "Miner's Coffee restarted it automaticaly" : "Check the watchdog option checkbox if you want Miner's Coffee to restart it on error");
 }
 
 const QColor MainWindow::getTempColor(unsigned int temp)
@@ -1612,6 +1612,8 @@ void MainWindow::plotGrapgh(QString dateStart, QString dateEnd, int deviceNum){
         ui->graphicsViewHistoryInfo->setChart(_chartHistory);
 
         setGraph = true;
+        _chartHistory->axisX()->setLabelsFont(QFont("Berlin Sans FB", 8));
+        _chartHistory->axisY()->setLabelsFont(QFont("Berlin Sans FB", 8));
     }
 
     // there are 5 lines in the series
@@ -1898,7 +1900,7 @@ void MainWindow::isAllPromptVisable(bool status){
         ui->frameHistory->setStyleSheet(generalFramStyle);
 
         ui->pushButtonMonitorPage->setText("Monitor");
-        ui->pushButtonOCPage->setText("Mining");
+        ui->pushButtonOCPage->setText("OC");
         ui->pushButtonHelpPage->setText("Help");
         ui->pushButtonMonitorPage_Overview->setText("Overview");
         ui->pushButtonMonitorPage_Mining->setText("Mining");

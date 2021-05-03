@@ -33,6 +33,10 @@
         <file>icos/icons8-down-48.png</file>
         <file>icos/icons8-up-48.png</file>
         <file>icos/arrow.png</file>
+        <file>icos/MaoYu.jpg</file>
+        <file>icos/WuWei.jpg</file>
+        <file>icos/ZhangShiqi.jpg</file>
+        <file>icos/MaHaotian.jpg</file>
     </qresource>
     <qresource prefix="/images">
         <file>logo.png</file>
