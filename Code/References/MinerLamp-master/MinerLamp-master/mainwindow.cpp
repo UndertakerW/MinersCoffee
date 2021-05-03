@@ -497,6 +497,22 @@ void MainWindow::initializeConstants()
 
     Coin* eth = AddCoin("ETH");
 
+    /*
+    QString eth_pools_path = qApp->applicationDirPath() + "/data/" + "eth_pools.txt";
+    QList<QString> eth_pools = helper.GetStringData(eth_pools_path);
+    for (int i = 0; i < eth_pools.size(); i++)
+    {
+        QStringList eth_pool_data = eth_pools[i].split(",");
+        if (eth_pool_data.size() != 2)
+        {
+            QMessageBox::warning(NULL, "warning",
+                                 QString("Corrupted test data in\n %1").arg(eth_pools_path));
+            break;
+        }
+        AddPool(eth_pool_data[0], eth, eth_pool_data[1]);
+    }
+    */
+
     AddPool("ethermine", eth, eth_ethermine);
     AddPool("sparkpool", eth, eth_sparkpool);
     AddPool("f2pool", eth, eth_f2pool);

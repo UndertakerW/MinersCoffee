@@ -48,7 +48,8 @@ SOURCES += \
     hashratecharview.cpp \
     structures.cpp \
     urlapi.cpp \
-    wincmd.cpp
+    wincmd.cpp \
+    helper.cpp
 
 HEADERS += \
     constants.h \
@@ -68,7 +69,8 @@ HEADERS += \
     piesliceeff.h \
     structures.h \
     urlapi.h \
-    wincmd.h
+    wincmd.h \
+    helper.h
 
 FORMS += \
     mainwindow.ui \

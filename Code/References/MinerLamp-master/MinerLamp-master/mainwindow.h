@@ -218,6 +218,8 @@ private:
     Pool* AddPool(QString pool_name, Coin* coin, const QString& cmd);
     Pool* AddPool(QString pool_name, QString coin_name, const QString& cmd);
 
+    Pool* AddPoolsFromFile(const QString& filename, Coin* coin);
+
     void onMinerStarted();
     void onMinerStoped();
     void onHashrate(QString& hashrate);
