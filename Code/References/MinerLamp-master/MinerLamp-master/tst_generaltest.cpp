@@ -12,7 +12,7 @@ GeneralTest::~GeneralTest()
 
 void GeneralTest::initTestCase()
 {
-    w = new MainWindow();
+    w = new MainWindow(true);
 }
 
 void GeneralTest::cleanupTestCase()
@@ -76,56 +76,76 @@ void GeneralTest::test_ui_MiningArgsLineEdit_data()
 
 void GeneralTest::test_ui_MiningArgsComboBox()
 {
-    QFETCH(QTestEventList, input_Wallet);
-    QFETCH(QTestEventList, input_Worker);
-    QFETCH(QString, result_Wallet);
-    QFETCH(QString, result_Worker);
+    // Currently, MinersCoffee supports only ETH as coin and NBMiner as core.
+    // Therefore, comboBoxCoin and comboBoxCore needs no testing at this stage.
 
-    QLineEdit* lineEditWallet = w->ui->lineEditWallet;
-    QLineEdit* lineEditWorker = w->ui->lineEditWorker;
+    QFETCH(QTestEventList, input_Pool);
+    QFETCH(QString, result_Pool);
 
-    input_Wallet.simulate(lineEditWallet);
-    input_Worker.simulate(lineEditWorker);
+    QComboBox* comboBoxPool = w->ui->comboBoxPool;
 
-    QCOMPARE(lineEditWallet->text(), result_Wallet);
-    QCOMPARE(lineEditWorker->text(), result_Worker);
+    input_Pool.simulate(comboBoxPool);
+
+    QCOMPARE(comboBoxPool->currentText(), result_Pool);
 }
 
 void GeneralTest::test_ui_MiningArgsComboBox_data()
 {
-    QString input_filename = "test_MiningArgsLineEdit_input.txt";
-    QString result_filename = "test_MiningArgsLineEdit_result.txt";
-    QList<QString> input, result;
-    GetTestData(input, result, input_filename, result_filename);
 
-    QTest::addColumn<QTestEventList>("input_Wallet");
-    QTest::addColumn<QTestEventList>("input_Worker");
-    QTest::addColumn<QString>("result_Wallet");
-    QTest::addColumn<QString>("result_Worker");
+    // QString pools_filename = "pools.txt";
+    // QString pools_path = qApp->applicationDirPath() + "/data/" + pools_filename;
+    // QList<QString> pools = helper.GetStringData(pools_path)
 
-    for (int i = 0; i < input.size(); i++)
+    QList<QString> pool_names;
+
+    QTest::addColumn<QTestEventList>("input_Pool");
+    QTest::addColumn<QString>("result_Pool");
+
+    // Test ETH Pools
+    w->ui->comboBoxCoin->setCurrentIndex(w->ui->comboBoxCoin->findText("ETH"));
+    if (w->ui->comboBoxPool->count() < 7) return;
+
+    for (int i = 0; i < w->ui->comboBoxPool->count(); i++)
     {
-        std::string rowName = QString("Case %1").arg(i).toStdString();
-        QStringList inputs = input[i].split(",");
-        QStringList results = result[i].split(",");
-        if (inputs.size() != 2 || results.size() != 2)
-        {
-            ShowDataError(input_filename, result_filename);
-            break;
-        }
-        QTestEventList events_Wallet;
-        events_Wallet.addKeyClick(Qt::Key_A, Qt::ControlModifier);
-        events_Wallet.addKeyClick(Qt::Key_Backspace);
-        events_Wallet.addKeyClicks(inputs[0]);
-        QTestEventList events_Worker;
-        events_Worker.addKeyClick(Qt::Key_A, Qt::ControlModifier);
-        events_Worker.addKeyClick(Qt::Key_Backspace);
-        events_Worker.addKeyClicks(inputs[1]);
-
-        QTest::newRow(rowName.c_str())
-                << events_Wallet << events_Worker
-                << results[0] << results[1];
+        pool_names.append(w->ui->comboBoxPool->itemText(i));
     }
+
+    // second pool
+    QTestEventList events_Pool1;
+    events_Pool1.addMouseClick(Qt::LeftButton);
+    for (int i = 0; i < w->ui->comboBoxPool->count(); i++)
+    {
+        events_Pool1.addKeyClick(Qt::Key_Up);
+    }
+    events_Pool1.addKeyClick(Qt::Key_Down);
+    events_Pool1.addKeyClick(Qt::Key_Enter);
+    QTest::newRow("Case 0")
+            << events_Pool1 << pool_names[1];
+
+    // third pool
+    QTestEventList events_Pool2;
+    events_Pool2.addMouseClick(Qt::LeftButton);
+    events_Pool2.addKeyClick(Qt::Key_Down);
+    events_Pool2.addKeyClick(Qt::Key_Down);
+    events_Pool2.addKeyClick(Qt::Key_Up);
+    events_Pool2.addKeyClick(Qt::Key_Enter);
+    QTest::newRow("Case 1")
+            << events_Pool2 << pool_names[2];
+
+    // fifth pool
+    QTestEventList events_Pool3;
+    events_Pool3.addMouseClick(Qt::LeftButton);
+    events_Pool3.addKeyClick(Qt::Key_Up);
+    events_Pool3.addKeyClick(Qt::Key_Down);
+    events_Pool3.addKeyClick(Qt::Key_Left);
+    events_Pool3.addKeyClick(Qt::Key_Right);
+    events_Pool3.addKeyClick(Qt::Key_Down);
+    events_Pool3.addKeyClick(Qt::Key_Backspace);
+    events_Pool3.addKeyClick(Qt::Key_S);
+    events_Pool3.addKeyClick(Qt::Key_Down);
+    events_Pool3.addKeyClick(Qt::Key_Enter);
+    QTest::newRow("Case 2")
+            << events_Pool3 << pool_names[4];
 }
 
 void GeneralTest::test_ParseJsonForPool()

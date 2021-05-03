@@ -59,7 +59,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(bool testing = false, QWidget *parent = 0);
     ~MainWindow();
 
     void setVisible(bool visible) Q_DECL_OVERRIDE;
@@ -218,7 +218,7 @@ private:
     Pool* AddPool(QString pool_name, Coin* coin, const QString& cmd);
     Pool* AddPool(QString pool_name, QString coin_name, const QString& cmd);
 
-    Pool* AddPoolsFromFile(const QString& filename, Coin* coin);
+    void AddPoolsFromFile(const QString& filename);
 
     void onMinerStarted();
     void onMinerStoped();
@@ -240,7 +240,7 @@ private:
     QList<GPUInfo>* _gpusinfo;
     MiningInfo* _miningInfo;
     PoolInfo* _poolInfo;
-    Database * _databaseProcess;
+    Database * _databaseProcess = nullptr;
 
     bool _isMinerRunning;
     bool _isStartStoping;

@@ -55,7 +55,7 @@
 
 #endif
 
-MainWindow::MainWindow(QWidget *parent) :
+MainWindow::MainWindow(bool testing, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     _isMinerRunning(false),
@@ -72,8 +72,13 @@ MainWindow::MainWindow(QWidget *parent) :
     _poolInfo = new PoolInfo();
     _gpuInfoList = new QList<QWidget * >();
     _diskInfoList = new QList<QWidget * >();
-    _databaseProcess = new Database();
-    _databaseProcess->start();
+
+    if (!testing)
+    {
+        _databaseProcess = new Database();
+        _databaseProcess->start();
+    }
+
 
     ui->setupUi(this);
 
@@ -381,7 +386,6 @@ MainWindow::~MainWindow()
     delete _gpuInfoList;
     delete _gpusinfo;
     delete ui;
-    _databaseProcess->terminate();
     delete _databaseProcess;
 
     for(int i=_seriesHistory.size()-1; i>=0; i--){
@@ -485,6 +489,25 @@ Core* MainWindow::AddCore(QString core_name, const QString& path, const QString&
     return core;
 }
 
+void MainWindow::AddPoolsFromFile(const QString& filename)
+{
+    QString pools_path = qApp->applicationDirPath() + "/" + filename;
+    QList<QString> pools = helper.GetStringData(pools_path);
+    for (int i = 0; i < pools.size(); i++)
+    {
+        QStringList pool_data = pools[i].split(",");
+        if (pool_data.size() != 3)
+        {
+            QMessageBox::warning(NULL, "warning",
+                                 QString("Corrupted test data in\n %1").arg(pools_path));
+            break;
+        }
+        if (!map_coins.contains(pool_data[0]))
+            return;
+        Coin* coin = map_coins[pool_data[0]];
+        //qDebug() << AddPool(pool_data[1], coin, pool_data[2])->cmds;
+    }
+}
 
 void MainWindow::initializeConstants()
 {
@@ -497,29 +520,7 @@ void MainWindow::initializeConstants()
 
     Coin* eth = AddCoin("ETH");
 
-    /*
-    QString eth_pools_path = qApp->applicationDirPath() + "/data/" + "eth_pools.txt";
-    QList<QString> eth_pools = helper.GetStringData(eth_pools_path);
-    for (int i = 0; i < eth_pools.size(); i++)
-    {
-        QStringList eth_pool_data = eth_pools[i].split(",");
-        if (eth_pool_data.size() != 2)
-        {
-            QMessageBox::warning(NULL, "warning",
-                                 QString("Corrupted test data in\n %1").arg(eth_pools_path));
-            break;
-        }
-        AddPool(eth_pool_data[0], eth, eth_pool_data[1]);
-    }
-    */
-
-    AddPool("ethermine", eth, eth_ethermine);
-    AddPool("sparkpool", eth, eth_sparkpool);
-    AddPool("f2pool", eth, eth_f2pool);
-    AddPool("beepool", eth, eth_beepool);
-    AddPool("nanopool", eth, eth_nanopool);
-    AddPool("herominers", eth, eth_herominers);
-    AddPool("nicehash", eth, eth_nicehash);
+    AddPoolsFromFile(pools_path);
 
     AddCore("NBMiner", path_nbminer, api_nbminer, eth, cmd_nbminer_eth);
 }
@@ -1389,11 +1390,16 @@ void MainWindow::refreshDeviceInfo()
     }
 
     // save data into mysql
-    if(_databaseProcess->_insertBusy == 0){
-        _databaseProcess->_gpusInfoBuffer = _gpusinfo;
-        _databaseProcess->_miningInfoBuffer = _miningInfo;
-        _databaseProcess->_insert = 1;
+    if (_databaseProcess)
+    {
+        if(_databaseProcess->_insertBusy == 0)
+        {
+            _databaseProcess->_gpusInfoBuffer = _gpusinfo;
+            _databaseProcess->_miningInfoBuffer = _miningInfo;
+            _databaseProcess->_insert = 1;
+        }
     }
+
 }
 
 void MainWindow::setLCDNumber(QWidget * widget, unsigned int value){
@@ -1581,17 +1587,22 @@ void MainWindow::plotGrapgh(QString dateStart, QString dateEnd, int deviceNum)
 
     //qDebug() << "before get history";
 
-    if(_databaseProcess->_retrieveBusy == 0){
-        _databaseProcess->searchConditionBuffer->clear();
-        _databaseProcess->searchConditionBuffer->push_back(dateStart);
-        _databaseProcess->searchConditionBuffer->push_back(dateEnd);
-        _databaseProcess->searchConditionBuffer->push_back(QString::number(deviceNum));
-        _databaseProcess->_seriesPtr = &_seriesHistory;
-        _databaseProcess->_chartHistory = _chartHistory;
-        _databaseProcess->_retrieve = 1;
-    }
-    else{
-        return;
+    if (_databaseProcess)
+    {
+        if(_databaseProcess->_retrieveBusy == 0)
+        {
+            _databaseProcess->searchConditionBuffer->clear();
+            _databaseProcess->searchConditionBuffer->push_back(dateStart);
+            _databaseProcess->searchConditionBuffer->push_back(dateEnd);
+            _databaseProcess->searchConditionBuffer->push_back(QString::number(deviceNum));
+            _databaseProcess->_seriesPtr = &_seriesHistory;
+            _databaseProcess->_chartHistory = _chartHistory;
+            _databaseProcess->_retrieve = 1;
+        }
+        else
+        {
+            return;
+        }
     }
 
 }

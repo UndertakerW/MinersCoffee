@@ -3038,46 +3038,9 @@ release\mainwindow.obj: ..\MinerLamp-master\mainwindow.cpp ../MinerLamp-master/m
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QFile \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QTextStream \
 		ui_mainwindow.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QAction \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QButtonGroup \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qbuttongroup.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QCheckBox \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qcheckbox.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QComboBox \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qcombobox.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qabstractitemdelegate.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qstyleoption.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qabstractspinbox.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qvalidator.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qslider.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qstyle.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qtabbar.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qrubberband.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qabstractitemmodel.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QDateTimeEdit \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qdatetimeedit.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QGridLayout \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QGroupBox \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qgroupbox.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QHeaderView \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qheaderview.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qabstractitemview.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qitemselectionmodel.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QLineEdit \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qlineedit.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QPushButton \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qpushbutton.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QRadioButton \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qradiobutton.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QSpinBox \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qspinbox.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QSplitter \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\qsplitter.h \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QVBoxLayout \
-		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QWidget \
+		../MinerLamp-master/helpdialog.h \
 		../MinerLamp-master/hashratecharview.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QDateTime \
-		../MinerLamp-master/helpdialog.h \
 		../MinerLamp-master/constants.h \
 		../MinerLamp-master/wincmd.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QStorageInfo \
@@ -3089,6 +3052,7 @@ release\mainwindow.obj: ..\MinerLamp-master\mainwindow.cpp ../MinerLamp-master/m
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QtCoreDepends \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qabstractanimation.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qabstracteventdispatcher.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qabstractitemmodel.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qabstractnativeeventfilter.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qabstractproxymodel.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qabstractstate.h \
@@ -3124,6 +3088,7 @@ release\mainwindow.obj: ..\MinerLamp-master\mainwindow.cpp ../MinerLamp-master/m
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qhistorystate.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qidentityproxymodel.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qisenum.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qitemselectionmodel.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qjsonarray.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qlibraryinfo.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\qversionnumber.h \
@@ -3194,6 +3159,7 @@ release\mainwindow.obj: ..\MinerLamp-master\mainwindow.cpp ../MinerLamp-master/m
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtCore\QRect \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qsurface.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtGui\qsurfaceformat.h \
+		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtWidgets\QWidget \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtTest\qtest_network.h \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\QHostAddress \
 		D:\APP\Qt6\5.9.9\msvc2017_64\include\QtNetwork\qhostaddress.h \
