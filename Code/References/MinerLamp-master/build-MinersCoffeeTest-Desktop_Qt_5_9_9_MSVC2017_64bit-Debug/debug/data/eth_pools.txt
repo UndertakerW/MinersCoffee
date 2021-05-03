@@ -1,0 +1,7 @@
+ethermine,ethproxy+tcp://asia1.ethermine.org:4444
+sparkpool,ethproxy+tcp://cn.sparkpool.com:13333
+f2pool,ethproxy+tcp://eth.f2pool.com:8008
+beepool,ethproxy+tcp://eth-pool.beepool.org:9530
+nanopool,ethproxy+tcp://eth-asia1.nanopool.org:9999
+herominers,ethproxy+tcp://ethereum.herominers.com:10201
+nicehash,nicehash+tcp://daggerhashimoto.eu.nicehash.com:3353

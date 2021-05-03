@@ -28,6 +28,7 @@
 #include "nvocdialog.h"
 #include "structures.h"
 #include "database.h"
+#include "helper.h"
 
 QT_CHARTS_USE_NAMESPACE
 
@@ -227,6 +228,8 @@ private:
     void EstimateOutput();
 
     const QColor getTempColor(unsigned int temp);
+
+    Helper helper;
 
     Ui::MainWindow *ui;
     MinerProcess* _process;

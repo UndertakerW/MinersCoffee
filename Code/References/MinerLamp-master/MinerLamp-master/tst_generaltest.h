@@ -16,6 +16,7 @@
 #include "structures.h"
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "helper.h"
 
 namespace Ui {
 class MainWindow;
@@ -31,7 +32,6 @@ public:
 
 private:
     void GetTestData(QList<QString>& input, QList<QString>& result, const QString& in_filename, const QString& res_filename);
-    QList<QString> GetStringData(const QString& path);
     void ShowDataError(const QString& filename1, const QString& filename2);
 
 private slots:
@@ -43,9 +43,12 @@ private slots:
     void test_ParseJsonForPool_data();
     void test_ui_MiningArgsLineEdit();
     void test_ui_MiningArgsLineEdit_data();
+    void test_ui_MiningArgsComboBox();
+    void test_ui_MiningArgsComboBox_data();
 
 private:
     MainWindow* w;
+    Helper helper;
 };
 
 #endif // TST_GENERALTEST_H

@@ -20,19 +20,6 @@ void GeneralTest::cleanupTestCase()
     delete w;
 }
 
-void GeneralTest::GetTestData(QList<QString> &input, QList<QString> &result,
-                              const QString &in_filename, const QString &res_filename)
-{
-    QString input_path = qApp->applicationDirPath() + "/test/" + in_filename;
-    input = GetStringData(input_path);
-    QString result_path = qApp->applicationDirPath() + "/test/" + res_filename;
-    result = GetStringData(result_path);
-    if (input.size() != result.size())
-    {
-        ShowDataError(in_filename, res_filename);
-    }
-}
-
 void GeneralTest::test_ui_MiningArgsLineEdit()
 {
     QFETCH(QTestEventList, input_Wallet);
@@ -51,6 +38,60 @@ void GeneralTest::test_ui_MiningArgsLineEdit()
 }
 
 void GeneralTest::test_ui_MiningArgsLineEdit_data()
+{
+    QString input_filename = "test_MiningArgsLineEdit_input.txt";
+    QString result_filename = "test_MiningArgsLineEdit_result.txt";
+    QList<QString> input, result;
+    GetTestData(input, result, input_filename, result_filename);
+
+    QTest::addColumn<QTestEventList>("input_Wallet");
+    QTest::addColumn<QTestEventList>("input_Worker");
+    QTest::addColumn<QString>("result_Wallet");
+    QTest::addColumn<QString>("result_Worker");
+
+    for (int i = 0; i < input.size(); i++)
+    {
+        std::string rowName = QString("Case %1").arg(i).toStdString();
+        QStringList inputs = input[i].split(",");
+        QStringList results = result[i].split(",");
+        if (inputs.size() != 2 || results.size() != 2)
+        {
+            ShowDataError(input_filename, result_filename);
+            break;
+        }
+        QTestEventList events_Wallet;
+        events_Wallet.addKeyClick(Qt::Key_A, Qt::ControlModifier);
+        events_Wallet.addKeyClick(Qt::Key_Backspace);
+        events_Wallet.addKeyClicks(inputs[0]);
+        QTestEventList events_Worker;
+        events_Worker.addKeyClick(Qt::Key_A, Qt::ControlModifier);
+        events_Worker.addKeyClick(Qt::Key_Backspace);
+        events_Worker.addKeyClicks(inputs[1]);
+
+        QTest::newRow(rowName.c_str())
+                << events_Wallet << events_Worker
+                << results[0] << results[1];
+    }
+}
+
+void GeneralTest::test_ui_MiningArgsComboBox()
+{
+    QFETCH(QTestEventList, input_Wallet);
+    QFETCH(QTestEventList, input_Worker);
+    QFETCH(QString, result_Wallet);
+    QFETCH(QString, result_Worker);
+
+    QLineEdit* lineEditWallet = w->ui->lineEditWallet;
+    QLineEdit* lineEditWorker = w->ui->lineEditWorker;
+
+    input_Wallet.simulate(lineEditWallet);
+    input_Worker.simulate(lineEditWorker);
+
+    QCOMPARE(lineEditWallet->text(), result_Wallet);
+    QCOMPARE(lineEditWorker->text(), result_Worker);
+}
+
+void GeneralTest::test_ui_MiningArgsComboBox_data()
 {
     QString input_filename = "test_MiningArgsLineEdit_input.txt";
     QString result_filename = "test_MiningArgsLineEdit_result.txt";
@@ -197,39 +238,18 @@ void GeneralTest::ShowDataError(const QString& filename1, const QString& filenam
                          QString("Corrupted test data in\n %1 \nand/or\n %2").arg(path1).arg(path2));
 }
 
-QList<QString> GeneralTest::GetStringData(const QString& path)
+
+void GeneralTest::GetTestData(QList<QString> &input, QList<QString> &result,
+                              const QString &in_filename, const QString &res_filename)
 {
-
-    QFile file(path);
-
-    if (!file.exists())
+    QString input_path = qApp->applicationDirPath() + "/test/" + in_filename;
+    input = helper.GetStringData(input_path);
+    QString result_path = qApp->applicationDirPath() + "/test/" + res_filename;
+    result = helper.GetStringData(result_path);
+    if (input.size() != result.size())
     {
-        QMessageBox::warning(NULL, "warning", QString("File %1 does not exist!").arg(path));
+        ShowDataError(in_filename, res_filename);
     }
-
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
-    {
-        QMessageBox::warning(NULL, "warning", QString("Unable to open file：%1 (%2)").arg(path).arg(file.errorString()));
-    }
-
-    QTextStream in(&file);
-
-    QList<QString> data;
-
-    QString line;
-
-    while (1)
-    {
-        line = in.readLine();
-        if (line == "")
-            break;
-
-        data.append(line);
-    }
-
-    file.close();
-
-    return data;
 }
 
 QTEST_MAIN(GeneralTest);

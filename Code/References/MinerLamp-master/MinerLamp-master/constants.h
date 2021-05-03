@@ -21,8 +21,6 @@ static QString eth_nicehash = "nicehash+tcp://daggerhashimoto.eu.nicehash.com:33
 
 static QString cmd_nbminer_eth = "-a ethash -o %1 -u %2.%3";
 
-//static QString path_nbminer = "D:\\CUHK\\Y3T2\\CSC4001\\project\\MinersCoffee\\Code\\References\\MinerLamp-master\\build-MiningLigth-Desktop_Qt_5_9_9_MSVC2017_64bit-Debug\\debug\\cores\\NBMiner_Win_37.1\\nbminer.exe";
-
 const QString api_nbminer = "http://localhost:22333/api/v1/status";
 
 const QString sparkpool_api_str = "https://www.sparkpool.com/v1/pool/stats";
