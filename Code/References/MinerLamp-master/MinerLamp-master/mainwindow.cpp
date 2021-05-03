@@ -10,6 +10,7 @@
 #include "constants.h"
 #include "structures.h"
 #include "wincmd.h"
+#include "tst_generaltest.h"
 
 #include <QDebug>
 #include <QMessageBox>

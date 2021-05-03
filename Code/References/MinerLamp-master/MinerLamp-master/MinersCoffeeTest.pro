@@ -67,6 +67,7 @@ HEADERS += \
     hashratecharview.h \
     piesliceeff.h \
     structures.h \
+    tst_generaltest.h \
     urlapi.h \
     wincmd.h
 

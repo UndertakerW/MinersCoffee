@@ -17,7 +17,7 @@
 #include <QtSql/QSqlDatabase>
 #include <QDebug>
 #include <QMessageBox>
-#include <QMainWindow>
+
 #include "minerprocess.h"
 #include "highlighter.h"
 #include "nanopoolapi.h"
@@ -31,7 +31,7 @@
 
 QT_CHARTS_USE_NAMESPACE
 
-
+class GeneralTest;
 
 namespace Ui {
 class MainWindow;
@@ -307,6 +307,7 @@ private:
     float _est_output_cny;
     float _est_output_coin;
 
+    friend class GeneralTest;
 };
 
 

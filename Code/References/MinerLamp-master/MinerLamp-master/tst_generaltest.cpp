@@ -1,36 +1,4 @@
-#include <QtTest>
-#include <QCoreApplication>
-#include <QObject>
-#include <QFile>
-#include <QDebug>
-#include <qtest.h>
-#include <sstream>
-
-#include "nvidianvml.h"
-#include "jsonparser.h"
-#include "structures.h"
-
-class GeneralTest : public QObject
-{
-    Q_OBJECT
-
-public:
-    GeneralTest();
-    ~GeneralTest();
-
-private:
-    QList<QString> GetStringData(const QString& path);
-    void ShowDataError(const QString& filename1, const QString& filename2);
-
-private slots:
-    void initTestCase();
-    void cleanupTestCase();
-    void test_ParseJsonForMining();
-    void test_ParseJsonForMining_data();
-    void test_ParseJsonForPool();
-    void test_ParseJsonForPool_data();
-
-};
+#include "tst_generaltest.h"
 
 GeneralTest::GeneralTest()
 {
@@ -44,12 +12,44 @@ GeneralTest::~GeneralTest()
 
 void GeneralTest::initTestCase()
 {
-
+    w = new MainWindow();
 }
 
 void GeneralTest::cleanupTestCase()
 {
+    delete w;
+}
 
+void GeneralTest::test_ui_MiningArgsLineEdit()
+{
+    QFETCH(QTestEventList, event);
+    QFETCH(QString, result);
+
+    QLineEdit* lineEditWallet = w->ui->lineEditWallet;
+    QLineEdit* lineEditWorker = w->ui->lineEditWorker;
+
+    event.simulate(lineEditWallet);
+    QCOMPARE(lineEditWallet->text(), result);
+}
+
+void GeneralTest::test_ui_MiningArgsLineEdit_data()
+{
+    QString input_path = qApp->applicationDirPath() + "/test/test_MiningArgsLineEdit_input.txt";
+    QList<QString> input = GetStringData(input_path);
+    QString result_path = qApp->applicationDirPath() + "/test/test_MiningArgsLineEdit_result.txt";
+    QList<QString> result = GetStringData(result_path);
+
+    QTest::addColumn<QTestEventList>("event");
+    QTest::addColumn<QString>("result");
+
+    QTestEventList list1;
+    list1.addKeyClicks("hello world");
+    QTest::newRow("item 0 ")<<list1<<QString("hello world");
+
+    QTestEventList list2;
+    list2.addKeyClicks("abs0");
+    list2.addKeyClick(Qt::Key_Backspace);
+    QTest::newRow("item 1")<<list2<<QString("abs");
 }
 
 void GeneralTest::test_ParseJsonForPool()
@@ -90,6 +90,10 @@ void GeneralTest::test_ParseJsonForPool_data()
     QTest::addColumn<QString>("currency");
     QTest::addColumn<float>("income");
     QTest::addColumn<float>("usd");
+    if (input.size() != result.size())
+    {
+        ShowDataError(input_path, result_path);
+    }
     for (int i = 0; i < input.size(); i++)
     {
         std::string rowName = QString("Case %1").arg(i).toStdString();
@@ -137,6 +141,10 @@ void GeneralTest::test_ParseJsonForMining_data()
     QTest::addColumn<QString>("input");
     QTest::addColumn<unsigned int>("latency");
     QTest::addColumn<float>("gpu0_hashrate");
+    if (input.size() != result.size())
+    {
+        ShowDataError(input_path, result_path);
+    }
     for (int i = 0; i < input.size(); i++)
     {
         std::string rowName = QString("Case %1").arg(i).toStdString();
