@@ -37,4 +37,9 @@
     <qresource prefix="/images">
         <file>logo.png</file>
     </qresource>
+    <qresource prefix="/fonts">
+        <file>fonts/BRLNSB.TTF</file>
+        <file>fonts/BRLNSDB.TTF</file>
+        <file>fonts/BRLNSR.TTF</file>
+    </qresource>
 </RCC>

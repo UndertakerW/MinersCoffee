@@ -47,7 +47,7 @@ public:
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout_25;
     QSplitter *splitter_4;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_23;
     QFrame *frame_36;
     QGridLayout *gridLayout_39;
@@ -64,7 +64,7 @@ public:
     QFrame *frameWestBar;
     QGridLayout *gridLayout_32;
     QSpacerItem *verticalSpacer_9;
-    QWidget *widget1;
+    QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout;
     QStackedWidget *stackedWidgetMain;
     QWidget *pageMonitor;
@@ -85,7 +85,7 @@ public:
     QWidget *pageOverview;
     QVBoxLayout *verticalLayout_7;
     QSplitter *splitter;
-    QWidget *layoutWidget;
+    QWidget *layoutWidget2;
     QHBoxLayout *horizontalLayout_30;
     QGroupBox *groupBox;
     QHBoxLayout *horizontalLayout_6;
@@ -484,14 +484,14 @@ public:
         splitter_4->setLineWidth(0);
         splitter_4->setOrientation(Qt::Horizontal);
         splitter_4->setHandleWidth(0);
-        widget = new QWidget(splitter_4);
-        widget->setObjectName(QStringLiteral("widget"));
-        verticalLayout_23 = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(splitter_4);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        verticalLayout_23 = new QVBoxLayout(layoutWidget);
         verticalLayout_23->setSpacing(0);
         verticalLayout_23->setContentsMargins(11, 11, 11, 11);
         verticalLayout_23->setObjectName(QStringLiteral("verticalLayout_23"));
         verticalLayout_23->setContentsMargins(0, 0, 0, 0);
-        frame_36 = new QFrame(widget);
+        frame_36 = new QFrame(layoutWidget);
         frame_36->setObjectName(QStringLiteral("frame_36"));
         QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Minimum);
         sizePolicy1.setHorizontalStretch(0);
@@ -539,7 +539,7 @@ public:
 
         verticalLayout_23->addWidget(frame_36);
 
-        frameMonitor = new QFrame(widget);
+        frameMonitor = new QFrame(layoutWidget);
         frameMonitor->setObjectName(QStringLiteral("frameMonitor"));
         QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Maximum);
         sizePolicy3.setHorizontalStretch(0);
@@ -590,7 +590,7 @@ public:
 
         verticalLayout_23->addWidget(frameMonitor);
 
-        frameOC = new QFrame(widget);
+        frameOC = new QFrame(layoutWidget);
         frameOC->setObjectName(QStringLiteral("frameOC"));
         frameOC->setMinimumSize(QSize(80, 75));
         frameOC->setMaximumSize(QSize(160, 16777215));
@@ -633,7 +633,7 @@ public:
 
         verticalLayout_23->addWidget(frameOC);
 
-        frameHelp = new QFrame(widget);
+        frameHelp = new QFrame(layoutWidget);
         frameHelp->setObjectName(QStringLiteral("frameHelp"));
         frameHelp->setMinimumSize(QSize(80, 75));
         frameHelp->setMaximumSize(QSize(160, 16777215));
@@ -677,7 +677,7 @@ public:
 
         verticalLayout_23->addWidget(frameHelp);
 
-        frameWestBar = new QFrame(widget);
+        frameWestBar = new QFrame(layoutWidget);
         frameWestBar->setObjectName(QStringLiteral("frameWestBar"));
         frameWestBar->setMinimumSize(QSize(80, 0));
         frameWestBar->setMaximumSize(QSize(160, 16777215));
@@ -697,15 +697,15 @@ public:
 
         verticalLayout_23->addWidget(frameWestBar);
 
-        splitter_4->addWidget(widget);
-        widget1 = new QWidget(splitter_4);
-        widget1->setObjectName(QStringLiteral("widget1"));
-        verticalLayout = new QVBoxLayout(widget1);
+        splitter_4->addWidget(layoutWidget);
+        layoutWidget1 = new QWidget(splitter_4);
+        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
+        verticalLayout = new QVBoxLayout(layoutWidget1);
         verticalLayout->setSpacing(0);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        stackedWidgetMain = new QStackedWidget(widget1);
+        stackedWidgetMain = new QStackedWidget(layoutWidget1);
         stackedWidgetMain->setObjectName(QStringLiteral("stackedWidgetMain"));
         stackedWidgetMain->setStyleSheet(QLatin1String("background:#5B5A5A;\n"
 ""));
@@ -873,14 +873,14 @@ public:
         splitter = new QSplitter(pageOverview);
         splitter->setObjectName(QStringLiteral("splitter"));
         splitter->setOrientation(Qt::Horizontal);
-        layoutWidget = new QWidget(splitter);
-        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        horizontalLayout_30 = new QHBoxLayout(layoutWidget);
+        layoutWidget2 = new QWidget(splitter);
+        layoutWidget2->setObjectName(QStringLiteral("layoutWidget2"));
+        horizontalLayout_30 = new QHBoxLayout(layoutWidget2);
         horizontalLayout_30->setSpacing(6);
         horizontalLayout_30->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_30->setObjectName(QStringLiteral("horizontalLayout_30"));
         horizontalLayout_30->setContentsMargins(0, 0, 0, 0);
-        groupBox = new QGroupBox(layoutWidget);
+        groupBox = new QGroupBox(layoutWidget2);
         groupBox->setObjectName(QStringLiteral("groupBox"));
         groupBox->setMinimumSize(QSize(700, 400));
         QFont font2;
@@ -1018,7 +1018,7 @@ public:
 
         horizontalLayout_30->addWidget(groupBox);
 
-        groupBox_3 = new QGroupBox(layoutWidget);
+        groupBox_3 = new QGroupBox(layoutWidget2);
         groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
         groupBox_3->setFont(font1);
         groupBox_3->setStyleSheet(QLatin1String("QGroupBox::title{\n"
@@ -1379,7 +1379,7 @@ public:
 
         horizontalLayout_30->addWidget(groupBox_3);
 
-        splitter->addWidget(layoutWidget);
+        splitter->addWidget(layoutWidget2);
 
         verticalLayout_7->addWidget(splitter);
 
@@ -4476,7 +4476,7 @@ public:
 
         verticalLayout->addWidget(stackedWidgetMain);
 
-        frame_43 = new QFrame(widget1);
+        frame_43 = new QFrame(layoutWidget1);
         frame_43->setObjectName(QStringLiteral("frame_43"));
         QSizePolicy sizePolicy11(QSizePolicy::Preferred, QSizePolicy::Minimum);
         sizePolicy11.setHorizontalStretch(0);
@@ -4490,7 +4490,7 @@ public:
 
         verticalLayout->addWidget(frame_43);
 
-        splitter_4->addWidget(widget1);
+        splitter_4->addWidget(layoutWidget1);
 
         verticalLayout_25->addWidget(splitter_4);
 
@@ -4513,7 +4513,7 @@ public:
         retranslateUi(MainWindow);
 
         stackedWidgetMain->setCurrentIndex(0);
-        stackedWidgetMonitorMain->setCurrentIndex(1);
+        stackedWidgetMonitorMain->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);

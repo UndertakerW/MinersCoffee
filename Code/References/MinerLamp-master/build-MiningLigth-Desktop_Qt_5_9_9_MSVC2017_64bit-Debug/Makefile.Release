@@ -256,10 +256,18 @@ compiler_rcc_clean:
 release\qrc_resources.cpp: ..\MinerLamp-master\resources.qrc \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\bin\rcc.exe \
 		..\MinerLamp-master\logo.png \
+		..\MinerLamp-master\fonts\BRLNSB.TTF \
+		..\MinerLamp-master\fonts\BRLNSDB.TTF \
+		..\MinerLamp-master\fonts\BRLNSR.TTF \
 		..\MinerLamp-master\eth_miner_lamp.ico \
 		..\MinerLamp-master\icos\restore.png \
+		..\MinerLamp-master\icos\icons8-down-48.png \
 		..\MinerLamp-master\icos\peple.png \
+		..\MinerLamp-master\icos\minimum.png \
+		..\MinerLamp-master\icos\maximum.png \
 		..\MinerLamp-master\icos\max.png \
+		..\MinerLamp-master\icos\icons8-up-48.png \
+		..\MinerLamp-master\icos\arrow.png \
 		..\MinerLamp-master\icos\logo.png
 	D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\bin\rcc.exe -name resources ..\MinerLamp-master\resources.qrc -o release\qrc_resources.cpp
 
