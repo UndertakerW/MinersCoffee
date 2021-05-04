@@ -122,7 +122,10 @@ MainWindow::MainWindow(bool testing, QWidget *parent) :
     if(nvDll)
     {
         // retrieve gpu info to panel
-        _nvMonitorThrd = new nvMonitorThrd(this);
+
+        nvOCDialog* dlg = new nvOCDialog(_nvapi, _settings, this);
+        delete dlg;
+        _nvMonitorThrd = new nvMonitorThrd(this,_nvapi);
         connect(_nvMonitorThrd, &nvMonitorThrd::gpuInfoSignal, this, &MainWindow::onNvMonitorInfo);
 
         qRegisterMetaType<QList<GPUInfo>>("QList<GPUInfo>");

@@ -179,16 +179,16 @@ int nvidiaAPI::ControlGpuTemperature(unsigned int gpu)
     }
     if(thermal.sensor[0].currentTemp>thermal.sensor[0].defaultMaxTemp){
 
-        setGPUOffset(gpu,getGPUOffset(gpu)*0.6);
-        qDebug("nvidiaapi large");
-        setMemClockOffset(gpu,getMemOffset(gpu)*0.6);
-        setFanSpeed(gpu,getFanSpeed(gpu)*1.2);
+        setGPUOffset(gpu,getGPUOffset(gpu)*0.6+1);
+        qDebug("descreasing gpu offset");
+        setMemClockOffset(gpu,getMemOffset(gpu)*0.6+1);
+        setFanSpeed(gpu,getFanSpeed(gpu)*1.2+1);
     }
     if(thermal.sensor[0].currentTemp<thermal.sensor[0].defaultMaxTemp){
-        setGPUOffset(gpu,getGPUOffset(gpu)*1.2);
-        setMemClockOffset(gpu,getMemOffset(gpu)*1.2);
-        qDebug("nvidiaapi small");
-        setFanSpeed(gpu,getFanSpeed(gpu)*0.6);
+        setGPUOffset(gpu,getGPUOffset(gpu)*1.2+1);
+        setMemClockOffset(gpu,getMemOffset(gpu)*1.2+1);
+        qDebug("increasing gpu offset");
+        setFanSpeed(gpu,getFanSpeed(gpu)*0.6+1);
     }
     return thermal.sensor[0].currentTemp;
 

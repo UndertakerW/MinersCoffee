@@ -5,12 +5,11 @@
 
 GPUMonitor::GPUMonitor(QObject *p) {}
 
-nvMonitorThrd::nvMonitorThrd(QObject *p) : GPUMonitor(p) {}
+nvMonitorThrd::nvMonitorThrd(QObject *p, nvidiaAPI *nvapi) : GPUMonitor(p),_nvapi(nvapi) {}
 
 void nvMonitorThrd::run()
 {
     nvml = new nvidiaNVML();
-    nvidiaAPI nvapi;
     if(!nvml->initNVML()) return;
 
     while(1)
@@ -31,9 +30,9 @@ void nvMonitorThrd::run()
         unsigned int maxpowerdraw = nvml->getMaxPowerDraw();
         unsigned int minpowerdraw = nvml->getMinPowerDraw();
         unsigned int totalpowerdraw = nvml->getPowerDrawSum();
-        if(maxTemp>80){
+        if(maxTemp>60){
             for(int i=0;i<nvml->getGPUCount();i++){
-                nvapi.ControlGpuTemperature(i);
+                _nvapi->ControlGpuTemperature(i);
             }
             //qDebug()<<"warning! process is cooling ";
 

@@ -77,9 +77,9 @@ class nvMonitorThrd : public GPUMonitor
 {
 private:
     nvidiaNVML* nvml;
-
+    nvidiaAPI *_nvapi;
 public:
-    nvMonitorThrd(QObject* p = Q_NULLPTR);
+    nvMonitorThrd(QObject* p = Q_NULLPTR,nvidiaAPI *nvapi=NULL);
 
     void run() override;
 
