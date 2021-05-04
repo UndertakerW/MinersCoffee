@@ -288,7 +288,7 @@ void GeneralTest::test_Database_InsertDataNew_data(){
     QTest::newRow("5")  << 1<< 1;
 
 }
-/*void GeneralTest::test_Database_Get_HistoryNew(){
+void GeneralTest::test_Database_Get_HistoryNew(){
     QFETCH(int, num);
     QFETCH(QString, date1);
     QFETCH(QString, date2);
@@ -305,7 +305,7 @@ void GeneralTest::ShowDataError(const QString& filename1, const QString& filenam
     QString path2 = qApp->applicationDirPath() + "/test/" + filename2;
     QMessageBox::warning(NULL, "warning",
                          QString("Corrupted test data in\n %1 \nand/or\n %2").arg(path1).arg(path2));
-}*/
+}
 
 
 void GeneralTest::GetTestData(QList<QString> &input, QList<QString> &result,
