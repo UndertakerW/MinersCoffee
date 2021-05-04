@@ -834,7 +834,7 @@ void MainWindow::on_pushButton_clicked()
 void MainWindow::onMinerStarted()
 {
 
-    ui->pushButton->setText("Stop mining");
+    ui->pushButton->setText("Stop");
     _isMinerRunning = true;
     _isStartStoping = false;
 
@@ -844,7 +844,7 @@ void MainWindow::onMinerStarted()
 
 void MainWindow::onMinerStoped()
 {
-    ui->pushButton->setText("Start mining");
+    ui->pushButton->setText("Mining");
     _isMinerRunning = false;
     _isStartStoping = false;
 
@@ -1240,8 +1240,8 @@ void MainWindow::onTempChartTimer()
     //draw the dynamic graph
     _seriesTemp->append(QDateTime::currentDateTime().toMSecsSinceEpoch(), _currentTempRate);
 
-    // 40 is the default minimun value in the y-axis
-    _seriesTempBottom->append(QDateTime::currentDateTime().toMSecsSinceEpoch(), 40);
+    // 0 is the default minimun value in the y-axis
+    _seriesTempBottom->append(QDateTime::currentDateTime().toMSecsSinceEpoch(), _currentTempRate-6);
 
     //diaplay the proper range of the x-axis;
     //make sure the graph stay at 9 sec
@@ -1257,13 +1257,11 @@ void MainWindow::onTempChartTimer()
     if(_currentTempRate > _maxChartTempRate)
     {
         _maxChartTempRate = _currentTempRate;
-        _chartTemp->axisY()->setRange(40, _maxChartTempRate+5);
+        _chartTemp->axisY()->setRange(_maxChartTempRate-5, _maxChartTempRate+5);
     }
 
-    //qDebug() << "temp comparing: " << _currentTempRate << " vs " << _maxChartTempRate;
     if(_currentTempRate <= _maxChartTempRate-5){
-        //qDebug() << "setting lower bound: " << _currentTempRate-2;
-        _chartTemp->axisY()->setRange(40, _currentTempRate+8);
+        _chartTemp->axisY()->setRange(_currentTempRate-5, _currentTempRate+8);
     }
 }
 
@@ -1608,10 +1606,10 @@ void MainWindow::initializePieChart(){
 void MainWindow::onMouseHoverSlice(QPieSlice * slice, bool status){
     QString sliceLabel = slice->label();
 
-    // index of "eff"   in _effPieSlices is 0
-    // index of "uneff" in _effPieSlices is 1
+    // index of "currentTemp"   in _effPieSlices is 0
+    // index of "maxTemp" in _effPieSlices is 1
     if(status){
-        if(sliceLabel == "eff"){
+        if(sliceLabel == "currentTemp"){
             _tempPieSlices->at(0)->setBorderWidth(0);
             _tempPieSlices->at(1)->setBorderWidth(10);
         }

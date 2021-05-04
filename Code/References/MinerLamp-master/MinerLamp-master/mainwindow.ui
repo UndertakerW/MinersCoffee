@@ -488,7 +488,7 @@ border-radius : 0;
 </string>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>2</number>
           </property>
           <widget class="QWidget" name="pageMonitor">
            <layout class="QGridLayout" name="gridLayout_40">
@@ -910,7 +910,7 @@ QPushButton:pressed {
                <string notr="true">background:rgb(91,90,90);</string>
               </property>
               <property name="currentIndex">
-               <number>0</number>
+               <number>2</number>
               </property>
               <widget class="QWidget" name="pageOverview">
                <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -3701,7 +3701,7 @@ QComboBox::drop-down {
                       </layout>
                      </item>
                      <item>
-                      <widget class="QPushButton" name="pushButton_10">
+                      <widget class="QPushButton" name="pushButton">
                        <property name="minimumSize">
                         <size>
                          <width>200</width>
@@ -3711,7 +3711,7 @@ QComboBox::drop-down {
                        <property name="font">
                         <font>
                          <family>Berlin Sans FB</family>
-                         <pointsize>26</pointsize>
+                         <pointsize>16</pointsize>
                         </font>
                        </property>
                        <property name="styleSheet">
@@ -4570,6 +4570,11 @@ QGroupBox{
                              <height>320</height>
                             </size>
                            </property>
+                           <property name="font">
+                            <font>
+                             <family>Berlin Sans FB</family>
+                            </font>
+                           </property>
                            <property name="styleSheet">
                             <string notr="true">background-color: rgb(90, 91, 91);
 color: rgb(255, 255, 255);</string>
@@ -4689,7 +4694,11 @@ QCheckBox::indicator:checked:pressed {
                              <widget class="QTextEdit" name="textEdit">
                               <property name="font">
                                <font>
-                                <family>Arial</family>
+                                <family>Berlin Sans FB</family>
+                                <pointsize>14</pointsize>
+                                <weight>50</weight>
+                                <italic>false</italic>
+                                <bold>false</bold>
                                </font>
                               </property>
                               <property name="styleSheet">
@@ -4698,6 +4707,8 @@ QCheckBox::indicator:checked:pressed {
 	color: rgb(255, 255, 255);
 	border:2px solid rgb(51,51,51);
 	border-radius:4px;
+	
+	font: 14pt &quot;Berlin Sans FB&quot;;
 }
 
 QTextEdit:disabled {
@@ -4705,10 +4716,149 @@ QTextEdit:disabled {
 	border:2px solid rgb(112,112,112);
 	border-radius:4px;
 	background:rgb(112,112,112);
-}</string>
+}
+ QScrollBar:horizontal
+ {
+     height: 15px;
+     margin: 3px 15px 3px 15px;
+     border: 1px transparent #2A2929;
+     border-radius: 4px;
+     background-color: rgb(0, 143, 150);
+ }
+
+ QScrollBar::handle:horizontal
+ {
+     background-color: rgb(51,51,51,220);
+     min-width: 5px;
+     border-radius: 4px;
+ }
+
+ QScrollBar::add-line:horizontal
+ {
+     margin: 0px 3px 0px 3px;
+     border-image: url(:/qss_icons/rc/right_arrow_disabled.png);
+     width: 10px;
+     height: 10px;
+     subcontrol-position: right;
+     subcontrol-origin: margin;
+ }
+
+ QScrollBar::sub-line:horizontal
+ {
+     margin: 0px 3px 0px 3px;
+     border-image: url(:/qss_icons/rc/left_arrow_disabled.png);
+     height: 10px;
+     width: 10px;
+     subcontrol-position: left;
+     subcontrol-origin: margin;
+ }
+
+ QScrollBar::add-line:horizontal:hover,QScrollBar::add-line:horizontal:on
+ {
+     border-image: url(:/qss_icons/rc/right_arrow.png);
+     height: 10px;
+     width: 10px;
+     subcontrol-position: right;
+     subcontrol-origin: margin;
+ }
+
+
+ QScrollBar::sub-line:horizontal:hover, QScrollBar::sub-line:horizontal:on
+ {
+     border-image: url(:/qss_icons/rc/left_arrow.png);
+     height: 10px;
+     width: 10px;
+     subcontrol-position: left;
+     subcontrol-origin: margin;
+ }
+
+ QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal
+ {
+     background: none;
+ }
+
+
+ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
+ {
+     background: none;
+ }
+
+ QScrollBar:vertical
+ {
+     background:rgb(0, 143, 150);
+     width: 15px;
+     margin: 15px 3px 15px 3px;
+     border: 1px transparent #2A2929;
+     border-radius: 4px;
+ }
+
+ QScrollBar::handle:vertical
+ {
+     background-color: rgb(51,51,51,220);
+     min-height: 5px;
+     border-radius: 4px;
+ }
+
+ QScrollBar::sub-line:vertical
+ {
+     margin: 3px 0px 3px 0px;
+     border-image: url(:/qss_icons/rc/up_arrow_disabled.png);
+     height: 10px;
+     width: 10px;
+     subcontrol-position: top;
+     subcontrol-origin: margin;
+ }
+
+ QScrollBar::add-line:vertical
+ {
+     margin: 3px 0px 3px 0px;
+     border-image: url(:/qss_icons/rc/down_arrow_disabled.png);
+     height: 10px;
+     width: 10px;
+     subcontrol-position: bottom;
+     subcontrol-origin: margin;
+ }
+
+ QScrollBar::sub-line:vertical:hover,QScrollBar::sub-line:vertical:on
+ {
+
+     border-image: url(:/qss_icons/rc/up_arrow.png);
+     height: 10px;
+     width: 10px;
+     subcontrol-position: top;
+     subcontrol-origin: margin;
+ }
+
+
+ QScrollBar::add-line:vertical:hover, QScrollBar::add-line:vertical:on
+ {
+     border-image: url(:/qss_icons/rc/down_arrow.png);
+     height: 10px;
+     width: 10px;
+     subcontrol-position: bottom;
+     subcontrol-origin: margin;
+ }
+
+ QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical
+ {
+     background: none;
+ }
+
+
+ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical
+ {
+     background: none;
+ }</string>
                               </property>
                               <property name="readOnly">
                                <bool>true</bool>
+                              </property>
+                              <property name="html">
+                               <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Berlin Sans FB'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                               </property>
                              </widget>
                             </item>
@@ -4810,7 +4960,11 @@ QGroupBox{
                              </size>
                             </property>
                             <property name="styleSheet">
-                             <string notr="true">background:rgb(91,100,90);</string>
+                             <string notr="true">background-color: rgb(0, 143, 150);
+background-repeat:no-repeat;
+background-position:center;
+border-width: 0;
+border-radius : 0;</string>
                             </property>
                             <property name="frameShape">
                              <enum>QFrame::StyledPanel</enum>
@@ -4932,7 +5086,139 @@ QGroupBox{
                                </property>
                                <property name="styleSheet">
                                 <string notr="true">QPlainTextEdit {background-color: rgb(90, 91, 91);border-width: 0;
-border-radius : 0; color: #ffd000;}</string>
+border-radius : 0; color: #ffd000;}
+ QScrollBar:horizontal
+ {
+     height: 15px;
+     margin: 3px 15px 3px 15px;
+     border: 1px transparent #2A2929;
+     border-radius: 4px;
+     background-color: rgb(0, 143, 150);
+ }
+
+ QScrollBar::handle:horizontal
+ {
+     background-color: rgb(51,51,51,220);
+     min-width: 5px;
+     border-radius: 4px;
+ }
+
+ QScrollBar::add-line:horizontal
+ {
+     margin: 0px 3px 0px 3px;
+     border-image: url(:/qss_icons/rc/right_arrow_disabled.png);
+     width: 10px;
+     height: 10px;
+     subcontrol-position: right;
+     subcontrol-origin: margin;
+ }
+
+ QScrollBar::sub-line:horizontal
+ {
+     margin: 0px 3px 0px 3px;
+     border-image: url(:/qss_icons/rc/left_arrow_disabled.png);
+     height: 10px;
+     width: 10px;
+     subcontrol-position: left;
+     subcontrol-origin: margin;
+ }
+
+ QScrollBar::add-line:horizontal:hover,QScrollBar::add-line:horizontal:on
+ {
+     border-image: url(:/qss_icons/rc/right_arrow.png);
+     height: 10px;
+     width: 10px;
+     subcontrol-position: right;
+     subcontrol-origin: margin;
+ }
+
+
+ QScrollBar::sub-line:horizontal:hover, QScrollBar::sub-line:horizontal:on
+ {
+     border-image: url(:/qss_icons/rc/left_arrow.png);
+     height: 10px;
+     width: 10px;
+     subcontrol-position: left;
+     subcontrol-origin: margin;
+ }
+
+ QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal
+ {
+     background: none;
+ }
+
+
+ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
+ {
+     background: none;
+ }
+
+ QScrollBar:vertical
+ {
+     background:rgb(0, 143, 150);
+     width: 15px;
+     margin: 15px 3px 15px 3px;
+     border: 1px transparent #2A2929;
+     border-radius: 4px;
+ }
+
+ QScrollBar::handle:vertical
+ {
+     background-color: rgb(51,51,51,220);
+     min-height: 5px;
+     border-radius: 4px;
+ }
+
+ QScrollBar::sub-line:vertical
+ {
+     margin: 3px 0px 3px 0px;
+     border-image: url(:/qss_icons/rc/up_arrow_disabled.png);
+     height: 10px;
+     width: 10px;
+     subcontrol-position: top;
+     subcontrol-origin: margin;
+ }
+
+ QScrollBar::add-line:vertical
+ {
+     margin: 3px 0px 3px 0px;
+     border-image: url(:/qss_icons/rc/down_arrow_disabled.png);
+     height: 10px;
+     width: 10px;
+     subcontrol-position: bottom;
+     subcontrol-origin: margin;
+ }
+
+ QScrollBar::sub-line:vertical:hover,QScrollBar::sub-line:vertical:on
+ {
+
+     border-image: url(:/qss_icons/rc/up_arrow.png);
+     height: 10px;
+     width: 10px;
+     subcontrol-position: top;
+     subcontrol-origin: margin;
+ }
+
+
+ QScrollBar::add-line:vertical:hover, QScrollBar::add-line:vertical:on
+ {
+     border-image: url(:/qss_icons/rc/down_arrow.png);
+     height: 10px;
+     width: 10px;
+     subcontrol-position: bottom;
+     subcontrol-origin: margin;
+ }
+
+ QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical
+ {
+     background: none;
+ }
+
+
+ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical
+ {
+     background: none;
+ }</string>
                                </property>
                                <property name="plainText">
                                 <string>AllocatedBaseSize	
@@ -4962,7 +5248,139 @@ TempPageFile</string>
                                </property>
                                <property name="styleSheet">
                                 <string notr="true">QPlainTextEdit {background-color: rgb(90, 91, 91);border-width: 0;
-border-radius : 0;color:white;}</string>
+border-radius : 0;color:white;}
+ QScrollBar:horizontal
+ {
+     height: 15px;
+     margin: 3px 15px 3px 15px;
+     border: 1px transparent #2A2929;
+     border-radius: 4px;
+     background-color: rgb(0, 143, 150);
+ }
+
+ QScrollBar::handle:horizontal
+ {
+     background-color: rgb(51,51,51,220);
+     min-width: 5px;
+     border-radius: 4px;
+ }
+
+ QScrollBar::add-line:horizontal
+ {
+     margin: 0px 3px 0px 3px;
+     border-image: url(:/qss_icons/rc/right_arrow_disabled.png);
+     width: 10px;
+     height: 10px;
+     subcontrol-position: right;
+     subcontrol-origin: margin;
+ }
+
+ QScrollBar::sub-line:horizontal
+ {
+     margin: 0px 3px 0px 3px;
+     border-image: url(:/qss_icons/rc/left_arrow_disabled.png);
+     height: 10px;
+     width: 10px;
+     subcontrol-position: left;
+     subcontrol-origin: margin;
+ }
+
+ QScrollBar::add-line:horizontal:hover,QScrollBar::add-line:horizontal:on
+ {
+     border-image: url(:/qss_icons/rc/right_arrow.png);
+     height: 10px;
+     width: 10px;
+     subcontrol-position: right;
+     subcontrol-origin: margin;
+ }
+
+
+ QScrollBar::sub-line:horizontal:hover, QScrollBar::sub-line:horizontal:on
+ {
+     border-image: url(:/qss_icons/rc/left_arrow.png);
+     height: 10px;
+     width: 10px;
+     subcontrol-position: left;
+     subcontrol-origin: margin;
+ }
+
+ QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal
+ {
+     background: none;
+ }
+
+
+ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
+ {
+     background: none;
+ }
+
+ QScrollBar:vertical
+ {
+     background:rgb(0, 143, 150);
+     width: 15px;
+     margin: 15px 3px 15px 3px;
+     border: 1px transparent #2A2929;
+     border-radius: 4px;
+ }
+
+ QScrollBar::handle:vertical
+ {
+     background-color: rgb(51,51,51,220);
+     min-height: 5px;
+     border-radius: 4px;
+ }
+
+ QScrollBar::sub-line:vertical
+ {
+     margin: 3px 0px 3px 0px;
+     border-image: url(:/qss_icons/rc/up_arrow_disabled.png);
+     height: 10px;
+     width: 10px;
+     subcontrol-position: top;
+     subcontrol-origin: margin;
+ }
+
+ QScrollBar::add-line:vertical
+ {
+     margin: 3px 0px 3px 0px;
+     border-image: url(:/qss_icons/rc/down_arrow_disabled.png);
+     height: 10px;
+     width: 10px;
+     subcontrol-position: bottom;
+     subcontrol-origin: margin;
+ }
+
+ QScrollBar::sub-line:vertical:hover,QScrollBar::sub-line:vertical:on
+ {
+
+     border-image: url(:/qss_icons/rc/up_arrow.png);
+     height: 10px;
+     width: 10px;
+     subcontrol-position: top;
+     subcontrol-origin: margin;
+ }
+
+
+ QScrollBar::add-line:vertical:hover, QScrollBar::add-line:vertical:on
+ {
+     border-image: url(:/qss_icons/rc/down_arrow.png);
+     height: 10px;
+     width: 10px;
+     subcontrol-position: bottom;
+     subcontrol-origin: margin;
+ }
+
+ QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical
+ {
+     background: none;
+ }
+
+
+ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical
+ {
+     background: none;
+ }</string>
                                </property>
                                <property name="plainText">
                                 <string/>
@@ -6715,7 +7133,7 @@ border-radius : 0;</string>
                    </widget>
                   </item>
                   <item row="2" column="6">
-                   <widget class="QPushButton" name="pushButton">
+                   <widget class="QPushButton" name="pushButtonOriginal">
                     <property name="font">
                      <font>
                       <family>Arial</family>
@@ -9083,8 +9501,142 @@ QGroupBox{
                  </font>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">position:center;
-color:white;</string>
+                 <string notr="true">QPlainTextEdit{
+	position:center;
+	color:white;
+}
+ QScrollBar:horizontal
+ {
+     height: 15px;
+     margin: 3px 15px 3px 15px;
+     border: 1px transparent #2A2929;
+     border-radius: 4px;
+     background-color: rgb(0, 143, 150);
+ }
+
+ QScrollBar::handle:horizontal
+ {
+     background-color: rgb(51,51,51,220);
+     min-width: 5px;
+     border-radius: 4px;
+ }
+
+ QScrollBar::add-line:horizontal
+ {
+     margin: 0px 3px 0px 3px;
+     border-image: url(:/qss_icons/rc/right_arrow_disabled.png);
+     width: 10px;
+     height: 10px;
+     subcontrol-position: right;
+     subcontrol-origin: margin;
+ }
+
+ QScrollBar::sub-line:horizontal
+ {
+     margin: 0px 3px 0px 3px;
+     border-image: url(:/qss_icons/rc/left_arrow_disabled.png);
+     height: 10px;
+     width: 10px;
+     subcontrol-position: left;
+     subcontrol-origin: margin;
+ }
+
+ QScrollBar::add-line:horizontal:hover,QScrollBar::add-line:horizontal:on
+ {
+     border-image: url(:/qss_icons/rc/right_arrow.png);
+     height: 10px;
+     width: 10px;
+     subcontrol-position: right;
+     subcontrol-origin: margin;
+ }
+
+
+ QScrollBar::sub-line:horizontal:hover, QScrollBar::sub-line:horizontal:on
+ {
+     border-image: url(:/qss_icons/rc/left_arrow.png);
+     height: 10px;
+     width: 10px;
+     subcontrol-position: left;
+     subcontrol-origin: margin;
+ }
+
+ QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal
+ {
+     background: none;
+ }
+
+
+ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
+ {
+     background: none;
+ }
+
+ QScrollBar:vertical
+ {
+     background:rgb(0, 143, 150);
+     width: 15px;
+     margin: 15px 3px 15px 3px;
+     border: 1px transparent #2A2929;
+     border-radius: 4px;
+ }
+
+ QScrollBar::handle:vertical
+ {
+     background-color: rgb(51,51,51,220);
+     min-height: 5px;
+     border-radius: 4px;
+ }
+
+ QScrollBar::sub-line:vertical
+ {
+     margin: 3px 0px 3px 0px;
+     border-image: url(:/qss_icons/rc/up_arrow_disabled.png);
+     height: 10px;
+     width: 10px;
+     subcontrol-position: top;
+     subcontrol-origin: margin;
+ }
+
+ QScrollBar::add-line:vertical
+ {
+     margin: 3px 0px 3px 0px;
+     border-image: url(:/qss_icons/rc/down_arrow_disabled.png);
+     height: 10px;
+     width: 10px;
+     subcontrol-position: bottom;
+     subcontrol-origin: margin;
+ }
+
+ QScrollBar::sub-line:vertical:hover,QScrollBar::sub-line:vertical:on
+ {
+
+     border-image: url(:/qss_icons/rc/up_arrow.png);
+     height: 10px;
+     width: 10px;
+     subcontrol-position: top;
+     subcontrol-origin: margin;
+ }
+
+
+ QScrollBar::add-line:vertical:hover, QScrollBar::add-line:vertical:on
+ {
+     border-image: url(:/qss_icons/rc/down_arrow.png);
+     height: 10px;
+     width: 10px;
+     subcontrol-position: bottom;
+     subcontrol-origin: margin;
+ }
+
+ QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical
+ {
+     background: none;
+ }
+
+
+ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical
+ {
+     background: none;
+ }</string>
                 </property>
                 <property name="frameShape">
                  <enum>QFrame::NoFrame</enum>
@@ -9094,6 +9646,9 @@ color:white;</string>
                 </property>
                 <property name="readOnly">
                  <bool>true</bool>
+                </property>
+                <property name="plainText">
+                 <string/>
                 </property>
                </widget>
               </item>
