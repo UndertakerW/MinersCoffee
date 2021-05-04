@@ -20,6 +20,244 @@ void GeneralTest::cleanupTestCase()
     delete w;
 }
 
+/* System Test */
+void GeneralTest::test_FullSystem()
+{
+    w->SetUIRefresh(true);
+    w->ui->comboBoxCoin->itemText(w->ui->comboBoxCoin->findText("ETH"));
+    w->ui->comboBoxCore->itemText(w->ui->comboBoxCore->findText("NBMiner"));
+    w->ui->comboBoxPool->itemText(w->ui->comboBoxPool->findText("sparkpool"));
+    QTestEventList events_Wallet;
+    events_Wallet.addKeyClick(Qt::Key_A, Qt::ControlModifier);
+    events_Wallet.addKeyClick(Qt::Key_Backspace);
+    events_Wallet.addKeyClicks("sp_utw2");
+    events_Wallet.simulate(w->ui->lineEditWallet);
+    QTestEventList events_Worker;
+    events_Worker.addKeyClick(Qt::Key_A, Qt::ControlModifier);
+    events_Worker.addKeyClick(Qt::Key_Backspace);
+    events_Worker.addKeyClicks("MC_test");
+    events_Worker.simulate(w->ui->lineEditWorker);
+
+    if(!w->_isMinerRunning)
+    {
+        w->StartMiningCore();
+    }
+    else
+    {
+        w->StopMiningCore();
+        QThread::sleep(5);
+        w->StartMiningCore();
+    }
+
+    QString core_args = w->_current_core->cmds[w->_current_coin].arg(
+                w->_current_pool->cmds[w->_current_coin]).arg(w->ui->lineEditWallet->text()).arg(w->ui->lineEditWorker->text());
+    QString expected_args = "-a ethash -o ethproxy+tcp://cn.sparkpool.com:13333 -u sp_utw2.MC_test";
+
+    QCOMPARE(core_args, expected_args);
+
+    // Wait for initialization of mining
+    // This could take longer on slow GPU
+    QThread::sleep(90);
+
+    bool success = false;
+    if (w->_miningInfo->latency > 0)
+        success = true;
+
+    QCOMPARE(success, true);
+
+    test_TempPieChart();
+    test_HashrateLineChart();
+
+    w->StopMiningCore();
+
+}
+
+/* Component/Subsystem Test */
+
+void GeneralTest::test_MiningArgs()
+{
+    bool success1 = true;
+
+    if (w->ui->comboBoxCoin->findText("ETH") != -1)
+        w->ui->comboBoxCoin->setCurrentIndex(w->ui->comboBoxCoin->findText("ETH"));
+    else success1 = false;
+    if (w->ui->comboBoxCore->findText("NBMiner") != -1)
+        w->ui->comboBoxCore->setCurrentIndex(w->ui->comboBoxCore->findText("NBMiner"));
+    else success1 = false;
+    if (w->ui->comboBoxPool->findText("sparkpool") != -1)
+        w->ui->comboBoxPool->setCurrentIndex(w->ui->comboBoxPool->findText("sparkpool"));
+    else success1 = false;
+
+    QCOMPARE(success1, true);
+
+    QTestEventList events_Wallet;
+    events_Wallet.addKeyClick(Qt::Key_A, Qt::ControlModifier);
+    events_Wallet.addKeyClick(Qt::Key_Backspace);
+    events_Wallet.addKeyClicks("sp_utw2");
+    events_Wallet.simulate(w->ui->lineEditWallet);
+    QTestEventList events_Worker;
+    events_Worker.addKeyClick(Qt::Key_A, Qt::ControlModifier);
+    events_Worker.addKeyClick(Qt::Key_Backspace);
+    events_Worker.addKeyClicks("MC_test");
+    events_Worker.simulate(w->ui->lineEditWorker);
+
+    w->SetMiningArgs();
+
+    QString core_args = w->_current_core->cmds[w->_current_coin].arg(
+                w->_current_pool->cmds[w->_current_coin]).arg(w->ui->lineEditWallet->text()).arg(w->ui->lineEditWorker->text());
+
+    QString expected_args = "-a ethash -o ethproxy+tcp://cn.sparkpool.com:13333 -u sp_utw2.MC_test";
+
+    QCOMPARE(core_args, expected_args);
+}
+
+void GeneralTest::test_MiningCore()
+{
+    bool success1 = true;
+
+    if (w->ui->comboBoxCoin->findText("ETH") != -1)
+        w->ui->comboBoxCoin->setCurrentIndex(w->ui->comboBoxCoin->findText("ETH"));
+    else success1 = false;
+    if (w->ui->comboBoxCore->findText("NBMiner") != -1)
+        w->ui->comboBoxCore->setCurrentIndex(w->ui->comboBoxCore->findText("NBMiner"));
+    else success1 = false;
+    if (w->ui->comboBoxPool->findText("sparkpool") != -1)
+        w->ui->comboBoxPool->setCurrentIndex(w->ui->comboBoxPool->findText("sparkpool"));
+    else success1 = false;
+
+    QCOMPARE(success1, true);
+
+    w->ui->lineEditWallet->setText("sp_utw2");
+    w->ui->lineEditWorker->setText("MC_test");
+
+
+    if(!w->_isMinerRunning)
+    {
+        w->StartMiningCore();
+    }
+    else
+    {
+        w->StopMiningCore();
+        QThread::sleep(5);
+        w->StartMiningCore();
+    }
+    // Wait for initialization of mining
+    // This could take longer on slow GPU
+    QThread::sleep(90);
+
+    bool success2 = false;
+
+    if (w->_miningInfo->latency > 0)
+        success2 = true;
+
+    w->StopMiningCore();
+
+    QCOMPARE(success2, true);
+}
+
+void GeneralTest::test_TempPieChart()
+{
+    w->SetUIRefresh(true);
+
+    QList<QPieSlice*>* pieSlices = w->_effPieSlices;
+
+    // Wait for refresh
+    QThread::sleep(abs(QDateTime::currentDateTime().msecsTo(w->_nvMonitorThrd->last_refresh))/1000);
+
+    float temp_api = w->_nvMonitorThrd->nvml->getHigherTemp();
+
+    float temp_ui = pieSlices->at(0)->value();
+
+    QCOMPARE(temp_ui, temp_api);
+}
+
+void GeneralTest::test_HashrateLineChart()
+{
+    w->SetUIRefresh(true);
+
+    QLineSeries* lineSeries = w->_series;
+
+    // Wait for refresh
+    // A 100ms delay guarantees that the refresh is finished
+    QThread::sleep((abs(QDateTime::currentDateTime().msecsTo(w->_nvMonitorThrd->last_refresh))+100)/1000);
+
+    float hashrate_api = w->_nvMonitorThrd->nvml->getHigherTemp();
+
+    float hashrate_ui = lineSeries->at(lineSeries->count()-1).y();
+
+    QCOMPARE(hashrate_ui, hashrate_api);
+}
+
+/* Unit Test */
+
+void GeneralTest::test_ui_HashrateLineChart()
+{
+    w->SetUIRefresh(false);
+
+    QFETCH(float, input);
+    QFETCH(float, result);
+
+    QLineSeries* lineSeries = w->_series;
+
+    lineSeries->append(QDateTime::currentDateTime().toMSecsSinceEpoch(), input);
+
+    float hashrate_ui = lineSeries->at(lineSeries->count()-1).y();
+
+    QCOMPARE(hashrate_ui, result);
+}
+
+void GeneralTest::test_ui_HashrateLineChart_data()
+{
+    QString input_filename = "test_ui_HashrateLineChart_input.txt";
+    QString result_filename = "test_ui_HashrateLineChart_result.txt";
+    QList<QString> input, result;
+    GetTestData(input, result, input_filename, result_filename);
+
+    QTest::addColumn<float>("input");
+    QTest::addColumn<float>("result");
+
+    for (int i = 0; i < input.size(); i++)
+    {
+        std::string rowName = QString("Case %1").arg(i).toStdString();
+
+        QTest::newRow(rowName.c_str())
+                << input[i].toFloat() << result[i].toFloat();
+    }
+}
+
+void GeneralTest::test_ui_TempPieChart()
+{
+    w->SetUIRefresh(false);
+
+    QFETCH(float, input);
+    QFETCH(float, result);
+
+    QList<QPieSlice*>* pieSlices = w->_effPieSlices;
+
+    pieSlices->at(0)->setValue(input);
+
+    QCOMPARE(pieSlices->at(0)->value(), result);
+}
+
+void GeneralTest::test_ui_TempPieChart_data()
+{
+    QString input_filename = "test_ui_TempPieChart_input.txt";
+    QString result_filename = "test_ui_TempPieChart_result.txt";
+    QList<QString> input, result;
+    GetTestData(input, result, input_filename, result_filename);
+
+    QTest::addColumn<float>("input");
+    QTest::addColumn<float>("result");
+
+    for (int i = 0; i < input.size(); i++)
+    {
+        std::string rowName = QString("Case %1").arg(i).toStdString();
+
+        QTest::newRow(rowName.c_str())
+                << input[i].toFloat() << result[i].toFloat();
+    }
+}
+
 void GeneralTest::test_ui_MiningArgsLineEdit()
 {
     QFETCH(QTestEventList, input_Wallet);
@@ -39,8 +277,8 @@ void GeneralTest::test_ui_MiningArgsLineEdit()
 
 void GeneralTest::test_ui_MiningArgsLineEdit_data()
 {
-    QString input_filename = "test_MiningArgsLineEdit_input.txt";
-    QString result_filename = "test_MiningArgsLineEdit_result.txt";
+    QString input_filename = "test_ui_MiningArgsLineEdit_input.txt";
+    QString result_filename = "test_ui_MiningArgsLineEdit_result.txt";
     QList<QString> input, result;
     GetTestData(input, result, input_filename, result_filename);
 

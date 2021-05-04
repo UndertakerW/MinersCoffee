@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.14.1, 2021-05-03T19:35:46. -->
+<!-- Written by QtCreator 4.14.1, 2021-05-05T03:40:57. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -65,17 +65,29 @@
     <value type="bool" key="AutoTest.Framework.QtTest">true</value>
    </valuemap>
    <valuemap type="QVariantMap" key="AutoTest.CheckStates">
-    <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:GeneralTest">Checked</value>
+    <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:Case 0">Checked</value>
+    <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:Case 1">Checked</value>
+    <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:Case 2">Checked</value>
     <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:cleanupTestCase">Unchecked</value>
     <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:initTestCase">Unchecked</value>
-    <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:item 0 ">Checked</value>
-    <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:item 1">Checked</value>
+    <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:test_FullSystem">Checked</value>
+    <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:test_HashrateLineChart">Checked</value>
+    <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:test_MiningArgs">Checked</value>
+    <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:test_MiningCore">Checked</value>
     <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:test_ParseJsonForMining">Checked</value>
     <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:test_ParseJsonForMining_data">Unchecked</value>
     <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:test_ParseJsonForPool">Checked</value>
     <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:test_ParseJsonForPool_data">Unchecked</value>
-    <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:test_ui_MiningArgs">Checked</value>
-    <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:test_ui_MiningArgs_data">Unchecked</value>
+    <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:test_TempPieChart">Checked</value>
+    <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:test_ui_HashrateLineChart">Checked</value>
+    <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:test_ui_HashrateLineChart_data">Unchecked</value>
+    <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:test_ui_MiningArgsComboBox">Checked</value>
+    <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:test_ui_MiningArgsComboBox_data">Unchecked</value>
+    <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:test_ui_MiningArgsLineEdit">Checked</value>
+    <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:test_ui_MiningArgsLineEdit_data">Unchecked</value>
+    <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:test_ui_TempPieChart">Checked</value>
+    <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:test_ui_TempPieChart_data">Unchecked</value>
+    <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.h:GeneralTest">Checked</value>
    </valuemap>
    <value type="int" key="AutoTest.RunAfterBuild">0</value>
    <value type="bool" key="AutoTest.UseGlobal">true</value>

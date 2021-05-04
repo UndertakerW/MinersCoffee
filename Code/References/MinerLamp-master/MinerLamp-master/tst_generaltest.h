@@ -45,6 +45,18 @@ private slots:
     void test_ui_MiningArgsLineEdit_data();
     void test_ui_MiningArgsComboBox();
     void test_ui_MiningArgsComboBox_data();
+    void test_ui_TempPieChart();
+    void test_ui_TempPieChart_data();
+    void test_ui_HashrateLineChart();
+    void test_ui_HashrateLineChart_data();
+
+    void test_TempPieChart();
+    void test_HashrateLineChart();
+    void test_MiningCore();
+    void test_MiningArgs();
+
+    void test_FullSystem();
+
 
 private:
     MainWindow* w;

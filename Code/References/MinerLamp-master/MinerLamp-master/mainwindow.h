@@ -69,6 +69,7 @@ public:
     GPUInfo getWorst(const std::vector<GPUInfo>& gpu_infos);
 
     bool getMinerStatus();
+    void SetUIRefresh(bool enabled);
 
 private:
     QList<QWidget *> * _gpuInfoList;
@@ -208,6 +209,7 @@ public:
 
 private:
 
+
     void AddCoinToMap(Coin* coin);
     void AddCoreToMap(Core* core);
     void AddPoolToMap(Pool* pool);
@@ -220,6 +222,10 @@ private:
 
     void AddPoolsFromFile(const QString& filename);
 
+    void SetMiningArgs();
+    void StartMiningCore();
+    void StopMiningCore();
+
     void onMinerStarted();
     void onMinerStoped();
     void onHashrate(QString& hashrate);
@@ -230,6 +236,9 @@ private:
     void EstimateOutput();
 
     const QColor getTempColor(unsigned int temp);
+
+    bool _testing;
+    bool _ui_refresh_enabled;
 
     Helper helper;
 

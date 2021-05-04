@@ -2,6 +2,7 @@
 #include "nvidianvml.h"
 #include "jsonparser.h"
 #include "constants.h"
+#include "tst_generaltest.h"
 
 GPUMonitor::GPUMonitor(QObject *p) {}
 
@@ -52,6 +53,8 @@ void nvMonitorThrd::run()
                            , totalpowerdraw);
 
         emit gpusInfoSignalRefresh(gpuInfos);
+
+        last_refresh = QDateTime::currentDateTime();
 
         QThread::sleep(refresh_rate);
     }

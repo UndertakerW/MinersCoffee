@@ -1377,7 +1377,7 @@ public:
         labelCore->setText(QApplication::translate("MainWindow", "Core", Q_NULLPTR));
         comboBoxCore->clear();
         comboBoxCore->insertItems(0, QStringList()
-         << QApplication::translate("MainWindow", "NBMiner 37.1", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "NBMiner", Q_NULLPTR)
         );
         labelPool->setText(QApplication::translate("MainWindow", "Pool", Q_NULLPTR));
         comboBoxPool->clear();

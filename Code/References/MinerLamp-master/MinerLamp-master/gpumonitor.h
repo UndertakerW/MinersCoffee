@@ -21,11 +21,14 @@
 #include <QDateTimeAxis>
 #include <QBarCategoryAxis>
 #include <QScrollBar>
+#include <QDateTime>
 #include <vector>
 
 #include "nvidiaapi.h"
 #include "amdapi_adl.h"
 #include "structures.h"
+
+class GeneralTest;
 
 class nvidiaNVML;
 
@@ -35,6 +38,7 @@ class GPUMonitor : public QThread
 
 protected:
     float refresh_rate = 3;
+    QDateTime last_refresh = QDateTime();
 
 public:
     GPUMonitor(QObject* p = Q_NULLPTR);
@@ -70,6 +74,8 @@ signals:
                        , unsigned int *Allpowerdraw
                        , unsigned int totalpowerdraw);
                        */
+
+    friend class GeneralTest;
 };
 
 
@@ -92,6 +98,8 @@ public:
 
     QList<GPUInfo> getStatus() override;
 
+    friend class GeneralTest;
+
 };
 
 class amdMonitorThrd : public GPUMonitor
@@ -108,6 +116,8 @@ public:
 
 private:
     amdapi_adl* _amd;
+
+    friend class GeneralTest;
 
 };
 

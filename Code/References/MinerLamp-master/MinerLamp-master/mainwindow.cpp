@@ -61,7 +61,8 @@ MainWindow::MainWindow(bool testing, QWidget *parent) :
     _isMinerRunning(false),
     _isStartStoping(false),
     _errorCount(0),
-    _nano(Q_NULLPTR)
+    _nano(Q_NULLPTR),
+    _testing(testing)
 {
 
     _settings = new QSettings(QString(QDir::currentPath() + QDir::separator() + "minerlamp.ini"), QSettings::IniFormat);
@@ -73,7 +74,7 @@ MainWindow::MainWindow(bool testing, QWidget *parent) :
     _gpuInfoList = new QList<QWidget * >();
     _diskInfoList = new QList<QWidget * >();
 
-    if (!testing)
+    if (!_testing)
     {
         _databaseProcess = new Database();
         _databaseProcess->start();
@@ -508,7 +509,7 @@ void MainWindow::AddPoolsFromFile(const QString& filename)
         if (!map_coins.contains(pool_data[0]))
             return;
         Coin* coin = map_coins[pool_data[0]];
-        //qDebug() << AddPool(pool_data[1], coin, pool_data[2])->cmds;
+        AddPool(pool_data[1], coin, pool_data[2]);
     }
 }
 
@@ -736,59 +737,70 @@ void MainWindow::on_pushButton_clicked()
 
         if(!_isMinerRunning)
         {
-
-            if (!map_cores.contains(ui->comboBoxCore->currentText()))
-            {
-                // default core
-                _current_core = map_cores["NBMiner"];
-            }
-            else
-            {
-                _current_core = map_cores[ui->comboBoxCore->currentText()];
-            }
-
-            if (!map_coins.contains(ui->comboBoxCoin->currentText()))
-            {
-                // default coin
-                _current_coin = map_coins["ETH"];
-            }
-            else
-            {
-                _current_coin = map_coins[ui->comboBoxCoin->currentText()];
-            }
-
-            if (!map_pools.contains(ui->comboBoxPool->currentText()))
-            {
-                // default pool
-                _current_pool = map_pools["sparkpool"];
-            }
-            else
-            {
-                _current_pool = map_pools[ui->comboBoxPool->currentText()];
-            }
-
-
-
-
-            QString core_path = QCoreApplication::applicationDirPath() + _current_core->path;
-            QString core_args = _current_core->cmds[_current_coin].arg(
-                        _current_pool->cmds[_current_coin]).arg(ui->lineEditWallet->text()).arg(ui->lineEditWorker->text());
-
-            //qDebug() << core_path << core_args << endl;
-
-            _process->SetAPI(_current_core);
-            _process->setMax0MHs(ui->spinBoxMax0MHs->value());
-            _process->setRestartDelay(ui->spinBoxDelay->value());
-            _process->setRestartOption(ui->groupBoxWatchdog->isChecked());
-            _process->setDelayBeforeNoHash(ui->spinBoxDelayNoHash->value());
-            _process->start(core_path, core_args);
+            StartMiningCore();
         }
         else
         {
-            //qDebug() << "Stop mining" << endl;
-            _process->stop();
+            StopMiningCore();
         }
 
+    }
+}
+
+void MainWindow::StartMiningCore()
+{
+    SetMiningArgs();
+
+    QString core_path = QCoreApplication::applicationDirPath() + _current_core->path;
+    QString core_args = _current_core->cmds[_current_coin].arg(
+                _current_pool->cmds[_current_coin]).arg(ui->lineEditWallet->text()).arg(ui->lineEditWorker->text());
+
+    //qDebug() << core_path << core_args << endl;
+
+    _process->SetAPI(_current_core);
+    _process->setMax0MHs(ui->spinBoxMax0MHs->value());
+    _process->setRestartDelay(ui->spinBoxDelay->value());
+    _process->setRestartOption(ui->groupBoxWatchdog->isChecked());
+    _process->setDelayBeforeNoHash(ui->spinBoxDelayNoHash->value());
+    _process->start(core_path, core_args);
+}
+
+void MainWindow::StopMiningCore()
+{
+    //qDebug() << "Stop mining" << endl;
+    _process->stop();
+}
+
+void MainWindow::SetMiningArgs()
+{
+    if (!map_cores.contains(ui->comboBoxCore->currentText()))
+    {
+        // default core
+        _current_core = map_cores["NBMiner"];
+    }
+    else
+    {
+        _current_core = map_cores[ui->comboBoxCore->currentText()];
+    }
+
+    if (!map_coins.contains(ui->comboBoxCoin->currentText()))
+    {
+        // default coin
+        _current_coin = map_coins["ETH"];
+    }
+    else
+    {
+        _current_coin = map_coins[ui->comboBoxCoin->currentText()];
+    }
+
+    if (!map_pools.contains(ui->comboBoxPool->currentText()))
+    {
+        // default pool
+        _current_pool = map_pools["sparkpool"];
+    }
+    else
+    {
+        _current_pool = map_pools[ui->comboBoxPool->currentText()];
     }
 }
 
@@ -1182,6 +1194,9 @@ void MainWindow::onTempChartTimer()
 
 void MainWindow::refreshDeviceInfo()
 {
+    if (!_ui_refresh_enabled)
+        return;
+
     // effectiveness pie chart
     static bool flip = false;
     flip = !flip;
@@ -1787,4 +1802,9 @@ void MainWindow::on_pushButtonChangePageSize_clicked()
                 QString::number(ui->spinBoxChangePageSizeMax->value()),
                 QString::number(ui->spinBoxChangePageSizeMin->value())
                 );
+}
+
+void MainWindow::SetUIRefresh(bool enabled)
+{
+    _ui_refresh_enabled = enabled;
 }
