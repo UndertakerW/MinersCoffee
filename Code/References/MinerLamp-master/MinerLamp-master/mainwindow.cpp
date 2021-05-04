@@ -184,7 +184,7 @@ MainWindow::MainWindow(QWidget *parent) :
     backgroundGradient.setStart(QPointF(0, 0));
     backgroundGradient.setFinalStop(QPointF(0, 1));
     backgroundGradient.setColorAt(1.0, QColor(255, 153, 0, 0));
-    backgroundGradient.setColorAt(0.0, QColor(255, 165, 0, 150));
+    backgroundGradient.setColorAt(0.0, QColor(255, 255, 255, 150));
     backgroundGradient.setCoordinateMode(QGradient::ObjectBoundingMode);
 
     _chart->setAnimationOptions(QChart::SeriesAnimations);
@@ -193,8 +193,8 @@ MainWindow::MainWindow(QWidget *parent) :
     _chart->legend()->hide();
 
     //set the color of the graph
-    QPen pen(QColor(255, 153, 0));
-    pen.setWidth(2);
+    QPen pen(QColor(255, 255, 255));
+    pen.setWidth(3);
     QPen penBottom(QColor(255, 0, 0, 0));
     penBottom.setWidth(2);
 
@@ -227,7 +227,7 @@ MainWindow::MainWindow(QWidget *parent) :
     labelsFont.setPixelSize(14);
     _axisX->setTitleFont(labelsFont);
     _chart->axisY()->setTitleFont(labelsFont);
-    _chart->axisY()->setLabelsFont(QFont("Berlin Sans FB", 8));
+    _chart->axisY()->setLabelsFont(QFont("Berlin Sans FB", 14));
 
     _axisX->setGridLineVisible(false);
     _chart->axisY()->setGridLineVisible(false);
@@ -249,7 +249,7 @@ MainWindow::MainWindow(QWidget *parent) :
     // cast the default y-axis
     QValueAxis *axisY = qobject_cast<QValueAxis*>(_chart->axes(Qt::Vertical).first());
     axisY->setLabelFormat("%.1f ");
-    axisY->setTickCount(4);
+    axisY->setTickCount(3);
 
     // hide title and labels
     _chart->axisX()->setTitleVisible(false);
@@ -275,7 +275,7 @@ MainWindow::MainWindow(QWidget *parent) :
     backgroundGradient_temp.setStart(QPointF(0, 0));
     backgroundGradient_temp.setFinalStop(QPointF(0, 1));
     backgroundGradient_temp.setColorAt(1.0, QColor(255, 153, 0, 0));
-    backgroundGradient_temp.setColorAt(0.0, QColor(255, 165, 0, 150));
+    backgroundGradient_temp.setColorAt(0.0, QColor(255, 255, 255, 150));
     backgroundGradient_temp.setCoordinateMode(QGradient::ObjectBoundingMode);
 
     _chartTemp->setAnimationOptions(QChart::SeriesAnimations);
@@ -285,8 +285,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     //set the color of the graph
-    QPen penTemp(QColor(255, 165, 0));
-    penTemp.setWidth(3);
+    QPen penTemp(QColor(255, 255, 255));
+    penTemp.setWidth(2);
     QPen penTempBottom(QColor(255, 0, 0, 0));
     penTempBottom.setWidth(2);
 
@@ -297,6 +297,7 @@ MainWindow::MainWindow(QWidget *parent) :
     _areaseriesTemp = new QAreaSeries(_seriesTemp, _seriesTempBottom);
     _areaseriesTemp->setPen(penTempBottom);
     _seriesTemp->setPointsVisible(false);
+    _areaseriesTemp->setPointsVisible(false);
 
     QLinearGradient gradient(QPointF(0, 0), QPointF(0, 1));
     gradient.setColorAt(0.0, 0x3cc63c);
@@ -313,19 +314,20 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // cast the default y-axis
     QValueAxis *axisYTemp = qobject_cast<QValueAxis*>(_chartTemp->axes(Qt::Vertical).first());
-    axisYTemp->setLabelFormat("%.1f  ");
+//    axisYTemp->setLabelFormat("%.1f  ");
 
     // set labels foramt
     _axisXTemp->setFormat("");
     _axisXTemp->setTitleText("Time");
     _chartTemp->axisY()->setTitleText("");
     axisYTemp->setLabelFormat("%d ");
+    axisYTemp->setTickCount(5);
 
-    QFont labelsFont_temp;
-    labelsFont_temp.setPixelSize(14);
+    QFont labelsFont_temp("Berlin Sans FB");
+    labelsFont_temp.setPixelSize(10);
     _axisXTemp->setTitleFont(labelsFont_temp);
     _chartTemp->axisY()->setTitleFont(labelsFont_temp);
-    _chartTemp->axisY()->setLabelsFont(QFont("Berlin Sans FB"));
+    _chartTemp->axisY()->setLabelsFont(labelsFont_temp);
 
     // customize axis label colors
     QBrush axisBrush_temp(Qt::white);
@@ -368,6 +370,7 @@ MainWindow::MainWindow(QWidget *parent) :
     _tempChartTimer.start();
 
     ui->labelHashRate->setText("0.00");
+    ui->labelEffectiveness->setText("0%");
 
     if(ui->checkBoxAutoStart->isChecked())
     {
@@ -848,6 +851,8 @@ void MainWindow::onMinerStoped()
     this->setWindowTitle(QString("Miner's Coffee"));
     changeLabelColor(ui->labelHashRate, Qt::gray);
     ui->labelHashRate->setText("0.00");
+    changeLabelColor(ui->labelEffectiveness, Qt::gray);
+    ui->labelEffectiveness->setText("0%");
 
     _currentHashRate = 0;
 
@@ -860,6 +865,7 @@ void MainWindow::onHashrate(QString &hashrate)
     QString hrValue = hashrate.mid(0, hashrate.indexOf("Mh/s"));
 
     this->setWindowTitle(QString("Miner's Coffee - " + hashrate + " - Restart count: " + QString::number(_errorCount)));
+
     if(hrValue.toDouble() == 0)
         changeLabelColor(ui->labelHashRate, Qt::red);
     else
@@ -868,6 +874,22 @@ void MainWindow::onHashrate(QString &hashrate)
     _currentHashRate = hrValue.toDouble();
 
     ui->labelHashRate->setText(hrValue);
+
+    //set hash rate
+    if(_miningInfo != nullptr){
+        if(_miningInfo->accepted_shares!=0){
+            double effectiveness = _miningInfo->accepted_shares / (_miningInfo->accepted_shares + _miningInfo->invalid_shares
+                                                                  + _miningInfo->rejected_shares);
+            int effPercent = (int) (effectiveness * 100);
+            ui->labelEffectiveness->setText(QString::number(effPercent)+"%");
+        }
+        else{
+            ui->labelEffectiveness->setText("0%");
+        }
+    }
+    else{
+        ui->labelEffectiveness->setText("0%");
+    }
 
     _trayIcon->setToolTip(QString("Miner's Coffee - " + hashrate));
 
@@ -1175,11 +1197,11 @@ void MainWindow::onHrChartTimer()
     _seriesBottom->append(QDateTime::currentDateTime().toMSecsSinceEpoch(), -0.5);
 
     //diaplay the proper range of the x-axis;
-    //make sure the graph stay at 10 sec
-    if(_plotsCntr >= 10)
+    //make sure the graph stay at 9 sec
+    if(_plotsCntr >= 9)
     {
-        _axisX->setRange(QDateTime::currentDateTime().addSecs(-10)
-                         , QDateTime::currentDateTime().addSecs(0));
+        _axisX->setRange(QDateTime::currentDateTime().addSecs(-9)
+                         , QDateTime::currentDateTime().addSecs(1));
     }
     else
         _plotsCntr++;
@@ -1194,6 +1216,27 @@ void MainWindow::onHrChartTimer()
 
 void MainWindow::onTempChartTimer()
 {
+    static int pieChartMaximumTemp = 120;
+
+    // temperature pie chart
+    double choppedTempRate = _currentTempRate - 30;
+    double restValue = pieChartMaximumTemp - _currentTempRate;
+
+    if(restValue < 0){
+        restValue = 0;
+    }
+
+    if(choppedTempRate < 0){
+        choppedTempRate = 0;
+    }
+
+    // the first slice in temp pie chart is the currentTemperature
+    _tempPieSlices->at(0)->setValue(choppedTempRate);
+    // the second slice in temp pie chart is the maximumtemperatureTHerhold - currentTemperature
+    _tempPieSlices->at(1)->setValue(restValue);
+
+
+
     //draw the dynamic graph
     _seriesTemp->append(QDateTime::currentDateTime().toMSecsSinceEpoch(), _currentTempRate);
 
@@ -1202,10 +1245,10 @@ void MainWindow::onTempChartTimer()
 
     //diaplay the proper range of the x-axis;
     //make sure the graph stay at 9 sec
-    if(_plotsCntrTemp >= 9)
+    if(_plotsCntrTemp >= 10)
     {
-        _axisXTemp->setRange(QDateTime::currentDateTime().addSecs(-9)
-                         , QDateTime::currentDateTime().addSecs(1));
+        _axisXTemp->setRange(QDateTime::currentDateTime().addSecs(-10)
+                         , QDateTime::currentDateTime().addSecs(0));
     }
     else
         _plotsCntrTemp++;
@@ -1226,16 +1269,14 @@ void MainWindow::onTempChartTimer()
 
 void MainWindow::refreshDeviceInfo()
 {
-    // effectiveness pie chart
-    static bool flip = false;
-    flip = !flip;
-    if(flip){
-        _effPieSlices->at(0)->setValue(10);
+    // refresh system info
+    // it will be roughly refresh 20 times slower than device info
+    static int cnt = 0;
+    if(cnt == 0){
+        on_checkBoxShowSettings_clicked(true);
+        cnt = 20;
     }
-    else {
-        _effPieSlices->at(0)->setValue(1);
-    }
-
+    cnt--;
 
     // refresh device info
     // fetch devices number
@@ -1274,30 +1315,72 @@ void MainWindow::refreshDeviceInfo()
         for(int i = _deviceCount; i <= deviceNum-1; i++){
             QWidget * parentWidget = new QWidget();
             QHBoxLayout * row = new QHBoxLayout(parentWidget);
-            QLabel * deviceNumLabel = new QLabel();
-            deviceNumLabel->setFont(QFont("Arial", 9));
-            QLabel * deviceTemp = new QLabel("temperature");
-            deviceTemp->setFont(QFont("Arial", 9));
-            QLCDNumber * deviceTempLCD = new QLCDNumber();
-            QLabel * fanSpeed = new QLabel("fan speed");
-            fanSpeed->setFont(QFont("Arial", 9));
-            QLCDNumber * fanSpeedLCD = new QLCDNumber();
-            QLabel * gpuClock = new QLabel("GPU clock");
-            gpuClock->setFont(QFont("Arial", 9));
-            QLCDNumber * gpuClockLCD = new QLCDNumber();
-            QLabel * memClock = new QLabel("Mem Clock");
-            memClock->setFont(QFont("Arial", 9));
-            QLCDNumber * memClockLCD = new QLCDNumber();
+            row->setSpacing(2);
 
-            row->addWidget(deviceNumLabel); //0
-            row->addWidget(deviceTemp);     //1
-            row->addWidget(deviceTempLCD);  //2
-            row->addWidget(fanSpeed);       //3
-            row->addWidget(fanSpeedLCD);    //4
-            row->addWidget(gpuClock);       //5
-            row->addWidget(gpuClockLCD);    //6
-            row->addWidget(memClock);       //7
-            row->addWidget(memClockLCD);    //8
+            QLabel * deviceNumLabel = new QLabel();
+            deviceNumLabel->setFont(QFont("Berlin Sans FB", 22));
+            deviceNumLabel->setMinimumWidth(120);
+            changeLabelColor(deviceNumLabel, Qt::white);
+
+            QLabel * deviceTemp = new QLabel("tmp");
+            deviceTemp->setFont(QFont("Berlin Sans FB", 9));
+            deviceTemp->setMinimumWidth(50);
+            deviceTemp->setAlignment(Qt::AlignRight|Qt::AlignVCenter);
+            changeLabelColor(deviceTemp, Qt::white);
+
+            QLabel * deviceTempNumberLabel = new QLabel();
+            deviceTempNumberLabel->setFont(QFont("Berlin Sans FB", 16));
+            deviceTempNumberLabel->setMinimumWidth(100);
+            deviceTempNumberLabel->setAlignment(Qt::AlignCenter);
+
+            QLabel * fanSpeed = new QLabel("fan\nspeed");
+            fanSpeed->setFont(QFont("Berlin Sans FB", 9));
+            fanSpeed->setMinimumWidth(50);
+            fanSpeed->setAlignment(Qt::AlignRight|Qt::AlignVCenter);
+            changeLabelColor(fanSpeed, Qt::white);
+
+            QLabel * fanSpeedNumberLabel = new QLabel();
+            fanSpeedNumberLabel->setFont(QFont("Berlin Sans FB", 16));
+            fanSpeedNumberLabel->setMinimumWidth(100);
+            fanSpeedNumberLabel->setAlignment(Qt::AlignCenter);
+            changeLabelColor(fanSpeedNumberLabel, Qt::white);
+
+            QLabel * gpuClock = new QLabel("GPU\nclock");
+            gpuClock->setFont(QFont("Berlin Sans FB", 9));
+            gpuClock->setMinimumWidth(50);
+            gpuClock->setAlignment(Qt::AlignRight|Qt::AlignVCenter);
+            changeLabelColor(gpuClock, Qt::white);
+
+            QLabel * gpuClockNumberLabel = new QLabel();
+            gpuClockNumberLabel->setFont(QFont("Berlin Sans FB", 16));
+            gpuClockNumberLabel->setMinimumWidth(100);
+            gpuClockNumberLabel->setAlignment(Qt::AlignCenter);
+            changeLabelColor(gpuClockNumberLabel, Qt::white);
+
+            QLabel * memClock = new QLabel("Mem\nClock");
+            memClock->setFont(QFont("Berlin Sans FB", 9));
+            memClock->setMinimumWidth(50);
+            memClock->setAlignment(Qt::AlignRight|Qt::AlignVCenter);
+            changeLabelColor(memClock, Qt::white);
+
+            QLabel * memClockNumberLabel = new QLabel();
+            memClockNumberLabel->setFont(QFont("Berlin Sans FB", 16));
+            memClockNumberLabel->setMinimumWidth(100);
+            memClockNumberLabel->setAlignment(Qt::AlignCenter);
+            changeLabelColor(memClockNumberLabel, Qt::white);
+
+            QSpacerItem *rowSpacer = new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed);
+
+            row->addWidget(deviceNumLabel);         //0
+            row->addWidget(deviceTemp);             //1
+            row->addWidget(deviceTempNumberLabel);  //2
+            row->addWidget(fanSpeed);               //3
+            row->addWidget(fanSpeedNumberLabel);    //4
+            row->addWidget(gpuClock);               //5
+            row->addWidget(gpuClockNumberLabel);    //6
+            row->addWidget(memClock);               //7
+            row->addWidget(memClockNumberLabel);    //8
+            row->addSpacerItem(rowSpacer);          //9
 
             _gpuInfoList->append(parentWidget);
             ui->gridLayoutDevicesInfo->addWidget(parentWidget);
@@ -1310,20 +1393,42 @@ void MainWindow::refreshDeviceInfo()
         QHBoxLayout * layoutPtr = _gpuInfoList->at(i)->findChild<QHBoxLayout *>();
         QWidget * castWidgetPtr = layoutPtr->itemAt(0)->widget();
         QLabel * castLabel = dynamic_cast<QLabel *>(castWidgetPtr);
-        QString deviceName = _gpusinfo->at(i).name;
-        castLabel->setText(deviceName);
+
+        // set name
+        // process device name
+        std::string originalName= _gpusinfo->at(i).name.toStdString();
+        std::string shortName="";
+        for(int i=0;i<originalName.length();i++){
+            if(originalName[i]=='T'&&originalName[i+1]=='i')
+                shortName+="Ti";
+            if(originalName[i]!='1'&&originalName[i]!='2'&&originalName[i]!='3'&&originalName[i]!='4'&&
+                    originalName[i]!='5'&&originalName[i]!='6'&&originalName[i]!='7'&&originalName[i]!='8'&&
+                    originalName[i]!='9'&&originalName[i]!='0')
+                continue;
+            shortName+=originalName[i];
+        }
+        castLabel->setText(QString::fromStdString(shortName));
 
         // set temperature at 2
-        setLCDNumber(layoutPtr->itemAt(2)->widget(), _gpusinfo->at(i).temp);
+        castWidgetPtr = layoutPtr->itemAt(2)->widget();
+        castLabel = dynamic_cast<QLabel *>(castWidgetPtr);
+        castLabel->setText(QString::number(_gpusinfo->at(i).temp));
+        changeLabelColor(castLabel, getTempColor(_gpusinfo->at(i).temp));
 
         // set fanspeed at 4
-        setLCDNumber(layoutPtr->itemAt(4)->widget(), _gpusinfo->at(i).fanspeed);
+        castWidgetPtr = layoutPtr->itemAt(4)->widget();
+        castLabel = dynamic_cast<QLabel *>(castWidgetPtr);
+        castLabel->setText(QString::number(_gpusinfo->at(i).fanspeed));
 
         //set gpu clock at 6
-        setLCDNumber(layoutPtr->itemAt(6)->widget(), _gpusinfo->at(i).gpuclock);
+        castWidgetPtr = layoutPtr->itemAt(6)->widget();
+        castLabel = dynamic_cast<QLabel *>(castWidgetPtr);
+        castLabel->setText(QString::number(_gpusinfo->at(i).gpuclock));
 
         // set memclock at 8
-        setLCDNumber(layoutPtr->itemAt(8)->widget(), _gpusinfo->at(i).memclock);
+        castWidgetPtr = layoutPtr->itemAt(8)->widget();
+        castLabel = dynamic_cast<QLabel *>(castWidgetPtr);
+        castLabel->setText(QString::number(_gpusinfo->at(i).memclock));
     }
 
     Wincmd wincmd;
@@ -1454,47 +1559,47 @@ void MainWindow::setLCDNumber(QWidget * widget, unsigned int value){
 void MainWindow::initializePieChart(){
 
     // effectiveness pie chart
-    _effPieChart = new QChart();
-    _effPieSlices = new QList<QPieSlice *>();
+    _tempPieChart = new QChart();
+    _tempPieSlices = new QList<QPieSlice *>();
 
-    _effPieChart->setBackgroundVisible(false);
-    _effPieChart->setAnimationOptions(QChart::AllAnimations);
+    _tempPieChart->setBackgroundVisible(false);
+    _tempPieChart->setAnimationOptions(QChart::AllAnimations);
 
 //    _effPieChart->legend()->setAlignment(Qt::AlignRight);
-    _effPieChart->legend()->hide();
+    _tempPieChart->legend()->hide();
 
-    _effPieChart->resize(1,1);
+    _tempPieChart->resize(1,1);
     //ui->debugBox->append(QString::number(_effPieChart->legend()->size().height())+" "+QString::number(_effPieChart->legend()->size().width()));
-    _effPieSeries = new QPieSeries();
-    _effPieSeries->append("eff", 1);
-    _effPieSeries->append("uneff", 10);
-    _effPieSeries->slices().at(0)->setColor(0x008F96);
-    _effPieSeries->slices().at(0)->setBorderColor(QColor(91,90,90));
-    _effPieSeries->slices().at(1)->setColor(QColor(51,51,51));
-    _effPieSeries->slices().at(1)->setBorderColor(QColor(91,90,90));
+    _tempPieSeries = new QPieSeries();
+    _tempPieSeries->append("currentTemp", 50);
+    _tempPieSeries->append("maxTemp", 50);
+    _tempPieSeries->slices().at(0)->setColor(0x008F96);
+    _tempPieSeries->slices().at(0)->setBorderColor(QColor(91,90,90));
+    _tempPieSeries->slices().at(1)->setColor(QColor(51,51,51));
+    _tempPieSeries->slices().at(1)->setBorderColor(QColor(91,90,90));
 
-    _effPieSlices->append(_effPieSeries->slices().at(0));
-    _effPieSlices->append(_effPieSeries->slices().at(1));
-    _effPieChart->setAcceptHoverEvents(true);
+    _tempPieSlices->append(_tempPieSeries->slices().at(0));
+    _tempPieSlices->append(_tempPieSeries->slices().at(1));
+    _tempPieChart->setAcceptHoverEvents(true);
 
     for(int i=0;i<2;i++){
-        _effPieSlices->at(i)->setBorderWidth(5);
-        _effPieSlices->at(i)->setLabelVisible(false);
+        _tempPieSlices->at(i)->setBorderWidth(5);
+        _tempPieSlices->at(i)->setLabelVisible(false);
     }
 
 
-    _effPieSeries->setHoleSize(0.35);
+    _tempPieSeries->setHoleSize(0.35);
 
-    _effPieChart->addSeries(_effPieSeries);
+    _tempPieChart->addSeries(_tempPieSeries);
 
-    connect(_effPieSeries, &QPieSeries::hovered, this, &MainWindow::onMouseHoverSlice);
+    connect(_tempPieSeries, &QPieSeries::hovered, this, &MainWindow::onMouseHoverSlice);
 
 //    _effPieChart->layout()->setContentsMargins(0,0,0,0);
 //    _effPieChart->setMargins({0, 0, 0, 0});
-    _effPieChart->setBackgroundRoundness(0);
+    _tempPieChart->setBackgroundRoundness(0);
 
-    ui->graphicsViewEff->setChart(_effPieChart, 1);
-    _effPieChart->setMargins(QMargins(0,0,0,0));
+    ui->graphicsViewTempPie->setChart(_tempPieChart, 1);
+    _tempPieChart->setMargins(QMargins(0,0,0,0));
 
 //    connect(ui->graphicsViewEff, &hashrateCharView::resizeEvent, this, &MainWindow::resizePieEffLabel);
 
@@ -1507,17 +1612,17 @@ void MainWindow::onMouseHoverSlice(QPieSlice * slice, bool status){
     // index of "uneff" in _effPieSlices is 1
     if(status){
         if(sliceLabel == "eff"){
-            _effPieSlices->at(0)->setBorderWidth(0);
-            _effPieSlices->at(1)->setBorderWidth(10);
+            _tempPieSlices->at(0)->setBorderWidth(0);
+            _tempPieSlices->at(1)->setBorderWidth(10);
         }
         else{
-            _effPieSlices->at(0)->setBorderWidth(10);
-            _effPieSlices->at(1)->setBorderWidth(0);
+            _tempPieSlices->at(0)->setBorderWidth(10);
+            _tempPieSlices->at(1)->setBorderWidth(0);
         }
     }
     else{
-        _effPieSlices->at(0)->setBorderWidth(5);
-        _effPieSlices->at(1)->setBorderWidth(5);
+        _tempPieSlices->at(0)->setBorderWidth(5);
+        _tempPieSlices->at(1)->setBorderWidth(5);
     }
 
 }
@@ -1562,12 +1667,23 @@ void MainWindow::plotGrapgh(QString dateStart, QString dateEnd, int deviceNum){
         _chartHistory->setAnimationOptions(QChart::SeriesAnimations);
         _chartHistory->setBackgroundBrush(backgroundGradient_history);
         _chartHistory->setBackgroundVisible(false);
-        _chartHistory->legend()->hide();
+        _chartHistory->legend()->setFont(QFont("Berlin Sans FB"));
+        _chartHistory->legend()->setColor(Qt::white);
+        _chartHistory->legend()->show();
 
-        for(int i=0;i<9;i++){
-            QPen penHistory(QColor((i*i*i)%255, qrand()%255, qrand()%255));
-            penHistory.setWidth(2);
+        QList<unsigned int> colorList{
+            0x598987,
+            0x678f8d,
+            0x77a88d,
+            0xffd00,
+            0xff6670
+        };
+
+        for(int i=0;i<5;i++){
+            QPen penHistory(QColor(colorList.at(i)));
+            penHistory.setWidth(3);
             QLineSeries* lineSeries = new QLineSeries();
+            lineSeries->setName("set: " + QString::number(i));
             lineSeries->setPen(penHistory);
             _seriesHistory.push_back(lineSeries);
             _chartHistory->addSeries(lineSeries);
@@ -1729,8 +1845,12 @@ void MainWindow::on_checkBoxHistoryMiningInfoOverall_clicked(bool clicked){
 void MainWindow::on_checkBoxShowSettings_clicked(bool clicked){
     if(clicked){
         Wincmd wincmd;
-        //ui->textEditSettings->setText((wincmd.SeeSetting()));
-        //wincmd.SeeSetting();
+        std::vector<QString> result = wincmd.SeeSetting();
+        ui->plainTextEditSettingsSystemInfo->clear();
+
+        for(int i=0;i<result.size();i+=2){
+            ui->plainTextEditSettingsSystemInfo->appendPlainText(result.at(i+1));
+        }
     }
 
     ui->groupBoxSettings->setVisible(clicked);
@@ -1800,6 +1920,7 @@ void MainWindow::on_pushButtonMonitorPage_Overview_clicked(){
     setPushButtonColor(ui->pushButtonMonitorPage_Overview, true);
     setPushButtonColor(ui->pushButtonMonitorPage_Mining, false);
     setPushButtonColor(ui->pushButtonMonitorPage_System, false);
+    setPushButtonColor(ui->pushButtonMonitorPage_DevicesInfo, false);
 }
 
 void MainWindow::on_pushButtonMonitorPage_Mining_clicked(){
@@ -1807,12 +1928,22 @@ void MainWindow::on_pushButtonMonitorPage_Mining_clicked(){
     setPushButtonColor(ui->pushButtonMonitorPage_Overview, false);
     setPushButtonColor(ui->pushButtonMonitorPage_Mining, true);
     setPushButtonColor(ui->pushButtonMonitorPage_System, false);
+    setPushButtonColor(ui->pushButtonMonitorPage_DevicesInfo, false);
 }
 void MainWindow::on_pushButtonMonitorPage_System_clicked(){
     ui->stackedWidgetMonitorMain->setCurrentIndex(2);
     setPushButtonColor(ui->pushButtonMonitorPage_Overview, false);
     setPushButtonColor(ui->pushButtonMonitorPage_Mining, false);
     setPushButtonColor(ui->pushButtonMonitorPage_System, true);
+    setPushButtonColor(ui->pushButtonMonitorPage_DevicesInfo, false);
+}
+
+void MainWindow::on_pushButtonMonitorPage_DevicesInfo_clicked(){
+    ui->stackedWidgetMonitorMain->setCurrentIndex(3);
+    setPushButtonColor(ui->pushButtonMonitorPage_Overview, false);
+    setPushButtonColor(ui->pushButtonMonitorPage_Mining, false);
+    setPushButtonColor(ui->pushButtonMonitorPage_System, false);
+    setPushButtonColor(ui->pushButtonMonitorPage_DevicesInfo, true);
 }
 
 void MainWindow::on_pushButtonMonitorPage_clicked(){
@@ -1868,6 +1999,7 @@ void MainWindow::isAllPromptVisable(bool status){
     static QString frameOverviewStyleSheet;
     static QString frameMiningInfoStyleSheet;
     static QString frameHistoryStyleSheet;
+    static QString frameDevicesInfoStyleSheet;
     static bool hasSet = false;
 
     static QString generalFramStyle(
@@ -1888,6 +2020,7 @@ void MainWindow::isAllPromptVisable(bool status){
             frameOverviewStyleSheet = ui->frameOverview->styleSheet();
             frameMiningInfoStyleSheet = ui->frameMiningInfo->styleSheet();
             frameHistoryStyleSheet = ui->frameHistory->styleSheet();
+            frameDevicesInfoStyleSheet = ui->frameDevicesInfo->styleSheet();
 
             hasSet = true;
         }
@@ -1898,6 +2031,7 @@ void MainWindow::isAllPromptVisable(bool status){
         ui->frameOverview->setStyleSheet(generalFramStyle);
         ui->frameMiningInfo->setStyleSheet(generalFramStyle);
         ui->frameHistory->setStyleSheet(generalFramStyle);
+        ui->frameDevicesInfo->setStyleSheet(generalFramStyle);
 
         ui->pushButtonMonitorPage->setText("Monitor");
         ui->pushButtonOCPage->setText("OC");
@@ -1905,6 +2039,7 @@ void MainWindow::isAllPromptVisable(bool status){
         ui->pushButtonMonitorPage_Overview->setText("Overview");
         ui->pushButtonMonitorPage_Mining->setText("Mining");
         ui->pushButtonMonitorPage_System->setText("System");
+        ui->pushButtonMonitorPage_DevicesInfo->setText("Devices");
     }
     else{
         ui->frameMonitor->setStyleSheet(frameMonitorStyleSheet);
@@ -1913,6 +2048,7 @@ void MainWindow::isAllPromptVisable(bool status){
         ui->frameOverview->setStyleSheet(frameOverviewStyleSheet);
         ui->frameMiningInfo->setStyleSheet(frameMiningInfoStyleSheet);
         ui->frameHistory->setStyleSheet(frameHistoryStyleSheet);
+        ui->frameDevicesInfo->setStyleSheet(frameDevicesInfoStyleSheet);
 
         ui->pushButtonMonitorPage->setText("");
         ui->pushButtonOCPage->setText("");
@@ -1920,6 +2056,7 @@ void MainWindow::isAllPromptVisable(bool status){
         ui->pushButtonMonitorPage_Overview->setText("");
         ui->pushButtonMonitorPage_Mining->setText("");
         ui->pushButtonMonitorPage_System->setText("");
+        ui->pushButtonMonitorPage_DevicesInfo->setText("");
     }
 }
 
@@ -1963,6 +2100,8 @@ void MainWindow::on_comboBoxDevice_activated(int index)
 
 void MainWindow::updateSliders(unsigned int gpu)
 {
+    static bool initialied = false;
+
     int plimit      = _nvapi->getPowerLimit(gpu);
     int gpuoffset   = _nvapi->getGPUOffset(gpu);
     int memoffset   = _nvapi->getMemOffset(gpu);
@@ -1972,6 +2111,15 @@ void MainWindow::updateSliders(unsigned int gpu)
     ui->horizontalSliderGpuOffset->setValue(gpuoffset);
     ui->horizontalSliderMemOffset->setValue(memoffset);
     ui->horizontalSliderFanSpeed->setValue(fanspeed);
+
+    if(!initialied){
+        ui->labelPowerPercent->setText(QString::number(plimit));
+        ui->labelGpuOffset->setText(QString::number(gpuoffset));
+        ui->labelMemClock->setText(QString::number(memoffset));
+        ui->labelFanSpeed->setText(QString::number(fanspeed));
+
+        initialied = true;
+    }
 }
 
 void MainWindow::saveConfig()

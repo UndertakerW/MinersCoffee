@@ -56,7 +56,7 @@ public:
     {
         if (nvOCDialog->objectName().isEmpty())
             nvOCDialog->setObjectName(QStringLiteral("nvOCDialog"));
-        nvOCDialog->resize(738, 383);
+        nvOCDialog->resize(985, 618);
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);

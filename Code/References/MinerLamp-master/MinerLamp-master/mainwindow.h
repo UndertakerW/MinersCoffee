@@ -130,6 +130,7 @@ private slots:
     void on_pushButtonMonitorPage_Overview_clicked();
     void on_pushButtonMonitorPage_Mining_clicked();
     void on_pushButtonMonitorPage_System_clicked();
+    void on_pushButtonMonitorPage_DevicesInfo_clicked();
     void on_pushButtonMonitorPage_clicked();
     void on_pushButtonOCPage_clicked();
     void on_pushButtonHelpPage_clicked();
@@ -306,10 +307,10 @@ private:
     QList<QLineSeries *> _seriesHistory;
     QDateTimeAxis *_axisXHistory;
 
-    // effectiveness pie chart
-    QChart* _effPieChart;
-    QPieSeries * _effPieSeries;
-    QList<QPieSlice *> * _effPieSlices;
+    // temp ratio
+    QChart* _tempPieChart;
+    QPieSeries * _tempPieSeries;
+    QList<QPieSlice *> * _tempPieSlices;
 
     QTimer _hrChartTimer;
     QTimer _tempChartTimer;

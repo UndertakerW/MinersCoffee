@@ -14,10 +14,10 @@ HelpPage::HelpPage(QSettings* settings, QCheckBox* donateCheckBox, QPlainTextEdi
     _content->appendHtml("<u>https://github.com/ethereum-mining/ethminer</u><br>");
     _content->appendHtml("<br>Hope our program will improve your mining experience</b><br>");
     _donateCheckBox->setChecked(_settings->value("donate", false).toBool());
+    _donateCheckBox->hide();
 }
 
 void HelpPage::donateCheckBoxClicked(bool checked)
 {
     _settings->setValue("donate", checked);
-    qDebug() << "saving changes";
 }

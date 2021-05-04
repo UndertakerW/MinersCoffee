@@ -50,10 +50,6 @@ vector<QString> Wincmd::SeeSetting(){
             l2.pop_front();
         }
     }
-    for(int i=0;i<result.size();i++){
-
-        qDebug()<<"====test===="<<result[i]<<endl;
-    }
     return result;
 }
 

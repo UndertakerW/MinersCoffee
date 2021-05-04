@@ -37,6 +37,8 @@
         <file>icos/WuWei.jpg</file>
         <file>icos/ZhangShiqi.jpg</file>
         <file>icos/MaHaotian.jpg</file>
+        <file>icos/gpu.png</file>
+        <file>icos/gpuLarger.png</file>
     </qresource>
     <qresource prefix="/images">
         <file>logo.png</file>
