@@ -33,10 +33,10 @@ Database::Database(){
     if(!_db.open()){
         QMessageBox::critical(0, QObject::tr("Database error"),
                 _db.lastError().text());
-//                qDebug() << "sql: connect fail";
+                //qDebug() << "sql: connect fail";
     }
     else{
-//        qDebug() << "sql: connection success";
+        //qDebug() << "sql: connection success";
     }
 
 
@@ -110,7 +110,7 @@ void Database::InsertDataNew(){
         QString insertQuery(insertQuery_maintable);
         QSqlQuery sql_query(_db);
         sql_query.exec(insertQuery);
-//        qDebug() << insertQuery_maintable;
+        //qDebug() << insertQuery_maintable;
     }
 
     // insert miningInfo
