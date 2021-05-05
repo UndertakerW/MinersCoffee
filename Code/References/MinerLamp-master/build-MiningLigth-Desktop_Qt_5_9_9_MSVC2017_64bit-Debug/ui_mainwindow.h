@@ -1666,6 +1666,7 @@ public:
 
         groupBox_9 = new QGroupBox(groupBox);
         groupBox_9->setObjectName(QStringLiteral("groupBox_9"));
+        groupBox_9->setMinimumSize(QSize(270, 0));
         groupBox_9->setStyleSheet(QLatin1String("QGroupBox::title{\n"
 "	color : white;\n"
 "	left: 10px;\n"
@@ -6225,7 +6226,7 @@ public:
         groupBox_9->setTitle(QString());
         label_2->setText(QApplication::translate("MainWindow", "Estimated\n"
 "Income", Q_NULLPTR));
-        labelHashExpectedIncome->setText(QApplication::translate("MainWindow", "0.00", Q_NULLPTR));
+        labelHashExpectedIncome->setText(QApplication::translate("MainWindow", "$0.00", Q_NULLPTR));
         labelHashRate->setText(QApplication::translate("MainWindow", "0.00", Q_NULLPTR));
         label->setText(QApplication::translate("MainWindow", "Current\n"
 "Hashrate", Q_NULLPTR));

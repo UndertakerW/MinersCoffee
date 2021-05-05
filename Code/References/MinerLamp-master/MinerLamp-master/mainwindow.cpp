@@ -1308,6 +1308,15 @@ void MainWindow::refreshDeviceInfo()
     if (!_ui_refresh_enabled)
         return;
 
+    // refresh estimated output
+    QString estimateOutput = QString::number((double)_est_output_usd,'f', 2);
+    if(estimateOutput == "nan"){
+        ui->labelHashExpectedIncome->setText("N/A");
+    }
+    else{
+        ui->labelHashExpectedIncome->setText("$"+estimateOutput);
+    }
+
     // refresh system info
     // it will be roughly refresh 20 times slower than device info
     static int cnt = 0;
@@ -1873,7 +1882,7 @@ void MainWindow::EstimateOutput()
     _est_output_cny = _est_output_coin * _poolInfo->cny;
     _est_output_usd = _est_output_coin * _poolInfo->usd;
 
-    //qDebug() << total_hashrate << _poolInfo->incomeHashrate << _poolInfo->meanIncome24h << _est_output_coin << _est_output_cny << _est_output_usd;
+//    qDebug() << total_hashrate << _poolInfo->incomeHashrate << _poolInfo->meanIncome24h << _est_output_coin << _est_output_cny << _est_output_usd;
 }
 
 void MainWindow::onReceivedPoolInfo(QList<PoolInfo> poolInfos)
