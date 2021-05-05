@@ -17,6 +17,7 @@ void GeneralTest::initTestCase()
 
 void GeneralTest::cleanupTestCase()
 {
+    w->StopMiningCore();
     delete w;
 }
 
@@ -57,18 +58,30 @@ void GeneralTest::test_FullSystem()
 
     // Wait for initialization of mining
     // This could take longer on slow GPU
-    QThread::sleep(90);
+    QSignalSpy spy(w->_process, SIGNAL(emitMiningInfo(MiningInfo)));
+
+    QElapsedTimer timer;
+
+    timer.start();
+    while(timer.elapsed() < 90000)
+    {
+        spy.wait(10); // event loop runs here
+    }
+
 
     bool success = false;
-    if (w->_miningInfo->latency > 0)
-        success = true;
+    if (w->_miningInfo->gpuMiningInfos.size() > 0)
+    {
+        if (w->_miningInfo->gpuMiningInfos[0].hashrate > 1000)
+            success = true;
+    }
+
+    w->StopMiningCore();
 
     QCOMPARE(success, true);
 
     test_TempPieChart();
-    test_HashrateLineChart();
-
-    w->StopMiningCore();
+    //test_HashrateLineChart();
 
 }
 
@@ -143,7 +156,15 @@ void GeneralTest::test_MiningCore()
     }
     // Wait for initialization of mining
     // This could take longer on slow GPU
-    QThread::sleep(90);
+    QSignalSpy spy(w->_process, SIGNAL(emitMiningInfo(MiningInfo)));
+
+    QElapsedTimer timer;
+
+    timer.start();
+    while(timer.elapsed() < 90000)
+    {
+        spy.wait(10); // event loop runs here
+    }
 
     bool success2 = false;
 
@@ -159,10 +180,23 @@ void GeneralTest::test_TempPieChart()
 {
     w->SetUIRefresh(true);
 
-    QList<QPieSlice*>* pieSlices = w->_effPieSlices;
+    QList<QPieSlice*>* pieSlices = w->_tempPieSlices;
+
+    QSignalSpy spy(w->_nvMonitorThrd, SIGNAL(
+                       gpuInfoSignal(unsigned int, unsigned int, unsigned int,
+                                     unsigned int, unsigned int, unsigned int,
+                                     unsigned int, unsigned int, unsigned int,
+                                     unsigned int, unsigned int, unsigned int)));
+
+    QElapsedTimer timer;
 
     // Wait for refresh
-    QThread::sleep(abs(QDateTime::currentDateTime().msecsTo(w->_nvMonitorThrd->last_refresh))/1000);
+    // A 100 ms delay guarantees that the refresh is finished
+    timer.start();
+    while(timer.elapsed() < abs(QDateTime::currentDateTime().msecsTo(w->_nvMonitorThrd->last_refresh))+100)
+    {
+        spy.wait(10); // event loop runs here
+    }
 
     float temp_api = w->_nvMonitorThrd->nvml->getHigherTemp();
 
@@ -173,17 +207,71 @@ void GeneralTest::test_TempPieChart()
 
 void GeneralTest::test_HashrateLineChart()
 {
+    bool success1 = true;
+
+    if (w->ui->comboBoxCoin->findText("ETH") != -1)
+        w->ui->comboBoxCoin->setCurrentIndex(w->ui->comboBoxCoin->findText("ETH"));
+    else success1 = false;
+    if (w->ui->comboBoxCore->findText("NBMiner") != -1)
+        w->ui->comboBoxCore->setCurrentIndex(w->ui->comboBoxCore->findText("NBMiner"));
+    else success1 = false;
+    if (w->ui->comboBoxPool->findText("sparkpool") != -1)
+        w->ui->comboBoxPool->setCurrentIndex(w->ui->comboBoxPool->findText("sparkpool"));
+    else success1 = false;
+
+    QCOMPARE(success1, true);
+
+    w->ui->lineEditWallet->setText("sp_utw2");
+    w->ui->lineEditWorker->setText("MC_test");
+
+
+    if(!w->_isMinerRunning)
+    {
+        w->StartMiningCore();
+    }
+    else
+    {
+        w->StopMiningCore();
+        QThread::sleep(5);
+        w->StartMiningCore();
+    }
+
     w->SetUIRefresh(true);
 
     QLineSeries* lineSeries = w->_series;
 
-    // Wait for refresh
-    // A 100ms delay guarantees that the refresh is finished
-    QThread::sleep((abs(QDateTime::currentDateTime().msecsTo(w->_nvMonitorThrd->last_refresh))+100)/1000);
+    QSignalSpy spy(w->_process, SIGNAL(emitMiningInfo(MiningInfo)));
 
-    float hashrate_api = w->_nvMonitorThrd->nvml->getHigherTemp();
+    QElapsedTimer timer;
+
+    // Wait for initialization of miner
+
+    timer.start();
+    while(timer.elapsed() < 90000)
+    {
+        spy.wait(10); // event loop runs here
+    }
+
+    // Wait for refresh
+    // A 100 ms delay guarantees that the refresh is finished
+    timer.start();
+    while(timer.elapsed() < abs(QDateTime::currentDateTime().msecsTo(w->_nvMonitorThrd->last_refresh))+100)
+    {
+        spy.wait(10); // event loop runs here
+    }
+
+    float hashrate_api = 0;
+
+    for (int i = 0; i < w->_miningInfo->gpuMiningInfos.size(); i++)
+    {
+        hashrate_api += w->_miningInfo->gpuMiningInfos[i].hashrate;
+    }
+
+    hashrate_api /= (1024 * 1024);
 
     float hashrate_ui = lineSeries->at(lineSeries->count()-1).y();
+
+    w->StopMiningCore();
 
     QCOMPARE(hashrate_ui, hashrate_api);
 }
@@ -232,7 +320,7 @@ void GeneralTest::test_ui_TempPieChart()
     QFETCH(float, input);
     QFETCH(float, result);
 
-    QList<QPieSlice*>* pieSlices = w->_effPieSlices;
+    QList<QPieSlice*>* pieSlices = w->_tempPieSlices;
 
     pieSlices->at(0)->setValue(input);
 

@@ -8,6 +8,7 @@
 #include <QObject>
 #include <QFile>
 #include <QDebug>
+#include <QSignalSpy>
 #include <qtest.h>
 #include <sstream>
 

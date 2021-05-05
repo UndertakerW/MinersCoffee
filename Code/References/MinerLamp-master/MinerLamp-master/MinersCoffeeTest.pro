@@ -34,7 +34,7 @@ DEFINES += QT_DEPRECATED_WARNINGS NVIDIA AMD
 SOURCES += \
     database.cpp \
     gpumonitor.cpp \
-    helper.cpp \
+    helppage.cpp \
     jsonparser.cpp \
     mainwindow.cpp \
     minerprocess.cpp \
@@ -46,16 +46,19 @@ SOURCES += \
     nanopoolapi.cpp \
     amdapi_adl.cpp \
     hashratecharview.cpp \
+    nvocpage.cpp \
     structures.cpp \
     urlapi.cpp \
     wincmd.cpp \
+    helper.cpp \
     tst_generaltest.cpp
+
 
 HEADERS += \
     constants.h \
     database.h \
     gpumonitor.h \
-    helper.h \
+    helppage.h \
     jsonparser.h \
     mainwindow.h \
     minerprocess.h \
@@ -67,11 +70,13 @@ HEADERS += \
     nanopoolapi.h \
     amdapi_adl.h \
     hashratecharview.h \
+    nvocpage.h \
     piesliceeff.h \
     structures.h \
-    tst_generaltest.h \
     urlapi.h \
-    wincmd.h
+    wincmd.h \
+    helper.h \
+    tst_generaltest.h
 
 FORMS += \
     mainwindow.ui \

@@ -107,6 +107,8 @@ private:
     bool _searchHistoryMiningOverall;
     void changeLabelColor(QLabel * label, QColor color);
 
+    void RefreshTempGraph();
+
 
 
 
@@ -139,7 +141,7 @@ private slots:
     void on_checkBoxHelpPage_clicked(bool clicked);
 
     void refreshDeviceInfo();
-    void onGpusInfoRecieved(QList<GPUInfo> gpusinfo);
+    void onGPUInfosReceived(QList<GPUInfo> gpusinfo);
 
     void onNvMonitorInfo(unsigned int gpucount
                          , unsigned int maxgputemp
@@ -206,7 +208,7 @@ private slots:
     void onHrChartTimer();
 
     // timer to temporature graph
-    void onTempChartTimer();
+    // void onTempChartTimer();
 
     // timer to refresh device info
 //    void onRefreshDeviceInfoTimer();
@@ -268,7 +270,6 @@ private:
     void onReceivedPoolInfo(QList<PoolInfo> poolInfos);
 
     void EstimateOutput();
-    void onRecievedMiningInfo(MiningInfo mingInfo);
 
     const QColor getTempColor(unsigned int temp);
 

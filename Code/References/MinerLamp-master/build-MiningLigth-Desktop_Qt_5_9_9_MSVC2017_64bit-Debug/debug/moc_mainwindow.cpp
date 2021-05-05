@@ -127,8 +127,8 @@ void autoStart::readyToStartMiner()
     QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
 }
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[88];
-    char stringdata0[2025];
+    QByteArrayData data[87];
+    char stringdata0[2008];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -174,7 +174,7 @@ QT_MOC_LITERAL(33, 905, 27), // "on_pushButtonOCPage_clicked"
 QT_MOC_LITERAL(34, 933, 29), // "on_pushButtonHelpPage_clicked"
 QT_MOC_LITERAL(35, 963, 27), // "on_checkBoxHelpPage_clicked"
 QT_MOC_LITERAL(36, 991, 17), // "refreshDeviceInfo"
-QT_MOC_LITERAL(37, 1009, 18), // "onGpusInfoRecieved"
+QT_MOC_LITERAL(37, 1009, 18), // "onGPUInfosReceived"
 QT_MOC_LITERAL(38, 1028, 14), // "QList<GPUInfo>"
 QT_MOC_LITERAL(39, 1043, 8), // "gpusinfo"
 QT_MOC_LITERAL(40, 1052, 15), // "onNvMonitorInfo"
@@ -210,21 +210,20 @@ QT_MOC_LITERAL(69, 1546, 18), // "averageHashRate12H"
 QT_MOC_LITERAL(70, 1565, 18), // "averageHashRate24H"
 QT_MOC_LITERAL(71, 1584, 36), // "on_pushButtonEthminerBrowser_..."
 QT_MOC_LITERAL(72, 1621, 14), // "onHrChartTimer"
-QT_MOC_LITERAL(73, 1636, 16), // "onTempChartTimer"
-QT_MOC_LITERAL(74, 1653, 17), // "onMouseHoverSlice"
-QT_MOC_LITERAL(75, 1671, 10), // "QPieSlice*"
-QT_MOC_LITERAL(76, 1682, 5), // "slice"
-QT_MOC_LITERAL(77, 1688, 6), // "status"
-QT_MOC_LITERAL(78, 1695, 44), // "on_horizontalSliderPowerPerce..."
-QT_MOC_LITERAL(79, 1740, 5), // "value"
-QT_MOC_LITERAL(80, 1746, 41), // "on_horizontalSliderGpuOffset_..."
-QT_MOC_LITERAL(81, 1788, 41), // "on_horizontalSliderMemOffset_..."
-QT_MOC_LITERAL(82, 1830, 40), // "on_horizontalSliderFanSpeed_v..."
-QT_MOC_LITERAL(83, 1871, 27), // "on_comboBoxDevice_activated"
-QT_MOC_LITERAL(84, 1899, 32), // "on_pushButtonOCPageApply_clicked"
-QT_MOC_LITERAL(85, 1932, 31), // "on_checkBoxAutoSpeedFan_clicked"
-QT_MOC_LITERAL(86, 1964, 34), // "on_spinBoxTemperature_valueCh..."
-QT_MOC_LITERAL(87, 1999, 25) // "on_checkBoxAutoOC_clicked"
+QT_MOC_LITERAL(73, 1636, 17), // "onMouseHoverSlice"
+QT_MOC_LITERAL(74, 1654, 10), // "QPieSlice*"
+QT_MOC_LITERAL(75, 1665, 5), // "slice"
+QT_MOC_LITERAL(76, 1671, 6), // "status"
+QT_MOC_LITERAL(77, 1678, 44), // "on_horizontalSliderPowerPerce..."
+QT_MOC_LITERAL(78, 1723, 5), // "value"
+QT_MOC_LITERAL(79, 1729, 41), // "on_horizontalSliderGpuOffset_..."
+QT_MOC_LITERAL(80, 1771, 41), // "on_horizontalSliderMemOffset_..."
+QT_MOC_LITERAL(81, 1813, 40), // "on_horizontalSliderFanSpeed_v..."
+QT_MOC_LITERAL(82, 1854, 27), // "on_comboBoxDevice_activated"
+QT_MOC_LITERAL(83, 1882, 32), // "on_pushButtonOCPageApply_clicked"
+QT_MOC_LITERAL(84, 1915, 31), // "on_checkBoxAutoSpeedFan_clicked"
+QT_MOC_LITERAL(85, 1947, 34), // "on_spinBoxTemperature_valueCh..."
+QT_MOC_LITERAL(86, 1982, 25) // "on_checkBoxAutoOC_clicked"
 
     },
     "MainWindow\0setIcon\0\0iconActivated\0"
@@ -254,7 +253,7 @@ QT_MOC_LITERAL(87, 1999, 25) // "on_checkBoxAutoOC_clicked"
     "on_pushButtonOCPage_clicked\0"
     "on_pushButtonHelpPage_clicked\0"
     "on_checkBoxHelpPage_clicked\0"
-    "refreshDeviceInfo\0onGpusInfoRecieved\0"
+    "refreshDeviceInfo\0onGPUInfosReceived\0"
     "QList<GPUInfo>\0gpusinfo\0onNvMonitorInfo\0"
     "gpucount\0maxgputemp\0mingputemp\0"
     "maxfanspeed\0minfanspeed\0maxmemclock\0"
@@ -272,9 +271,9 @@ QT_MOC_LITERAL(87, 1999, 25) // "on_checkBoxAutoOC_clicked"
     "averageHashRate6H\0averageHashRate12H\0"
     "averageHashRate24H\0"
     "on_pushButtonEthminerBrowser_clicked\0"
-    "onHrChartTimer\0onTempChartTimer\0"
-    "onMouseHoverSlice\0QPieSlice*\0slice\0"
-    "status\0on_horizontalSliderPowerPercent_valueChanged\0"
+    "onHrChartTimer\0onMouseHoverSlice\0"
+    "QPieSlice*\0slice\0status\0"
+    "on_horizontalSliderPowerPercent_valueChanged\0"
     "value\0on_horizontalSliderGpuOffset_valueChanged\0"
     "on_horizontalSliderMemOffset_valueChanged\0"
     "on_horizontalSliderFanSpeed_valueChanged\0"
@@ -292,7 +291,7 @@ static const uint qt_meta_data_MainWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      53,   14, // methods
+      52,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -300,59 +299,58 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  279,    2, 0x08 /* Private */,
-       3,    1,  280,    2, 0x08 /* Private */,
-       6,    0,  283,    2, 0x08 /* Private */,
-       7,    1,  284,    2, 0x08 /* Private */,
-       9,    1,  287,    2, 0x08 /* Private */,
-      10,    1,  290,    2, 0x08 /* Private */,
-      12,    0,  293,    2, 0x08 /* Private */,
-      13,    1,  294,    2, 0x08 /* Private */,
-      14,    0,  297,    2, 0x08 /* Private */,
-      15,    1,  298,    2, 0x08 /* Private */,
-      16,    0,  301,    2, 0x08 /* Private */,
-      17,    1,  302,    2, 0x08 /* Private */,
-      19,    1,  305,    2, 0x08 /* Private */,
-      20,    1,  308,    2, 0x08 /* Private */,
-      21,    1,  311,    2, 0x08 /* Private */,
-      23,    1,  314,    2, 0x08 /* Private */,
-      25,    1,  317,    2, 0x08 /* Private */,
-      26,    0,  320,    2, 0x08 /* Private */,
-      27,    0,  321,    2, 0x08 /* Private */,
-      28,    0,  322,    2, 0x08 /* Private */,
-      29,    0,  323,    2, 0x08 /* Private */,
-      30,    0,  324,    2, 0x08 /* Private */,
-      31,    0,  325,    2, 0x08 /* Private */,
-      32,    0,  326,    2, 0x08 /* Private */,
-      33,    0,  327,    2, 0x08 /* Private */,
-      34,    0,  328,    2, 0x08 /* Private */,
-      35,    1,  329,    2, 0x08 /* Private */,
-      36,    0,  332,    2, 0x08 /* Private */,
-      37,    1,  333,    2, 0x08 /* Private */,
-      40,   12,  336,    2, 0x08 /* Private */,
-      53,   12,  361,    2, 0x08 /* Private */,
-      54,    0,  386,    2, 0x08 /* Private */,
-      55,    0,  387,    2, 0x08 /* Private */,
-      56,    1,  388,    2, 0x08 /* Private */,
-      57,    1,  391,    2, 0x08 /* Private */,
-      58,    1,  394,    2, 0x08 /* Private */,
-      59,    1,  397,    2, 0x08 /* Private */,
-      60,    0,  400,    2, 0x08 /* Private */,
-      61,    1,  401,    2, 0x08 /* Private */,
-      63,    7,  404,    2, 0x08 /* Private */,
-      71,    0,  419,    2, 0x08 /* Private */,
-      72,    0,  420,    2, 0x08 /* Private */,
-      73,    0,  421,    2, 0x08 /* Private */,
-      74,    2,  422,    2, 0x08 /* Private */,
-      78,    1,  427,    2, 0x08 /* Private */,
-      80,    1,  430,    2, 0x08 /* Private */,
-      81,    1,  433,    2, 0x08 /* Private */,
-      82,    1,  436,    2, 0x08 /* Private */,
-      83,    1,  439,    2, 0x08 /* Private */,
-      84,    0,  442,    2, 0x08 /* Private */,
-      85,    1,  443,    2, 0x08 /* Private */,
-      86,    1,  446,    2, 0x08 /* Private */,
-      87,    1,  449,    2, 0x08 /* Private */,
+       1,    0,  274,    2, 0x08 /* Private */,
+       3,    1,  275,    2, 0x08 /* Private */,
+       6,    0,  278,    2, 0x08 /* Private */,
+       7,    1,  279,    2, 0x08 /* Private */,
+       9,    1,  282,    2, 0x08 /* Private */,
+      10,    1,  285,    2, 0x08 /* Private */,
+      12,    0,  288,    2, 0x08 /* Private */,
+      13,    1,  289,    2, 0x08 /* Private */,
+      14,    0,  292,    2, 0x08 /* Private */,
+      15,    1,  293,    2, 0x08 /* Private */,
+      16,    0,  296,    2, 0x08 /* Private */,
+      17,    1,  297,    2, 0x08 /* Private */,
+      19,    1,  300,    2, 0x08 /* Private */,
+      20,    1,  303,    2, 0x08 /* Private */,
+      21,    1,  306,    2, 0x08 /* Private */,
+      23,    1,  309,    2, 0x08 /* Private */,
+      25,    1,  312,    2, 0x08 /* Private */,
+      26,    0,  315,    2, 0x08 /* Private */,
+      27,    0,  316,    2, 0x08 /* Private */,
+      28,    0,  317,    2, 0x08 /* Private */,
+      29,    0,  318,    2, 0x08 /* Private */,
+      30,    0,  319,    2, 0x08 /* Private */,
+      31,    0,  320,    2, 0x08 /* Private */,
+      32,    0,  321,    2, 0x08 /* Private */,
+      33,    0,  322,    2, 0x08 /* Private */,
+      34,    0,  323,    2, 0x08 /* Private */,
+      35,    1,  324,    2, 0x08 /* Private */,
+      36,    0,  327,    2, 0x08 /* Private */,
+      37,    1,  328,    2, 0x08 /* Private */,
+      40,   12,  331,    2, 0x08 /* Private */,
+      53,   12,  356,    2, 0x08 /* Private */,
+      54,    0,  381,    2, 0x08 /* Private */,
+      55,    0,  382,    2, 0x08 /* Private */,
+      56,    1,  383,    2, 0x08 /* Private */,
+      57,    1,  386,    2, 0x08 /* Private */,
+      58,    1,  389,    2, 0x08 /* Private */,
+      59,    1,  392,    2, 0x08 /* Private */,
+      60,    0,  395,    2, 0x08 /* Private */,
+      61,    1,  396,    2, 0x08 /* Private */,
+      63,    7,  399,    2, 0x08 /* Private */,
+      71,    0,  414,    2, 0x08 /* Private */,
+      72,    0,  415,    2, 0x08 /* Private */,
+      73,    2,  416,    2, 0x08 /* Private */,
+      77,    1,  421,    2, 0x08 /* Private */,
+      79,    1,  424,    2, 0x08 /* Private */,
+      80,    1,  427,    2, 0x08 /* Private */,
+      81,    1,  430,    2, 0x08 /* Private */,
+      82,    1,  433,    2, 0x08 /* Private */,
+      83,    0,  436,    2, 0x08 /* Private */,
+      84,    1,  437,    2, 0x08 /* Private */,
+      85,    1,  440,    2, 0x08 /* Private */,
+      86,    1,  443,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -397,16 +395,15 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void, QMetaType::Double, QMetaType::Double, QMetaType::Double, QMetaType::Double, QMetaType::Double, QMetaType::Double, QMetaType::Double,   64,   65,   66,   67,   68,   69,   70,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 75, QMetaType::Bool,   76,   77,
-    QMetaType::Void, QMetaType::Int,   79,
-    QMetaType::Void, QMetaType::Int,   79,
-    QMetaType::Void, QMetaType::Int,   79,
-    QMetaType::Void, QMetaType::Int,   79,
+    QMetaType::Void, 0x80000000 | 74, QMetaType::Bool,   75,   76,
+    QMetaType::Void, QMetaType::Int,   78,
+    QMetaType::Void, QMetaType::Int,   78,
+    QMetaType::Void, QMetaType::Int,   78,
+    QMetaType::Void, QMetaType::Int,   78,
     QMetaType::Void, QMetaType::Int,   22,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Bool,   11,
-    QMetaType::Void, QMetaType::Int,   79,
+    QMetaType::Void, QMetaType::Int,   78,
     QMetaType::Void, QMetaType::Bool,   11,
 
        0        // eod
@@ -446,7 +443,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 25: _t->on_pushButtonHelpPage_clicked(); break;
         case 26: _t->on_checkBoxHelpPage_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 27: _t->refreshDeviceInfo(); break;
-        case 28: _t->onGpusInfoRecieved((*reinterpret_cast< QList<GPUInfo>(*)>(_a[1]))); break;
+        case 28: _t->onGPUInfosReceived((*reinterpret_cast< QList<GPUInfo>(*)>(_a[1]))); break;
         case 29: _t->onNvMonitorInfo((*reinterpret_cast< uint(*)>(_a[1])),(*reinterpret_cast< uint(*)>(_a[2])),(*reinterpret_cast< uint(*)>(_a[3])),(*reinterpret_cast< uint(*)>(_a[4])),(*reinterpret_cast< uint(*)>(_a[5])),(*reinterpret_cast< uint(*)>(_a[6])),(*reinterpret_cast< uint(*)>(_a[7])),(*reinterpret_cast< uint(*)>(_a[8])),(*reinterpret_cast< uint(*)>(_a[9])),(*reinterpret_cast< uint(*)>(_a[10])),(*reinterpret_cast< uint(*)>(_a[11])),(*reinterpret_cast< uint(*)>(_a[12]))); break;
         case 30: _t->onAMDMonitorInfo((*reinterpret_cast< uint(*)>(_a[1])),(*reinterpret_cast< uint(*)>(_a[2])),(*reinterpret_cast< uint(*)>(_a[3])),(*reinterpret_cast< uint(*)>(_a[4])),(*reinterpret_cast< uint(*)>(_a[5])),(*reinterpret_cast< uint(*)>(_a[6])),(*reinterpret_cast< uint(*)>(_a[7])),(*reinterpret_cast< uint(*)>(_a[8])),(*reinterpret_cast< uint(*)>(_a[9])),(*reinterpret_cast< uint(*)>(_a[10])),(*reinterpret_cast< uint(*)>(_a[11])),(*reinterpret_cast< uint(*)>(_a[12]))); break;
         case 31: _t->on_pushButtonOC_clicked(); break;
@@ -460,23 +457,22 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 39: _t->onPoolUserInfo((*reinterpret_cast< double(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3])),(*reinterpret_cast< double(*)>(_a[4])),(*reinterpret_cast< double(*)>(_a[5])),(*reinterpret_cast< double(*)>(_a[6])),(*reinterpret_cast< double(*)>(_a[7]))); break;
         case 40: _t->on_pushButtonEthminerBrowser_clicked(); break;
         case 41: _t->onHrChartTimer(); break;
-        case 42: _t->onTempChartTimer(); break;
-        case 43: _t->onMouseHoverSlice((*reinterpret_cast< QPieSlice*(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2]))); break;
-        case 44: _t->on_horizontalSliderPowerPercent_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 45: _t->on_horizontalSliderGpuOffset_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 46: _t->on_horizontalSliderMemOffset_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 47: _t->on_horizontalSliderFanSpeed_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 48: _t->on_comboBoxDevice_activated((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 49: _t->on_pushButtonOCPageApply_clicked(); break;
-        case 50: _t->on_checkBoxAutoSpeedFan_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 51: _t->on_spinBoxTemperature_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 52: _t->on_checkBoxAutoOC_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 42: _t->onMouseHoverSlice((*reinterpret_cast< QPieSlice*(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2]))); break;
+        case 43: _t->on_horizontalSliderPowerPercent_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 44: _t->on_horizontalSliderGpuOffset_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 45: _t->on_horizontalSliderMemOffset_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 46: _t->on_horizontalSliderFanSpeed_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 47: _t->on_comboBoxDevice_activated((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 48: _t->on_pushButtonOCPageApply_clicked(); break;
+        case 49: _t->on_checkBoxAutoSpeedFan_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 50: _t->on_spinBoxTemperature_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 51: _t->on_checkBoxAutoOC_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         switch (_id) {
         default: *reinterpret_cast<int*>(_a[0]) = -1; break;
-        case 43:
+        case 42:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
             case 0:
@@ -512,13 +508,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 53)
+        if (_id < 52)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 53;
+        _id -= 52;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 53)
+        if (_id < 52)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 53;
+        _id -= 52;
     }
     return _id;
 }

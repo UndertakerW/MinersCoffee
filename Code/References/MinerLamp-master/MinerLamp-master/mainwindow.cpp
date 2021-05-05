@@ -79,8 +79,6 @@ MainWindow::MainWindow(bool testing, QWidget *parent) :
         _databaseProcess->start();
     }
 
-    _databaseProcess = new Database();
-    _databaseProcess->start();
     ui->setupUi(this);
 
     _helpPage = new HelpPage(_settings,
@@ -100,7 +98,7 @@ MainWindow::MainWindow(bool testing, QWidget *parent) :
 
     qRegisterMetaType<MiningInfo>("MiningInfo");
     // update miningInfo
-    connect(_process, &MinerProcess::emitMiningInfo, this, &MainWindow::onRecievedMiningInfo);
+    connect(_process, &MinerProcess::emitMiningInfo, this, &MainWindow::onReceivedMiningInfo);
 
     qRegisterMetaType<PoolInfo>("PoolInfo");
     qRegisterMetaType<QList<PoolInfo> >("QList<PoolInfo>");
@@ -133,7 +131,7 @@ MainWindow::MainWindow(bool testing, QWidget *parent) :
         connect(_nvMonitorThrd, &nvMonitorThrd::gpuInfoSignal, this, &MainWindow::onNvMonitorInfo);
 
         qRegisterMetaType<QList<GPUInfo>>("QList<GPUInfo>");
-        connect(_nvMonitorThrd, &nvMonitorThrd::gpusInfoSignalRefresh, this, &MainWindow::onGpusInfoRecieved);
+        connect(_nvMonitorThrd, &nvMonitorThrd::gpusInfoSignalRefresh, this, &MainWindow::onGPUInfosReceived);
         _nvMonitorThrd->start();
 
         if(_nvapi->libLoaded())
@@ -377,7 +375,7 @@ MainWindow::MainWindow(bool testing, QWidget *parent) :
 
 
     // graph will be drawn every time interval
-    connect(&_tempChartTimer, &QTimer::timeout, this, &MainWindow::onTempChartTimer);
+    // connect(&_tempChartTimer, &QTimer::timeout, this, &MainWindow::onTempChartTimer);
 
     // initialize pie chart
     initializePieChart();
@@ -453,7 +451,6 @@ MainWindow::~MainWindow()
     delete _gpuInfoList;
     delete _gpusinfo;
     delete ui;
-    _databaseProcess->terminate();
     delete _databaseProcess;
     delete _helpPage;
 
@@ -1059,6 +1056,7 @@ void MainWindow::onNvMonitorInfo(unsigned int gpucount
 
     _currentTempRate = maxgputemp;
 
+    //qDebug() << _currentTempRate;
 }
 
 GPUInfo MainWindow::getAverage(const std::vector<GPUInfo>& gpu_infos)
@@ -1252,7 +1250,7 @@ void MainWindow::onHrChartTimer()
     }
 }
 
-void MainWindow::onTempChartTimer()
+void MainWindow::RefreshTempGraph()
 {
     static int pieChartMaximumTemp = 120;
 
@@ -1592,11 +1590,14 @@ void MainWindow::refreshDeviceInfo()
     }
 
     // save data into mysql
-    if(_databaseProcess->_insertBusy == 0){
-        _databaseProcess->_gpusInfoBuffer = _gpusinfo;
-        _databaseProcess->_miningInfoBuffer = _miningInfo;
-        _databaseProcess->_insert = 1;
+    if (_databaseProcess){
+        if(_databaseProcess->_insertBusy == 0){
+            _databaseProcess->_gpusInfoBuffer = _gpusinfo;
+            _databaseProcess->_miningInfoBuffer = _miningInfo;
+            _databaseProcess->_insert = 1;
+        }
     }
+
 }
 
 void MainWindow::setLCDNumber(QWidget * widget, unsigned int value){
@@ -1680,11 +1681,12 @@ void MainWindow::on_checkBoxAutoShowDeviceInfo_clicked(bool clicked){
     ui->groupBoxDevicesInfo->setVisible(clicked);
 }
 
-void MainWindow::onGpusInfoRecieved(QList<GPUInfo> gpusinfo){
+void MainWindow::onGPUInfosReceived(QList<GPUInfo> gpusinfo){
     _gpusinfo->clear();
     for(int i=0;i<gpusinfo.size();i++){
         _gpusinfo->push_back(gpusinfo[i]);
     }
+    RefreshTempGraph();
     refreshDeviceInfo();
 }
 
@@ -1795,18 +1797,24 @@ void MainWindow::plotGrapgh(QString dateStart, QString dateEnd, int deviceNum){
 
     //qDebug() << "before get history";
 
-    if(_databaseProcess->_retrieveBusy == 0){
-        _databaseProcess->searchConditionBuffer->clear();
-        _databaseProcess->searchConditionBuffer->push_back(dateStart);
-        _databaseProcess->searchConditionBuffer->push_back(dateEnd);
-        _databaseProcess->searchConditionBuffer->push_back(QString::number(deviceNum));
-        _databaseProcess->_seriesPtr = &_seriesHistory;
-        _databaseProcess->_chartHistory = _chartHistory;
-        _databaseProcess->_retrieve = 1;
+    if (_databaseProcess)
+    {
+        if(_databaseProcess->_retrieveBusy == 0)
+        {
+            _databaseProcess->searchConditionBuffer->clear();
+            _databaseProcess->searchConditionBuffer->push_back(dateStart);
+            _databaseProcess->searchConditionBuffer->push_back(dateEnd);
+            _databaseProcess->searchConditionBuffer->push_back(QString::number(deviceNum));
+            _databaseProcess->_seriesPtr = &_seriesHistory;
+            _databaseProcess->_chartHistory = _chartHistory;
+            _databaseProcess->_retrieve = 1;
+        }
+        else
+        {
+            return;
+        }
     }
-    else{
-        return;
-    }
+
 
 }
 
@@ -1856,7 +1864,7 @@ void MainWindow::on_spinBoxHistoryDeviceNum_valueChanged(int arg1)
     }
 }
 
-void MainWindow::onRecievedMiningInfo(MiningInfo miningInfo)
+void MainWindow::onReceivedMiningInfo(MiningInfo miningInfo)
 {
     //qDebug() << "recieving mingInfo signal";
     _miningInfo->latency = miningInfo.latency;
