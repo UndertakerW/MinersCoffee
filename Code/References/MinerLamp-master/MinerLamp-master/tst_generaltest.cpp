@@ -276,6 +276,32 @@ void GeneralTest::test_HashrateLineChart()
     QCOMPARE(hashrate_ui, hashrate_api);
 }
 
+void GeneralTest::test_ParsePoolInfo()
+{
+    bool success1 = false;
+    UrlAPI urlAPI;
+    std::string buffer;
+    LPCSTR url = "https://www.sparkpool.com/v1/pool/stats";
+    urlAPI.GetURLInternal(url, buffer);
+    if (buffer.size() > 0)
+        success1 = true;
+    QCOMPARE(success1, true);
+
+    PoolJsonParser poolJsonParser;
+    QList<PoolInfo> poolInfos = poolJsonParser.ParseJsonForPool(buffer);
+
+    bool success2 = false;
+
+    if (poolInfos.size() > 0)
+    {
+        if (poolInfos[0].usd > 0)
+        {
+            success2 = true;
+        }
+    }
+    QCOMPARE(success2, true);
+}
+
 /* Unit Test */
 
 void GeneralTest::test_ui_HashrateLineChart()
@@ -472,6 +498,18 @@ void GeneralTest::test_ui_MiningArgsComboBox_data()
     events_Pool3.addKeyClick(Qt::Key_Enter);
     QTest::newRow("Case 2")
             << events_Pool3 << pool_names[4];
+}
+
+void GeneralTest::test_GetURLInternal()
+{
+    bool success = false;
+    UrlAPI urlAPI;
+    std::string buffer;
+    LPCSTR url = "https://www.sparkpool.com/v1/pool/stats";
+    urlAPI.GetURLInternal(url, buffer);
+    if (buffer.size() > 0)
+        success = true;
+    QCOMPARE(success, true);
 }
 
 void GeneralTest::test_ParseJsonForPool()

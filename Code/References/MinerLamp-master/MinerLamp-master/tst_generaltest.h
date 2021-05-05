@@ -18,6 +18,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "helper.h"
+#include "constants.h"
+#include "urlapi.h"
 
 namespace Ui {
 class MainWindow;
@@ -42,6 +44,7 @@ private slots:
     void test_ParseJsonForMining_data();
     void test_ParseJsonForPool();
     void test_ParseJsonForPool_data();
+    void test_GetURLInternal();
     void test_ui_MiningArgsLineEdit();
     void test_ui_MiningArgsLineEdit_data();
     void test_ui_MiningArgsComboBox();
@@ -54,7 +57,8 @@ private slots:
     void test_TempPieChart();
     void test_HashrateLineChart();
     void test_MiningCore();
-    void test_MiningArgs();
+    void test_MiningArgs(); 
+    void test_ParsePoolInfo();
 
     void test_FullSystem();
 
