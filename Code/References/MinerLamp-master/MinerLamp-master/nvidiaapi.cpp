@@ -177,19 +177,14 @@ int nvidiaAPI::ControlGpuTemperature(unsigned int gpu)
         qDebug() << "NVAPI NvAPI_GPU_ControlThermalSettings error " << ret;
         return -1;
     }
-    if(thermal.sensor[0].currentTemp>thermal.sensor[0].defaultMaxTemp){
+    if(thermal.sensor[0].currentTemp>TempLimit){
 
         setGPUOffset(gpu,getGPUOffset(gpu)*0.6+1);
         qDebug("descreasing gpu offset");
         setMemClockOffset(gpu,getMemOffset(gpu)*0.6+1);
         setFanSpeed(gpu,getFanSpeed(gpu)*1.2+1);
     }
-    if(thermal.sensor[0].currentTemp<thermal.sensor[0].defaultMaxTemp){
-        setGPUOffset(gpu,getGPUOffset(gpu)*1.2+1);
-        setMemClockOffset(gpu,getMemOffset(gpu)*1.2+1);
-        qDebug("increasing gpu offset");
-        setFanSpeed(gpu,getFanSpeed(gpu)*0.6+1);
-    }
+
     return thermal.sensor[0].currentTemp;
 
 }
@@ -230,6 +225,24 @@ int nvidiaAPI::getMemOffset(unsigned int gpu)
         return pset1.pstates[0].clocks[1].freqDelta_kHz.value / 1000;
     }
 
+    return 0;
+}
+
+int nvidiaAPI::getMemClock(unsigned int gpu)
+{
+    NvAPI_Status ret;
+
+    NV_GPU_PERF_PSTATES20_INFO pset1 = { 0 };
+    pset1.version = NV_GPU_PERF_PSTATES20_INFO_VER1;
+    pset1.numPstates = 1;
+    pset1.numClocks = 1;
+    // Ok on both 1080 and 970
+    pset1.pstates[0].clocks[0].domainId = NVAPI_GPU_PUBLIC_CLOCK_MEMORY;
+
+    ret = NvGetPstates(_gpuHandles[gpu], &pset1);
+    if (ret == NVAPI_OK) {
+        return pset1.pstates[0].clocks[1].freqDelta_kHz.value / 1000;
+    }
     return 0;
 }
 
@@ -351,6 +364,7 @@ int nvidiaAPI::setTempLimitOffset(unsigned int gpu, unsigned int offset)
 {
     NvAPI_Status ret;
     NvS32 deltaKHz = offset;
+    TempLimit=offset;
     NV_GPU_THERMAL_SETTINGS thermal = {0};
 
     thermal.version = NV_GPU_THERMAL_SETTINGS_VER;
@@ -365,6 +379,10 @@ int nvidiaAPI::setTempLimitOffset(unsigned int gpu, unsigned int offset)
     }
 
     return ret;
+}
+
+int nvidiaAPI::getTempLimitOffset(unsigned int gpu){
+    return TempLimit;
 }
 
 int nvidiaAPI::setFanSpeed(unsigned int gpu, unsigned int percent)

@@ -347,6 +347,7 @@ public:
 
     int getGPUOffset(unsigned int gpu);
     int getMemOffset(unsigned int gpu);
+    int getMemClock(unsigned int gpu);
 
     unsigned int getGpuClock(unsigned int gpu);
     unsigned int getPowerLimit(unsigned int gpu);
@@ -357,6 +358,7 @@ public:
     int setGPUOffset(unsigned int gpu, int offset);
     int setPowerLimitPercent(unsigned int gpu, unsigned int percent);
     int setTempLimitOffset(unsigned int gpu, unsigned int offset);
+    int getTempLimitOffset(unsigned int gpu);
     int setFanSpeed(unsigned int gpu, unsigned int percent);
 
     void setAllLED(int color);
@@ -418,6 +420,8 @@ private:
 private:
 
     NvU32 _gpuCount;
+
+    int TempLimit;
 
     NvPhysicalGpuHandle _gpuHandles[NVAPI_MAX_PHYSICAL_GPUS];
 
