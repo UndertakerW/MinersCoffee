@@ -375,7 +375,7 @@ MainWindow::MainWindow(bool testing, QWidget *parent) :
 
 
     // graph will be drawn every time interval
-    // connect(&_tempChartTimer, &QTimer::timeout, this, &MainWindow::onTempChartTimer);
+     connect(&_tempChartTimer, &QTimer::timeout, this, &MainWindow::RefreshTempGraph);
 
     // initialize pie chart
     initializePieChart();
@@ -910,8 +910,7 @@ void MainWindow::onHashrate(QString &hashrate)
         changeLabelColor(ui->labelHashRate, Qt::green);
 
     _currentHashRate = hrValue.toDouble();
-
-    ui->labelHashRate->setText(hrValue+" Mh/h");
+    ui->labelHashRate->setText(QString().setNum(_currentHashRate, 'f', 2)+" Mh/h");
 
     //set hash rate
     if(_miningInfo != nullptr){
@@ -1052,8 +1051,9 @@ void MainWindow::onNvMonitorInfo(unsigned int gpucount
     ui->labelMaxGPUClock->setText(QString::number((int)maxgpuclock));
     ui->labelMinGPUClock->setText(QString::number((int)mingpuclock));
 
-    ui->labelMaxWatt->setText(QString::number((double)maxpowerdraw / 1000));
-    ui->labelMinWatt->setText(QString::number((double)minpowerdraw / 1000));
+
+    ui->labelMaxWatt->setText(QString().setNum((float) maxpowerdraw / 1000, 'f', 2));
+    ui->labelMinWatt->setText(QString().setNum((float) minpowerdraw / 1000, 'f', 2));
 
     ui->lcdNumberTotalPowerDraw->display((double)totalpowerdraw / 1000);
 
@@ -1147,13 +1147,12 @@ void MainWindow::onAMDMonitorInfo(unsigned int gpucount, unsigned int maxgputemp
     ui->labelMaxGPUClock->setText(QString::number((int)maxgpuclock));
     ui->labelMinGPUClock->setText(QString::number((int)mingpuclock));
 
-    ui->labelMaxWatt->setText(QString::number((double)maxpowerdraw / 1000));
-    ui->labelMinWatt->setText(QString::number((double)minpowerdraw / 1000));
+    ui->labelMaxWatt->setText(QString("%.2f").arg(maxpowerdraw / 1000));
+    ui->labelMinWatt->setText(QString("%.2f").arg(minpowerdraw / 1000));
 
     ui->lcdNumberTotalPowerDraw->display((double)totalpowerdraw / 1000);
 
 }
-
 
 void MainWindow::on_pushButtonOC_clicked()
 {
@@ -1316,13 +1315,11 @@ void MainWindow::refreshDeviceInfo()
         return;
 
     // refresh estimated output
-    QString estimateOutput = QString::number((double)_est_output_usd,'f', 2);
-
-    if(estimateOutput == "nan"){
+    if(isnan(_est_output_usd)){
         ui->labelHashExpectedIncome->setText("N/A");
     }
     else{
-        ui->labelHashExpectedIncome->setText("$"+estimateOutput);
+        ui->labelHashExpectedIncome->setText("$"+QString().setNum(_est_output_usd, 'f', 2));
     }
 
     // refresh system info
@@ -1374,54 +1371,54 @@ void MainWindow::refreshDeviceInfo()
             row->setSpacing(2);
 
             QLabel * deviceNumLabel = new QLabel();
-            deviceNumLabel->setFont(QFont("Berlin Sans FB", 22));
-            deviceNumLabel->setMinimumWidth(120);
+            deviceNumLabel->setFont(QFont("Berlin Sans FB", 26));
+            deviceNumLabel->setMinimumWidth(140);
             changeLabelColor(deviceNumLabel, Qt::white);
 
             QLabel * deviceTemp = new QLabel("tmp");
-            deviceTemp->setFont(QFont("Berlin Sans FB", 9));
-            deviceTemp->setMinimumWidth(50);
+            deviceTemp->setFont(QFont("Berlin Sans FB", 12));
+            deviceTemp->setMinimumWidth(80);
             deviceTemp->setAlignment(Qt::AlignRight|Qt::AlignVCenter);
             changeLabelColor(deviceTemp, Qt::white);
 
             QLabel * deviceTempNumberLabel = new QLabel();
-            deviceTempNumberLabel->setFont(QFont("Berlin Sans FB", 16));
-            deviceTempNumberLabel->setMinimumWidth(100);
+            deviceTempNumberLabel->setFont(QFont("Berlin Sans FB", 22));
+            deviceTempNumberLabel->setMinimumWidth(120);
             deviceTempNumberLabel->setAlignment(Qt::AlignCenter);
 
             QLabel * fanSpeed = new QLabel("fan\nspeed");
-            fanSpeed->setFont(QFont("Berlin Sans FB", 9));
-            fanSpeed->setMinimumWidth(50);
+            fanSpeed->setFont(QFont("Berlin Sans FB", 12));
+            fanSpeed->setMinimumWidth(80);
             fanSpeed->setAlignment(Qt::AlignRight|Qt::AlignVCenter);
             changeLabelColor(fanSpeed, Qt::white);
 
             QLabel * fanSpeedNumberLabel = new QLabel();
-            fanSpeedNumberLabel->setFont(QFont("Berlin Sans FB", 16));
-            fanSpeedNumberLabel->setMinimumWidth(100);
+            fanSpeedNumberLabel->setFont(QFont("Berlin Sans FB", 22));
+            fanSpeedNumberLabel->setMinimumWidth(120);
             fanSpeedNumberLabel->setAlignment(Qt::AlignCenter);
             changeLabelColor(fanSpeedNumberLabel, Qt::white);
 
             QLabel * gpuClock = new QLabel("GPU\nclock");
-            gpuClock->setFont(QFont("Berlin Sans FB", 9));
-            gpuClock->setMinimumWidth(50);
+            gpuClock->setFont(QFont("Berlin Sans FB", 12));
+            gpuClock->setMinimumWidth(80);
             gpuClock->setAlignment(Qt::AlignRight|Qt::AlignVCenter);
             changeLabelColor(gpuClock, Qt::white);
 
             QLabel * gpuClockNumberLabel = new QLabel();
-            gpuClockNumberLabel->setFont(QFont("Berlin Sans FB", 16));
-            gpuClockNumberLabel->setMinimumWidth(100);
+            gpuClockNumberLabel->setFont(QFont("Berlin Sans FB", 22));
+            gpuClockNumberLabel->setMinimumWidth(120);
             gpuClockNumberLabel->setAlignment(Qt::AlignCenter);
             changeLabelColor(gpuClockNumberLabel, Qt::white);
 
             QLabel * memClock = new QLabel("Mem\nClock");
-            memClock->setFont(QFont("Berlin Sans FB", 9));
-            memClock->setMinimumWidth(50);
+            memClock->setFont(QFont("Berlin Sans FB", 12));
+            memClock->setMinimumWidth(80);
             memClock->setAlignment(Qt::AlignRight|Qt::AlignVCenter);
             changeLabelColor(memClock, Qt::white);
 
             QLabel * memClockNumberLabel = new QLabel();
-            memClockNumberLabel->setFont(QFont("Berlin Sans FB", 16));
-            memClockNumberLabel->setMinimumWidth(100);
+            memClockNumberLabel->setFont(QFont("Berlin Sans FB", 22));
+            memClockNumberLabel->setMinimumWidth(120);
             memClockNumberLabel->setAlignment(Qt::AlignCenter);
             changeLabelColor(memClockNumberLabel, Qt::white);
 
@@ -1696,7 +1693,7 @@ void MainWindow::onGPUInfosReceived(QList<GPUInfo> gpusinfo){
     for(int i=0;i<gpusinfo.size();i++){
         _gpusinfo->push_back(gpusinfo[i]);
     }
-    RefreshTempGraph();
+//    RefreshTempGraph();
     refreshDeviceInfo();
 }
 

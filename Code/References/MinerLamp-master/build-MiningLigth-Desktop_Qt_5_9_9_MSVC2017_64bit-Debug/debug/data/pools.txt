@@ -1,5 +1,5 @@
 ETH,ethermine,ethproxy+tcp://asia1.ethermine.org:4444
-ETH,sparkpool,ethproxy+tcp://cn.sparkpool.com:13333
+ETH,sparkpool,stratum+tcp://cn.sparkpool.com:13333
 ETH,f2pool,ethproxy+tcp://eth.f2pool.com:8008
 ETH,beepool,ethproxy+tcp://eth-pool.beepool.org:9530
 ETH,nanopool,ethproxy+tcp://eth-asia1.nanopool.org:9999
