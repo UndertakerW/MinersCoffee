@@ -4391,7 +4391,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1058, 244));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 200, 229));
         sizePolicy.setHeightForWidth(scrollAreaWidgetContents->sizePolicy().hasHeightForWidth());
         scrollAreaWidgetContents->setSizePolicy(sizePolicy);
         scrollAreaWidgetContents->setMinimumSize(QSize(0, 200));
@@ -6168,8 +6168,8 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidgetMain->setCurrentIndex(2);
-        stackedWidgetMonitorMain->setCurrentIndex(2);
+        stackedWidgetMain->setCurrentIndex(0);
+        stackedWidgetMonitorMain->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);

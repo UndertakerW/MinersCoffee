@@ -1219,7 +1219,7 @@ void MainWindow::onTempChartTimer()
     static int pieChartMaximumTemp = 120;
 
     // temperature pie chart
-    double choppedTempRate = _currentTempRate - 30;
+    double choppedTempRate = _currentTempRate - 0;
     double restValue = pieChartMaximumTemp - _currentTempRate;
 
     if(restValue < 0){
@@ -1254,14 +1254,14 @@ void MainWindow::onTempChartTimer()
         _plotsCntrTemp++;
 
     //set height of y-axis
-    if(_currentTempRate > _maxChartTempRate)
+    if(_currentTempRate >= _maxChartTempRate)
     {
         _maxChartTempRate = _currentTempRate;
-        _chartTemp->axisY()->setRange(_maxChartTempRate-5, _maxChartTempRate+5);
+        _chartTemp->axisY()->setRange(_maxChartTempRate-3, _maxChartTempRate+3);
     }
 
-    if(_currentTempRate <= _maxChartTempRate-5){
-        _chartTemp->axisY()->setRange(_currentTempRate-5, _currentTempRate+8);
+    if(_currentTempRate <= _maxChartTempRate-3){
+        _chartTemp->axisY()->setRange(_currentTempRate-3, _currentTempRate+3);
     }
 }
 
