@@ -10,6 +10,7 @@
 #include "constants.h"
 #include "structures.h"
 #include "wincmd.h"
+#include "tst_generaltest.h"
 
 #include <QDebug>
 #include <QMessageBox>
@@ -53,13 +54,14 @@
 
 #endif
 
-MainWindow::MainWindow(QWidget *parent) :
+MainWindow::MainWindow(bool testing, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     _isMinerRunning(false),
     _isStartStoping(false),
     _errorCount(0),
-    _nano(Q_NULLPTR)
+    _nano(Q_NULLPTR),
+    _testing(testing)
 {
 
     _settings = new QSettings(QString(QDir::currentPath() + QDir::separator() + "minerlamp.ini"), QSettings::IniFormat);
@@ -67,8 +69,16 @@ MainWindow::MainWindow(QWidget *parent) :
     _process = new MinerProcess(_settings);
     _gpusinfo = new QList<GPUInfo>();
     _miningInfo = new MiningInfo();
+    _poolInfo = new PoolInfo();
     _gpuInfoList = new QList<QWidget * >();
     _diskInfoList = new QList<QWidget * >();
+
+    if (!_testing)
+    {
+        _databaseProcess = new Database();
+        _databaseProcess->start();
+    }
+
     _databaseProcess = new Database();
     _databaseProcess->start();
     ui->setupUi(this);
@@ -92,6 +102,11 @@ MainWindow::MainWindow(QWidget *parent) :
     // update miningInfo
     connect(_process, &MinerProcess::emitMiningInfo, this, &MainWindow::onRecievedMiningInfo);
 
+    qRegisterMetaType<PoolInfo>("PoolInfo");
+    qRegisterMetaType<QList<PoolInfo> >("QList<PoolInfo>");
+    // update poolInfos
+    connect(_process, &MinerProcess::emitPoolInfo, this, &MainWindow::onReceivedPoolInfo);
+
     ui->pushButtonToggle->installEventFilter(this);
 
     _nvapi = new nvidiaAPI();
@@ -112,7 +127,9 @@ MainWindow::MainWindow(QWidget *parent) :
     if(nvDll)
     {
         // retrieve gpu info to panel
-        _nvMonitorThrd = new nvMonitorThrd(this);
+        nvOCDialog* dlg = new nvOCDialog(_nvapi, _settings, this);
+        delete dlg;
+        _nvMonitorThrd = new nvMonitorThrd(this,_nvapi);
         connect(_nvMonitorThrd, &nvMonitorThrd::gpuInfoSignal, this, &MainWindow::onNvMonitorInfo);
 
         qRegisterMetaType<QList<GPUInfo>>("QList<GPUInfo>");
@@ -541,6 +558,25 @@ Core* MainWindow::AddCore(QString core_name, const QString& path, const QString&
     return core;
 }
 
+void MainWindow::AddPoolsFromFile(const QString& filename)
+{
+    QString pools_path = qApp->applicationDirPath() + "/" + filename;
+    QList<QString> pools = helper.GetStringData(pools_path);
+    for (int i = 0; i < pools.size(); i++)
+    {
+        QStringList pool_data = pools[i].split(",");
+        if (pool_data.size() != 3)
+        {
+            QMessageBox::warning(NULL, "warning",
+                                 QString("Corrupted test data in\n %1").arg(pools_path));
+            break;
+        }
+        if (!map_coins.contains(pool_data[0]))
+            return;
+        Coin* coin = map_coins[pool_data[0]];
+        AddPool(pool_data[1], coin, pool_data[2]);
+    }
+}
 
 void MainWindow::initializeConstants()
 {
@@ -553,13 +589,7 @@ void MainWindow::initializeConstants()
 
     Coin* eth = AddCoin("ETH");
 
-    AddPool("ethermine", eth, eth_ethermine);
-    AddPool("sparkpool", eth, eth_sparkpool);
-    AddPool("f2pool", eth, eth_f2pool);
-    AddPool("beepool", eth, eth_beepool);
-    AddPool("nanopool", eth, eth_nanopool);
-    AddPool("herominers", eth, eth_herominers);
-    AddPool("nicehash", eth, eth_nicehash);
+    AddPoolsFromFile(pools_path);
 
     AddCore("NBMiner", path_nbminer, api_nbminer, eth, cmd_nbminer_eth);
 }
@@ -771,63 +801,71 @@ void MainWindow::on_pushButton_clicked()
 
         if(!_isMinerRunning)
         {
-
-            Core* current_core;
-            Coin* current_coin;
-            Pool* current_pool;
-
-            if (!map_cores.contains(ui->comboBoxCore->currentText()))
-            {
-                // default core
-                current_core = map_cores["NBMiner"];
-            }
-            else
-            {
-                current_core = map_cores[ui->comboBoxCore->currentText()];
-            }
-
-            if (!map_coins.contains(ui->comboBoxCoin->currentText()))
-            {
-                // default coin
-                current_coin = map_coins["ETH"];
-            }
-            else
-            {
-                current_coin = map_coins[ui->comboBoxCoin->currentText()];
-            }
-
-            if (!map_pools.contains(ui->comboBoxPool->currentText()))
-            {
-                // default pool
-                current_pool = map_pools["sparkpool"];
-            }
-            else
-            {
-                current_pool = map_pools[ui->comboBoxPool->currentText()];
-            }
-
-
-
-
-            QString core_path = QCoreApplication::applicationDirPath() + current_core->path;
-            QString core_args = current_core->cmds[current_coin].arg(
-                        current_pool->cmds[current_coin]).arg(ui->lineEditWallet->text()).arg(ui->lineEditWorker->text());
-
-            //qDebug() << core_path << core_args << endl;
-
-            _process->SetAPI(current_core);
-            _process->setMax0MHs(ui->spinBoxMax0MHs->value());
-            _process->setRestartDelay(ui->spinBoxDelay->value());
-            _process->setRestartOption(ui->groupBoxWatchdog->isChecked());
-            _process->setDelayBeforeNoHash(ui->spinBoxDelayNoHash->value());
-            _process->start(core_path, core_args);
+            StartMiningCore();
         }
         else
         {
-            //qDebug() << "Stop mining" << endl;
-            _process->stop();
+            StopMiningCore();
         }
 
+    }
+}
+
+
+void MainWindow::StartMiningCore()
+{
+    SetMiningArgs();
+
+    QString core_path = QCoreApplication::applicationDirPath() + _current_core->path;
+    QString core_args = _current_core->cmds[_current_coin].arg(
+                _current_pool->cmds[_current_coin]).arg(ui->lineEditWallet->text()).arg(ui->lineEditWorker->text());
+
+    //qDebug() << core_path << core_args << endl;
+
+    _process->SetAPI(_current_core);
+    _process->setMax0MHs(ui->spinBoxMax0MHs->value());
+    _process->setRestartDelay(ui->spinBoxDelay->value());
+    _process->setRestartOption(ui->groupBoxWatchdog->isChecked());
+    _process->setDelayBeforeNoHash(ui->spinBoxDelayNoHash->value());
+    _process->start(core_path, core_args);
+}
+
+void MainWindow::StopMiningCore()
+{
+    //qDebug() << "Stop mining" << endl;
+    _process->stop();
+}
+
+void MainWindow::SetMiningArgs()
+{
+    if (!map_cores.contains(ui->comboBoxCore->currentText()))
+    {
+        // default core
+        _current_core = map_cores["NBMiner"];
+    }
+    else
+    {
+        _current_core = map_cores[ui->comboBoxCore->currentText()];
+    }
+
+    if (!map_coins.contains(ui->comboBoxCoin->currentText()))
+    {
+        // default coin
+        _current_coin = map_coins["ETH"];
+    }
+    else
+    {
+        _current_coin = map_coins[ui->comboBoxCoin->currentText()];
+    }
+
+    if (!map_pools.contains(ui->comboBoxPool->currentText()))
+    {
+        // default pool
+        _current_pool = map_pools["sparkpool"];
+    }
+    else
+    {
+        _current_pool = map_pools[ui->comboBoxPool->currentText()];
     }
 }
 
@@ -1267,6 +1305,9 @@ void MainWindow::onTempChartTimer()
 
 void MainWindow::refreshDeviceInfo()
 {
+    if (!_ui_refresh_enabled)
+        return;
+
     // refresh system info
     // it will be roughly refresh 20 times slower than device info
     static int cnt = 0;
@@ -1799,13 +1840,15 @@ void MainWindow::on_dateTimeEditHistoryEndTime_dateTimeChanged(const QDateTime &
     }
 }
 
-void MainWindow::on_spinBoxHistoryDeviceNum_valueChanged(int arg1){
+void MainWindow::on_spinBoxHistoryDeviceNum_valueChanged(int arg1)
+{
     if(ui->spinBoxHistoryDeviceNum->isVisible()){
         ui->pushButtonSearchHistory->show();
     }
 }
 
-void MainWindow::onRecievedMiningInfo(MiningInfo miningInfo){
+void MainWindow::onRecievedMiningInfo(MiningInfo miningInfo)
+{
     //qDebug() << "recieving mingInfo signal";
     _miningInfo->latency = miningInfo.latency;
     _miningInfo->gpuMiningInfos = miningInfo.gpuMiningInfos;
@@ -1813,9 +1856,48 @@ void MainWindow::onRecievedMiningInfo(MiningInfo miningInfo){
     _miningInfo->accepted_shares = miningInfo.accepted_shares;
     _miningInfo->rejected_shares = miningInfo.rejected_shares;
     //qDebug() << "saving changes";
+    EstimateOutput();
 }
 
-void MainWindow::on_comboBoxHistoryDataOption_currentIndexChanged(int index){
+void MainWindow::EstimateOutput()
+{
+    if (_miningInfo == nullptr || _poolInfo == nullptr)
+        return;
+
+    float total_hashrate = 0;
+    for (GPUMiningInfo gpuMiningInfo : qAsConst(_miningInfo->gpuMiningInfos))
+    {
+        total_hashrate += gpuMiningInfo.hashrate;
+    }
+    _est_output_coin = total_hashrate / _poolInfo->incomeHashrate * _poolInfo->meanIncome24h;
+    _est_output_cny = _est_output_coin * _poolInfo->cny;
+    _est_output_usd = _est_output_coin * _poolInfo->usd;
+
+    //qDebug() << total_hashrate << _poolInfo->incomeHashrate << _poolInfo->meanIncome24h << _est_output_coin << _est_output_cny << _est_output_usd;
+}
+
+void MainWindow::onReceivedPoolInfo(QList<PoolInfo> poolInfos)
+{
+    if (_current_coin == nullptr){
+        return;
+    }
+    for (const PoolInfo &poolInfo : poolInfos)
+    {
+        if (_current_coin->name == poolInfo.currency)
+        {
+            _poolInfo->pool_name = poolInfo.pool_name;
+            _poolInfo->currency = poolInfo.currency;
+            _poolInfo->income = poolInfo.income;
+            _poolInfo->meanIncome24h = poolInfo.meanIncome24h;
+            _poolInfo->incomeHashrate = poolInfo.incomeHashrate;
+            _poolInfo->usd = poolInfo.usd;
+            _poolInfo->cny = poolInfo.cny;
+        }
+    }
+}
+
+void MainWindow::on_comboBoxHistoryDataOption_currentIndexChanged(int index)
+{
     //qDebug() << "index changed: " << index;
     // index: 0 GPUs information
     //        1 mining information
@@ -1873,6 +1955,11 @@ void MainWindow::on_pushButtonChangePageSize_clicked(){
                 QString::number(ui->spinBoxChangePageSizeMax->value()),
                 QString::number(ui->spinBoxChangePageSizeMin->value())
                 );
+}
+
+void MainWindow::SetUIRefresh(bool enabled)
+{
+    _ui_refresh_enabled = enabled;
 }
 
 

@@ -28,12 +28,13 @@
 #include "nvocdialog.h"
 #include "structures.h"
 #include "database.h"
+#include "helper.h"
 #include "helppage.h"
 #include "nvocpage.h"
 
 QT_CHARTS_USE_NAMESPACE
 
-
+class GeneralTest;
 
 namespace Ui {
 class MainWindow;
@@ -60,7 +61,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(bool testing = false, QWidget *parent = 0);
     ~MainWindow();
 
     void setVisible(bool visible) Q_DECL_OVERRIDE;
@@ -70,6 +71,7 @@ public:
     GPUInfo getWorst(const std::vector<GPUInfo>& gpu_infos);
 
     bool getMinerStatus();
+    void SetUIRefresh(bool enabled);
     bool eventFilter(QObject *obj, QEvent *event);
 
 private:
@@ -252,13 +254,28 @@ private:
     Pool* AddPool(QString pool_name, Coin* coin, const QString& cmd);
     Pool* AddPool(QString pool_name, QString coin_name, const QString& cmd);
 
+    void AddPoolsFromFile(const QString& filename);
+
+    void SetMiningArgs();
+    void StartMiningCore();
+    void StopMiningCore();
+
     void onMinerStarted();
     void onMinerStoped();
     void onHashrate(QString& hashrate);
     void onError();
+    void onReceivedMiningInfo(MiningInfo miningInfo);
+    void onReceivedPoolInfo(QList<PoolInfo> poolInfos);
+
+    void EstimateOutput();
     void onRecievedMiningInfo(MiningInfo mingInfo);
 
     const QColor getTempColor(unsigned int temp);
+
+    bool _testing;
+    bool _ui_refresh_enabled;
+
+    Helper helper;
 
     Ui::MainWindow *ui;
     MinerProcess* _process;
@@ -266,7 +283,8 @@ private:
     QIcon*       _icon;
     QList<GPUInfo>* _gpusinfo;
     MiningInfo* _miningInfo;
-    Database * _databaseProcess;
+    PoolInfo* _poolInfo;
+    Database * _databaseProcess = nullptr;
     HelpPage* _helpPage;
     NvocPage* _nvocPage;
 
@@ -333,12 +351,21 @@ private:
 
     nanopoolAPI* _nano;
 
+    Core* _current_core = nullptr;
+    Coin* _current_coin = nullptr;
+    Pool* _current_pool = nullptr;
+
     void setPushButtonColor(QPushButton* pushButton, bool pressed);
+
+    float _est_output_usd;
+    float _est_output_cny;
+    float _est_output_coin;
 
     // migrate method from nvocDialog
     void updateSliders(unsigned int gpu);
     void saveConfig();
 
+    friend class GeneralTest;
 };
 
 
