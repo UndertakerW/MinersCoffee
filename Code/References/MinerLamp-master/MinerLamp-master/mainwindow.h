@@ -358,6 +358,7 @@ private:
 
     void setPushButtonColor(QPushButton* pushButton, bool pressed);
 
+    float _total_hash_rate = 0;
     float _est_output_usd = 0;
     float _est_output_cny = 0;
     float _est_output_coin = 0;

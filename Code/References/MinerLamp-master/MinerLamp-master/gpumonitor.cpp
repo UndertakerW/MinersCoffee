@@ -32,15 +32,14 @@ void nvMonitorThrd::run()
         unsigned int minpowerdraw = nvml->getMinPowerDraw();
         unsigned int totalpowerdraw = nvml->getPowerDrawSum();
 
-        /*
-        if(maxTemp>60){
-            for(int i=0;i<nvml->getGPUCount();i++){
-                _nvapi->ControlGpuTemperature(i);
-            }
-            //qDebug()<<"warning! process is cooling ";
+//        if(maxTemp>60){
+//            for(int i=0;i<nvml->getGPUCount();i++){
+//                _nvapi->ControlGpuTemperature(i);
+//            }
+//            //qDebug()<<"warning! process is cooling ";
 
-        }
-        */
+//        }
+
         //qDebug("temp::   %d",nvapi.getGpuTemperature(nvapi.getGPUCount()-1));
         emit gpuInfoSignal(gpucount
                            , maxTemp

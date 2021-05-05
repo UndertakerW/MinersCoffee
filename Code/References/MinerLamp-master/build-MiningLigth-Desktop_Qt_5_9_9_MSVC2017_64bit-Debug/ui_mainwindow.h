@@ -115,7 +115,6 @@ public:
     QFrame *frame_45;
     QHBoxLayout *horizontalLayout_37;
     QLabel *labelMinGPUTemp;
-    QSpacerItem *verticalSpacer_14;
     QFrame *frame_46;
     QGridLayout *gridLayout_25;
     hashrateCharView *graphicsViewTemp;
@@ -1186,10 +1185,6 @@ public:
 
         verticalLayout_18->addWidget(frame_44);
 
-        verticalSpacer_14 = new QSpacerItem(20, 237, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout_18->addItem(verticalSpacer_14);
-
         frame_46 = new QFrame(frame_32);
         frame_46->setObjectName(QStringLiteral("frame_46"));
         frame_46->setMinimumSize(QSize(160, 160));
@@ -1723,8 +1718,11 @@ public:
         labelHashExpectedIncome = new QLabel(frame_3);
         labelHashExpectedIncome->setObjectName(QStringLiteral("labelHashExpectedIncome"));
         labelHashExpectedIncome->setMinimumSize(QSize(100, 0));
-        labelHashExpectedIncome->setFont(font3);
-        labelHashExpectedIncome->setStyleSheet(QStringLiteral("color : white;"));
+        QFont font7;
+        font7.setFamily(QStringLiteral("Berlin Sans FB"));
+        font7.setPointSize(22);
+        labelHashExpectedIncome->setFont(font7);
+        labelHashExpectedIncome->setStyleSheet(QStringLiteral("color:white;"));
         labelHashExpectedIncome->setAlignment(Qt::AlignCenter);
 
         verticalLayout_4->addWidget(labelHashExpectedIncome);
@@ -1746,8 +1744,8 @@ public:
         labelHashRate = new QLabel(frame_2);
         labelHashRate->setObjectName(QStringLiteral("labelHashRate"));
         labelHashRate->setMinimumSize(QSize(100, 60));
-        labelHashRate->setFont(font3);
-        labelHashRate->setStyleSheet(QStringLiteral("color : white;"));
+        labelHashRate->setFont(font7);
+        labelHashRate->setStyleSheet(QStringLiteral(""));
         labelHashRate->setAlignment(Qt::AlignCenter);
 
         verticalLayout_3->addWidget(labelHashRate);
@@ -2040,12 +2038,12 @@ public:
         labelWallet->setSizePolicy(sizePolicy7);
         labelWallet->setMinimumSize(QSize(100, 30));
         labelWallet->setMaximumSize(QSize(60, 16777215));
-        QFont font7;
-        font7.setFamily(QStringLiteral("Berlin Sans FB"));
-        font7.setPointSize(18);
-        font7.setBold(false);
-        font7.setWeight(50);
-        labelWallet->setFont(font7);
+        QFont font8;
+        font8.setFamily(QStringLiteral("Berlin Sans FB"));
+        font8.setPointSize(18);
+        font8.setBold(false);
+        font8.setWeight(50);
+        labelWallet->setFont(font8);
         labelWallet->setStyleSheet(QStringLiteral("color : white;"));
 
         horizontalLayout_14->addWidget(labelWallet);
@@ -2055,10 +2053,10 @@ public:
         sizePolicy2.setHeightForWidth(lineEditWallet->sizePolicy().hasHeightForWidth());
         lineEditWallet->setSizePolicy(sizePolicy2);
         lineEditWallet->setMinimumSize(QSize(650, 31));
-        QFont font8;
-        font8.setFamily(QStringLiteral("Berlin Sans FB"));
-        font8.setPointSize(14);
-        lineEditWallet->setFont(font8);
+        QFont font9;
+        font9.setFamily(QStringLiteral("Berlin Sans FB"));
+        font9.setPointSize(14);
+        lineEditWallet->setFont(font9);
         lineEditWallet->setStyleSheet(QLatin1String("QLineEdit {\n"
 "	color:rgb(255,255,255);\n"
 "	border:2px solid rgb(51,51,51);\n"
@@ -2087,12 +2085,12 @@ public:
         labelCoin->setSizePolicy(sizePolicy7);
         labelCoin->setMinimumSize(QSize(60, 30));
         labelCoin->setMaximumSize(QSize(50, 16777215));
-        QFont font9;
-        font9.setFamily(QStringLiteral("Berlin Sans FB"));
-        font9.setPointSize(20);
-        font9.setBold(false);
-        font9.setWeight(50);
-        labelCoin->setFont(font9);
+        QFont font10;
+        font10.setFamily(QStringLiteral("Berlin Sans FB"));
+        font10.setPointSize(20);
+        font10.setBold(false);
+        font10.setWeight(50);
+        labelCoin->setFont(font10);
         labelCoin->setStyleSheet(QStringLiteral("color : white;"));
 
         horizontalLayout_4->addWidget(labelCoin);
@@ -2103,10 +2101,10 @@ public:
         comboBoxCoin->setSizePolicy(sizePolicy2);
         comboBoxCoin->setMinimumSize(QSize(130, 31));
         comboBoxCoin->setMaximumSize(QSize(90, 16777215));
-        QFont font10;
-        font10.setFamily(QStringLiteral("Berlin Sans FB"));
-        font10.setPointSize(12);
-        comboBoxCoin->setFont(font10);
+        QFont font11;
+        font11.setFamily(QStringLiteral("Berlin Sans FB"));
+        font11.setPointSize(12);
+        comboBoxCoin->setFont(font11);
         comboBoxCoin->setStyleSheet(QLatin1String("QComboBox {\n"
 "	border: 2px solid rgb(51,51,51);\n"
 "	border-radius: 5px;	\n"
@@ -2175,7 +2173,7 @@ public:
         labelPool->setSizePolicy(sizePolicy7);
         labelPool->setMinimumSize(QSize(60, 30));
         labelPool->setMaximumSize(QSize(50, 16777215));
-        labelPool->setFont(font9);
+        labelPool->setFont(font10);
         labelPool->setStyleSheet(QStringLiteral("color : white;"));
 
         horizontalLayout_12->addWidget(labelPool);
@@ -2183,7 +2181,7 @@ public:
         comboBoxPool = new QComboBox(groupBox_4);
         comboBoxPool->setObjectName(QStringLiteral("comboBoxPool"));
         comboBoxPool->setMinimumSize(QSize(130, 31));
-        comboBoxPool->setFont(font10);
+        comboBoxPool->setFont(font11);
         comboBoxPool->setStyleSheet(QLatin1String("QComboBox {\n"
 "	border: 2px solid rgb(51,51,51);\n"
 "	border-radius: 5px;	\n"
@@ -2248,7 +2246,7 @@ public:
         labelWorker->setSizePolicy(sizePolicy7);
         labelWorker->setMinimumSize(QSize(100, 31));
         labelWorker->setMaximumSize(QSize(100, 16777215));
-        labelWorker->setFont(font7);
+        labelWorker->setFont(font8);
         labelWorker->setStyleSheet(QStringLiteral("color : white;"));
 
         horizontalLayout_13->addWidget(labelWorker);
@@ -2258,7 +2256,7 @@ public:
         sizePolicy2.setHeightForWidth(lineEditWorker->sizePolicy().hasHeightForWidth());
         lineEditWorker->setSizePolicy(sizePolicy2);
         lineEditWorker->setMinimumSize(QSize(150, 31));
-        lineEditWorker->setFont(font10);
+        lineEditWorker->setFont(font11);
         lineEditWorker->setStyleSheet(QLatin1String("QLineEdit {\n"
 "	color:rgb(255,255,255);\n"
 "	border:2px solid rgb(51,51,51);\n"
@@ -2291,7 +2289,7 @@ public:
         labelCore->setSizePolicy(sizePolicy7);
         labelCore->setMinimumSize(QSize(100, 31));
         labelCore->setMaximumSize(QSize(50, 16777215));
-        labelCore->setFont(font7);
+        labelCore->setFont(font8);
         labelCore->setStyleSheet(QStringLiteral("color : white;"));
 
         horizontalLayout_11->addWidget(labelCore);
@@ -2299,7 +2297,7 @@ public:
         comboBoxCore = new QComboBox(groupBox_4);
         comboBoxCore->setObjectName(QStringLiteral("comboBoxCore"));
         comboBoxCore->setMinimumSize(QSize(150, 31));
-        comboBoxCore->setFont(font10);
+        comboBoxCore->setFont(font11);
         comboBoxCore->setStyleSheet(QLatin1String("QComboBox {\n"
 "	border: 2px solid rgb(51,51,51);\n"
 "	border-radius: 5px;	\n"
@@ -2424,10 +2422,10 @@ public:
         label_39 = new QLabel(frame_7);
         label_39->setObjectName(QStringLiteral("label_39"));
         label_39->setMinimumSize(QSize(100, 80));
-        QFont font11;
-        font11.setFamily(QStringLiteral("Berlin Sans FB"));
-        font11.setPointSize(30);
-        label_39->setFont(font11);
+        QFont font12;
+        font12.setFamily(QStringLiteral("Berlin Sans FB"));
+        font12.setPointSize(30);
+        label_39->setFont(font12);
         label_39->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
 
         horizontalLayout_19->addWidget(label_39);
@@ -2655,10 +2653,10 @@ public:
         labelBalance = new QLabel(frame_19);
         labelBalance->setObjectName(QStringLiteral("labelBalance"));
         labelBalance->setMinimumSize(QSize(250, 200));
-        QFont font12;
-        font12.setFamily(QStringLiteral("Berlin Sans FB"));
-        font12.setPointSize(80);
-        labelBalance->setFont(font12);
+        QFont font13;
+        font13.setFamily(QStringLiteral("Berlin Sans FB"));
+        font13.setPointSize(80);
+        labelBalance->setFont(font13);
         labelBalance->setStyleSheet(QStringLiteral("color : white;"));
         labelBalance->setAlignment(Qt::AlignCenter);
 
@@ -2699,7 +2697,7 @@ public:
         horizontalLayout_44->setObjectName(QStringLiteral("horizontalLayout_44"));
         label_20 = new QLabel(frame_17);
         label_20->setObjectName(QStringLiteral("label_20"));
-        label_20->setFont(font10);
+        label_20->setFont(font11);
         label_20->setStyleSheet(QLatin1String("background-color: rgb(90, 91, 91);\n"
 "color: rgb(255, 255, 255);"));
 
@@ -2718,10 +2716,10 @@ public:
         labelCalculatedHR = new QLabel(frame_17);
         labelCalculatedHR->setObjectName(QStringLiteral("labelCalculatedHR"));
         labelCalculatedHR->setMinimumSize(QSize(100, 0));
-        QFont font13;
-        font13.setFamily(QStringLiteral("Berlin Sans FB"));
-        font13.setPointSize(18);
-        labelCalculatedHR->setFont(font13);
+        QFont font14;
+        font14.setFamily(QStringLiteral("Berlin Sans FB"));
+        font14.setPointSize(18);
+        labelCalculatedHR->setFont(font14);
         labelCalculatedHR->setStyleSheet(QStringLiteral("color : white;"));
         labelCalculatedHR->setAlignment(Qt::AlignCenter);
 
@@ -2735,7 +2733,7 @@ public:
         horizontalLayout_45->setObjectName(QStringLiteral("horizontalLayout_45"));
         label_21 = new QLabel(frame_17);
         label_21->setObjectName(QStringLiteral("label_21"));
-        label_21->setFont(font10);
+        label_21->setFont(font11);
 
         horizontalLayout_45->addWidget(label_21);
 
@@ -2752,7 +2750,7 @@ public:
         labelAvrgHr6H = new QLabel(frame_17);
         labelAvrgHr6H->setObjectName(QStringLiteral("labelAvrgHr6H"));
         labelAvrgHr6H->setMinimumSize(QSize(100, 0));
-        labelAvrgHr6H->setFont(font13);
+        labelAvrgHr6H->setFont(font14);
         labelAvrgHr6H->setStyleSheet(QStringLiteral("color : white;"));
         labelAvrgHr6H->setAlignment(Qt::AlignCenter);
 
@@ -2839,7 +2837,7 @@ public:
         label_40 = new QLabel(frame_25);
         label_40->setObjectName(QStringLiteral("label_40"));
         label_40->setMinimumSize(QSize(100, 50));
-        label_40->setFont(font11);
+        label_40->setFont(font12);
         label_40->setStyleSheet(QStringLiteral("color: rgb(255, 255, 255);"));
 
         horizontalLayout_20->addWidget(label_40);
@@ -2867,7 +2865,7 @@ public:
         pushButtonDisplayPoolStats = new QPushButton(frame_24);
         pushButtonDisplayPoolStats->setObjectName(QStringLiteral("pushButtonDisplayPoolStats"));
         pushButtonDisplayPoolStats->setMinimumSize(QSize(100, 30));
-        pushButtonDisplayPoolStats->setFont(font10);
+        pushButtonDisplayPoolStats->setFont(font11);
         pushButtonDisplayPoolStats->setStyleSheet(QLatin1String("QPushButton {\n"
 "	border: none;\n"
 "	background-color: rgba(0,0,0,0);\n"
@@ -2924,13 +2922,13 @@ public:
 
         textEdit = new QTextEdit(frame_24);
         textEdit->setObjectName(QStringLiteral("textEdit"));
-        QFont font14;
-        font14.setFamily(QStringLiteral("Berlin Sans FB"));
-        font14.setPointSize(14);
-        font14.setBold(false);
-        font14.setItalic(false);
-        font14.setWeight(50);
-        textEdit->setFont(font14);
+        QFont font15;
+        font15.setFamily(QStringLiteral("Berlin Sans FB"));
+        font15.setPointSize(14);
+        font15.setBold(false);
+        font15.setItalic(false);
+        font15.setWeight(50);
+        textEdit->setFont(font15);
         textEdit->setStyleSheet(QLatin1String("QTextEdit {\n"
 "	background-color: rgb(90, 91, 91);\n"
 "	color: rgb(255, 255, 255);\n"
@@ -3214,7 +3212,7 @@ public:
         horizontalLayout_27->setContentsMargins(0, 0, 0, 0);
         plainTextEditSettingsSystemInfo_2 = new QPlainTextEdit(groupBox_14);
         plainTextEditSettingsSystemInfo_2->setObjectName(QStringLiteral("plainTextEditSettingsSystemInfo_2"));
-        plainTextEditSettingsSystemInfo_2->setFont(font8);
+        plainTextEditSettingsSystemInfo_2->setFont(font9);
         plainTextEditSettingsSystemInfo_2->setStyleSheet(QLatin1String("QPlainTextEdit {background-color: rgb(90, 91, 91);border-width: 0;\n"
 "border-radius : 0; color: #ffd000;}\n"
 " QScrollBar:horizontal\n"
@@ -3358,7 +3356,7 @@ public:
         plainTextEditSettingsSystemInfo = new QPlainTextEdit(groupBox_14);
         plainTextEditSettingsSystemInfo->setObjectName(QStringLiteral("plainTextEditSettingsSystemInfo"));
         plainTextEditSettingsSystemInfo->setMinimumSize(QSize(450, 0));
-        plainTextEditSettingsSystemInfo->setFont(font8);
+        plainTextEditSettingsSystemInfo->setFont(font9);
         plainTextEditSettingsSystemInfo->setStyleSheet(QLatin1String("QPlainTextEdit {background-color: rgb(90, 91, 91);border-width: 0;\n"
 "border-radius : 0;color:white;}\n"
 " QScrollBar:horizontal\n"
@@ -3577,24 +3575,24 @@ public:
         label_43 = new QLabel(frame_28);
         label_43->setObjectName(QStringLiteral("label_43"));
         label_43->setMinimumSize(QSize(100, 60));
-        QFont font15;
-        font15.setFamily(QStringLiteral("Berlin Sans FB"));
-        font15.setPointSize(20);
-        label_43->setFont(font15);
+        QFont font16;
+        font16.setFamily(QStringLiteral("Berlin Sans FB"));
+        font16.setPointSize(20);
+        label_43->setFont(font16);
 
         formLayout->setWidget(0, QFormLayout::LabelRole, label_43);
 
         label_46 = new QLabel(frame_28);
         label_46->setObjectName(QStringLiteral("label_46"));
         label_46->setMinimumSize(QSize(100, 50));
-        label_46->setFont(font15);
+        label_46->setFont(font16);
 
         formLayout->setWidget(1, QFormLayout::LabelRole, label_46);
 
         label_45 = new QLabel(frame_28);
         label_45->setObjectName(QStringLiteral("label_45"));
         label_45->setMinimumSize(QSize(100, 50));
-        label_45->setFont(font15);
+        label_45->setFont(font16);
 
         formLayout->setWidget(2, QFormLayout::LabelRole, label_45);
 
@@ -3608,13 +3606,13 @@ public:
         spinBoxChangePageSizeMax = new QSpinBox(frame_28);
         spinBoxChangePageSizeMax->setObjectName(QStringLiteral("spinBoxChangePageSizeMax"));
         spinBoxChangePageSizeMax->setMinimumSize(QSize(0, 40));
-        QFont font16;
-        font16.setFamily(QStringLiteral("Berlin Sans FB"));
-        font16.setPointSize(20);
-        font16.setBold(false);
-        font16.setItalic(false);
-        font16.setWeight(50);
-        spinBoxChangePageSizeMax->setFont(font16);
+        QFont font17;
+        font17.setFamily(QStringLiteral("Berlin Sans FB"));
+        font17.setPointSize(20);
+        font17.setBold(false);
+        font17.setItalic(false);
+        font17.setWeight(50);
+        spinBoxChangePageSizeMax->setFont(font17);
         spinBoxChangePageSizeMax->setStyleSheet(QLatin1String("QSpinBox { \n"
 "	border: 2px solid rgb(51,51,51);\n"
 "	border-radius: 5px;	\n"
@@ -3674,7 +3672,7 @@ public:
         spinBoxChangePageSizeMin = new QSpinBox(frame_28);
         spinBoxChangePageSizeMin->setObjectName(QStringLiteral("spinBoxChangePageSizeMin"));
         spinBoxChangePageSizeMin->setMinimumSize(QSize(0, 40));
-        spinBoxChangePageSizeMin->setFont(font16);
+        spinBoxChangePageSizeMin->setFont(font17);
         spinBoxChangePageSizeMin->setStyleSheet(QLatin1String("QSpinBox { \n"
 "	border: 2px solid rgb(51,51,51);\n"
 "	border-radius: 5px;	\n"
@@ -3800,7 +3798,7 @@ public:
         pushButtonCancelAutoPage->setObjectName(QStringLiteral("pushButtonCancelAutoPage"));
         pushButtonCancelAutoPage->setEnabled(true);
         pushButtonCancelAutoPage->setMinimumSize(QSize(0, 80));
-        pushButtonCancelAutoPage->setFont(font15);
+        pushButtonCancelAutoPage->setFont(font16);
         pushButtonCancelAutoPage->setStyleSheet(QLatin1String("QPushButton {\n"
 "	border: none;\n"
 "	background-color: rgba(0,0,0,0);\n"
@@ -3926,7 +3924,7 @@ public:
         labelHistoryDeviceNum = new QLabel(frame_34);
         labelHistoryDeviceNum->setObjectName(QStringLiteral("labelHistoryDeviceNum"));
         labelHistoryDeviceNum->setMinimumSize(QSize(80, 55));
-        labelHistoryDeviceNum->setFont(font15);
+        labelHistoryDeviceNum->setFont(font16);
         labelHistoryDeviceNum->setStyleSheet(QStringLiteral("color : white;"));
 
         horizontalLayout->addWidget(labelHistoryDeviceNum);
@@ -3934,7 +3932,7 @@ public:
         spinBoxHistoryDeviceNum = new QSpinBox(frame_34);
         spinBoxHistoryDeviceNum->setObjectName(QStringLiteral("spinBoxHistoryDeviceNum"));
         spinBoxHistoryDeviceNum->setMinimumSize(QSize(140, 40));
-        spinBoxHistoryDeviceNum->setFont(font13);
+        spinBoxHistoryDeviceNum->setFont(font14);
         spinBoxHistoryDeviceNum->setStyleSheet(QLatin1String("QSpinBox { \n"
 "	border: 2px solid rgb(51,51,51);\n"
 "	border-radius: 5px;	\n"
@@ -3984,7 +3982,7 @@ public:
         labelHistoryDeviceNum_2 = new QLabel(frame_34);
         labelHistoryDeviceNum_2->setObjectName(QStringLiteral("labelHistoryDeviceNum_2"));
         labelHistoryDeviceNum_2->setMinimumSize(QSize(120, 55));
-        labelHistoryDeviceNum_2->setFont(font15);
+        labelHistoryDeviceNum_2->setFont(font16);
         labelHistoryDeviceNum_2->setStyleSheet(QStringLiteral("color : white;"));
 
         horizontalLayout_25->addWidget(labelHistoryDeviceNum_2);
@@ -3992,13 +3990,13 @@ public:
         dateTimeEditHistoryStartTime = new QDateTimeEdit(frame_34);
         dateTimeEditHistoryStartTime->setObjectName(QStringLiteral("dateTimeEditHistoryStartTime"));
         dateTimeEditHistoryStartTime->setMinimumSize(QSize(140, 40));
-        QFont font17;
-        font17.setFamily(QStringLiteral("Berlin Sans FB"));
-        font17.setPointSize(12);
-        font17.setBold(false);
-        font17.setItalic(false);
-        font17.setWeight(50);
-        dateTimeEditHistoryStartTime->setFont(font17);
+        QFont font18;
+        font18.setFamily(QStringLiteral("Berlin Sans FB"));
+        font18.setPointSize(12);
+        font18.setBold(false);
+        font18.setItalic(false);
+        font18.setWeight(50);
+        dateTimeEditHistoryStartTime->setFont(font18);
         dateTimeEditHistoryStartTime->setCursor(QCursor(Qt::IBeamCursor));
         dateTimeEditHistoryStartTime->setStyleSheet(QLatin1String("QDateTimeEdit { \n"
 "	border: 2px solid rgb(51,51,51);\n"
@@ -4050,7 +4048,7 @@ public:
         labelHistoryDeviceNum_3 = new QLabel(frame_34);
         labelHistoryDeviceNum_3->setObjectName(QStringLiteral("labelHistoryDeviceNum_3"));
         labelHistoryDeviceNum_3->setMinimumSize(QSize(50, 55));
-        labelHistoryDeviceNum_3->setFont(font15);
+        labelHistoryDeviceNum_3->setFont(font16);
         labelHistoryDeviceNum_3->setStyleSheet(QStringLiteral("color : white;"));
 
         horizontalLayout_26->addWidget(labelHistoryDeviceNum_3);
@@ -4129,10 +4127,10 @@ public:
         sizePolicy8.setHeightForWidth(pushButtonSearchHistory->sizePolicy().hasHeightForWidth());
         pushButtonSearchHistory->setSizePolicy(sizePolicy8);
         pushButtonSearchHistory->setMinimumSize(QSize(0, 100));
-        QFont font18;
-        font18.setFamily(QStringLiteral("Berlin Sans FB"));
-        font18.setPointSize(26);
-        pushButtonSearchHistory->setFont(font18);
+        QFont font19;
+        font19.setFamily(QStringLiteral("Berlin Sans FB"));
+        font19.setPointSize(26);
+        pushButtonSearchHistory->setFont(font19);
         pushButtonSearchHistory->setStyleSheet(QLatin1String("QPushButton {\n"
 "	border: none;\n"
 "	background-color: rgba(0,0,0,0);\n"
@@ -4186,7 +4184,7 @@ public:
         sizePolicy.setHeightForWidth(groupBox_13->sizePolicy().hasHeightForWidth());
         groupBox_13->setSizePolicy(sizePolicy);
         groupBox_13->setMinimumSize(QSize(0, 300));
-        groupBox_13->setFont(font15);
+        groupBox_13->setFont(font16);
         groupBox_13->setStyleSheet(QLatin1String("QGroupBox::title{\n"
 "	color : white;\n"
 "	left: 10px;\n"
@@ -4214,7 +4212,7 @@ public:
         groupBoxDevicesInfo->setSizePolicy(sizePolicy);
         groupBoxDevicesInfo->setMinimumSize(QSize(0, 150));
         groupBoxDevicesInfo->setMaximumSize(QSize(16777215, 16777127));
-        groupBoxDevicesInfo->setFont(font13);
+        groupBoxDevicesInfo->setFont(font14);
         groupBoxDevicesInfo->setStyleSheet(QLatin1String("QGroupBox::title{\n"
 "	color : white;\n"
 "	left: 10px;\n"
@@ -4392,7 +4390,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 200, 229));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1058, 244));
         sizePolicy.setHeightForWidth(scrollAreaWidgetContents->sizePolicy().hasHeightForWidth());
         scrollAreaWidgetContents->setSizePolicy(sizePolicy);
         scrollAreaWidgetContents->setMinimumSize(QSize(0, 200));
@@ -4464,9 +4462,9 @@ public:
         gridLayout_42->setObjectName(QStringLiteral("gridLayout_42"));
         checkBoxAutoStart = new QCheckBox(page);
         checkBoxAutoStart->setObjectName(QStringLiteral("checkBoxAutoStart"));
-        QFont font19;
-        font19.setFamily(QStringLiteral("Arial"));
-        checkBoxAutoStart->setFont(font19);
+        QFont font20;
+        font20.setFamily(QStringLiteral("Arial"));
+        checkBoxAutoStart->setFont(font20);
 
         gridLayout_42->addWidget(checkBoxAutoStart, 0, 0, 1, 1);
 
@@ -4482,13 +4480,13 @@ public:
 
         checkBoxShowSettings = new QCheckBox(page);
         checkBoxShowSettings->setObjectName(QStringLiteral("checkBoxShowSettings"));
-        checkBoxShowSettings->setFont(font19);
+        checkBoxShowSettings->setFont(font20);
 
         gridLayout_42->addWidget(checkBoxShowSettings, 1, 0, 1, 1);
 
         checkBoxAutoShowDeviceInfo = new QCheckBox(page);
         checkBoxAutoShowDeviceInfo->setObjectName(QStringLiteral("checkBoxAutoShowDeviceInfo"));
-        checkBoxAutoShowDeviceInfo->setFont(font19);
+        checkBoxAutoShowDeviceInfo->setFont(font20);
 
         gridLayout_42->addWidget(checkBoxAutoShowDeviceInfo, 1, 1, 1, 1);
 
@@ -4497,12 +4495,12 @@ public:
         sizePolicy7.setHeightForWidth(labelWallet_2->sizePolicy().hasHeightForWidth());
         labelWallet_2->setSizePolicy(sizePolicy7);
         labelWallet_2->setMaximumSize(QSize(60, 16777215));
-        QFont font20;
-        font20.setFamily(QStringLiteral("Arial"));
-        font20.setPointSize(8);
-        font20.setBold(false);
-        font20.setWeight(50);
-        labelWallet_2->setFont(font20);
+        QFont font21;
+        font21.setFamily(QStringLiteral("Arial"));
+        font21.setPointSize(8);
+        font21.setBold(false);
+        font21.setWeight(50);
+        labelWallet_2->setFont(font21);
 
         gridLayout_42->addWidget(labelWallet_2, 1, 2, 1, 1);
 
@@ -4513,7 +4511,7 @@ public:
         groupBoxWatchdog->setObjectName(QStringLiteral("groupBoxWatchdog"));
         sizePolicy2.setHeightForWidth(groupBoxWatchdog->sizePolicy().hasHeightForWidth());
         groupBoxWatchdog->setSizePolicy(sizePolicy2);
-        groupBoxWatchdog->setFont(font19);
+        groupBoxWatchdog->setFont(font20);
         groupBoxWatchdog->setCheckable(true);
         groupBoxWatchdog->setChecked(false);
         gridLayout = new QGridLayout(groupBoxWatchdog);
@@ -4522,27 +4520,27 @@ public:
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         spinBoxMax0MHs = new QSpinBox(groupBoxWatchdog);
         spinBoxMax0MHs->setObjectName(QStringLiteral("spinBoxMax0MHs"));
-        spinBoxMax0MHs->setFont(font19);
+        spinBoxMax0MHs->setFont(font20);
         spinBoxMax0MHs->setMinimum(1);
 
         gridLayout->addWidget(spinBoxMax0MHs, 0, 1, 1, 1);
 
         label_3 = new QLabel(groupBoxWatchdog);
         label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setFont(font19);
+        label_3->setFont(font20);
 
         gridLayout->addWidget(label_3, 1, 0, 1, 1);
 
         spinBoxDelay = new QSpinBox(groupBoxWatchdog);
         spinBoxDelay->setObjectName(QStringLiteral("spinBoxDelay"));
-        spinBoxDelay->setFont(font19);
+        spinBoxDelay->setFont(font20);
         spinBoxDelay->setMinimum(1);
 
         gridLayout->addWidget(spinBoxDelay, 0, 3, 1, 1);
 
         spinBoxDelay0MHs = new QSpinBox(groupBoxWatchdog);
         spinBoxDelay0MHs->setObjectName(QStringLiteral("spinBoxDelay0MHs"));
-        spinBoxDelay0MHs->setFont(font19);
+        spinBoxDelay0MHs->setFont(font20);
         spinBoxDelay0MHs->setMinimum(1);
         spinBoxDelay0MHs->setMaximum(600);
         spinBoxDelay0MHs->setValue(20);
@@ -4551,19 +4549,19 @@ public:
 
         label_5 = new QLabel(groupBoxWatchdog);
         label_5->setObjectName(QStringLiteral("label_5"));
-        label_5->setFont(font19);
+        label_5->setFont(font20);
 
         gridLayout->addWidget(label_5, 0, 2, 1, 1);
 
         label_7 = new QLabel(groupBoxWatchdog);
         label_7->setObjectName(QStringLiteral("label_7"));
-        label_7->setFont(font19);
+        label_7->setFont(font20);
 
         gridLayout->addWidget(label_7, 1, 2, 1, 1);
 
         spinBoxDelayNoHash = new QSpinBox(groupBoxWatchdog);
         spinBoxDelayNoHash->setObjectName(QStringLiteral("spinBoxDelayNoHash"));
-        spinBoxDelayNoHash->setFont(font19);
+        spinBoxDelayNoHash->setFont(font20);
         spinBoxDelayNoHash->setMinimum(30);
         spinBoxDelayNoHash->setMaximum(600);
         spinBoxDelayNoHash->setValue(60);
@@ -4572,14 +4570,14 @@ public:
 
         label_4 = new QLabel(groupBoxWatchdog);
         label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setFont(font19);
+        label_4->setFont(font20);
 
         gridLayout->addWidget(label_4, 0, 0, 1, 1);
 
         splitter_3->addWidget(groupBoxWatchdog);
         groupBoxSettings = new QGroupBox(splitter_3);
         groupBoxSettings->setObjectName(QStringLiteral("groupBoxSettings"));
-        groupBoxSettings->setFont(font19);
+        groupBoxSettings->setFont(font20);
         gridLayout_11 = new QGridLayout(groupBoxSettings);
         gridLayout_11->setSpacing(6);
         gridLayout_11->setContentsMargins(11, 11, 11, 11);
@@ -4590,13 +4588,13 @@ public:
 
         pushButtonOriginal = new QPushButton(page);
         pushButtonOriginal->setObjectName(QStringLiteral("pushButtonOriginal"));
-        pushButtonOriginal->setFont(font19);
+        pushButtonOriginal->setFont(font20);
 
         gridLayout_42->addWidget(pushButtonOriginal, 2, 6, 1, 1);
 
         pushButtonHelp = new QPushButton(page);
         pushButtonHelp->setObjectName(QStringLiteral("pushButtonHelp"));
-        pushButtonHelp->setFont(font19);
+        pushButtonHelp->setFont(font20);
 
         gridLayout_42->addWidget(pushButtonHelp, 3, 6, 1, 1);
 
@@ -4607,7 +4605,7 @@ public:
         sizePolicy9.setVerticalStretch(0);
         sizePolicy9.setHeightForWidth(pushButtonEthminerBrowser->sizePolicy().hasHeightForWidth());
         pushButtonEthminerBrowser->setSizePolicy(sizePolicy9);
-        pushButtonEthminerBrowser->setFont(font19);
+        pushButtonEthminerBrowser->setFont(font20);
 
         gridLayout_42->addWidget(pushButtonEthminerBrowser, 3, 7, 1, 1);
 
@@ -4615,38 +4613,38 @@ public:
         groupBoxNvidia->setObjectName(QStringLiteral("groupBoxNvidia"));
         sizePolicy2.setHeightForWidth(groupBoxNvidia->sizePolicy().hasHeightForWidth());
         groupBoxNvidia->setSizePolicy(sizePolicy2);
-        groupBoxNvidia->setFont(font20);
+        groupBoxNvidia->setFont(font21);
         gridLayout_3 = new QGridLayout(groupBoxNvidia);
         gridLayout_3->setSpacing(6);
         gridLayout_3->setContentsMargins(11, 11, 11, 11);
         gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
         label_6 = new QLabel(groupBoxNvidia);
         label_6->setObjectName(QStringLiteral("label_6"));
-        label_6->setFont(font19);
+        label_6->setFont(font20);
 
         gridLayout_3->addWidget(label_6, 0, 2, 1, 1);
 
         label_13 = new QLabel(groupBoxNvidia);
         label_13->setObjectName(QStringLiteral("label_13"));
-        label_13->setFont(font19);
+        label_13->setFont(font20);
 
         gridLayout_3->addWidget(label_13, 1, 2, 1, 1);
 
         label_10 = new QLabel(groupBoxNvidia);
         label_10->setObjectName(QStringLiteral("label_10"));
-        label_10->setFont(font19);
+        label_10->setFont(font20);
 
         gridLayout_3->addWidget(label_10, 0, 7, 1, 1);
 
         label_18 = new QLabel(groupBoxNvidia);
         label_18->setObjectName(QStringLiteral("label_18"));
-        label_18->setFont(font19);
+        label_18->setFont(font20);
 
         gridLayout_3->addWidget(label_18, 2, 8, 1, 1);
 
         label_11 = new QLabel(groupBoxNvidia);
         label_11->setObjectName(QStringLiteral("label_11"));
-        label_11->setFont(font19);
+        label_11->setFont(font20);
 
         gridLayout_3->addWidget(label_11, 1, 4, 1, 1);
 
@@ -4658,25 +4656,25 @@ public:
 
         label_14 = new QLabel(groupBoxNvidia);
         label_14->setObjectName(QStringLiteral("label_14"));
-        label_14->setFont(font19);
+        label_14->setFont(font20);
 
         gridLayout_3->addWidget(label_14, 0, 8, 1, 1);
 
         label_8 = new QLabel(groupBoxNvidia);
         label_8->setObjectName(QStringLiteral("label_8"));
-        label_8->setFont(font19);
+        label_8->setFont(font20);
 
         gridLayout_3->addWidget(label_8, 0, 0, 1, 1);
 
         label_12 = new QLabel(groupBoxNvidia);
         label_12->setObjectName(QStringLiteral("label_12"));
-        label_12->setFont(font19);
+        label_12->setFont(font20);
 
         gridLayout_3->addWidget(label_12, 1, 7, 1, 1);
 
         label_16 = new QLabel(groupBoxNvidia);
         label_16->setObjectName(QStringLiteral("label_16"));
-        label_16->setFont(font19);
+        label_16->setFont(font20);
 
         gridLayout_3->addWidget(label_16, 0, 6, 1, 1);
 
@@ -4694,19 +4692,19 @@ public:
 
         label_17 = new QLabel(groupBoxNvidia);
         label_17->setObjectName(QStringLiteral("label_17"));
-        label_17->setFont(font19);
+        label_17->setFont(font20);
 
         gridLayout_3->addWidget(label_17, 1, 6, 1, 1);
 
         label_9 = new QLabel(groupBoxNvidia);
         label_9->setObjectName(QStringLiteral("label_9"));
-        label_9->setFont(font19);
+        label_9->setFont(font20);
 
         gridLayout_3->addWidget(label_9, 0, 4, 1, 1);
 
         label_15 = new QLabel(groupBoxNvidia);
         label_15->setObjectName(QStringLiteral("label_15"));
-        label_15->setFont(font19);
+        label_15->setFont(font20);
 
         gridLayout_3->addWidget(label_15, 1, 8, 1, 1);
 
@@ -4717,7 +4715,7 @@ public:
         groupBoxAMD->setObjectName(QStringLiteral("groupBoxAMD"));
         sizePolicy2.setHeightForWidth(groupBoxAMD->sizePolicy().hasHeightForWidth());
         groupBoxAMD->setSizePolicy(sizePolicy2);
-        groupBoxAMD->setFont(font20);
+        groupBoxAMD->setFont(font21);
         gridLayout_2 = new QGridLayout(groupBoxAMD);
         gridLayout_2->setSpacing(6);
         gridLayout_2->setContentsMargins(11, 11, 11, 11);
@@ -4730,7 +4728,7 @@ public:
 
         label_31 = new QLabel(groupBoxAMD);
         label_31->setObjectName(QStringLiteral("label_31"));
-        label_31->setFont(font19);
+        label_31->setFont(font20);
 
         gridLayout_2->addWidget(label_31, 2, 8, 1, 1);
 
@@ -4741,7 +4739,7 @@ public:
 
         label_25 = new QLabel(groupBoxAMD);
         label_25->setObjectName(QStringLiteral("label_25"));
-        label_25->setFont(font19);
+        label_25->setFont(font20);
 
         gridLayout_2->addWidget(label_25, 2, 2, 1, 1);
 
@@ -4757,31 +4755,31 @@ public:
 
         label_32 = new QLabel(groupBoxAMD);
         label_32->setObjectName(QStringLiteral("label_32"));
-        label_32->setFont(font19);
+        label_32->setFont(font20);
 
         gridLayout_2->addWidget(label_32, 1, 10, 1, 1);
 
         label_27 = new QLabel(groupBoxAMD);
         label_27->setObjectName(QStringLiteral("label_27"));
-        label_27->setFont(font19);
+        label_27->setFont(font20);
 
         gridLayout_2->addWidget(label_27, 1, 4, 1, 1);
 
         label_30 = new QLabel(groupBoxAMD);
         label_30->setObjectName(QStringLiteral("label_30"));
-        label_30->setFont(font19);
+        label_30->setFont(font20);
 
         gridLayout_2->addWidget(label_30, 1, 8, 1, 1);
 
         label_28 = new QLabel(groupBoxAMD);
         label_28->setObjectName(QStringLiteral("label_28"));
-        label_28->setFont(font19);
+        label_28->setFont(font20);
 
         gridLayout_2->addWidget(label_28, 1, 6, 1, 1);
 
         label_AMD_GPUCount = new QLabel(groupBoxAMD);
         label_AMD_GPUCount->setObjectName(QStringLiteral("label_AMD_GPUCount"));
-        label_AMD_GPUCount->setFont(font19);
+        label_AMD_GPUCount->setFont(font20);
 
         gridLayout_2->addWidget(label_AMD_GPUCount, 1, 0, 1, 1);
 
@@ -4807,7 +4805,7 @@ public:
 
         label_33 = new QLabel(groupBoxAMD);
         label_33->setObjectName(QStringLiteral("label_33"));
-        label_33->setFont(font19);
+        label_33->setFont(font20);
 
         gridLayout_2->addWidget(label_33, 2, 10, 1, 1);
 
@@ -4818,7 +4816,7 @@ public:
 
         label_29 = new QLabel(groupBoxAMD);
         label_29->setObjectName(QStringLiteral("label_29"));
-        label_29->setFont(font19);
+        label_29->setFont(font20);
 
         gridLayout_2->addWidget(label_29, 2, 6, 1, 1);
 
@@ -4829,7 +4827,7 @@ public:
 
         label_26 = new QLabel(groupBoxAMD);
         label_26->setObjectName(QStringLiteral("label_26"));
-        label_26->setFont(font19);
+        label_26->setFont(font20);
 
         gridLayout_2->addWidget(label_26, 2, 4, 1, 1);
 
@@ -4840,7 +4838,7 @@ public:
 
         label_24 = new QLabel(groupBoxAMD);
         label_24->setObjectName(QStringLiteral("label_24"));
-        label_24->setFont(font19);
+        label_24->setFont(font20);
 
         gridLayout_2->addWidget(label_24, 1, 2, 1, 1);
 
@@ -4849,7 +4847,7 @@ public:
 
         checkBoxShowHistoryInfo = new QCheckBox(page);
         checkBoxShowHistoryInfo->setObjectName(QStringLiteral("checkBoxShowHistoryInfo"));
-        checkBoxShowHistoryInfo->setFont(font19);
+        checkBoxShowHistoryInfo->setFont(font20);
 
         gridLayout_42->addWidget(checkBoxShowHistoryInfo, 6, 6, 1, 2);
 
@@ -4859,14 +4857,14 @@ public:
         pushButtonPool = new QPushButton(page);
         pushButtonPool->setObjectName(QStringLiteral("pushButtonPool"));
         pushButtonPool->setEnabled(true);
-        pushButtonPool->setFont(font19);
+        pushButtonPool->setFont(font20);
         pushButtonPool->setCheckable(true);
 
         horizontalLayout_2->addWidget(pushButtonPool);
 
         pushButtonShowHideLog = new QPushButton(page);
         pushButtonShowHideLog->setObjectName(QStringLiteral("pushButtonShowHideLog"));
-        pushButtonShowHideLog->setFont(font19);
+        pushButtonShowHideLog->setFont(font20);
         pushButtonShowHideLog->setCheckable(true);
 
         horizontalLayout_2->addWidget(pushButtonShowHideLog);
@@ -4879,14 +4877,14 @@ public:
         groupBoxPools->setEnabled(true);
         sizePolicy4.setHeightForWidth(groupBoxPools->sizePolicy().hasHeightForWidth());
         groupBoxPools->setSizePolicy(sizePolicy4);
-        groupBoxPools->setFont(font19);
+        groupBoxPools->setFont(font20);
         gridLayout_4 = new QGridLayout(groupBoxPools);
         gridLayout_4->setSpacing(6);
         gridLayout_4->setContentsMargins(11, 11, 11, 11);
         gridLayout_4->setObjectName(QStringLiteral("gridLayout_4"));
         label_19 = new QLabel(groupBoxPools);
         label_19->setObjectName(QStringLiteral("label_19"));
-        label_19->setFont(font19);
+        label_19->setFont(font20);
 
         gridLayout_4->addWidget(label_19, 1, 0, 1, 1);
 
@@ -4896,7 +4894,7 @@ public:
         labellcdNumber_4 = new QLabel(page);
         labellcdNumber_4->setObjectName(QStringLiteral("labellcdNumber_4"));
         labellcdNumber_4->setMinimumSize(QSize(100, 0));
-        labellcdNumber_4->setFont(font13);
+        labellcdNumber_4->setFont(font14);
         labellcdNumber_4->setStyleSheet(QStringLiteral("color : white;"));
         labellcdNumber_4->setAlignment(Qt::AlignCenter);
 
@@ -4904,7 +4902,7 @@ public:
 
         label_22 = new QLabel(page);
         label_22->setObjectName(QStringLiteral("label_22"));
-        label_22->setFont(font19);
+        label_22->setFont(font20);
 
         gridLayout_42->addWidget(label_22, 8, 7, 1, 1);
 
@@ -4955,7 +4953,7 @@ public:
         sizePolicy10.setHeightForWidth(label_52->sizePolicy().hasHeightForWidth());
         label_52->setSizePolicy(sizePolicy10);
         label_52->setMinimumSize(QSize(200, 80));
-        label_52->setFont(font18);
+        label_52->setFont(font19);
         label_52->setStyleSheet(QStringLiteral("color : white;"));
 
         horizontalLayout_7->addWidget(label_52);
@@ -4963,7 +4961,7 @@ public:
         comboBoxDevice = new QComboBox(pageOC);
         comboBoxDevice->setObjectName(QStringLiteral("comboBoxDevice"));
         comboBoxDevice->setMinimumSize(QSize(200, 60));
-        comboBoxDevice->setFont(font10);
+        comboBoxDevice->setFont(font11);
         comboBoxDevice->setLayoutDirection(Qt::LeftToRight);
         comboBoxDevice->setStyleSheet(QLatin1String("QComboBox {\n"
 "	border: 2px solid rgb(51,51,51);\n"
@@ -5031,7 +5029,7 @@ public:
         temperatureLimit = new QLabel(pageOC);
         temperatureLimit->setObjectName(QStringLiteral("temperatureLimit"));
         temperatureLimit->setMinimumSize(QSize(200, 80));
-        temperatureLimit->setFont(font18);
+        temperatureLimit->setFont(font19);
         temperatureLimit->setStyleSheet(QStringLiteral("color : white;"));
 
         horizontalLayout_38->addWidget(temperatureLimit);
@@ -5097,7 +5095,7 @@ public:
         sizePolicy10.setHeightForWidth(label_50->sizePolicy().hasHeightForWidth());
         label_50->setSizePolicy(sizePolicy10);
         label_50->setMinimumSize(QSize(230, 80));
-        label_50->setFont(font13);
+        label_50->setFont(font14);
         label_50->setStyleSheet(QStringLiteral("color : white;"));
 
         horizontalLayout_39->addWidget(label_50);
@@ -5178,7 +5176,7 @@ public:
         sizePolicy10.setHeightForWidth(label_51->sizePolicy().hasHeightForWidth());
         label_51->setSizePolicy(sizePolicy10);
         label_51->setMinimumSize(QSize(230, 80));
-        label_51->setFont(font13);
+        label_51->setFont(font14);
         label_51->setStyleSheet(QStringLiteral("color : white;"));
 
         horizontalLayout_40->addWidget(label_51);
@@ -5256,7 +5254,7 @@ public:
         sizePolicy10.setHeightForWidth(label_49->sizePolicy().hasHeightForWidth());
         label_49->setSizePolicy(sizePolicy10);
         label_49->setMinimumSize(QSize(230, 80));
-        label_49->setFont(font13);
+        label_49->setFont(font14);
         label_49->setStyleSheet(QStringLiteral("color : white;"));
 
         horizontalLayout_41->addWidget(label_49);
@@ -5334,7 +5332,7 @@ public:
         sizePolicy10.setHeightForWidth(label_53->sizePolicy().hasHeightForWidth());
         label_53->setSizePolicy(sizePolicy10);
         label_53->setMinimumSize(QSize(230, 80));
-        label_53->setFont(font13);
+        label_53->setFont(font14);
         label_53->setStyleSheet(QStringLiteral("color : white;"));
 
         horizontalLayout_42->addWidget(label_53);
@@ -5410,7 +5408,7 @@ public:
         checkBoxAutoSpeedFan->setObjectName(QStringLiteral("checkBoxAutoSpeedFan"));
         checkBoxAutoSpeedFan->setEnabled(true);
         checkBoxAutoSpeedFan->setMinimumSize(QSize(0, 30));
-        checkBoxAutoSpeedFan->setFont(font10);
+        checkBoxAutoSpeedFan->setFont(font11);
         checkBoxAutoSpeedFan->setStyleSheet(QLatin1String("QCheckBox {\n"
 "    color:rgb(255,255,255);\n"
 "}\n"
@@ -5447,7 +5445,7 @@ public:
         checkBoxAllDevices = new QCheckBox(pageOC);
         checkBoxAllDevices->setObjectName(QStringLiteral("checkBoxAllDevices"));
         checkBoxAllDevices->setMinimumSize(QSize(0, 30));
-        checkBoxAllDevices->setFont(font10);
+        checkBoxAllDevices->setFont(font11);
         checkBoxAllDevices->setStyleSheet(QLatin1String("QCheckBox {\n"
 "    color:rgb(255,255,255);\n"
 "}\n"
@@ -5484,7 +5482,7 @@ public:
         checkBoxOCMinerStart = new QCheckBox(pageOC);
         checkBoxOCMinerStart->setObjectName(QStringLiteral("checkBoxOCMinerStart"));
         checkBoxOCMinerStart->setMinimumSize(QSize(0, 30));
-        checkBoxOCMinerStart->setFont(font10);
+        checkBoxOCMinerStart->setFont(font11);
         checkBoxOCMinerStart->setStyleSheet(QLatin1String("QCheckBox {\n"
 "    color:rgb(255,255,255);\n"
 "}\n"
@@ -5521,7 +5519,7 @@ public:
         checkBoxAutoOC = new QCheckBox(pageOC);
         checkBoxAutoOC->setObjectName(QStringLiteral("checkBoxAutoOC"));
         checkBoxAutoOC->setMinimumSize(QSize(0, 30));
-        checkBoxAutoOC->setFont(font10);
+        checkBoxAutoOC->setFont(font11);
         checkBoxAutoOC->setStyleSheet(QLatin1String("QCheckBox {\n"
 "    color:rgb(255,255,255);\n"
 "}\n"
@@ -5568,10 +5566,10 @@ public:
         pushButtonOCPageApply = new QPushButton(pageOC);
         pushButtonOCPageApply->setObjectName(QStringLiteral("pushButtonOCPageApply"));
         pushButtonOCPageApply->setMinimumSize(QSize(200, 140));
-        QFont font21;
-        font21.setFamily(QStringLiteral("Berlin Sans FB"));
-        font21.setPointSize(36);
-        pushButtonOCPageApply->setFont(font21);
+        QFont font22;
+        font22.setFamily(QStringLiteral("Berlin Sans FB"));
+        font22.setPointSize(36);
+        pushButtonOCPageApply->setFont(font22);
         pushButtonOCPageApply->setStyleSheet(QLatin1String("QPushButton {\n"
 "	border: none;\n"
 "	background-color: rgba(0,0,0,0);\n"
@@ -5699,7 +5697,7 @@ public:
         sizePolicy10.setHeightForWidth(label_72->sizePolicy().hasHeightForWidth());
         label_72->setSizePolicy(sizePolicy10);
         label_72->setMinimumSize(QSize(300, 65));
-        label_72->setFont(font18);
+        label_72->setFont(font19);
         label_72->setStyleSheet(QStringLiteral("color : white;"));
 
         verticalLayout_33->addWidget(label_72);
@@ -5709,7 +5707,7 @@ public:
         sizePolicy10.setHeightForWidth(label_73->sizePolicy().hasHeightForWidth());
         label_73->setSizePolicy(sizePolicy10);
         label_73->setMinimumSize(QSize(100, 60));
-        label_73->setFont(font8);
+        label_73->setFont(font9);
         label_73->setStyleSheet(QStringLiteral("color : white;"));
 
         verticalLayout_33->addWidget(label_73);
@@ -5771,7 +5769,7 @@ public:
         sizePolicy10.setHeightForWidth(label_74->sizePolicy().hasHeightForWidth());
         label_74->setSizePolicy(sizePolicy10);
         label_74->setMinimumSize(QSize(300, 65));
-        label_74->setFont(font18);
+        label_74->setFont(font19);
         label_74->setStyleSheet(QStringLiteral("color : white;"));
 
         verticalLayout_34->addWidget(label_74);
@@ -5781,7 +5779,7 @@ public:
         sizePolicy10.setHeightForWidth(label_75->sizePolicy().hasHeightForWidth());
         label_75->setSizePolicy(sizePolicy10);
         label_75->setMinimumSize(QSize(100, 60));
-        label_75->setFont(font8);
+        label_75->setFont(font9);
         label_75->setStyleSheet(QStringLiteral("color : white;"));
 
         verticalLayout_34->addWidget(label_75);
@@ -5843,7 +5841,7 @@ public:
         sizePolicy10.setHeightForWidth(label_76->sizePolicy().hasHeightForWidth());
         label_76->setSizePolicy(sizePolicy10);
         label_76->setMinimumSize(QSize(300, 65));
-        label_76->setFont(font18);
+        label_76->setFont(font19);
         label_76->setStyleSheet(QStringLiteral("color : white;"));
 
         verticalLayout_35->addWidget(label_76);
@@ -5853,7 +5851,7 @@ public:
         sizePolicy10.setHeightForWidth(label_77->sizePolicy().hasHeightForWidth());
         label_77->setSizePolicy(sizePolicy10);
         label_77->setMinimumSize(QSize(100, 60));
-        label_77->setFont(font8);
+        label_77->setFont(font9);
         label_77->setStyleSheet(QStringLiteral("color : white;"));
 
         verticalLayout_35->addWidget(label_77);
@@ -5915,7 +5913,7 @@ public:
         sizePolicy10.setHeightForWidth(label_78->sizePolicy().hasHeightForWidth());
         label_78->setSizePolicy(sizePolicy10);
         label_78->setMinimumSize(QSize(300, 65));
-        label_78->setFont(font18);
+        label_78->setFont(font19);
         label_78->setStyleSheet(QStringLiteral("color : white;"));
 
         verticalLayout_36->addWidget(label_78);
@@ -5925,7 +5923,7 @@ public:
         sizePolicy10.setHeightForWidth(label_79->sizePolicy().hasHeightForWidth());
         label_79->setSizePolicy(sizePolicy10);
         label_79->setMinimumSize(QSize(100, 60));
-        label_79->setFont(font8);
+        label_79->setFont(font9);
         label_79->setStyleSheet(QStringLiteral("color : white;"));
 
         verticalLayout_36->addWidget(label_79);
@@ -6095,7 +6093,7 @@ public:
 
         checkBoxHelpPage = new QCheckBox(pageHelp);
         checkBoxHelpPage->setObjectName(QStringLiteral("checkBoxHelpPage"));
-        checkBoxHelpPage->setFont(font10);
+        checkBoxHelpPage->setFont(font11);
         checkBoxHelpPage->setStyleSheet(QLatin1String("QCheckBox {\n"
 "    color:rgb(255,255,255);\n"
 "}\n"
@@ -6226,12 +6224,13 @@ public:
         groupBox_9->setTitle(QString());
         label_2->setText(QApplication::translate("MainWindow", "Estimated\n"
 "Income", Q_NULLPTR));
-        labelHashExpectedIncome->setText(QApplication::translate("MainWindow", "$0.00", Q_NULLPTR));
-        labelHashRate->setText(QApplication::translate("MainWindow", "0.00", Q_NULLPTR));
+        labelHashExpectedIncome->setText(QApplication::translate("MainWindow", "N/A", Q_NULLPTR));
+        labelHashRate->setText(QApplication::translate("MainWindow", "N/A", Q_NULLPTR));
         label->setText(QApplication::translate("MainWindow", "Current\n"
 "Hashrate", Q_NULLPTR));
         labelEffectiveness->setText(QApplication::translate("MainWindow", "0%", Q_NULLPTR));
-        label_38->setText(QApplication::translate("MainWindow", "Effect", Q_NULLPTR));
+        label_38->setText(QApplication::translate("MainWindow", "Effective\n"
+"Rate", Q_NULLPTR));
         groupBoxDiskInfo->setTitle(QApplication::translate("MainWindow", "Disks", Q_NULLPTR));
         groupBox_4->setTitle(QString());
         labelWallet->setText(QApplication::translate("MainWindow", "Wallet", Q_NULLPTR));

@@ -428,10 +428,8 @@ MainWindow::MainWindow(bool testing, QWidget *parent) :
     setPushButtonColor(ui->pushButtonMonitorPage_Overview, true);
     ui->pushButtonSearchHistory->click();
 
+    changeLabelColor(ui->labelHashRate, Qt::white);
 
-    //test
-    Wincmd wincmd;
-    wincmd.SeeSetting();
 }
 
 MainWindow::~MainWindow()
@@ -884,9 +882,9 @@ void MainWindow::onMinerStoped()
     _isStartStoping = false;
 
     this->setWindowTitle(QString("Miner's Coffee"));
-    changeLabelColor(ui->labelHashRate, Qt::gray);
+    changeLabelColor(ui->labelHashRate, Qt::white);
     ui->labelHashRate->setText("0.00");
-    changeLabelColor(ui->labelEffectiveness, Qt::gray);
+    changeLabelColor(ui->labelEffectiveness, Qt::white);
     ui->labelEffectiveness->setText("0%");
 
     _currentHashRate = 0;
@@ -896,6 +894,11 @@ void MainWindow::onMinerStoped()
 
 void MainWindow::onHashrate(QString &hashrate)
 {
+    if(hashrate == "nan"){
+        changeLabelColor(ui->labelHashRate, Qt::red);
+        ui->labelHashRate->setText("N/A");
+        return;
+    }
 
     QString hrValue = hashrate.mid(0, hashrate.indexOf("Mh/s"));
 
@@ -908,7 +911,7 @@ void MainWindow::onHashrate(QString &hashrate)
 
     _currentHashRate = hrValue.toDouble();
 
-    ui->labelHashRate->setText(hrValue);
+    ui->labelHashRate->setText(hrValue+" Mh/h");
 
     //set hash rate
     if(_miningInfo != nullptr){
@@ -1229,8 +1232,14 @@ void MainWindow::onHrChartTimer()
     //draw the dynamic graph
     _series->append(QDateTime::currentDateTime().toMSecsSinceEpoch(), _currentHashRate);
 
-    // -0.5 is the default minimun value in the y-axis
-    _seriesBottom->append(QDateTime::currentDateTime().toMSecsSinceEpoch(), -0.5);
+
+    if(_currentHashRate == 0){
+        // -0.5 is the default minimun value in the y-axis
+        _seriesBottom->append(QDateTime::currentDateTime().toMSecsSinceEpoch(), -0.5);
+    }
+    else{
+        _seriesBottom->append(QDateTime::currentDateTime().toMSecsSinceEpoch(), 0);
+    }
 
     //diaplay the proper range of the x-axis;
     //make sure the graph stay at 9 sec
@@ -1308,6 +1317,7 @@ void MainWindow::refreshDeviceInfo()
 
     // refresh estimated output
     QString estimateOutput = QString::number((double)_est_output_usd,'f', 2);
+
     if(estimateOutput == "nan"){
         ui->labelHashExpectedIncome->setText("N/A");
     }
@@ -1886,6 +1896,17 @@ void MainWindow::EstimateOutput()
     {
         total_hashrate += gpuMiningInfo.hashrate;
     }
+
+    _total_hash_rate = total_hashrate;
+    QString totalhashRateString = QString::number((double) total_hashrate/(1024*1024));
+    if(!_isMinerRunning){
+        changeLabelColor(ui->labelHashRate, Qt::white);
+        ui->labelHashRate->setText("N/A");
+    }
+    else{
+        _process->emitHashRate(totalhashRateString);
+    }
+
     _est_output_coin = total_hashrate / _poolInfo->incomeHashrate * _poolInfo->meanIncome24h;
     _est_output_cny = _est_output_coin * _poolInfo->cny;
     _est_output_usd = _est_output_coin * _poolInfo->usd;
