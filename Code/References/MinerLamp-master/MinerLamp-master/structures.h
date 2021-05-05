@@ -84,12 +84,4 @@ public:
     float cny;
 };
 
-struct nvCard
-{
-    int powerOffset;
-    int memOffset;
-    int gpuOffset;
-    int fanSpeed;
-};
-
 #endif // STRUCTURES_H

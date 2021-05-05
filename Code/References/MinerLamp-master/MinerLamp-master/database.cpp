@@ -187,23 +187,7 @@ void Database::run()
 
 
 void Database::Get_HistoryNew(const char* date1,const char* date2,int num){
-    static QStringList gpuInfoLegend{
-        // avg(TMP), avg(gpu_clock) , avg(mem_clock) , avg(FanSpeed) , avg(PowerDraw)
-        "tmp", "gpuclock", "memclock", "fanspeed", "powerdraw"
-    };
-
-    static QStringList overAllMiningInfoLegend{
-        // avg(accepted_shares), avg(invalid_shares), avg(rejected_shares), avg(latency) "
-        "accepted_shares", "invalid_shares", "rejected_shares", "latency", "none"
-    };
-
-    static QStringList gpuMiningInfoLegend{
-        // avg(accepted_shares), avg(hashrate), avg(invalid_shares), avg(rejected_shares) "
-        "accepted_shares", "hashrate", "invalid_shares", "rejected_rate", "none"
-    };
-
     QString retrieveQueryline;
-    QStringList * legendListprt;
     int column_size;
     int line_num;
     int plot_start_index;
@@ -220,7 +204,6 @@ void Database::Get_HistoryNew(const char* date1,const char* date2,int num){
                                    +QString(date2)+"' and Date >='"
                                    +QString(date1)+"'"
                     );
-        legendListprt = &overAllMiningInfoLegend;
     }
     // show gpu mining information
     else if(num<0){
@@ -236,7 +219,6 @@ void Database::Get_HistoryNew(const char* date1,const char* date2,int num){
                                    +QString(date1)+"' and device_id = "
                                    +QString::number(num)
                     );
-        legendListprt = &gpuMiningInfoLegend;
     }
     // show gpu information
     else{
@@ -251,8 +233,9 @@ void Database::Get_HistoryNew(const char* date1,const char* date2,int num){
                                    +QString(date1)+"' and gpu_id="
                                    +QString::number(num)
                     );
-        legendListprt = &gpuInfoLegend;
     }
+
+
 
     QString retrieveQuery(retrieveQueryline);
     QSqlQuery sql_query(_db);
@@ -281,15 +264,14 @@ void Database::Get_HistoryNew(const char* date1,const char* date2,int num){
     // there are 5 line in the series of the graph
     for(int j =0; j<5; j++){
         _seriesPtr->at(j)->clear();
-        _seriesPtr->at(j)->setName(legendListprt->at(j));
     }
-    _chartHistory->legend()->update();
 
 
     // append points
     for(int k=0; k<gpuInfoListSize/column_size; k++){
         // gpu_name 1, Date1 2, avg(TMP) 3, avg(gpu_clock) 4, avg(mem_clock) 5, avg(FanSpeed) 6, avg(PowerDraw) 7
         QDateTime x_coordinate = QDateTime::fromString(searchResultBuffer->at(k*column_size+date_index)+" 00:00:00","yyyy/MM/dd HH:mm:ss");
+        //qDebug() << "date: " << x_coordinate.toString();
         for(int j =0; j<line_num; j++){
             double value = searchResultBuffer->at(k*column_size+plot_start_index+j).toDouble();
             if(value > maxValue){
@@ -299,10 +281,13 @@ void Database::Get_HistoryNew(const char* date1,const char* date2,int num){
                 minValue = value;
             }
             _seriesPtr->at(j)->append(x_coordinate.toMSecsSinceEpoch(), value);
+            //qDebug() << searchResultBuffer->at(k*column_size+plot_start_index+j) << "with i:" << k << " j: " << j;
         }
     }
 
+    //qDebug() << "end graphing";
     _chartHistory->axisY()->setRange(minValue-5, maxValue+5);
+    //qDebug() << "complete";
 
     QDateTime x_startTime = QDateTime::fromString(searchResultBuffer->at(date_index)+" 00:00:00","yyyy/MM/dd HH:mm:ss");
     QDateTime x_endTime = QDateTime::fromString(searchResultBuffer->at(gpuInfoListSize-column_size+date_index)+" 00:00:00","yyyy/MM/dd HH:mm:ss");
@@ -312,6 +297,8 @@ void Database::Get_HistoryNew(const char* date1,const char* date2,int num){
         x_startTime = x_endTime;
         x_endTime = temp;
     }
+
+    //qDebug() << "start time: " << searchResultBuffer->at(date_index) << " -> " <<searchResultBuffer->at(gpuInfoListSize-column_size+date_index);
 
     _chartHistory->axisX()->setRange(x_startTime.addDays(-1), x_endTime.addDays(1));
 

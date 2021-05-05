@@ -17,7 +17,7 @@ public:
     std::string UseCmd(const char* cmd);
     void getDiskStorage(const char* N);
 //查看当前设置
-    vector<QString> SeeSetting();
+    QString SeeSetting();
     //wmic pagefile list /format:list
 
 //取消自动管理分页文件大小

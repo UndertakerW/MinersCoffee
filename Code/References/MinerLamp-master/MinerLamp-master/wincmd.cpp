@@ -24,33 +24,15 @@ std::string Wincmd::UseCmd(const char* cmd) {
 }
 
 //查看当前设置
-vector<QString> Wincmd::SeeSetting(){
-    vector<QString> result;
+QString Wincmd::SeeSetting(){
     QString cmd="wmic pagefile list /format:list";
-    QProcess process(0);
-    process.start("cmd", QStringList()<<"/c"<<cmd);
-    process.waitForStarted();
-    process.waitForFinished();
-    QString strTemp=QString::fromLocal8Bit(process.readAllStandardOutput());
-    QStringList qlist =strTemp.split("=");
+    QProcess p(0);
+    p.start("cmd", QStringList()<<"/c"<<cmd);
+    p.waitForStarted();
+    p.waitForFinished();
+    QString strTemp=QString::fromLocal8Bit(p.readAllStandardOutput());
     //qDebug()<<QString::fromLocal8Bit(p.readAllStandardError());
-    while (!qlist.empty()) {
-        QString a1=qlist.front();
-        qlist.pop_front();
-        QStringList l2=a1.split("\n");
-        while(!l2.empty()){
-            QString ElementResult=l2.front().trimmed();
-
-            if(!result.empty()&&result.back().toStdString()=="Status"&&ElementResult.toStdString()=="TempPageFile"){
-                result.push_back(QString("None"));
-            }
-            if(ElementResult.toStdString()!=""){
-                result.push_back(ElementResult);
-            }
-            l2.pop_front();
-        }
-    }
-    return result;
+    return strTemp;
 }
 
 
