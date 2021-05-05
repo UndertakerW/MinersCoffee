@@ -13,4 +13,6 @@ const QString api_nbminer = "http://localhost:22333/api/v1/status";
 
 const QString sparkpool_api_str = "https://www.sparkpool.com/v1/pool/stats";
 
+const QString mining_advise = "data/advise.txt";
+
 #endif // CONSTANTS_H

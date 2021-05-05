@@ -24,6 +24,7 @@ public:
              QCheckBox* _checkBoxAutoSpeedFan,
              QSlider* _horizontalSliderFanSpeed
              );
+    ~NvocPage();
 
     Database * _db;
 
@@ -39,6 +40,8 @@ public:
 
     unsigned int _gpuIndex;
 
+    QStringList NvocPage::getAdvice(const char* type);
+
 private:
 
     QSpinBox* _spinBoxTemperature;
@@ -48,6 +51,7 @@ private:
     QComboBox* _comboBoxDevice;
     QCheckBox* _checkBoxAutoSpeedFan;
     QSlider* _horizontalSliderFanSpeed;
+    QList<QStringList*> * _advise;
 
 };
 

@@ -2502,7 +2502,7 @@ QGroupBox{
                      <widget class="QGroupBox" name="groupBox_9">
                       <property name="minimumSize">
                        <size>
-                        <width>270</width>
+                        <width>285</width>
                         <height>0</height>
                        </size>
                       </property>
@@ -2635,7 +2635,7 @@ Income</string>
                                  <property name="font">
                                   <font>
                                    <family>Berlin Sans FB</family>
-                                   <pointsize>28</pointsize>
+                                   <pointsize>18</pointsize>
                                   </font>
                                  </property>
                                  <property name="styleSheet">
@@ -2696,11 +2696,11 @@ Income</string>
                                  <property name="font">
                                   <font>
                                    <family>Berlin Sans FB</family>
-                                   <pointsize>28</pointsize>
+                                   <pointsize>18</pointsize>
                                   </font>
                                  </property>
                                  <property name="styleSheet">
-                                  <string notr="true">color : white;</string>
+                                  <string notr="true"/>
                                  </property>
                                  <property name="text">
                                   <string>0.00</string>

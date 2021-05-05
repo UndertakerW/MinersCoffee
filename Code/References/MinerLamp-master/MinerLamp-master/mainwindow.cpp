@@ -2348,7 +2348,6 @@ void MainWindow::on_spinBoxTemperature_valueChanged(int value){
 
 
 void MainWindow::on_checkBoxAutoOC_clicked(bool clicked){
-    qDebug() << "test auto oc cliked: " << clicked << endl;
     if(clicked){
         int gpu = ui->comboBoxDevice->currentIndex();
         ui->spinBoxTemperature->setValue(80);
@@ -2375,8 +2374,7 @@ void MainWindow::on_checkBoxAutoOC_clicked(bool clicked){
                 const char *p;
                 p=n.c_str();
                 if(_nvocPage->_db != nullptr){
-                    qDebug() << "test 2";
-                    l=_nvocPage->_db->getAdvice(p);
+                    l=_nvocPage->getAdvice(p);
                 }
                 qDebug("query name %s",n.c_str());
                 //db.FreeConnect();
@@ -2413,8 +2411,7 @@ void MainWindow::on_checkBoxAutoOC_clicked(bool clicked){
             const char *p;
             p=n.c_str();
             if(_nvocPage->_db != nullptr){
-                qDebug() << "test 2";
-                l=_nvocPage->_db->getAdvice(p);
+                l=_nvocPage->getAdvice(p);
             }
             qDebug("query name %s",n.c_str());
             //db.FreeConnect();

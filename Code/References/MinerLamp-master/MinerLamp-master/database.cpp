@@ -30,7 +30,6 @@ Database::Database(){
 
     _db = QSqlDatabase::addDatabase("QSQLITE");
     _db.setDatabaseName("./minerDatabase/minerDatabase.db");
-    //qDebug() << _db.tables();
 
     if(!_db.open()){
         QMessageBox::critical(0, QObject::tr("Database error"),
@@ -46,28 +45,23 @@ Database::Database(){
 
 
 QStringList Database::getAdvice(const char* type){
-    QString query("select gpu_clock,mem_clock,power,prediction from advise where gpu_type='"
-                  +QString(type)+"'");
+    QString deviceName(type);
 
-    qDebug() << "get advice: " << query;
+//    qDebug() << "get advice: " << type;
     QStringList result;
+//    qDebug() << "test 3 " << _advise->isEmpty();
+//    qDebug() << "test 3 " << _advise->size();
 
-    QString retrieveQuery(query);
-    QSqlQuery sql_query(_db);
-    sql_query.exec(retrieveQuery);
-    QStringList retrieveHistory;
-
-    int newCnt = 0;
-
-    // size row size = 4
-    int row_size = 4;
-    while(sql_query.next()){
-        newCnt++;
-        for(int i=0;i<row_size;i++){
-            result.append(sql_query.value(i).toString());
-        }
-    }
-
+//    for(int i=0;i<_advise->size();i++){
+//        qDebug() << "test 4";
+//        if(_advise->at(i)->at(0) == type){
+//            for(int j=1;j<_advise->at(i)->size();j++){
+//                result.push_back(_advise->at(i)->at(j));
+//                qDebug() << result.at(j-1);
+//            }
+//            break;
+//        }
+//    }
 
     return result;
 }
@@ -324,5 +318,4 @@ Database::~Database(){
 
 //    delete some ptrs
     delete _gpusInfoBuffer;
-
 }

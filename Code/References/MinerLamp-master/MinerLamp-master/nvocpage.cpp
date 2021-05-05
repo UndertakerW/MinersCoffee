@@ -1,4 +1,6 @@
 #include "nvocpage.h"
+#include "helper.h"
+#include "constants.h"
 
 NvocPage::NvocPage(nvidiaAPI* nvapi, QSettings* settings,
                    QSpinBox* spinBoxTemperature,
@@ -38,6 +40,17 @@ NvocPage::NvocPage(nvidiaAPI* nvapi, QSettings* settings,
 //        updateSliders(0);
     }
 
+    _advise = new QList<QStringList*>();
+    Helper helper;
+    QString advisePath = qApp->applicationDirPath() + "/" + mining_advise;
+    QList<QString> advises = helper.GetStringData(advisePath);
+
+    for(int i=0;i<advises.size();i++){
+        QStringList row = advises.at(i).split(" ");
+        QStringList * advise = new QStringList(row);
+        _advise->push_back(advise);
+    }
+
     _settings->beginGroup("nvoc");
 
     // initialized the value of the window
@@ -55,5 +68,31 @@ NvocPage::NvocPage(nvidiaAPI* nvapi, QSettings* settings,
     _settings->endGroup();
 }
 
+QStringList NvocPage::getAdvice(const char* type){
+    QString deviceName(type);
+
+    QStringList result;
+
+    for(int i=0;i<_advise->size();i++){
+        if(_advise->at(i)->at(0) == type){
+            for(int j=1;j<_advise->at(i)->size();j++){
+                result.push_back(_advise->at(i)->at(j));
+            }
+            break;
+        }
+    }
+
+    return result;
+}
 
 
+NvocPage::~NvocPage(){
+
+    for(int i=_advise->size()-1;i>=0;i--){
+        QStringList * tempPtr = _advise->at(i);
+        _advise->pop_back();
+        delete tempPtr;
+    }
+
+    delete _advise;
+}
