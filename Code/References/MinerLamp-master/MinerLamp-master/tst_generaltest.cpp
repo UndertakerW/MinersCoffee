@@ -19,6 +19,53 @@ void GeneralTest::cleanupTestCase()
 {
     delete w;
 }
+void GeneralTest::test_NvidiaapiSignleunite(){
+    nvidiaAPI *n=new nvidiaAPI();
+    nvidiaNVML *nvm=new nvidiaNVML();
+    int gpucount = n->getGPUCount();
+    int nvm_gpucount=nvm->getGPUCount();
+    QCOMPARE(gpucount,nvm_gpucount);
+
+    QFETCH(int, input_gpu);
+    QFETCH(int, input_gpuoffset);
+    QFETCH(int, input_memoffset);
+    QFETCH(int, input_fanspeed);
+    int gpu_offset,nvmgpu_offset;
+    n->setGPUOffset(input_gpu,input_gpuoffset);
+    gpu_offset=n->getGPUOffset(input_gpu);
+    nvmgpu_offset=nvm->getGPUClock(input_gpu);
+    QCOMPARE(gpu_offset,input_gpuoffset);
+    QCOMPARE(nvmgpu_offset,gpu_offset);
+
+    int mem_offset,nvmmem_offset;
+    n->setMemClockOffset(input_gpu,input_memoffset);
+    mem_offset=n->getMemOffset(input_gpu);
+    nvmgpu_offset=nvm->getMemClock(input_gpu);
+    QCOMPARE(mem_offset,input_memoffset);
+    QCOMPARE(nvmmem_offset,mem_offset);
+
+    int fanspeed,nvm_fanspeed;
+    n->setFanSpeed(input_gpu,input_fanspeed);
+    fanspeed=n->getFanSpeed(input_gpu);
+    nvm_fanspeed=nvm->getFanSpeed(input_gpu);
+    QCOMPARE(fanspeed,input_fanspeed);
+    QCOMPARE(nvm_fanspeed,fanspeed);
+}
+
+
+void GeneralTest::test_NvidiaapiSignleunite_data(){
+    QTest::addColumn<int>("input_gpu");
+    QTest::addColumn<int>("input_gpuoffset");
+    QTest::addColumn<int>("input_memoffset");
+    QTest::addColumn<int>("input_fanspeed");
+    QTest::newRow("1")  <<  0<<20<<20<<10;
+    QTest::newRow("2")  << 0<<20<<20<<10;
+    QTest::newRow("3")  << 0<<100<<100<<50;
+    QTest::newRow("4")  << 0<<-20<<-10<<0;
+    QTest::newRow("5")  << 0<<10<<10<<0;
+}
+
+
 
 void GeneralTest::test_ui_MiningArgsLineEdit()
 {

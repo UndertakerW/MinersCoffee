@@ -37,6 +37,10 @@ private:
 private slots:
     void initTestCase();
     void cleanupTestCase();
+    void test_NvidiaapiSignleunite();
+    void test_NvidiaapiSignleunite_data();
+    //void test_NvidiaapiComplex();
+    //void test_NvidiaapiComplex_data();
     void test_ParseJsonForMining();
     void test_ParseJsonForMining_data();
     void test_ParseJsonForPool();
