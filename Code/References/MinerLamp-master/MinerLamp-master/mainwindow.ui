@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1180</width>
+    <width>1280</width>
     <height>780</height>
    </rect>
   </property>
@@ -910,7 +910,7 @@ QPushButton:pressed {
                <string notr="true">background:rgb(91,90,90);</string>
               </property>
               <property name="currentIndex">
-               <number>0</number>
+               <number>2</number>
               </property>
               <widget class="QWidget" name="pageOverview">
                <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -932,7 +932,7 @@ QPushButton:pressed {
                       <property name="font">
                        <font>
                         <family>Berlin Sans FB</family>
-                        <pointsize>10</pointsize>
+                        <pointsize>14</pointsize>
                        </font>
                       </property>
                       <property name="styleSheet">
@@ -1456,7 +1456,7 @@ QGroupBox{
                       <property name="font">
                        <font>
                         <family>Berlin Sans FB</family>
-                        <pointsize>10</pointsize>
+                        <pointsize>14</pointsize>
                        </font>
                       </property>
                       <property name="styleSheet">
@@ -2455,7 +2455,7 @@ Speed</string>
                    <property name="font">
                     <font>
                      <family>Berlin Sans FB</family>
-                     <pointsize>10</pointsize>
+                     <pointsize>14</pointsize>
                      <weight>50</weight>
                      <bold>false</bold>
                     </font>
@@ -3037,7 +3037,7 @@ border-radius : 0;</string>
                             <x>0</x>
                             <y>0</y>
                             <width>256</width>
-                            <height>269</height>
+                            <height>270</height>
                            </rect>
                           </property>
                           <layout class="QGridLayout" name="gridLayout_62">
@@ -5023,14 +5023,14 @@ border-radius : 0;</string>
                                   <property name="font">
                                    <font>
                                     <family>Berlin Sans FB</family>
-                                    <pointsize>28</pointsize>
+                                    <pointsize>18</pointsize>
                                    </font>
                                   </property>
                                   <property name="styleSheet">
                                    <string notr="true">color : white;</string>
                                   </property>
                                   <property name="text">
-                                   <string>System Info</string>
+                                   <string>Virtual Memory Info</string>
                                   </property>
                                  </widget>
                                 </item>
@@ -5501,7 +5501,7 @@ border-radius : 0;</string>
                            <property name="font">
                             <font>
                              <family>Berlin Sans FB</family>
-                             <pointsize>28</pointsize>
+                             <pointsize>18</pointsize>
                             </font>
                            </property>
                            <property name="styleSheet">
@@ -5541,7 +5541,7 @@ QPushButton:pressed {
                              <property name="font">
                               <font>
                                <family>Berlin Sans FB</family>
-                               <pointsize>20</pointsize>
+                               <pointsize>18</pointsize>
                               </font>
                              </property>
                              <property name="text">
@@ -5560,7 +5560,7 @@ QPushButton:pressed {
                              <property name="font">
                               <font>
                                <family>Berlin Sans FB</family>
-                               <pointsize>20</pointsize>
+                               <pointsize>18</pointsize>
                               </font>
                              </property>
                              <property name="text">
@@ -5579,7 +5579,7 @@ QPushButton:pressed {
                              <property name="font">
                               <font>
                                <family>Berlin Sans FB</family>
-                               <pointsize>20</pointsize>
+                               <pointsize>18</pointsize>
                               </font>
                              </property>
                              <property name="text">
@@ -5882,7 +5882,7 @@ QComboBox::drop-down {
                            <property name="font">
                             <font>
                              <family>Berlin Sans FB</family>
-                             <pointsize>20</pointsize>
+                             <pointsize>18</pointsize>
                             </font>
                            </property>
                            <property name="styleSheet">
@@ -6118,7 +6118,7 @@ border-radius : 0;</string>
                                     <property name="font">
                                      <font>
                                       <family>Berlin Sans FB</family>
-                                      <pointsize>20</pointsize>
+                                      <pointsize>18</pointsize>
                                      </font>
                                     </property>
                                     <property name="styleSheet">
@@ -6204,14 +6204,14 @@ QSpinBox::down-button:hover {
                                     <property name="font">
                                      <font>
                                       <family>Berlin Sans FB</family>
-                                      <pointsize>20</pointsize>
+                                      <pointsize>18</pointsize>
                                      </font>
                                     </property>
                                     <property name="styleSheet">
                                      <string notr="true">color : white;</string>
                                     </property>
                                     <property name="text">
-                                     <string>from</string>
+                                     <string>Start</string>
                                     </property>
                                    </widget>
                                   </item>
@@ -6300,14 +6300,14 @@ QDateTimeEdit::down-button:hover {
                                     <property name="font">
                                      <font>
                                       <family>Berlin Sans FB</family>
-                                      <pointsize>20</pointsize>
+                                      <pointsize>18</pointsize>
                                      </font>
                                     </property>
                                     <property name="styleSheet">
                                      <string notr="true">color : white;</string>
                                     </property>
                                     <property name="text">
-                                     <string>to</string>
+                                     <string>End</string>
                                     </property>
                                    </widget>
                                   </item>
@@ -6430,7 +6430,7 @@ border-radius : 0;</string>
                                          <property name="font">
                                           <font>
                                            <family>Berlin Sans FB</family>
-                                           <pointsize>26</pointsize>
+                                           <pointsize>18</pointsize>
                                           </font>
                                          </property>
                                          <property name="styleSheet">
@@ -6495,7 +6495,7 @@ QPushButton:pressed {
                   <property name="font">
                    <font>
                     <family>Berlin Sans FB</family>
-                    <pointsize>20</pointsize>
+                    <pointsize>14</pointsize>
                    </font>
                   </property>
                   <property name="styleSheet">
@@ -6785,8 +6785,8 @@ border-radius : 0;</string>
                              <rect>
                               <x>0</x>
                               <y>0</y>
-                              <width>200</width>
-                              <height>229</height>
+                              <width>1153</width>
+                              <height>246</height>
                              </rect>
                             </property>
                             <property name="sizePolicy">
