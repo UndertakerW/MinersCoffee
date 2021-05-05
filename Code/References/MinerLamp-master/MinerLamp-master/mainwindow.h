@@ -17,7 +17,7 @@
 #include <QtSql/QSqlDatabase>
 #include <QDebug>
 #include <QMessageBox>
-
+#include <QMainWindow>
 #include "minerprocess.h"
 #include "highlighter.h"
 #include "nanopoolapi.h"
@@ -29,6 +29,8 @@
 #include "structures.h"
 #include "database.h"
 #include "helper.h"
+#include "helppage.h"
+#include "nvocpage.h"
 
 QT_CHARTS_USE_NAMESPACE
 
@@ -70,6 +72,7 @@ public:
 
     bool getMinerStatus();
     void SetUIRefresh(bool enabled);
+    bool eventFilter(QObject *obj, QEvent *event);
 
 private:
     QList<QWidget *> * _gpuInfoList;
@@ -95,12 +98,14 @@ private:
     void initializeConstants();
     void setLCDNumber(QWidget * widget, unsigned int value);
     void plotGrapgh(QString dateStart, QString dateEnd, int deviceNum);
+    void isAllPromptVisable(bool status);
 
     nvidiaAPI* _nvapi;
     void applyOC();
     nvOCDialog* _dlg;
     void setComboIndex(QComboBox * comboBox, QString key);
     bool _searchHistoryMiningOverall;
+    void changeLabelColor(QLabel * label, QColor color);
 
 
 
@@ -115,16 +120,23 @@ private slots:
     void on_spinBoxDelay0MHs_valueChanged(int arg1);
     void onReadyToStartMiner();
     void on_checkBoxAutoShowDeviceInfo_clicked(bool checked);
-    void on_checkBoxShowHistoryInfo_clicked(bool checked);
     void on_pushButtonSearchHistory_clicked();
     void on_dateTimeEditHistoryStartTime_dateTimeChanged(const QDateTime &datetime);
     void on_dateTimeEditHistoryEndTime_dateTimeChanged(const QDateTime &datetime);
     void on_spinBoxHistoryDeviceNum_valueChanged(int arg1);
     void on_comboBoxHistoryDataOption_currentIndexChanged(int index);
     void on_checkBoxHistoryMiningInfoOverall_clicked(bool clicked);
-    void on_checkBoxShowSettings_clicked(bool clickes);
+    void on_checkBoxShowSettings_clicked(bool clicked);
     void on_pushButtonCancelAutoPage_clicked();
     void on_pushButtonChangePageSize_clicked();
+    void on_pushButtonMonitorPage_Overview_clicked();
+    void on_pushButtonMonitorPage_Mining_clicked();
+    void on_pushButtonMonitorPage_System_clicked();
+    void on_pushButtonMonitorPage_DevicesInfo_clicked();
+    void on_pushButtonMonitorPage_clicked();
+    void on_pushButtonOCPage_clicked();
+    void on_pushButtonHelpPage_clicked();
+    void on_checkBoxHelpPage_clicked(bool clicked);
 
     void refreshDeviceInfo();
     void onGpusInfoRecieved(QList<GPUInfo> gpusinfo);
@@ -202,13 +214,35 @@ private slots:
     // pie slice
     void onMouseHoverSlice(QPieSlice * slice, bool status);
 
+
+// migrate from nvocDialog
+private slots:
+    void on_horizontalSliderPowerPercent_valueChanged(int value);
+
+    void on_horizontalSliderGpuOffset_valueChanged(int value);
+
+    void on_horizontalSliderMemOffset_valueChanged(int value);
+
+    void on_horizontalSliderFanSpeed_valueChanged(int value);
+
+    void on_comboBoxDevice_activated(int index);
+
+    void on_pushButtonOCPageApply_clicked();
+
+    void on_checkBoxAutoSpeedFan_clicked(bool checked);
+
+    void on_spinBoxTemperature_valueChanged(int value);
+
+    void on_checkBoxAutoOC_clicked(bool checked);
+
+//    void on_pushButtonToggle_pressed();
+
 public:
     QMap<QString, Coin*> map_coins;
     QMap<QString, Core*> map_cores;
     QMap<QString, Pool*> map_pools;
 
 private:
-
 
     void AddCoinToMap(Coin* coin);
     void AddCoreToMap(Core* core);
@@ -234,6 +268,7 @@ private:
     void onReceivedPoolInfo(QList<PoolInfo> poolInfos);
 
     void EstimateOutput();
+    void onRecievedMiningInfo(MiningInfo mingInfo);
 
     const QColor getTempColor(unsigned int temp);
 
@@ -250,6 +285,8 @@ private:
     MiningInfo* _miningInfo;
     PoolInfo* _poolInfo;
     Database * _databaseProcess = nullptr;
+    HelpPage* _helpPage;
+    NvocPage* _nvocPage;
 
     bool _isMinerRunning;
     bool _isStartStoping;
@@ -270,6 +307,8 @@ private:
     // hashrate displaying
     QChart* _chart;
     QLineSeries* _series;
+    QLineSeries* _seriesBottom;
+    QAreaSeries* _areaseriesHash;
     QDateTimeAxis *_axisX;
 
     // temperature displaying
@@ -286,11 +325,10 @@ private:
     QList<QLineSeries *> _seriesHistory;
     QDateTimeAxis *_axisXHistory;
 
-    // effectiveness pie chart
-    QChart* _effPieChart;
-    QPieSeries * _effPieSeries;
-    QList<QPieSlice *> * _effPieSlices;
-    QLabel * _effCenterLabel;
+    // temp ratio
+    QChart* _tempPieChart;
+    QPieSeries * _tempPieSeries;
+    QList<QPieSlice *> * _tempPieSlices;
 
     QTimer _hrChartTimer;
     QTimer _tempChartTimer;
@@ -317,9 +355,15 @@ private:
     Coin* _current_coin = nullptr;
     Pool* _current_pool = nullptr;
 
+    void setPushButtonColor(QPushButton* pushButton, bool pressed);
+
     float _est_output_usd;
     float _est_output_cny;
     float _est_output_coin;
+
+    // migrate method from nvocDialog
+    void updateSliders(unsigned int gpu);
+    void saveConfig();
 
     friend class GeneralTest;
 };
