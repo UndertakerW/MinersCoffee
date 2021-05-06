@@ -1642,7 +1642,7 @@ public:
         horizontalLayout_6->setSpacing(0);
         horizontalLayout_6->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
-        horizontalLayout_6->setContentsMargins(0, 30, 0, 10);
+        horizontalLayout_6->setContentsMargins(0, 30, 9, 10);
         graphicsView = new hashrateCharView(groupBox);
         graphicsView->setObjectName(QStringLiteral("graphicsView"));
         graphicsView->setMinimumSize(QSize(200, 200));
