@@ -249,7 +249,7 @@ public:
     QSpacerItem *horizontalSpacer_7;
     QGroupBox *groupBox_14;
     QHBoxLayout *horizontalLayout_27;
-    QPlainTextEdit *plainTextEditSettingsSystemInfo_2;
+    QPlainTextEdit *plainTextEditSettingsSystemInfoTitle;
     QPlainTextEdit *plainTextEditSettingsSystemInfo;
     QSpacerItem *horizontalSpacer_12;
     QGroupBox *groupBox_25;
@@ -2804,10 +2804,10 @@ public:
         horizontalLayout_27->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_27->setObjectName(QStringLiteral("horizontalLayout_27"));
         horizontalLayout_27->setContentsMargins(0, 0, 0, 0);
-        plainTextEditSettingsSystemInfo_2 = new QPlainTextEdit(groupBox_14);
-        plainTextEditSettingsSystemInfo_2->setObjectName(QStringLiteral("plainTextEditSettingsSystemInfo_2"));
-        plainTextEditSettingsSystemInfo_2->setFont(font2);
-        plainTextEditSettingsSystemInfo_2->setStyleSheet(QLatin1String("QPlainTextEdit {background-color: rgb(90, 91, 91);border-width: 0;\n"
+        plainTextEditSettingsSystemInfoTitle = new QPlainTextEdit(groupBox_14);
+        plainTextEditSettingsSystemInfoTitle->setObjectName(QStringLiteral("plainTextEditSettingsSystemInfoTitle"));
+        plainTextEditSettingsSystemInfoTitle->setFont(font2);
+        plainTextEditSettingsSystemInfoTitle->setStyleSheet(QLatin1String("QPlainTextEdit {background-color: rgb(90, 91, 91);border-width: 0;\n"
 "border-radius : 0; color: #ffd000;}\n"
 " QScrollBar:horizontal\n"
 " {\n"
@@ -2945,7 +2945,7 @@ public:
 "     background: none;\n"
 " }"));
 
-        horizontalLayout_27->addWidget(plainTextEditSettingsSystemInfo_2);
+        horizontalLayout_27->addWidget(plainTextEditSettingsSystemInfoTitle);
 
         plainTextEditSettingsSystemInfo = new QPlainTextEdit(groupBox_14);
         plainTextEditSettingsSystemInfo->setObjectName(QStringLiteral("plainTextEditSettingsSystemInfo"));
@@ -3979,7 +3979,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1158, 244));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 200, 200));
         sizePolicy.setHeightForWidth(scrollAreaWidgetContents->sizePolicy().hasHeightForWidth());
         scrollAreaWidgetContents->setSizePolicy(sizePolicy);
         scrollAreaWidgetContents->setMinimumSize(QSize(0, 200));
@@ -6163,7 +6163,7 @@ public:
         retranslateUi(MainWindow);
 
         stackedWidgetMain->setCurrentIndex(0);
-        stackedWidgetMonitorMain->setCurrentIndex(0);
+        stackedWidgetMonitorMain->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -6265,7 +6265,7 @@ public:
         groupBox_24->setTitle(QString());
         label_41->setText(QApplication::translate("MainWindow", "Virtual Memory Info", Q_NULLPTR));
         groupBox_14->setTitle(QString());
-        plainTextEditSettingsSystemInfo_2->setPlainText(QApplication::translate("MainWindow", "AllocatedBaseSize	\n"
+        plainTextEditSettingsSystemInfoTitle->setPlainText(QApplication::translate("MainWindow", "AllocatedBaseSize	\n"
 "CurrentUsage	\n"
 "Description	\n"
 "InstallDate	\n"

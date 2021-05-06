@@ -910,7 +910,7 @@ QPushButton:pressed {
                <string notr="true">background:rgb(91,90,90);</string>
               </property>
               <property name="currentIndex">
-               <number>0</number>
+               <number>2</number>
               </property>
               <widget class="QWidget" name="pageOverview">
                <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -4357,7 +4357,7 @@ border-radius : 0;</string>
                               <number>0</number>
                              </property>
                              <item>
-                              <widget class="QPlainTextEdit" name="plainTextEditSettingsSystemInfo_2">
+                              <widget class="QPlainTextEdit" name="plainTextEditSettingsSystemInfoTitle">
                                <property name="font">
                                 <font>
                                  <family>Berlin Sans FB</family>
@@ -6065,8 +6065,8 @@ border-radius : 0;</string>
                              <rect>
                               <x>0</x>
                               <y>0</y>
-                              <width>1158</width>
-                              <height>244</height>
+                              <width>200</width>
+                              <height>200</height>
                              </rect>
                             </property>
                             <property name="sizePolicy">

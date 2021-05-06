@@ -1962,10 +1962,50 @@ void MainWindow::on_checkBoxShowSettings_clicked(bool clicked){
         Wincmd wincmd;
         std::vector<QString> result = wincmd.SeeSetting();
         ui->plainTextEditSettingsSystemInfo->clear();
+        ui->plainTextEditSettingsSystemInfoTitle->clear();
 
-        for(int i=0;i<result.size();i+=2){
-            ui->plainTextEditSettingsSystemInfo->appendPlainText(result.at(i+1));
+        // 16 is the row numbers of one disk
+        int rowNumOfOneDisk = 16;
+        int colNum = result.size() / rowNumOfOneDisk;
+
+        for(int i=0;i<rowNumOfOneDisk;i+=2){
+            QString infoRow;
+            bool longLine = false;
+
+            if(result.at(i+1).size()>= 24){
+                longLine = true;
+            }
+
+            ui->plainTextEditSettingsSystemInfoTitle->appendPlainText(result.at(i));
+
+            for(int j =0;j<colNum;j++){
+                if(j>=1){
+                    if(!longLine){
+                        infoRow += " / ";
+                        infoRow += result.at(i+1+j*rowNumOfOneDisk);
+                    }
+                    else{
+                        ui->plainTextEditSettingsSystemInfo->appendPlainText(result.at(i+1+rowNumOfOneDisk*j));
+                        ui->plainTextEditSettingsSystemInfoTitle->appendPlainText(" ");
+                    }
+                }
+                else{
+                    if(longLine){
+                        ui->plainTextEditSettingsSystemInfo->appendPlainText(result.at(i+1));
+                    }
+                    else{
+                        infoRow += result.at(i+1);
+                    }
+                }
+
+            }
+
+            if(!longLine){
+                ui->plainTextEditSettingsSystemInfo->appendPlainText(infoRow);
+            }
+
         }
+
     }
 
     ui->groupBoxSettings->setVisible(clicked);

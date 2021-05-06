@@ -37,8 +37,8 @@ void nvMonitorThrd::run()
             if(maxTemp>_nvapi->getTempLimitOffset(i)){
             _nvapi->ControlGpuTemperature(i);
             }
-            qDebug()<<"======"<<_nvapi->getTempLimitOffset(i);
-            qDebug()<<"======"<<_nvapi->getMemOffset(i)<<nvml->getMemClock(i);
+//            qDebug()<<"======"<<_nvapi->getTempLimitOffset(i);
+//            qDebug()<<"======"<<_nvapi->getMemOffset(i)<<nvml->getMemClock(i);
         //qDebug()<<"warning! process is cooling ";
 
         }
