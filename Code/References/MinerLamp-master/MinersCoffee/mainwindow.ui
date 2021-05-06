@@ -912,7 +912,7 @@ QPushButton:pressed {
                <string notr="true">background:rgb(91,90,90);</string>
               </property>
               <property name="currentIndex">
-               <number>2</number>
+               <number>0</number>
               </property>
               <widget class="QWidget" name="pageOverview">
                <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -1536,7 +1536,7 @@ border-radius : 0;</string>
                             <property name="frameShadow">
                              <enum>QFrame::Raised</enum>
                             </property>
-                            <layout class="QGridLayout" name="gridLayout_72">
+                            <layout class="QGridLayout" name="gridLayout_64">
                              <item row="0" column="0">
                               <widget class="QFrame" name="frame_11">
                                <property name="minimumSize">
@@ -1574,14 +1574,14 @@ border-radius : 0;</string>
                                  <widget class="QLabel" name="label_34">
                                   <property name="minimumSize">
                                    <size>
-                                    <width>100</width>
+                                    <width>88</width>
                                     <height>0</height>
                                    </size>
                                   </property>
                                   <property name="font">
                                    <font>
                                     <family>Berlin Sans FB</family>
-                                    <pointsize>16</pointsize>
+                                    <pointsize>14</pointsize>
                                    </font>
                                   </property>
                                   <property name="styleSheet">
@@ -1640,7 +1640,7 @@ Clock</string>
                                      <property name="font">
                                       <font>
                                        <family>Berlin Sans FB</family>
-                                       <pointsize>24</pointsize>
+                                       <pointsize>18</pointsize>
                                       </font>
                                      </property>
                                      <property name="styleSheet">
@@ -1665,7 +1665,7 @@ Clock</string>
                                      <property name="font">
                                       <font>
                                        <family>Berlin Sans FB</family>
-                                       <pointsize>24</pointsize>
+                                       <pointsize>18</pointsize>
                                       </font>
                                      </property>
                                      <property name="styleSheet">
@@ -1812,7 +1812,7 @@ Clock</string>
                                      <property name="font">
                                       <font>
                                        <family>Berlin Sans FB</family>
-                                       <pointsize>24</pointsize>
+                                       <pointsize>18</pointsize>
                                       </font>
                                      </property>
                                      <property name="styleSheet">
@@ -1858,14 +1858,14 @@ Clock</string>
                                  <widget class="QLabel" name="label_23">
                                   <property name="minimumSize">
                                    <size>
-                                    <width>100</width>
+                                    <width>88</width>
                                     <height>0</height>
                                    </size>
                                   </property>
                                   <property name="font">
                                    <font>
                                     <family>Berlin Sans FB</family>
-                                    <pointsize>16</pointsize>
+                                    <pointsize>14</pointsize>
                                    </font>
                                   </property>
                                   <property name="styleSheet">
@@ -1924,7 +1924,7 @@ Clock</string>
                                      <property name="font">
                                       <font>
                                        <family>Berlin Sans FB</family>
-                                       <pointsize>24</pointsize>
+                                       <pointsize>18</pointsize>
                                       </font>
                                      </property>
                                      <property name="styleSheet">
@@ -2039,14 +2039,14 @@ Clock</string>
                                     <widget class="QLabel" name="label_47">
                                      <property name="minimumSize">
                                       <size>
-                                       <width>100</width>
+                                       <width>88</width>
                                        <height>0</height>
                                       </size>
                                      </property>
                                      <property name="font">
                                       <font>
                                        <family>Berlin Sans FB</family>
-                                       <pointsize>16</pointsize>
+                                       <pointsize>14</pointsize>
                                       </font>
                                      </property>
                                      <property name="styleSheet">
@@ -2105,7 +2105,7 @@ Speed</string>
                                         <property name="font">
                                          <font>
                                           <family>Berlin Sans FB</family>
-                                          <pointsize>24</pointsize>
+                                          <pointsize>18</pointsize>
                                          </font>
                                         </property>
                                         <property name="styleSheet">
@@ -2130,7 +2130,7 @@ Speed</string>
                                         <property name="font">
                                          <font>
                                           <family>Berlin Sans FB</family>
-                                          <pointsize>24</pointsize>
+                                          <pointsize>18</pointsize>
                                          </font>
                                         </property>
                                         <property name="styleSheet">
@@ -2240,14 +2240,14 @@ Speed</string>
                                  <widget class="QLabel" name="label_36">
                                   <property name="minimumSize">
                                    <size>
-                                    <width>100</width>
+                                    <width>88</width>
                                     <height>0</height>
                                    </size>
                                   </property>
                                   <property name="font">
                                    <font>
                                     <family>Berlin Sans FB</family>
-                                    <pointsize>16</pointsize>
+                                    <pointsize>14</pointsize>
                                    </font>
                                   </property>
                                   <property name="styleSheet">
@@ -2306,7 +2306,7 @@ Draw</string>
                                      <property name="font">
                                       <font>
                                        <family>Berlin Sans FB</family>
-                                       <pointsize>24</pointsize>
+                                       <pointsize>18</pointsize>
                                       </font>
                                      </property>
                                      <property name="styleSheet">
@@ -2331,7 +2331,7 @@ Draw</string>
                                      <property name="font">
                                       <font>
                                        <family>Berlin Sans FB</family>
-                                       <pointsize>24</pointsize>
+                                       <pointsize>18</pointsize>
                                       </font>
                                      </property>
                                      <property name="styleSheet">
@@ -2514,22 +2514,7 @@ QGroupBox{
                        <string/>
                       </property>
                       <layout class="QGridLayout" name="gridLayout_17">
-                       <property name="leftMargin">
-                        <number>0</number>
-                       </property>
-                       <property name="topMargin">
-                        <number>0</number>
-                       </property>
-                       <property name="rightMargin">
-                        <number>0</number>
-                       </property>
-                       <property name="bottomMargin">
-                        <number>0</number>
-                       </property>
-                       <property name="spacing">
-                        <number>0</number>
-                       </property>
-                       <item row="0" column="2">
+                       <item row="0" column="0">
                         <widget class="QFrame" name="frame">
                          <property name="minimumSize">
                           <size>
@@ -2575,13 +2560,13 @@ QGroupBox{
                               <property name="minimumSize">
                                <size>
                                 <width>80</width>
-                                <height>60</height>
+                                <height>88</height>
                                </size>
                               </property>
                               <property name="font">
                                <font>
                                 <family>Berlin Sans FB</family>
-                                <pointsize>10</pointsize>
+                                <pointsize>14</pointsize>
                                </font>
                               </property>
                               <property name="styleSheet">
@@ -2616,7 +2601,7 @@ Income</string>
                                  <property name="minimumSize">
                                   <size>
                                    <width>100</width>
-                                   <height>0</height>
+                                   <height>88</height>
                                   </size>
                                  </property>
                                  <property name="font">
@@ -2677,7 +2662,7 @@ Income</string>
                                  <property name="minimumSize">
                                   <size>
                                    <width>100</width>
-                                   <height>60</height>
+                                   <height>88</height>
                                   </size>
                                  </property>
                                  <property name="font">
@@ -2705,13 +2690,13 @@ Income</string>
                               <property name="minimumSize">
                                <size>
                                 <width>80</width>
-                                <height>60</height>
+                                <height>88</height>
                                </size>
                               </property>
                               <property name="font">
                                <font>
                                 <family>Berlin Sans FB</family>
-                                <pointsize>11</pointsize>
+                                <pointsize>14</pointsize>
                                </font>
                               </property>
                               <property name="styleSheet">
@@ -2728,13 +2713,13 @@ Hashrate</string>
                               <property name="minimumSize">
                                <size>
                                 <width>100</width>
-                                <height>0</height>
+                                <height>88</height>
                                </size>
                               </property>
                               <property name="font">
                                <font>
                                 <family>Berlin Sans FB</family>
-                                <pointsize>28</pointsize>
+                                <pointsize>18</pointsize>
                                </font>
                               </property>
                               <property name="styleSheet">
@@ -2753,13 +2738,13 @@ Hashrate</string>
                               <property name="minimumSize">
                                <size>
                                 <width>80</width>
-                                <height>60</height>
+                                <height>88</height>
                                </size>
                               </property>
                               <property name="font">
                                <font>
                                 <family>Berlin Sans FB</family>
-                                <pointsize>11</pointsize>
+                                <pointsize>14</pointsize>
                                </font>
                               </property>
                               <property name="styleSheet">
@@ -3012,7 +2997,7 @@ border-radius : 0;</string>
                             <x>0</x>
                             <y>0</y>
                             <width>256</width>
-                            <height>324</height>
+                            <height>344</height>
                            </rect>
                           </property>
                           <layout class="QGridLayout" name="gridLayout_62">
