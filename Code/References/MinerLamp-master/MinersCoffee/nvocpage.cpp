@@ -4,7 +4,7 @@
 
 NvocPage::NvocPage(nvidiaAPI* nvapi, QSettings* settings,
                    QSpinBox* spinBoxTemperature,
-                   QCheckBox* checkBoxAutoOC,
+                   QPushButton* pushButtonAutoOC,
                    QCheckBox* checkBoxAllDevices,
                    QCheckBox* checkBoxOCMinerStart,
                    QComboBox* comboBoxDevice,
@@ -15,7 +15,7 @@ NvocPage::NvocPage(nvidiaAPI* nvapi, QSettings* settings,
     _settings(settings),
     _nvapi(nvapi),
     _spinBoxTemperature(spinBoxTemperature),
-    _checkBoxAutoOC(checkBoxAutoOC),
+    _pushButtonAutoOC(pushButtonAutoOC),
     _checkBoxAllDevices(checkBoxAllDevices),
     _checkBoxOCMinerStart(checkBoxOCMinerStart),
     _comboBoxDevice(comboBoxDevice),
@@ -36,6 +36,7 @@ NvocPage::NvocPage(nvidiaAPI* nvapi, QSettings* settings,
             _cardList << card;
             _comboBoxDevice->addItem(QString("device " + QString::number(i)));
         }
+
         // **** put in main function
 //        updateSliders(0);
     }
@@ -58,7 +59,6 @@ NvocPage::NvocPage(nvidiaAPI* nvapi, QSettings* settings,
     // later these two value will be retrieved from settings
     _spinBoxTemperature->setMaximum(200);
     _spinBoxTemperature->setValue(100);
-    _checkBoxAutoOC->setChecked(false);
 
     _checkBoxAllDevices->setChecked(_settings->value("nvoc_applyall").toBool());
     _checkBoxOCMinerStart->setChecked(_settings->value("nvoc_applyonstart").toBool());

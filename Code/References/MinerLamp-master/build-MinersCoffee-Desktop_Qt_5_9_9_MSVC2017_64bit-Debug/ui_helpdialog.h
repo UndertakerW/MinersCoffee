@@ -424,6 +424,7 @@ public:
         plainTextEdit->setObjectName(QStringLiteral("plainTextEdit"));
         QFont font3;
         font3.setFamily(QStringLiteral("Berlin Sans FB"));
+        font3.setPointSize(18);
         plainTextEdit->setFont(font3);
         plainTextEdit->setStyleSheet(QStringLiteral("color:white;"));
         plainTextEdit->setFrameShape(QFrame::NoFrame);

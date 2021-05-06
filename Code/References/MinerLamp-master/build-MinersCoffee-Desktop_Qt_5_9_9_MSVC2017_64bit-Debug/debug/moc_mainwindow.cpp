@@ -6,7 +6,7 @@
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../MinerLamp-master/mainwindow.h"
+#include "../../MinersCoffee/mainwindow.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #include <QtCore/QList>
@@ -128,7 +128,7 @@ void autoStart::readyToStartMiner()
 }
 struct qt_meta_stringdata_MainWindow_t {
     QByteArrayData data[87];
-    char stringdata0[2008];
+    char stringdata0[2010];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -223,7 +223,7 @@ QT_MOC_LITERAL(82, 1854, 27), // "on_comboBoxDevice_activated"
 QT_MOC_LITERAL(83, 1882, 32), // "on_pushButtonOCPageApply_clicked"
 QT_MOC_LITERAL(84, 1915, 31), // "on_checkBoxAutoSpeedFan_clicked"
 QT_MOC_LITERAL(85, 1947, 34), // "on_spinBoxTemperature_valueCh..."
-QT_MOC_LITERAL(86, 1982, 25) // "on_checkBoxAutoOC_clicked"
+QT_MOC_LITERAL(86, 1982, 27) // "on_pushButtonAutoOC_clicked"
 
     },
     "MainWindow\0setIcon\0\0iconActivated\0"
@@ -281,7 +281,7 @@ QT_MOC_LITERAL(86, 1982, 25) // "on_checkBoxAutoOC_clicked"
     "on_pushButtonOCPageApply_clicked\0"
     "on_checkBoxAutoSpeedFan_clicked\0"
     "on_spinBoxTemperature_valueChanged\0"
-    "on_checkBoxAutoOC_clicked"
+    "on_pushButtonAutoOC_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -350,7 +350,7 @@ static const uint qt_meta_data_MainWindow[] = {
       83,    0,  436,    2, 0x08 /* Private */,
       84,    1,  437,    2, 0x08 /* Private */,
       85,    1,  440,    2, 0x08 /* Private */,
-      86,    1,  443,    2, 0x08 /* Private */,
+      86,    0,  443,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -404,7 +404,7 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void, QMetaType::Bool,   11,
     QMetaType::Void, QMetaType::Int,   78,
-    QMetaType::Void, QMetaType::Bool,   11,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -466,7 +466,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 48: _t->on_pushButtonOCPageApply_clicked(); break;
         case 49: _t->on_checkBoxAutoSpeedFan_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 50: _t->on_spinBoxTemperature_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 51: _t->on_checkBoxAutoOC_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 51: _t->on_pushButtonAutoOC_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {

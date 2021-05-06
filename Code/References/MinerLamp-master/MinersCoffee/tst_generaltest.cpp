@@ -1,5 +1,6 @@
 #include "tst_generaltest.h"
-
+#include "wincmd.h"
+#include "QString"
 GeneralTest::GeneralTest()
 {
 
@@ -305,6 +306,106 @@ void GeneralTest::test_ParsePoolInfo()
 }
 
 /* Unit Test */
+void GeneralTest::test_Cmd(){
+    Wincmd *c=new Wincmd();
+    std::vector<QString> cmd_setting=c->SeeSetting();
+    std::vector<std::vector<QString>> cmd_res=c->LocalDisk();
+    int size=cmd_setting.size();
+    int front=cmd_res.front().size();
+    BOOL empty=cmd_res.empty();
+    QCOMPARE(size, 16);
+    //QCOMPARE(empty, false);
+    QCOMPARE(front, 3);
+
+}
+
+void GeneralTest::test_NvidiaapiSignleunite(){
+    nvidiaAPI *n=new nvidiaAPI();
+    nvidiaNVML *nvm=new nvidiaNVML();
+    int gpucount = n->getGPUCount();
+    int nvm_gpucount=nvm->getGPUCount();
+    QCOMPARE(gpucount,nvm_gpucount);
+
+    QFETCH(int, input_gpu);
+    QFETCH(int, input_gpuoffset);
+    QFETCH(int, input_memoffset);
+    QFETCH(int, input_fanspeed);
+    int gpu_offset,nvmgpu_offset,gpu_freq;
+    n->setGPUOffset(input_gpu,input_gpuoffset);
+    gpu_offset=n->getGPUOffset(input_gpu);
+    nvmgpu_offset=nvm->getGPUClock(input_gpu);
+    QCOMPARE(gpu_offset,input_gpuoffset);
+    gpu_freq=n->getGpuClock(input_gpu);
+    QCOMPARE(nvmgpu_offset,gpu_freq);
+
+    int mem_offset,nvmmem_offset,mem_freq;
+    n->setMemClockOffset(input_gpu,input_memoffset);
+    mem_offset=n->getMemOffset(input_gpu);
+    nvmgpu_offset=nvm->getMemClock(input_gpu);
+    QCOMPARE(mem_offset,input_memoffset);
+    mem_freq=n->getMemClock(input_gpu);
+    nvmmem_offset=nvm->getMemClock(input_gpu);
+    QCOMPARE(nvmmem_offset,mem_freq);
+
+    int fanspeed,nvm_fanspeed;
+    n->setFanSpeed(input_gpu,input_fanspeed);
+    fanspeed=n->getFanSpeed(input_gpu);
+    nvm_fanspeed=nvm->getFanSpeed(input_gpu);
+    QCOMPARE(fanspeed,input_fanspeed);
+    //QCOMPARE(nvm_fanspeed,fanspeed);
+
+    delete n;
+    delete nvm;
+}
+
+
+void GeneralTest::test_NvidiaapiSignleunite_data(){
+    QTest::addColumn<int>("input_gpu");
+    QTest::addColumn<int>("input_gpuoffset");
+    QTest::addColumn<int>("input_memoffset");
+    QTest::addColumn<int>("input_fanspeed");
+    QTest::newRow("1")  <<  0<<20<<20<<0;
+    QTest::newRow("2")  << 0<<20<<20<<0;
+    QTest::newRow("3")  << 0<<100<<100<<0;
+    QTest::newRow("4")  << 0<<-20<<-10<<0;
+    QTest::newRow("5")  << 0<<10<<10<<0;
+}
+
+void GeneralTest::test_NvidiaapiComplex(){
+    nvidiaAPI *n=new nvidiaAPI();
+    nvidiaNVML *nvm=new nvidiaNVML();
+    int input_gpu=0;
+    int org_gpu_offset,org_mem_offset,org_fanspeed;
+    bool ControlTemp;
+    org_gpu_offset=n->getGPUOffset(input_gpu);
+    org_mem_offset=n->getMemOffset(input_gpu);
+    org_fanspeed=n->getFanSpeed(input_gpu);
+    ControlTemp=n->getGpuTemperature(input_gpu)>=n->getTempLimitOffset(input_gpu);
+    int new_gpuOffset,new_memOffset,new_fanspeed;
+    n->ControlGpuTemperature(input_gpu);
+    new_gpuOffset=n->getGPUOffset(input_gpu);
+    new_memOffset=n->getMemOffset(input_gpu);
+    new_fanspeed=n->getFanSpeed(input_gpu);
+    if(ControlTemp){
+        org_gpu_offset=org_gpu_offset*0.6+1;
+        org_mem_offset= org_mem_offset*0.6+1;
+        org_fanspeed=org_fanspeed*1.2+1;
+        QCOMPARE(org_gpu_offset,new_gpuOffset);
+        QCOMPARE(org_mem_offset,new_memOffset);
+        QCOMPARE(org_fanspeed,new_fanspeed);
+    }
+    else{
+        QCOMPARE(org_gpu_offset,new_gpuOffset);
+        QCOMPARE(org_mem_offset,new_memOffset);
+        QCOMPARE(org_fanspeed,new_fanspeed);
+    }
+
+    delete n;
+    delete nvm;
+}
+
+
+
 
 void GeneralTest::test_ui_HashrateLineChart()
 {
@@ -616,6 +717,41 @@ void GeneralTest::test_ParseJsonForMining_data()
     }
 }
 
+void GeneralTest::test_Database_getAdvice(){
+    QFETCH(QString, type);
+    QFETCH(int, gpu_clock);
+    QFETCH(int, mem_clock);
+    //QFETCH(unsigned int, power);
+    //QFETCH(unsigned int, prediction);
+    Database db;
+    QStringList info=db.getAdvice(type.toStdString().c_str());
+    int str=atoi(info.front().toStdString().c_str());
+    int out1=str;
+    info.pop_front();
+    str=atoi(info.front().toStdString().c_str());
+    int out2=str;
+    QCOMPARE(out1, gpu_clock);
+    QCOMPARE(out2, mem_clock);
+    QBENCHMARK {
+        QStringList info=db.getAdvice(type.toStdString().c_str());
+    }
+}
+void GeneralTest::test_Database_getAdvice_data(){
+    QTest::addColumn<QString>("type");
+    QTest::addColumn<int>("gpu_clock");
+    QTest::addColumn<int>("mem_clock");
+    QTest::newRow("3090") << "3090" << -300<< 1000;
+    QTest::newRow("3080") << "3080" << -150<< 900;
+    QTest::newRow("3070") << "3070" << -500<< 1100;
+    QTest::newRow("3060Ti") << "3060Ti" << -500<< 1200;
+    QTest::newRow("2080Ti") << "2080Ti" << -200<< 1100;
+    QTest::newRow("2080super") << "2080super" << -50<< 1000;
+    QTest::newRow("2080") << "2080" << -50<< 800;
+    QTest::newRow("2070super") << "2070super" << -50<< 800;
+    QTest::newRow("2070") << "2070" << -50<< 800;
+    QTest::newRow("2060super") << "2060super" << -50<< 850;
+    QTest::newRow("2060") << "2060" << -50<< 700;
+}
 void GeneralTest::ShowDataError(const QString& filename1, const QString& filename2)
 {
     QString path1 = qApp->applicationDirPath() + "/test/" + filename1;

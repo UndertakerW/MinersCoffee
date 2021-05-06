@@ -1,9 +1,10 @@
 #include "nvocdialog.h"
 #include "ui_nvocdialog.h"
+#include "database.h"
+
 #include <string>
 #include <QDebug>
 #include <cstring>
-#include "database.h"
 
 nvOCDialog::nvOCDialog(nvidiaAPI *nvapi, QSettings *settings, QWidget *parent) :
     QDialog(parent),

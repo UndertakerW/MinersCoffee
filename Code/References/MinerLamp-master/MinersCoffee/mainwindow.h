@@ -235,7 +235,7 @@ private slots:
 
     void on_spinBoxTemperature_valueChanged(int value);
 
-    void on_checkBoxAutoOC_clicked(bool checked);
+    void on_pushButtonAutoOC_clicked();
 
 //    void on_pushButtonToggle_pressed();
 

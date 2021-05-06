@@ -10,6 +10,7 @@
 #include <QCheckBox>
 #include <QComboBox>
 #include <QSlider>
+#include <QLineEdit>
 
 
 class NvocPage
@@ -17,7 +18,7 @@ class NvocPage
 public:
     NvocPage(nvidiaAPI* nvapi, QSettings* settings,
              QSpinBox* spinBoxTemperature,
-             QCheckBox* checkBoxAutoOC,
+             QPushButton* pushButtonAutoOC,
              QCheckBox* checkBoxAllDevices,
              QCheckBox* checkBoxOCMinerStart,
              QComboBox* comboBoxDevice,
@@ -45,7 +46,7 @@ public:
 private:
 
     QSpinBox* _spinBoxTemperature;
-    QCheckBox* _checkBoxAutoOC;
+    QPushButton* _pushButtonAutoOC;
     QCheckBox* _checkBoxAllDevices;
     QCheckBox* _checkBoxOCMinerStart;
     QComboBox* _comboBoxDevice;

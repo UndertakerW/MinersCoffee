@@ -11,6 +11,7 @@
 #include "structures.h"
 #include "wincmd.h"
 #include "tst_generaltest.h"
+#include "nvocpage.h"
 
 #include <QDebug>
 #include <QMessageBox>
@@ -165,7 +166,7 @@ MainWindow::MainWindow(bool testing, QWidget *parent) :
                 _nvapi,
                 _settings,
                 ui->spinBoxTemperature,
-                ui->checkBoxAutoOC,
+                ui->pushButtonAutoOC,
                 ui->checkBoxAllDevices,
                 ui->checkBoxOCMinerStart,
                 ui->comboBoxDevice,
@@ -242,7 +243,7 @@ MainWindow::MainWindow(bool testing, QWidget *parent) :
     labelsFont.setPixelSize(14);
     _axisX->setTitleFont(labelsFont);
     _chart->axisY()->setTitleFont(labelsFont);
-    _chart->axisY()->setLabelsFont(QFont("Berlin Sans FB", 14));
+    _chart->axisY()->setLabelsFont(QFont("Berlin Sans FB", 12));
 
     _axisX->setGridLineVisible(false);
     _chart->axisY()->setGridLineVisible(false);
@@ -338,8 +339,8 @@ MainWindow::MainWindow(bool testing, QWidget *parent) :
     axisYTemp->setLabelFormat("%d ");
     axisYTemp->setTickCount(5);
 
-    QFont labelsFont_temp("Berlin Sans FB");
-    labelsFont_temp.setPixelSize(10);
+    QFont labelsFont_temp("Berlin Sans FB", 12);
+//    labelsFont_temp.setPixelSize(10);
     _axisXTemp->setTitleFont(labelsFont_temp);
     _chartTemp->axisY()->setTitleFont(labelsFont_temp);
     _chartTemp->axisY()->setLabelsFont(labelsFont_temp);
@@ -867,7 +868,7 @@ void MainWindow::SetMiningArgs()
 void MainWindow::onMinerStarted()
 {
 
-    ui->pushButton->setText("Stop");
+    ui->pushButton->setText("Stop\nMining");
     _isMinerRunning = true;
     _isStartStoping = false;
 
@@ -877,7 +878,7 @@ void MainWindow::onMinerStarted()
 
 void MainWindow::onMinerStoped()
 {
-    ui->pushButton->setText("Mining");
+    ui->pushButton->setText("Start\nMining");
     _isMinerRunning = false;
     _isStartStoping = false;
 
@@ -1055,7 +1056,7 @@ void MainWindow::onNvMonitorInfo(unsigned int gpucount
     ui->labelMaxWatt->setText(QString().setNum((float) maxpowerdraw / 1000, 'f', 2));
     ui->labelMinWatt->setText(QString().setNum((float) minpowerdraw / 1000, 'f', 2));
 
-    ui->lcdNumberTotalPowerDraw->display((double)totalpowerdraw / 1000);
+    ui->lcdNumberTotalPowerDraw->display((int)totalpowerdraw / 1000);
 
     _currentTempRate = maxgputemp;
 
@@ -2387,56 +2388,19 @@ void MainWindow::on_spinBoxTemperature_valueChanged(int value){
 }
 
 
-void MainWindow::on_checkBoxAutoOC_clicked(bool clicked){
-    if(clicked){
-        int gpu = ui->comboBoxDevice->currentIndex();
-        ui->spinBoxTemperature->setValue(80);
-        if(ui->checkBoxAllDevices->isChecked())
+void MainWindow::on_pushButtonAutoOC_clicked(){
+    int gpu = ui->comboBoxDevice->currentIndex();
+    ui->spinBoxTemperature->setValue(80);
+    if(ui->checkBoxAllDevices->isChecked())
+    {
+        for(unsigned int i = 0; i < _nvapi->getGPUCount(); i++)
         {
-            for(unsigned int i = 0; i < _nvapi->getGPUCount(); i++)
-            {
-                std::string name =_nvocPage->_nvml->getGPUName(i);
-                int fanspeed,gpuofffset,memoffset;
-                fanspeed=0;
-                gpuofffset=0;
-                memoffset=0;
-                // do select * from advise where GPUname= name;
-                std::string n="";
-                for(int i=0;i<name.length();i++){
-                    if(name[i]=='T'&&name[i+1]=='i')
-                        n+="Ti";
-                    if(name[i]!='1'&&name[i]!='2'&&name[i]!='3'&&name[i]!='4'&&name[i]!='5'&&name[i]!='6'&&name[i]!='7'&&name[i]!='8'&&name[i]!='9'&&name[i]!='0')
-                        continue;
-                    n+=name[i];
-                }
-                QStringList l;
-                //
-                const char *p;
-                p=n.c_str();
-                if(_nvocPage->_db != nullptr){
-                    l=_nvocPage->getAdvice(p);
-                }
-                qDebug("query name %s",n.c_str());
-                //db.FreeConnect();
-                int str=atoi(l.front().toStdString().c_str());
-                gpuofffset=str;
-                l.pop_front();
-                str=atoi(l.front().toStdString().c_str());
-                memoffset=str;
-                str=atoi(l.front().toStdString().c_str());
-                _nvapi->setFanSpeed(i,fanspeed);
-                _nvapi->setGPUOffset(i,gpuofffset);
-                _nvapi->setMemClockOffset(i,memoffset);
-            }
-        }
-        else
-        {
-            std::string name =_nvocPage->_nvml->getGPUName(gpu);
+            std::string name =_nvocPage->_nvml->getGPUName(i);
             int fanspeed,gpuofffset,memoffset;
             fanspeed=0;
             gpuofffset=0;
             memoffset=0;
-            // do select * from advise where GPUname= name;std::string n="";
+            // do select * from advise where GPUname= name;
             std::string n="";
             for(int i=0;i<name.length();i++){
                 if(name[i]=='T'&&name[i+1]=='i')
@@ -2445,7 +2409,6 @@ void MainWindow::on_checkBoxAutoOC_clicked(bool clicked){
                     continue;
                 n+=name[i];
             }
-            //
             QStringList l;
             //
             const char *p;
@@ -2461,12 +2424,48 @@ void MainWindow::on_checkBoxAutoOC_clicked(bool clicked){
             str=atoi(l.front().toStdString().c_str());
             memoffset=str;
             str=atoi(l.front().toStdString().c_str());
-            _nvapi->setFanSpeed(gpu,fanspeed);
-            _nvapi->setGPUOffset(gpu,gpuofffset);
-            _nvapi->setMemClockOffset(gpu,memoffset);
+            _nvapi->setFanSpeed(i,fanspeed);
+            _nvapi->setGPUOffset(i,gpuofffset);
+            _nvapi->setMemClockOffset(i,memoffset);
         }
-        updateSliders(gpu);
-
-        saveConfig();
     }
+    else
+    {
+        std::string name =_nvocPage->_nvml->getGPUName(gpu);
+        int fanspeed,gpuofffset,memoffset;
+        fanspeed=0;
+        gpuofffset=0;
+        memoffset=0;
+        // do select * from advise where GPUname= name;std::string n="";
+        std::string n="";
+        for(int i=0;i<name.length();i++){
+            if(name[i]=='T'&&name[i+1]=='i')
+                n+="Ti";
+            if(name[i]!='1'&&name[i]!='2'&&name[i]!='3'&&name[i]!='4'&&name[i]!='5'&&name[i]!='6'&&name[i]!='7'&&name[i]!='8'&&name[i]!='9'&&name[i]!='0')
+                continue;
+            n+=name[i];
+        }
+        //
+        QStringList l;
+        //
+        const char *p;
+        p=n.c_str();
+        if(_nvocPage->_db != nullptr){
+            l=_nvocPage->getAdvice(p);
+        }
+        qDebug("query name %s",n.c_str());
+        //db.FreeConnect();
+        int str=atoi(l.front().toStdString().c_str());
+        gpuofffset=str;
+        l.pop_front();
+        str=atoi(l.front().toStdString().c_str());
+        memoffset=str;
+        str=atoi(l.front().toStdString().c_str());
+        _nvapi->setFanSpeed(gpu,fanspeed);
+        _nvapi->setGPUOffset(gpu,gpuofffset);
+        _nvapi->setMemClockOffset(gpu,memoffset);
+    }
+    updateSliders(gpu);
+
+    saveConfig();
 }
