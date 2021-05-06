@@ -11,6 +11,7 @@
 #include "structures.h"
 #include "wincmd.h"
 #include "tst_generaltest.h"
+#include "nvocpage.h"
 
 #include <QDebug>
 #include <QMessageBox>
@@ -867,7 +868,7 @@ void MainWindow::SetMiningArgs()
 void MainWindow::onMinerStarted()
 {
 
-    ui->pushButton->setText("Stop");
+    ui->pushButton->setText("Stop\nMining");
     _isMinerRunning = true;
     _isStartStoping = false;
 
@@ -877,7 +878,7 @@ void MainWindow::onMinerStarted()
 
 void MainWindow::onMinerStoped()
 {
-    ui->pushButton->setText("Mining");
+    ui->pushButton->setText("Start\nMining");
     _isMinerRunning = false;
     _isStartStoping = false;
 
@@ -1055,7 +1056,7 @@ void MainWindow::onNvMonitorInfo(unsigned int gpucount
     ui->labelMaxWatt->setText(QString().setNum((float) maxpowerdraw / 1000, 'f', 2));
     ui->labelMinWatt->setText(QString().setNum((float) minpowerdraw / 1000, 'f', 2));
 
-    ui->lcdNumberTotalPowerDraw->display((double)totalpowerdraw / 1000);
+    ui->lcdNumberTotalPowerDraw->display((int)totalpowerdraw / 1000);
 
     _currentTempRate = maxgputemp;
 
