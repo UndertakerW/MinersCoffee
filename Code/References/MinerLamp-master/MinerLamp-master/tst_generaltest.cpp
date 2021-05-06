@@ -167,9 +167,11 @@ void GeneralTest::test_MiningCore()
     }
 
     bool success2 = false;
-
-    if (w->_miningInfo->latency > 0)
-        success2 = true;
+    if (w->_miningInfo->gpuMiningInfos.size() > 0)
+    {
+        if (w->_miningInfo->gpuMiningInfos[0].hashrate > 1000)
+            success2 = true;
+    }
 
     w->StopMiningCore();
 
