@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -490,7 +490,7 @@ border-radius : 0;
 </string>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="pageMonitor">
            <layout class="QGridLayout" name="gridLayout_40">
@@ -912,7 +912,7 @@ QPushButton:pressed {
                <string notr="true">background:rgb(91,90,90);</string>
               </property>
               <property name="currentIndex">
-               <number>1</number>
+               <number>2</number>
               </property>
               <widget class="QWidget" name="pageOverview">
                <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -3011,8 +3011,8 @@ border-radius : 0;</string>
                            <rect>
                             <x>0</x>
                             <y>0</y>
-                            <width>240</width>
-                            <height>16</height>
+                            <width>256</width>
+                            <height>324</height>
                            </rect>
                           </property>
                           <layout class="QGridLayout" name="gridLayout_62">
@@ -4304,6 +4304,12 @@ border-radius : 0;</string>
                              </property>
                              <item>
                               <widget class="QPlainTextEdit" name="plainTextEditSettingsSystemInfoTitle">
+                               <property name="maximumSize">
+                                <size>
+                                 <width>300</width>
+                                 <height>16777215</height>
+                                </size>
+                               </property>
                                <property name="font">
                                 <font>
                                  <family>Berlin Sans FB</family>
@@ -4613,19 +4619,6 @@ border-radius : 0;color:white;}
                                </property>
                               </widget>
                              </item>
-                             <item>
-                              <spacer name="horizontalSpacer_12">
-                               <property name="orientation">
-                                <enum>Qt::Horizontal</enum>
-                               </property>
-                               <property name="sizeHint" stdset="0">
-                                <size>
-                                 <width>40</width>
-                                 <height>20</height>
-                                </size>
-                               </property>
-                              </spacer>
-                             </item>
                             </layout>
                            </widget>
                           </item>
@@ -4683,10 +4676,12 @@ QGroupBox{
                          </size>
                         </property>
                         <property name="styleSheet">
-                         <string notr="true">background:#008F96;
+                         <string notr="true">#frame_28{
+background:#008F96;
 color: rgb(255, 255, 255);
 border-width: 0;
-border-radius : 0;</string>
+border-radius : 0;
+}</string>
                         </property>
                         <property name="frameShape">
                          <enum>QFrame::StyledPanel</enum>
@@ -4710,38 +4705,6 @@ border-radius : 0;</string>
                          <property name="spacing">
                           <number>0</number>
                          </property>
-                         <item row="1" column="0">
-                          <widget class="QPushButton" name="pushButtonChangePageSize">
-                           <property name="minimumSize">
-                            <size>
-                             <width>0</width>
-                             <height>80</height>
-                            </size>
-                           </property>
-                           <property name="font">
-                            <font>
-                             <family>Berlin Sans FB</family>
-                             <pointsize>16</pointsize>
-                            </font>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">QPushButton {
-	border: none;
-	background-color: rgba(0,0,0,0);
-	color : white;
-}
-QPushButton:hover {
-	background-color: rgb(51,51,51);
-}
-QPushButton:pressed {	
-	background-color: #7A0000;
-}</string>
-                           </property>
-                           <property name="text">
-                            <string>Apply</string>
-                           </property>
-                          </widget>
-                         </item>
                          <item row="0" column="0">
                           <layout class="QFormLayout" name="formLayout">
                            <property name="horizontalSpacing">
@@ -4764,231 +4727,16 @@ QPushButton:pressed {
                                <pointsize>16</pointsize>
                               </font>
                              </property>
-                             <property name="text">
-                              <string> Disk</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item row="1" column="0">
-                            <widget class="QLabel" name="label_46">
-                             <property name="minimumSize">
-                              <size>
-                               <width>100</width>
-                               <height>50</height>
-                              </size>
-                             </property>
-                             <property name="font">
-                              <font>
-                               <family>Berlin Sans FB</family>
-                               <pointsize>16</pointsize>
-                              </font>
+                             <property name="styleSheet">
+                              <string notr="true">background:#008F96;
+color: rgb(255, 255, 255);
+border-width: 0;
+border-radius : 0;</string>
                              </property>
                              <property name="text">
-                              <string> Max Size</string>
+                              <string> Disk Part.</string>
                              </property>
                             </widget>
-                           </item>
-                           <item row="2" column="0">
-                            <widget class="QLabel" name="label_45">
-                             <property name="minimumSize">
-                              <size>
-                               <width>100</width>
-                               <height>50</height>
-                              </size>
-                             </property>
-                             <property name="font">
-                              <font>
-                               <family>Berlin Sans FB</family>
-                               <pointsize>16</pointsize>
-                              </font>
-                             </property>
-                             <property name="text">
-                              <string> Min Size</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item row="1" column="1">
-                            <layout class="QVBoxLayout" name="verticalLayout_11">
-                             <item>
-                              <spacer name="verticalSpacer_3">
-                               <property name="orientation">
-                                <enum>Qt::Vertical</enum>
-                               </property>
-                               <property name="sizeHint" stdset="0">
-                                <size>
-                                 <width>20</width>
-                                 <height>40</height>
-                                </size>
-                               </property>
-                              </spacer>
-                             </item>
-                             <item>
-                              <widget class="QSpinBox" name="spinBoxChangePageSizeMax">
-                               <property name="minimumSize">
-                                <size>
-                                 <width>0</width>
-                                 <height>40</height>
-                                </size>
-                               </property>
-                               <property name="font">
-                                <font>
-                                 <family>Berlin Sans FB</family>
-                                 <pointsize>20</pointsize>
-                                 <weight>50</weight>
-                                 <italic>false</italic>
-                                 <bold>false</bold>
-                                </font>
-                               </property>
-                               <property name="styleSheet">
-                                <string notr="true">QSpinBox { 
-	border: 2px solid rgb(51,51,51);
-	border-radius: 5px;	
-	color:rgb(255,255,255);
-	background-color: rgb(51,51,51);
-	
-	font: 20pt &quot;Berlin Sans FB&quot;;
-}
-
-QSpinBox::up-arrow { 
-	image: url(:icons/icos/arrow.png);
-}
-
-QSpinBox::up-button {
-	border: none; 
-	color:rgb(255,255,255,0);
-    border-left-width: 1px;
-    border-left-color: darkgray;
-}
-QSpinBox::up-button:hover { 
-	border: 2px solid rgb(0,143,170);
-	border-radius: 5px;	
-	color:rgb(255,255,255);
-}
-
-QSpinBox::down-arrow { 
-	image: url(:icons/icos/arrow.png);
-}
-QSpinBox::down-button {
-	border: none; 
-	color:rgb(255,255,255,0);
-}
-QSpinBox::down-button:hover { 
-	border: 2px solid rgb(0,143,170);
-	border-radius: 5px;	
-	color:rgb(255,255,255);
-}
-</string>
-                               </property>
-                               <property name="alignment">
-                                <set>Qt::AlignCenter</set>
-                               </property>
-                              </widget>
-                             </item>
-                             <item>
-                              <spacer name="verticalSpacer_4">
-                               <property name="orientation">
-                                <enum>Qt::Vertical</enum>
-                               </property>
-                               <property name="sizeHint" stdset="0">
-                                <size>
-                                 <width>20</width>
-                                 <height>40</height>
-                                </size>
-                               </property>
-                              </spacer>
-                             </item>
-                            </layout>
-                           </item>
-                           <item row="2" column="1">
-                            <layout class="QVBoxLayout" name="verticalLayout_12">
-                             <item>
-                              <spacer name="verticalSpacer_5">
-                               <property name="orientation">
-                                <enum>Qt::Vertical</enum>
-                               </property>
-                               <property name="sizeHint" stdset="0">
-                                <size>
-                                 <width>20</width>
-                                 <height>40</height>
-                                </size>
-                               </property>
-                              </spacer>
-                             </item>
-                             <item>
-                              <widget class="QSpinBox" name="spinBoxChangePageSizeMin">
-                               <property name="minimumSize">
-                                <size>
-                                 <width>0</width>
-                                 <height>40</height>
-                                </size>
-                               </property>
-                               <property name="font">
-                                <font>
-                                 <family>Berlin Sans FB</family>
-                                 <pointsize>20</pointsize>
-                                 <weight>50</weight>
-                                 <italic>false</italic>
-                                 <bold>false</bold>
-                                </font>
-                               </property>
-                               <property name="styleSheet">
-                                <string notr="true">QSpinBox { 
-	border: 2px solid rgb(51,51,51);
-	border-radius: 5px;	
-	color:rgb(255,255,255);
-	background-color: rgb(51,51,51);
-	font: 20pt &quot;Berlin Sans FB&quot;;
-}
-
-QSpinBox::up-arrow { 
-	image: url(:icons/icos/arrow.png);
-}
-
-QSpinBox::up-button {
-	border: none; 
-	color:rgb(255,255,255,0);
-    border-left-width: 1px;
-    border-left-color: darkgray;
-}
-QSpinBox::up-button:hover { 
-	border: 2px solid rgb(0,143,170);
-	border-radius: 5px;	
-	color:rgb(255,255,255);
-}
-
-QSpinBox::down-arrow { 
-	image: url(:icons/icos/arrow.png);
-}
-QSpinBox::down-button {
-	border: none; 
-	color:rgb(255,255,255,0);
-}
-QSpinBox::down-button:hover { 
-	border: 2px solid rgb(0,143,170);
-	border-radius: 5px;	
-	color:rgb(255,255,255);
-}
-</string>
-                               </property>
-                               <property name="alignment">
-                                <set>Qt::AlignCenter</set>
-                               </property>
-                              </widget>
-                             </item>
-                             <item>
-                              <spacer name="verticalSpacer_6">
-                               <property name="orientation">
-                                <enum>Qt::Vertical</enum>
-                               </property>
-                               <property name="sizeHint" stdset="0">
-                                <size>
-                                 <width>20</width>
-                                 <height>48</height>
-                                </size>
-                               </property>
-                              </spacer>
-                             </item>
-                            </layout>
                            </item>
                            <item row="0" column="1">
                             <layout class="QVBoxLayout" name="verticalLayout_13">
@@ -5086,6 +4834,240 @@ QComboBox::drop-down {
                              </item>
                             </layout>
                            </item>
+                           <item row="1" column="1">
+                            <layout class="QVBoxLayout" name="verticalLayout_11">
+                             <item>
+                              <spacer name="verticalSpacer_3">
+                               <property name="orientation">
+                                <enum>Qt::Vertical</enum>
+                               </property>
+                               <property name="sizeHint" stdset="0">
+                                <size>
+                                 <width>20</width>
+                                 <height>40</height>
+                                </size>
+                               </property>
+                              </spacer>
+                             </item>
+                             <item>
+                              <widget class="QSpinBox" name="spinBoxChangePageSizeMax">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>0</width>
+                                 <height>40</height>
+                                </size>
+                               </property>
+                               <property name="font">
+                                <font>
+                                 <family>Berlin Sans FB</family>
+                                 <pointsize>16</pointsize>
+                                 <weight>50</weight>
+                                 <italic>false</italic>
+                                 <bold>false</bold>
+                                </font>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">QSpinBox { 
+	border: 2px solid rgb(51,51,51);
+	border-radius: 5px;	
+	color:rgb(255,255,255);
+	background-color: rgb(51,51,51);
+	
+	font: &quot;Berlin Sans FB&quot;;
+}
+
+QSpinBox::up-arrow { 
+	image: url(:icons/icos/arrow.png);
+}
+
+QSpinBox::up-button {
+	border: none; 
+	color:rgb(255,255,255,0);
+    border-left-width: 1px;
+    border-left-color: darkgray;
+}
+QSpinBox::up-button:hover { 
+	border: 2px solid rgb(0,143,170);
+	border-radius: 5px;	
+	color:rgb(255,255,255);
+}
+
+QSpinBox::down-arrow { 
+	image: url(:icons/icos/arrow.png);
+}
+QSpinBox::down-button {
+	border: none; 
+	color:rgb(255,255,255,0);
+}
+QSpinBox::down-button:hover { 
+	border: 2px solid rgb(0,143,170);
+	border-radius: 5px;	
+	color:rgb(255,255,255);
+}
+</string>
+                               </property>
+                               <property name="alignment">
+                                <set>Qt::AlignCenter</set>
+                               </property>
+                              </widget>
+                             </item>
+                             <item>
+                              <spacer name="verticalSpacer_4">
+                               <property name="orientation">
+                                <enum>Qt::Vertical</enum>
+                               </property>
+                               <property name="sizeHint" stdset="0">
+                                <size>
+                                 <width>20</width>
+                                 <height>40</height>
+                                </size>
+                               </property>
+                              </spacer>
+                             </item>
+                            </layout>
+                           </item>
+                           <item row="2" column="0">
+                            <widget class="QLabel" name="label_45">
+                             <property name="minimumSize">
+                              <size>
+                               <width>100</width>
+                               <height>50</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <family>Berlin Sans FB</family>
+                               <pointsize>16</pointsize>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">background:#008F96;
+color: rgb(255, 255, 255);
+border-width: 0;
+border-radius : 0;</string>
+                             </property>
+                             <property name="text">
+                              <string> Min Size</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item row="2" column="1">
+                            <layout class="QVBoxLayout" name="verticalLayout_12">
+                             <item>
+                              <spacer name="verticalSpacer_5">
+                               <property name="orientation">
+                                <enum>Qt::Vertical</enum>
+                               </property>
+                               <property name="sizeHint" stdset="0">
+                                <size>
+                                 <width>20</width>
+                                 <height>40</height>
+                                </size>
+                               </property>
+                              </spacer>
+                             </item>
+                             <item>
+                              <widget class="QSpinBox" name="spinBoxChangePageSizeMin">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>0</width>
+                                 <height>40</height>
+                                </size>
+                               </property>
+                               <property name="font">
+                                <font>
+                                 <family>Berlin Sans FB</family>
+                                 <pointsize>16</pointsize>
+                                 <weight>50</weight>
+                                 <italic>false</italic>
+                                 <bold>false</bold>
+                                </font>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">QSpinBox { 
+	border: 2px solid rgb(51,51,51);
+	border-radius: 5px;	
+	color:rgb(255,255,255);
+	background-color: rgb(51,51,51);
+	font: &quot;Berlin Sans FB&quot;;
+}
+
+QSpinBox::up-arrow { 
+	image: url(:icons/icos/arrow.png);
+}
+
+QSpinBox::up-button {
+	border: none; 
+	color:rgb(255,255,255,0);
+    border-left-width: 1px;
+    border-left-color: darkgray;
+}
+QSpinBox::up-button:hover { 
+	border: 2px solid rgb(0,143,170);
+	border-radius: 5px;	
+	color:rgb(255,255,255);
+}
+
+QSpinBox::down-arrow { 
+	image: url(:icons/icos/arrow.png);
+}
+QSpinBox::down-button {
+	border: none; 
+	color:rgb(255,255,255,0);
+}
+QSpinBox::down-button:hover { 
+	border: 2px solid rgb(0,143,170);
+	border-radius: 5px;	
+	color:rgb(255,255,255);
+}
+</string>
+                               </property>
+                               <property name="alignment">
+                                <set>Qt::AlignCenter</set>
+                               </property>
+                              </widget>
+                             </item>
+                             <item>
+                              <spacer name="verticalSpacer_6">
+                               <property name="orientation">
+                                <enum>Qt::Vertical</enum>
+                               </property>
+                               <property name="sizeHint" stdset="0">
+                                <size>
+                                 <width>20</width>
+                                 <height>48</height>
+                                </size>
+                               </property>
+                              </spacer>
+                             </item>
+                            </layout>
+                           </item>
+                           <item row="1" column="0">
+                            <widget class="QLabel" name="label_46">
+                             <property name="minimumSize">
+                              <size>
+                               <width>100</width>
+                               <height>50</height>
+                              </size>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <family>Berlin Sans FB</family>
+                               <pointsize>16</pointsize>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">background:#008F96;
+color: rgb(255, 255, 255);
+border-width: 0;
+border-radius : 0;
+</string>
+                             </property>
+                             <property name="text">
+                              <string> Max Size</string>
+                             </property>
+                            </widget>
+                           </item>
                           </layout>
                          </item>
                          <item row="2" column="0">
@@ -5120,6 +5102,38 @@ QPushButton:pressed {
                            </property>
                            <property name="text">
                             <string>Cancel Auto Page</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item row="1" column="0">
+                          <widget class="QPushButton" name="pushButtonChangePageSize">
+                           <property name="minimumSize">
+                            <size>
+                             <width>0</width>
+                             <height>80</height>
+                            </size>
+                           </property>
+                           <property name="font">
+                            <font>
+                             <family>Berlin Sans FB</family>
+                             <pointsize>16</pointsize>
+                            </font>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">QPushButton {
+	border: none;
+	background-color: rgba(0,0,0,0);
+	color : white;
+}
+QPushButton:hover {
+	background-color: rgb(51,51,51);
+}
+QPushButton:pressed {	
+	background-color: #7A0000;
+}</string>
+                           </property>
+                           <property name="text">
+                            <string>Apply</string>
                            </property>
                           </widget>
                          </item>
@@ -6011,8 +6025,8 @@ border-radius : 0;</string>
                              <rect>
                               <x>0</x>
                               <y>0</y>
-                              <width>200</width>
-                              <height>213</height>
+                              <width>1316</width>
+                              <height>246</height>
                              </rect>
                             </property>
                             <property name="sizePolicy">
