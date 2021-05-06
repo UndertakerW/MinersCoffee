@@ -247,7 +247,6 @@ public:
     QHBoxLayout *horizontalLayout_27;
     QPlainTextEdit *plainTextEditSettingsSystemInfoTitle;
     QPlainTextEdit *plainTextEditSettingsSystemInfo;
-    QSpacerItem *horizontalSpacer_12;
     QGroupBox *groupBox_25;
     QGridLayout *gridLayout_70;
     QFrame *frame_28;
@@ -1959,7 +1958,7 @@ public:
         scrollArea_2->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName(QStringLiteral("scrollAreaWidgetContents_2"));
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 241, 16));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 256, 324));
         gridLayout_62 = new QGridLayout(scrollAreaWidgetContents_2);
         gridLayout_62->setSpacing(0);
         gridLayout_62->setContentsMargins(11, 11, 11, 11);
@@ -2772,6 +2771,7 @@ public:
         horizontalLayout_27->setContentsMargins(0, 0, 0, 0);
         plainTextEditSettingsSystemInfoTitle = new QPlainTextEdit(groupBox_14);
         plainTextEditSettingsSystemInfoTitle->setObjectName(QStringLiteral("plainTextEditSettingsSystemInfoTitle"));
+        plainTextEditSettingsSystemInfoTitle->setMaximumSize(QSize(300, 16777215));
         plainTextEditSettingsSystemInfoTitle->setFont(font2);
         plainTextEditSettingsSystemInfoTitle->setStyleSheet(QLatin1String("QPlainTextEdit {background-color: rgb(90, 91, 91);border-width: 0;\n"
 "border-radius : 0; color: #ffd000;}\n"
@@ -3057,10 +3057,6 @@ public:
 
         horizontalLayout_27->addWidget(plainTextEditSettingsSystemInfo);
 
-        horizontalSpacer_12 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_27->addItem(horizontalSpacer_12);
-
 
         gridLayout_69->addWidget(groupBox_14, 1, 0, 1, 1);
 
@@ -3075,6 +3071,7 @@ public:
 
         groupBox_25 = new QGroupBox(groupBox_7);
         groupBox_25->setObjectName(QStringLiteral("groupBox_25"));
+        groupBox_25->setFont(font2);
         groupBox_25->setStyleSheet(QLatin1String("QGroupBox::title{\n"
 "	color : white;\n"
 "	left: 10px;\n"
@@ -3083,25 +3080,26 @@ public:
 "}\n"
 "\n"
 "QGroupBox{\n"
-"	border-width: 3px;\n"
+"	border-width: 2px;\n"
 "	border-style: solid;\n"
 "	border-color: white;\n"
 "	margin-top: 0.5ex;\n"
 "	border-radius: 5px;\n"
-"	background:#008F96;\n"
 "}"));
         gridLayout_70 = new QGridLayout(groupBox_25);
         gridLayout_70->setSpacing(0);
         gridLayout_70->setContentsMargins(11, 11, 11, 11);
         gridLayout_70->setObjectName(QStringLiteral("gridLayout_70"));
-        gridLayout_70->setContentsMargins(0, 0, 0, 0);
+        gridLayout_70->setContentsMargins(0, 30, 0, 0);
         frame_28 = new QFrame(groupBox_25);
         frame_28->setObjectName(QStringLiteral("frame_28"));
         frame_28->setMinimumSize(QSize(300, 50));
-        frame_28->setStyleSheet(QLatin1String("background:#008F96;\n"
+        frame_28->setStyleSheet(QLatin1String("#frame_28{\n"
+"background:#008F96;\n"
 "color: rgb(255, 255, 255);\n"
 "border-width: 0;\n"
-"border-radius : 0;"));
+"border-radius : 0;\n"
+"}"));
         frame_28->setFrameShape(QFrame::StyledPanel);
         frame_28->setFrameShadow(QFrame::Raised);
         gridLayout_27 = new QGridLayout(frame_28);
@@ -3136,6 +3134,10 @@ public:
         label_43->setObjectName(QStringLiteral("label_43"));
         label_43->setMinimumSize(QSize(100, 60));
         label_43->setFont(font);
+        label_43->setStyleSheet(QLatin1String("background:#008F96;\n"
+"color: rgb(255, 255, 255);\n"
+"border-width: 0;\n"
+"border-radius : 0;"));
 
         formLayout->setWidget(0, QFormLayout::LabelRole, label_43);
 
@@ -3143,6 +3145,10 @@ public:
         label_46->setObjectName(QStringLiteral("label_46"));
         label_46->setMinimumSize(QSize(100, 50));
         label_46->setFont(font);
+        label_46->setStyleSheet(QLatin1String("background:#008F96;\n"
+"color: rgb(255, 255, 255);\n"
+"border-width: 0;\n"
+"border-radius : 0;"));
 
         formLayout->setWidget(1, QFormLayout::LabelRole, label_46);
 
@@ -3150,6 +3156,10 @@ public:
         label_45->setObjectName(QStringLiteral("label_45"));
         label_45->setMinimumSize(QSize(100, 50));
         label_45->setFont(font);
+        label_45->setStyleSheet(QLatin1String("background:#008F96;\n"
+"color: rgb(255, 255, 255);\n"
+"border-width: 0;\n"
+"border-radius : 0;"));
 
         formLayout->setWidget(2, QFormLayout::LabelRole, label_45);
 
@@ -3165,7 +3175,7 @@ public:
         spinBoxChangePageSizeMax->setMinimumSize(QSize(0, 40));
         QFont font11;
         font11.setFamily(QStringLiteral("Berlin Sans FB"));
-        font11.setPointSize(20);
+        font11.setPointSize(16);
         font11.setBold(false);
         font11.setItalic(false);
         font11.setWeight(50);
@@ -3176,7 +3186,7 @@ public:
 "	color:rgb(255,255,255);\n"
 "	background-color: rgb(51,51,51);\n"
 "	\n"
-"	font: 20pt \"Berlin Sans FB\";\n"
+"	font: \"Berlin Sans FB\";\n"
 "}\n"
 "\n"
 "QSpinBox::up-arrow { \n"
@@ -3235,7 +3245,7 @@ public:
 "	border-radius: 5px;	\n"
 "	color:rgb(255,255,255);\n"
 "	background-color: rgb(51,51,51);\n"
-"	font: 20pt \"Berlin Sans FB\";\n"
+"	font: \"Berlin Sans FB\";\n"
 "}\n"
 "\n"
 "QSpinBox::up-arrow { \n"
@@ -3945,7 +3955,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 200, 229));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 200, 231));
         sizePolicy.setHeightForWidth(scrollAreaWidgetContents->sizePolicy().hasHeightForWidth());
         scrollAreaWidgetContents->setSizePolicy(sizePolicy);
         scrollAreaWidgetContents->setMinimumSize(QSize(0, 200));
@@ -6096,8 +6106,8 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidgetMain->setCurrentIndex(1);
-        stackedWidgetMonitorMain->setCurrentIndex(1);
+        stackedWidgetMain->setCurrentIndex(0);
+        stackedWidgetMonitorMain->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -6209,9 +6219,9 @@ public:
 "Status	\n"
 "TempPageFile", Q_NULLPTR));
         plainTextEditSettingsSystemInfo->setPlainText(QString());
-        groupBox_25->setTitle(QString());
+        groupBox_25->setTitle(QApplication::translate("MainWindow", "Virtual Memory", Q_NULLPTR));
         pushButtonChangePageSize->setText(QApplication::translate("MainWindow", "Apply", Q_NULLPTR));
-        label_43->setText(QApplication::translate("MainWindow", " Disk", Q_NULLPTR));
+        label_43->setText(QApplication::translate("MainWindow", " Disk Part.", Q_NULLPTR));
         label_46->setText(QApplication::translate("MainWindow", " Max Size", Q_NULLPTR));
         label_45->setText(QApplication::translate("MainWindow", " Min Size", Q_NULLPTR));
         pushButtonCancelAutoPage->setText(QApplication::translate("MainWindow", "Cancel Auto Page", Q_NULLPTR));
