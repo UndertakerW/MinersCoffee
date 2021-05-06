@@ -2467,7 +2467,7 @@ QGroupBox{
                      <number>30</number>
                     </property>
                     <property name="rightMargin">
-                     <number>0</number>
+                     <number>9</number>
                     </property>
                     <property name="bottomMargin">
                      <number>10</number>
