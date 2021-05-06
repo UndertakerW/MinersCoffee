@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1180</width>
-    <height>780</height>
+    <width>1440</width>
+    <height>900</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -15,6 +15,12 @@
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1440</width>
+    <height>900</height>
+   </size>
   </property>
   <property name="font">
    <font>
@@ -24,10 +30,6 @@
   </property>
   <property name="windowTitle">
    <string>Miner's Coffee</string>
-  </property>
-  <property name="windowIcon">
-   <iconset resource="resources.qrc">
-    <normaloff>:/icons/eth_miner_lamp.ico</normaloff>:/icons/eth_miner_lamp.ico</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -39,7 +41,7 @@
    <property name="styleSheet">
     <string notr="true"/>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_28">
+   <layout class="QVBoxLayout" name="verticalLayout_29" stretch="0,0,0">
     <property name="spacing">
      <number>0</number>
     </property>
@@ -488,7 +490,7 @@ border-radius : 0;
 </string>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="pageMonitor">
            <layout class="QGridLayout" name="gridLayout_40">
@@ -910,7 +912,7 @@ QPushButton:pressed {
                <string notr="true">background:rgb(91,90,90);</string>
               </property>
               <property name="currentIndex">
-               <number>2</number>
+               <number>1</number>
               </property>
               <widget class="QWidget" name="pageOverview">
                <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -959,7 +961,7 @@ QGroupBox{
                         <number>9</number>
                        </property>
                        <property name="topMargin">
-                        <number>20</number>
+                        <number>30</number>
                        </property>
                        <property name="rightMargin">
                         <number>10</number>
@@ -1463,7 +1465,7 @@ QGroupBox{
 }</string>
                       </property>
                       <property name="title">
-                       <string>Overview</string>
+                       <string>GPU</string>
                       </property>
                       <layout class="QVBoxLayout" name="verticalLayout_5">
                        <property name="spacing">
@@ -1473,7 +1475,7 @@ QGroupBox{
                         <number>0</number>
                        </property>
                        <property name="topMargin">
-                        <number>20</number>
+                        <number>30</number>
                        </property>
                        <property name="rightMargin">
                         <number>0</number>
@@ -1534,257 +1536,8 @@ border-radius : 0;</string>
                             <property name="frameShadow">
                              <enum>QFrame::Raised</enum>
                             </property>
-                            <layout class="QVBoxLayout" name="verticalLayout_6">
-                             <property name="spacing">
-                              <number>0</number>
-                             </property>
-                             <property name="leftMargin">
-                              <number>0</number>
-                             </property>
-                             <property name="topMargin">
-                              <number>0</number>
-                             </property>
-                             <property name="rightMargin">
-                              <number>0</number>
-                             </property>
-                             <property name="bottomMargin">
-                              <number>0</number>
-                             </property>
-                             <item>
-                              <widget class="QFrame" name="frame_6">
-                               <property name="minimumSize">
-                                <size>
-                                 <width>100</width>
-                                 <height>80</height>
-                                </size>
-                               </property>
-                               <property name="styleSheet">
-                                <string notr="true">background-color: #008F96;</string>
-                               </property>
-                               <property name="frameShape">
-                                <enum>QFrame::StyledPanel</enum>
-                               </property>
-                               <property name="frameShadow">
-                                <enum>QFrame::Raised</enum>
-                               </property>
-                               <layout class="QGridLayout" name="gridLayout_12">
-                                <property name="leftMargin">
-                                 <number>0</number>
-                                </property>
-                                <property name="topMargin">
-                                 <number>0</number>
-                                </property>
-                                <property name="rightMargin">
-                                 <number>0</number>
-                                </property>
-                                <property name="bottomMargin">
-                                 <number>0</number>
-                                </property>
-                                <property name="spacing">
-                                 <number>0</number>
-                                </property>
-                                <item row="0" column="0" rowspan="2">
-                                 <widget class="QLabel" name="label_23">
-                                  <property name="minimumSize">
-                                   <size>
-                                    <width>100</width>
-                                    <height>0</height>
-                                   </size>
-                                  </property>
-                                  <property name="font">
-                                   <font>
-                                    <family>Berlin Sans FB</family>
-                                    <pointsize>16</pointsize>
-                                   </font>
-                                  </property>
-                                  <property name="styleSheet">
-                                   <string notr="true">color : white;</string>
-                                  </property>
-                                  <property name="text">
-                                   <string>Mem
-Clock</string>
-                                  </property>
-                                  <property name="alignment">
-                                   <set>Qt::AlignCenter</set>
-                                  </property>
-                                 </widget>
-                                </item>
-                                <item row="0" column="1">
-                                 <widget class="QFrame" name="frame_33">
-                                  <property name="minimumSize">
-                                   <size>
-                                    <width>100</width>
-                                    <height>50</height>
-                                   </size>
-                                  </property>
-                                  <property name="styleSheet">
-                                   <string notr="true">background-color: #008F96;</string>
-                                  </property>
-                                  <property name="frameShape">
-                                   <enum>QFrame::StyledPanel</enum>
-                                  </property>
-                                  <property name="frameShadow">
-                                   <enum>QFrame::Raised</enum>
-                                  </property>
-                                  <layout class="QGridLayout" name="gridLayout_51">
-                                   <property name="leftMargin">
-                                    <number>0</number>
-                                   </property>
-                                   <property name="topMargin">
-                                    <number>0</number>
-                                   </property>
-                                   <property name="rightMargin">
-                                    <number>0</number>
-                                   </property>
-                                   <property name="bottomMargin">
-                                    <number>0</number>
-                                   </property>
-                                   <property name="spacing">
-                                    <number>0</number>
-                                   </property>
-                                   <item row="0" column="1">
-                                    <widget class="QLabel" name="labelMaxMemClock">
-                                     <property name="minimumSize">
-                                      <size>
-                                       <width>120</width>
-                                       <height>0</height>
-                                      </size>
-                                     </property>
-                                     <property name="font">
-                                      <font>
-                                       <family>Berlin Sans FB</family>
-                                       <pointsize>24</pointsize>
-                                      </font>
-                                     </property>
-                                     <property name="styleSheet">
-                                      <string notr="true">color : white;</string>
-                                     </property>
-                                     <property name="text">
-                                      <string>0</string>
-                                     </property>
-                                     <property name="alignment">
-                                      <set>Qt::AlignCenter</set>
-                                     </property>
-                                    </widget>
-                                   </item>
-                                   <item row="0" column="0">
-                                    <widget class="QLabel" name="label_35">
-                                     <property name="minimumSize">
-                                      <size>
-                                       <width>50</width>
-                                       <height>0</height>
-                                      </size>
-                                     </property>
-                                     <property name="font">
-                                      <font>
-                                       <family>Berlin Sans FB</family>
-                                       <pointsize>11</pointsize>
-                                      </font>
-                                     </property>
-                                     <property name="styleSheet">
-                                      <string notr="true">color : white;</string>
-                                     </property>
-                                     <property name="text">
-                                      <string>max</string>
-                                     </property>
-                                     <property name="alignment">
-                                      <set>Qt::AlignCenter</set>
-                                     </property>
-                                    </widget>
-                                   </item>
-                                  </layout>
-                                 </widget>
-                                </item>
-                                <item row="1" column="1">
-                                 <widget class="QFrame" name="frame_10">
-                                  <property name="minimumSize">
-                                   <size>
-                                    <width>100</width>
-                                    <height>50</height>
-                                   </size>
-                                  </property>
-                                  <property name="styleSheet">
-                                   <string notr="true">background-color: #008F96;</string>
-                                  </property>
-                                  <property name="frameShape">
-                                   <enum>QFrame::StyledPanel</enum>
-                                  </property>
-                                  <property name="frameShadow">
-                                   <enum>QFrame::Raised</enum>
-                                  </property>
-                                  <layout class="QGridLayout" name="gridLayout_7">
-                                   <property name="leftMargin">
-                                    <number>0</number>
-                                   </property>
-                                   <property name="topMargin">
-                                    <number>0</number>
-                                   </property>
-                                   <property name="rightMargin">
-                                    <number>0</number>
-                                   </property>
-                                   <property name="bottomMargin">
-                                    <number>0</number>
-                                   </property>
-                                   <property name="spacing">
-                                    <number>0</number>
-                                   </property>
-                                   <item row="0" column="1">
-                                    <widget class="QLabel" name="labelMinMemClock">
-                                     <property name="minimumSize">
-                                      <size>
-                                       <width>120</width>
-                                       <height>0</height>
-                                      </size>
-                                     </property>
-                                     <property name="font">
-                                      <font>
-                                       <family>Berlin Sans FB</family>
-                                       <pointsize>24</pointsize>
-                                      </font>
-                                     </property>
-                                     <property name="styleSheet">
-                                      <string notr="true">color : white;</string>
-                                     </property>
-                                     <property name="text">
-                                      <string>0</string>
-                                     </property>
-                                     <property name="alignment">
-                                      <set>Qt::AlignCenter</set>
-                                     </property>
-                                    </widget>
-                                   </item>
-                                   <item row="0" column="0">
-                                    <widget class="QLabel" name="label_42">
-                                     <property name="minimumSize">
-                                      <size>
-                                       <width>50</width>
-                                       <height>0</height>
-                                      </size>
-                                     </property>
-                                     <property name="font">
-                                      <font>
-                                       <family>Berlin Sans FB</family>
-                                       <pointsize>11</pointsize>
-                                      </font>
-                                     </property>
-                                     <property name="styleSheet">
-                                      <string notr="true">color : white;</string>
-                                     </property>
-                                     <property name="text">
-                                      <string>min</string>
-                                     </property>
-                                     <property name="alignment">
-                                      <set>Qt::AlignCenter</set>
-                                     </property>
-                                    </widget>
-                                   </item>
-                                  </layout>
-                                 </widget>
-                                </item>
-                               </layout>
-                              </widget>
-                             </item>
-                             <item>
+                            <layout class="QGridLayout" name="gridLayout_72">
+                             <item row="0" column="0">
                               <widget class="QFrame" name="frame_11">
                                <property name="minimumSize">
                                 <size>
@@ -1982,8 +1735,8 @@ Clock</string>
                                </layout>
                               </widget>
                              </item>
-                             <item>
-                              <widget class="QFrame" name="frame_13">
+                             <item row="1" column="0">
+                              <widget class="QFrame" name="frame_6">
                                <property name="minimumSize">
                                 <size>
                                  <width>100</width>
@@ -1999,10 +1752,7 @@ Clock</string>
                                <property name="frameShadow">
                                 <enum>QFrame::Raised</enum>
                                </property>
-                               <layout class="QHBoxLayout" name="horizontalLayout_10">
-                                <property name="spacing">
-                                 <number>0</number>
-                                </property>
+                               <layout class="QGridLayout" name="gridLayout_12">
                                 <property name="leftMargin">
                                  <number>0</number>
                                 </property>
@@ -2015,34 +1765,11 @@ Clock</string>
                                 <property name="bottomMargin">
                                  <number>0</number>
                                 </property>
-                                <item>
-                                 <widget class="QLabel" name="label_36">
-                                  <property name="minimumSize">
-                                   <size>
-                                    <width>100</width>
-                                    <height>0</height>
-                                   </size>
-                                  </property>
-                                  <property name="font">
-                                   <font>
-                                    <family>Berlin Sans FB</family>
-                                    <pointsize>16</pointsize>
-                                   </font>
-                                  </property>
-                                  <property name="styleSheet">
-                                   <string notr="true">color : white;</string>
-                                  </property>
-                                  <property name="text">
-                                   <string>Power
-Draw</string>
-                                  </property>
-                                  <property name="alignment">
-                                   <set>Qt::AlignCenter</set>
-                                  </property>
-                                 </widget>
-                                </item>
-                                <item>
-                                 <widget class="QFrame" name="frame_15">
+                                <property name="spacing">
+                                 <number>0</number>
+                                </property>
+                                <item row="0" column="1">
+                                 <widget class="QFrame" name="frame_33">
                                   <property name="minimumSize">
                                    <size>
                                     <width>100</width>
@@ -2058,7 +1785,7 @@ Draw</string>
                                   <property name="frameShadow">
                                    <enum>QFrame::Raised</enum>
                                   </property>
-                                  <layout class="QGridLayout" name="gridLayout_14">
+                                  <layout class="QGridLayout" name="gridLayout_51">
                                    <property name="leftMargin">
                                     <number>0</number>
                                    </property>
@@ -2074,33 +1801,8 @@ Draw</string>
                                    <property name="spacing">
                                     <number>0</number>
                                    </property>
-                                   <item row="1" column="1">
-                                    <widget class="QLabel" name="labelMinWatt">
-                                     <property name="minimumSize">
-                                      <size>
-                                       <width>120</width>
-                                       <height>0</height>
-                                      </size>
-                                     </property>
-                                     <property name="font">
-                                      <font>
-                                       <family>Berlin Sans FB</family>
-                                       <pointsize>24</pointsize>
-                                      </font>
-                                     </property>
-                                     <property name="styleSheet">
-                                      <string notr="true">color : white;</string>
-                                     </property>
-                                     <property name="text">
-                                      <string>0.00</string>
-                                     </property>
-                                     <property name="alignment">
-                                      <set>Qt::AlignCenter</set>
-                                     </property>
-                                    </widget>
-                                   </item>
                                    <item row="0" column="1">
-                                    <widget class="QLabel" name="labelMaxWatt">
+                                    <widget class="QLabel" name="labelMaxMemClock">
                                      <property name="minimumSize">
                                       <size>
                                        <width>120</width>
@@ -2117,7 +1819,7 @@ Draw</string>
                                       <string notr="true">color : white;</string>
                                      </property>
                                      <property name="text">
-                                      <string>0.00</string>
+                                      <string>0</string>
                                      </property>
                                      <property name="alignment">
                                       <set>Qt::AlignCenter</set>
@@ -2125,7 +1827,7 @@ Draw</string>
                                     </widget>
                                    </item>
                                    <item row="0" column="0">
-                                    <widget class="QLabel" name="label_54">
+                                    <widget class="QLabel" name="label_35">
                                      <property name="minimumSize">
                                       <size>
                                        <width>50</width>
@@ -2149,8 +1851,95 @@ Draw</string>
                                      </property>
                                     </widget>
                                    </item>
-                                   <item row="1" column="0">
-                                    <widget class="QLabel" name="label_55">
+                                  </layout>
+                                 </widget>
+                                </item>
+                                <item row="0" column="0" rowspan="2">
+                                 <widget class="QLabel" name="label_23">
+                                  <property name="minimumSize">
+                                   <size>
+                                    <width>100</width>
+                                    <height>0</height>
+                                   </size>
+                                  </property>
+                                  <property name="font">
+                                   <font>
+                                    <family>Berlin Sans FB</family>
+                                    <pointsize>16</pointsize>
+                                   </font>
+                                  </property>
+                                  <property name="styleSheet">
+                                   <string notr="true">color : white;</string>
+                                  </property>
+                                  <property name="text">
+                                   <string>VRAM
+Clock</string>
+                                  </property>
+                                  <property name="alignment">
+                                   <set>Qt::AlignCenter</set>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item row="1" column="1">
+                                 <widget class="QFrame" name="frame_10">
+                                  <property name="minimumSize">
+                                   <size>
+                                    <width>100</width>
+                                    <height>50</height>
+                                   </size>
+                                  </property>
+                                  <property name="styleSheet">
+                                   <string notr="true">background-color: #008F96;</string>
+                                  </property>
+                                  <property name="frameShape">
+                                   <enum>QFrame::StyledPanel</enum>
+                                  </property>
+                                  <property name="frameShadow">
+                                   <enum>QFrame::Raised</enum>
+                                  </property>
+                                  <layout class="QGridLayout" name="gridLayout_7">
+                                   <property name="leftMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="topMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="rightMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="bottomMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="spacing">
+                                    <number>0</number>
+                                   </property>
+                                   <item row="0" column="1">
+                                    <widget class="QLabel" name="labelMinMemClock">
+                                     <property name="minimumSize">
+                                      <size>
+                                       <width>120</width>
+                                       <height>0</height>
+                                      </size>
+                                     </property>
+                                     <property name="font">
+                                      <font>
+                                       <family>Berlin Sans FB</family>
+                                       <pointsize>24</pointsize>
+                                      </font>
+                                     </property>
+                                     <property name="styleSheet">
+                                      <string notr="true">color : white;</string>
+                                     </property>
+                                     <property name="text">
+                                      <string>0</string>
+                                     </property>
+                                     <property name="alignment">
+                                      <set>Qt::AlignCenter</set>
+                                     </property>
+                                    </widget>
+                                   </item>
+                                   <item row="0" column="0">
+                                    <widget class="QLabel" name="label_42">
                                      <property name="minimumSize">
                                       <size>
                                        <width>50</width>
@@ -2180,12 +1969,12 @@ Draw</string>
                                </layout>
                               </widget>
                              </item>
-                             <item>
+                             <item row="2" column="0">
                               <widget class="QFrame" name="frame_9">
                                <property name="minimumSize">
                                 <size>
                                  <width>100</width>
-                                 <height>100</height>
+                                 <height>80</height>
                                 </size>
                                </property>
                                <property name="styleSheet">
@@ -2414,6 +2203,204 @@ Speed</string>
                                </layout>
                               </widget>
                              </item>
+                             <item row="3" column="0">
+                              <widget class="QFrame" name="frame_13">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>100</width>
+                                 <height>80</height>
+                                </size>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">background-color: #008F96;</string>
+                               </property>
+                               <property name="frameShape">
+                                <enum>QFrame::StyledPanel</enum>
+                               </property>
+                               <property name="frameShadow">
+                                <enum>QFrame::Raised</enum>
+                               </property>
+                               <layout class="QHBoxLayout" name="horizontalLayout_10">
+                                <property name="spacing">
+                                 <number>0</number>
+                                </property>
+                                <property name="leftMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="topMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="rightMargin">
+                                 <number>0</number>
+                                </property>
+                                <property name="bottomMargin">
+                                 <number>0</number>
+                                </property>
+                                <item>
+                                 <widget class="QLabel" name="label_36">
+                                  <property name="minimumSize">
+                                   <size>
+                                    <width>100</width>
+                                    <height>0</height>
+                                   </size>
+                                  </property>
+                                  <property name="font">
+                                   <font>
+                                    <family>Berlin Sans FB</family>
+                                    <pointsize>16</pointsize>
+                                   </font>
+                                  </property>
+                                  <property name="styleSheet">
+                                   <string notr="true">color : white;</string>
+                                  </property>
+                                  <property name="text">
+                                   <string>Power
+Draw</string>
+                                  </property>
+                                  <property name="alignment">
+                                   <set>Qt::AlignCenter</set>
+                                  </property>
+                                 </widget>
+                                </item>
+                                <item>
+                                 <widget class="QFrame" name="frame_15">
+                                  <property name="minimumSize">
+                                   <size>
+                                    <width>100</width>
+                                    <height>50</height>
+                                   </size>
+                                  </property>
+                                  <property name="styleSheet">
+                                   <string notr="true">background-color: #008F96;</string>
+                                  </property>
+                                  <property name="frameShape">
+                                   <enum>QFrame::StyledPanel</enum>
+                                  </property>
+                                  <property name="frameShadow">
+                                   <enum>QFrame::Raised</enum>
+                                  </property>
+                                  <layout class="QGridLayout" name="gridLayout_14">
+                                   <property name="leftMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="topMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="rightMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="bottomMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="spacing">
+                                    <number>0</number>
+                                   </property>
+                                   <item row="1" column="1">
+                                    <widget class="QLabel" name="labelMinWatt">
+                                     <property name="minimumSize">
+                                      <size>
+                                       <width>120</width>
+                                       <height>0</height>
+                                      </size>
+                                     </property>
+                                     <property name="font">
+                                      <font>
+                                       <family>Berlin Sans FB</family>
+                                       <pointsize>24</pointsize>
+                                      </font>
+                                     </property>
+                                     <property name="styleSheet">
+                                      <string notr="true">color : white;</string>
+                                     </property>
+                                     <property name="text">
+                                      <string>0</string>
+                                     </property>
+                                     <property name="alignment">
+                                      <set>Qt::AlignCenter</set>
+                                     </property>
+                                    </widget>
+                                   </item>
+                                   <item row="0" column="1">
+                                    <widget class="QLabel" name="labelMaxWatt">
+                                     <property name="minimumSize">
+                                      <size>
+                                       <width>120</width>
+                                       <height>0</height>
+                                      </size>
+                                     </property>
+                                     <property name="font">
+                                      <font>
+                                       <family>Berlin Sans FB</family>
+                                       <pointsize>24</pointsize>
+                                      </font>
+                                     </property>
+                                     <property name="styleSheet">
+                                      <string notr="true">color : white;</string>
+                                     </property>
+                                     <property name="text">
+                                      <string>0</string>
+                                     </property>
+                                     <property name="alignment">
+                                      <set>Qt::AlignCenter</set>
+                                     </property>
+                                    </widget>
+                                   </item>
+                                   <item row="0" column="0">
+                                    <widget class="QLabel" name="label_54">
+                                     <property name="minimumSize">
+                                      <size>
+                                       <width>50</width>
+                                       <height>0</height>
+                                      </size>
+                                     </property>
+                                     <property name="font">
+                                      <font>
+                                       <family>Berlin Sans FB</family>
+                                       <pointsize>11</pointsize>
+                                      </font>
+                                     </property>
+                                     <property name="styleSheet">
+                                      <string notr="true">color : white;</string>
+                                     </property>
+                                     <property name="text">
+                                      <string>max</string>
+                                     </property>
+                                     <property name="alignment">
+                                      <set>Qt::AlignCenter</set>
+                                     </property>
+                                    </widget>
+                                   </item>
+                                   <item row="1" column="0">
+                                    <widget class="QLabel" name="label_55">
+                                     <property name="minimumSize">
+                                      <size>
+                                       <width>50</width>
+                                       <height>0</height>
+                                      </size>
+                                     </property>
+                                     <property name="font">
+                                      <font>
+                                       <family>Berlin Sans FB</family>
+                                       <pointsize>11</pointsize>
+                                      </font>
+                                     </property>
+                                     <property name="styleSheet">
+                                      <string notr="true">color : white;</string>
+                                     </property>
+                                     <property name="text">
+                                      <string>min</string>
+                                     </property>
+                                     <property name="alignment">
+                                      <set>Qt::AlignCenter</set>
+                                     </property>
+                                    </widget>
+                                   </item>
+                                  </layout>
+                                 </widget>
+                                </item>
+                               </layout>
+                              </widget>
+                             </item>
                             </layout>
                            </widget>
                           </item>
@@ -2467,7 +2454,7 @@ QGroupBox{
 }</string>
                    </property>
                    <property name="title">
-                    <string>Hashrate</string>
+                    <string>Mining</string>
                    </property>
                    <layout class="QHBoxLayout" name="horizontalLayout_6">
                     <property name="spacing">
@@ -2477,10 +2464,10 @@ QGroupBox{
                      <number>0</number>
                     </property>
                     <property name="topMargin">
-                     <number>20</number>
+                     <number>30</number>
                     </property>
                     <property name="rightMargin">
-                     <number>10</number>
+                     <number>0</number>
                     </property>
                     <property name="bottomMargin">
                      <number>10</number>
@@ -2817,7 +2804,7 @@ Rate</string>
                    <property name="font">
                     <font>
                      <family>Berlin Sans FB</family>
-                     <pointsize>10</pointsize>
+                     <pointsize>14</pointsize>
                     </font>
                    </property>
                    <property name="styleSheet">
@@ -2837,14 +2824,14 @@ QGroupBox{
 }</string>
                    </property>
                    <property name="title">
-                    <string>Disks</string>
+                    <string>Disk</string>
                    </property>
                    <layout class="QGridLayout" name="gridLayout_13">
                     <property name="leftMargin">
                      <number>0</number>
                     </property>
                     <property name="topMargin">
-                     <number>20</number>
+                     <number>30</number>
                     </property>
                     <property name="rightMargin">
                      <number>0</number>
@@ -3024,8 +3011,8 @@ border-radius : 0;</string>
                            <rect>
                             <x>0</x>
                             <y>0</y>
-                            <width>100</width>
-                            <height>30</height>
+                            <width>241</width>
+                            <height>16</height>
                            </rect>
                           </property>
                           <layout class="QGridLayout" name="gridLayout_62">
@@ -3089,627 +3076,439 @@ QGroupBox{
                   <property name="title">
                    <string/>
                   </property>
-                  <layout class="QGridLayout" name="gridLayout_16">
-                   <property name="leftMargin">
-                    <number>10</number>
-                   </property>
+                  <layout class="QGridLayout" name="gridLayout_76">
                    <property name="topMargin">
                     <number>0</number>
-                   </property>
-                   <property name="rightMargin">
-                    <number>1</number>
                    </property>
                    <property name="bottomMargin">
                     <number>0</number>
                    </property>
-                   <property name="spacing">
+                   <property name="horizontalSpacing">
+                    <number>70</number>
+                   </property>
+                   <property name="verticalSpacing">
                     <number>0</number>
                    </property>
-                   <item row="0" column="0">
-                    <layout class="QHBoxLayout" name="horizontalLayout_15">
-                     <property name="spacing">
-                      <number>1</number>
-                     </property>
-                     <item>
-                      <layout class="QGridLayout" name="gridLayout_15">
-                       <item row="2" column="0" colspan="4">
-                        <layout class="QHBoxLayout" name="horizontalLayout_14">
-                         <item>
-                          <widget class="QLabel" name="labelWallet">
-                           <property name="sizePolicy">
-                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                             <horstretch>0</horstretch>
-                             <verstretch>0</verstretch>
-                            </sizepolicy>
-                           </property>
-                           <property name="minimumSize">
-                            <size>
-                             <width>100</width>
-                             <height>30</height>
-                            </size>
-                           </property>
-                           <property name="maximumSize">
-                            <size>
-                             <width>60</width>
-                             <height>16777215</height>
-                            </size>
-                           </property>
-                           <property name="font">
-                            <font>
-                             <family>Berlin Sans FB</family>
-                             <pointsize>18</pointsize>
-                             <weight>50</weight>
-                             <bold>false</bold>
-                            </font>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">color : white;</string>
-                           </property>
-                           <property name="text">
-                            <string>Wallet</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QLineEdit" name="lineEditWallet">
-                           <property name="sizePolicy">
-                            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                             <horstretch>0</horstretch>
-                             <verstretch>0</verstretch>
-                            </sizepolicy>
-                           </property>
-                           <property name="minimumSize">
-                            <size>
-                             <width>650</width>
-                             <height>31</height>
-                            </size>
-                           </property>
-                           <property name="font">
-                            <font>
-                             <family>Berlin Sans FB</family>
-                             <pointsize>14</pointsize>
-                            </font>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">QLineEdit {
-	color:rgb(255,255,255);
-	border:2px solid rgb(51,51,51);
-	border-radius:4px;
-	background:rgb(51,51,51);
-}
-
-QLineEdit:disabled {
-	color:rgb(255,255,255);
-	border:2px solid rgb(112,112,112);
-	border-radius:4px;
-	background:rgb(112,112,112);
-}</string>
-                           </property>
-                          </widget>
-                         </item>
-                        </layout>
-                       </item>
-                       <item row="0" column="0">
-                        <layout class="QHBoxLayout" name="horizontalLayout_4">
-                         <property name="spacing">
-                          <number>15</number>
-                         </property>
-                         <item>
-                          <widget class="QLabel" name="labelCoin">
-                           <property name="sizePolicy">
-                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                             <horstretch>0</horstretch>
-                             <verstretch>0</verstretch>
-                            </sizepolicy>
-                           </property>
-                           <property name="minimumSize">
-                            <size>
-                             <width>100</width>
-                             <height>30</height>
-                            </size>
-                           </property>
-                           <property name="maximumSize">
-                            <size>
-                             <width>50</width>
-                             <height>16777215</height>
-                            </size>
-                           </property>
-                           <property name="font">
-                            <font>
-                             <family>Berlin Sans FB</family>
-                             <pointsize>20</pointsize>
-                             <weight>50</weight>
-                             <bold>false</bold>
-                            </font>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">color : white;</string>
-                           </property>
-                           <property name="text">
-                            <string>Coin</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QComboBox" name="comboBoxCoin">
-                           <property name="sizePolicy">
-                            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                             <horstretch>0</horstretch>
-                             <verstretch>0</verstretch>
-                            </sizepolicy>
-                           </property>
-                           <property name="minimumSize">
-                            <size>
-                             <width>130</width>
-                             <height>31</height>
-                            </size>
-                           </property>
-                           <property name="maximumSize">
-                            <size>
-                             <width>90</width>
-                             <height>16777215</height>
-                            </size>
-                           </property>
-                           <property name="font">
-                            <font>
-                             <family>Berlin Sans FB</family>
-                             <pointsize>12</pointsize>
-                            </font>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">QComboBox {
-	border: 2px solid rgb(51,51,51);
-	border-radius: 5px;	
-	color:rgb(255,255,255);
-	background-color: rgb(51,51,51);
-}
-
-QComboBox:hover {
-	border: 2px solid rgb(0,143,170);
-	border-radius: 5px;	
-	color:rgb(255,255,255);
-	background-color: rgb(0,143,170);
-}
-
-QComboBox:!editable, QComboBox::drop-down:editable {
-	background: rgb(51,51,51);
-}
-
-QComboBox:!editable:on, QComboBox::drop-down:editable:on {
-    background:rgb(51,51,51);
-}
-
-QComboBox:on { /* shift the text when the popup opens */
-    padding-top: 3px;
-    padding-left: 4px;
-}
-
-QComboBox::drop-down {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 15px;
-
-}
-
-QComboBox::down-arrow {
-    image: url(:icons/icos/arrow.png);
-}
-
-QComboBox::down-arrow:on { /* shift the arrow when popup is open */
-    top: 1px;
-    left: 1px;
-}
-
-QComboBox::drop-down {
-    background:rgb(51,51,51);
-}
-
-</string>
-                           </property>
-                           <item>
-                            <property name="text">
-                             <string>ETH</string>
-                            </property>
-                           </item>
-                          </widget>
-                         </item>
-                        </layout>
-                       </item>
-                       <item row="1" column="3">
-                        <spacer name="horizontalSpacer_3">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>98</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                       <item row="1" column="0">
-                        <layout class="QHBoxLayout" name="horizontalLayout_12">
-                         <property name="spacing">
-                          <number>15</number>
-                         </property>
-                         <item>
-                          <widget class="QLabel" name="labelPool">
-                           <property name="sizePolicy">
-                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                             <horstretch>0</horstretch>
-                             <verstretch>0</verstretch>
-                            </sizepolicy>
-                           </property>
-                           <property name="minimumSize">
-                            <size>
-                             <width>100</width>
-                             <height>30</height>
-                            </size>
-                           </property>
-                           <property name="maximumSize">
-                            <size>
-                             <width>50</width>
-                             <height>16777215</height>
-                            </size>
-                           </property>
-                           <property name="font">
-                            <font>
-                             <family>Berlin Sans FB</family>
-                             <pointsize>20</pointsize>
-                             <weight>50</weight>
-                             <bold>false</bold>
-                            </font>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">color : white;</string>
-                           </property>
-                           <property name="text">
-                            <string>Pool</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QComboBox" name="comboBoxPool">
-                           <property name="minimumSize">
-                            <size>
-                             <width>130</width>
-                             <height>31</height>
-                            </size>
-                           </property>
-                           <property name="font">
-                            <font>
-                             <family>Berlin Sans FB</family>
-                             <pointsize>12</pointsize>
-                            </font>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">QComboBox {
-	border: 2px solid rgb(51,51,51);
-	border-radius: 5px;	
-	color:rgb(255,255,255);
-	background-color: rgb(51,51,51);
-}
-
-QComboBox:hover {
-	border: 2px solid rgb(0,143,170);
-	border-radius: 5px;	
-	color:rgb(255,255,255);
-	background-color: rgb(0,143,170);
-}
-
-QComboBox:!editable, QComboBox::drop-down:editable {
-	background: rgb(51,51,51);
-}
-
-QComboBox:!editable:on, QComboBox::drop-down:editable:on {
-    background:rgb(51,51,51);
-}
-
-QComboBox:on { /* shift the text when the popup opens */
-    padding-top: 3px;
-    padding-left: 4px;
-}
-
-QComboBox::drop-down {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 15px;
-
-}
-
-QComboBox::down-arrow {
-    image: url(:icons/icos/arrow.png);
-}
-
-QComboBox::down-arrow:on { /* shift the arrow when popup is open */
-    top: 1px;
-    left: 1px;
-}
-
-QComboBox::drop-down {
-    background:rgb(51,51,51);
-}
-
-</string>
-                           </property>
-                           <item>
-                            <property name="text">
-                             <string>ethermine</string>
-                            </property>
-                           </item>
-                           <item>
-                            <property name="text">
-                             <string>sparkpool</string>
-                            </property>
-                           </item>
-                           <item>
-                            <property name="text">
-                             <string>f2pool</string>
-                            </property>
-                           </item>
-                           <item>
-                            <property name="text">
-                             <string>beepool</string>
-                            </property>
-                           </item>
-                           <item>
-                            <property name="text">
-                             <string>nanopool</string>
-                            </property>
-                           </item>
-                           <item>
-                            <property name="text">
-                             <string>herominers</string>
-                            </property>
-                           </item>
-                           <item>
-                            <property name="text">
-                             <string>nicehash</string>
-                            </property>
-                           </item>
-                          </widget>
-                         </item>
-                        </layout>
-                       </item>
-                       <item row="1" column="1" colspan="2">
-                        <layout class="QHBoxLayout" name="horizontalLayout_13">
-                         <property name="spacing">
-                          <number>0</number>
-                         </property>
-                         <item>
-                          <widget class="QLabel" name="labelWorker">
-                           <property name="sizePolicy">
-                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                             <horstretch>0</horstretch>
-                             <verstretch>0</verstretch>
-                            </sizepolicy>
-                           </property>
-                           <property name="minimumSize">
-                            <size>
-                             <width>120</width>
-                             <height>31</height>
-                            </size>
-                           </property>
-                           <property name="maximumSize">
-                            <size>
-                             <width>100</width>
-                             <height>16777215</height>
-                            </size>
-                           </property>
-                           <property name="font">
-                            <font>
-                             <family>Berlin Sans FB</family>
-                             <pointsize>18</pointsize>
-                             <weight>50</weight>
-                             <bold>false</bold>
-                            </font>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">color : white;</string>
-                           </property>
-                           <property name="text">
-                            <string>Worker</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QLineEdit" name="lineEditWorker">
-                           <property name="sizePolicy">
-                            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                             <horstretch>0</horstretch>
-                             <verstretch>0</verstretch>
-                            </sizepolicy>
-                           </property>
-                           <property name="minimumSize">
-                            <size>
-                             <width>150</width>
-                             <height>31</height>
-                            </size>
-                           </property>
-                           <property name="font">
-                            <font>
-                             <family>Berlin Sans FB</family>
-                             <pointsize>12</pointsize>
-                            </font>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">QLineEdit {
-	color:rgb(255,255,255);
-	border:2px solid rgb(51,51,51);
-	border-radius:4px;
-	background:rgb(51,51,51);
-}
-
-QLineEdit:disabled {
-	color:rgb(255,255,255);
-	border:2px solid rgb(112,112,112);
-	border-radius:4px;
-	background:rgb(112,112,112);
-}</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <spacer name="horizontalSpacer_6">
-                           <property name="orientation">
-                            <enum>Qt::Horizontal</enum>
-                           </property>
-                           <property name="sizeHint" stdset="0">
-                            <size>
-                             <width>98</width>
-                             <height>20</height>
-                            </size>
-                           </property>
-                          </spacer>
-                         </item>
-                        </layout>
-                       </item>
-                       <item row="0" column="1">
-                        <layout class="QHBoxLayout" name="horizontalLayout_11">
-                         <property name="spacing">
-                          <number>0</number>
-                         </property>
-                         <item>
-                          <widget class="QLabel" name="labelCore">
-                           <property name="sizePolicy">
-                            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                             <horstretch>0</horstretch>
-                             <verstretch>0</verstretch>
-                            </sizepolicy>
-                           </property>
-                           <property name="minimumSize">
-                            <size>
-                             <width>120</width>
-                             <height>31</height>
-                            </size>
-                           </property>
-                           <property name="maximumSize">
-                            <size>
-                             <width>50</width>
-                             <height>16777215</height>
-                            </size>
-                           </property>
-                           <property name="font">
-                            <font>
-                             <family>Berlin Sans FB</family>
-                             <pointsize>18</pointsize>
-                             <weight>50</weight>
-                             <bold>false</bold>
-                            </font>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">color : white;</string>
-                           </property>
-                           <property name="text">
-                            <string>Core</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QComboBox" name="comboBoxCore">
-                           <property name="minimumSize">
-                            <size>
-                             <width>150</width>
-                             <height>31</height>
-                            </size>
-                           </property>
-                           <property name="font">
-                            <font>
-                             <family>Berlin Sans FB</family>
-                             <pointsize>12</pointsize>
-                            </font>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">QComboBox {
-	border: 2px solid rgb(51,51,51);
-	border-radius: 5px;	
-	color:rgb(255,255,255);
-	background-color: rgb(51,51,51);
-}
-
-QComboBox:hover {
-	border: 2px solid rgb(0,143,170);
-	border-radius: 5px;	
-	color:rgb(255,255,255);
-	background-color: rgb(0,143,170);
-}
-
-QComboBox:!editable, QComboBox::drop-down:editable {
-	background: rgb(51,51,51);
-}
-
-QComboBox:!editable:on, QComboBox::drop-down:editable:on {
-    background:rgb(51,51,51);
-}
-
-QComboBox:on { /* shift the text when the popup opens */
-    padding-top: 3px;
-    padding-left: 4px;
-}
-
-QComboBox::drop-down {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 15px;
-
-}
-
-QComboBox::down-arrow {
-    image: url(:icons/icos/arrow.png);
-}
-
-QComboBox::down-arrow:on { /* shift the arrow when popup is open */
-    top: 1px;
-    left: 1px;
-}
-
-QComboBox::drop-down {
-    background:rgb(51,51,51);
-}
-
-</string>
-                           </property>
-                           <item>
-                            <property name="text">
-                             <string>NBMiner 37.1</string>
-                            </property>
-                           </item>
-                          </widget>
-                         </item>
-                         <item>
-                          <spacer name="horizontalSpacer_2">
-                           <property name="orientation">
-                            <enum>Qt::Horizontal</enum>
-                           </property>
-                           <property name="sizeHint" stdset="0">
-                            <size>
-                             <width>118</width>
-                             <height>20</height>
-                            </size>
-                           </property>
-                          </spacer>
-                         </item>
-                        </layout>
-                       </item>
-                      </layout>
-                     </item>
-                     <item>
-                      <widget class="QPushButton" name="pushButton">
+                   <item row="0" column="1">
+                    <layout class="QGridLayout" name="gridLayout_15">
+                     <item row="0" column="0">
+                      <widget class="QLabel" name="labelCore">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="minimumSize">
                         <size>
-                         <width>200</width>
-                         <height>230</height>
+                         <width>80</width>
+                         <height>31</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>100</width>
+                         <height>16777215</height>
                         </size>
                        </property>
                        <property name="font">
                         <font>
                          <family>Berlin Sans FB</family>
                          <pointsize>16</pointsize>
+                         <weight>50</weight>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">QPushButton {
+                        <string notr="true">color : white;</string>
+                       </property>
+                       <property name="text">
+                        <string>Core</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="1">
+                      <widget class="QComboBox" name="comboBoxCore">
+                       <property name="minimumSize">
+                        <size>
+                         <width>150</width>
+                         <height>31</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>150</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Berlin Sans FB</family>
+                         <pointsize>14</pointsize>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QComboBox {
+	border: 2px solid rgb(51,51,51);
+	border-radius: 5px;	
+	color:rgb(255,255,255);
+	background-color: rgb(51,51,51);
+}
+
+QComboBox:hover {
+	border: 2px solid rgb(0,143,170);
+	border-radius: 5px;	
+	color:rgb(255,255,255);
+	background-color: rgb(0,143,170);
+}
+
+QComboBox:!editable, QComboBox::drop-down:editable {
+	background: rgb(51,51,51);
+}
+
+QComboBox:!editable:on, QComboBox::drop-down:editable:on {
+    background:rgb(51,51,51);
+}
+
+QComboBox:on { /* shift the text when the popup opens */
+    padding-top: 3px;
+    padding-left: 4px;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px;
+
+}
+
+QComboBox::down-arrow {
+    image: url(:icons/icos/arrow.png);
+}
+
+QComboBox::down-arrow:on { /* shift the arrow when popup is open */
+    top: 1px;
+    left: 1px;
+}
+
+QComboBox::drop-down {
+    background:rgb(51,51,51);
+}
+
+</string>
+                       </property>
+                       <item>
+                        <property name="text">
+                         <string>NBMiner</string>
+                        </property>
+                       </item>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item row="1" column="0" colspan="3">
+                    <layout class="QGridLayout" name="gridLayout_75" rowstretch="0">
+                     <property name="bottomMargin">
+                      <number>10</number>
+                     </property>
+                     <property name="horizontalSpacing">
+                      <number>50</number>
+                     </property>
+                     <item row="0" column="0">
+                      <layout class="QHBoxLayout" name="horizontalLayout_14">
+                       <item>
+                        <widget class="QLabel" name="labelWallet">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>150</width>
+                           <height>30</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>60</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Berlin Sans FB</family>
+                           <pointsize>16</pointsize>
+                           <weight>50</weight>
+                           <bold>false</bold>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">color : white;</string>
+                         </property>
+                         <property name="text">
+                          <string>Wallet</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLineEdit" name="lineEditWallet">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>200</width>
+                           <height>31</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Berlin Sans FB</family>
+                           <pointsize>14</pointsize>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLineEdit {
+	color:rgb(255,255,255);
+	border:2px solid rgb(51,51,51);
+	border-radius:4px;
+	background:rgb(51,51,51);
+}
+
+QLineEdit:disabled {
+	color:rgb(255,255,255);
+	border:2px solid rgb(112,112,112);
+	border-radius:4px;
+	background:rgb(112,112,112);
+}</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item row="0" column="1">
+                      <layout class="QGridLayout" name="gridLayout_74">
+                       <item row="0" column="0">
+                        <widget class="QLabel" name="labelWorker">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>150</width>
+                           <height>31</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>100</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Berlin Sans FB</family>
+                           <pointsize>16</pointsize>
+                           <weight>50</weight>
+                           <bold>false</bold>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">color : white;</string>
+                         </property>
+                         <property name="text">
+                          <string>Worker</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item row="0" column="1">
+                        <widget class="QLineEdit" name="lineEditWorker">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>200</width>
+                           <height>31</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Berlin Sans FB</family>
+                           <pointsize>14</pointsize>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLineEdit {
+	color:rgb(255,255,255);
+	border:2px solid rgb(51,51,51);
+	border-radius:4px;
+	background:rgb(51,51,51);
+}
+
+QLineEdit:disabled {
+	color:rgb(255,255,255);
+	border:2px solid rgb(112,112,112);
+	border-radius:4px;
+	background:rgb(112,112,112);
+}</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </item>
+                   <item row="0" column="0">
+                    <layout class="QGridLayout" name="gridLayout_16">
+                     <item row="0" column="1">
+                      <widget class="QComboBox" name="comboBoxCoin">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>150</width>
+                         <height>31</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>150</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Berlin Sans FB</family>
+                         <pointsize>14</pointsize>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QComboBox {
+	border: 2px solid rgb(51,51,51);
+	border-radius: 5px;	
+	color:rgb(255,255,255);
+	background-color: rgb(51,51,51);
+}
+
+QComboBox:hover {
+	border: 2px solid rgb(0,143,170);
+	border-radius: 5px;	
+	color:rgb(255,255,255);
+	background-color: rgb(0,143,170);
+}
+
+QComboBox:!editable, QComboBox::drop-down:editable {
+	background: rgb(51,51,51);
+}
+
+QComboBox:!editable:on, QComboBox::drop-down:editable:on {
+    background:rgb(51,51,51);
+}
+
+QComboBox:on { /* shift the text when the popup opens */
+    padding-top: 3px;
+    padding-left: 4px;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px;
+
+}
+
+QComboBox::down-arrow {
+    image: url(:icons/icos/arrow.png);
+}
+
+QComboBox::down-arrow:on { /* shift the arrow when popup is open */
+    top: 1px;
+    left: 1px;
+}
+
+QComboBox::drop-down {
+    background:rgb(51,51,51);
+}
+
+</string>
+                       </property>
+                       <item>
+                        <property name="text">
+                         <string>ETH</string>
+                        </property>
+                       </item>
+                      </widget>
+                     </item>
+                     <item row="0" column="0">
+                      <widget class="QLabel" name="labelCoin">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>80</width>
+                         <height>30</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>100</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Berlin Sans FB</family>
+                         <pointsize>16</pointsize>
+                         <weight>50</weight>
+                         <bold>false</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color : white;</string>
+                       </property>
+                       <property name="text">
+                        <string>Coin</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item row="0" column="3" rowspan="2">
+                    <widget class="QPushButton" name="pushButton">
+                     <property name="minimumSize">
+                      <size>
+                       <width>200</width>
+                       <height>180</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Berlin Sans FB</family>
+                       <pointsize>18</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton {
 	border: none;
 	background-color: rgba(0,0,0,0);
 	color : white;
@@ -3720,10 +3519,156 @@ QPushButton:hover {
 QPushButton:pressed {	
 	background-color: #7A0000;
 }</string>
+                     </property>
+                     <property name="text">
+                      <string>Start
+Mining</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="2">
+                    <layout class="QGridLayout" name="gridLayout_73">
+                     <item row="0" column="0">
+                      <widget class="QLabel" name="labelPool">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>80</width>
+                         <height>30</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>100</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Berlin Sans FB</family>
+                         <pointsize>16</pointsize>
+                         <weight>50</weight>
+                         <bold>false</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color : white;</string>
                        </property>
                        <property name="text">
-                        <string>Mining</string>
+                        <string>Pool</string>
                        </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="1">
+                      <widget class="QComboBox" name="comboBoxPool">
+                       <property name="minimumSize">
+                        <size>
+                         <width>150</width>
+                         <height>31</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>150</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Berlin Sans FB</family>
+                         <pointsize>14</pointsize>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QComboBox {
+	border: 2px solid rgb(51,51,51);
+	border-radius: 5px;	
+	color:rgb(255,255,255);
+	background-color: rgb(51,51,51);
+}
+
+QComboBox:hover {
+	border: 2px solid rgb(0,143,170);
+	border-radius: 5px;	
+	color:rgb(255,255,255);
+	background-color: rgb(0,143,170);
+}
+
+QComboBox:!editable, QComboBox::drop-down:editable {
+	background: rgb(51,51,51);
+}
+
+QComboBox:!editable:on, QComboBox::drop-down:editable:on {
+    background:rgb(51,51,51);
+}
+
+QComboBox:on { /* shift the text when the popup opens */
+    padding-top: 3px;
+    padding-left: 4px;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px;
+
+}
+
+QComboBox::down-arrow {
+    image: url(:icons/icos/arrow.png);
+}
+
+QComboBox::down-arrow:on { /* shift the arrow when popup is open */
+    top: 1px;
+    left: 1px;
+}
+
+QComboBox::drop-down {
+    background:rgb(51,51,51);
+}
+
+</string>
+                       </property>
+                       <item>
+                        <property name="text">
+                         <string>ethermine</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>sparkpool</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>f2pool</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>beepool</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>nanopool</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>herominers</string>
+                        </property>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>nicehash</string>
+                        </property>
+                       </item>
                       </widget>
                      </item>
                     </layout>
@@ -3815,7 +3760,7 @@ QGroupBox{
                               <property name="font">
                                <font>
                                 <family>Berlin Sans FB</family>
-                                <pointsize>30</pointsize>
+                                <pointsize>16</pointsize>
                                </font>
                               </property>
                               <property name="styleSheet">
@@ -3892,7 +3837,7 @@ color: rgb(255, 255, 255);</string>
                               <property name="font">
                                <font>
                                 <family>Berlin Sans FB</family>
-                                <pointsize>12</pointsize>
+                                <pointsize>14</pointsize>
                                </font>
                               </property>
                               <property name="styleSheet">
@@ -3931,6 +3876,7 @@ QPushButton:pressed {
                               <property name="font">
                                <font>
                                 <family>Berlin Sans FB</family>
+                                <pointsize>14</pointsize>
                                </font>
                               </property>
                               <property name="styleSheet">
@@ -4775,7 +4721,7 @@ border-radius : 0;</string>
                            <property name="font">
                             <font>
                              <family>Berlin Sans FB</family>
-                             <pointsize>18</pointsize>
+                             <pointsize>16</pointsize>
                             </font>
                            </property>
                            <property name="styleSheet">
@@ -4815,7 +4761,7 @@ QPushButton:pressed {
                              <property name="font">
                               <font>
                                <family>Berlin Sans FB</family>
-                               <pointsize>18</pointsize>
+                               <pointsize>16</pointsize>
                               </font>
                              </property>
                              <property name="text">
@@ -4834,7 +4780,7 @@ QPushButton:pressed {
                              <property name="font">
                               <font>
                                <family>Berlin Sans FB</family>
-                               <pointsize>18</pointsize>
+                               <pointsize>16</pointsize>
                               </font>
                              </property>
                              <property name="text">
@@ -4853,7 +4799,7 @@ QPushButton:pressed {
                              <property name="font">
                               <font>
                                <family>Berlin Sans FB</family>
-                               <pointsize>18</pointsize>
+                               <pointsize>16</pointsize>
                               </font>
                              </property>
                              <property name="text">
@@ -5156,7 +5102,7 @@ QComboBox::drop-down {
                            <property name="font">
                             <font>
                              <family>Berlin Sans FB</family>
-                             <pointsize>18</pointsize>
+                             <pointsize>16</pointsize>
                             </font>
                            </property>
                            <property name="styleSheet">
@@ -5398,7 +5344,7 @@ border-radius : 0;</string>
                                     <property name="font">
                                      <font>
                                       <family>Berlin Sans FB</family>
-                                      <pointsize>18</pointsize>
+                                      <pointsize>16</pointsize>
                                      </font>
                                     </property>
                                     <property name="styleSheet">
@@ -5484,7 +5430,7 @@ QSpinBox::down-button:hover {
                                     <property name="font">
                                      <font>
                                       <family>Berlin Sans FB</family>
-                                      <pointsize>18</pointsize>
+                                      <pointsize>16</pointsize>
                                      </font>
                                     </property>
                                     <property name="styleSheet">
@@ -5580,7 +5526,7 @@ QDateTimeEdit::down-button:hover {
                                     <property name="font">
                                      <font>
                                       <family>Berlin Sans FB</family>
-                                      <pointsize>18</pointsize>
+                                      <pointsize>16</pointsize>
                                      </font>
                                     </property>
                                     <property name="styleSheet">
@@ -5710,7 +5656,7 @@ border-radius : 0;</string>
                                          <property name="font">
                                           <font>
                                            <family>Berlin Sans FB</family>
-                                           <pointsize>18</pointsize>
+                                           <pointsize>16</pointsize>
                                           </font>
                                          </property>
                                          <property name="styleSheet">
@@ -6066,7 +6012,7 @@ border-radius : 0;</string>
                               <x>0</x>
                               <y>0</y>
                               <width>200</width>
-                              <height>200</height>
+                              <height>229</height>
                              </rect>
                             </property>
                             <property name="sizePolicy">
@@ -7791,7 +7737,7 @@ color: rgb(255, 255, 255);</string>
                   <property name="font">
                    <font>
                     <family>Berlin Sans FB</family>
-                    <pointsize>18</pointsize>
+                    <pointsize>16</pointsize>
                    </font>
                   </property>
                   <property name="styleSheet">
@@ -7813,7 +7759,7 @@ color: rgb(255, 255, 255);</string>
                   <property name="font">
                    <font>
                     <family>Berlin Sans FB</family>
-                    <pointsize>12</pointsize>
+                    <pointsize>14</pointsize>
                    </font>
                   </property>
                   <property name="layoutDirection">
@@ -7825,6 +7771,7 @@ color: rgb(255, 255, 255);</string>
 	border-radius: 5px;	
 	color:rgb(255,255,255);
 	background-color: rgb(51,51,51);
+	text-align: center;
 }
 
 QComboBox:hover {
@@ -7834,23 +7781,27 @@ QComboBox:hover {
 	background-color: rgb(0,143,170);
 }
 
-QComboBox:!editable, QComboBox::drop-down:editable {
+QComboBox:editable, QComboBox::drop-down:editable {
 	background: rgb(51,51,51);
+	text-align: center;
 }
 
-QComboBox:!editable:on, QComboBox::drop-down:editable:on {
+QComboBox:editable:on, QComboBox::drop-down:editable:on {
     background:rgb(51,51,51);
+	text-align: center;
 }
 
 QComboBox:on { /* shift the text when the popup opens */
     padding-top: 3px;
     padding-left: 4px;
+	text-align: center;
 }
 
 QComboBox::drop-down {
     subcontrol-origin: padding;
     subcontrol-position: top right;
     width: 15px;
+	text-align: center;
 
 }
 
@@ -7865,9 +7816,13 @@ QComboBox::down-arrow:on { /* shift the arrow when popup is open */
 
 QComboBox::drop-down {
     background:rgb(51,51,51);
+	text-align: center;
 }
 
 </string>
+                  </property>
+                  <property name="frame">
+                   <bool>false</bool>
                   </property>
                  </widget>
                 </item>
@@ -7905,7 +7860,7 @@ QComboBox::drop-down {
                   <property name="font">
                    <font>
                     <family>Berlin Sans FB</family>
-                    <pointsize>18</pointsize>
+                    <pointsize>16</pointsize>
                    </font>
                   </property>
                   <property name="styleSheet">
@@ -7927,7 +7882,7 @@ QComboBox::drop-down {
                   <property name="font">
                    <font>
                     <family>Berlin Sans FB</family>
-                    <pointsize>28</pointsize>
+                    <pointsize>14</pointsize>
                    </font>
                   </property>
                   <property name="autoFillBackground">
@@ -7972,7 +7927,7 @@ QSpinBox::down-button:hover {
 </string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignCenter</set>
+                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -8013,7 +7968,7 @@ QSpinBox::down-button:hover {
                   <property name="font">
                    <font>
                     <family>Berlin Sans FB</family>
-                    <pointsize>18</pointsize>
+                    <pointsize>16</pointsize>
                    </font>
                   </property>
                   <property name="styleSheet">
@@ -8112,7 +8067,7 @@ QSlider::add-page:horizontal {
                   <property name="font">
                    <font>
                     <family>Berlin Sans FB</family>
-                    <pointsize>24</pointsize>
+                    <pointsize>16</pointsize>
                    </font>
                   </property>
                   <property name="styleSheet">
@@ -8150,7 +8105,7 @@ QSlider::add-page:horizontal {
                   <property name="font">
                    <font>
                     <family>Berlin Sans FB</family>
-                    <pointsize>18</pointsize>
+                    <pointsize>16</pointsize>
                    </font>
                   </property>
                   <property name="styleSheet">
@@ -8249,7 +8204,7 @@ QSlider::add-page:horizontal {
                   <property name="font">
                    <font>
                     <family>Berlin Sans FB</family>
-                    <pointsize>24</pointsize>
+                    <pointsize>16</pointsize>
                    </font>
                   </property>
                   <property name="styleSheet">
@@ -8287,7 +8242,7 @@ QSlider::add-page:horizontal {
                   <property name="font">
                    <font>
                     <family>Berlin Sans FB</family>
-                    <pointsize>18</pointsize>
+                    <pointsize>16</pointsize>
                    </font>
                   </property>
                   <property name="styleSheet">
@@ -8386,7 +8341,7 @@ QSlider::add-page:horizontal {
                   <property name="font">
                    <font>
                     <family>Berlin Sans FB</family>
-                    <pointsize>24</pointsize>
+                    <pointsize>16</pointsize>
                    </font>
                   </property>
                   <property name="styleSheet">
@@ -8424,7 +8379,7 @@ QSlider::add-page:horizontal {
                   <property name="font">
                    <font>
                     <family>Berlin Sans FB</family>
-                    <pointsize>18</pointsize>
+                    <pointsize>16</pointsize>
                    </font>
                   </property>
                   <property name="styleSheet">
@@ -8520,7 +8475,7 @@ QSlider::add-page:horizontal {
                   <property name="font">
                    <font>
                     <family>Berlin Sans FB</family>
-                    <pointsize>24</pointsize>
+                    <pointsize>16</pointsize>
                    </font>
                   </property>
                   <property name="styleSheet">
@@ -8555,7 +8510,7 @@ QSlider::add-page:horizontal {
                   <property name="font">
                    <font>
                     <family>Berlin Sans FB</family>
-                    <pointsize>12</pointsize>
+                    <pointsize>14</pointsize>
                    </font>
                   </property>
                   <property name="styleSheet">
@@ -8606,7 +8561,7 @@ QCheckBox::indicator:checked:pressed {
                   <property name="font">
                    <font>
                     <family>Berlin Sans FB</family>
-                    <pointsize>12</pointsize>
+                    <pointsize>14</pointsize>
                    </font>
                   </property>
                   <property name="styleSheet">
@@ -8657,7 +8612,7 @@ QCheckBox::indicator:checked:pressed {
                   <property name="font">
                    <font>
                     <family>Berlin Sans FB</family>
-                    <pointsize>12</pointsize>
+                    <pointsize>14</pointsize>
                    </font>
                   </property>
                   <property name="styleSheet">
@@ -8697,57 +8652,6 @@ QCheckBox::indicator:checked:pressed {
                   </property>
                  </widget>
                 </item>
-                <item>
-                 <widget class="QCheckBox" name="checkBoxAutoOC">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>30</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Berlin Sans FB</family>
-                    <pointsize>12</pointsize>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QCheckBox {
-    color:rgb(255,255,255);
-}
-
-QCheckBox::indicator {
-    width: 10px;
-    height: 10px;
-}
-
-QCheckBox::indicator:unchecked {
-    border:2px solid rgb(51,51,51);
-	background:rgb(91,90,90);
-}
-
-QCheckBox::indicator:unchecked:pressed {
-	border:2px solid rgb(51,51,51);
-   	background:rgb(0,143,170);
-}
-
-QCheckBox::indicator:checked {
-	background-color:rgb(0,143,170);
-    border: 2px solid rgb(51,51,51);
-}
-
-QCheckBox::indicator:checked:pressed {
-    border:2px solid rgb(51,51,51);
-	background:rgb(91,90,90);
-}
-
-</string>
-                  </property>
-                  <property name="text">
-                   <string>Auto overclocking</string>
-                  </property>
-                 </widget>
-                </item>
                </layout>
               </item>
              </layout>
@@ -8768,7 +8672,7 @@ QCheckBox::indicator:checked:pressed {
                 <property name="font">
                  <font>
                   <family>Berlin Sans FB</family>
-                  <pointsize>36</pointsize>
+                  <pointsize>18</pointsize>
                  </font>
                 </property>
                 <property name="styleSheet">
@@ -8786,6 +8690,38 @@ QPushButton:pressed {
                 </property>
                 <property name="text">
                  <string>Apply</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButtonAutoOC">
+                <property name="minimumSize">
+                 <size>
+                  <width>200</width>
+                  <height>140</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Berlin Sans FB</family>
+                  <pointsize>18</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {
+	border: none;
+	background-color: rgba(0,0,0,0);
+	color : white;
+}
+QPushButton:hover {
+	background-color: rgb(51,51,51);
+}
+QPushButton:pressed {	
+	background-color: #7A0000;
+}</string>
+                </property>
+                <property name="text">
+                 <string>Auto OC</string>
                 </property>
                </widget>
               </item>
@@ -8881,13 +8817,13 @@ QPushButton:pressed {
                 <property name="minimumSize">
                  <size>
                   <width>600</width>
-                  <height>580</height>
+                  <height>0</height>
                  </size>
                 </property>
                 <property name="font">
                  <font>
                   <family>Berlin Sans FB</family>
-                  <pointsize>16</pointsize>
+                  <pointsize>14</pointsize>
                  </font>
                 </property>
                 <property name="layoutDirection">
@@ -8910,35 +8846,28 @@ QGroupBox{
 }</string>
                 </property>
                 <property name="title">
-                 <string>Team Member</string>
+                 <string>Dev Team</string>
                 </property>
-                <layout class="QGridLayout" name="gridLayout_64">
-                 <property name="leftMargin">
-                  <number>0</number>
-                 </property>
+                <layout class="QGridLayout" name="gridLayout_77">
                  <property name="topMargin">
                   <number>30</number>
                  </property>
                  <item row="0" column="0">
-                  <layout class="QVBoxLayout" name="verticalLayout_32">
-                   <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_57">
-                     <item>
-                      <widget class="QGroupBox" name="groupBox_20">
-                       <property name="minimumSize">
-                        <size>
-                         <width>125</width>
-                         <height>125</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>125</width>
-                         <height>125</height>
-                        </size>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">QGroupBox::title{
+                  <widget class="QGroupBox" name="groupBox_20">
+                   <property name="minimumSize">
+                    <size>
+                     <width>125</width>
+                     <height>125</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>125</width>
+                     <height>125</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QGroupBox::title{
 	color : white;
 	left: 10px;
 	margin-left: 0px;
@@ -8953,138 +8882,134 @@ QGroupBox{
 	border-radius: 5px;
 	background: rgb(0,0,0,0);
 }</string>
-                       </property>
-                       <property name="title">
-                        <string/>
-                       </property>
-                       <layout class="QGridLayout" name="gridLayout_65">
-                        <property name="leftMargin">
-                         <number>0</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>0</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>0</number>
-                        </property>
-                        <property name="bottomMargin">
-                         <number>0</number>
-                        </property>
-                        <property name="spacing">
-                         <number>0</number>
-                        </property>
-                        <item row="0" column="0">
-                         <widget class="QFrame" name="frame_48">
-                          <property name="minimumSize">
-                           <size>
-                            <width>120</width>
-                            <height>120</height>
-                           </size>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>120</width>
-                            <height>130</height>
-                           </size>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">QFrame
+                   </property>
+                   <property name="title">
+                    <string/>
+                   </property>
+                   <layout class="QGridLayout" name="gridLayout_65">
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <item row="0" column="0">
+                     <widget class="QFrame" name="frame_48">
+                      <property name="minimumSize">
+                       <size>
+                        <width>120</width>
+                        <height>120</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>120</width>
+                        <height>130</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QFrame
 {
    border-image: url(:/icons/icos/MaHaotian.jpg) 0 0 0 0 stretch stretch;
    border-width: 0px;
 }</string>
-                          </property>
-                          <property name="frameShape">
-                           <enum>QFrame::StyledPanel</enum>
-                          </property>
-                          <property name="frameShadow">
-                           <enum>QFrame::Raised</enum>
-                          </property>
-                         </widget>
-                        </item>
-                       </layout>
-                      </widget>
-                     </item>
-                     <item>
-                      <layout class="QVBoxLayout" name="verticalLayout_33">
-                       <item>
-                        <widget class="QLabel" name="label_72">
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-                           <horstretch>0</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
-                         </property>
-                         <property name="minimumSize">
-                          <size>
-                           <width>300</width>
-                           <height>65</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <family>Berlin Sans FB</family>
-                           <pointsize>26</pointsize>
-                          </font>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">color : white;</string>
-                         </property>
-                         <property name="text">
-                          <string>Ma Haotian</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QLabel" name="label_73">
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-                           <horstretch>0</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
-                         </property>
-                         <property name="minimumSize">
-                          <size>
-                           <width>100</width>
-                           <height>60</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <family>Berlin Sans FB</family>
-                           <pointsize>14</pointsize>
-                          </font>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">color : white;</string>
-                         </property>
-                         <property name="text">
-                          <string>118010220</string>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </item>
-                    </layout>
+                      </property>
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <layout class="QVBoxLayout" name="verticalLayout_6">
+                   <item>
+                    <widget class="QLabel" name="label_80">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>300</width>
+                       <height>50</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Berlin Sans FB</family>
+                       <pointsize>26</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color : white;</string>
+                     </property>
+                     <property name="text">
+                      <string>Haotian Ma</string>
+                     </property>
+                    </widget>
                    </item>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_58">
-                     <item>
-                      <widget class="QGroupBox" name="groupBox_21">
-                       <property name="minimumSize">
-                        <size>
-                         <width>125</width>
-                         <height>125</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>125</width>
-                         <height>130</height>
-                        </size>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">QGroupBox::title{
+                    <widget class="QLabel" name="label_81">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>100</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Berlin Sans FB</family>
+                       <pointsize>14</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color : white;</string>
+                     </property>
+                     <property name="text">
+                      <string>118010220</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QGroupBox" name="groupBox_21">
+                   <property name="minimumSize">
+                    <size>
+                     <width>125</width>
+                     <height>125</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>125</width>
+                     <height>130</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QGroupBox::title{
 	color : white;
 	left: 10px;
 	margin-left: 0px;
@@ -9099,132 +9024,128 @@ QGroupBox{
 	border-radius: 5px;
 	background: rgb(0,0,0,0);
 }</string>
-                       </property>
-                       <property name="title">
-                        <string/>
-                       </property>
-                       <layout class="QGridLayout" name="gridLayout_66">
-                        <property name="leftMargin">
-                         <number>0</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>0</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>0</number>
-                        </property>
-                        <property name="bottomMargin">
-                         <number>0</number>
-                        </property>
-                        <property name="spacing">
-                         <number>0</number>
-                        </property>
-                        <item row="0" column="0">
-                         <widget class="QFrame" name="frame_49">
-                          <property name="minimumSize">
-                           <size>
-                            <width>120</width>
-                            <height>120</height>
-                           </size>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">QFrame
+                   </property>
+                   <property name="title">
+                    <string/>
+                   </property>
+                   <layout class="QGridLayout" name="gridLayout_66">
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <item row="0" column="0">
+                     <widget class="QFrame" name="frame_49">
+                      <property name="minimumSize">
+                       <size>
+                        <width>120</width>
+                        <height>120</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QFrame
 {
    border-image: url(:/icons/icos/MaoYu.jpg) 0 0 0 0 stretch stretch;
    border-width: 0px;
 }</string>
-                          </property>
-                          <property name="frameShape">
-                           <enum>QFrame::StyledPanel</enum>
-                          </property>
-                          <property name="frameShadow">
-                           <enum>QFrame::Raised</enum>
-                          </property>
-                         </widget>
-                        </item>
-                       </layout>
-                      </widget>
-                     </item>
-                     <item>
-                      <layout class="QVBoxLayout" name="verticalLayout_34">
-                       <item>
-                        <widget class="QLabel" name="label_74">
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-                           <horstretch>0</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
-                         </property>
-                         <property name="minimumSize">
-                          <size>
-                           <width>300</width>
-                           <height>65</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <family>Berlin Sans FB</family>
-                           <pointsize>26</pointsize>
-                          </font>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">color : white;</string>
-                         </property>
-                         <property name="text">
-                          <string>Mao Yu</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QLabel" name="label_75">
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-                           <horstretch>0</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
-                         </property>
-                         <property name="minimumSize">
-                          <size>
-                           <width>100</width>
-                           <height>60</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <family>Berlin Sans FB</family>
-                           <pointsize>14</pointsize>
-                          </font>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">color : white;</string>
-                         </property>
-                         <property name="text">
-                          <string>118010224</string>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </item>
-                    </layout>
+                      </property>
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item row="1" column="1">
+                  <layout class="QVBoxLayout" name="verticalLayout_26">
+                   <item>
+                    <widget class="QLabel" name="label_74">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>300</width>
+                       <height>50</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Berlin Sans FB</family>
+                       <pointsize>26</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color : white;</string>
+                     </property>
+                     <property name="text">
+                      <string>Yu Mao</string>
+                     </property>
+                    </widget>
                    </item>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_59">
-                     <item>
-                      <widget class="QGroupBox" name="groupBox_22">
-                       <property name="minimumSize">
-                        <size>
-                         <width>125</width>
-                         <height>125</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>125</width>
-                         <height>130</height>
-                        </size>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">QGroupBox::title{
+                    <widget class="QLabel" name="label_75">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>100</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Berlin Sans FB</family>
+                       <pointsize>14</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color : white;</string>
+                     </property>
+                     <property name="text">
+                      <string>118010224</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item row="2" column="0">
+                  <widget class="QGroupBox" name="groupBox_22">
+                   <property name="minimumSize">
+                    <size>
+                     <width>125</width>
+                     <height>125</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>125</width>
+                     <height>130</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QGroupBox::title{
 	color : white;
 	left: 10px;
 	margin-left: 0px;
@@ -9239,132 +9160,130 @@ QGroupBox{
 	border-radius: 5px;
 	background: rgb(0,0,0,0);
 }</string>
-                       </property>
-                       <property name="title">
-                        <string/>
-                       </property>
-                       <layout class="QGridLayout" name="gridLayout_67">
-                        <property name="leftMargin">
-                         <number>0</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>0</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>0</number>
-                        </property>
-                        <property name="bottomMargin">
-                         <number>0</number>
-                        </property>
-                        <property name="spacing">
-                         <number>0</number>
-                        </property>
-                        <item row="0" column="0">
-                         <widget class="QFrame" name="frame_50">
-                          <property name="minimumSize">
-                           <size>
-                            <width>120</width>
-                            <height>120</height>
-                           </size>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">QFrame
+                   </property>
+                   <property name="title">
+                    <string/>
+                   </property>
+                   <layout class="QGridLayout" name="gridLayout_67">
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <item row="0" column="0">
+                     <widget class="QFrame" name="frame_50">
+                      <property name="minimumSize">
+                       <size>
+                        <width>120</width>
+                        <height>120</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QFrame
 {
    border-image: url(:/icons/icos/WuWei.jpg) 0 0 0 0 stretch stretch;
    border-width: 0px;
 }</string>
-                          </property>
-                          <property name="frameShape">
-                           <enum>QFrame::StyledPanel</enum>
-                          </property>
-                          <property name="frameShadow">
-                           <enum>QFrame::Raised</enum>
-                          </property>
-                         </widget>
-                        </item>
-                       </layout>
-                      </widget>
-                     </item>
-                     <item>
-                      <layout class="QVBoxLayout" name="verticalLayout_35">
-                       <item>
-                        <widget class="QLabel" name="label_76">
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-                           <horstretch>0</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
-                         </property>
-                         <property name="minimumSize">
-                          <size>
-                           <width>300</width>
-                           <height>65</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <family>Berlin Sans FB</family>
-                           <pointsize>26</pointsize>
-                          </font>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">color : white;</string>
-                         </property>
-                         <property name="text">
-                          <string>Wu Wei</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QLabel" name="label_77">
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-                           <horstretch>0</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
-                         </property>
-                         <property name="minimumSize">
-                          <size>
-                           <width>100</width>
-                           <height>60</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <family>Berlin Sans FB</family>
-                           <pointsize>14</pointsize>
-                          </font>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">color : white;</string>
-                         </property>
-                         <property name="text">
-                          <string>118010335</string>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </item>
-                    </layout>
+                      </property>
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item row="2" column="1">
+                  <layout class="QVBoxLayout" name="verticalLayout_27">
+                   <item>
+                    <widget class="QLabel" name="label_76">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>300</width>
+                       <height>50</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Berlin Sans FB</family>
+                       <pointsize>26</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color : white;</string>
+                     </property>
+                     <property name="text">
+                      <string>Wei Wu</string>
+                     </property>
+                    </widget>
                    </item>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_60">
-                     <item>
-                      <widget class="QGroupBox" name="groupBox_23">
-                       <property name="minimumSize">
-                        <size>
-                         <width>125</width>
-                         <height>125</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>125</width>
-                         <height>130</height>
-                        </size>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">QGroupBox::title{
+                    <widget class="QLabel" name="label_77">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>100</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Berlin Sans FB</family>
+                       <pointsize>14</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color : white;</string>
+                     </property>
+                     <property name="text">
+                      <string>118010335</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item row="3" column="0">
+                  <layout class="QHBoxLayout" name="horizontalLayout_60">
+                   <item>
+                    <widget class="QGroupBox" name="groupBox_23">
+                     <property name="minimumSize">
+                      <size>
+                       <width>125</width>
+                       <height>125</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>125</width>
+                       <height>130</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QGroupBox::title{
 	color : white;
 	left: 10px;
 	margin-left: 0px;
@@ -9379,113 +9298,111 @@ QGroupBox{
 	border-radius: 5px;
 	background: rgb(0,0,0,0);
 }</string>
-                       </property>
-                       <property name="title">
-                        <string/>
-                       </property>
-                       <layout class="QGridLayout" name="gridLayout_68">
-                        <property name="leftMargin">
-                         <number>0</number>
+                     </property>
+                     <property name="title">
+                      <string/>
+                     </property>
+                     <layout class="QGridLayout" name="gridLayout_68">
+                      <property name="leftMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="topMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="rightMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="bottomMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="spacing">
+                       <number>0</number>
+                      </property>
+                      <item row="0" column="0">
+                       <widget class="QFrame" name="frame_51">
+                        <property name="minimumSize">
+                         <size>
+                          <width>120</width>
+                          <height>120</height>
+                         </size>
                         </property>
-                        <property name="topMargin">
-                         <number>0</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>0</number>
-                        </property>
-                        <property name="bottomMargin">
-                         <number>0</number>
-                        </property>
-                        <property name="spacing">
-                         <number>0</number>
-                        </property>
-                        <item row="0" column="0">
-                         <widget class="QFrame" name="frame_51">
-                          <property name="minimumSize">
-                           <size>
-                            <width>120</width>
-                            <height>120</height>
-                           </size>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">QFrame
+                        <property name="styleSheet">
+                         <string notr="true">QFrame
 {
    border-image: url(:/icons/icos/ZhangShiqi.jpg) 0 0 0 0 stretch stretch;
    border-width: 0px;
 }</string>
-                          </property>
-                          <property name="frameShape">
-                           <enum>QFrame::StyledPanel</enum>
-                          </property>
-                          <property name="frameShadow">
-                           <enum>QFrame::Raised</enum>
-                          </property>
-                         </widget>
-                        </item>
-                       </layout>
-                      </widget>
-                     </item>
-                     <item>
-                      <layout class="QVBoxLayout" name="verticalLayout_36">
-                       <item>
-                        <widget class="QLabel" name="label_78">
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-                           <horstretch>0</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
-                         </property>
-                         <property name="minimumSize">
-                          <size>
-                           <width>300</width>
-                           <height>65</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <family>Berlin Sans FB</family>
-                           <pointsize>26</pointsize>
-                          </font>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">color : white;</string>
-                         </property>
-                         <property name="text">
-                          <string>Zhang Shiqi</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QLabel" name="label_79">
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-                           <horstretch>0</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
-                         </property>
-                         <property name="minimumSize">
-                          <size>
-                           <width>100</width>
-                           <height>60</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <family>Berlin Sans FB</family>
-                           <pointsize>14</pointsize>
-                          </font>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">color : white;</string>
-                         </property>
-                         <property name="text">
-                          <string>118010416</string>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </item>
-                    </layout>
+                        </property>
+                        <property name="frameShape">
+                         <enum>QFrame::StyledPanel</enum>
+                        </property>
+                        <property name="frameShadow">
+                         <enum>QFrame::Raised</enum>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item row="3" column="1">
+                  <layout class="QVBoxLayout" name="verticalLayout_28">
+                   <item>
+                    <widget class="QLabel" name="label_82">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>300</width>
+                       <height>50</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Berlin Sans FB</family>
+                       <pointsize>26</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color : white;</string>
+                     </property>
+                     <property name="text">
+                      <string>Shiqi Zhang</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_83">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>100</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Berlin Sans FB</family>
+                       <pointsize>14</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color : white;</string>
+                     </property>
+                     <property name="text">
+                      <string>118010416</string>
+                     </property>
+                    </widget>
                    </item>
                   </layout>
                  </item>
@@ -9656,10 +9573,13 @@ QGroupBox{
             </item>
             <item>
              <widget class="QCheckBox" name="checkBoxHelpPage">
+              <property name="enabled">
+               <bool>true</bool>
+              </property>
               <property name="font">
                <font>
                 <family>Berlin Sans FB</family>
-                <pointsize>12</pointsize>
+                <pointsize>14</pointsize>
                </font>
               </property>
               <property name="styleSheet">
@@ -9733,13 +9653,7 @@ QCheckBox::indicator:checked:pressed {
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="lineEditArgs">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
+     <widget class="QLineEdit" name="lineEditMinerPath">
       <property name="maximumSize">
        <size>
         <width>0</width>
@@ -9749,7 +9663,13 @@ QCheckBox::indicator:checked:pressed {
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="lineEditMinerPath">
+     <widget class="QLineEdit" name="lineEditArgs">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <property name="maximumSize">
        <size>
         <width>0</width>
@@ -9769,8 +9689,6 @@ QCheckBox::indicator:checked:pressed {
    <header>hashratecharview.h</header>
   </customwidget>
  </customwidgets>
- <resources>
-  <include location="resources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

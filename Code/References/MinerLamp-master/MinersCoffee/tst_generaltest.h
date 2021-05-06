@@ -53,7 +53,12 @@ private slots:
     void test_ui_TempPieChart_data();
     void test_ui_HashrateLineChart();
     void test_ui_HashrateLineChart_data();
-
+    void test_Cmd();
+    void test_NvidiaapiSignleunite();
+    void test_NvidiaapiSignleunite_data();
+    void test_NvidiaapiComplex();
+    void test_Database_getAdvice();
+    void test_Database_getAdvice_data();
     void test_TempPieChart();
     void test_HashrateLineChart();
     void test_MiningCore();

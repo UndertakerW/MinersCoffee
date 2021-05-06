@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.14.1, 2021-05-05T03:40:57. -->
+<!-- Written by QtCreator 4.14.1, 2021-05-06T13:18:19. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -71,6 +71,7 @@
     <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:cleanupTestCase">Unchecked</value>
     <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:initTestCase">Unchecked</value>
     <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:test_FullSystem">Checked</value>
+    <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:test_GetURLInternal">Checked</value>
     <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:test_HashrateLineChart">Checked</value>
     <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:test_MiningArgs">Checked</value>
     <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:test_MiningCore">Checked</value>
@@ -78,6 +79,7 @@
     <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:test_ParseJsonForMining_data">Unchecked</value>
     <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:test_ParseJsonForPool">Checked</value>
     <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:test_ParseJsonForPool_data">Unchecked</value>
+    <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:test_ParsePoolInfo">Checked</value>
     <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:test_TempPieChart">Checked</value>
     <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:test_ui_HashrateLineChart">Checked</value>
     <value type="Qt::CheckState" key="D:/CUHK/Y3T2/CSC4001/project/MinersCoffee/Code/References/MinerLamp-master/MinerLamp-master/tst_generaltest.cpp:test_ui_HashrateLineChart_data">Unchecked</value>
