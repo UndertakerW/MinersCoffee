@@ -2049,16 +2049,11 @@ void MainWindow::on_pushButtonCancelAutoPage_clicked(){
 }
 
 void MainWindow::on_pushButtonChangePageSize_clicked(){
-    qDebug() << "change page size: "
-             << ui->comboBoxChangePageSize->currentText()
-             << QString::number(ui->spinBoxChangePageSizeMax->value())
-             << QString::number(ui->spinBoxChangePageSizeMin->value());
-
     Wincmd wincmd;
     wincmd.ChangePageSize(
                 ui->comboBoxChangePageSize->currentText(),
-                QString::number(ui->spinBoxChangePageSizeMax->value()),
-                QString::number(ui->spinBoxChangePageSizeMin->value())
+                QString::number(ui->spinBoxChangePageSizeMax->value()*1024),
+                QString::number(ui->spinBoxChangePageSizeMin->value()*1024)
                 );
 }
 

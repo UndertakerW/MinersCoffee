@@ -912,7 +912,7 @@ QPushButton:pressed {
                <string notr="true">background:rgb(91,90,90);</string>
               </property>
               <property name="currentIndex">
-               <number>3</number>
+               <number>2</number>
               </property>
               <widget class="QWidget" name="pageOverview">
                <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -2996,8 +2996,8 @@ border-radius : 0;</string>
                            <rect>
                             <x>0</x>
                             <y>0</y>
-                            <width>256</width>
-                            <height>344</height>
+                            <width>241</width>
+                            <height>16</height>
                            </rect>
                           </property>
                           <layout class="QGridLayout" name="gridLayout_62">
@@ -6014,8 +6014,8 @@ border-radius : 0;</string>
                              <rect>
                               <x>0</x>
                               <y>0</y>
-                              <width>1302</width>
-                              <height>239</height>
+                              <width>1304</width>
+                              <height>237</height>
                              </rect>
                             </property>
                             <property name="sizePolicy">
