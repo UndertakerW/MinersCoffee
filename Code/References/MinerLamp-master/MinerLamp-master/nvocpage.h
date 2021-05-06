@@ -10,6 +10,7 @@
 #include <QCheckBox>
 #include <QComboBox>
 #include <QSlider>
+#include <QLineEdit>
 
 
 class NvocPage

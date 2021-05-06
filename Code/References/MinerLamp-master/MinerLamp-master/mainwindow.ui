@@ -490,7 +490,7 @@ border-radius : 0;
 </string>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="pageMonitor">
            <layout class="QGridLayout" name="gridLayout_40">
@@ -3011,8 +3011,8 @@ border-radius : 0;</string>
                            <rect>
                             <x>0</x>
                             <y>0</y>
-                            <width>256</width>
-                            <height>326</height>
+                            <width>240</width>
+                            <height>16</height>
                            </rect>
                           </property>
                           <layout class="QGridLayout" name="gridLayout_62">
@@ -6011,8 +6011,8 @@ border-radius : 0;</string>
                              <rect>
                               <x>0</x>
                               <y>0</y>
-                              <width>1316</width>
-                              <height>246</height>
+                              <width>200</width>
+                              <height>213</height>
                              </rect>
                             </property>
                             <property name="sizePolicy">
@@ -7781,23 +7781,27 @@ QComboBox:hover {
 	background-color: rgb(0,143,170);
 }
 
-QComboBox:!editable, QComboBox::drop-down:editable {
+QComboBox:editable, QComboBox::drop-down:editable {
 	background: rgb(51,51,51);
+	text-align: center;
 }
 
-QComboBox:!editable:on, QComboBox::drop-down:editable:on {
+QComboBox:editable:on, QComboBox::drop-down:editable:on {
     background:rgb(51,51,51);
+	text-align: center;
 }
 
 QComboBox:on { /* shift the text when the popup opens */
     padding-top: 3px;
     padding-left: 4px;
+	text-align: center;
 }
 
 QComboBox::drop-down {
     subcontrol-origin: padding;
     subcontrol-position: top right;
     width: 15px;
+	text-align: center;
 
 }
 
@@ -7812,6 +7816,7 @@ QComboBox::down-arrow:on { /* shift the arrow when popup is open */
 
 QComboBox::drop-down {
     background:rgb(51,51,51);
+	text-align: center;
 }
 
 </string>
@@ -7922,7 +7927,7 @@ QSpinBox::down-button:hover {
 </string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignCenter</set>
+                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
                   </property>
                  </widget>
                 </item>

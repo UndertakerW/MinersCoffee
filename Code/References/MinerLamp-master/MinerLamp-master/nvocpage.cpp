@@ -36,6 +36,7 @@ NvocPage::NvocPage(nvidiaAPI* nvapi, QSettings* settings,
             _cardList << card;
             _comboBoxDevice->addItem(QString("device " + QString::number(i)));
         }
+
         // **** put in main function
 //        updateSliders(0);
     }

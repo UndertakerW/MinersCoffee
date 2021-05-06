@@ -1963,7 +1963,7 @@ public:
         scrollArea_2->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName(QStringLiteral("scrollAreaWidgetContents_2"));
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 256, 326));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 240, 16));
         gridLayout_62 = new QGridLayout(scrollAreaWidgetContents_2);
         gridLayout_62->setSpacing(0);
         gridLayout_62->setContentsMargins(11, 11, 11, 11);
@@ -3949,7 +3949,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1316, 246));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 200, 213));
         sizePolicy.setHeightForWidth(scrollAreaWidgetContents->sizePolicy().hasHeightForWidth());
         scrollAreaWidgetContents->setSizePolicy(sizePolicy);
         scrollAreaWidgetContents->setMinimumSize(QSize(0, 200));
@@ -4946,23 +4946,27 @@ public:
 "	background-color: rgb(0,143,170);\n"
 "}\n"
 "\n"
-"QComboBox:!editable, QComboBox::drop-down:editable {\n"
+"QComboBox:editable, QComboBox::drop-down:editable {\n"
 "	background: rgb(51,51,51);\n"
+"	text-align: center;\n"
 "}\n"
 "\n"
-"QComboBox:!editable:on, QComboBox::drop-down:editable:on {\n"
+"QComboBox:editable:on, QComboBox::drop-down:editable:on {\n"
 "    background:rgb(51,51,51);\n"
+"	text-align: center;\n"
 "}\n"
 "\n"
 "QComboBox:on { /* shift the text when the popup opens */\n"
 "    padding-top: 3px;\n"
 "    padding-left: 4px;\n"
+"	text-align: center;\n"
 "}\n"
 "\n"
 "QComboBox::drop-down {\n"
 "    subcontrol-origin: padding;\n"
 "    subcontrol-position: top right;\n"
 "    width: 15px;\n"
+"	text-align: center;\n"
 "\n"
 "}\n"
 "\n"
@@ -4970,14 +4974,15 @@ public:
 "    image: url(:icons/icos/arrow.png);\n"
 "}\n"
 "\n"
-"QComboBox::down-arrow:on { /* shift the arrow when popup is open */\n"
+"QComboBox::down-arrow:o"
+                        "n { /* shift the arrow when popup is open */\n"
 "    top: 1px;\n"
 "    left: 1px;\n"
 "}\n"
 "\n"
-"Q"
-                        "ComboBox::drop-down {\n"
+"QComboBox::drop-down {\n"
 "    background:rgb(51,51,51);\n"
+"	text-align: center;\n"
 "}\n"
 "\n"
 ""));
@@ -5045,7 +5050,7 @@ public:
 "	color:rgb(255,255,255);\n"
 "}\n"
 ""));
-        spinBoxTemperature->setAlignment(Qt::AlignCenter);
+        spinBoxTemperature->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
 
         horizontalLayout_38->addWidget(spinBoxTemperature);
 
@@ -6108,7 +6113,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidgetMain->setCurrentIndex(2);
+        stackedWidgetMain->setCurrentIndex(1);
         stackedWidgetMonitorMain->setCurrentIndex(1);
 
 
