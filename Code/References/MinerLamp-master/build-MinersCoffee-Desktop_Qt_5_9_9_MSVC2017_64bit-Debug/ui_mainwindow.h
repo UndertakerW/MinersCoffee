@@ -1240,7 +1240,7 @@ public:
         verticalLayout_5->setSpacing(0);
         verticalLayout_5->setContentsMargins(11, 11, 11, 11);
         verticalLayout_5->setObjectName(QStringLiteral("verticalLayout_5"));
-        verticalLayout_5->setContentsMargins(0, 30, 0, 0);
+        verticalLayout_5->setContentsMargins(9, 30, 9, 9);
         groupBox_12 = new QGroupBox(groupBox_3);
         groupBox_12->setObjectName(QStringLiteral("groupBox_12"));
         groupBox_12->setStyleSheet(QLatin1String("QGroupBox::title{\n"
@@ -3086,7 +3086,7 @@ public:
         gridLayout_70->setSpacing(0);
         gridLayout_70->setContentsMargins(11, 11, 11, 11);
         gridLayout_70->setObjectName(QStringLiteral("gridLayout_70"));
-        gridLayout_70->setContentsMargins(0, 30, 0, 0);
+        gridLayout_70->setContentsMargins(9, 30, 9, 9);
         frame_28 = new QFrame(groupBox_25);
         frame_28->setObjectName(QStringLiteral("frame_28"));
         frame_28->setMinimumSize(QSize(300, 50));
@@ -3766,7 +3766,7 @@ public:
         gridLayout_59->setObjectName(QStringLiteral("gridLayout_59"));
         gridLayout_59->setHorizontalSpacing(0);
         gridLayout_59->setVerticalSpacing(2);
-        gridLayout_59->setContentsMargins(2, 30, 2, 2);
+        gridLayout_59->setContentsMargins(9, 30, 9, 9);
         groupBoxDevicesInfo = new QGroupBox(groupBox_13);
         groupBoxDevicesInfo->setObjectName(QStringLiteral("groupBoxDevicesInfo"));
         sizePolicy.setHeightForWidth(groupBoxDevicesInfo->sizePolicy().hasHeightForWidth());
@@ -3951,7 +3951,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 200, 231));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1302, 239));
         sizePolicy.setHeightForWidth(scrollAreaWidgetContents->sizePolicy().hasHeightForWidth());
         scrollAreaWidgetContents->setSizePolicy(sizePolicy);
         scrollAreaWidgetContents->setMinimumSize(QSize(0, 200));
@@ -6103,7 +6103,7 @@ public:
         retranslateUi(MainWindow);
 
         stackedWidgetMain->setCurrentIndex(0);
-        stackedWidgetMonitorMain->setCurrentIndex(0);
+        stackedWidgetMonitorMain->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(MainWindow);

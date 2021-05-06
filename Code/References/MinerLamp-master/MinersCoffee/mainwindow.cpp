@@ -1368,73 +1368,86 @@ void MainWindow::refreshDeviceInfo()
         //qDebug() << "adding extra";
         for(int i = _deviceCount; i <= deviceNum-1; i++){
             QWidget * parentWidget = new QWidget();
-            QHBoxLayout * row = new QHBoxLayout(parentWidget);
-            row->setSpacing(2);
+            QVBoxLayout * col = new QVBoxLayout(parentWidget);
+            QHBoxLayout * row1 = new QHBoxLayout(col->widget());
+            QHBoxLayout * row2 = new QHBoxLayout(col->widget());
+
+            row2->setSpacing(10);
 
             QLabel * deviceNumLabel = new QLabel();
-            deviceNumLabel->setFont(QFont("Berlin Sans FB", 26));
+            deviceNumLabel->setFont(QFont("Berlin Sans FB", 20));
             deviceNumLabel->setMinimumWidth(140);
+            deviceNumLabel->setMinimumHeight(65);
             changeLabelColor(deviceNumLabel, Qt::white);
 
-            QLabel * deviceTemp = new QLabel("tmp");
+            QLabel * deviceTemp = new QLabel("Temp");
             deviceTemp->setFont(QFont("Berlin Sans FB", 12));
             deviceTemp->setMinimumWidth(80);
             deviceTemp->setAlignment(Qt::AlignRight|Qt::AlignVCenter);
             changeLabelColor(deviceTemp, Qt::white);
 
             QLabel * deviceTempNumberLabel = new QLabel();
-            deviceTempNumberLabel->setFont(QFont("Berlin Sans FB", 22));
+            deviceTempNumberLabel->setFont(QFont("Berlin Sans FB", 20));
             deviceTempNumberLabel->setMinimumWidth(120);
             deviceTempNumberLabel->setAlignment(Qt::AlignCenter);
 
-            QLabel * fanSpeed = new QLabel("fan\nspeed");
-            fanSpeed->setFont(QFont("Berlin Sans FB", 12));
-            fanSpeed->setMinimumWidth(80);
-            fanSpeed->setAlignment(Qt::AlignRight|Qt::AlignVCenter);
-            changeLabelColor(fanSpeed, Qt::white);
-
-            QLabel * fanSpeedNumberLabel = new QLabel();
-            fanSpeedNumberLabel->setFont(QFont("Berlin Sans FB", 22));
-            fanSpeedNumberLabel->setMinimumWidth(120);
-            fanSpeedNumberLabel->setAlignment(Qt::AlignCenter);
-            changeLabelColor(fanSpeedNumberLabel, Qt::white);
-
-            QLabel * gpuClock = new QLabel("GPU\nclock");
+            QLabel * gpuClock = new QLabel("GPU\nClock");
             gpuClock->setFont(QFont("Berlin Sans FB", 12));
             gpuClock->setMinimumWidth(80);
             gpuClock->setAlignment(Qt::AlignRight|Qt::AlignVCenter);
             changeLabelColor(gpuClock, Qt::white);
 
             QLabel * gpuClockNumberLabel = new QLabel();
-            gpuClockNumberLabel->setFont(QFont("Berlin Sans FB", 22));
+            gpuClockNumberLabel->setFont(QFont("Berlin Sans FB", 20));
             gpuClockNumberLabel->setMinimumWidth(120);
             gpuClockNumberLabel->setAlignment(Qt::AlignCenter);
             changeLabelColor(gpuClockNumberLabel, Qt::white);
 
-            QLabel * memClock = new QLabel("Mem\nClock");
+            QLabel * memClock = new QLabel("VRAM\nClock");
             memClock->setFont(QFont("Berlin Sans FB", 12));
             memClock->setMinimumWidth(80);
             memClock->setAlignment(Qt::AlignRight|Qt::AlignVCenter);
             changeLabelColor(memClock, Qt::white);
 
             QLabel * memClockNumberLabel = new QLabel();
-            memClockNumberLabel->setFont(QFont("Berlin Sans FB", 22));
+            memClockNumberLabel->setFont(QFont("Berlin Sans FB", 20));
             memClockNumberLabel->setMinimumWidth(120);
             memClockNumberLabel->setAlignment(Qt::AlignCenter);
             changeLabelColor(memClockNumberLabel, Qt::white);
 
-            QSpacerItem *rowSpacer = new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed);
+            QLabel * fanSpeed = new QLabel("Fan\nSpeed");
+            fanSpeed->setFont(QFont("Berlin Sans FB", 12));
+            fanSpeed->setMinimumWidth(80);
+            fanSpeed->setAlignment(Qt::AlignRight|Qt::AlignVCenter);
+            changeLabelColor(fanSpeed, Qt::white);
 
-            row->addWidget(deviceNumLabel);         //0
-            row->addWidget(deviceTemp);             //1
-            row->addWidget(deviceTempNumberLabel);  //2
-            row->addWidget(fanSpeed);               //3
-            row->addWidget(fanSpeedNumberLabel);    //4
-            row->addWidget(gpuClock);               //5
-            row->addWidget(gpuClockNumberLabel);    //6
-            row->addWidget(memClock);               //7
-            row->addWidget(memClockNumberLabel);    //8
-            row->addSpacerItem(rowSpacer);          //9
+            QLabel * fanSpeedNumberLabel = new QLabel();
+            fanSpeedNumberLabel->setFont(QFont("Berlin Sans FB", 20));
+            fanSpeedNumberLabel->setMinimumWidth(120);
+            fanSpeedNumberLabel->setAlignment(Qt::AlignCenter);
+            changeLabelColor(fanSpeedNumberLabel, Qt::white);
+
+            //QSpacerItem *rowSpacer = new QSpacerItem(1,1, QSizePolicy::Expanding, QSizePolicy::Fixed);
+
+            row1->addWidget(deviceNumLabel);         //0
+
+            row2->addWidget(deviceTemp);             //0
+            row2->addWidget(deviceTempNumberLabel);  //1
+            row2->addWidget(gpuClock);               //2
+            row2->addWidget(gpuClockNumberLabel);    //3
+            row2->addWidget(memClock);               //4
+            row2->addWidget(memClockNumberLabel);    //5
+            row2->addWidget(fanSpeed);               //6
+            row2->addWidget(fanSpeedNumberLabel);    //7
+            //row2->addSpacerItem(rowSpacer);
+
+            QSpacerItem *colSpacer = new QSpacerItem(1,30, QSizePolicy::Expanding, QSizePolicy::Fixed);
+            QSpacerItem *colSpacer2 = new QSpacerItem(1,20, QSizePolicy::Expanding, QSizePolicy::Fixed);
+
+            col->addSpacerItem(colSpacer);
+            col->addLayout(row1);
+            col->addSpacerItem(colSpacer2);
+            col->addLayout(row2);
 
             _gpuInfoList->append(parentWidget);
             ui->gridLayoutDevicesInfo->addWidget(parentWidget);
@@ -1444,13 +1457,29 @@ void MainWindow::refreshDeviceInfo()
 
     for(int i=0;i<_deviceCount;i++){
         // fetch each device
-        QHBoxLayout * layoutPtr = _gpuInfoList->at(i)->findChild<QHBoxLayout *>();
-        QWidget * castWidgetPtr = layoutPtr->itemAt(0)->widget();
-        QLabel * castLabel = dynamic_cast<QLabel *>(castWidgetPtr);
+        QVBoxLayout * vlayoutPtr = _gpuInfoList->at(i)->findChild<QVBoxLayout *>();
+        QList<QHBoxLayout *> layoutPtrs = vlayoutPtr->findChildren<QHBoxLayout *>();
+
+
+        if (layoutPtrs.size() < 2)
+            return;
+
+        QHBoxLayout * layoutPtr1 = layoutPtrs[0];
+        QHBoxLayout * layoutPtr2 = layoutPtrs[1];
+
+        QWidget * castWidgetPtr1 = layoutPtr1->itemAt(0)->widget();
+        QLabel * castLabel1 = dynamic_cast<QLabel *>(castWidgetPtr1);
+
+
+        QWidget * castWidgetPtr2 = layoutPtr2->itemAt(0)->widget();
+        QLabel * castLabel2 = dynamic_cast<QLabel *>(castWidgetPtr2);
 
         // set name
         // process device name
-        std::string originalName= _gpusinfo->at(i).name.toStdString();
+        QString originalName = _gpusinfo->at(i).name;
+        QString spacing = "   ";
+        castLabel1->setText(spacing + originalName);
+        /*
         std::string shortName="";
         for(int i=0;i<originalName.length();i++){
             if(originalName[i]=='T'&&originalName[i+1]=='i')
@@ -1461,28 +1490,28 @@ void MainWindow::refreshDeviceInfo()
                 continue;
             shortName+=originalName[i];
         }
-        castLabel->setText(QString::fromStdString(shortName));
+        */
 
-        // set temperature at 2
-        castWidgetPtr = layoutPtr->itemAt(2)->widget();
-        castLabel = dynamic_cast<QLabel *>(castWidgetPtr);
-        castLabel->setText(QString::number(_gpusinfo->at(i).temp));
-        changeLabelColor(castLabel, getTempColor(_gpusinfo->at(i).temp));
+        // set temperature at 1
+        castWidgetPtr2 = layoutPtr2->itemAt(1)->widget();
+        castLabel2 = dynamic_cast<QLabel *>(castWidgetPtr2);
+        castLabel2->setText(QString::number(_gpusinfo->at(i).temp));
+        changeLabelColor(castLabel2, getTempColor(_gpusinfo->at(i).temp));
 
-        // set fanspeed at 4
-        castWidgetPtr = layoutPtr->itemAt(4)->widget();
-        castLabel = dynamic_cast<QLabel *>(castWidgetPtr);
-        castLabel->setText(QString::number(_gpusinfo->at(i).fanspeed));
+        //set gpu clock at 3
+        castWidgetPtr2 = layoutPtr2->itemAt(3)->widget();
+        castLabel2 = dynamic_cast<QLabel *>(castWidgetPtr2);
+        castLabel2->setText(QString::number(_gpusinfo->at(i).gpuclock));
 
-        //set gpu clock at 6
-        castWidgetPtr = layoutPtr->itemAt(6)->widget();
-        castLabel = dynamic_cast<QLabel *>(castWidgetPtr);
-        castLabel->setText(QString::number(_gpusinfo->at(i).gpuclock));
+        // set memclock at 5
+        castWidgetPtr2 = layoutPtr2->itemAt(5)->widget();
+        castLabel2 = dynamic_cast<QLabel *>(castWidgetPtr2);
+        castLabel2->setText(QString::number(_gpusinfo->at(i).memclock));
 
-        // set memclock at 8
-        castWidgetPtr = layoutPtr->itemAt(8)->widget();
-        castLabel = dynamic_cast<QLabel *>(castWidgetPtr);
-        castLabel->setText(QString::number(_gpusinfo->at(i).memclock));
+        // set fanspeed at 7
+        castWidgetPtr2 = layoutPtr2->itemAt(7)->widget();
+        castLabel2 = dynamic_cast<QLabel *>(castWidgetPtr2);
+        castLabel2->setText(QString::number(_gpusinfo->at(i).fanspeed));
     }
 
     Wincmd wincmd;
