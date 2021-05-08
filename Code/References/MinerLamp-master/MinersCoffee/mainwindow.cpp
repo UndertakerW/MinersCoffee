@@ -146,21 +146,22 @@ MainWindow::MainWindow(bool testing, QWidget *parent) :
 //        ui->groupBoxNvidia->hide();
     }
 
-    QLibrary adl("atiadlxx");
-    if(!adl.load())
-    {
-        ui->groupBoxAMD->hide();
+    // reserved for amd
+//    QLibrary adl("atiadlxx");
+//    if(!adl.load())
+//    {
+//        ui->groupBoxAMD->hide();
 
-    }
-    else
-    {
-        adl.unload();
+//    }
+//    else
+//    {
+//        adl.unload();
 
-        _amdMonitorThrd = new amdMonitorThrd(this);
-        connect(_amdMonitorThrd, &amdMonitorThrd::gpuInfoSignal, this, &MainWindow::onAMDMonitorInfo);
-        _amdMonitorThrd->start();
+//        _amdMonitorThrd = new amdMonitorThrd(this);
+//        connect(_amdMonitorThrd, &amdMonitorThrd::gpuInfoSignal, this, &MainWindow::onAMDMonitorInfo);
+//        _amdMonitorThrd->start();
 
-    }
+//    }
 
     _nvocPage = new NvocPage(
                 _nvapi,
@@ -388,30 +389,23 @@ MainWindow::MainWindow(bool testing, QWidget *parent) :
     ui->labelHashRate->setText("0.00");
     ui->labelEffectiveness->setText("0%");
 
-    if(ui->checkBoxAutoStart->isChecked())
-    {
-        _starter = new autoStart(this);
-        connect(_starter, SIGNAL(readyToStartMiner()), this, SLOT(onReadyToStartMiner()));
-        _starter->start();
-    }
+    // origianl code for auto start
+//    if(ui->checkBoxAutoStart->isChecked())
+//    {
+//        _starter = new autoStart(this);
+//        connect(_starter, SIGNAL(readyToStartMiner()), this, SLOT(onReadyToStartMiner()));
+//        _starter->start();
+//    }
 
     ui->textEdit->show();
 
-    ui->checkBoxAutoShowDeviceInfo->setChecked(true);
     ui->groupBoxDevicesInfo->show();
 
-
-
-
     initializeConstants();
-    ui->checkBoxHistoryMiningInfoOverall->hide();
-    ui->comboBoxHistoryDataOption->hide();
 
     ui->dateTimeEditHistoryStartTime->setDateTime(QDateTime::currentDateTime().addDays(-5));
     ui->dateTimeEditHistoryEndTime->setDateTime(QDateTime::currentDateTime());
     _searchHistoryMiningOverall = false;
-    ui->checkBoxShowSettings->setChecked(false);
-    ui->groupBoxSettings->setVisible(false);
 
     // set the current page
     // set at monitor page at index 0
@@ -588,13 +582,12 @@ void MainWindow::loadParameters()
 {
     ui->lineEditMinerPath->setText(_settings->value(MINERPATH).toString());
     ui->lineEditArgs->setText(_settings->value(MINERARGS).toString());
-    ui->groupBoxWatchdog->setChecked(_settings->value(AUTORESTART).toBool());
-    ui->spinBoxMax0MHs->setValue(_settings->value(MAX0MHS).toInt());
-    ui->spinBoxDelay->setValue(_settings->value(RESTARTDELAY).toInt());
-    ui->spinBoxDelay0MHs->setValue(_settings->value(ZEROMHSDELAY).toInt());
-    ui->checkBoxAutoStart->setChecked(_settings->value(AUTOSTART).toBool());
+//    ui->groupBoxWatchdog->setChecked(_settings->value(AUTORESTART).toBool());
+//    ui->spinBoxMax0MHs->setValue(_settings->value(MAX0MHS).toInt());
+//    ui->spinBoxDelay->setValue(_settings->value(RESTARTDELAY).toInt());
+//    ui->spinBoxDelay0MHs->setValue(_settings->value(ZEROMHSDELAY).toInt());
     ui->checkBoxOnlyShare->setChecked(_settings->value(DISPLAYSHAREONLY).toBool());
-    ui->spinBoxDelayNoHash->setValue(_settings->value(DELAYNOHASH).toInt());
+//    ui->spinBoxDelayNoHash->setValue(_settings->value(DELAYNOHASH).toInt());
     setComboIndex(ui->comboBoxCoin, _settings->value(COIN).toString());
     setComboIndex(ui->comboBoxCore, _settings->value(CORE).toString());
     setComboIndex(ui->comboBoxPool, _settings->value(POOL).toString());
@@ -610,13 +603,12 @@ void MainWindow::saveParameters()
 {
     _settings->setValue(MINERPATH, ui->lineEditMinerPath->text());
     _settings->setValue(MINERARGS, ui->lineEditArgs->text());
-    _settings->setValue(AUTORESTART, ui->groupBoxWatchdog->isChecked());
-    _settings->setValue(MAX0MHS, ui->spinBoxMax0MHs->value());
-    _settings->setValue(RESTARTDELAY, ui->spinBoxDelay->value());
-    _settings->setValue(ZEROMHSDELAY, ui->spinBoxDelay0MHs->value());
-    _settings->setValue(AUTOSTART, ui->checkBoxAutoStart->isChecked());
+//    _settings->setValue(AUTORESTART, ui->groupBoxWatchdog->isChecked());
+//    _settings->setValue(MAX0MHS, ui->spinBoxMax0MHs->value());
+//    _settings->setValue(RESTARTDELAY, ui->spinBoxDelay->value());
+//    _settings->setValue(ZEROMHSDELAY, ui->spinBoxDelay0MHs->value());
     _settings->setValue(DISPLAYSHAREONLY, ui->checkBoxOnlyShare->isChecked());
-    _settings->setValue(DELAYNOHASH, ui->spinBoxDelayNoHash->value());
+//    _settings->setValue(DELAYNOHASH, ui->spinBoxDelayNoHash->value());
     _settings->setValue(COIN, ui->comboBoxCoin->currentText());
     _settings->setValue(CORE, ui->comboBoxCore->currentText());
     _settings->setValue(POOL, ui->comboBoxPool->currentText());
@@ -812,10 +804,10 @@ void MainWindow::StartMiningCore()
     //qDebug() << core_path << core_args << endl;
 
     _process->SetAPI(_current_core);
-    _process->setMax0MHs(ui->spinBoxMax0MHs->value());
-    _process->setRestartDelay(ui->spinBoxDelay->value());
-    _process->setRestartOption(ui->groupBoxWatchdog->isChecked());
-    _process->setDelayBeforeNoHash(ui->spinBoxDelayNoHash->value());
+//    _process->setMax0MHs(ui->spinBoxMax0MHs->value());
+//    _process->setRestartDelay(ui->spinBoxDelay->value());
+//    _process->setRestartOption(ui->groupBoxWatchdog->isChecked());
+//    _process->setDelayBeforeNoHash(ui->spinBoxDelayNoHash->value());
     _process->start(core_path, core_args);
 }
 
@@ -931,7 +923,8 @@ void MainWindow::onError()
 {
     _errorCount++;
     _trayIcon->showMessage("Miner's Coffee report"
-                           , "An error has been detected in ethminer.\n" + ui->groupBoxWatchdog->isChecked() ? "Miner's Coffee restarted it automaticaly" : "Check the watchdog option checkbox if you want Miner's Coffee to restart it on error");
+                           , "An error has been detected in ethminer.\n");
+    // + ui->groupBoxWatchdog->isChecked() ? "Miner's Coffee restarted it automaticaly" : "Check the watchdog option checkbox if you want Miner's Coffee to restart it on error");
 }
 
 const QColor MainWindow::getTempColor(unsigned int temp)
@@ -946,29 +939,6 @@ const QColor MainWindow::getTempColor(unsigned int temp)
     return Qt::red;
 }
 
-void MainWindow::on_groupBoxWatchdog_clicked(bool checked)
-{
-    _process->setRestartOption(checked);
-    if(checked)
-        ui->groupBoxWatchdog->setToolTip("");
-    else
-        ui->groupBoxWatchdog->setToolTip("Check it to activate the following watchdog options");
-}
-
-void MainWindow::on_spinBoxMax0MHs_valueChanged(int arg1)
-{
-    _process->setMax0MHs(arg1);
-}
-
-void MainWindow::on_spinBoxDelay_valueChanged(int arg1)
-{
-    _process->setRestartDelay(arg1);
-}
-
-void MainWindow::on_spinBoxDelay0MHs_valueChanged(int arg1)
-{
-    _process->setDelayBefore0MHs(arg1);
-}
 
 void MainWindow::onReadyToStartMiner()
 {
@@ -977,24 +947,14 @@ void MainWindow::onReadyToStartMiner()
 
 void MainWindow::onHelp()
 {
-    on_pushButtonHelp_clicked();
-}
-
-void MainWindow::on_checkBoxOnlyShare_clicked(bool checked)
-{
-    _process->setShareOnly(checked);
-}
-
-void MainWindow::on_pushButtonHelp_clicked()
-{
     helpDialog* helpdial = new helpDialog(_settings, this);
     helpdial->exec();
     delete helpdial;
 }
 
-void MainWindow::on_spinBoxDelayNoHash_valueChanged(int arg1)
+void MainWindow::on_checkBoxOnlyShare_clicked(bool checked)
 {
-    _process->setDelayBeforeNoHash(arg1);
+    _process->setShareOnly(checked);
 }
 
 autoStart::autoStart(QObject *pParent)
@@ -1118,49 +1078,29 @@ void MainWindow::onNvMonitorInfo(unsigned int current_gpu
 }
 */
 
-void MainWindow::onAMDMonitorInfo(unsigned int gpucount, unsigned int maxgputemp, unsigned int mingputemp, unsigned int maxfanspeed, unsigned int minfanspeed, unsigned int maxmemclock, unsigned int minmemclock, unsigned int maxgpuclock, unsigned int mingpuclock, unsigned int maxpowerdraw, unsigned int minpowerdraw, unsigned int totalpowerdraw)
-{
-    ui->lcdNumber_AMD_MaxTemp->setPalette(getTempColor(maxgputemp));
-    ui->lcdNumber_AMD_MinTemp->setPalette(getTempColor(mingputemp));
+//void MainWindow::onAMDMonitorInfo(unsigned int gpucount, unsigned int maxgputemp, unsigned int mingputemp, unsigned int maxfanspeed, unsigned int minfanspeed, unsigned int maxmemclock, unsigned int minmemclock, unsigned int maxgpuclock, unsigned int mingpuclock, unsigned int maxpowerdraw, unsigned int minpowerdraw, unsigned int totalpowerdraw)
+//{
+//    ui->lcdNumber_AMD_MaxTemp->setPalette(getTempColor(maxgputemp));
+//    ui->lcdNumber_AMD_MinTemp->setPalette(getTempColor(mingputemp));
 
-    ui->lcdNumber_AMD_GPUCount->display((int)gpucount);
+//    ui->lcdNumber_AMD_GPUCount->display((int)gpucount);
 
-    ui->lcdNumber_AMD_MaxTemp->display((int)maxgputemp);
-    ui->lcdNumber_AMD_MinTemp->display((int)mingputemp);
+//    ui->lcdNumber_AMD_MaxTemp->display((int)maxgputemp);
+//    ui->lcdNumber_AMD_MinTemp->display((int)mingputemp);
 
-    ui->lcdNumber_AMD_MaxFan->display((int)maxfanspeed);
-    ui->lcdNumber_AMD_MinFan->display((int)minfanspeed);
+//    ui->lcdNumber_AMD_MaxFan->display((int)maxfanspeed);
+//    ui->lcdNumber_AMD_MinFan->display((int)minfanspeed);
 
-    ui->labelMaxMemClock->setText(QString::number((int)maxmemclock));
-    ui->labelMinMemClock->setText(QString::number((int)minmemclock));
+//    ui->labelMaxMemClock->setText(QString::number((int)maxmemclock));
+//    ui->labelMinMemClock->setText(QString::number((int)minmemclock));
 
-    ui->labelMaxGPUClock->setText(QString::number((int)maxgpuclock));
-    ui->labelMinGPUClock->setText(QString::number((int)mingpuclock));
+//    ui->labelMaxGPUClock->setText(QString::number((int)maxgpuclock));
+//    ui->labelMinGPUClock->setText(QString::number((int)mingpuclock));
 
-    ui->labelMaxWatt->setText(QString("%.2f").arg(maxpowerdraw / 1000));
-    ui->labelMinWatt->setText(QString("%.2f").arg(minpowerdraw / 1000));
+//    ui->labelMaxWatt->setText(QString("%.2f").arg(maxpowerdraw / 1000));
+//    ui->labelMinWatt->setText(QString("%.2f").arg(minpowerdraw / 1000));
 
-}
-
-void MainWindow::on_pushButtonOC_clicked()
-{
-    if(_nvapi->libLoaded())
-    {
-        nvOCDialog* dlg = new nvOCDialog(_nvapi, _settings, this);
-        dlg->_db = _databaseProcess;
-        dlg->exec();
-        delete dlg;
-    }
-}
-
-
-void MainWindow::on_pushButtonEthminerBrowser_clicked()
-{
-    QString fileName = QFileDialog::getOpenFileName(this,
-                                                    tr("Choose ethminer path"), "", tr("ethminer.exe (*.exe)"));
-    if(!fileName.isEmpty())
-        ui->lineEditMinerPath->setText(fileName);
-}
+//}
 
 void MainWindow::onHrChartTimer()
 {
@@ -1262,7 +1202,7 @@ void MainWindow::refreshDeviceInfo()
     // it will be roughly refresh 20 times slower than device info
     static int cnt = 0;
     if(cnt == 0){
-        on_checkBoxShowSettings_clicked(true);
+        refreshSystemSettings();
         cnt = 20;
     }
     cnt--;
@@ -1648,11 +1588,6 @@ void MainWindow::onMouseHoverSlice(QPieSlice * slice, bool status){
 
 }
 
-
-void MainWindow::on_checkBoxAutoShowDeviceInfo_clicked(bool clicked){
-    ui->groupBoxDevicesInfo->setVisible(clicked);
-}
-
 void MainWindow::onGPUInfosReceived(QList<GPUInfo> gpusinfo){
     _gpusinfo->clear();
     for(int i=0;i<gpusinfo.size();i++){
@@ -1792,10 +1727,14 @@ void MainWindow::plotGrapgh(QString dateStart, QString dateEnd, int deviceNum){
 
 void MainWindow::on_pushButtonSearchHistory_clicked(){
     ui->pushButtonSearchHistory->hide();
-    //qDebug() << "search time: " << ui->dateTimeEditHistoryStartTime->text() << " ->" << ui->dateTimeEditHistoryEndTime->text()
-             // << " " << ui->spinBoxHistoryDeviceNum->text().toInt();
     ui->graphicsViewHistoryInfo->show();
 
+
+    plotGrapgh(ui->dateTimeEditHistoryStartTime->text(), ui->dateTimeEditHistoryEndTime->text(),
+               ui->spinBoxHistoryDeviceNum->text().toInt());
+
+    // following codes are reserved for future development to show mining info
+    /*
     // index 0 stands for GPUs information
     if(ui->comboBoxHistoryDataOption->currentIndex()==0){
         plotGrapgh(ui->dateTimeEditHistoryStartTime->text(), ui->dateTimeEditHistoryEndTime->text(),
@@ -1813,6 +1752,7 @@ void MainWindow::on_pushButtonSearchHistory_clicked(){
                        -(ui->spinBoxHistoryDeviceNum->text().toInt()+1));
         }
     }
+    */
 
 
 }
@@ -1896,65 +1836,54 @@ void MainWindow::onReceivedPoolInfo(QList<PoolInfo> poolInfos)
     }
 }
 
-void MainWindow::on_checkBoxHistoryMiningInfoOverall_clicked(bool clicked){
-    ui->spinBoxHistoryDeviceNum->setVisible(!clicked);
-    ui->labelHistoryDeviceNum->setVisible(!clicked);
-    ui->pushButtonSearchHistory->show();
-    _searchHistoryMiningOverall = clicked;
-}
+void MainWindow::refreshSystemSettings(){
+    Wincmd wincmd;
+    std::vector<QString> result = wincmd.SeeSetting();
+    ui->plainTextEditSettingsSystemInfo->clear();
+    ui->plainTextEditSettingsSystemInfoTitle->clear();
 
-void MainWindow::on_checkBoxShowSettings_clicked(bool clicked){
-    if(clicked){
-        Wincmd wincmd;
-        std::vector<QString> result = wincmd.SeeSetting();
-        ui->plainTextEditSettingsSystemInfo->clear();
-        ui->plainTextEditSettingsSystemInfoTitle->clear();
+    // 16 is the row numbers of one disk
+    int rowNumOfOneDisk = 16;
+    int colNum = result.size() / rowNumOfOneDisk;
 
-        // 16 is the row numbers of one disk
-        int rowNumOfOneDisk = 16;
-        int colNum = result.size() / rowNumOfOneDisk;
+    for(int i=0;i<rowNumOfOneDisk;i+=2){
+        QString infoRow;
+        bool longLine = false;
 
-        for(int i=0;i<rowNumOfOneDisk;i+=2){
-            QString infoRow;
-            bool longLine = false;
+        if(result.at(i+1).size()>= 24){
+            longLine = true;
+        }
 
-            if(result.at(i+1).size()>= 24){
-                longLine = true;
-            }
+        ui->plainTextEditSettingsSystemInfoTitle->appendPlainText(result.at(i));
 
-            ui->plainTextEditSettingsSystemInfoTitle->appendPlainText(result.at(i));
-
-            for(int j =0;j<colNum;j++){
-                if(j>=1){
-                    if(!longLine){
-                        infoRow += " / ";
-                        infoRow += result.at(i+1+j*rowNumOfOneDisk);
-                    }
-                    else{
-                        ui->plainTextEditSettingsSystemInfo->appendPlainText(result.at(i+1+rowNumOfOneDisk*j));
-                        ui->plainTextEditSettingsSystemInfoTitle->appendPlainText(" ");
-                    }
+        for(int j =0;j<colNum;j++){
+            if(j>=1){
+                if(!longLine){
+                    infoRow += " / ";
+                    infoRow += result.at(i+1+j*rowNumOfOneDisk);
                 }
                 else{
-                    if(longLine){
-                        ui->plainTextEditSettingsSystemInfo->appendPlainText(result.at(i+1));
-                    }
-                    else{
-                        infoRow += result.at(i+1);
-                    }
+                    ui->plainTextEditSettingsSystemInfo->appendPlainText(result.at(i+1+rowNumOfOneDisk*j));
+                    ui->plainTextEditSettingsSystemInfoTitle->appendPlainText(" ");
                 }
-
             }
-
-            if(!longLine){
-                ui->plainTextEditSettingsSystemInfo->appendPlainText(infoRow);
+            else{
+                if(longLine){
+                    ui->plainTextEditSettingsSystemInfo->appendPlainText(result.at(i+1));
+                }
+                else{
+                    infoRow += result.at(i+1);
+                }
             }
 
         }
 
+        if(!longLine){
+            ui->plainTextEditSettingsSystemInfo->appendPlainText(infoRow);
+        }
+
     }
 
-    ui->groupBoxSettings->setVisible(clicked);
 
 }
 

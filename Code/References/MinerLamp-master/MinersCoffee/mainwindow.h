@@ -115,19 +115,12 @@ private:
 private slots:
 
     void on_pushButton_clicked();
-    void on_spinBoxMax0MHs_valueChanged(int arg1);
-    void on_spinBoxDelay_valueChanged(int arg1);
     void on_checkBoxOnlyShare_clicked(bool checked);
-    void on_pushButtonHelp_clicked();
-    void on_spinBoxDelay0MHs_valueChanged(int arg1);
     void onReadyToStartMiner();
-    void on_checkBoxAutoShowDeviceInfo_clicked(bool checked);
     void on_pushButtonSearchHistory_clicked();
     void on_dateTimeEditHistoryStartTime_dateTimeChanged(const QDateTime &datetime);
     void on_dateTimeEditHistoryEndTime_dateTimeChanged(const QDateTime &datetime);
     void on_spinBoxHistoryDeviceNum_valueChanged(int arg1);
-    void on_checkBoxHistoryMiningInfoOverall_clicked(bool clicked);
-    void on_checkBoxShowSettings_clicked(bool clicked);
     void on_pushButtonCancelAutoPage_clicked();
     void on_pushButtonChangePageSize_clicked();
     void on_pushButtonMonitorPage_Overview_clicked();
@@ -163,28 +156,21 @@ private slots:
                          , std::vector<gpu_info> gpu_infos
                          );
 */
-    void onAMDMonitorInfo(unsigned int gpucount
-                          , unsigned int maxgputemp
-                          , unsigned int mingputemp
-                          , unsigned int maxfanspeed
-                          , unsigned int minfanspeed
-                          , unsigned int maxmemclock
-                          , unsigned int minmemclock
-                          , unsigned int maxgpuclock
-                          , unsigned int mingpuclock
-                          , unsigned int maxpowerdraw
-                          , unsigned int minpowerdraw
-                          , unsigned int totalpowerdraw
-                          );
-
-    void on_pushButtonOC_clicked();
+//    void onAMDMonitorInfo(unsigned int gpucount
+//                          , unsigned int maxgputemp
+//                          , unsigned int mingputemp
+//                          , unsigned int maxfanspeed
+//                          , unsigned int minfanspeed
+//                          , unsigned int maxmemclock
+//                          , unsigned int minmemclock
+//                          , unsigned int maxgpuclock
+//                          , unsigned int mingpuclock
+//                          , unsigned int maxpowerdraw
+//                          , unsigned int minpowerdraw
+//                          , unsigned int totalpowerdraw
+//                          );
 
     void onHelp();
-    void on_groupBoxWatchdog_clicked(bool checked);
-
-    void on_spinBoxDelayNoHash_valueChanged(int arg1);
-
-    void on_pushButtonEthminerBrowser_clicked();
 
     // timer to hash rate graph
     void onHrChartTimer();
@@ -250,6 +236,7 @@ private:
     void onError();
     void onReceivedMiningInfo(MiningInfo miningInfo);
     void onReceivedPoolInfo(QList<PoolInfo> poolInfos);
+    void refreshSystemSettings();
 
     void EstimateOutput();
 

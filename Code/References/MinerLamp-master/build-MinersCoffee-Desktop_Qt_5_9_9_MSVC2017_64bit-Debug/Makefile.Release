@@ -2555,34 +2555,7 @@ release\gpumonitor.obj: ..\MinersCoffee\gpumonitor.cpp ../MinersCoffee/gpumonito
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtTest\qttestversion.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QCoreApplication \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtTest\QSignalSpy \
-		ui_mainwindow.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QAction \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QButtonGroup \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qbuttongroup.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QDateTimeEdit \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qdatetimeedit.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QFormLayout \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qformlayout.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QLayout \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QFrame \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QGridLayout \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QGroupBox \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qgroupbox.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QHeaderView \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qheaderview.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qabstractitemview.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QPushButton \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qpushbutton.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QRadioButton \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qradiobutton.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QScrollArea \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QSpacerItem \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QSplitter \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qsplitter.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QStackedWidget \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qstackedwidget.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QVBoxLayout \
-		../MinersCoffee/hashratecharview.h
+		ui_mainwindow.h
 
 release\helppage.obj: ..\MinersCoffee\helppage.cpp ../MinersCoffee/helppage.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QSettings \
@@ -3559,36 +3532,8 @@ release\mainwindow.obj: ..\MinersCoffee\mainwindow.cpp ../MinersCoffee/mainwindo
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QLineEdit \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qlineedit.h \
 		ui_mainwindow.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QAction \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QButtonGroup \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qbuttongroup.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QDateTimeEdit \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qdatetimeedit.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QFormLayout \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qformlayout.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QLayout \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QFrame \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QGridLayout \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QGroupBox \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qgroupbox.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QHeaderView \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qheaderview.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qabstractitemview.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qitemselectionmodel.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QPushButton \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qpushbutton.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QRadioButton \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qradiobutton.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QScrollArea \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QSpacerItem \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QSplitter \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qsplitter.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QStackedWidget \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qstackedwidget.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QVBoxLayout \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QWidget \
-		../MinersCoffee/hashratecharview.h \
 		../MinersCoffee/helpdialog.h \
+		../MinersCoffee/hashratecharview.h \
 		../MinersCoffee/constants.h \
 		../MinersCoffee/wincmd.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QStorageInfo \
@@ -3635,6 +3580,7 @@ release\mainwindow.obj: ..\MinersCoffee\mainwindow.cpp ../MinersCoffee/mainwindo
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qhistorystate.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qidentityproxymodel.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qisenum.h \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qitemselectionmodel.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qjsonarray.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qlibraryinfo.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qversionnumber.h \
@@ -3705,6 +3651,7 @@ release\mainwindow.obj: ..\MinersCoffee\mainwindow.cpp ../MinersCoffee/mainwindo
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QRect \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qsurface.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qsurfaceformat.h \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QWidget \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtTest\qtest_network.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtNetwork\QHostAddress \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtNetwork\qhostaddress.h \
@@ -3724,6 +3671,7 @@ release\mainwindow.obj: ..\MinersCoffee\mainwindow.cpp ../MinersCoffee/mainwindo
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtTest\qttestversion.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QCoreApplication \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtTest\QSignalSpy \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QFrame \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QGraphicsEffect \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qgraphicseffect.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCharts\QAreaSeries \
@@ -4077,69 +4025,7 @@ release\helpdialog.obj: ..\MinersCoffee\helpdialog.cpp ../MinersCoffee/helpdialo
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qtouchdevice.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QSettings \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qsettings.h \
-		ui_helpdialog.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QVariant \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QAction \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qaction.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qicon.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qactiongroup.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QApplication \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qapplication.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qcoreapplication.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qeventloop.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qguiapplication.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qinputmethod.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QButtonGroup \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qbuttongroup.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QCheckBox \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qcheckbox.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qabstractbutton.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QFrame \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qframe.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QGridLayout \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qgridlayout.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qlayout.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qlayoutitem.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qboxlayout.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QGroupBox \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qgroupbox.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QHBoxLayout \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QHeaderView \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qheaderview.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qabstractitemview.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qabstractscrollarea.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qabstractitemmodel.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qitemselectionmodel.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qabstractitemdelegate.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qstyleoption.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qabstractspinbox.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qvalidator.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qregularexpression.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qslider.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qabstractslider.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qstyle.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qtabbar.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qtabwidget.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qrubberband.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QLabel \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qlabel.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QPlainTextEdit \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qplaintextedit.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qtextedit.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qtextdocument.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qtextoption.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qtextcursor.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qtextformat.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qpen.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qabstracttextdocumentlayout.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qtextlayout.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qglyphrun.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qrawfont.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qfontdatabase.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QPushButton \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qpushbutton.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QVBoxLayout
+		ui_helpdialog.h
 
 release\nvidianvml.obj: ..\MinersCoffee\nvidianvml.cpp ../MinersCoffee/nvidianvml.h \
 		"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.1\include\nvml.h" \
@@ -4563,42 +4449,7 @@ release\nvocdialog.obj: ..\MinersCoffee\nvocdialog.cpp ../MinersCoffee/nvocdialo
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\qsqlquery.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\QSqlError \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtSql\qsqlerror.h \
-		ui_nvocdialog.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QAction \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QButtonGroup \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qbuttongroup.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QCheckBox \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qcheckbox.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QComboBox \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qcombobox.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qabstractitemdelegate.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qstyleoption.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qabstractspinbox.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qvalidator.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qregularexpression.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qslider.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qstyle.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qtabbar.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qrubberband.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qabstractitemmodel.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QDialogButtonBox \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qdialogbuttonbox.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QGridLayout \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qgridlayout.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qlayout.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qlayoutitem.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qboxlayout.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QHeaderView \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qheaderview.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qabstractitemview.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qitemselectionmodel.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QLCDNumber \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qlcdnumber.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QLabel \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qlabel.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QSlider \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QSpinBox \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qspinbox.h
+		ui_nvocdialog.h
 
 release\nvidiaapi.obj: ..\MinersCoffee\nvidiaapi.cpp ../MinersCoffee/nvidiaapi.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QMutex \
