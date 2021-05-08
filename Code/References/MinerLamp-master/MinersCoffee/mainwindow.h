@@ -126,7 +126,6 @@ private slots:
     void on_dateTimeEditHistoryStartTime_dateTimeChanged(const QDateTime &datetime);
     void on_dateTimeEditHistoryEndTime_dateTimeChanged(const QDateTime &datetime);
     void on_spinBoxHistoryDeviceNum_valueChanged(int arg1);
-    void on_comboBoxHistoryDataOption_currentIndexChanged(int index);
     void on_checkBoxHistoryMiningInfoOverall_clicked(bool clicked);
     void on_checkBoxShowSettings_clicked(bool clicked);
     void on_pushButtonCancelAutoPage_clicked();
@@ -180,27 +179,10 @@ private slots:
 
     void on_pushButtonOC_clicked();
 
-
     void onHelp();
     void on_groupBoxWatchdog_clicked(bool checked);
 
     void on_spinBoxDelayNoHash_valueChanged(int arg1);
-
-    void on_pushButtonPool_clicked(bool checked);
-
-    void on_pushButtonShowHideLog_clicked(bool checked);
-
-    void on_pushButtonDisplayPoolStats_clicked();
-
-    void onBalance(double balance);
-    void onPoolUserInfo(double userBalance
-                        , double currentCalcultatedHashRate
-                        , double averageHashRate1H
-                        , double averageHashRate3H
-                        , double averageHashRate6H
-                        , double averageHashRate12H
-                        , double averageHashRate24H
-                        );
 
     void on_pushButtonEthminerBrowser_clicked();
 

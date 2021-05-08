@@ -127,8 +127,8 @@ void autoStart::readyToStartMiner()
     QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
 }
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[87];
-    char stringdata0[2010];
+    QByteArrayData data[73];
+    char stringdata0[1700];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -158,72 +158,58 @@ QT_MOC_LITERAL(17, 351, 47), // "on_dateTimeEditHistoryStartTi..."
 QT_MOC_LITERAL(18, 399, 8), // "datetime"
 QT_MOC_LITERAL(19, 408, 45), // "on_dateTimeEditHistoryEndTime..."
 QT_MOC_LITERAL(20, 454, 39), // "on_spinBoxHistoryDeviceNum_va..."
-QT_MOC_LITERAL(21, 494, 48), // "on_comboBoxHistoryDataOption_..."
-QT_MOC_LITERAL(22, 543, 5), // "index"
-QT_MOC_LITERAL(23, 549, 43), // "on_checkBoxHistoryMiningInfoO..."
-QT_MOC_LITERAL(24, 593, 7), // "clicked"
-QT_MOC_LITERAL(25, 601, 31), // "on_checkBoxShowSettings_clicked"
-QT_MOC_LITERAL(26, 633, 35), // "on_pushButtonCancelAutoPage_c..."
-QT_MOC_LITERAL(27, 669, 35), // "on_pushButtonChangePageSize_c..."
-QT_MOC_LITERAL(28, 705, 41), // "on_pushButtonMonitorPage_Over..."
-QT_MOC_LITERAL(29, 747, 39), // "on_pushButtonMonitorPage_Mini..."
-QT_MOC_LITERAL(30, 787, 39), // "on_pushButtonMonitorPage_Syst..."
-QT_MOC_LITERAL(31, 827, 44), // "on_pushButtonMonitorPage_Devi..."
-QT_MOC_LITERAL(32, 872, 32), // "on_pushButtonMonitorPage_clicked"
-QT_MOC_LITERAL(33, 905, 27), // "on_pushButtonOCPage_clicked"
-QT_MOC_LITERAL(34, 933, 29), // "on_pushButtonHelpPage_clicked"
-QT_MOC_LITERAL(35, 963, 27), // "on_checkBoxHelpPage_clicked"
-QT_MOC_LITERAL(36, 991, 17), // "refreshDeviceInfo"
-QT_MOC_LITERAL(37, 1009, 18), // "onGPUInfosReceived"
-QT_MOC_LITERAL(38, 1028, 14), // "QList<GPUInfo>"
-QT_MOC_LITERAL(39, 1043, 8), // "gpusinfo"
-QT_MOC_LITERAL(40, 1052, 15), // "onNvMonitorInfo"
-QT_MOC_LITERAL(41, 1068, 8), // "gpucount"
-QT_MOC_LITERAL(42, 1077, 10), // "maxgputemp"
-QT_MOC_LITERAL(43, 1088, 10), // "mingputemp"
-QT_MOC_LITERAL(44, 1099, 11), // "maxfanspeed"
-QT_MOC_LITERAL(45, 1111, 11), // "minfanspeed"
-QT_MOC_LITERAL(46, 1123, 11), // "maxmemclock"
-QT_MOC_LITERAL(47, 1135, 11), // "minmemclock"
-QT_MOC_LITERAL(48, 1147, 11), // "maxgpuclock"
-QT_MOC_LITERAL(49, 1159, 11), // "mingpuclock"
-QT_MOC_LITERAL(50, 1171, 12), // "maxpowerdraw"
-QT_MOC_LITERAL(51, 1184, 12), // "minpowerdraw"
-QT_MOC_LITERAL(52, 1197, 14), // "totalpowerdraw"
-QT_MOC_LITERAL(53, 1212, 16), // "onAMDMonitorInfo"
-QT_MOC_LITERAL(54, 1229, 23), // "on_pushButtonOC_clicked"
-QT_MOC_LITERAL(55, 1253, 6), // "onHelp"
-QT_MOC_LITERAL(56, 1260, 27), // "on_groupBoxWatchdog_clicked"
-QT_MOC_LITERAL(57, 1288, 34), // "on_spinBoxDelayNoHash_valueCh..."
-QT_MOC_LITERAL(58, 1323, 25), // "on_pushButtonPool_clicked"
-QT_MOC_LITERAL(59, 1349, 32), // "on_pushButtonShowHideLog_clicked"
-QT_MOC_LITERAL(60, 1382, 37), // "on_pushButtonDisplayPoolStats..."
-QT_MOC_LITERAL(61, 1420, 9), // "onBalance"
-QT_MOC_LITERAL(62, 1430, 7), // "balance"
-QT_MOC_LITERAL(63, 1438, 14), // "onPoolUserInfo"
-QT_MOC_LITERAL(64, 1453, 11), // "userBalance"
-QT_MOC_LITERAL(65, 1465, 26), // "currentCalcultatedHashRate"
-QT_MOC_LITERAL(66, 1492, 17), // "averageHashRate1H"
-QT_MOC_LITERAL(67, 1510, 17), // "averageHashRate3H"
-QT_MOC_LITERAL(68, 1528, 17), // "averageHashRate6H"
-QT_MOC_LITERAL(69, 1546, 18), // "averageHashRate12H"
-QT_MOC_LITERAL(70, 1565, 18), // "averageHashRate24H"
-QT_MOC_LITERAL(71, 1584, 36), // "on_pushButtonEthminerBrowser_..."
-QT_MOC_LITERAL(72, 1621, 14), // "onHrChartTimer"
-QT_MOC_LITERAL(73, 1636, 17), // "onMouseHoverSlice"
-QT_MOC_LITERAL(74, 1654, 10), // "QPieSlice*"
-QT_MOC_LITERAL(75, 1665, 5), // "slice"
-QT_MOC_LITERAL(76, 1671, 6), // "status"
-QT_MOC_LITERAL(77, 1678, 44), // "on_horizontalSliderPowerPerce..."
-QT_MOC_LITERAL(78, 1723, 5), // "value"
-QT_MOC_LITERAL(79, 1729, 41), // "on_horizontalSliderGpuOffset_..."
-QT_MOC_LITERAL(80, 1771, 41), // "on_horizontalSliderMemOffset_..."
-QT_MOC_LITERAL(81, 1813, 40), // "on_horizontalSliderFanSpeed_v..."
-QT_MOC_LITERAL(82, 1854, 27), // "on_comboBoxDevice_activated"
-QT_MOC_LITERAL(83, 1882, 32), // "on_pushButtonOCPageApply_clicked"
-QT_MOC_LITERAL(84, 1915, 31), // "on_checkBoxAutoSpeedFan_clicked"
-QT_MOC_LITERAL(85, 1947, 34), // "on_spinBoxTemperature_valueCh..."
-QT_MOC_LITERAL(86, 1982, 27) // "on_pushButtonAutoOC_clicked"
+QT_MOC_LITERAL(21, 494, 43), // "on_checkBoxHistoryMiningInfoO..."
+QT_MOC_LITERAL(22, 538, 7), // "clicked"
+QT_MOC_LITERAL(23, 546, 31), // "on_checkBoxShowSettings_clicked"
+QT_MOC_LITERAL(24, 578, 35), // "on_pushButtonCancelAutoPage_c..."
+QT_MOC_LITERAL(25, 614, 35), // "on_pushButtonChangePageSize_c..."
+QT_MOC_LITERAL(26, 650, 41), // "on_pushButtonMonitorPage_Over..."
+QT_MOC_LITERAL(27, 692, 39), // "on_pushButtonMonitorPage_Mini..."
+QT_MOC_LITERAL(28, 732, 39), // "on_pushButtonMonitorPage_Syst..."
+QT_MOC_LITERAL(29, 772, 44), // "on_pushButtonMonitorPage_Devi..."
+QT_MOC_LITERAL(30, 817, 32), // "on_pushButtonMonitorPage_clicked"
+QT_MOC_LITERAL(31, 850, 27), // "on_pushButtonOCPage_clicked"
+QT_MOC_LITERAL(32, 878, 29), // "on_pushButtonHelpPage_clicked"
+QT_MOC_LITERAL(33, 908, 27), // "on_checkBoxHelpPage_clicked"
+QT_MOC_LITERAL(34, 936, 17), // "refreshDeviceInfo"
+QT_MOC_LITERAL(35, 954, 18), // "onGPUInfosReceived"
+QT_MOC_LITERAL(36, 973, 14), // "QList<GPUInfo>"
+QT_MOC_LITERAL(37, 988, 8), // "gpusinfo"
+QT_MOC_LITERAL(38, 997, 15), // "onNvMonitorInfo"
+QT_MOC_LITERAL(39, 1013, 8), // "gpucount"
+QT_MOC_LITERAL(40, 1022, 10), // "maxgputemp"
+QT_MOC_LITERAL(41, 1033, 10), // "mingputemp"
+QT_MOC_LITERAL(42, 1044, 11), // "maxfanspeed"
+QT_MOC_LITERAL(43, 1056, 11), // "minfanspeed"
+QT_MOC_LITERAL(44, 1068, 11), // "maxmemclock"
+QT_MOC_LITERAL(45, 1080, 11), // "minmemclock"
+QT_MOC_LITERAL(46, 1092, 11), // "maxgpuclock"
+QT_MOC_LITERAL(47, 1104, 11), // "mingpuclock"
+QT_MOC_LITERAL(48, 1116, 12), // "maxpowerdraw"
+QT_MOC_LITERAL(49, 1129, 12), // "minpowerdraw"
+QT_MOC_LITERAL(50, 1142, 14), // "totalpowerdraw"
+QT_MOC_LITERAL(51, 1157, 16), // "onAMDMonitorInfo"
+QT_MOC_LITERAL(52, 1174, 23), // "on_pushButtonOC_clicked"
+QT_MOC_LITERAL(53, 1198, 6), // "onHelp"
+QT_MOC_LITERAL(54, 1205, 27), // "on_groupBoxWatchdog_clicked"
+QT_MOC_LITERAL(55, 1233, 34), // "on_spinBoxDelayNoHash_valueCh..."
+QT_MOC_LITERAL(56, 1268, 36), // "on_pushButtonEthminerBrowser_..."
+QT_MOC_LITERAL(57, 1305, 14), // "onHrChartTimer"
+QT_MOC_LITERAL(58, 1320, 17), // "onMouseHoverSlice"
+QT_MOC_LITERAL(59, 1338, 10), // "QPieSlice*"
+QT_MOC_LITERAL(60, 1349, 5), // "slice"
+QT_MOC_LITERAL(61, 1355, 6), // "status"
+QT_MOC_LITERAL(62, 1362, 44), // "on_horizontalSliderPowerPerce..."
+QT_MOC_LITERAL(63, 1407, 5), // "value"
+QT_MOC_LITERAL(64, 1413, 41), // "on_horizontalSliderGpuOffset_..."
+QT_MOC_LITERAL(65, 1455, 41), // "on_horizontalSliderMemOffset_..."
+QT_MOC_LITERAL(66, 1497, 40), // "on_horizontalSliderFanSpeed_v..."
+QT_MOC_LITERAL(67, 1538, 27), // "on_comboBoxDevice_activated"
+QT_MOC_LITERAL(68, 1566, 5), // "index"
+QT_MOC_LITERAL(69, 1572, 32), // "on_pushButtonOCPageApply_clicked"
+QT_MOC_LITERAL(70, 1605, 31), // "on_checkBoxAutoSpeedFan_clicked"
+QT_MOC_LITERAL(71, 1637, 34), // "on_spinBoxTemperature_valueCh..."
+QT_MOC_LITERAL(72, 1672, 27) // "on_pushButtonAutoOC_clicked"
 
     },
     "MainWindow\0setIcon\0\0iconActivated\0"
@@ -240,8 +226,7 @@ QT_MOC_LITERAL(86, 1982, 27) // "on_pushButtonAutoOC_clicked"
     "on_dateTimeEditHistoryStartTime_dateTimeChanged\0"
     "datetime\0on_dateTimeEditHistoryEndTime_dateTimeChanged\0"
     "on_spinBoxHistoryDeviceNum_valueChanged\0"
-    "on_comboBoxHistoryDataOption_currentIndexChanged\0"
-    "index\0on_checkBoxHistoryMiningInfoOverall_clicked\0"
+    "on_checkBoxHistoryMiningInfoOverall_clicked\0"
     "clicked\0on_checkBoxShowSettings_clicked\0"
     "on_pushButtonCancelAutoPage_clicked\0"
     "on_pushButtonChangePageSize_clicked\0"
@@ -262,14 +247,6 @@ QT_MOC_LITERAL(86, 1982, 27) // "on_pushButtonAutoOC_clicked"
     "onAMDMonitorInfo\0on_pushButtonOC_clicked\0"
     "onHelp\0on_groupBoxWatchdog_clicked\0"
     "on_spinBoxDelayNoHash_valueChanged\0"
-    "on_pushButtonPool_clicked\0"
-    "on_pushButtonShowHideLog_clicked\0"
-    "on_pushButtonDisplayPoolStats_clicked\0"
-    "onBalance\0balance\0onPoolUserInfo\0"
-    "userBalance\0currentCalcultatedHashRate\0"
-    "averageHashRate1H\0averageHashRate3H\0"
-    "averageHashRate6H\0averageHashRate12H\0"
-    "averageHashRate24H\0"
     "on_pushButtonEthminerBrowser_clicked\0"
     "onHrChartTimer\0onMouseHoverSlice\0"
     "QPieSlice*\0slice\0status\0"
@@ -277,7 +254,7 @@ QT_MOC_LITERAL(86, 1982, 27) // "on_pushButtonAutoOC_clicked"
     "value\0on_horizontalSliderGpuOffset_valueChanged\0"
     "on_horizontalSliderMemOffset_valueChanged\0"
     "on_horizontalSliderFanSpeed_valueChanged\0"
-    "on_comboBoxDevice_activated\0"
+    "on_comboBoxDevice_activated\0index\0"
     "on_pushButtonOCPageApply_clicked\0"
     "on_checkBoxAutoSpeedFan_clicked\0"
     "on_spinBoxTemperature_valueChanged\0"
@@ -291,7 +268,7 @@ static const uint qt_meta_data_MainWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      52,   14, // methods
+      46,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -299,58 +276,52 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  274,    2, 0x08 /* Private */,
-       3,    1,  275,    2, 0x08 /* Private */,
-       6,    0,  278,    2, 0x08 /* Private */,
-       7,    1,  279,    2, 0x08 /* Private */,
-       9,    1,  282,    2, 0x08 /* Private */,
-      10,    1,  285,    2, 0x08 /* Private */,
-      12,    0,  288,    2, 0x08 /* Private */,
-      13,    1,  289,    2, 0x08 /* Private */,
-      14,    0,  292,    2, 0x08 /* Private */,
-      15,    1,  293,    2, 0x08 /* Private */,
-      16,    0,  296,    2, 0x08 /* Private */,
-      17,    1,  297,    2, 0x08 /* Private */,
-      19,    1,  300,    2, 0x08 /* Private */,
-      20,    1,  303,    2, 0x08 /* Private */,
-      21,    1,  306,    2, 0x08 /* Private */,
-      23,    1,  309,    2, 0x08 /* Private */,
-      25,    1,  312,    2, 0x08 /* Private */,
-      26,    0,  315,    2, 0x08 /* Private */,
-      27,    0,  316,    2, 0x08 /* Private */,
-      28,    0,  317,    2, 0x08 /* Private */,
-      29,    0,  318,    2, 0x08 /* Private */,
-      30,    0,  319,    2, 0x08 /* Private */,
-      31,    0,  320,    2, 0x08 /* Private */,
-      32,    0,  321,    2, 0x08 /* Private */,
-      33,    0,  322,    2, 0x08 /* Private */,
-      34,    0,  323,    2, 0x08 /* Private */,
-      35,    1,  324,    2, 0x08 /* Private */,
-      36,    0,  327,    2, 0x08 /* Private */,
-      37,    1,  328,    2, 0x08 /* Private */,
-      40,   12,  331,    2, 0x08 /* Private */,
-      53,   12,  356,    2, 0x08 /* Private */,
-      54,    0,  381,    2, 0x08 /* Private */,
-      55,    0,  382,    2, 0x08 /* Private */,
-      56,    1,  383,    2, 0x08 /* Private */,
-      57,    1,  386,    2, 0x08 /* Private */,
-      58,    1,  389,    2, 0x08 /* Private */,
-      59,    1,  392,    2, 0x08 /* Private */,
-      60,    0,  395,    2, 0x08 /* Private */,
-      61,    1,  396,    2, 0x08 /* Private */,
-      63,    7,  399,    2, 0x08 /* Private */,
-      71,    0,  414,    2, 0x08 /* Private */,
-      72,    0,  415,    2, 0x08 /* Private */,
-      73,    2,  416,    2, 0x08 /* Private */,
-      77,    1,  421,    2, 0x08 /* Private */,
-      79,    1,  424,    2, 0x08 /* Private */,
-      80,    1,  427,    2, 0x08 /* Private */,
-      81,    1,  430,    2, 0x08 /* Private */,
-      82,    1,  433,    2, 0x08 /* Private */,
-      83,    0,  436,    2, 0x08 /* Private */,
-      84,    1,  437,    2, 0x08 /* Private */,
-      85,    1,  440,    2, 0x08 /* Private */,
-      86,    0,  443,    2, 0x08 /* Private */,
+       1,    0,  244,    2, 0x08 /* Private */,
+       3,    1,  245,    2, 0x08 /* Private */,
+       6,    0,  248,    2, 0x08 /* Private */,
+       7,    1,  249,    2, 0x08 /* Private */,
+       9,    1,  252,    2, 0x08 /* Private */,
+      10,    1,  255,    2, 0x08 /* Private */,
+      12,    0,  258,    2, 0x08 /* Private */,
+      13,    1,  259,    2, 0x08 /* Private */,
+      14,    0,  262,    2, 0x08 /* Private */,
+      15,    1,  263,    2, 0x08 /* Private */,
+      16,    0,  266,    2, 0x08 /* Private */,
+      17,    1,  267,    2, 0x08 /* Private */,
+      19,    1,  270,    2, 0x08 /* Private */,
+      20,    1,  273,    2, 0x08 /* Private */,
+      21,    1,  276,    2, 0x08 /* Private */,
+      23,    1,  279,    2, 0x08 /* Private */,
+      24,    0,  282,    2, 0x08 /* Private */,
+      25,    0,  283,    2, 0x08 /* Private */,
+      26,    0,  284,    2, 0x08 /* Private */,
+      27,    0,  285,    2, 0x08 /* Private */,
+      28,    0,  286,    2, 0x08 /* Private */,
+      29,    0,  287,    2, 0x08 /* Private */,
+      30,    0,  288,    2, 0x08 /* Private */,
+      31,    0,  289,    2, 0x08 /* Private */,
+      32,    0,  290,    2, 0x08 /* Private */,
+      33,    1,  291,    2, 0x08 /* Private */,
+      34,    0,  294,    2, 0x08 /* Private */,
+      35,    1,  295,    2, 0x08 /* Private */,
+      38,   12,  298,    2, 0x08 /* Private */,
+      51,   12,  323,    2, 0x08 /* Private */,
+      52,    0,  348,    2, 0x08 /* Private */,
+      53,    0,  349,    2, 0x08 /* Private */,
+      54,    1,  350,    2, 0x08 /* Private */,
+      55,    1,  353,    2, 0x08 /* Private */,
+      56,    0,  356,    2, 0x08 /* Private */,
+      57,    0,  357,    2, 0x08 /* Private */,
+      58,    2,  358,    2, 0x08 /* Private */,
+      62,    1,  363,    2, 0x08 /* Private */,
+      64,    1,  366,    2, 0x08 /* Private */,
+      65,    1,  369,    2, 0x08 /* Private */,
+      66,    1,  372,    2, 0x08 /* Private */,
+      67,    1,  375,    2, 0x08 /* Private */,
+      69,    0,  378,    2, 0x08 /* Private */,
+      70,    1,  379,    2, 0x08 /* Private */,
+      71,    1,  382,    2, 0x08 /* Private */,
+      72,    0,  385,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -367,9 +338,8 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void, QMetaType::QDateTime,   18,
     QMetaType::Void, QMetaType::QDateTime,   18,
     QMetaType::Void, QMetaType::Int,    8,
-    QMetaType::Void, QMetaType::Int,   22,
-    QMetaType::Void, QMetaType::Bool,   24,
-    QMetaType::Void, QMetaType::Bool,   24,
+    QMetaType::Void, QMetaType::Bool,   22,
+    QMetaType::Void, QMetaType::Bool,   22,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -379,31 +349,26 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Bool,   24,
+    QMetaType::Void, QMetaType::Bool,   22,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 38,   39,
-    QMetaType::Void, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt,   41,   42,   43,   44,   45,   46,   47,   48,   49,   50,   51,   52,
-    QMetaType::Void, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt,   41,   42,   43,   44,   45,   46,   47,   48,   49,   50,   51,   52,
+    QMetaType::Void, 0x80000000 | 36,   37,
+    QMetaType::Void, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt,   39,   40,   41,   42,   43,   44,   45,   46,   47,   48,   49,   50,
+    QMetaType::Void, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt,   39,   40,   41,   42,   43,   44,   45,   46,   47,   48,   49,   50,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Bool,   11,
     QMetaType::Void, QMetaType::Int,    8,
-    QMetaType::Void, QMetaType::Bool,   11,
-    QMetaType::Void, QMetaType::Bool,   11,
-    QMetaType::Void,
-    QMetaType::Void, QMetaType::Double,   62,
-    QMetaType::Void, QMetaType::Double, QMetaType::Double, QMetaType::Double, QMetaType::Double, QMetaType::Double, QMetaType::Double, QMetaType::Double,   64,   65,   66,   67,   68,   69,   70,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 74, QMetaType::Bool,   75,   76,
-    QMetaType::Void, QMetaType::Int,   78,
-    QMetaType::Void, QMetaType::Int,   78,
-    QMetaType::Void, QMetaType::Int,   78,
-    QMetaType::Void, QMetaType::Int,   78,
-    QMetaType::Void, QMetaType::Int,   22,
+    QMetaType::Void, 0x80000000 | 59, QMetaType::Bool,   60,   61,
+    QMetaType::Void, QMetaType::Int,   63,
+    QMetaType::Void, QMetaType::Int,   63,
+    QMetaType::Void, QMetaType::Int,   63,
+    QMetaType::Void, QMetaType::Int,   63,
+    QMetaType::Void, QMetaType::Int,   68,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Bool,   11,
-    QMetaType::Void, QMetaType::Int,   78,
+    QMetaType::Void, QMetaType::Int,   63,
     QMetaType::Void,
 
        0        // eod
@@ -429,50 +394,44 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 11: _t->on_dateTimeEditHistoryStartTime_dateTimeChanged((*reinterpret_cast< const QDateTime(*)>(_a[1]))); break;
         case 12: _t->on_dateTimeEditHistoryEndTime_dateTimeChanged((*reinterpret_cast< const QDateTime(*)>(_a[1]))); break;
         case 13: _t->on_spinBoxHistoryDeviceNum_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 14: _t->on_comboBoxHistoryDataOption_currentIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 15: _t->on_checkBoxHistoryMiningInfoOverall_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 16: _t->on_checkBoxShowSettings_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 17: _t->on_pushButtonCancelAutoPage_clicked(); break;
-        case 18: _t->on_pushButtonChangePageSize_clicked(); break;
-        case 19: _t->on_pushButtonMonitorPage_Overview_clicked(); break;
-        case 20: _t->on_pushButtonMonitorPage_Mining_clicked(); break;
-        case 21: _t->on_pushButtonMonitorPage_System_clicked(); break;
-        case 22: _t->on_pushButtonMonitorPage_DevicesInfo_clicked(); break;
-        case 23: _t->on_pushButtonMonitorPage_clicked(); break;
-        case 24: _t->on_pushButtonOCPage_clicked(); break;
-        case 25: _t->on_pushButtonHelpPage_clicked(); break;
-        case 26: _t->on_checkBoxHelpPage_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 27: _t->refreshDeviceInfo(); break;
-        case 28: _t->onGPUInfosReceived((*reinterpret_cast< QList<GPUInfo>(*)>(_a[1]))); break;
-        case 29: _t->onNvMonitorInfo((*reinterpret_cast< uint(*)>(_a[1])),(*reinterpret_cast< uint(*)>(_a[2])),(*reinterpret_cast< uint(*)>(_a[3])),(*reinterpret_cast< uint(*)>(_a[4])),(*reinterpret_cast< uint(*)>(_a[5])),(*reinterpret_cast< uint(*)>(_a[6])),(*reinterpret_cast< uint(*)>(_a[7])),(*reinterpret_cast< uint(*)>(_a[8])),(*reinterpret_cast< uint(*)>(_a[9])),(*reinterpret_cast< uint(*)>(_a[10])),(*reinterpret_cast< uint(*)>(_a[11])),(*reinterpret_cast< uint(*)>(_a[12]))); break;
-        case 30: _t->onAMDMonitorInfo((*reinterpret_cast< uint(*)>(_a[1])),(*reinterpret_cast< uint(*)>(_a[2])),(*reinterpret_cast< uint(*)>(_a[3])),(*reinterpret_cast< uint(*)>(_a[4])),(*reinterpret_cast< uint(*)>(_a[5])),(*reinterpret_cast< uint(*)>(_a[6])),(*reinterpret_cast< uint(*)>(_a[7])),(*reinterpret_cast< uint(*)>(_a[8])),(*reinterpret_cast< uint(*)>(_a[9])),(*reinterpret_cast< uint(*)>(_a[10])),(*reinterpret_cast< uint(*)>(_a[11])),(*reinterpret_cast< uint(*)>(_a[12]))); break;
-        case 31: _t->on_pushButtonOC_clicked(); break;
-        case 32: _t->onHelp(); break;
-        case 33: _t->on_groupBoxWatchdog_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 34: _t->on_spinBoxDelayNoHash_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 35: _t->on_pushButtonPool_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 36: _t->on_pushButtonShowHideLog_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 37: _t->on_pushButtonDisplayPoolStats_clicked(); break;
-        case 38: _t->onBalance((*reinterpret_cast< double(*)>(_a[1]))); break;
-        case 39: _t->onPoolUserInfo((*reinterpret_cast< double(*)>(_a[1])),(*reinterpret_cast< double(*)>(_a[2])),(*reinterpret_cast< double(*)>(_a[3])),(*reinterpret_cast< double(*)>(_a[4])),(*reinterpret_cast< double(*)>(_a[5])),(*reinterpret_cast< double(*)>(_a[6])),(*reinterpret_cast< double(*)>(_a[7]))); break;
-        case 40: _t->on_pushButtonEthminerBrowser_clicked(); break;
-        case 41: _t->onHrChartTimer(); break;
-        case 42: _t->onMouseHoverSlice((*reinterpret_cast< QPieSlice*(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2]))); break;
-        case 43: _t->on_horizontalSliderPowerPercent_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 44: _t->on_horizontalSliderGpuOffset_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 45: _t->on_horizontalSliderMemOffset_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 46: _t->on_horizontalSliderFanSpeed_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 47: _t->on_comboBoxDevice_activated((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 48: _t->on_pushButtonOCPageApply_clicked(); break;
-        case 49: _t->on_checkBoxAutoSpeedFan_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 50: _t->on_spinBoxTemperature_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 51: _t->on_pushButtonAutoOC_clicked(); break;
+        case 14: _t->on_checkBoxHistoryMiningInfoOverall_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 15: _t->on_checkBoxShowSettings_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 16: _t->on_pushButtonCancelAutoPage_clicked(); break;
+        case 17: _t->on_pushButtonChangePageSize_clicked(); break;
+        case 18: _t->on_pushButtonMonitorPage_Overview_clicked(); break;
+        case 19: _t->on_pushButtonMonitorPage_Mining_clicked(); break;
+        case 20: _t->on_pushButtonMonitorPage_System_clicked(); break;
+        case 21: _t->on_pushButtonMonitorPage_DevicesInfo_clicked(); break;
+        case 22: _t->on_pushButtonMonitorPage_clicked(); break;
+        case 23: _t->on_pushButtonOCPage_clicked(); break;
+        case 24: _t->on_pushButtonHelpPage_clicked(); break;
+        case 25: _t->on_checkBoxHelpPage_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 26: _t->refreshDeviceInfo(); break;
+        case 27: _t->onGPUInfosReceived((*reinterpret_cast< QList<GPUInfo>(*)>(_a[1]))); break;
+        case 28: _t->onNvMonitorInfo((*reinterpret_cast< uint(*)>(_a[1])),(*reinterpret_cast< uint(*)>(_a[2])),(*reinterpret_cast< uint(*)>(_a[3])),(*reinterpret_cast< uint(*)>(_a[4])),(*reinterpret_cast< uint(*)>(_a[5])),(*reinterpret_cast< uint(*)>(_a[6])),(*reinterpret_cast< uint(*)>(_a[7])),(*reinterpret_cast< uint(*)>(_a[8])),(*reinterpret_cast< uint(*)>(_a[9])),(*reinterpret_cast< uint(*)>(_a[10])),(*reinterpret_cast< uint(*)>(_a[11])),(*reinterpret_cast< uint(*)>(_a[12]))); break;
+        case 29: _t->onAMDMonitorInfo((*reinterpret_cast< uint(*)>(_a[1])),(*reinterpret_cast< uint(*)>(_a[2])),(*reinterpret_cast< uint(*)>(_a[3])),(*reinterpret_cast< uint(*)>(_a[4])),(*reinterpret_cast< uint(*)>(_a[5])),(*reinterpret_cast< uint(*)>(_a[6])),(*reinterpret_cast< uint(*)>(_a[7])),(*reinterpret_cast< uint(*)>(_a[8])),(*reinterpret_cast< uint(*)>(_a[9])),(*reinterpret_cast< uint(*)>(_a[10])),(*reinterpret_cast< uint(*)>(_a[11])),(*reinterpret_cast< uint(*)>(_a[12]))); break;
+        case 30: _t->on_pushButtonOC_clicked(); break;
+        case 31: _t->onHelp(); break;
+        case 32: _t->on_groupBoxWatchdog_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 33: _t->on_spinBoxDelayNoHash_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 34: _t->on_pushButtonEthminerBrowser_clicked(); break;
+        case 35: _t->onHrChartTimer(); break;
+        case 36: _t->onMouseHoverSlice((*reinterpret_cast< QPieSlice*(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2]))); break;
+        case 37: _t->on_horizontalSliderPowerPercent_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 38: _t->on_horizontalSliderGpuOffset_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 39: _t->on_horizontalSliderMemOffset_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 40: _t->on_horizontalSliderFanSpeed_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 41: _t->on_comboBoxDevice_activated((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 42: _t->on_pushButtonOCPageApply_clicked(); break;
+        case 43: _t->on_checkBoxAutoSpeedFan_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 44: _t->on_spinBoxTemperature_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 45: _t->on_pushButtonAutoOC_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         switch (_id) {
         default: *reinterpret_cast<int*>(_a[0]) = -1; break;
-        case 42:
+        case 36:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
             case 0:
@@ -508,13 +467,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 52)
+        if (_id < 46)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 52;
+        _id -= 46;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 52)
+        if (_id < 46)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 52;
+        _id -= 46;
     }
     return _id;
 }

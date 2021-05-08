@@ -143,7 +143,7 @@ MainWindow::MainWindow(bool testing, QWidget *parent) :
     }
     else
     {
-        ui->groupBoxNvidia->hide();
+//        ui->groupBoxNvidia->hide();
     }
 
     QLibrary adl("atiadlxx");
@@ -395,19 +395,12 @@ MainWindow::MainWindow(bool testing, QWidget *parent) :
         _starter->start();
     }
 
-    ui->pushButtonShowHideLog->setChecked(false);
-    ui->pushButtonPool->setChecked(false);
-    ui->groupBoxPools->show();
     ui->textEdit->show();
 
     ui->checkBoxAutoShowDeviceInfo->setChecked(true);
     ui->groupBoxDevicesInfo->show();
 
 
-    int pos = ui->lineEditArgs->text().indexOf("-O ");
-    if(pos > 0)
-        ui->lineEditAccount->setText(ui->lineEditArgs->text().mid(pos + 3
-                                                                  , ui->lineEditArgs->text().indexOf(" 0x") > 0 ? 42 : 40));
 
 
     initializeConstants();
@@ -1038,8 +1031,6 @@ void MainWindow::onNvMonitorInfo(unsigned int gpucount
     changeLabelColor(ui->labelMaxGPUTemp, getTempColor(maxgputemp));
     changeLabelColor(ui->labelMinGPUTemp, getTempColor(mingputemp));
 
-    ui->lcdNumberGPUCount->display((int)gpucount);
-
     ui->labelMaxGPUTemp->setText(QString::number((int)maxgputemp));
     ui->labelMinGPUTemp->setText(QString::number((int)mingputemp));
 
@@ -1055,8 +1046,6 @@ void MainWindow::onNvMonitorInfo(unsigned int gpucount
 
     ui->labelMaxWatt->setText(QString().setNum((float) maxpowerdraw / 1000, 'f', 2));
     ui->labelMinWatt->setText(QString().setNum((float) minpowerdraw / 1000, 'f', 2));
-
-    ui->lcdNumberTotalPowerDraw->display((int)totalpowerdraw / 1000);
 
     _currentTempRate = maxgputemp;
 
@@ -1151,8 +1140,6 @@ void MainWindow::onAMDMonitorInfo(unsigned int gpucount, unsigned int maxgputemp
     ui->labelMaxWatt->setText(QString("%.2f").arg(maxpowerdraw / 1000));
     ui->labelMinWatt->setText(QString("%.2f").arg(minpowerdraw / 1000));
 
-    ui->lcdNumberTotalPowerDraw->display((double)totalpowerdraw / 1000);
-
 }
 
 void MainWindow::on_pushButtonOC_clicked()
@@ -1165,58 +1152,6 @@ void MainWindow::on_pushButtonOC_clicked()
         delete dlg;
     }
 }
-
-void MainWindow::on_pushButtonPool_clicked(bool checked)
-{
-    if(checked)
-        ui->groupBoxPools->show();
-    else
-        ui->groupBoxPools->hide();
-}
-
-void MainWindow::on_pushButtonShowHideLog_clicked(bool checked)
-{
-    if(checked)
-        ui->textEdit->show();
-    else
-    {
-        QRect rect = ui->textEdit->geometry();
-        ui->textEdit->hide();
-        QRect winRect = geometry();
-        resize(winRect.width(), winRect.height() - rect.height());
-    }
-}
-
-void MainWindow::on_pushButtonDisplayPoolStats_clicked()
-{
-    if(!_nano)
-    {
-        _nano = new nanopoolAPI(ui->lineEditAccount->text(), this);
-        connect(_nano, &nanopoolAPI::emitBalance, this, &MainWindow::onBalance);
-        connect(_nano, &nanopoolAPI::emitUSerInfo, this, &MainWindow::onPoolUserInfo);
-    }
-
-    _nano->getUserInfo();
-}
-
-void MainWindow::onBalance(double balance)
-{
-    ui->labelBalance->setText(QString::number(balance));
-}
-
-void MainWindow::onPoolUserInfo(double userBalance
-                                , double currentCalcultatedHashRate
-                                , double averageHashRate1H
-                                , double averageHashRate3H
-                                , double averageHashRate6H
-                                , double averageHashRate12H
-                                , double averageHashRate24H)
-{
-    ui->labelBalance->setText(QString::number(userBalance));
-    ui->labelCalculatedHR->setText(QString::number(currentCalcultatedHashRate));
-    ui->labelAvrgHr6H->setText(QString::number(averageHashRate6H));
-}
-
 
 
 void MainWindow::on_pushButtonEthminerBrowser_clicked()
@@ -1958,25 +1893,6 @@ void MainWindow::onReceivedPoolInfo(QList<PoolInfo> poolInfos)
             _poolInfo->usd = poolInfo.usd;
             _poolInfo->cny = poolInfo.cny;
         }
-    }
-}
-
-void MainWindow::on_comboBoxHistoryDataOption_currentIndexChanged(int index)
-{
-    //qDebug() << "index changed: " << index;
-    // index: 0 GPUs information
-    //        1 mining information
-    ui->pushButtonSearchHistory->show();
-    if(index == 0){
-        ui->checkBoxHistoryMiningInfoOverall->hide();
-        ui->labelHistoryDeviceNum->show();
-        ui->spinBoxHistoryDeviceNum->show();
-        ui->pushButtonSearchHistory->show();
-    }
-    if(index == 1){
-        ui->checkBoxHistoryMiningInfoOverall->show();
-        ui->checkBoxHistoryMiningInfoOverall->setChecked(false);
-        _searchHistoryMiningOverall = false;
     }
 }
 
