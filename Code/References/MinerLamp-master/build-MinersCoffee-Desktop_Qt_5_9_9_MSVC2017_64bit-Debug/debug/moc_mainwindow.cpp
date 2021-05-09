@@ -127,8 +127,8 @@ void autoStart::readyToStartMiner()
     QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
 }
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[58];
-    char stringdata0[1282];
+    QByteArrayData data[57];
+    char stringdata0[1274];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -158,43 +158,42 @@ QT_MOC_LITERAL(17, 446, 39), // "on_pushButtonMonitorPage_Syst..."
 QT_MOC_LITERAL(18, 486, 44), // "on_pushButtonMonitorPage_Devi..."
 QT_MOC_LITERAL(19, 531, 32), // "on_pushButtonMonitorPage_clicked"
 QT_MOC_LITERAL(20, 564, 27), // "on_pushButtonOCPage_clicked"
-QT_MOC_LITERAL(21, 592, 29), // "on_pushButtonHelpPage_clicked"
-QT_MOC_LITERAL(22, 622, 27), // "on_checkBoxHelpPage_clicked"
-QT_MOC_LITERAL(23, 650, 7), // "clicked"
-QT_MOC_LITERAL(24, 658, 17), // "refreshDeviceInfo"
-QT_MOC_LITERAL(25, 676, 18), // "onGPUInfosReceived"
-QT_MOC_LITERAL(26, 695, 14), // "QList<GPUInfo>"
-QT_MOC_LITERAL(27, 710, 8), // "gpusinfo"
-QT_MOC_LITERAL(28, 719, 15), // "onNvMonitorInfo"
-QT_MOC_LITERAL(29, 735, 8), // "gpucount"
-QT_MOC_LITERAL(30, 744, 10), // "maxgputemp"
-QT_MOC_LITERAL(31, 755, 10), // "mingputemp"
-QT_MOC_LITERAL(32, 766, 11), // "maxfanspeed"
-QT_MOC_LITERAL(33, 778, 11), // "minfanspeed"
-QT_MOC_LITERAL(34, 790, 11), // "maxmemclock"
-QT_MOC_LITERAL(35, 802, 11), // "minmemclock"
-QT_MOC_LITERAL(36, 814, 11), // "maxgpuclock"
-QT_MOC_LITERAL(37, 826, 11), // "mingpuclock"
-QT_MOC_LITERAL(38, 838, 12), // "maxpowerdraw"
-QT_MOC_LITERAL(39, 851, 12), // "minpowerdraw"
-QT_MOC_LITERAL(40, 864, 14), // "totalpowerdraw"
-QT_MOC_LITERAL(41, 879, 14), // "onHrChartTimer"
-QT_MOC_LITERAL(42, 894, 17), // "onMouseHoverSlice"
-QT_MOC_LITERAL(43, 912, 10), // "QPieSlice*"
-QT_MOC_LITERAL(44, 923, 5), // "slice"
-QT_MOC_LITERAL(45, 929, 6), // "status"
-QT_MOC_LITERAL(46, 936, 44), // "on_horizontalSliderPowerPerce..."
-QT_MOC_LITERAL(47, 981, 5), // "value"
-QT_MOC_LITERAL(48, 987, 41), // "on_horizontalSliderGpuOffset_..."
-QT_MOC_LITERAL(49, 1029, 41), // "on_horizontalSliderMemOffset_..."
-QT_MOC_LITERAL(50, 1071, 40), // "on_horizontalSliderFanSpeed_v..."
-QT_MOC_LITERAL(51, 1112, 27), // "on_comboBoxDevice_activated"
-QT_MOC_LITERAL(52, 1140, 5), // "index"
-QT_MOC_LITERAL(53, 1146, 32), // "on_pushButtonOCPageApply_clicked"
-QT_MOC_LITERAL(54, 1179, 31), // "on_checkBoxAutoSpeedFan_clicked"
-QT_MOC_LITERAL(55, 1211, 7), // "checked"
-QT_MOC_LITERAL(56, 1219, 34), // "on_spinBoxTemperature_valueCh..."
-QT_MOC_LITERAL(57, 1254, 27) // "on_pushButtonAutoOC_clicked"
+QT_MOC_LITERAL(21, 592, 27), // "on_pushButtonSystem_clicked"
+QT_MOC_LITERAL(22, 620, 29), // "on_pushButtonHelpPage_clicked"
+QT_MOC_LITERAL(23, 650, 17), // "refreshDeviceInfo"
+QT_MOC_LITERAL(24, 668, 18), // "onGPUInfosReceived"
+QT_MOC_LITERAL(25, 687, 14), // "QList<GPUInfo>"
+QT_MOC_LITERAL(26, 702, 8), // "gpusinfo"
+QT_MOC_LITERAL(27, 711, 15), // "onNvMonitorInfo"
+QT_MOC_LITERAL(28, 727, 8), // "gpucount"
+QT_MOC_LITERAL(29, 736, 10), // "maxgputemp"
+QT_MOC_LITERAL(30, 747, 10), // "mingputemp"
+QT_MOC_LITERAL(31, 758, 11), // "maxfanspeed"
+QT_MOC_LITERAL(32, 770, 11), // "minfanspeed"
+QT_MOC_LITERAL(33, 782, 11), // "maxmemclock"
+QT_MOC_LITERAL(34, 794, 11), // "minmemclock"
+QT_MOC_LITERAL(35, 806, 11), // "maxgpuclock"
+QT_MOC_LITERAL(36, 818, 11), // "mingpuclock"
+QT_MOC_LITERAL(37, 830, 12), // "maxpowerdraw"
+QT_MOC_LITERAL(38, 843, 12), // "minpowerdraw"
+QT_MOC_LITERAL(39, 856, 14), // "totalpowerdraw"
+QT_MOC_LITERAL(40, 871, 14), // "onHrChartTimer"
+QT_MOC_LITERAL(41, 886, 17), // "onMouseHoverSlice"
+QT_MOC_LITERAL(42, 904, 10), // "QPieSlice*"
+QT_MOC_LITERAL(43, 915, 5), // "slice"
+QT_MOC_LITERAL(44, 921, 6), // "status"
+QT_MOC_LITERAL(45, 928, 44), // "on_horizontalSliderPowerPerce..."
+QT_MOC_LITERAL(46, 973, 5), // "value"
+QT_MOC_LITERAL(47, 979, 41), // "on_horizontalSliderGpuOffset_..."
+QT_MOC_LITERAL(48, 1021, 41), // "on_horizontalSliderMemOffset_..."
+QT_MOC_LITERAL(49, 1063, 40), // "on_horizontalSliderFanSpeed_v..."
+QT_MOC_LITERAL(50, 1104, 27), // "on_comboBoxDevice_activated"
+QT_MOC_LITERAL(51, 1132, 5), // "index"
+QT_MOC_LITERAL(52, 1138, 32), // "on_pushButtonOCPageApply_clicked"
+QT_MOC_LITERAL(53, 1171, 31), // "on_checkBoxAutoSpeedFan_clicked"
+QT_MOC_LITERAL(54, 1203, 7), // "checked"
+QT_MOC_LITERAL(55, 1211, 34), // "on_spinBoxTemperature_valueCh..."
+QT_MOC_LITERAL(56, 1246, 27) // "on_pushButtonAutoOC_clicked"
 
     },
     "MainWindow\0iconActivated\0\0"
@@ -213,8 +212,8 @@ QT_MOC_LITERAL(57, 1254, 27) // "on_pushButtonAutoOC_clicked"
     "on_pushButtonMonitorPage_DevicesInfo_clicked\0"
     "on_pushButtonMonitorPage_clicked\0"
     "on_pushButtonOCPage_clicked\0"
+    "on_pushButtonSystem_clicked\0"
     "on_pushButtonHelpPage_clicked\0"
-    "on_checkBoxHelpPage_clicked\0clicked\0"
     "refreshDeviceInfo\0onGPUInfosReceived\0"
     "QList<GPUInfo>\0gpusinfo\0onNvMonitorInfo\0"
     "gpucount\0maxgputemp\0mingputemp\0"
@@ -265,21 +264,21 @@ static const uint qt_meta_data_MainWindow[] = {
       19,    0,  190,    2, 0x08 /* Private */,
       20,    0,  191,    2, 0x08 /* Private */,
       21,    0,  192,    2, 0x08 /* Private */,
-      22,    1,  193,    2, 0x08 /* Private */,
-      24,    0,  196,    2, 0x08 /* Private */,
-      25,    1,  197,    2, 0x08 /* Private */,
-      28,   12,  200,    2, 0x08 /* Private */,
-      41,    0,  225,    2, 0x08 /* Private */,
-      42,    2,  226,    2, 0x08 /* Private */,
-      46,    1,  231,    2, 0x08 /* Private */,
-      48,    1,  234,    2, 0x08 /* Private */,
-      49,    1,  237,    2, 0x08 /* Private */,
-      50,    1,  240,    2, 0x08 /* Private */,
-      51,    1,  243,    2, 0x08 /* Private */,
-      53,    0,  246,    2, 0x08 /* Private */,
-      54,    1,  247,    2, 0x08 /* Private */,
-      56,    1,  250,    2, 0x08 /* Private */,
-      57,    0,  253,    2, 0x08 /* Private */,
+      22,    0,  193,    2, 0x08 /* Private */,
+      23,    0,  194,    2, 0x08 /* Private */,
+      24,    1,  195,    2, 0x08 /* Private */,
+      27,   12,  198,    2, 0x08 /* Private */,
+      40,    0,  223,    2, 0x08 /* Private */,
+      41,    2,  224,    2, 0x08 /* Private */,
+      45,    1,  229,    2, 0x08 /* Private */,
+      47,    1,  232,    2, 0x08 /* Private */,
+      48,    1,  235,    2, 0x08 /* Private */,
+      49,    1,  238,    2, 0x08 /* Private */,
+      50,    1,  241,    2, 0x08 /* Private */,
+      52,    0,  244,    2, 0x08 /* Private */,
+      53,    1,  245,    2, 0x08 /* Private */,
+      55,    1,  248,    2, 0x08 /* Private */,
+      56,    0,  251,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void, 0x80000000 | 3,    4,
@@ -298,20 +297,20 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Bool,   23,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 26,   27,
-    QMetaType::Void, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt,   29,   30,   31,   32,   33,   34,   35,   36,   37,   38,   39,   40,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 43, QMetaType::Bool,   44,   45,
-    QMetaType::Void, QMetaType::Int,   47,
-    QMetaType::Void, QMetaType::Int,   47,
-    QMetaType::Void, QMetaType::Int,   47,
-    QMetaType::Void, QMetaType::Int,   47,
-    QMetaType::Void, QMetaType::Int,   52,
+    QMetaType::Void, 0x80000000 | 25,   26,
+    QMetaType::Void, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt, QMetaType::UInt,   28,   29,   30,   31,   32,   33,   34,   35,   36,   37,   38,   39,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Bool,   55,
-    QMetaType::Void, QMetaType::Int,   47,
+    QMetaType::Void, 0x80000000 | 42, QMetaType::Bool,   43,   44,
+    QMetaType::Void, QMetaType::Int,   46,
+    QMetaType::Void, QMetaType::Int,   46,
+    QMetaType::Void, QMetaType::Int,   46,
+    QMetaType::Void, QMetaType::Int,   46,
+    QMetaType::Void, QMetaType::Int,   51,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::Bool,   54,
+    QMetaType::Void, QMetaType::Int,   46,
     QMetaType::Void,
 
        0        // eod
@@ -338,8 +337,8 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 12: _t->on_pushButtonMonitorPage_DevicesInfo_clicked(); break;
         case 13: _t->on_pushButtonMonitorPage_clicked(); break;
         case 14: _t->on_pushButtonOCPage_clicked(); break;
-        case 15: _t->on_pushButtonHelpPage_clicked(); break;
-        case 16: _t->on_checkBoxHelpPage_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 15: _t->on_pushButtonSystem_clicked(); break;
+        case 16: _t->on_pushButtonHelpPage_clicked(); break;
         case 17: _t->refreshDeviceInfo(); break;
         case 18: _t->onGPUInfosReceived((*reinterpret_cast< QList<GPUInfo>(*)>(_a[1]))); break;
         case 19: _t->onNvMonitorInfo((*reinterpret_cast< uint(*)>(_a[1])),(*reinterpret_cast< uint(*)>(_a[2])),(*reinterpret_cast< uint(*)>(_a[3])),(*reinterpret_cast< uint(*)>(_a[4])),(*reinterpret_cast< uint(*)>(_a[5])),(*reinterpret_cast< uint(*)>(_a[6])),(*reinterpret_cast< uint(*)>(_a[7])),(*reinterpret_cast< uint(*)>(_a[8])),(*reinterpret_cast< uint(*)>(_a[9])),(*reinterpret_cast< uint(*)>(_a[10])),(*reinterpret_cast< uint(*)>(_a[11])),(*reinterpret_cast< uint(*)>(_a[12]))); break;

@@ -65,10 +65,7 @@ MainWindow::MainWindow(bool testing, QWidget *parent) :
 
     ui->setupUi(this);
 
-    _helpPage = new HelpPage(_settings,
-                             ui->checkBoxHelpPage,
-                             ui->plainTextEditHelpPage
-                );
+    _helpPage = new HelpPage(_settings, ui->plainTextEditHelpPage);
 
     // debug box test
     _process->setLogControl(ui->textEdit);
@@ -1805,6 +1802,7 @@ void MainWindow::on_pushButtonMonitorPage_clicked(){
     ui->stackedWidgetMain->setCurrentIndex(0);
     setPushButtonColor(ui->pushButtonMonitorPage, true);
     setPushButtonColor(ui->pushButtonOCPage, false);
+    setPushButtonColor(ui->pushButtonSystem, false);
     setPushButtonColor(ui->pushButtonHelpPage, false);
 
 }
@@ -1813,18 +1811,24 @@ void MainWindow::on_pushButtonOCPage_clicked(){
     ui->stackedWidgetMain->setCurrentIndex(1);
     setPushButtonColor(ui->pushButtonMonitorPage, false);
     setPushButtonColor(ui->pushButtonOCPage, true);
+    setPushButtonColor(ui->pushButtonSystem, false);
+    setPushButtonColor(ui->pushButtonHelpPage, false);
+}
+
+void MainWindow::on_pushButtonSystem_clicked(){
+    ui->stackedWidgetMain->setCurrentIndex(2);
+    setPushButtonColor(ui->pushButtonMonitorPage, false);
+    setPushButtonColor(ui->pushButtonOCPage, false);
+    setPushButtonColor(ui->pushButtonSystem, true);
     setPushButtonColor(ui->pushButtonHelpPage, false);
 }
 
 void MainWindow::on_pushButtonHelpPage_clicked(){
-    ui->stackedWidgetMain->setCurrentIndex(2);
+    ui->stackedWidgetMain->setCurrentIndex(3);
     setPushButtonColor(ui->pushButtonMonitorPage, false);
     setPushButtonColor(ui->pushButtonOCPage, false);
+    setPushButtonColor(ui->pushButtonSystem, false);
     setPushButtonColor(ui->pushButtonHelpPage, true);
-}
-
-void MainWindow::on_checkBoxHelpPage_clicked(bool clicked){
-    _helpPage->donateCheckBoxClicked(clicked);
 }
 
 bool MainWindow::eventFilter(QObject *obj, QEvent *event)

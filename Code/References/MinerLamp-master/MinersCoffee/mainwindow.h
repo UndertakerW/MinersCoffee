@@ -121,8 +121,8 @@ private slots:
     void on_pushButtonMonitorPage_DevicesInfo_clicked();
     void on_pushButtonMonitorPage_clicked();
     void on_pushButtonOCPage_clicked();
+    void on_pushButtonSystem_clicked();
     void on_pushButtonHelpPage_clicked();
-    void on_checkBoxHelpPage_clicked(bool clicked);
 
     void refreshDeviceInfo();
     void onGPUInfosReceived(QList<GPUInfo> gpusinfo);

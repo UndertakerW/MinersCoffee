@@ -7,14 +7,10 @@
 class HelpPage
 {
 public:
-    HelpPage(QSettings* settings, QCheckBox* donateCheckBox,
-                                  QPlainTextEdit* content);
-
-    void donateCheckBoxClicked(bool checked);
+    HelpPage(QSettings* settings, QPlainTextEdit* content);
 
 private:
     QSettings* _settings;
-    QCheckBox* _donateCheckBox;
     QPlainTextEdit* _content;
 
 };

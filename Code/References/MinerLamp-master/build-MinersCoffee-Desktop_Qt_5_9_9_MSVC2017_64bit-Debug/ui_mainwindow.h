@@ -16,7 +16,6 @@
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QDateTimeEdit>
-#include <QtWidgets/QFormLayout>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QGroupBox>
@@ -44,11 +43,11 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
-    QVBoxLayout *verticalLayout_29;
+    QVBoxLayout *verticalLayout_21;
     QSplitter *splitter_4;
-    QWidget *layoutWidget;
-    QVBoxLayout *verticalLayout_23;
-    QFrame *frame_36;
+    QWidget *widget;
+    QVBoxLayout *verticalLayout_8;
+    QFrame *frameInfo;
     QGridLayout *gridLayout_39;
     QPushButton *pushButtonToggle;
     QFrame *frameMonitor;
@@ -57,37 +56,25 @@ public:
     QFrame *frameOC;
     QGridLayout *gridLayout_34;
     QPushButton *pushButtonOCPage;
+    QFrame *frameVirtualSystem;
+    QGridLayout *gridLayout_81;
+    QPushButton *pushButtonSystem;
     QFrame *frameHelp;
     QGridLayout *gridLayout_35;
     QPushButton *pushButtonHelpPage;
     QFrame *frameWestBar;
     QGridLayout *gridLayout_32;
     QSpacerItem *verticalSpacer_9;
-    QWidget *layoutWidget1;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QStackedWidget *stackedWidgetMain;
     QWidget *pageMonitor;
     QGridLayout *gridLayout_40;
-    QFrame *frameMonitorBar;
-    QHBoxLayout *horizontalLayout_5;
-    QFrame *frameOverview;
-    QGridLayout *gridLayout_36;
-    QPushButton *pushButtonMonitorPage_Overview;
-    QFrame *frameMiningInfo;
-    QGridLayout *gridLayout_37;
-    QPushButton *pushButtonMonitorPage_Mining;
-    QFrame *frameHistory;
-    QGridLayout *gridLayout_38;
-    QPushButton *pushButtonMonitorPage_System;
-    QFrame *frameDevicesInfo;
-    QGridLayout *gridLayout_58;
-    QPushButton *pushButtonMonitorPage_DevicesInfo;
-    QSpacerItem *horizontalSpacer;
     QStackedWidget *stackedWidgetMonitorMain;
     QWidget *pageOverview;
     QVBoxLayout *verticalLayout_7;
     QSplitter *splitter;
-    QWidget *layoutWidget2;
+    QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout_30;
     QGroupBox *groupBox_2;
     QGridLayout *gridLayout_6;
@@ -227,44 +214,6 @@ public:
     QTextEdit *textEdit;
     QWidget *pageHistory;
     QVBoxLayout *verticalLayout_15;
-    QGroupBox *groupBox_7;
-    QGridLayout *gridLayout_29;
-    QHBoxLayout *horizontalLayout_23;
-    QVBoxLayout *verticalLayout_10;
-    QGroupBox *groupBox_24;
-    QGridLayout *gridLayout_69;
-    QFrame *frame_26;
-    QGridLayout *gridLayout_26;
-    QFrame *frame_23;
-    QHBoxLayout *horizontalLayout_22;
-    QLabel *label_41;
-    QSpacerItem *horizontalSpacer_7;
-    QGroupBox *groupBox_14;
-    QHBoxLayout *horizontalLayout_27;
-    QPlainTextEdit *plainTextEditSettingsSystemInfoTitle;
-    QPlainTextEdit *plainTextEditSettingsSystemInfo;
-    QGroupBox *groupBox_25;
-    QGridLayout *gridLayout_70;
-    QFrame *frame_28;
-    QGridLayout *gridLayout_27;
-    QPushButton *pushButtonChangePageSize;
-    QFormLayout *formLayout;
-    QLabel *label_43;
-    QLabel *label_46;
-    QLabel *label_45;
-    QVBoxLayout *verticalLayout_11;
-    QSpacerItem *verticalSpacer_3;
-    QSpinBox *spinBoxChangePageSizeMax;
-    QSpacerItem *verticalSpacer_4;
-    QVBoxLayout *verticalLayout_12;
-    QSpacerItem *verticalSpacer_5;
-    QSpinBox *spinBoxChangePageSizeMin;
-    QSpacerItem *verticalSpacer_6;
-    QVBoxLayout *verticalLayout_13;
-    QSpacerItem *verticalSpacer_7;
-    QComboBox *comboBoxChangePageSize;
-    QSpacerItem *verticalSpacer_8;
-    QPushButton *pushButtonCancelAutoPage;
     QGroupBox *groupBox_8;
     QGridLayout *gridLayout_31;
     QHBoxLayout *horizontalLayout_29;
@@ -278,6 +227,7 @@ public:
     QFrame *frame_34;
     QGridLayout *gridLayout_56;
     QVBoxLayout *verticalLayout_14;
+    QSpacerItem *verticalSpacer_3;
     QHBoxLayout *horizontalLayout;
     QLabel *labelHistoryDeviceNum;
     QSpinBox *spinBoxHistoryDeviceNum;
@@ -292,13 +242,14 @@ public:
     QVBoxLayout *verticalLayout_24;
     QHBoxLayout *horizontalLayout_24;
     QPushButton *pushButtonSearchHistory;
+    QSpacerItem *verticalSpacer_4;
     QWidget *pageDevicesInfo;
     QGridLayout *gridLayout_53;
     QGroupBox *groupBox_13;
     QGridLayout *gridLayout_59;
     QGroupBox *groupBoxDevicesInfo;
     QGridLayout *gridLayout_9;
-    QWidget *widget;
+    QWidget *widget1;
     QGridLayout *gridLayout_60;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
@@ -313,6 +264,21 @@ public:
     QGridLayout *gridLayout_45;
     QGridLayout *gridLayout_42;
     QSplitter *splitter_3;
+    QFrame *frameMonitorBar;
+    QHBoxLayout *horizontalLayout_5;
+    QFrame *frameOverview;
+    QGridLayout *gridLayout_36;
+    QPushButton *pushButtonMonitorPage_Overview;
+    QFrame *frameMiningInfo;
+    QGridLayout *gridLayout_37;
+    QPushButton *pushButtonMonitorPage_Mining;
+    QFrame *frameHistory;
+    QGridLayout *gridLayout_38;
+    QPushButton *pushButtonMonitorPage_System;
+    QFrame *frameDevicesInfo;
+    QGridLayout *gridLayout_58;
+    QPushButton *pushButtonMonitorPage_DevicesInfo;
+    QSpacerItem *horizontalSpacer;
     QWidget *pageOC;
     QGridLayout *gridLayout_46;
     QFrame *frameMonitorBar_2;
@@ -387,10 +353,42 @@ public:
     QLabel *label_82;
     QLabel *label_83;
     QPlainTextEdit *plainTextEditHelpPage;
-    QCheckBox *checkBoxHelpPage;
-    QFrame *frame_43;
-    QLineEdit *lineEditMinerPath;
+    QWidget *pageSystem;
+    QGridLayout *gridLayout_4;
+    QFrame *frameMonitorBar_4;
+    QHBoxLayout *horizontalLayout_50;
+    QGroupBox *groupBox_15;
+    QGridLayout *gridLayout_82;
+    QGroupBox *groupBox_27;
+    QGridLayout *gridLayout_85;
+    QFrame *frame_37;
+    QGridLayout *gridLayout_3;
+    QGridLayout *gridLayout_2;
+    QGridLayout *gridLayout;
+    QLabel *label_61;
+    QComboBox *comboBoxChangePageSize;
+    QLabel *label_62;
+    QSpinBox *spinBoxChangePageSizeMax;
+    QLabel *label_63;
+    QSpinBox *spinBoxChangePageSizeMin;
+    QPushButton *pushButtonChangePageSize;
+    QPushButton *pushButtonCancelAutoPage;
+    QHBoxLayout *horizontalLayout_28;
+    QVBoxLayout *verticalLayout_17;
+    QGroupBox *groupBox_26;
+    QGridLayout *gridLayout_83;
+    QFrame *frame_35;
+    QGridLayout *gridLayout_84;
+    QFrame *frame_36;
+    QHBoxLayout *horizontalLayout_32;
+    QLabel *label_60;
+    QSpacerItem *horizontalSpacer_8;
+    QGroupBox *groupBox_16;
+    QHBoxLayout *horizontalLayout_33;
+    QPlainTextEdit *plainTextEditSettingsSystemInfoTitle;
+    QPlainTextEdit *plainTextEditSettingsSystemInfo;
     QLineEdit *lineEditArgs;
+    QLineEdit *lineEditMinerPath;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -415,47 +413,45 @@ public:
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         centralWidget->setEnabled(true);
         centralWidget->setStyleSheet(QStringLiteral(""));
-        verticalLayout_29 = new QVBoxLayout(centralWidget);
-        verticalLayout_29->setSpacing(0);
-        verticalLayout_29->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_29->setObjectName(QStringLiteral("verticalLayout_29"));
-        verticalLayout_29->setContentsMargins(0, 0, 0, 0);
+        verticalLayout_21 = new QVBoxLayout(centralWidget);
+        verticalLayout_21->setSpacing(0);
+        verticalLayout_21->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_21->setObjectName(QStringLiteral("verticalLayout_21"));
+        verticalLayout_21->setContentsMargins(0, 0, 0, 0);
         splitter_4 = new QSplitter(centralWidget);
         splitter_4->setObjectName(QStringLiteral("splitter_4"));
-        splitter_4->setMinimumSize(QSize(1180, 780));
-        splitter_4->setLineWidth(0);
         splitter_4->setOrientation(Qt::Horizontal);
         splitter_4->setHandleWidth(0);
-        layoutWidget = new QWidget(splitter_4);
-        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        verticalLayout_23 = new QVBoxLayout(layoutWidget);
-        verticalLayout_23->setSpacing(0);
-        verticalLayout_23->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_23->setObjectName(QStringLiteral("verticalLayout_23"));
-        verticalLayout_23->setContentsMargins(0, 0, 0, 0);
-        frame_36 = new QFrame(layoutWidget);
-        frame_36->setObjectName(QStringLiteral("frame_36"));
+        widget = new QWidget(splitter_4);
+        widget->setObjectName(QStringLiteral("widget"));
+        verticalLayout_8 = new QVBoxLayout(widget);
+        verticalLayout_8->setSpacing(0);
+        verticalLayout_8->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_8->setObjectName(QStringLiteral("verticalLayout_8"));
+        verticalLayout_8->setContentsMargins(0, 0, 0, 0);
+        frameInfo = new QFrame(widget);
+        frameInfo->setObjectName(QStringLiteral("frameInfo"));
         QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Minimum);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(frame_36->sizePolicy().hasHeightForWidth());
-        frame_36->setSizePolicy(sizePolicy1);
-        frame_36->setMinimumSize(QSize(80, 50));
-        frame_36->setMaximumSize(QSize(160, 16777215));
-        frame_36->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/logo.png);\n"
+        sizePolicy1.setHeightForWidth(frameInfo->sizePolicy().hasHeightForWidth());
+        frameInfo->setSizePolicy(sizePolicy1);
+        frameInfo->setMinimumSize(QSize(80, 50));
+        frameInfo->setMaximumSize(QSize(160, 16777215));
+        frameInfo->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/logo.png);\n"
 "background-color: rgb(0, 143, 150);\n"
 "background-repeat:no-repeat;\n"
 "background-position:center;\n"
 "border-width: 0;\n"
 "border-radius : 0;"));
-        frame_36->setFrameShape(QFrame::StyledPanel);
-        frame_36->setFrameShadow(QFrame::Raised);
-        gridLayout_39 = new QGridLayout(frame_36);
+        frameInfo->setFrameShape(QFrame::StyledPanel);
+        frameInfo->setFrameShadow(QFrame::Raised);
+        gridLayout_39 = new QGridLayout(frameInfo);
         gridLayout_39->setSpacing(0);
         gridLayout_39->setContentsMargins(11, 11, 11, 11);
         gridLayout_39->setObjectName(QStringLiteral("gridLayout_39"));
         gridLayout_39->setContentsMargins(0, 0, 0, 0);
-        pushButtonToggle = new QPushButton(frame_36);
+        pushButtonToggle = new QPushButton(frameInfo);
         pushButtonToggle->setObjectName(QStringLiteral("pushButtonToggle"));
         QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Fixed);
         sizePolicy2.setHorizontalStretch(0);
@@ -479,9 +475,9 @@ public:
         gridLayout_39->addWidget(pushButtonToggle, 0, 0, 1, 1);
 
 
-        verticalLayout_23->addWidget(frame_36);
+        verticalLayout_8->addWidget(frameInfo);
 
-        frameMonitor = new QFrame(layoutWidget);
+        frameMonitor = new QFrame(widget);
         frameMonitor->setObjectName(QStringLiteral("frameMonitor"));
         QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Maximum);
         sizePolicy3.setHorizontalStretch(0);
@@ -530,9 +526,9 @@ public:
         gridLayout_33->addWidget(pushButtonMonitorPage, 1, 0, 1, 1);
 
 
-        verticalLayout_23->addWidget(frameMonitor);
+        verticalLayout_8->addWidget(frameMonitor);
 
-        frameOC = new QFrame(layoutWidget);
+        frameOC = new QFrame(widget);
         frameOC->setObjectName(QStringLiteral("frameOC"));
         frameOC->setMinimumSize(QSize(80, 75));
         frameOC->setMaximumSize(QSize(160, 16777215));
@@ -573,9 +569,53 @@ public:
         gridLayout_34->addWidget(pushButtonOCPage, 2, 0, 1, 1);
 
 
-        verticalLayout_23->addWidget(frameOC);
+        verticalLayout_8->addWidget(frameOC);
 
-        frameHelp = new QFrame(layoutWidget);
+        frameVirtualSystem = new QFrame(widget);
+        frameVirtualSystem->setObjectName(QStringLiteral("frameVirtualSystem"));
+        frameVirtualSystem->setMinimumSize(QSize(80, 75));
+        frameVirtualSystem->setMaximumSize(QSize(160, 16777215));
+        frameVirtualSystem->setStyleSheet(QLatin1String("background:#008F96;\n"
+"background-image: url(:/icons/icos/memory.png);\n"
+"background-repeat:no-repeat;\n"
+"background-position:center;\n"
+"border-width: 0;\n"
+"border-radius : 0;\n"
+""));
+        frameVirtualSystem->setFrameShape(QFrame::StyledPanel);
+        frameVirtualSystem->setFrameShadow(QFrame::Raised);
+        gridLayout_81 = new QGridLayout(frameVirtualSystem);
+        gridLayout_81->setSpacing(0);
+        gridLayout_81->setContentsMargins(11, 11, 11, 11);
+        gridLayout_81->setObjectName(QStringLiteral("gridLayout_81"));
+        gridLayout_81->setContentsMargins(0, 0, 0, 0);
+        pushButtonSystem = new QPushButton(frameVirtualSystem);
+        pushButtonSystem->setObjectName(QStringLiteral("pushButtonSystem"));
+        sizePolicy5.setHeightForWidth(pushButtonSystem->sizePolicy().hasHeightForWidth());
+        pushButtonSystem->setSizePolicy(sizePolicy5);
+        pushButtonSystem->setMinimumSize(QSize(80, 75));
+        pushButtonSystem->setFont(font1);
+        pushButtonSystem->setLayoutDirection(Qt::LeftToRight);
+        pushButtonSystem->setStyleSheet(QLatin1String("QPushButton {\n"
+"	border: none;\n"
+"	background-color: rgba(0,0,0,0);\n"
+"	color : white;\n"
+"}\n"
+"QPushButton:hover {\n"
+"	border: none;\n"
+"	background-color: rgb(91,90,90);\n"
+"}\n"
+"QPushButton:pressed {	\n"
+"	border: none;\n"
+"	background-color: #7A0000;\n"
+"}"));
+
+        gridLayout_81->addWidget(pushButtonSystem, 0, 0, 1, 1);
+
+
+        verticalLayout_8->addWidget(frameVirtualSystem);
+
+        frameHelp = new QFrame(widget);
         frameHelp->setObjectName(QStringLiteral("frameHelp"));
         frameHelp->setMinimumSize(QSize(80, 75));
         frameHelp->setMaximumSize(QSize(160, 16777215));
@@ -617,9 +657,9 @@ public:
         gridLayout_35->addWidget(pushButtonHelpPage, 0, 0, 1, 1);
 
 
-        verticalLayout_23->addWidget(frameHelp);
+        verticalLayout_8->addWidget(frameHelp);
 
-        frameWestBar = new QFrame(layoutWidget);
+        frameWestBar = new QFrame(widget);
         frameWestBar->setObjectName(QStringLiteral("frameWestBar"));
         frameWestBar->setMinimumSize(QSize(80, 0));
         frameWestBar->setMaximumSize(QSize(160, 16777215));
@@ -637,17 +677,17 @@ public:
         gridLayout_32->addItem(verticalSpacer_9, 0, 0, 1, 1);
 
 
-        verticalLayout_23->addWidget(frameWestBar);
+        verticalLayout_8->addWidget(frameWestBar);
 
-        splitter_4->addWidget(layoutWidget);
-        layoutWidget1 = new QWidget(splitter_4);
-        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
-        verticalLayout = new QVBoxLayout(layoutWidget1);
+        splitter_4->addWidget(widget);
+        layoutWidget = new QWidget(splitter_4);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setSpacing(0);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        stackedWidgetMain = new QStackedWidget(layoutWidget1);
+        stackedWidgetMain = new QStackedWidget(layoutWidget);
         stackedWidgetMain->setObjectName(QStringLiteral("stackedWidgetMain"));
         stackedWidgetMain->setStyleSheet(QLatin1String("background:#5B5A5A;\n"
 ""));
@@ -658,193 +698,6 @@ public:
         gridLayout_40->setContentsMargins(11, 11, 11, 11);
         gridLayout_40->setObjectName(QStringLiteral("gridLayout_40"));
         gridLayout_40->setContentsMargins(0, 0, 0, 0);
-        frameMonitorBar = new QFrame(pageMonitor);
-        frameMonitorBar->setObjectName(QStringLiteral("frameMonitorBar"));
-        frameMonitorBar->setMinimumSize(QSize(0, 50));
-        frameMonitorBar->setMaximumSize(QSize(16777215, 50));
-        frameMonitorBar->setStyleSheet(QLatin1String("background:#008F96;border-width: 0;\n"
-"border-radius : 0;\n"
-""));
-        frameMonitorBar->setFrameShape(QFrame::StyledPanel);
-        frameMonitorBar->setFrameShadow(QFrame::Raised);
-        horizontalLayout_5 = new QHBoxLayout(frameMonitorBar);
-        horizontalLayout_5->setSpacing(0);
-        horizontalLayout_5->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
-        horizontalLayout_5->setContentsMargins(0, 0, 0, 0);
-        frameOverview = new QFrame(frameMonitorBar);
-        frameOverview->setObjectName(QStringLiteral("frameOverview"));
-        QSizePolicy sizePolicy6(QSizePolicy::Minimum, QSizePolicy::Minimum);
-        sizePolicy6.setHorizontalStretch(0);
-        sizePolicy6.setVerticalStretch(0);
-        sizePolicy6.setHeightForWidth(frameOverview->sizePolicy().hasHeightForWidth());
-        frameOverview->setSizePolicy(sizePolicy6);
-        frameOverview->setMinimumSize(QSize(50, 50));
-        frameOverview->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/monitor.png);\n"
-"background-color: rgb(0, 143, 150);\n"
-"background-repeat:no-repeat;\n"
-"background-position:center;\n"
-"border-width: 0;\n"
-"border-radius : 0;"));
-        frameOverview->setFrameShape(QFrame::StyledPanel);
-        frameOverview->setFrameShadow(QFrame::Raised);
-        gridLayout_36 = new QGridLayout(frameOverview);
-        gridLayout_36->setSpacing(0);
-        gridLayout_36->setContentsMargins(11, 11, 11, 11);
-        gridLayout_36->setObjectName(QStringLiteral("gridLayout_36"));
-        gridLayout_36->setContentsMargins(0, 0, 0, 0);
-        pushButtonMonitorPage_Overview = new QPushButton(frameOverview);
-        pushButtonMonitorPage_Overview->setObjectName(QStringLiteral("pushButtonMonitorPage_Overview"));
-        sizePolicy4.setHeightForWidth(pushButtonMonitorPage_Overview->sizePolicy().hasHeightForWidth());
-        pushButtonMonitorPage_Overview->setSizePolicy(sizePolicy4);
-        pushButtonMonitorPage_Overview->setMinimumSize(QSize(0, 50));
-        pushButtonMonitorPage_Overview->setFont(font1);
-        pushButtonMonitorPage_Overview->setStyleSheet(QLatin1String("QPushButton {\n"
-"	border: none;\n"
-"	background-color: rgba(0,0,0,0);\n"
-"	color : white;\n"
-"}\n"
-"QPushButton:hover {\n"
-"	background-color: rgb(91,90,90);\n"
-"}\n"
-"QPushButton:pressed {	\n"
-"	background-color: #7A0000;\n"
-"}"));
-
-        gridLayout_36->addWidget(pushButtonMonitorPage_Overview, 0, 0, 1, 1);
-
-
-        horizontalLayout_5->addWidget(frameOverview);
-
-        frameMiningInfo = new QFrame(frameMonitorBar);
-        frameMiningInfo->setObjectName(QStringLiteral("frameMiningInfo"));
-        frameMiningInfo->setMinimumSize(QSize(50, 50));
-        frameMiningInfo->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/computer.png);\n"
-"background-color: rgb(0, 143, 150);\n"
-"background-repeat:no-repeat;\n"
-"background-position:center;\n"
-"border-width: 0;\n"
-"border-radius : 0;"));
-        frameMiningInfo->setFrameShape(QFrame::StyledPanel);
-        frameMiningInfo->setFrameShadow(QFrame::Raised);
-        gridLayout_37 = new QGridLayout(frameMiningInfo);
-        gridLayout_37->setSpacing(0);
-        gridLayout_37->setContentsMargins(11, 11, 11, 11);
-        gridLayout_37->setObjectName(QStringLiteral("gridLayout_37"));
-        gridLayout_37->setContentsMargins(0, 0, 0, 0);
-        pushButtonMonitorPage_Mining = new QPushButton(frameMiningInfo);
-        pushButtonMonitorPage_Mining->setObjectName(QStringLiteral("pushButtonMonitorPage_Mining"));
-        sizePolicy4.setHeightForWidth(pushButtonMonitorPage_Mining->sizePolicy().hasHeightForWidth());
-        pushButtonMonitorPage_Mining->setSizePolicy(sizePolicy4);
-        pushButtonMonitorPage_Mining->setMinimumSize(QSize(0, 0));
-        pushButtonMonitorPage_Mining->setFont(font1);
-        pushButtonMonitorPage_Mining->setStyleSheet(QLatin1String("QPushButton {\n"
-"	border: none;\n"
-"	background-color: rgba(0,0,0,0);\n"
-"	color : white;\n"
-"}\n"
-"QPushButton:hover {\n"
-"	background-color: rgb(91,90,90);\n"
-"}\n"
-"QPushButton:pressed {	\n"
-"	background-color: #7A0000;\n"
-"}"));
-
-        gridLayout_37->addWidget(pushButtonMonitorPage_Mining, 0, 0, 2, 1);
-
-
-        horizontalLayout_5->addWidget(frameMiningInfo);
-
-        frameHistory = new QFrame(frameMonitorBar);
-        frameHistory->setObjectName(QStringLiteral("frameHistory"));
-        frameHistory->setMinimumSize(QSize(50, 50));
-        frameHistory->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/memory.png);\n"
-"background-color: rgb(0, 143, 150);\n"
-"background-repeat:no-repeat;\n"
-"background-position:center;\n"
-"border-width: 0;\n"
-"border-radius : 0;"));
-        frameHistory->setFrameShape(QFrame::StyledPanel);
-        frameHistory->setFrameShadow(QFrame::Raised);
-        gridLayout_38 = new QGridLayout(frameHistory);
-        gridLayout_38->setSpacing(0);
-        gridLayout_38->setContentsMargins(11, 11, 11, 11);
-        gridLayout_38->setObjectName(QStringLiteral("gridLayout_38"));
-        gridLayout_38->setContentsMargins(0, 0, 0, 0);
-        pushButtonMonitorPage_System = new QPushButton(frameHistory);
-        pushButtonMonitorPage_System->setObjectName(QStringLiteral("pushButtonMonitorPage_System"));
-        sizePolicy4.setHeightForWidth(pushButtonMonitorPage_System->sizePolicy().hasHeightForWidth());
-        pushButtonMonitorPage_System->setSizePolicy(sizePolicy4);
-        pushButtonMonitorPage_System->setMinimumSize(QSize(50, 0));
-        pushButtonMonitorPage_System->setFont(font1);
-        pushButtonMonitorPage_System->setStyleSheet(QLatin1String("QPushButton {\n"
-"	border: none;\n"
-"	background-color: rgba(0,0,0,0);\n"
-"	color : white;\n"
-"}\n"
-"QPushButton:hover {\n"
-"	background-color: rgb(91,90,90);\n"
-"}\n"
-"QPushButton:pressed {	\n"
-"	background-color: #7A0000;\n"
-"}"));
-        QIcon icon1;
-        icon1.addFile(QStringLiteral(":/icons/icos/minimum.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButtonMonitorPage_System->setIcon(icon1);
-        pushButtonMonitorPage_System->setIconSize(QSize(0, 16));
-
-        gridLayout_38->addWidget(pushButtonMonitorPage_System, 0, 0, 1, 1);
-
-
-        horizontalLayout_5->addWidget(frameHistory);
-
-        frameDevicesInfo = new QFrame(frameMonitorBar);
-        frameDevicesInfo->setObjectName(QStringLiteral("frameDevicesInfo"));
-        frameDevicesInfo->setMinimumSize(QSize(50, 50));
-        frameDevicesInfo->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/gpu.png);\n"
-"background-color: rgb(0, 143, 150);\n"
-"background-repeat:no-repeat;\n"
-"background-position:center;\n"
-"border-width: 0;\n"
-"border-radius : 0;"));
-        frameDevicesInfo->setFrameShape(QFrame::StyledPanel);
-        frameDevicesInfo->setFrameShadow(QFrame::Raised);
-        gridLayout_58 = new QGridLayout(frameDevicesInfo);
-        gridLayout_58->setSpacing(0);
-        gridLayout_58->setContentsMargins(11, 11, 11, 11);
-        gridLayout_58->setObjectName(QStringLiteral("gridLayout_58"));
-        gridLayout_58->setContentsMargins(0, 0, 0, 0);
-        pushButtonMonitorPage_DevicesInfo = new QPushButton(frameDevicesInfo);
-        pushButtonMonitorPage_DevicesInfo->setObjectName(QStringLiteral("pushButtonMonitorPage_DevicesInfo"));
-        sizePolicy4.setHeightForWidth(pushButtonMonitorPage_DevicesInfo->sizePolicy().hasHeightForWidth());
-        pushButtonMonitorPage_DevicesInfo->setSizePolicy(sizePolicy4);
-        pushButtonMonitorPage_DevicesInfo->setMinimumSize(QSize(50, 0));
-        pushButtonMonitorPage_DevicesInfo->setFont(font1);
-        pushButtonMonitorPage_DevicesInfo->setStyleSheet(QLatin1String("QPushButton {\n"
-"	border: none;\n"
-"	background-color: rgba(0,0,0,0);\n"
-"	color : white;\n"
-"}\n"
-"QPushButton:hover {\n"
-"	background-color: rgb(91,90,90);\n"
-"}\n"
-"QPushButton:pressed {	\n"
-"	background-color: #7A0000;\n"
-"}"));
-        pushButtonMonitorPage_DevicesInfo->setIconSize(QSize(0, 16));
-
-        gridLayout_58->addWidget(pushButtonMonitorPage_DevicesInfo, 0, 0, 1, 1);
-
-
-        horizontalLayout_5->addWidget(frameDevicesInfo);
-
-        horizontalSpacer = new QSpacerItem(700, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_5->addItem(horizontalSpacer);
-
-
-        gridLayout_40->addWidget(frameMonitorBar, 0, 0, 1, 1);
-
         stackedWidgetMonitorMain = new QStackedWidget(pageMonitor);
         stackedWidgetMonitorMain->setObjectName(QStringLiteral("stackedWidgetMonitorMain"));
         stackedWidgetMonitorMain->setMinimumSize(QSize(60, 0));
@@ -858,14 +711,14 @@ public:
         splitter = new QSplitter(pageOverview);
         splitter->setObjectName(QStringLiteral("splitter"));
         splitter->setOrientation(Qt::Horizontal);
-        layoutWidget2 = new QWidget(splitter);
-        layoutWidget2->setObjectName(QStringLiteral("layoutWidget2"));
-        horizontalLayout_30 = new QHBoxLayout(layoutWidget2);
+        layoutWidget1 = new QWidget(splitter);
+        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
+        horizontalLayout_30 = new QHBoxLayout(layoutWidget1);
         horizontalLayout_30->setSpacing(6);
         horizontalLayout_30->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_30->setObjectName(QStringLiteral("horizontalLayout_30"));
         horizontalLayout_30->setContentsMargins(0, 0, 0, 0);
-        groupBox_2 = new QGroupBox(layoutWidget2);
+        groupBox_2 = new QGroupBox(layoutWidget1);
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
         groupBox_2->setMinimumSize(QSize(500, 300));
         QFont font2;
@@ -1090,6 +943,9 @@ public:
 
         graphicsViewTempPie = new ChartView(groupBox_2);
         graphicsViewTempPie->setObjectName(QStringLiteral("graphicsViewTempPie"));
+        QSizePolicy sizePolicy6(QSizePolicy::Minimum, QSizePolicy::Minimum);
+        sizePolicy6.setHorizontalStretch(0);
+        sizePolicy6.setVerticalStretch(0);
         sizePolicy6.setHeightForWidth(graphicsViewTempPie->sizePolicy().hasHeightForWidth());
         graphicsViewTempPie->setSizePolicy(sizePolicy6);
         graphicsViewTempPie->setMinimumSize(QSize(450, 100));
@@ -1099,7 +955,7 @@ public:
 
         horizontalLayout_30->addWidget(groupBox_2);
 
-        groupBox_3 = new QGroupBox(layoutWidget2);
+        groupBox_3 = new QGroupBox(layoutWidget1);
         groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
         groupBox_3->setMinimumSize(QSize(350, 0));
         groupBox_3->setFont(font2);
@@ -1489,7 +1345,7 @@ public:
 
         horizontalLayout_30->addWidget(groupBox_3);
 
-        splitter->addWidget(layoutWidget2);
+        splitter->addWidget(layoutWidget1);
 
         verticalLayout_7->addWidget(splitter);
 
@@ -1835,7 +1691,7 @@ public:
         scrollArea_2->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName(QStringLiteral("scrollAreaWidgetContents_2"));
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 258, 327));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 256, 359));
         gridLayout_62 = new QGridLayout(scrollAreaWidgetContents_2);
         gridLayout_62->setSpacing(0);
         gridLayout_62->setContentsMargins(11, 11, 11, 11);
@@ -2261,7 +2117,7 @@ public:
         verticalLayout_9->setObjectName(QStringLiteral("verticalLayout_9"));
         frame_25 = new QFrame(groupBox_6);
         frame_25->setObjectName(QStringLiteral("frame_25"));
-        frame_25->setMinimumSize(QSize(0, 90));
+        frame_25->setMinimumSize(QSize(0, 60));
         frame_25->setMaximumSize(QSize(16777215, 100));
         frame_25->setStyleSheet(QStringLiteral("background:#008F96;"));
         frame_25->setFrameShape(QFrame::StyledPanel);
@@ -2502,730 +2358,6 @@ public:
         verticalLayout_15->setSpacing(6);
         verticalLayout_15->setContentsMargins(11, 11, 11, 11);
         verticalLayout_15->setObjectName(QStringLiteral("verticalLayout_15"));
-        groupBox_7 = new QGroupBox(pageHistory);
-        groupBox_7->setObjectName(QStringLiteral("groupBox_7"));
-        groupBox_7->setStyleSheet(QLatin1String("QGroupBox::title{\n"
-"	color : white;\n"
-"	left: 10px;\n"
-"	margin-left: 0px;\n"
-"	padding: 0 1px;\n"
-"}\n"
-"\n"
-"QGroupBox{\n"
-"	border-width: 2px;\n"
-"	border-style: solid;\n"
-"	border-color: white;\n"
-"	margin-top: 0.5ex;\n"
-"	border-radius: 5px;\n"
-"}"));
-        gridLayout_29 = new QGridLayout(groupBox_7);
-        gridLayout_29->setSpacing(6);
-        gridLayout_29->setContentsMargins(11, 11, 11, 11);
-        gridLayout_29->setObjectName(QStringLiteral("gridLayout_29"));
-        horizontalLayout_23 = new QHBoxLayout();
-        horizontalLayout_23->setSpacing(0);
-        horizontalLayout_23->setObjectName(QStringLiteral("horizontalLayout_23"));
-        verticalLayout_10 = new QVBoxLayout();
-        verticalLayout_10->setSpacing(0);
-        verticalLayout_10->setObjectName(QStringLiteral("verticalLayout_10"));
-        groupBox_24 = new QGroupBox(groupBox_7);
-        groupBox_24->setObjectName(QStringLiteral("groupBox_24"));
-        groupBox_24->setStyleSheet(QLatin1String("QGroupBox::title{\n"
-"	color : white;\n"
-"	left: 10px;\n"
-"	margin-left: 0px;\n"
-"	padding: 0 1px;\n"
-"}\n"
-"\n"
-"QGroupBox{\n"
-"	border-width: 3px;\n"
-"	border-style: solid;\n"
-"	border-color: white;\n"
-"	margin-top: 0.5ex;\n"
-"	border-radius: 5px;\n"
-"	background:#008F96;\n"
-"}"));
-        gridLayout_69 = new QGridLayout(groupBox_24);
-        gridLayout_69->setSpacing(0);
-        gridLayout_69->setContentsMargins(11, 11, 11, 11);
-        gridLayout_69->setObjectName(QStringLiteral("gridLayout_69"));
-        gridLayout_69->setContentsMargins(2, 0, 2, 2);
-        frame_26 = new QFrame(groupBox_24);
-        frame_26->setObjectName(QStringLiteral("frame_26"));
-        frame_26->setMinimumSize(QSize(260, 80));
-        frame_26->setStyleSheet(QLatin1String("background-color: rgb(0, 143, 150);\n"
-"background-repeat:no-repeat;\n"
-"background-position:center;\n"
-"border-width: 0;\n"
-"border-radius : 0;"));
-        frame_26->setFrameShape(QFrame::StyledPanel);
-        frame_26->setFrameShadow(QFrame::Raised);
-        gridLayout_26 = new QGridLayout(frame_26);
-        gridLayout_26->setSpacing(1);
-        gridLayout_26->setContentsMargins(11, 11, 11, 11);
-        gridLayout_26->setObjectName(QStringLiteral("gridLayout_26"));
-        gridLayout_26->setContentsMargins(1, 1, 1, 1);
-        frame_23 = new QFrame(frame_26);
-        frame_23->setObjectName(QStringLiteral("frame_23"));
-        frame_23->setMinimumSize(QSize(300, 50));
-        frame_23->setStyleSheet(QStringLiteral("background:#008F96;"));
-        frame_23->setFrameShape(QFrame::StyledPanel);
-        frame_23->setFrameShadow(QFrame::Raised);
-        horizontalLayout_22 = new QHBoxLayout(frame_23);
-        horizontalLayout_22->setSpacing(6);
-        horizontalLayout_22->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_22->setObjectName(QStringLiteral("horizontalLayout_22"));
-        label_41 = new QLabel(frame_23);
-        label_41->setObjectName(QStringLiteral("label_41"));
-        label_41->setMinimumSize(QSize(100, 0));
-        label_41->setFont(font6);
-        label_41->setStyleSheet(QStringLiteral("color : white;"));
-
-        horizontalLayout_22->addWidget(label_41);
-
-        horizontalSpacer_7 = new QSpacerItem(171, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_22->addItem(horizontalSpacer_7);
-
-
-        gridLayout_26->addWidget(frame_23, 0, 0, 1, 1);
-
-
-        gridLayout_69->addWidget(frame_26, 0, 0, 1, 1);
-
-        groupBox_14 = new QGroupBox(groupBox_24);
-        groupBox_14->setObjectName(QStringLiteral("groupBox_14"));
-        groupBox_14->setStyleSheet(QLatin1String("QGroupBox {\n"
-"	background-color: rgb(90, 91, 91);\n"
-"	color: white;\n"
-"	border:4px solid rgb(51,51,51);\n"
-"	border-radius:4px;\n"
-"}"));
-        horizontalLayout_27 = new QHBoxLayout(groupBox_14);
-        horizontalLayout_27->setSpacing(0);
-        horizontalLayout_27->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_27->setObjectName(QStringLiteral("horizontalLayout_27"));
-        horizontalLayout_27->setContentsMargins(0, 0, 0, 0);
-        plainTextEditSettingsSystemInfoTitle = new QPlainTextEdit(groupBox_14);
-        plainTextEditSettingsSystemInfoTitle->setObjectName(QStringLiteral("plainTextEditSettingsSystemInfoTitle"));
-        plainTextEditSettingsSystemInfoTitle->setMaximumSize(QSize(300, 16777215));
-        plainTextEditSettingsSystemInfoTitle->setFont(font2);
-        plainTextEditSettingsSystemInfoTitle->setStyleSheet(QLatin1String("QPlainTextEdit {background-color: rgb(90, 91, 91);border-width: 0;\n"
-"border-radius : 0; color: #ffd000;}\n"
-" QScrollBar:horizontal\n"
-" {\n"
-"     height: 15px;\n"
-"     margin: 3px 15px 3px 15px;\n"
-"     border: 1px transparent #2A2929;\n"
-"     border-radius: 4px;\n"
-"     background-color: rgb(0, 143, 150);\n"
-" }\n"
-"\n"
-" QScrollBar::handle:horizontal\n"
-" {\n"
-"     background-color: rgb(51,51,51,220);\n"
-"     min-width: 5px;\n"
-"     border-radius: 4px;\n"
-" }\n"
-"\n"
-" QScrollBar::add-line:horizontal\n"
-" {\n"
-"     margin: 0px 3px 0px 3px;\n"
-"     border-image: url(:/qss_icons/rc/right_arrow_disabled.png);\n"
-"     width: 10px;\n"
-"     height: 10px;\n"
-"     subcontrol-position: right;\n"
-"     subcontrol-origin: margin;\n"
-" }\n"
-"\n"
-" QScrollBar::sub-line:horizontal\n"
-" {\n"
-"     margin: 0px 3px 0px 3px;\n"
-"     border-image: url(:/qss_icons/rc/left_arrow_disabled.png);\n"
-"     height: 10px;\n"
-"     width: 10px;\n"
-"     subcontrol-position: left;\n"
-"     subcontrol-origin: margin;\n"
-""
-                        " }\n"
-"\n"
-" QScrollBar::add-line:horizontal:hover,QScrollBar::add-line:horizontal:on\n"
-" {\n"
-"     border-image: url(:/qss_icons/rc/right_arrow.png);\n"
-"     height: 10px;\n"
-"     width: 10px;\n"
-"     subcontrol-position: right;\n"
-"     subcontrol-origin: margin;\n"
-" }\n"
-"\n"
-"\n"
-" QScrollBar::sub-line:horizontal:hover, QScrollBar::sub-line:horizontal:on\n"
-" {\n"
-"     border-image: url(:/qss_icons/rc/left_arrow.png);\n"
-"     height: 10px;\n"
-"     width: 10px;\n"
-"     subcontrol-position: left;\n"
-"     subcontrol-origin: margin;\n"
-" }\n"
-"\n"
-" QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal\n"
-" {\n"
-"     background: none;\n"
-" }\n"
-"\n"
-"\n"
-" QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal\n"
-" {\n"
-"     background: none;\n"
-" }\n"
-"\n"
-" QScrollBar:vertical\n"
-" {\n"
-"     background:rgb(0, 143, 150);\n"
-"     width: 15px;\n"
-"     margin: 15px 3px 15px 3px;\n"
-"     border: 1px transparent #2A2929;\n"
-"     border-radius: 4px;\n"
-" }\n"
-"\n"
-" QScrollB"
-                        "ar::handle:vertical\n"
-" {\n"
-"     background-color: rgb(51,51,51,220);\n"
-"     min-height: 5px;\n"
-"     border-radius: 4px;\n"
-" }\n"
-"\n"
-" QScrollBar::sub-line:vertical\n"
-" {\n"
-"     margin: 3px 0px 3px 0px;\n"
-"     border-image: url(:/qss_icons/rc/up_arrow_disabled.png);\n"
-"     height: 10px;\n"
-"     width: 10px;\n"
-"     subcontrol-position: top;\n"
-"     subcontrol-origin: margin;\n"
-" }\n"
-"\n"
-" QScrollBar::add-line:vertical\n"
-" {\n"
-"     margin: 3px 0px 3px 0px;\n"
-"     border-image: url(:/qss_icons/rc/down_arrow_disabled.png);\n"
-"     height: 10px;\n"
-"     width: 10px;\n"
-"     subcontrol-position: bottom;\n"
-"     subcontrol-origin: margin;\n"
-" }\n"
-"\n"
-" QScrollBar::sub-line:vertical:hover,QScrollBar::sub-line:vertical:on\n"
-" {\n"
-"\n"
-"     border-image: url(:/qss_icons/rc/up_arrow.png);\n"
-"     height: 10px;\n"
-"     width: 10px;\n"
-"     subcontrol-position: top;\n"
-"     subcontrol-origin: margin;\n"
-" }\n"
-"\n"
-"\n"
-" QScrollBar::add-line:vertical:hover, QScrollBar::add-line:v"
-                        "ertical:on\n"
-" {\n"
-"     border-image: url(:/qss_icons/rc/down_arrow.png);\n"
-"     height: 10px;\n"
-"     width: 10px;\n"
-"     subcontrol-position: bottom;\n"
-"     subcontrol-origin: margin;\n"
-" }\n"
-"\n"
-" QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical\n"
-" {\n"
-"     background: none;\n"
-" }\n"
-"\n"
-"\n"
-" QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical\n"
-" {\n"
-"     background: none;\n"
-" }"));
-
-        horizontalLayout_27->addWidget(plainTextEditSettingsSystemInfoTitle);
-
-        plainTextEditSettingsSystemInfo = new QPlainTextEdit(groupBox_14);
-        plainTextEditSettingsSystemInfo->setObjectName(QStringLiteral("plainTextEditSettingsSystemInfo"));
-        plainTextEditSettingsSystemInfo->setMinimumSize(QSize(450, 0));
-        plainTextEditSettingsSystemInfo->setFont(font2);
-        plainTextEditSettingsSystemInfo->setStyleSheet(QLatin1String("QPlainTextEdit {background-color: rgb(90, 91, 91);border-width: 0;\n"
-"border-radius : 0;color:white;}\n"
-" QScrollBar:horizontal\n"
-" {\n"
-"     height: 15px;\n"
-"     margin: 3px 15px 3px 15px;\n"
-"     border: 1px transparent #2A2929;\n"
-"     border-radius: 4px;\n"
-"     background-color: rgb(0, 143, 150);\n"
-" }\n"
-"\n"
-" QScrollBar::handle:horizontal\n"
-" {\n"
-"     background-color: rgb(51,51,51,220);\n"
-"     min-width: 5px;\n"
-"     border-radius: 4px;\n"
-" }\n"
-"\n"
-" QScrollBar::add-line:horizontal\n"
-" {\n"
-"     margin: 0px 3px 0px 3px;\n"
-"     border-image: url(:/qss_icons/rc/right_arrow_disabled.png);\n"
-"     width: 10px;\n"
-"     height: 10px;\n"
-"     subcontrol-position: right;\n"
-"     subcontrol-origin: margin;\n"
-" }\n"
-"\n"
-" QScrollBar::sub-line:horizontal\n"
-" {\n"
-"     margin: 0px 3px 0px 3px;\n"
-"     border-image: url(:/qss_icons/rc/left_arrow_disabled.png);\n"
-"     height: 10px;\n"
-"     width: 10px;\n"
-"     subcontrol-position: left;\n"
-"     subcontrol-origin: margin;\n"
-" }\n"
-""
-                        "\n"
-" QScrollBar::add-line:horizontal:hover,QScrollBar::add-line:horizontal:on\n"
-" {\n"
-"     border-image: url(:/qss_icons/rc/right_arrow.png);\n"
-"     height: 10px;\n"
-"     width: 10px;\n"
-"     subcontrol-position: right;\n"
-"     subcontrol-origin: margin;\n"
-" }\n"
-"\n"
-"\n"
-" QScrollBar::sub-line:horizontal:hover, QScrollBar::sub-line:horizontal:on\n"
-" {\n"
-"     border-image: url(:/qss_icons/rc/left_arrow.png);\n"
-"     height: 10px;\n"
-"     width: 10px;\n"
-"     subcontrol-position: left;\n"
-"     subcontrol-origin: margin;\n"
-" }\n"
-"\n"
-" QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal\n"
-" {\n"
-"     background: none;\n"
-" }\n"
-"\n"
-"\n"
-" QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal\n"
-" {\n"
-"     background: none;\n"
-" }\n"
-"\n"
-" QScrollBar:vertical\n"
-" {\n"
-"     background:rgb(0, 143, 150);\n"
-"     width: 15px;\n"
-"     margin: 15px 3px 15px 3px;\n"
-"     border: 1px transparent #2A2929;\n"
-"     border-radius: 4px;\n"
-" }\n"
-"\n"
-" QScrollBar::han"
-                        "dle:vertical\n"
-" {\n"
-"     background-color: rgb(51,51,51,220);\n"
-"     min-height: 5px;\n"
-"     border-radius: 4px;\n"
-" }\n"
-"\n"
-" QScrollBar::sub-line:vertical\n"
-" {\n"
-"     margin: 3px 0px 3px 0px;\n"
-"     border-image: url(:/qss_icons/rc/up_arrow_disabled.png);\n"
-"     height: 10px;\n"
-"     width: 10px;\n"
-"     subcontrol-position: top;\n"
-"     subcontrol-origin: margin;\n"
-" }\n"
-"\n"
-" QScrollBar::add-line:vertical\n"
-" {\n"
-"     margin: 3px 0px 3px 0px;\n"
-"     border-image: url(:/qss_icons/rc/down_arrow_disabled.png);\n"
-"     height: 10px;\n"
-"     width: 10px;\n"
-"     subcontrol-position: bottom;\n"
-"     subcontrol-origin: margin;\n"
-" }\n"
-"\n"
-" QScrollBar::sub-line:vertical:hover,QScrollBar::sub-line:vertical:on\n"
-" {\n"
-"\n"
-"     border-image: url(:/qss_icons/rc/up_arrow.png);\n"
-"     height: 10px;\n"
-"     width: 10px;\n"
-"     subcontrol-position: top;\n"
-"     subcontrol-origin: margin;\n"
-" }\n"
-"\n"
-"\n"
-" QScrollBar::add-line:vertical:hover, QScrollBar::add-line:vertical"
-                        ":on\n"
-" {\n"
-"     border-image: url(:/qss_icons/rc/down_arrow.png);\n"
-"     height: 10px;\n"
-"     width: 10px;\n"
-"     subcontrol-position: bottom;\n"
-"     subcontrol-origin: margin;\n"
-" }\n"
-"\n"
-" QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical\n"
-" {\n"
-"     background: none;\n"
-" }\n"
-"\n"
-"\n"
-" QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical\n"
-" {\n"
-"     background: none;\n"
-" }"));
-
-        horizontalLayout_27->addWidget(plainTextEditSettingsSystemInfo);
-
-
-        gridLayout_69->addWidget(groupBox_14, 1, 0, 1, 1);
-
-
-        verticalLayout_10->addWidget(groupBox_24);
-
-
-        horizontalLayout_23->addLayout(verticalLayout_10);
-
-
-        gridLayout_29->addLayout(horizontalLayout_23, 0, 0, 1, 1);
-
-        groupBox_25 = new QGroupBox(groupBox_7);
-        groupBox_25->setObjectName(QStringLiteral("groupBox_25"));
-        groupBox_25->setFont(font2);
-        groupBox_25->setStyleSheet(QLatin1String("QGroupBox::title{\n"
-"	color : white;\n"
-"	left: 10px;\n"
-"	margin-left: 0px;\n"
-"	padding: 0 1px;\n"
-"}\n"
-"\n"
-"QGroupBox{\n"
-"	border-width: 2px;\n"
-"	border-style: solid;\n"
-"	border-color: white;\n"
-"	margin-top: 0.5ex;\n"
-"	border-radius: 5px;\n"
-"}"));
-        gridLayout_70 = new QGridLayout(groupBox_25);
-        gridLayout_70->setSpacing(0);
-        gridLayout_70->setContentsMargins(11, 11, 11, 11);
-        gridLayout_70->setObjectName(QStringLiteral("gridLayout_70"));
-        gridLayout_70->setContentsMargins(9, 30, 9, 9);
-        frame_28 = new QFrame(groupBox_25);
-        frame_28->setObjectName(QStringLiteral("frame_28"));
-        frame_28->setMinimumSize(QSize(300, 50));
-        frame_28->setStyleSheet(QLatin1String("#frame_28{\n"
-"background:#008F96;\n"
-"color: rgb(255, 255, 255);\n"
-"border-width: 0;\n"
-"border-radius : 0;\n"
-"}"));
-        frame_28->setFrameShape(QFrame::StyledPanel);
-        frame_28->setFrameShadow(QFrame::Raised);
-        gridLayout_27 = new QGridLayout(frame_28);
-        gridLayout_27->setSpacing(0);
-        gridLayout_27->setContentsMargins(11, 11, 11, 11);
-        gridLayout_27->setObjectName(QStringLiteral("gridLayout_27"));
-        gridLayout_27->setContentsMargins(0, 0, 0, 0);
-        pushButtonChangePageSize = new QPushButton(frame_28);
-        pushButtonChangePageSize->setObjectName(QStringLiteral("pushButtonChangePageSize"));
-        pushButtonChangePageSize->setMinimumSize(QSize(0, 80));
-        pushButtonChangePageSize->setFont(font);
-        pushButtonChangePageSize->setStyleSheet(QLatin1String("QPushButton {\n"
-"	border: none;\n"
-"	background-color: rgba(0,0,0,0);\n"
-"	color : white;\n"
-"}\n"
-"QPushButton:hover {\n"
-"	background-color: rgb(51,51,51);\n"
-"}\n"
-"QPushButton:pressed {	\n"
-"	background-color: #7A0000;\n"
-"}"));
-
-        gridLayout_27->addWidget(pushButtonChangePageSize, 1, 0, 1, 1);
-
-        formLayout = new QFormLayout();
-        formLayout->setSpacing(6);
-        formLayout->setObjectName(QStringLiteral("formLayout"));
-        formLayout->setHorizontalSpacing(30);
-        formLayout->setVerticalSpacing(0);
-        label_43 = new QLabel(frame_28);
-        label_43->setObjectName(QStringLiteral("label_43"));
-        label_43->setMinimumSize(QSize(100, 60));
-        label_43->setFont(font);
-        label_43->setStyleSheet(QLatin1String("background:#008F96;\n"
-"color: rgb(255, 255, 255);\n"
-"border-width: 0;\n"
-"border-radius : 0;"));
-
-        formLayout->setWidget(0, QFormLayout::LabelRole, label_43);
-
-        label_46 = new QLabel(frame_28);
-        label_46->setObjectName(QStringLiteral("label_46"));
-        label_46->setMinimumSize(QSize(100, 50));
-        label_46->setFont(font);
-        label_46->setStyleSheet(QLatin1String("background:#008F96;\n"
-"color: rgb(255, 255, 255);\n"
-"border-width: 0;\n"
-"border-radius : 0;"));
-
-        formLayout->setWidget(1, QFormLayout::LabelRole, label_46);
-
-        label_45 = new QLabel(frame_28);
-        label_45->setObjectName(QStringLiteral("label_45"));
-        label_45->setMinimumSize(QSize(100, 50));
-        label_45->setFont(font);
-        label_45->setStyleSheet(QLatin1String("background:#008F96;\n"
-"color: rgb(255, 255, 255);\n"
-"border-width: 0;\n"
-"border-radius : 0;"));
-
-        formLayout->setWidget(2, QFormLayout::LabelRole, label_45);
-
-        verticalLayout_11 = new QVBoxLayout();
-        verticalLayout_11->setSpacing(6);
-        verticalLayout_11->setObjectName(QStringLiteral("verticalLayout_11"));
-        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout_11->addItem(verticalSpacer_3);
-
-        spinBoxChangePageSizeMax = new QSpinBox(frame_28);
-        spinBoxChangePageSizeMax->setObjectName(QStringLiteral("spinBoxChangePageSizeMax"));
-        spinBoxChangePageSizeMax->setMinimumSize(QSize(0, 40));
-        QFont font10;
-        font10.setFamily(QStringLiteral("Berlin Sans FB"));
-        font10.setPointSize(16);
-        font10.setBold(false);
-        font10.setItalic(false);
-        font10.setWeight(50);
-        spinBoxChangePageSizeMax->setFont(font10);
-        spinBoxChangePageSizeMax->setStyleSheet(QLatin1String("QSpinBox { \n"
-"	border: 2px solid rgb(51,51,51);\n"
-"	border-radius: 5px;	\n"
-"	color:rgb(255,255,255);\n"
-"	background-color: rgb(51,51,51);\n"
-"	\n"
-"	font: \"Berlin Sans FB\";\n"
-"}\n"
-"\n"
-"QSpinBox::up-arrow { \n"
-"	image: url(:icons/icos/arrow.png);\n"
-"}\n"
-"\n"
-"QSpinBox::up-button {\n"
-"	border: none; \n"
-"	color:rgb(255,255,255,0);\n"
-"    border-left-width: 1px;\n"
-"    border-left-color: darkgray;\n"
-"}\n"
-"QSpinBox::up-button:hover { \n"
-"	border: 2px solid rgb(0,143,170);\n"
-"	border-radius: 5px;	\n"
-"	color:rgb(255,255,255);\n"
-"}\n"
-"\n"
-"QSpinBox::down-arrow { \n"
-"	image: url(:icons/icos/arrow.png);\n"
-"}\n"
-"QSpinBox::down-button {\n"
-"	border: none; \n"
-"	color:rgb(255,255,255,0);\n"
-"}\n"
-"QSpinBox::down-button:hover { \n"
-"	border: 2px solid rgb(0,143,170);\n"
-"	border-radius: 5px;	\n"
-"	color:rgb(255,255,255);\n"
-"}\n"
-""));
-        spinBoxChangePageSizeMax->setAlignment(Qt::AlignCenter);
-
-        verticalLayout_11->addWidget(spinBoxChangePageSizeMax);
-
-        verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout_11->addItem(verticalSpacer_4);
-
-
-        formLayout->setLayout(1, QFormLayout::FieldRole, verticalLayout_11);
-
-        verticalLayout_12 = new QVBoxLayout();
-        verticalLayout_12->setSpacing(6);
-        verticalLayout_12->setObjectName(QStringLiteral("verticalLayout_12"));
-        verticalSpacer_5 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout_12->addItem(verticalSpacer_5);
-
-        spinBoxChangePageSizeMin = new QSpinBox(frame_28);
-        spinBoxChangePageSizeMin->setObjectName(QStringLiteral("spinBoxChangePageSizeMin"));
-        spinBoxChangePageSizeMin->setMinimumSize(QSize(0, 40));
-        spinBoxChangePageSizeMin->setFont(font10);
-        spinBoxChangePageSizeMin->setStyleSheet(QLatin1String("QSpinBox { \n"
-"	border: 2px solid rgb(51,51,51);\n"
-"	border-radius: 5px;	\n"
-"	color:rgb(255,255,255);\n"
-"	background-color: rgb(51,51,51);\n"
-"	font: \"Berlin Sans FB\";\n"
-"}\n"
-"\n"
-"QSpinBox::up-arrow { \n"
-"	image: url(:icons/icos/arrow.png);\n"
-"}\n"
-"\n"
-"QSpinBox::up-button {\n"
-"	border: none; \n"
-"	color:rgb(255,255,255,0);\n"
-"    border-left-width: 1px;\n"
-"    border-left-color: darkgray;\n"
-"}\n"
-"QSpinBox::up-button:hover { \n"
-"	border: 2px solid rgb(0,143,170);\n"
-"	border-radius: 5px;	\n"
-"	color:rgb(255,255,255);\n"
-"}\n"
-"\n"
-"QSpinBox::down-arrow { \n"
-"	image: url(:icons/icos/arrow.png);\n"
-"}\n"
-"QSpinBox::down-button {\n"
-"	border: none; \n"
-"	color:rgb(255,255,255,0);\n"
-"}\n"
-"QSpinBox::down-button:hover { \n"
-"	border: 2px solid rgb(0,143,170);\n"
-"	border-radius: 5px;	\n"
-"	color:rgb(255,255,255);\n"
-"}\n"
-""));
-        spinBoxChangePageSizeMin->setAlignment(Qt::AlignCenter);
-
-        verticalLayout_12->addWidget(spinBoxChangePageSizeMin);
-
-        verticalSpacer_6 = new QSpacerItem(20, 48, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout_12->addItem(verticalSpacer_6);
-
-
-        formLayout->setLayout(2, QFormLayout::FieldRole, verticalLayout_12);
-
-        verticalLayout_13 = new QVBoxLayout();
-        verticalLayout_13->setSpacing(6);
-        verticalLayout_13->setObjectName(QStringLiteral("verticalLayout_13"));
-        verticalSpacer_7 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout_13->addItem(verticalSpacer_7);
-
-        comboBoxChangePageSize = new QComboBox(frame_28);
-        comboBoxChangePageSize->setObjectName(QStringLiteral("comboBoxChangePageSize"));
-        comboBoxChangePageSize->setMinimumSize(QSize(0, 40));
-        comboBoxChangePageSize->setFont(font3);
-        comboBoxChangePageSize->setStyleSheet(QLatin1String("QComboBox {\n"
-"	border: 2px solid rgb(51,51,51);\n"
-"	border-radius: 5px;	\n"
-"	color:rgb(255,255,255);\n"
-"	background-color: rgb(51,51,51);\n"
-"}\n"
-"\n"
-"QComboBox:hover {\n"
-"	border: 2px solid rgb(0,143,170);\n"
-"	border-radius: 5px;	\n"
-"	color:rgb(255,255,255);\n"
-"	background-color: rgb(0,143,170);\n"
-"}\n"
-"\n"
-"QComboBox:!editable, QComboBox::drop-down:editable {\n"
-"	background: rgb(51,51,51);\n"
-"}\n"
-"\n"
-"QComboBox:!editable:on, QComboBox::drop-down:editable:on {\n"
-"    background:rgb(51,51,51);\n"
-"}\n"
-"\n"
-"QComboBox:on { /* shift the text when the popup opens */\n"
-"    padding-top: 3px;\n"
-"    padding-left: 4px;\n"
-"}\n"
-"\n"
-"QComboBox::drop-down {\n"
-"    subcontrol-origin: padding;\n"
-"    subcontrol-position: top right;\n"
-"    width: 15px;\n"
-"\n"
-"}\n"
-"\n"
-"QComboBox::down-arrow {\n"
-"    image: url(:icons/icos/arrow.png);\n"
-"}\n"
-"\n"
-"QComboBox::down-arrow:on { /* shift the arrow when popup is open */\n"
-"    top: 1px;\n"
-"    left: 1px;\n"
-"}\n"
-"\n"
-"QComboBox::drop-down {\n"
-""
-                        "    background:rgb(51,51,51);\n"
-"}\n"
-"\n"
-""));
-
-        verticalLayout_13->addWidget(comboBoxChangePageSize);
-
-        verticalSpacer_8 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout_13->addItem(verticalSpacer_8);
-
-
-        formLayout->setLayout(0, QFormLayout::FieldRole, verticalLayout_13);
-
-
-        gridLayout_27->addLayout(formLayout, 0, 0, 1, 1);
-
-        pushButtonCancelAutoPage = new QPushButton(frame_28);
-        pushButtonCancelAutoPage->setObjectName(QStringLiteral("pushButtonCancelAutoPage"));
-        pushButtonCancelAutoPage->setEnabled(true);
-        pushButtonCancelAutoPage->setMinimumSize(QSize(0, 80));
-        pushButtonCancelAutoPage->setFont(font);
-        pushButtonCancelAutoPage->setStyleSheet(QLatin1String("QPushButton {\n"
-"	border: none;\n"
-"	background-color: rgba(0,0,0,0);\n"
-"	color : white;\n"
-"}\n"
-"QPushButton:hover {\n"
-"	background-color: rgb(51,51,51);\n"
-"}\n"
-"QPushButton:pressed {	\n"
-"	background-color: #7A0000;\n"
-"}"));
-
-        gridLayout_27->addWidget(pushButtonCancelAutoPage, 2, 0, 1, 1);
-
-
-        gridLayout_70->addWidget(frame_28, 0, 0, 1, 1);
-
-
-        gridLayout_29->addWidget(groupBox_25, 0, 1, 1, 1);
-
-
-        verticalLayout_15->addWidget(groupBox_7);
-
         groupBox_8 = new QGroupBox(pageHistory);
         groupBox_8->setObjectName(QStringLiteral("groupBox_8"));
         groupBox_8->setMinimumSize(QSize(0, 300));
@@ -3322,13 +2454,17 @@ public:
         verticalLayout_14 = new QVBoxLayout();
         verticalLayout_14->setSpacing(0);
         verticalLayout_14->setObjectName(QStringLiteral("verticalLayout_14"));
+        verticalSpacer_3 = new QSpacerItem(20, 200, QSizePolicy::Minimum, QSizePolicy::Preferred);
+
+        verticalLayout_14->addItem(verticalSpacer_3);
+
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(10, -1, 6, -1);
         labelHistoryDeviceNum = new QLabel(frame_34);
         labelHistoryDeviceNum->setObjectName(QStringLiteral("labelHistoryDeviceNum"));
-        labelHistoryDeviceNum->setMinimumSize(QSize(80, 55));
+        labelHistoryDeviceNum->setMinimumSize(QSize(80, 80));
         labelHistoryDeviceNum->setFont(font);
         labelHistoryDeviceNum->setStyleSheet(QStringLiteral("color : white;"));
 
@@ -3386,7 +2522,7 @@ public:
         horizontalLayout_25->setContentsMargins(10, -1, 6, -1);
         labelHistoryDeviceNum_2 = new QLabel(frame_34);
         labelHistoryDeviceNum_2->setObjectName(QStringLiteral("labelHistoryDeviceNum_2"));
-        labelHistoryDeviceNum_2->setMinimumSize(QSize(120, 55));
+        labelHistoryDeviceNum_2->setMinimumSize(QSize(120, 80));
         labelHistoryDeviceNum_2->setFont(font);
         labelHistoryDeviceNum_2->setStyleSheet(QStringLiteral("color : white;"));
 
@@ -3395,13 +2531,13 @@ public:
         dateTimeEditHistoryStartTime = new QDateTimeEdit(frame_34);
         dateTimeEditHistoryStartTime->setObjectName(QStringLiteral("dateTimeEditHistoryStartTime"));
         dateTimeEditHistoryStartTime->setMinimumSize(QSize(140, 40));
-        QFont font11;
-        font11.setFamily(QStringLiteral("Berlin Sans FB"));
-        font11.setPointSize(12);
-        font11.setBold(false);
-        font11.setItalic(false);
-        font11.setWeight(50);
-        dateTimeEditHistoryStartTime->setFont(font11);
+        QFont font10;
+        font10.setFamily(QStringLiteral("Berlin Sans FB"));
+        font10.setPointSize(12);
+        font10.setBold(false);
+        font10.setItalic(false);
+        font10.setWeight(50);
+        dateTimeEditHistoryStartTime->setFont(font10);
         dateTimeEditHistoryStartTime->setCursor(QCursor(Qt::IBeamCursor));
         dateTimeEditHistoryStartTime->setStyleSheet(QLatin1String("QDateTimeEdit { \n"
 "	border: 2px solid rgb(51,51,51);\n"
@@ -3452,7 +2588,7 @@ public:
         horizontalLayout_26->setContentsMargins(10, -1, 6, -1);
         labelHistoryDeviceNum_3 = new QLabel(frame_34);
         labelHistoryDeviceNum_3->setObjectName(QStringLiteral("labelHistoryDeviceNum_3"));
-        labelHistoryDeviceNum_3->setMinimumSize(QSize(50, 55));
+        labelHistoryDeviceNum_3->setMinimumSize(QSize(50, 80));
         labelHistoryDeviceNum_3->setFont(font);
         labelHistoryDeviceNum_3->setStyleSheet(QStringLiteral("color : white;"));
 
@@ -3526,7 +2662,7 @@ public:
         horizontalLayout_24->setContentsMargins(0, -1, -1, -1);
         pushButtonSearchHistory = new QPushButton(frame_31);
         pushButtonSearchHistory->setObjectName(QStringLiteral("pushButtonSearchHistory"));
-        QSizePolicy sizePolicy8(QSizePolicy::Minimum, QSizePolicy::Expanding);
+        QSizePolicy sizePolicy8(QSizePolicy::Minimum, QSizePolicy::Fixed);
         sizePolicy8.setHorizontalStretch(0);
         sizePolicy8.setVerticalStretch(0);
         sizePolicy8.setHeightForWidth(pushButtonSearchHistory->sizePolicy().hasHeightForWidth());
@@ -3555,6 +2691,10 @@ public:
 
 
         verticalLayout_14->addWidget(frame_31);
+
+        verticalSpacer_4 = new QSpacerItem(20, 200, QSizePolicy::Minimum, QSizePolicy::Preferred);
+
+        verticalLayout_14->addItem(verticalSpacer_4);
 
 
         gridLayout_56->addLayout(verticalLayout_14, 0, 0, 1, 1);
@@ -3635,21 +2775,21 @@ public:
         gridLayout_9->setContentsMargins(11, 11, 11, 11);
         gridLayout_9->setObjectName(QStringLiteral("gridLayout_9"));
         gridLayout_9->setContentsMargins(0, 0, 0, 0);
-        widget = new QWidget(groupBoxDevicesInfo);
-        widget->setObjectName(QStringLiteral("widget"));
-        sizePolicy.setHeightForWidth(widget->sizePolicy().hasHeightForWidth());
-        widget->setSizePolicy(sizePolicy);
-        widget->setStyleSheet(QLatin1String("background-color: rgb(0, 143, 150);\n"
+        widget1 = new QWidget(groupBoxDevicesInfo);
+        widget1->setObjectName(QStringLiteral("widget1"));
+        sizePolicy.setHeightForWidth(widget1->sizePolicy().hasHeightForWidth());
+        widget1->setSizePolicy(sizePolicy);
+        widget1->setStyleSheet(QLatin1String("background-color: rgb(0, 143, 150);\n"
 "background-repeat:no-repeat;\n"
 "background-position:center;\n"
 "border-width: 0;\n"
 "border-radius : 0;"));
-        gridLayout_60 = new QGridLayout(widget);
+        gridLayout_60 = new QGridLayout(widget1);
         gridLayout_60->setSpacing(0);
         gridLayout_60->setContentsMargins(11, 11, 11, 11);
         gridLayout_60->setObjectName(QStringLiteral("gridLayout_60"));
         gridLayout_60->setContentsMargins(0, 0, 0, 0);
-        scrollArea = new QScrollArea(widget);
+        scrollArea = new QScrollArea(widget1);
         scrollArea->setObjectName(QStringLiteral("scrollArea"));
         sizePolicy4.setHeightForWidth(scrollArea->sizePolicy().hasHeightForWidth());
         scrollArea->setSizePolicy(sizePolicy4);
@@ -3792,7 +2932,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1297, 228));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1291, 241));
         sizePolicy.setHeightForWidth(scrollAreaWidgetContents->sizePolicy().hasHeightForWidth());
         scrollAreaWidgetContents->setSizePolicy(sizePolicy);
         scrollAreaWidgetContents->setMinimumSize(QSize(0, 200));
@@ -3824,7 +2964,7 @@ public:
         gridLayout_60->addWidget(scrollArea, 0, 0, 1, 1);
 
 
-        gridLayout_9->addWidget(widget, 0, 0, 1, 1);
+        gridLayout_9->addWidget(widget1, 0, 0, 1, 1);
 
 
         gridLayout_59->addWidget(groupBoxDevicesInfo, 1, 0, 1, 1);
@@ -3874,6 +3014,190 @@ public:
         stackedWidgetMonitorMain->addWidget(page);
 
         gridLayout_40->addWidget(stackedWidgetMonitorMain, 1, 0, 1, 1);
+
+        frameMonitorBar = new QFrame(pageMonitor);
+        frameMonitorBar->setObjectName(QStringLiteral("frameMonitorBar"));
+        frameMonitorBar->setMinimumSize(QSize(0, 50));
+        frameMonitorBar->setMaximumSize(QSize(16777215, 50));
+        frameMonitorBar->setStyleSheet(QLatin1String("background:#008F96;border-width: 0;\n"
+"border-radius : 0;\n"
+""));
+        frameMonitorBar->setFrameShape(QFrame::StyledPanel);
+        frameMonitorBar->setFrameShadow(QFrame::Raised);
+        horizontalLayout_5 = new QHBoxLayout(frameMonitorBar);
+        horizontalLayout_5->setSpacing(0);
+        horizontalLayout_5->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
+        horizontalLayout_5->setContentsMargins(0, 0, 0, 0);
+        frameOverview = new QFrame(frameMonitorBar);
+        frameOverview->setObjectName(QStringLiteral("frameOverview"));
+        sizePolicy6.setHeightForWidth(frameOverview->sizePolicy().hasHeightForWidth());
+        frameOverview->setSizePolicy(sizePolicy6);
+        frameOverview->setMinimumSize(QSize(50, 50));
+        frameOverview->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/monitor.png);\n"
+"background-color: rgb(0, 143, 150);\n"
+"background-repeat:no-repeat;\n"
+"background-position:center;\n"
+"border-width: 0;\n"
+"border-radius : 0;"));
+        frameOverview->setFrameShape(QFrame::StyledPanel);
+        frameOverview->setFrameShadow(QFrame::Raised);
+        gridLayout_36 = new QGridLayout(frameOverview);
+        gridLayout_36->setSpacing(0);
+        gridLayout_36->setContentsMargins(11, 11, 11, 11);
+        gridLayout_36->setObjectName(QStringLiteral("gridLayout_36"));
+        gridLayout_36->setContentsMargins(0, 0, 0, 0);
+        pushButtonMonitorPage_Overview = new QPushButton(frameOverview);
+        pushButtonMonitorPage_Overview->setObjectName(QStringLiteral("pushButtonMonitorPage_Overview"));
+        sizePolicy4.setHeightForWidth(pushButtonMonitorPage_Overview->sizePolicy().hasHeightForWidth());
+        pushButtonMonitorPage_Overview->setSizePolicy(sizePolicy4);
+        pushButtonMonitorPage_Overview->setMinimumSize(QSize(0, 50));
+        pushButtonMonitorPage_Overview->setFont(font1);
+        pushButtonMonitorPage_Overview->setStyleSheet(QLatin1String("QPushButton {\n"
+"	border: none;\n"
+"	background-color: rgba(0,0,0,0);\n"
+"	color : white;\n"
+"}\n"
+"QPushButton:hover {\n"
+"	background-color: rgb(91,90,90);\n"
+"}\n"
+"QPushButton:pressed {	\n"
+"	background-color: #7A0000;\n"
+"}"));
+
+        gridLayout_36->addWidget(pushButtonMonitorPage_Overview, 0, 0, 1, 1);
+
+
+        horizontalLayout_5->addWidget(frameOverview);
+
+        frameMiningInfo = new QFrame(frameMonitorBar);
+        frameMiningInfo->setObjectName(QStringLiteral("frameMiningInfo"));
+        frameMiningInfo->setMinimumSize(QSize(50, 50));
+        frameMiningInfo->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/computer.png);\n"
+"background-color: rgb(0, 143, 150);\n"
+"background-repeat:no-repeat;\n"
+"background-position:center;\n"
+"border-width: 0;\n"
+"border-radius : 0;"));
+        frameMiningInfo->setFrameShape(QFrame::StyledPanel);
+        frameMiningInfo->setFrameShadow(QFrame::Raised);
+        gridLayout_37 = new QGridLayout(frameMiningInfo);
+        gridLayout_37->setSpacing(0);
+        gridLayout_37->setContentsMargins(11, 11, 11, 11);
+        gridLayout_37->setObjectName(QStringLiteral("gridLayout_37"));
+        gridLayout_37->setContentsMargins(0, 0, 0, 0);
+        pushButtonMonitorPage_Mining = new QPushButton(frameMiningInfo);
+        pushButtonMonitorPage_Mining->setObjectName(QStringLiteral("pushButtonMonitorPage_Mining"));
+        sizePolicy4.setHeightForWidth(pushButtonMonitorPage_Mining->sizePolicy().hasHeightForWidth());
+        pushButtonMonitorPage_Mining->setSizePolicy(sizePolicy4);
+        pushButtonMonitorPage_Mining->setMinimumSize(QSize(0, 0));
+        pushButtonMonitorPage_Mining->setFont(font1);
+        pushButtonMonitorPage_Mining->setStyleSheet(QLatin1String("QPushButton {\n"
+"	border: none;\n"
+"	background-color: rgba(0,0,0,0);\n"
+"	color : white;\n"
+"}\n"
+"QPushButton:hover {\n"
+"	background-color: rgb(91,90,90);\n"
+"}\n"
+"QPushButton:pressed {	\n"
+"	background-color: #7A0000;\n"
+"}"));
+
+        gridLayout_37->addWidget(pushButtonMonitorPage_Mining, 0, 0, 2, 1);
+
+
+        horizontalLayout_5->addWidget(frameMiningInfo);
+
+        frameHistory = new QFrame(frameMonitorBar);
+        frameHistory->setObjectName(QStringLiteral("frameHistory"));
+        frameHistory->setMinimumSize(QSize(50, 50));
+        frameHistory->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/minimum.png);\n"
+"background-color: rgb(0, 143, 150);\n"
+"background-repeat:no-repeat;\n"
+"background-position:center;\n"
+"border-width: 0;\n"
+"border-radius : 0;"));
+        frameHistory->setFrameShape(QFrame::StyledPanel);
+        frameHistory->setFrameShadow(QFrame::Raised);
+        gridLayout_38 = new QGridLayout(frameHistory);
+        gridLayout_38->setSpacing(0);
+        gridLayout_38->setContentsMargins(11, 11, 11, 11);
+        gridLayout_38->setObjectName(QStringLiteral("gridLayout_38"));
+        gridLayout_38->setContentsMargins(0, 0, 0, 0);
+        pushButtonMonitorPage_System = new QPushButton(frameHistory);
+        pushButtonMonitorPage_System->setObjectName(QStringLiteral("pushButtonMonitorPage_System"));
+        sizePolicy4.setHeightForWidth(pushButtonMonitorPage_System->sizePolicy().hasHeightForWidth());
+        pushButtonMonitorPage_System->setSizePolicy(sizePolicy4);
+        pushButtonMonitorPage_System->setMinimumSize(QSize(50, 0));
+        pushButtonMonitorPage_System->setFont(font1);
+        pushButtonMonitorPage_System->setStyleSheet(QLatin1String("QPushButton {\n"
+"	border: none;\n"
+"	background-color: rgba(0,0,0,0);\n"
+"	color : white;\n"
+"}\n"
+"QPushButton:hover {\n"
+"	background-color: rgb(91,90,90);\n"
+"}\n"
+"QPushButton:pressed {	\n"
+"	background-color: #7A0000;\n"
+"}"));
+        QIcon icon1;
+        icon1.addFile(QStringLiteral(":/icons/icos/minimum.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButtonMonitorPage_System->setIcon(icon1);
+        pushButtonMonitorPage_System->setIconSize(QSize(0, 16));
+
+        gridLayout_38->addWidget(pushButtonMonitorPage_System, 0, 0, 1, 1);
+
+
+        horizontalLayout_5->addWidget(frameHistory);
+
+        frameDevicesInfo = new QFrame(frameMonitorBar);
+        frameDevicesInfo->setObjectName(QStringLiteral("frameDevicesInfo"));
+        frameDevicesInfo->setMinimumSize(QSize(50, 50));
+        frameDevicesInfo->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/gpu.png);\n"
+"background-color: rgb(0, 143, 150);\n"
+"background-repeat:no-repeat;\n"
+"background-position:center;\n"
+"border-width: 0;\n"
+"border-radius : 0;"));
+        frameDevicesInfo->setFrameShape(QFrame::StyledPanel);
+        frameDevicesInfo->setFrameShadow(QFrame::Raised);
+        gridLayout_58 = new QGridLayout(frameDevicesInfo);
+        gridLayout_58->setSpacing(0);
+        gridLayout_58->setContentsMargins(11, 11, 11, 11);
+        gridLayout_58->setObjectName(QStringLiteral("gridLayout_58"));
+        gridLayout_58->setContentsMargins(0, 0, 0, 0);
+        pushButtonMonitorPage_DevicesInfo = new QPushButton(frameDevicesInfo);
+        pushButtonMonitorPage_DevicesInfo->setObjectName(QStringLiteral("pushButtonMonitorPage_DevicesInfo"));
+        sizePolicy4.setHeightForWidth(pushButtonMonitorPage_DevicesInfo->sizePolicy().hasHeightForWidth());
+        pushButtonMonitorPage_DevicesInfo->setSizePolicy(sizePolicy4);
+        pushButtonMonitorPage_DevicesInfo->setMinimumSize(QSize(50, 0));
+        pushButtonMonitorPage_DevicesInfo->setFont(font1);
+        pushButtonMonitorPage_DevicesInfo->setStyleSheet(QLatin1String("QPushButton {\n"
+"	border: none;\n"
+"	background-color: rgba(0,0,0,0);\n"
+"	color : white;\n"
+"}\n"
+"QPushButton:hover {\n"
+"	background-color: rgb(91,90,90);\n"
+"}\n"
+"QPushButton:pressed {	\n"
+"	background-color: #7A0000;\n"
+"}"));
+        pushButtonMonitorPage_DevicesInfo->setIconSize(QSize(0, 16));
+
+        gridLayout_58->addWidget(pushButtonMonitorPage_DevicesInfo, 0, 0, 1, 1);
+
+
+        horizontalLayout_5->addWidget(frameDevicesInfo);
+
+        horizontalSpacer = new QSpacerItem(700, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_5->addItem(horizontalSpacer);
+
+
+        gridLayout_40->addWidget(frameMonitorBar, 0, 0, 1, 1);
 
         stackedWidgetMain->addWidget(pageMonitor);
         pageOC = new QWidget();
@@ -4562,9 +3886,9 @@ public:
         verticalLayout_37->addWidget(frameMonitorBar_3);
 
         horizontalLayout_61 = new QHBoxLayout();
-        horizontalLayout_61->setSpacing(6);
+        horizontalLayout_61->setSpacing(9);
         horizontalLayout_61->setObjectName(QStringLiteral("horizontalLayout_61"));
-        horizontalLayout_61->setContentsMargins(20, 5, -1, 5);
+        horizontalLayout_61->setContentsMargins(9, 9, 9, 9);
         groupBox_19 = new QGroupBox(pageHelp);
         groupBox_19->setObjectName(QStringLiteral("groupBox_19"));
         groupBox_19->setMinimumSize(QSize(600, 0));
@@ -4638,10 +3962,10 @@ public:
         sizePolicy9.setHeightForWidth(label_80->sizePolicy().hasHeightForWidth());
         label_80->setSizePolicy(sizePolicy9);
         label_80->setMinimumSize(QSize(300, 50));
-        QFont font12;
-        font12.setFamily(QStringLiteral("Berlin Sans FB"));
-        font12.setPointSize(26);
-        label_80->setFont(font12);
+        QFont font11;
+        font11.setFamily(QStringLiteral("Berlin Sans FB"));
+        font11.setPointSize(26);
+        label_80->setFont(font11);
         label_80->setStyleSheet(QStringLiteral("color : white;"));
 
         verticalLayout_6->addWidget(label_80);
@@ -4707,7 +4031,7 @@ public:
         sizePolicy9.setHeightForWidth(label_74->sizePolicy().hasHeightForWidth());
         label_74->setSizePolicy(sizePolicy9);
         label_74->setMinimumSize(QSize(300, 50));
-        label_74->setFont(font12);
+        label_74->setFont(font11);
         label_74->setStyleSheet(QStringLiteral("color : white;"));
 
         verticalLayout_26->addWidget(label_74);
@@ -4773,7 +4097,7 @@ public:
         sizePolicy9.setHeightForWidth(label_76->sizePolicy().hasHeightForWidth());
         label_76->setSizePolicy(sizePolicy9);
         label_76->setMinimumSize(QSize(300, 50));
-        label_76->setFont(font12);
+        label_76->setFont(font11);
         label_76->setStyleSheet(QStringLiteral("color : white;"));
 
         verticalLayout_27->addWidget(label_76);
@@ -4845,7 +4169,7 @@ public:
         sizePolicy9.setHeightForWidth(label_82->sizePolicy().hasHeightForWidth());
         label_82->setSizePolicy(sizePolicy9);
         label_82->setMinimumSize(QSize(300, 50));
-        label_82->setFont(font12);
+        label_82->setFont(font11);
         label_82->setStyleSheet(QStringLiteral("color : white;"));
 
         verticalLayout_28->addWidget(label_82);
@@ -5017,70 +4341,731 @@ public:
 
         verticalLayout_37->addLayout(horizontalLayout_61);
 
-        checkBoxHelpPage = new QCheckBox(pageHelp);
-        checkBoxHelpPage->setObjectName(QStringLiteral("checkBoxHelpPage"));
-        checkBoxHelpPage->setEnabled(true);
-        checkBoxHelpPage->setFont(font2);
-        checkBoxHelpPage->setStyleSheet(QLatin1String("QCheckBox {\n"
-"    color:rgb(255,255,255);\n"
+        stackedWidgetMain->addWidget(pageHelp);
+        pageSystem = new QWidget();
+        pageSystem->setObjectName(QStringLiteral("pageSystem"));
+        gridLayout_4 = new QGridLayout(pageSystem);
+        gridLayout_4->setSpacing(0);
+        gridLayout_4->setContentsMargins(11, 11, 11, 11);
+        gridLayout_4->setObjectName(QStringLiteral("gridLayout_4"));
+        gridLayout_4->setContentsMargins(0, 0, 0, 0);
+        frameMonitorBar_4 = new QFrame(pageSystem);
+        frameMonitorBar_4->setObjectName(QStringLiteral("frameMonitorBar_4"));
+        frameMonitorBar_4->setMinimumSize(QSize(0, 50));
+        frameMonitorBar_4->setMaximumSize(QSize(16777215, 50));
+        frameMonitorBar_4->setStyleSheet(QStringLiteral("background:#008F96;"));
+        frameMonitorBar_4->setFrameShape(QFrame::StyledPanel);
+        frameMonitorBar_4->setFrameShadow(QFrame::Raised);
+        horizontalLayout_50 = new QHBoxLayout(frameMonitorBar_4);
+        horizontalLayout_50->setSpacing(0);
+        horizontalLayout_50->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_50->setObjectName(QStringLiteral("horizontalLayout_50"));
+        horizontalLayout_50->setContentsMargins(0, 0, 0, 0);
+
+        gridLayout_4->addWidget(frameMonitorBar_4, 0, 0, 1, 1);
+
+        groupBox_15 = new QGroupBox(pageSystem);
+        groupBox_15->setObjectName(QStringLiteral("groupBox_15"));
+        groupBox_15->setStyleSheet(QLatin1String("QGroupBox::title{\n"
+"	color : white;\n"
+"	left: 10px;\n"
+"	margin-left: 0px;\n"
+"	padding: 0 1px;\n"
 "}\n"
 "\n"
-"QCheckBox::indicator {\n"
-"    width: 10px;\n"
-"    height: 10px;\n"
+"QGroupBox{\n"
+"	border-width: 2px;\n"
+"	border-style: solid;\n"
+"	border-color: white;\n"
+"	margin-top: 3ex;\n"
+"	margin-left: 3ex;\n"
+"	margin-right: 3ex;\n"
+"	margin-bottom: 3ex;\n"
+"\n"
+"	border-radius: 5px;\n"
+"}"));
+        gridLayout_82 = new QGridLayout(groupBox_15);
+        gridLayout_82->setSpacing(6);
+        gridLayout_82->setContentsMargins(11, 11, 11, 11);
+        gridLayout_82->setObjectName(QStringLiteral("gridLayout_82"));
+        gridLayout_82->setContentsMargins(0, -1, 0, -1);
+        groupBox_27 = new QGroupBox(groupBox_15);
+        groupBox_27->setObjectName(QStringLiteral("groupBox_27"));
+        groupBox_27->setFont(font2);
+        groupBox_27->setStyleSheet(QLatin1String("QGroupBox::title{\n"
+"	color : white;\n"
+"	left: 10px;\n"
+"	margin-left: 0px;\n"
+"	padding: 0 1px;\n"
 "}\n"
 "\n"
-"QCheckBox::indicator:unchecked {\n"
-"    border:2px solid rgb(51,51,51);\n"
-"	background:rgb(91,90,90);\n"
+"QGroupBox{\n"
+"	border-width: 2px;\n"
+"	border-style: solid;\n"
+"	border-color: white;\n"
+"	margin-top: 0.5ex;\n"
+"	border-radius: 5px;\n"
+"}"));
+        gridLayout_85 = new QGridLayout(groupBox_27);
+        gridLayout_85->setSpacing(0);
+        gridLayout_85->setContentsMargins(11, 11, 11, 11);
+        gridLayout_85->setObjectName(QStringLiteral("gridLayout_85"));
+        gridLayout_85->setContentsMargins(9, 30, 9, 9);
+        frame_37 = new QFrame(groupBox_27);
+        frame_37->setObjectName(QStringLiteral("frame_37"));
+        frame_37->setMinimumSize(QSize(300, 50));
+        frame_37->setStyleSheet(QLatin1String("#frame_37{\n"
+"background:#008F96;\n"
+"color: rgb(255, 255, 255);\n"
+"border-width: 0;\n"
+"border-radius : 0;\n"
+"}"));
+        frame_37->setFrameShape(QFrame::StyledPanel);
+        frame_37->setFrameShadow(QFrame::Raised);
+        gridLayout_3 = new QGridLayout(frame_37);
+        gridLayout_3->setSpacing(6);
+        gridLayout_3->setContentsMargins(11, 11, 11, 11);
+        gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
+        gridLayout_2 = new QGridLayout();
+        gridLayout_2->setSpacing(6);
+        gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
+        gridLayout = new QGridLayout();
+        gridLayout->setSpacing(6);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        label_61 = new QLabel(frame_37);
+        label_61->setObjectName(QStringLiteral("label_61"));
+        label_61->setMinimumSize(QSize(100, 60));
+        label_61->setFont(font);
+        label_61->setStyleSheet(QLatin1String("background:#008F96;\n"
+"color: rgb(255, 255, 255);\n"
+"border-width: 0;\n"
+"border-radius : 0;"));
+
+        gridLayout->addWidget(label_61, 0, 0, 1, 1);
+
+        comboBoxChangePageSize = new QComboBox(frame_37);
+        comboBoxChangePageSize->setObjectName(QStringLiteral("comboBoxChangePageSize"));
+        comboBoxChangePageSize->setMinimumSize(QSize(0, 40));
+        comboBoxChangePageSize->setFont(font3);
+        comboBoxChangePageSize->setStyleSheet(QLatin1String("QComboBox {\n"
+"	border: 2px solid rgb(51,51,51);\n"
+"	border-radius: 5px;	\n"
+"	color:rgb(255,255,255);\n"
+"	background-color: rgb(51,51,51);\n"
 "}\n"
 "\n"
-"QCheckBox::indicator:unchecked:pressed {\n"
-"	border:2px solid rgb(51,51,51);\n"
-"   	background:rgb(0,143,170);\n"
+"QComboBox:hover {\n"
+"	border: 2px solid rgb(0,143,170);\n"
+"	border-radius: 5px;	\n"
+"	color:rgb(255,255,255);\n"
+"	background-color: rgb(0,143,170);\n"
 "}\n"
 "\n"
-"QCheckBox::indicator:checked {\n"
-"	background-color:rgb(0,143,170);\n"
-"    border: 2px solid rgb(51,51,51);\n"
+"QComboBox:!editable, QComboBox::drop-down:editable {\n"
+"	background: rgb(51,51,51);\n"
 "}\n"
 "\n"
-"QCheckBox::indicator:checked:pressed {\n"
-"    border:2px solid rgb(51,51,51);\n"
-"	background:rgb(91,90,90);\n"
+"QComboBox:!editable:on, QComboBox::drop-down:editable:on {\n"
+"    background:rgb(51,51,51);\n"
 "}\n"
 "\n"
+"QComboBox:on { /* shift the text when the popup opens */\n"
+"    padding-top: 3px;\n"
+"    padding-left: 4px;\n"
+"}\n"
+"\n"
+"QComboBox::drop-down {\n"
+"    subcontrol-origin: padding;\n"
+"    subcontrol-position: top right;\n"
+"    width: 15px;\n"
+"\n"
+"}\n"
+"\n"
+"QComboBox::down-arrow {\n"
+"    image: url(:icons/icos/arrow.png);\n"
+"}\n"
+"\n"
+"QComboBox::down-arrow:on { /* shift the arrow when popup is open */\n"
+"    top: 1px;\n"
+"    left: 1px;\n"
+"}\n"
+"\n"
+"QComboBox::drop-down {\n"
+""
+                        "    background:rgb(51,51,51);\n"
+"}\n"
+"\n"
+"QListView\n"
+"{\n"
+"  	color: white;\n"
+"}\n"
 ""));
 
-        verticalLayout_37->addWidget(checkBoxHelpPage);
+        gridLayout->addWidget(comboBoxChangePageSize, 0, 1, 1, 1);
 
-        stackedWidgetMain->addWidget(pageHelp);
+        label_62 = new QLabel(frame_37);
+        label_62->setObjectName(QStringLiteral("label_62"));
+        label_62->setMinimumSize(QSize(100, 50));
+        label_62->setFont(font);
+        label_62->setStyleSheet(QLatin1String("background:#008F96;\n"
+"color: rgb(255, 255, 255);\n"
+"border-width: 0;\n"
+"border-radius : 0;"));
+
+        gridLayout->addWidget(label_62, 1, 0, 1, 1);
+
+        spinBoxChangePageSizeMax = new QSpinBox(frame_37);
+        spinBoxChangePageSizeMax->setObjectName(QStringLiteral("spinBoxChangePageSizeMax"));
+        spinBoxChangePageSizeMax->setMinimumSize(QSize(0, 40));
+        QFont font12;
+        font12.setFamily(QStringLiteral("Berlin Sans FB"));
+        font12.setPointSize(16);
+        font12.setBold(false);
+        font12.setItalic(false);
+        font12.setWeight(50);
+        spinBoxChangePageSizeMax->setFont(font12);
+        spinBoxChangePageSizeMax->setStyleSheet(QLatin1String("QSpinBox { \n"
+"	border: 2px solid rgb(51,51,51);\n"
+"	border-radius: 5px;	\n"
+"	color:rgb(255,255,255);\n"
+"	background-color: rgb(51,51,51);\n"
+"	\n"
+"	font: \"Berlin Sans FB\";\n"
+"}\n"
+"\n"
+"QSpinBox::up-arrow { \n"
+"	image: url(:icons/icos/arrow.png);\n"
+"}\n"
+"\n"
+"QSpinBox::up-button {\n"
+"	border: none; \n"
+"	color:rgb(255,255,255,0);\n"
+"    border-left-width: 1px;\n"
+"    border-left-color: darkgray;\n"
+"}\n"
+"QSpinBox::up-button:hover { \n"
+"	border: 2px solid rgb(0,143,170);\n"
+"	border-radius: 5px;	\n"
+"	color:rgb(255,255,255);\n"
+"}\n"
+"\n"
+"QSpinBox::down-arrow { \n"
+"	image: url(:icons/icos/arrow.png);\n"
+"}\n"
+"QSpinBox::down-button {\n"
+"	border: none; \n"
+"	color:rgb(255,255,255,0);\n"
+"}\n"
+"QSpinBox::down-button:hover { \n"
+"	border: 2px solid rgb(0,143,170);\n"
+"	border-radius: 5px;	\n"
+"	color:rgb(255,255,255);\n"
+"}\n"
+""));
+        spinBoxChangePageSizeMax->setAlignment(Qt::AlignCenter);
+
+        gridLayout->addWidget(spinBoxChangePageSizeMax, 1, 1, 1, 1);
+
+        label_63 = new QLabel(frame_37);
+        label_63->setObjectName(QStringLiteral("label_63"));
+        label_63->setMinimumSize(QSize(100, 50));
+        label_63->setFont(font);
+        label_63->setStyleSheet(QLatin1String("background:#008F96;\n"
+"color: rgb(255, 255, 255);\n"
+"border-width: 0;\n"
+"border-radius : 0;"));
+
+        gridLayout->addWidget(label_63, 2, 0, 1, 1);
+
+        spinBoxChangePageSizeMin = new QSpinBox(frame_37);
+        spinBoxChangePageSizeMin->setObjectName(QStringLiteral("spinBoxChangePageSizeMin"));
+        spinBoxChangePageSizeMin->setMinimumSize(QSize(0, 40));
+        spinBoxChangePageSizeMin->setFont(font12);
+        spinBoxChangePageSizeMin->setStyleSheet(QLatin1String("QSpinBox { \n"
+"	border: 2px solid rgb(51,51,51);\n"
+"	border-radius: 5px;	\n"
+"	color:rgb(255,255,255);\n"
+"	background-color: rgb(51,51,51);\n"
+"	font: \"Berlin Sans FB\";\n"
+"}\n"
+"\n"
+"QSpinBox::up-arrow { \n"
+"	image: url(:icons/icos/arrow.png);\n"
+"}\n"
+"\n"
+"QSpinBox::up-button {\n"
+"	border: none; \n"
+"	color:rgb(255,255,255,0);\n"
+"    border-left-width: 1px;\n"
+"    border-left-color: darkgray;\n"
+"}\n"
+"QSpinBox::up-button:hover { \n"
+"	border: 2px solid rgb(0,143,170);\n"
+"	border-radius: 5px;	\n"
+"	color:rgb(255,255,255);\n"
+"}\n"
+"\n"
+"QSpinBox::down-arrow { \n"
+"	image: url(:icons/icos/arrow.png);\n"
+"}\n"
+"QSpinBox::down-button {\n"
+"	border: none; \n"
+"	color:rgb(255,255,255,0);\n"
+"}\n"
+"QSpinBox::down-button:hover { \n"
+"	border: 2px solid rgb(0,143,170);\n"
+"	border-radius: 5px;	\n"
+"	color:rgb(255,255,255);\n"
+"}\n"
+""));
+        spinBoxChangePageSizeMin->setAlignment(Qt::AlignCenter);
+
+        gridLayout->addWidget(spinBoxChangePageSizeMin, 2, 1, 1, 1);
+
+
+        gridLayout_2->addLayout(gridLayout, 0, 0, 1, 1);
+
+        pushButtonChangePageSize = new QPushButton(frame_37);
+        pushButtonChangePageSize->setObjectName(QStringLiteral("pushButtonChangePageSize"));
+        pushButtonChangePageSize->setMinimumSize(QSize(0, 80));
+        pushButtonChangePageSize->setFont(font);
+        pushButtonChangePageSize->setStyleSheet(QLatin1String("QPushButton {\n"
+"	border: none;\n"
+"	background-color: rgba(0,0,0,0);\n"
+"	color : white;\n"
+"}\n"
+"QPushButton:hover {\n"
+"	background-color: rgb(51,51,51);\n"
+"}\n"
+"QPushButton:pressed {	\n"
+"	background-color: #7A0000;\n"
+"}"));
+
+        gridLayout_2->addWidget(pushButtonChangePageSize, 1, 0, 1, 1);
+
+        pushButtonCancelAutoPage = new QPushButton(frame_37);
+        pushButtonCancelAutoPage->setObjectName(QStringLiteral("pushButtonCancelAutoPage"));
+        pushButtonCancelAutoPage->setEnabled(true);
+        pushButtonCancelAutoPage->setMinimumSize(QSize(0, 80));
+        pushButtonCancelAutoPage->setFont(font);
+        pushButtonCancelAutoPage->setStyleSheet(QLatin1String("QPushButton {\n"
+"	border: none;\n"
+"	background-color: rgba(0,0,0,0);\n"
+"	color : white;\n"
+"}\n"
+"QPushButton:hover {\n"
+"	background-color: rgb(51,51,51);\n"
+"}\n"
+"QPushButton:pressed {	\n"
+"	background-color: #7A0000;\n"
+"}"));
+
+        gridLayout_2->addWidget(pushButtonCancelAutoPage, 2, 0, 1, 1);
+
+
+        gridLayout_3->addLayout(gridLayout_2, 0, 0, 1, 1);
+
+
+        gridLayout_85->addWidget(frame_37, 0, 0, 1, 1);
+
+
+        gridLayout_82->addWidget(groupBox_27, 0, 1, 1, 1);
+
+        horizontalLayout_28 = new QHBoxLayout();
+        horizontalLayout_28->setSpacing(0);
+        horizontalLayout_28->setObjectName(QStringLiteral("horizontalLayout_28"));
+        verticalLayout_17 = new QVBoxLayout();
+        verticalLayout_17->setSpacing(0);
+        verticalLayout_17->setObjectName(QStringLiteral("verticalLayout_17"));
+        groupBox_26 = new QGroupBox(groupBox_15);
+        groupBox_26->setObjectName(QStringLiteral("groupBox_26"));
+        groupBox_26->setStyleSheet(QLatin1String("QGroupBox::title{\n"
+"	color : white;\n"
+"	left: 0px;\n"
+"	margin-left: 0px;\n"
+"	padding: 0px;\n"
+"}\n"
+"\n"
+"QGroupBox{\n"
+"	border-width: 3px;\n"
+"	border-style: solid;\n"
+"	border-color: white;\n"
+"	margin-top: 0.5ex;\n"
+"	border-radius: 5px;\n"
+"	background:#008F96;\n"
+"}"));
+        gridLayout_83 = new QGridLayout(groupBox_26);
+        gridLayout_83->setSpacing(0);
+        gridLayout_83->setContentsMargins(11, 11, 11, 11);
+        gridLayout_83->setObjectName(QStringLiteral("gridLayout_83"));
+        gridLayout_83->setContentsMargins(0, 0, 0, 0);
+        frame_35 = new QFrame(groupBox_26);
+        frame_35->setObjectName(QStringLiteral("frame_35"));
+        frame_35->setMinimumSize(QSize(260, 60));
+        frame_35->setStyleSheet(QLatin1String("background-color: rgb(0, 143, 150);\n"
+"background-repeat:no-repeat;\n"
+"background-position:center;\n"
+"border-width: 0;\n"
+"border-radius : 0;"));
+        frame_35->setFrameShape(QFrame::StyledPanel);
+        frame_35->setFrameShadow(QFrame::Raised);
+        gridLayout_84 = new QGridLayout(frame_35);
+        gridLayout_84->setSpacing(1);
+        gridLayout_84->setContentsMargins(11, 11, 11, 11);
+        gridLayout_84->setObjectName(QStringLiteral("gridLayout_84"));
+        gridLayout_84->setContentsMargins(1, 1, 1, 1);
+        frame_36 = new QFrame(frame_35);
+        frame_36->setObjectName(QStringLiteral("frame_36"));
+        frame_36->setMinimumSize(QSize(300, 50));
+        frame_36->setStyleSheet(QStringLiteral("background:#008F96;"));
+        frame_36->setFrameShape(QFrame::StyledPanel);
+        frame_36->setFrameShadow(QFrame::Raised);
+        horizontalLayout_32 = new QHBoxLayout(frame_36);
+        horizontalLayout_32->setSpacing(6);
+        horizontalLayout_32->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_32->setObjectName(QStringLiteral("horizontalLayout_32"));
+        horizontalLayout_32->setContentsMargins(9, -1, -1, -1);
+        label_60 = new QLabel(frame_36);
+        label_60->setObjectName(QStringLiteral("label_60"));
+        label_60->setMinimumSize(QSize(100, 0));
+        label_60->setFont(font6);
+        label_60->setStyleSheet(QStringLiteral("color : white;"));
+
+        horizontalLayout_32->addWidget(label_60);
+
+        horizontalSpacer_8 = new QSpacerItem(171, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_32->addItem(horizontalSpacer_8);
+
+
+        gridLayout_84->addWidget(frame_36, 0, 0, 1, 1);
+
+
+        gridLayout_83->addWidget(frame_35, 0, 0, 1, 1);
+
+        groupBox_16 = new QGroupBox(groupBox_26);
+        groupBox_16->setObjectName(QStringLiteral("groupBox_16"));
+        groupBox_16->setStyleSheet(QLatin1String("QGroupBox {\n"
+"	background-color: rgb(90, 91, 91);\n"
+"	color: white;\n"
+"	border:4px solid rgb(51,51,51);\n"
+"	border-radius:4px;\n"
+"}"));
+        horizontalLayout_33 = new QHBoxLayout(groupBox_16);
+        horizontalLayout_33->setSpacing(0);
+        horizontalLayout_33->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_33->setObjectName(QStringLiteral("horizontalLayout_33"));
+        horizontalLayout_33->setContentsMargins(0, 0, 0, 0);
+        plainTextEditSettingsSystemInfoTitle = new QPlainTextEdit(groupBox_16);
+        plainTextEditSettingsSystemInfoTitle->setObjectName(QStringLiteral("plainTextEditSettingsSystemInfoTitle"));
+        plainTextEditSettingsSystemInfoTitle->setMaximumSize(QSize(300, 16777215));
+        plainTextEditSettingsSystemInfoTitle->setFont(font);
+        plainTextEditSettingsSystemInfoTitle->setStyleSheet(QLatin1String("QPlainTextEdit {background-color: rgb(90, 91, 91);border-width: 0;\n"
+"border-radius : 0; color: #ffd000;}\n"
+" QScrollBar:horizontal\n"
+" {\n"
+"     height: 15px;\n"
+"     margin: 3px 15px 3px 15px;\n"
+"     border: 1px transparent #2A2929;\n"
+"     border-radius: 4px;\n"
+"     background-color: rgb(0, 143, 150);\n"
+" }\n"
+"\n"
+" QScrollBar::handle:horizontal\n"
+" {\n"
+"     background-color: rgb(51,51,51,220);\n"
+"     min-width: 5px;\n"
+"     border-radius: 4px;\n"
+" }\n"
+"\n"
+" QScrollBar::add-line:horizontal\n"
+" {\n"
+"     margin: 0px 3px 0px 3px;\n"
+"     border-image: url(:/qss_icons/rc/right_arrow_disabled.png);\n"
+"     width: 10px;\n"
+"     height: 10px;\n"
+"     subcontrol-position: right;\n"
+"     subcontrol-origin: margin;\n"
+" }\n"
+"\n"
+" QScrollBar::sub-line:horizontal\n"
+" {\n"
+"     margin: 0px 3px 0px 3px;\n"
+"     border-image: url(:/qss_icons/rc/left_arrow_disabled.png);\n"
+"     height: 10px;\n"
+"     width: 10px;\n"
+"     subcontrol-position: left;\n"
+"     subcontrol-origin: margin;\n"
+""
+                        " }\n"
+"\n"
+" QScrollBar::add-line:horizontal:hover,QScrollBar::add-line:horizontal:on\n"
+" {\n"
+"     border-image: url(:/qss_icons/rc/right_arrow.png);\n"
+"     height: 10px;\n"
+"     width: 10px;\n"
+"     subcontrol-position: right;\n"
+"     subcontrol-origin: margin;\n"
+" }\n"
+"\n"
+"\n"
+" QScrollBar::sub-line:horizontal:hover, QScrollBar::sub-line:horizontal:on\n"
+" {\n"
+"     border-image: url(:/qss_icons/rc/left_arrow.png);\n"
+"     height: 10px;\n"
+"     width: 10px;\n"
+"     subcontrol-position: left;\n"
+"     subcontrol-origin: margin;\n"
+" }\n"
+"\n"
+" QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal\n"
+" {\n"
+"     background: none;\n"
+" }\n"
+"\n"
+"\n"
+" QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal\n"
+" {\n"
+"     background: none;\n"
+" }\n"
+"\n"
+" QScrollBar:vertical\n"
+" {\n"
+"     background:rgb(0, 143, 150);\n"
+"     width: 15px;\n"
+"     margin: 15px 3px 15px 3px;\n"
+"     border: 1px transparent #2A2929;\n"
+"     border-radius: 4px;\n"
+" }\n"
+"\n"
+" QScrollB"
+                        "ar::handle:vertical\n"
+" {\n"
+"     background-color: rgb(51,51,51,220);\n"
+"     min-height: 5px;\n"
+"     border-radius: 4px;\n"
+" }\n"
+"\n"
+" QScrollBar::sub-line:vertical\n"
+" {\n"
+"     margin: 3px 0px 3px 0px;\n"
+"     border-image: url(:/qss_icons/rc/up_arrow_disabled.png);\n"
+"     height: 10px;\n"
+"     width: 10px;\n"
+"     subcontrol-position: top;\n"
+"     subcontrol-origin: margin;\n"
+" }\n"
+"\n"
+" QScrollBar::add-line:vertical\n"
+" {\n"
+"     margin: 3px 0px 3px 0px;\n"
+"     border-image: url(:/qss_icons/rc/down_arrow_disabled.png);\n"
+"     height: 10px;\n"
+"     width: 10px;\n"
+"     subcontrol-position: bottom;\n"
+"     subcontrol-origin: margin;\n"
+" }\n"
+"\n"
+" QScrollBar::sub-line:vertical:hover,QScrollBar::sub-line:vertical:on\n"
+" {\n"
+"\n"
+"     border-image: url(:/qss_icons/rc/up_arrow.png);\n"
+"     height: 10px;\n"
+"     width: 10px;\n"
+"     subcontrol-position: top;\n"
+"     subcontrol-origin: margin;\n"
+" }\n"
+"\n"
+"\n"
+" QScrollBar::add-line:vertical:hover, QScrollBar::add-line:v"
+                        "ertical:on\n"
+" {\n"
+"     border-image: url(:/qss_icons/rc/down_arrow.png);\n"
+"     height: 10px;\n"
+"     width: 10px;\n"
+"     subcontrol-position: bottom;\n"
+"     subcontrol-origin: margin;\n"
+" }\n"
+"\n"
+" QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical\n"
+" {\n"
+"     background: none;\n"
+" }\n"
+"\n"
+"\n"
+" QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical\n"
+" {\n"
+"     background: none;\n"
+" }"));
+
+        horizontalLayout_33->addWidget(plainTextEditSettingsSystemInfoTitle);
+
+        plainTextEditSettingsSystemInfo = new QPlainTextEdit(groupBox_16);
+        plainTextEditSettingsSystemInfo->setObjectName(QStringLiteral("plainTextEditSettingsSystemInfo"));
+        plainTextEditSettingsSystemInfo->setMinimumSize(QSize(450, 0));
+        plainTextEditSettingsSystemInfo->setFont(font);
+        plainTextEditSettingsSystemInfo->setStyleSheet(QLatin1String("QPlainTextEdit {background-color: rgb(90, 91, 91);border-width: 0;\n"
+"border-radius : 0;color:white;}\n"
+" QScrollBar:horizontal\n"
+" {\n"
+"     height: 15px;\n"
+"     margin: 3px 15px 3px 15px;\n"
+"     border: 1px transparent #2A2929;\n"
+"     border-radius: 4px;\n"
+"     background-color: rgb(0, 143, 150);\n"
+" }\n"
+"\n"
+" QScrollBar::handle:horizontal\n"
+" {\n"
+"     background-color: rgb(51,51,51,220);\n"
+"     min-width: 5px;\n"
+"     border-radius: 4px;\n"
+" }\n"
+"\n"
+" QScrollBar::add-line:horizontal\n"
+" {\n"
+"     margin: 0px 3px 0px 3px;\n"
+"     border-image: url(:/qss_icons/rc/right_arrow_disabled.png);\n"
+"     width: 10px;\n"
+"     height: 10px;\n"
+"     subcontrol-position: right;\n"
+"     subcontrol-origin: margin;\n"
+" }\n"
+"\n"
+" QScrollBar::sub-line:horizontal\n"
+" {\n"
+"     margin: 0px 3px 0px 3px;\n"
+"     border-image: url(:/qss_icons/rc/left_arrow_disabled.png);\n"
+"     height: 10px;\n"
+"     width: 10px;\n"
+"     subcontrol-position: left;\n"
+"     subcontrol-origin: margin;\n"
+" }\n"
+""
+                        "\n"
+" QScrollBar::add-line:horizontal:hover,QScrollBar::add-line:horizontal:on\n"
+" {\n"
+"     border-image: url(:/qss_icons/rc/right_arrow.png);\n"
+"     height: 10px;\n"
+"     width: 10px;\n"
+"     subcontrol-position: right;\n"
+"     subcontrol-origin: margin;\n"
+" }\n"
+"\n"
+"\n"
+" QScrollBar::sub-line:horizontal:hover, QScrollBar::sub-line:horizontal:on\n"
+" {\n"
+"     border-image: url(:/qss_icons/rc/left_arrow.png);\n"
+"     height: 10px;\n"
+"     width: 10px;\n"
+"     subcontrol-position: left;\n"
+"     subcontrol-origin: margin;\n"
+" }\n"
+"\n"
+" QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal\n"
+" {\n"
+"     background: none;\n"
+" }\n"
+"\n"
+"\n"
+" QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal\n"
+" {\n"
+"     background: none;\n"
+" }\n"
+"\n"
+" QScrollBar:vertical\n"
+" {\n"
+"     background:rgb(0, 143, 150);\n"
+"     width: 15px;\n"
+"     margin: 15px 3px 15px 3px;\n"
+"     border: 1px transparent #2A2929;\n"
+"     border-radius: 4px;\n"
+" }\n"
+"\n"
+" QScrollBar::han"
+                        "dle:vertical\n"
+" {\n"
+"     background-color: rgb(51,51,51,220);\n"
+"     min-height: 5px;\n"
+"     border-radius: 4px;\n"
+" }\n"
+"\n"
+" QScrollBar::sub-line:vertical\n"
+" {\n"
+"     margin: 3px 0px 3px 0px;\n"
+"     border-image: url(:/qss_icons/rc/up_arrow_disabled.png);\n"
+"     height: 10px;\n"
+"     width: 10px;\n"
+"     subcontrol-position: top;\n"
+"     subcontrol-origin: margin;\n"
+" }\n"
+"\n"
+" QScrollBar::add-line:vertical\n"
+" {\n"
+"     margin: 3px 0px 3px 0px;\n"
+"     border-image: url(:/qss_icons/rc/down_arrow_disabled.png);\n"
+"     height: 10px;\n"
+"     width: 10px;\n"
+"     subcontrol-position: bottom;\n"
+"     subcontrol-origin: margin;\n"
+" }\n"
+"\n"
+" QScrollBar::sub-line:vertical:hover,QScrollBar::sub-line:vertical:on\n"
+" {\n"
+"\n"
+"     border-image: url(:/qss_icons/rc/up_arrow.png);\n"
+"     height: 10px;\n"
+"     width: 10px;\n"
+"     subcontrol-position: top;\n"
+"     subcontrol-origin: margin;\n"
+" }\n"
+"\n"
+"\n"
+" QScrollBar::add-line:vertical:hover, QScrollBar::add-line:vertical"
+                        ":on\n"
+" {\n"
+"     border-image: url(:/qss_icons/rc/down_arrow.png);\n"
+"     height: 10px;\n"
+"     width: 10px;\n"
+"     subcontrol-position: bottom;\n"
+"     subcontrol-origin: margin;\n"
+" }\n"
+"\n"
+" QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical\n"
+" {\n"
+"     background: none;\n"
+" }\n"
+"\n"
+"\n"
+" QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical\n"
+" {\n"
+"     background: none;\n"
+" }"));
+
+        horizontalLayout_33->addWidget(plainTextEditSettingsSystemInfo);
+
+
+        gridLayout_83->addWidget(groupBox_16, 1, 0, 1, 1);
+
+
+        verticalLayout_17->addWidget(groupBox_26);
+
+
+        horizontalLayout_28->addLayout(verticalLayout_17);
+
+
+        gridLayout_82->addLayout(horizontalLayout_28, 0, 0, 1, 1);
+
+
+        gridLayout_4->addWidget(groupBox_15, 1, 0, 1, 1);
+
+        stackedWidgetMain->addWidget(pageSystem);
 
         verticalLayout->addWidget(stackedWidgetMain);
 
-        frame_43 = new QFrame(layoutWidget1);
-        frame_43->setObjectName(QStringLiteral("frame_43"));
-        QSizePolicy sizePolicy11(QSizePolicy::Preferred, QSizePolicy::Minimum);
-        sizePolicy11.setHorizontalStretch(0);
-        sizePolicy11.setVerticalStretch(0);
-        sizePolicy11.setHeightForWidth(frame_43->sizePolicy().hasHeightForWidth());
-        frame_43->setSizePolicy(sizePolicy11);
-        frame_43->setMinimumSize(QSize(0, 15));
-        frame_43->setStyleSheet(QStringLiteral("background:rgb(51,51,51,220);"));
-        frame_43->setFrameShape(QFrame::StyledPanel);
-        frame_43->setFrameShadow(QFrame::Raised);
+        splitter_4->addWidget(layoutWidget);
 
-        verticalLayout->addWidget(frame_43);
-
-        splitter_4->addWidget(layoutWidget1);
-
-        verticalLayout_29->addWidget(splitter_4);
-
-        lineEditMinerPath = new QLineEdit(centralWidget);
-        lineEditMinerPath->setObjectName(QStringLiteral("lineEditMinerPath"));
-        lineEditMinerPath->setMaximumSize(QSize(0, 0));
-
-        verticalLayout_29->addWidget(lineEditMinerPath);
+        verticalLayout_21->addWidget(splitter_4);
 
         lineEditArgs = new QLineEdit(centralWidget);
         lineEditArgs->setObjectName(QStringLiteral("lineEditArgs"));
@@ -5088,14 +5073,20 @@ public:
         lineEditArgs->setSizePolicy(sizePolicy2);
         lineEditArgs->setMaximumSize(QSize(0, 0));
 
-        verticalLayout_29->addWidget(lineEditArgs);
+        verticalLayout_21->addWidget(lineEditArgs);
+
+        lineEditMinerPath = new QLineEdit(centralWidget);
+        lineEditMinerPath->setObjectName(QStringLiteral("lineEditMinerPath"));
+        lineEditMinerPath->setMaximumSize(QSize(0, 0));
+
+        verticalLayout_21->addWidget(lineEditMinerPath);
 
         MainWindow->setCentralWidget(centralWidget);
 
         retranslateUi(MainWindow);
 
         stackedWidgetMain->setCurrentIndex(0);
-        stackedWidgetMonitorMain->setCurrentIndex(1);
+        stackedWidgetMonitorMain->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -5107,11 +5098,8 @@ public:
         pushButtonToggle->setText(QString());
         pushButtonMonitorPage->setText(QString());
         pushButtonOCPage->setText(QString());
+        pushButtonSystem->setText(QString());
         pushButtonHelpPage->setText(QString());
-        pushButtonMonitorPage_Overview->setText(QString());
-        pushButtonMonitorPage_Mining->setText(QString());
-        pushButtonMonitorPage_System->setText(QString());
-        pushButtonMonitorPage_DevicesInfo->setText(QString());
         groupBox_2->setTitle(QApplication::translate("MainWindow", "Temperature", Q_NULLPTR));
         groupBox_10->setTitle(QString());
         label_58->setText(QApplication::translate("MainWindow", "MAX", Q_NULLPTR));
@@ -5158,7 +5146,7 @@ public:
         labelEffectiveness->setText(QApplication::translate("MainWindow", "0%", Q_NULLPTR));
         label_38->setText(QApplication::translate("MainWindow", "Effective\n"
 "Rate", Q_NULLPTR));
-        groupBoxDiskInfo->setTitle(QApplication::translate("MainWindow", "Disk", Q_NULLPTR));
+        groupBoxDiskInfo->setTitle(QApplication::translate("MainWindow", "Free Disk Space", Q_NULLPTR));
         groupBox_4->setTitle(QString());
         labelCore->setText(QApplication::translate("MainWindow", "Core", Q_NULLPTR));
         comboBoxCore->clear();
@@ -5193,25 +5181,6 @@ public:
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Berlin Sans FB'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", Q_NULLPTR));
-        groupBox_7->setTitle(QString());
-        groupBox_24->setTitle(QString());
-        label_41->setText(QApplication::translate("MainWindow", "Virtual Memory Info", Q_NULLPTR));
-        groupBox_14->setTitle(QString());
-        plainTextEditSettingsSystemInfoTitle->setPlainText(QApplication::translate("MainWindow", "AllocatedBaseSize	\n"
-"CurrentUsage	\n"
-"Description	\n"
-"InstallDate	\n"
-"Name	\n"
-"PeakUsage	\n"
-"Status	\n"
-"TempPageFile", Q_NULLPTR));
-        plainTextEditSettingsSystemInfo->setPlainText(QString());
-        groupBox_25->setTitle(QApplication::translate("MainWindow", "Virtual Memory", Q_NULLPTR));
-        pushButtonChangePageSize->setText(QApplication::translate("MainWindow", "Apply", Q_NULLPTR));
-        label_43->setText(QApplication::translate("MainWindow", " Disk Part.", Q_NULLPTR));
-        label_46->setText(QApplication::translate("MainWindow", " Max Size", Q_NULLPTR));
-        label_45->setText(QApplication::translate("MainWindow", " Min Size", Q_NULLPTR));
-        pushButtonCancelAutoPage->setText(QApplication::translate("MainWindow", "Cancel Auto Page", Q_NULLPTR));
         groupBox_8->setTitle(QString());
         groupBox_11->setTitle(QString());
         labelHistoryDeviceNum->setText(QApplication::translate("MainWindow", "Device#", Q_NULLPTR));
@@ -5222,6 +5191,10 @@ public:
         pushButtonSearchHistory->setText(QApplication::translate("MainWindow", "Display", Q_NULLPTR));
         groupBox_13->setTitle(QApplication::translate("MainWindow", "Devices", Q_NULLPTR));
         groupBoxDevicesInfo->setTitle(QString());
+        pushButtonMonitorPage_Overview->setText(QString());
+        pushButtonMonitorPage_Mining->setText(QString());
+        pushButtonMonitorPage_System->setText(QString());
+        pushButtonMonitorPage_DevicesInfo->setText(QString());
         label_52->setText(QApplication::translate("MainWindow", "Devices", Q_NULLPTR));
         temperatureLimit->setText(QApplication::translate("MainWindow", "TempLimit", Q_NULLPTR));
         label_50->setText(QApplication::translate("MainWindow", "Power Limit (%)", Q_NULLPTR));
@@ -5251,7 +5224,25 @@ public:
         label_82->setText(QApplication::translate("MainWindow", "Shiqi Zhang", Q_NULLPTR));
         label_83->setText(QApplication::translate("MainWindow", "118010416", Q_NULLPTR));
         plainTextEditHelpPage->setPlainText(QString());
-        checkBoxHelpPage->setText(QApplication::translate("MainWindow", "Donate 5 mins every 4 hours", Q_NULLPTR));
+        groupBox_15->setTitle(QString());
+        groupBox_27->setTitle(QApplication::translate("MainWindow", "Virtual Memory", Q_NULLPTR));
+        label_61->setText(QApplication::translate("MainWindow", " Disk Part.", Q_NULLPTR));
+        label_62->setText(QApplication::translate("MainWindow", " Max Size", Q_NULLPTR));
+        label_63->setText(QApplication::translate("MainWindow", " Min Size", Q_NULLPTR));
+        pushButtonChangePageSize->setText(QApplication::translate("MainWindow", "Apply", Q_NULLPTR));
+        pushButtonCancelAutoPage->setText(QApplication::translate("MainWindow", "Cancel Auto Page", Q_NULLPTR));
+        groupBox_26->setTitle(QString());
+        label_60->setText(QApplication::translate("MainWindow", "Virtual Memory Info", Q_NULLPTR));
+        groupBox_16->setTitle(QString());
+        plainTextEditSettingsSystemInfoTitle->setPlainText(QApplication::translate("MainWindow", "AllocatedBaseSize	\n"
+"CurrentUsage	\n"
+"Description	\n"
+"InstallDate	\n"
+"Name	\n"
+"PeakUsage	\n"
+"Status	\n"
+"TempPageFile", Q_NULLPTR));
+        plainTextEditSettingsSystemInfo->setPlainText(QString());
     } // retranslateUi
 
 };
