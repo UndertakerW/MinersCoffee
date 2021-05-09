@@ -25,7 +25,6 @@
 #include <vector>
 
 #include "nvidiaapi.h"
-#include "amdapi_adl.h"
 #include "structures.h"
 
 class GeneralTest;
@@ -42,10 +41,6 @@ protected:
 
 public:
     GPUMonitor(QObject* p = Q_NULLPTR);
-
-    //void SetAPI(Core* core);
-
-    //virtual MiningInfo getStatus() = 0;
 
     virtual QList<GPUInfo> getStatus() = 0;
 
@@ -65,15 +60,6 @@ signals:
                        , unsigned int maxpowerdraw
                        , unsigned int minpowerdraw
                        , unsigned int totalpowerdraw);
-    /*
-    void gpuInfoSignal1(unsigned int gpucount
-                       , unsigned int *Allgputemp
-                       , unsigned int *Allfanspeed
-                       , unsigned int *Allmemclock
-                       , unsigned int *Allgpuclock
-                       , unsigned int *Allpowerdraw
-                       , unsigned int totalpowerdraw);
-                       */
 
     friend class GeneralTest;
 };
@@ -89,13 +75,6 @@ public:
 
     void run() override;
 
-    //void mysql();
-
-//    void mysql();
-
-
-    //MiningInfo getStatus() override;
-
     QList<GPUInfo> getStatus() override;
 
     friend class GeneralTest;
@@ -109,13 +88,11 @@ public:
 
     void run() override;
 
-    //MiningInfo getStatus() override;
-
     QList<GPUInfo> getStatus() override;
 
 
 private:
-    amdapi_adl* _amd;
+    // amdADL* _adl;
 
     friend class GeneralTest;
 

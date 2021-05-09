@@ -43,7 +43,6 @@ SOURCES += \
     helpdialog.cpp \
     nvidianvml.cpp \
     nvidiaapi.cpp \
-    amdapi_adl.cpp \
     hashratecharview.cpp \
     nvocpage.cpp \
     structures.cpp \
@@ -63,7 +62,6 @@ HEADERS += \
     helpdialog.h \
     nvidianvml.h \
     nvidiaapi.h \
-    amdapi_adl.h \
     hashratecharview.h \
     nvocpage.h \
     piesliceeff.h \

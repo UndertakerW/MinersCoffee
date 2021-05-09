@@ -4,9 +4,15 @@
 #include "constants.h"
 #include "tst_generaltest.h"
 
-GPUMonitor::GPUMonitor(QObject *p) {}
+GPUMonitor::GPUMonitor(QObject *p)
+{
 
-nvMonitorThrd::nvMonitorThrd(QObject *p, nvidiaAPI *nvapi) : GPUMonitor(p),_nvapi(nvapi) {}
+}
+
+nvMonitorThrd::nvMonitorThrd(QObject *p, nvidiaAPI *nvapi) : GPUMonitor(p),_nvapi(nvapi)
+{
+
+}
 
 void nvMonitorThrd::run()
 {
@@ -18,10 +24,9 @@ void nvMonitorThrd::run()
         QList<GPUInfo> gpuInfos = nvml->getStatus();
 
         unsigned int gpucount = nvml->getGPUCount();
-
         unsigned int maxTemp = nvml->getHigherTemp();
         unsigned int minTemp = nvml->getLowerTemp();
-        unsigned int TempLimit = nvml->getTempLimit();
+        unsigned int tempLimit = nvml->getTempLimit();
         unsigned int maxfanspeed = nvml->getHigherFanSpeed();
         unsigned int minfanspeed = nvml->getLowerFanSpeed();
         unsigned int maxmemclock = nvml->getMemMaxClock();
@@ -33,17 +38,14 @@ void nvMonitorThrd::run()
         unsigned int totalpowerdraw = nvml->getPowerDrawSum();
 
 
-        for(int i=0;i<nvml->getGPUCount();i++){
-            if(maxTemp>_nvapi->getTempLimitOffset(i)){
-            _nvapi->ControlGpuTemperature(i);
+        for(int i = 0;i < nvml->getGPUCount(); i++)
+        {
+            if(maxTemp > _nvapi->getTempLimitOffset(i))
+            {
+                _nvapi->ControlGpuTemperature(i);
             }
-//            qDebug()<<"======"<<_nvapi->getTempLimitOffset(i);
-//            qDebug()<<"======"<<_nvapi->getMemOffset(i)<<nvml->getMemClock(i);
-        //qDebug()<<"warning! process is cooling ";
-
         }
 
-        //qDebug("temp::   %d",nvapi.getGpuTemperature(nvapi.getGPUCount()-1));
         emit gpuInfoSignal(gpucount
                            , maxTemp
                            , minTemp
@@ -79,37 +81,7 @@ amdMonitorThrd::amdMonitorThrd(QObject * p) : GPUMonitor(p) {}
 
 void amdMonitorThrd::run()
 {
-    _amd = new amdapi_adl();
 
-    if(_amd && _amd->isInitialized())
-    {
-        while(1)
-        {
-            unsigned int gpucount = _amd->getGPUCount();
-            unsigned int maxTemp =  _amd->getHigherTemp();
-            unsigned int minTemp =  _amd->getLowerTemp();
-            unsigned int maxfanspeed = _amd->getHigherFanSpeed();
-            unsigned int minfanspeed = _amd->getLowerFanSpeed();
-
-            emit gpuInfoSignal(gpucount
-                               , maxTemp
-                               , minTemp
-                               , maxfanspeed
-                               , minfanspeed
-                               , 0
-                               , 0
-                               , 0
-                               , 0
-                               , 0
-                               , 0
-                               , 0);
-
-            QThread::sleep(refresh_rate);
-        }
-    }
-
-    if(_amd != Q_NULLPTR)
-        delete _amd;
 }
 
 QList<GPUInfo> amdMonitorThrd::getStatus()

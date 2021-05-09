@@ -22,7 +22,6 @@
 #include "highlighter.h"
 #include "nvapi.h"
 #include "nvidiaapi.h"
-#include "amdapi_adl.h"
 #include "gpumonitor.h"
 #include "structures.h"
 #include "database.h"
