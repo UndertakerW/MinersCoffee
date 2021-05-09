@@ -6,10 +6,10 @@
 #include <string>
 #include "gpumonitor.h"
 
-class nvidiaNVML
+class NvidiaNVML
 {
 public:
-    nvidiaNVML();
+    NvidiaNVML();
 
     bool initNVML();
 

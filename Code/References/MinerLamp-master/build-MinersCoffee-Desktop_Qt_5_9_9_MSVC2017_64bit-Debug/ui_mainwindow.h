@@ -36,7 +36,7 @@
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
-#include "hashratecharview.h"
+#include <chartview.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -115,8 +115,8 @@ public:
     QLabel *labelMinGPUTemp;
     QFrame *frame_46;
     QGridLayout *gridLayout_25;
-    hashrateCharView *graphicsViewTemp;
-    hashrateCharView *graphicsViewTempPie;
+    ChartView *graphicsViewTemp;
+    ChartView *graphicsViewTempPie;
     QGroupBox *groupBox_3;
     QVBoxLayout *verticalLayout_5;
     QGroupBox *groupBox_12;
@@ -166,7 +166,7 @@ public:
     QSplitter *splitter_2;
     QGroupBox *groupBox;
     QHBoxLayout *horizontalLayout_6;
-    hashrateCharView *graphicsView;
+    ChartView *graphicsView;
     QGroupBox *groupBox_9;
     QGridLayout *gridLayout_17;
     QFrame *frame;
@@ -274,7 +274,7 @@ public:
     QGridLayout *gridLayout_30;
     QFrame *frame_30;
     QGridLayout *gridLayout_8;
-    hashrateCharView *graphicsViewHistoryInfo;
+    ChartView *graphicsViewHistoryInfo;
     QGroupBox *groupBox_11;
     QGridLayout *gridLayout_50;
     QFrame *frame_34;
@@ -489,7 +489,7 @@ public:
         frameMonitor->setSizePolicy(sizePolicy3);
         frameMonitor->setMinimumSize(QSize(80, 75));
         frameMonitor->setMaximumSize(QSize(160, 16777215));
-        frameMonitor->setStyleSheet(QString::fromUtf8("background-image: url(:/icons/icos/\345\261\225\347\244\272.png);\n"
+        frameMonitor->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/display.png);\n"
 "background-color: rgb(0, 143, 150);\n"
 "background-repeat:no-repeat;\n"
 "background-position:center;\n"
@@ -535,7 +535,7 @@ public:
         frameOC->setObjectName(QStringLiteral("frameOC"));
         frameOC->setMinimumSize(QSize(80, 75));
         frameOC->setMaximumSize(QSize(160, 16777215));
-        frameOC->setStyleSheet(QString::fromUtf8("background-image: url(:/icons/icos/\350\266\205\351\242\221\350\256\276\347\275\256-20.png);\n"
+        frameOC->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/oc_setting.png);\n"
 "background-repeat:no-repeat;\n"
 "background-position:center;\n"
 "background-color: rgb(0, 143, 150);\n"
@@ -578,8 +578,8 @@ public:
         frameHelp->setObjectName(QStringLiteral("frameHelp"));
         frameHelp->setMinimumSize(QSize(80, 75));
         frameHelp->setMaximumSize(QSize(160, 16777215));
-        frameHelp->setStyleSheet(QString::fromUtf8("background:#008F96;\n"
-"background-image: url(:/icons/icos/\346\233\264\345\244\232\344\277\241\346\201\257.png);\n"
+        frameHelp->setStyleSheet(QLatin1String("background:#008F96;\n"
+"background-image: url(:/icons/icos/more_info.png);\n"
 "background-repeat:no-repeat;\n"
 "background-position:center;\n"
 "border-width: 0;\n"
@@ -679,7 +679,7 @@ public:
         sizePolicy6.setHeightForWidth(frameOverview->sizePolicy().hasHeightForWidth());
         frameOverview->setSizePolicy(sizePolicy6);
         frameOverview->setMinimumSize(QSize(50, 50));
-        frameOverview->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/homeAsset 46.png);\n"
+        frameOverview->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/monitor.png);\n"
 "background-color: rgb(0, 143, 150);\n"
 "background-repeat:no-repeat;\n"
 "background-position:center;\n"
@@ -718,7 +718,7 @@ public:
         frameMiningInfo = new QFrame(frameMonitorBar);
         frameMiningInfo->setObjectName(QStringLiteral("frameMiningInfo"));
         frameMiningInfo->setMinimumSize(QSize(50, 50));
-        frameMiningInfo->setStyleSheet(QString::fromUtf8("background-image: url(:/icons/icos/\347\233\221\350\247\206\345\231\250.png);\n"
+        frameMiningInfo->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/computer.png);\n"
 "background-color: rgb(0, 143, 150);\n"
 "background-repeat:no-repeat;\n"
 "background-position:center;\n"
@@ -757,7 +757,7 @@ public:
         frameHistory = new QFrame(frameMonitorBar);
         frameHistory->setObjectName(QStringLiteral("frameHistory"));
         frameHistory->setMinimumSize(QSize(50, 50));
-        frameHistory->setStyleSheet(QString::fromUtf8("background-image: url(:/icons/icos/\345\206\205\345\255\230.png);\n"
+        frameHistory->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/memory.png);\n"
 "background-color: rgb(0, 143, 150);\n"
 "background-repeat:no-repeat;\n"
 "background-position:center;\n"
@@ -787,6 +787,9 @@ public:
 "QPushButton:pressed {	\n"
 "	background-color: #7A0000;\n"
 "}"));
+        QIcon icon;
+        icon.addFile(QStringLiteral(":/icons/icos/minimum.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButtonMonitorPage_System->setIcon(icon);
         pushButtonMonitorPage_System->setIconSize(QSize(0, 16));
 
         gridLayout_38->addWidget(pushButtonMonitorPage_System, 0, 0, 1, 1);
@@ -1065,7 +1068,7 @@ public:
         gridLayout_25->setContentsMargins(11, 11, 11, 11);
         gridLayout_25->setObjectName(QStringLiteral("gridLayout_25"));
         gridLayout_25->setContentsMargins(0, 0, 0, 0);
-        graphicsViewTemp = new hashrateCharView(frame_46);
+        graphicsViewTemp = new ChartView(frame_46);
         graphicsViewTemp->setObjectName(QStringLiteral("graphicsViewTemp"));
         graphicsViewTemp->setMinimumSize(QSize(150, 150));
         QFont font5;
@@ -1084,7 +1087,7 @@ public:
 
         gridLayout_6->addWidget(groupBox_10, 0, 1, 1, 1);
 
-        graphicsViewTempPie = new hashrateCharView(groupBox_2);
+        graphicsViewTempPie = new ChartView(groupBox_2);
         graphicsViewTempPie->setObjectName(QStringLiteral("graphicsViewTempPie"));
         sizePolicy6.setHeightForWidth(graphicsViewTempPie->sizePolicy().hasHeightForWidth());
         graphicsViewTempPie->setSizePolicy(sizePolicy6);
@@ -1520,7 +1523,7 @@ public:
         horizontalLayout_6->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
         horizontalLayout_6->setContentsMargins(0, 30, 9, 10);
-        graphicsView = new hashrateCharView(groupBox);
+        graphicsView = new ChartView(groupBox);
         graphicsView->setObjectName(QStringLiteral("graphicsView"));
         graphicsView->setMinimumSize(QSize(200, 200));
         graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
@@ -1831,7 +1834,7 @@ public:
         scrollArea_2->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName(QStringLiteral("scrollAreaWidgetContents_2"));
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 241, 16));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 256, 344));
         gridLayout_62 = new QGridLayout(scrollAreaWidgetContents_2);
         gridLayout_62->setSpacing(0);
         gridLayout_62->setContentsMargins(11, 11, 11, 11);
@@ -3311,7 +3314,7 @@ public:
         gridLayout_8->setContentsMargins(11, 11, 11, 11);
         gridLayout_8->setObjectName(QStringLiteral("gridLayout_8"));
         gridLayout_8->setContentsMargins(0, 0, 0, 0);
-        graphicsViewHistoryInfo = new hashrateCharView(frame_30);
+        graphicsViewHistoryInfo = new ChartView(frame_30);
         graphicsViewHistoryInfo->setObjectName(QStringLiteral("graphicsViewHistoryInfo"));
         graphicsViewHistoryInfo->setMinimumSize(QSize(700, 280));
         graphicsViewHistoryInfo->setFont(font5);
@@ -3828,7 +3831,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 200, 222));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 200, 226));
         sizePolicy.setHeightForWidth(scrollAreaWidgetContents->sizePolicy().hasHeightForWidth());
         scrollAreaWidgetContents->setSizePolicy(sizePolicy);
         scrollAreaWidgetContents->setMinimumSize(QSize(0, 200));
@@ -5131,7 +5134,7 @@ public:
         retranslateUi(MainWindow);
 
         stackedWidgetMain->setCurrentIndex(0);
-        stackedWidgetMonitorMain->setCurrentIndex(4);
+        stackedWidgetMonitorMain->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);

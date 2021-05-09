@@ -33,7 +33,7 @@ public:
     void saveConfig();
 
     QSettings* _settings;
-    nvidiaNVML* _nvml;
+    NvidiaNVML* _nvml;
 
     nvidiaAPI* _nvapi;
 

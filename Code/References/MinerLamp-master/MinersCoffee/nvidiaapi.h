@@ -8,8 +8,6 @@
 
 #include "nvapi.h"
 
-
-
 typedef struct {
     NvU32 version;
     NvU32 flags;

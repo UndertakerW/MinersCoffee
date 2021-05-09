@@ -111,7 +111,6 @@ private:
 private slots:
 
     void on_pushButton_clicked();
-    void on_checkBoxOnlyShare_clicked(bool checked);
     void onReadyToStartMiner();
     void on_pushButtonSearchHistory_clicked();
     void on_dateTimeEditHistoryStartTime_dateTimeChanged(const QDateTime &datetime);
@@ -226,9 +225,10 @@ private:
     void StartMiningCore();
     void StopMiningCore();
 
+    void RefreshHashrate(QString& hashrate);
+
     void onMinerStarted();
     void onMinerStoped();
-    void onHashrate(QString& hashrate);
     void onError();
     void onReceivedMiningInfo(MiningInfo miningInfo);
     void onReceivedPoolInfo(QList<PoolInfo> poolInfos);
@@ -331,6 +331,7 @@ private:
     void saveConfig();
 
     friend class GeneralTest;
+    friend class AutoRestarter;
 };
 
 

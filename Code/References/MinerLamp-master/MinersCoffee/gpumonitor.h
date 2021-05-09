@@ -29,7 +29,7 @@
 
 class GeneralTest;
 
-class nvidiaNVML;
+class NvidiaNVML;
 
 class GPUMonitor : public QThread
 {
@@ -68,7 +68,7 @@ signals:
 class nvMonitorThrd : public GPUMonitor
 {
 private:
-    nvidiaNVML* nvml;
+    NvidiaNVML* nvml;
     nvidiaAPI *_nvapi;
 public:
     nvMonitorThrd(QObject* p = Q_NULLPTR,nvidiaAPI *nvapi=NULL);

@@ -1,12 +1,12 @@
 #include "nvidianvml.h"
 #include <QDebug>
 
-nvidiaNVML::nvidiaNVML()
+NvidiaNVML::NvidiaNVML()
 {
 
 }
 
-bool nvidiaNVML::initNVML()
+bool NvidiaNVML::initNVML()
 {
     nvmlReturn_t result = nvmlInit();
     if (NVML_SUCCESS != result)
@@ -17,7 +17,7 @@ bool nvidiaNVML::initNVML()
     return true;
 }
 
-unsigned int nvidiaNVML::getGPUCount()
+unsigned int NvidiaNVML::getGPUCount()
 {
     unsigned int deviceCount = 0;
     nvmlReturn_t result;
@@ -31,12 +31,12 @@ unsigned int nvidiaNVML::getGPUCount()
     return deviceCount;
 }
 
-void nvidiaNVML::shutDownNVML()
+void NvidiaNVML::shutDownNVML()
 {
     nvmlShutdown();
 }
 
-std::string nvidiaNVML::getGPUName(unsigned int index)
+std::string NvidiaNVML::getGPUName(unsigned int index)
 {
     nvmlReturn_t result;
 
@@ -55,7 +55,7 @@ std::string nvidiaNVML::getGPUName(unsigned int index)
     return std::string(buffer);
 }
 
-int nvidiaNVML::getGPUTemp(unsigned int index)
+int NvidiaNVML::getGPUTemp(unsigned int index)
 {
     nvmlReturn_t result;
 
@@ -74,7 +74,7 @@ int nvidiaNVML::getGPUTemp(unsigned int index)
     return temp;
 }
 
-int nvidiaNVML::getTempLimit()
+int NvidiaNVML::getTempLimit()
 {
     nvmlReturn_t result;
 
@@ -86,7 +86,7 @@ int nvidiaNVML::getTempLimit()
 }
 
 
-int nvidiaNVML::getFanSpeed(unsigned int index)
+int NvidiaNVML::getFanSpeed(unsigned int index)
 {
     nvmlReturn_t result;
 
@@ -106,7 +106,7 @@ int nvidiaNVML::getFanSpeed(unsigned int index)
 
 }
 
-int nvidiaNVML::getMemClock(unsigned int index)
+int NvidiaNVML::getMemClock(unsigned int index)
 {
     nvmlReturn_t result;
 
@@ -126,7 +126,7 @@ int nvidiaNVML::getMemClock(unsigned int index)
 
 }
 
-int nvidiaNVML::getGPUClock(unsigned int index)
+int NvidiaNVML::getGPUClock(unsigned int index)
 {
     nvmlReturn_t result;
 
@@ -146,7 +146,7 @@ int nvidiaNVML::getGPUClock(unsigned int index)
 
 }
 
-int nvidiaNVML::getPowerDraw(unsigned int index)
+int NvidiaNVML::getPowerDraw(unsigned int index)
 {
     nvmlReturn_t result;
 
@@ -165,7 +165,7 @@ int nvidiaNVML::getPowerDraw(unsigned int index)
     return power;
 }
 
-int nvidiaNVML::getMaxSupportedMemClock(unsigned int index)
+int NvidiaNVML::getMaxSupportedMemClock(unsigned int index)
 {
     nvmlReturn_t result;
 
@@ -200,7 +200,7 @@ int nvidiaNVML::getMaxSupportedMemClock(unsigned int index)
     return max;
 }
 
-QList<GPUInfo> nvidiaNVML::getStatus()
+QList<GPUInfo> NvidiaNVML::getStatus()
 {
     QList<GPUInfo> gpu_infos;
     unsigned int gpuCount = getGPUCount();
@@ -219,7 +219,7 @@ QList<GPUInfo> nvidiaNVML::getStatus()
     return gpu_infos;
 }
 
-int nvidiaNVML::getHigherTemp()
+int NvidiaNVML::getHigherTemp()
 {
     unsigned int maxTemp = 0;
     unsigned int gpuCount = getGPUCount();
@@ -232,7 +232,7 @@ int nvidiaNVML::getHigherTemp()
     return maxTemp;
 }
 
-unsigned int* nvidiaNVML::getAllTemp()
+unsigned int* NvidiaNVML::getAllTemp()
 {
     unsigned int gpuCount = getGPUCount();
     unsigned int  *Alltemp;
@@ -244,7 +244,7 @@ unsigned int* nvidiaNVML::getAllTemp()
     return Alltemp;
 }
 
-int nvidiaNVML::getLowerTemp()
+int NvidiaNVML::getLowerTemp()
 {
     unsigned int minTemp = 100000000;
     unsigned int gpuCount = getGPUCount();
@@ -257,7 +257,7 @@ int nvidiaNVML::getLowerTemp()
     return minTemp;
 }
 
-int nvidiaNVML::getHigherFanSpeed()
+int NvidiaNVML::getHigherFanSpeed()
 {
     unsigned int maxSpeed = 0;
     unsigned int gpuCount = getGPUCount();
@@ -270,7 +270,7 @@ int nvidiaNVML::getHigherFanSpeed()
     return maxSpeed;
 }
 
-unsigned int* nvidiaNVML::getAllFanSpeed()
+unsigned int* NvidiaNVML::getAllFanSpeed()
 {
     unsigned int gpuCount = getGPUCount();
     unsigned int  *AllFanSpeed;
@@ -282,7 +282,7 @@ unsigned int* nvidiaNVML::getAllFanSpeed()
     return AllFanSpeed;
 }
 
-int nvidiaNVML::getLowerFanSpeed()
+int NvidiaNVML::getLowerFanSpeed()
 {
     unsigned int minSpeed = 1000000;
     unsigned int gpuCount = getGPUCount();
@@ -296,7 +296,7 @@ int nvidiaNVML::getLowerFanSpeed()
 
 }
 
-int nvidiaNVML::getMemMaxClock()
+int NvidiaNVML::getMemMaxClock()
 {
     unsigned int maxClock = 0;
     unsigned int gpuCount = getGPUCount();
@@ -309,7 +309,7 @@ int nvidiaNVML::getMemMaxClock()
     return maxClock;
 
 }
-unsigned int* nvidiaNVML::getAllMemClock()
+unsigned int* NvidiaNVML::getAllMemClock()
 {
     unsigned int gpuCount = getGPUCount();
     unsigned int *AllMemClock;
@@ -320,7 +320,7 @@ unsigned int* nvidiaNVML::getAllMemClock()
     }
     return AllMemClock;
 }
-int nvidiaNVML::getMemLowerClock()
+int NvidiaNVML::getMemLowerClock()
 {
     unsigned int minClock = 1000000;
     unsigned int gpuCount = getGPUCount();
@@ -334,7 +334,7 @@ int nvidiaNVML::getMemLowerClock()
 
 }
 
-int nvidiaNVML::getGPUMaxClock()
+int NvidiaNVML::getGPUMaxClock()
 {
     unsigned int maxClock = 0;
     unsigned int gpuCount = getGPUCount();
@@ -346,7 +346,7 @@ int nvidiaNVML::getGPUMaxClock()
     }
     return maxClock;
 }
-unsigned int* nvidiaNVML::getAllGPUClock()
+unsigned int* NvidiaNVML::getAllGPUClock()
 {
     unsigned int gpuCount = getGPUCount();
     unsigned int *AllGPUClock;
@@ -357,7 +357,7 @@ unsigned int* nvidiaNVML::getAllGPUClock()
     }
     return AllGPUClock;
 }
-int nvidiaNVML::getGPUMinClock()
+int NvidiaNVML::getGPUMinClock()
 {
     unsigned int minClock = 1000000;
     unsigned int gpuCount = getGPUCount();
@@ -370,7 +370,7 @@ int nvidiaNVML::getGPUMinClock()
     return minClock;
 }
 
-int nvidiaNVML::getMaxPowerDraw()
+int NvidiaNVML::getMaxPowerDraw()
 {
     unsigned int maxWatt = 0;
     unsigned int gpuCount = getGPUCount();
@@ -382,7 +382,7 @@ int nvidiaNVML::getMaxPowerDraw()
     }
     return maxWatt;
 }
-unsigned int* nvidiaNVML::getAllPowerDraw()
+unsigned int* NvidiaNVML::getAllPowerDraw()
 {
     unsigned int gpuCount = getGPUCount();
     unsigned int *AllPowerDraw;
@@ -393,7 +393,7 @@ unsigned int* nvidiaNVML::getAllPowerDraw()
     }
     return AllPowerDraw;
 }
-int nvidiaNVML::getMinPowerDraw()
+int NvidiaNVML::getMinPowerDraw()
 {
     unsigned int minWatt = 1000000;
     unsigned int gpuCount = getGPUCount();
@@ -407,7 +407,7 @@ int nvidiaNVML::getMinPowerDraw()
 
 }
 
-int nvidiaNVML::getPowerDrawSum()
+int NvidiaNVML::getPowerDrawSum()
 {
     unsigned int totalWatt = 0;
     unsigned int gpuCount = getGPUCount();
@@ -416,7 +416,7 @@ int nvidiaNVML::getPowerDrawSum()
     return totalWatt;
 }
 
-void nvidiaNVML::setClock(unsigned int index)
+void NvidiaNVML::setClock(unsigned int index)
 {
 
     nvmlReturn_t result;

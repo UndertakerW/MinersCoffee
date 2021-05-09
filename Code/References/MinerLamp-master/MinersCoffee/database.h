@@ -14,7 +14,8 @@
 #include <Windows.h>
 #include <QtCharts/QLineSeries>
 
-class Database:public QThread{
+class Database : public QThread
+{
 
 private:
     QSqlDatabase _db;

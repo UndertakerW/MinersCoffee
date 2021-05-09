@@ -16,7 +16,7 @@ nvMonitorThrd::nvMonitorThrd(QObject *p, nvidiaAPI *nvapi) : GPUMonitor(p),_nvap
 
 void nvMonitorThrd::run()
 {
-    nvml = new nvidiaNVML();
+    nvml = new NvidiaNVML();
     if(!nvml->initNVML()) return;
 
     while(1)

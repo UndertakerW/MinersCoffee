@@ -32,6 +32,7 @@ DEFINES += QT_DEPRECATED_WARNINGS NVIDIA AMD
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    chartview.cpp \
     database.cpp \
     gpumonitor.cpp \
     helppage.cpp \
@@ -43,7 +44,6 @@ SOURCES += \
     helpdialog.cpp \
     nvidianvml.cpp \
     nvidiaapi.cpp \
-    hashratecharview.cpp \
     nvocpage.cpp \
     structures.cpp \
     urlapi.cpp \
@@ -51,6 +51,7 @@ SOURCES += \
     helper.cpp
 
 HEADERS += \
+    chartview.h \
     constants.h \
     database.h \
     gpumonitor.h \
@@ -62,9 +63,7 @@ HEADERS += \
     helpdialog.h \
     nvidianvml.h \
     nvidiaapi.h \
-    hashratecharview.h \
     nvocpage.h \
-    piesliceeff.h \
     structures.h \
     urlapi.h \
     wincmd.h \

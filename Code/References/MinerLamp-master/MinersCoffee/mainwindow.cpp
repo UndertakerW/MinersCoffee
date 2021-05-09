@@ -3,7 +3,7 @@
 #include "minerprocess.h"
 #include "helpdialog.h"
 #include "nvidianvml.h"
-#include "hashratecharview.h"
+#include "chartview.h"
 #include "database.h"
 #include "constants.h"
 #include "structures.h"
@@ -89,10 +89,6 @@ MainWindow::MainWindow(bool testing, QWidget *parent) :
 
     connect(_process, &MinerProcess::emitStarted, this, &MainWindow::onMinerStarted);
     connect(_process, &MinerProcess::emitStoped, this, &MainWindow::onMinerStoped);
-
-    // update hash rate
-    connect(_process, &MinerProcess::emitHashRate, this, &MainWindow::onHashrate);
-    connect(_process, &MinerProcess::emitError, this, &MainWindow::onError);
 
     qRegisterMetaType<MiningInfo>("MiningInfo");
     // update miningInfo
@@ -385,7 +381,7 @@ MainWindow::MainWindow(bool testing, QWidget *parent) :
     ui->labelHashRate->setText("0.00");
     ui->labelEffectiveness->setText("0%");
 
-    // origianl code for auto start
+    //  auto start
 //    if(ui->checkBoxAutoStart->isChecked())
 //    {
 //        _starter = new autoStart(this);
@@ -589,9 +585,6 @@ void MainWindow::loadParameters()
     setComboIndex(ui->comboBoxPool, _settings->value(POOL).toString());
     ui->lineEditWallet->setText(_settings->value(WALLET).toString());
     ui->lineEditWorker->setText(_settings->value(WORKER).toString());
-
-    _process->setShareOnly(_settings->value(DISPLAYSHAREONLY).toBool());
-    _process->setRestartOption(_settings->value(AUTORESTART).toBool());
 }
 
 
@@ -874,7 +867,7 @@ void MainWindow::onMinerStoped()
     _trayIcon->setToolTip(QString("Miner's Coffee"));
 }
 
-void MainWindow::onHashrate(QString &hashrate)
+void MainWindow::RefreshHashrate(QString &hashrate)
 {
     if(hashrate == "nan"){
         changeLabelColor(ui->labelHashRate, Qt::red);
@@ -946,11 +939,6 @@ void MainWindow::onHelp()
     helpDialog* helpdial = new helpDialog(_settings, this);
     helpdial->exec();
     delete helpdial;
-}
-
-void MainWindow::on_checkBoxOnlyShare_clicked(bool checked)
-{
-    _process->setShareOnly(checked);
 }
 
 autoStart::autoStart(QObject *pParent)
@@ -1250,7 +1238,7 @@ void MainWindow::refreshDeviceInfo()
             changeLabelColor(deviceNumLabel, Qt::white);
 
             QLabel * deviceTemp = new QLabel("Temp");
-            deviceTemp->setFont(QFont("Berlin Sans FB", 12));
+            deviceTemp->setFont(QFont("Berlin Sans FB", 14));
             deviceTemp->setMinimumWidth(80);
             deviceTemp->setAlignment(Qt::AlignRight|Qt::AlignVCenter);
             changeLabelColor(deviceTemp, Qt::white);
@@ -1261,7 +1249,7 @@ void MainWindow::refreshDeviceInfo()
             deviceTempNumberLabel->setAlignment(Qt::AlignCenter);
 
             QLabel * gpuClock = new QLabel("GPU\nClock");
-            gpuClock->setFont(QFont("Berlin Sans FB", 12));
+            gpuClock->setFont(QFont("Berlin Sans FB", 14));
             gpuClock->setMinimumWidth(80);
             gpuClock->setAlignment(Qt::AlignRight|Qt::AlignVCenter);
             changeLabelColor(gpuClock, Qt::white);
@@ -1273,7 +1261,7 @@ void MainWindow::refreshDeviceInfo()
             changeLabelColor(gpuClockNumberLabel, Qt::white);
 
             QLabel * memClock = new QLabel("VRAM\nClock");
-            memClock->setFont(QFont("Berlin Sans FB", 12));
+            memClock->setFont(QFont("Berlin Sans FB", 14));
             memClock->setMinimumWidth(80);
             memClock->setAlignment(Qt::AlignRight|Qt::AlignVCenter);
             changeLabelColor(memClock, Qt::white);
@@ -1285,7 +1273,7 @@ void MainWindow::refreshDeviceInfo()
             changeLabelColor(memClockNumberLabel, Qt::white);
 
             QLabel * fanSpeed = new QLabel("Fan\nSpeed");
-            fanSpeed->setFont(QFont("Berlin Sans FB", 12));
+            fanSpeed->setFont(QFont("Berlin Sans FB", 14));
             fanSpeed->setMinimumWidth(80);
             fanSpeed->setAlignment(Qt::AlignRight|Qt::AlignVCenter);
             changeLabelColor(fanSpeed, Qt::white);
@@ -1800,14 +1788,13 @@ void MainWindow::EstimateOutput()
         ui->labelHashRate->setText("N/A");
     }
     else{
-        _process->emitHashRate(totalhashRateString);
+        RefreshHashrate(totalhashRateString);
     }
 
     _est_output_coin = total_hashrate / _poolInfo->incomeHashrate * _poolInfo->meanIncome24h;
     _est_output_cny = _est_output_coin * _poolInfo->cny;
     _est_output_usd = _est_output_coin * _poolInfo->usd;
 
-//    qDebug() << total_hashrate << _poolInfo->incomeHashrate << _poolInfo->meanIncome24h << _est_output_coin << _est_output_cny << _est_output_usd;
 }
 
 void MainWindow::onReceivedPoolInfo(QList<PoolInfo> poolInfos)
