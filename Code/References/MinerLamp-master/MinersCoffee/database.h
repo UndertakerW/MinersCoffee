@@ -22,7 +22,6 @@ private:
 public:
     Database();
     ~Database();
-    QStringList getAdvice(const char* type);
     void run() override;
     void Get_HistoryNew(const char* date1,const char* date2,int num);
     void InsertDataNew();

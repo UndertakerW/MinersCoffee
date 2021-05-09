@@ -44,29 +44,6 @@ Database::Database(){
 }
 
 
-QStringList Database::getAdvice(const char* type){
-    QString deviceName(type);
-
-//    qDebug() << "get advice: " << type;
-    QStringList result;
-//    qDebug() << "test 3 " << _advise->isEmpty();
-//    qDebug() << "test 3 " << _advise->size();
-
-//    for(int i=0;i<_advise->size();i++){
-//        qDebug() << "test 4";
-//        if(_advise->at(i)->at(0) == type){
-//            for(int j=1;j<_advise->at(i)->size();j++){
-//                result.push_back(_advise->at(i)->at(j));
-//                qDebug() << result.at(j-1);
-//            }
-//            break;
-//        }
-//    }
-
-    return result;
-}
-
-
 void Database::InsertDataNew(){
     // insert gpuInfo
     if(_gpusInfoBuffer == nullptr){
