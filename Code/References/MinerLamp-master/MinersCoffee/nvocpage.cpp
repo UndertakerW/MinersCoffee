@@ -42,7 +42,7 @@ NvocPage::NvocPage(nvidiaAPI* nvapi, QSettings* settings,
 
     _advise = new QList<QStringList*>();
     Helper helper;
-    QString advisePath = qApp->applicationDirPath() + "/" + mining_advise;
+    QString advisePath = qApp->applicationDirPath() + "/" + oc_advices_path;
     QList<QString> advises = helper.GetStringData(advisePath);
 
     for(int i=0;i<advises.size();i++){

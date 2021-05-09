@@ -3,7 +3,6 @@
 #include "minerprocess.h"
 #include "helpdialog.h"
 #include "nvidianvml.h"
-#include "nanopoolapi.h"
 #include "hashratecharview.h"
 #include "database.h"
 #include "constants.h"
@@ -60,7 +59,6 @@ MainWindow::MainWindow(bool testing, QWidget *parent) :
     _isMinerRunning(false),
     _isStartStoping(false),
     _errorCount(0),
-    _nano(Q_NULLPTR),
     _testing(testing)
 {
 

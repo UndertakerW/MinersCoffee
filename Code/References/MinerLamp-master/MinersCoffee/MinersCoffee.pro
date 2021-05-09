@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2017-06-28T11:47:49
+# Project created by QtCreator 2021-03-28T11:47:49
 #
 #-------------------------------------------------
 
@@ -43,7 +43,6 @@ SOURCES += \
     helpdialog.cpp \
     nvidianvml.cpp \
     nvidiaapi.cpp \
-    nanopoolapi.cpp \
     amdapi_adl.cpp \
     hashratecharview.cpp \
     nvocpage.cpp \
@@ -64,7 +63,6 @@ HEADERS += \
     helpdialog.h \
     nvidianvml.h \
     nvidiaapi.h \
-    nanopoolapi.h \
     amdapi_adl.h \
     hashratecharview.h \
     nvocpage.h \

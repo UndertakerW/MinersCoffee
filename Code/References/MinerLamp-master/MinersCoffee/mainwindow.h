@@ -20,7 +20,6 @@
 #include <QMainWindow>
 #include "minerprocess.h"
 #include "highlighter.h"
-#include "nanopoolapi.h"
 #include "nvapi.h"
 #include "nvidiaapi.h"
 #include "amdapi_adl.h"
@@ -316,8 +315,6 @@ private:
     nvMonitorThrd* _nvMonitorThrd;
 
     amdMonitorThrd* _amdMonitorThrd;
-
-    nanopoolAPI* _nano;
 
     Core* _current_core = nullptr;
     Coin* _current_coin = nullptr;
