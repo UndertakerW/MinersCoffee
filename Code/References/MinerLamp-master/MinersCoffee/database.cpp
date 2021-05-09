@@ -119,7 +119,8 @@ void Database::InsertDataNew(){
                             +"'"+currentTime + "', "
                             +QString::number(deviceInfo->at(i).num)+", "
                             +QString::number(deviceInfo->at(i).hashrate)+", "
-                            +QString::number(deviceInfo->at(i).rejected_shares)+", "
+                            +QString::number(deviceInfo->at(i).accepted_shares)+", "
+                            +QString::number(deviceInfo->at(i).invalid_shares)+", "
                             +QString::number(deviceInfo->at(i).rejected_shares)
                             +");"
         );
