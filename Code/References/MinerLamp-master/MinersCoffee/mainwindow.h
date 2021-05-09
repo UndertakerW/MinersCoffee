@@ -100,7 +100,6 @@ private:
     nvidiaAPI* _nvapi;
     void applyOC();
     void setComboIndex(QComboBox * comboBox, QString key);
-    bool _searchHistoryMiningOverall;
     void changeLabelColor(QLabel * label, QColor color);
 
     void RefreshTempGraph();
