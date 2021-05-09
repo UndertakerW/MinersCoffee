@@ -576,7 +576,7 @@ border-radius : 0;
 </string>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>2</number>
           </property>
           <widget class="QWidget" name="pageMonitor">
            <layout class="QGridLayout" name="gridLayout_40">
@@ -6380,7 +6380,7 @@ QPushButton:pressed {
 }
 
 QGroupBox{
-	border-width: 5px;
+	border-width: 2px;
 	border-style: solid;
 	border-color: white;
 	margin-top: 0.5ex;
