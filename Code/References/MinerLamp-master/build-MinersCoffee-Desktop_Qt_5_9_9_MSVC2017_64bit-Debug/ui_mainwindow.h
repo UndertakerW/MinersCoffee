@@ -69,7 +69,22 @@ public:
     QVBoxLayout *verticalLayout;
     QStackedWidget *stackedWidgetMain;
     QWidget *pageMonitor;
-    QGridLayout *gridLayout_40;
+    QVBoxLayout *verticalLayout_10;
+    QFrame *frameMonitorBar;
+    QHBoxLayout *horizontalLayout_5;
+    QFrame *frameOverview;
+    QGridLayout *gridLayout_36;
+    QPushButton *pushButtonMonitorPage_Overview;
+    QFrame *frameMiningInfo;
+    QGridLayout *gridLayout_37;
+    QPushButton *pushButtonMonitorPage_Mining;
+    QFrame *frameHistory;
+    QGridLayout *gridLayout_38;
+    QPushButton *pushButtonMonitorPage_System;
+    QFrame *frameDevicesInfo;
+    QGridLayout *gridLayout_58;
+    QPushButton *pushButtonMonitorPage_DevicesInfo;
+    QSpacerItem *horizontalSpacer;
     QStackedWidget *stackedWidgetMonitorMain;
     QWidget *pageOverview;
     QVBoxLayout *verticalLayout_7;
@@ -264,32 +279,21 @@ public:
     QGridLayout *gridLayout_45;
     QGridLayout *gridLayout_42;
     QSplitter *splitter_3;
-    QFrame *frameMonitorBar;
-    QHBoxLayout *horizontalLayout_5;
-    QFrame *frameOverview;
-    QGridLayout *gridLayout_36;
-    QPushButton *pushButtonMonitorPage_Overview;
-    QFrame *frameMiningInfo;
-    QGridLayout *gridLayout_37;
-    QPushButton *pushButtonMonitorPage_Mining;
-    QFrame *frameHistory;
-    QGridLayout *gridLayout_38;
-    QPushButton *pushButtonMonitorPage_System;
-    QFrame *frameDevicesInfo;
-    QGridLayout *gridLayout_58;
-    QPushButton *pushButtonMonitorPage_DevicesInfo;
-    QSpacerItem *horizontalSpacer;
     QWidget *pageOC;
-    QGridLayout *gridLayout_46;
+    QGridLayout *gridLayout_11;
     QFrame *frameMonitorBar_2;
     QHBoxLayout *horizontalLayout_43;
-    QVBoxLayout *verticalLayout_2;
+    QHBoxLayout *horizontalLayout_11;
+    QGroupBox *groupbox;
+    QVBoxLayout *verticalLayout_11;
     QHBoxLayout *horizontalLayout_7;
     QLabel *label_52;
+    QSpacerItem *horizontalSpacer_11;
     QComboBox *comboBoxDevice;
     QSpacerItem *horizontalSpacer_23;
-    QHBoxLayout *horizontalLayout_38;
+    QHBoxLayout *horizontalLayout_2;
     QLabel *temperatureLimit;
+    QSpacerItem *horizontalSpacer_12;
     QSpinBox *spinBoxTemperature;
     QSpacerItem *horizontalSpacer_22;
     QHBoxLayout *horizontalLayout_39;
@@ -316,10 +320,9 @@ public:
     QCheckBox *checkBoxAutoSpeedFan;
     QCheckBox *checkBoxAllDevices;
     QCheckBox *checkBoxOCMinerStart;
-    QVBoxLayout *verticalLayout_20;
+    QHBoxLayout *horizontalLayout_4;
     QPushButton *pushButtonOCPageApply;
     QPushButton *pushButtonAutoOC;
-    QSpacerItem *verticalSpacer_2;
     QWidget *pageHelp;
     QVBoxLayout *verticalLayout_37;
     QFrame *frameMonitorBar_3;
@@ -689,15 +692,206 @@ public:
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         stackedWidgetMain = new QStackedWidget(layoutWidget);
         stackedWidgetMain->setObjectName(QStringLiteral("stackedWidgetMain"));
+        QFont font2;
+        font2.setFamily(QStringLiteral("SimSun"));
+        font2.setPointSize(14);
+        stackedWidgetMain->setFont(font2);
         stackedWidgetMain->setStyleSheet(QLatin1String("background:#5B5A5A;\n"
 ""));
         pageMonitor = new QWidget();
         pageMonitor->setObjectName(QStringLiteral("pageMonitor"));
-        gridLayout_40 = new QGridLayout(pageMonitor);
-        gridLayout_40->setSpacing(0);
-        gridLayout_40->setContentsMargins(11, 11, 11, 11);
-        gridLayout_40->setObjectName(QStringLiteral("gridLayout_40"));
-        gridLayout_40->setContentsMargins(0, 0, 0, 0);
+        verticalLayout_10 = new QVBoxLayout(pageMonitor);
+        verticalLayout_10->setSpacing(0);
+        verticalLayout_10->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_10->setObjectName(QStringLiteral("verticalLayout_10"));
+        verticalLayout_10->setContentsMargins(0, 0, 0, 0);
+        frameMonitorBar = new QFrame(pageMonitor);
+        frameMonitorBar->setObjectName(QStringLiteral("frameMonitorBar"));
+        frameMonitorBar->setMinimumSize(QSize(0, 50));
+        frameMonitorBar->setMaximumSize(QSize(16777215, 50));
+        frameMonitorBar->setStyleSheet(QLatin1String("background:#008F96;border-width: 0;\n"
+"border-radius : 0;\n"
+""));
+        frameMonitorBar->setFrameShape(QFrame::StyledPanel);
+        frameMonitorBar->setFrameShadow(QFrame::Raised);
+        horizontalLayout_5 = new QHBoxLayout(frameMonitorBar);
+        horizontalLayout_5->setSpacing(0);
+        horizontalLayout_5->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
+        horizontalLayout_5->setContentsMargins(0, 0, 0, 0);
+        frameOverview = new QFrame(frameMonitorBar);
+        frameOverview->setObjectName(QStringLiteral("frameOverview"));
+        QSizePolicy sizePolicy6(QSizePolicy::Minimum, QSizePolicy::Minimum);
+        sizePolicy6.setHorizontalStretch(0);
+        sizePolicy6.setVerticalStretch(0);
+        sizePolicy6.setHeightForWidth(frameOverview->sizePolicy().hasHeightForWidth());
+        frameOverview->setSizePolicy(sizePolicy6);
+        frameOverview->setMinimumSize(QSize(50, 50));
+        frameOverview->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/monitor.png);\n"
+"background-color: rgb(0, 143, 150);\n"
+"background-repeat:no-repeat;\n"
+"background-position:center;\n"
+"border-width: 0;\n"
+"border-radius : 0;"));
+        frameOverview->setFrameShape(QFrame::StyledPanel);
+        frameOverview->setFrameShadow(QFrame::Raised);
+        gridLayout_36 = new QGridLayout(frameOverview);
+        gridLayout_36->setSpacing(0);
+        gridLayout_36->setContentsMargins(11, 11, 11, 11);
+        gridLayout_36->setObjectName(QStringLiteral("gridLayout_36"));
+        gridLayout_36->setContentsMargins(0, 0, 0, 0);
+        pushButtonMonitorPage_Overview = new QPushButton(frameOverview);
+        pushButtonMonitorPage_Overview->setObjectName(QStringLiteral("pushButtonMonitorPage_Overview"));
+        sizePolicy4.setHeightForWidth(pushButtonMonitorPage_Overview->sizePolicy().hasHeightForWidth());
+        pushButtonMonitorPage_Overview->setSizePolicy(sizePolicy4);
+        pushButtonMonitorPage_Overview->setMinimumSize(QSize(0, 50));
+        pushButtonMonitorPage_Overview->setFont(font1);
+        pushButtonMonitorPage_Overview->setStyleSheet(QLatin1String("QPushButton {\n"
+"	border: none;\n"
+"	background-color: rgba(0,0,0,0);\n"
+"	color : white;\n"
+"}\n"
+"QPushButton:hover {\n"
+"	background-color: rgb(91,90,90);\n"
+"}\n"
+"QPushButton:pressed {	\n"
+"	background-color: #7A0000;\n"
+"}"));
+
+        gridLayout_36->addWidget(pushButtonMonitorPage_Overview, 0, 0, 1, 1);
+
+
+        horizontalLayout_5->addWidget(frameOverview);
+
+        frameMiningInfo = new QFrame(frameMonitorBar);
+        frameMiningInfo->setObjectName(QStringLiteral("frameMiningInfo"));
+        frameMiningInfo->setMinimumSize(QSize(50, 50));
+        frameMiningInfo->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/computer.png);\n"
+"background-color: rgb(0, 143, 150);\n"
+"background-repeat:no-repeat;\n"
+"background-position:center;\n"
+"border-width: 0;\n"
+"border-radius : 0;"));
+        frameMiningInfo->setFrameShape(QFrame::StyledPanel);
+        frameMiningInfo->setFrameShadow(QFrame::Raised);
+        gridLayout_37 = new QGridLayout(frameMiningInfo);
+        gridLayout_37->setSpacing(0);
+        gridLayout_37->setContentsMargins(11, 11, 11, 11);
+        gridLayout_37->setObjectName(QStringLiteral("gridLayout_37"));
+        gridLayout_37->setContentsMargins(0, 0, 0, 0);
+        pushButtonMonitorPage_Mining = new QPushButton(frameMiningInfo);
+        pushButtonMonitorPage_Mining->setObjectName(QStringLiteral("pushButtonMonitorPage_Mining"));
+        sizePolicy4.setHeightForWidth(pushButtonMonitorPage_Mining->sizePolicy().hasHeightForWidth());
+        pushButtonMonitorPage_Mining->setSizePolicy(sizePolicy4);
+        pushButtonMonitorPage_Mining->setMinimumSize(QSize(0, 0));
+        pushButtonMonitorPage_Mining->setFont(font1);
+        pushButtonMonitorPage_Mining->setStyleSheet(QLatin1String("QPushButton {\n"
+"	border: none;\n"
+"	background-color: rgba(0,0,0,0);\n"
+"	color : white;\n"
+"}\n"
+"QPushButton:hover {\n"
+"	background-color: rgb(91,90,90);\n"
+"}\n"
+"QPushButton:pressed {	\n"
+"	background-color: #7A0000;\n"
+"}"));
+
+        gridLayout_37->addWidget(pushButtonMonitorPage_Mining, 0, 0, 2, 1);
+
+
+        horizontalLayout_5->addWidget(frameMiningInfo);
+
+        frameHistory = new QFrame(frameMonitorBar);
+        frameHistory->setObjectName(QStringLiteral("frameHistory"));
+        frameHistory->setMinimumSize(QSize(50, 50));
+        frameHistory->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/minimum.png);\n"
+"background-color: rgb(0, 143, 150);\n"
+"background-repeat:no-repeat;\n"
+"background-position:center;\n"
+"border-width: 0;\n"
+"border-radius : 0;"));
+        frameHistory->setFrameShape(QFrame::StyledPanel);
+        frameHistory->setFrameShadow(QFrame::Raised);
+        gridLayout_38 = new QGridLayout(frameHistory);
+        gridLayout_38->setSpacing(0);
+        gridLayout_38->setContentsMargins(11, 11, 11, 11);
+        gridLayout_38->setObjectName(QStringLiteral("gridLayout_38"));
+        gridLayout_38->setContentsMargins(0, 0, 0, 0);
+        pushButtonMonitorPage_System = new QPushButton(frameHistory);
+        pushButtonMonitorPage_System->setObjectName(QStringLiteral("pushButtonMonitorPage_System"));
+        sizePolicy4.setHeightForWidth(pushButtonMonitorPage_System->sizePolicy().hasHeightForWidth());
+        pushButtonMonitorPage_System->setSizePolicy(sizePolicy4);
+        pushButtonMonitorPage_System->setMinimumSize(QSize(50, 0));
+        pushButtonMonitorPage_System->setFont(font1);
+        pushButtonMonitorPage_System->setStyleSheet(QLatin1String("QPushButton {\n"
+"	border: none;\n"
+"	background-color: rgba(0,0,0,0);\n"
+"	color : white;\n"
+"}\n"
+"QPushButton:hover {\n"
+"	background-color: rgb(91,90,90);\n"
+"}\n"
+"QPushButton:pressed {	\n"
+"	background-color: #7A0000;\n"
+"}"));
+        QIcon icon1;
+        icon1.addFile(QStringLiteral(":/icons/icos/minimum.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButtonMonitorPage_System->setIcon(icon1);
+        pushButtonMonitorPage_System->setIconSize(QSize(0, 16));
+
+        gridLayout_38->addWidget(pushButtonMonitorPage_System, 0, 0, 1, 1);
+
+
+        horizontalLayout_5->addWidget(frameHistory);
+
+        frameDevicesInfo = new QFrame(frameMonitorBar);
+        frameDevicesInfo->setObjectName(QStringLiteral("frameDevicesInfo"));
+        frameDevicesInfo->setMinimumSize(QSize(50, 50));
+        frameDevicesInfo->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/gpu.png);\n"
+"background-color: rgb(0, 143, 150);\n"
+"background-repeat:no-repeat;\n"
+"background-position:center;\n"
+"border-width: 0;\n"
+"border-radius : 0;"));
+        frameDevicesInfo->setFrameShape(QFrame::StyledPanel);
+        frameDevicesInfo->setFrameShadow(QFrame::Raised);
+        gridLayout_58 = new QGridLayout(frameDevicesInfo);
+        gridLayout_58->setSpacing(0);
+        gridLayout_58->setContentsMargins(11, 11, 11, 11);
+        gridLayout_58->setObjectName(QStringLiteral("gridLayout_58"));
+        gridLayout_58->setContentsMargins(0, 0, 0, 0);
+        pushButtonMonitorPage_DevicesInfo = new QPushButton(frameDevicesInfo);
+        pushButtonMonitorPage_DevicesInfo->setObjectName(QStringLiteral("pushButtonMonitorPage_DevicesInfo"));
+        sizePolicy4.setHeightForWidth(pushButtonMonitorPage_DevicesInfo->sizePolicy().hasHeightForWidth());
+        pushButtonMonitorPage_DevicesInfo->setSizePolicy(sizePolicy4);
+        pushButtonMonitorPage_DevicesInfo->setMinimumSize(QSize(50, 0));
+        pushButtonMonitorPage_DevicesInfo->setFont(font1);
+        pushButtonMonitorPage_DevicesInfo->setStyleSheet(QLatin1String("QPushButton {\n"
+"	border: none;\n"
+"	background-color: rgba(0,0,0,0);\n"
+"	color : white;\n"
+"}\n"
+"QPushButton:hover {\n"
+"	background-color: rgb(91,90,90);\n"
+"}\n"
+"QPushButton:pressed {	\n"
+"	background-color: #7A0000;\n"
+"}"));
+        pushButtonMonitorPage_DevicesInfo->setIconSize(QSize(0, 16));
+
+        gridLayout_58->addWidget(pushButtonMonitorPage_DevicesInfo, 0, 0, 1, 1);
+
+
+        horizontalLayout_5->addWidget(frameDevicesInfo);
+
+        horizontalSpacer = new QSpacerItem(700, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_5->addItem(horizontalSpacer);
+
+
+        verticalLayout_10->addWidget(frameMonitorBar);
+
         stackedWidgetMonitorMain = new QStackedWidget(pageMonitor);
         stackedWidgetMonitorMain->setObjectName(QStringLiteral("stackedWidgetMonitorMain"));
         stackedWidgetMonitorMain->setMinimumSize(QSize(60, 0));
@@ -708,6 +902,7 @@ public:
         verticalLayout_7->setSpacing(6);
         verticalLayout_7->setContentsMargins(11, 11, 11, 11);
         verticalLayout_7->setObjectName(QStringLiteral("verticalLayout_7"));
+        verticalLayout_7->setContentsMargins(9, -1, -1, -1);
         splitter = new QSplitter(pageOverview);
         splitter->setObjectName(QStringLiteral("splitter"));
         splitter->setOrientation(Qt::Horizontal);
@@ -721,10 +916,10 @@ public:
         groupBox_2 = new QGroupBox(layoutWidget1);
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
         groupBox_2->setMinimumSize(QSize(500, 300));
-        QFont font2;
-        font2.setFamily(QStringLiteral("Berlin Sans FB"));
-        font2.setPointSize(14);
-        groupBox_2->setFont(font2);
+        QFont font3;
+        font3.setFamily(QStringLiteral("Berlin Sans FB"));
+        font3.setPointSize(14);
+        groupBox_2->setFont(font3);
         groupBox_2->setStyleSheet(QLatin1String("QGroupBox::title{\n"
 "	color : white;\n"
 "	left: 10px;\n"
@@ -814,10 +1009,10 @@ public:
         label_58 = new QLabel(frame_4);
         label_58->setObjectName(QStringLiteral("label_58"));
         label_58->setMinimumSize(QSize(0, 0));
-        QFont font3;
-        font3.setFamily(QStringLiteral("Berlin Sans FB"));
-        font3.setPointSize(11);
-        label_58->setFont(font3);
+        QFont font4;
+        font4.setFamily(QStringLiteral("Berlin Sans FB"));
+        font4.setPointSize(11);
+        label_58->setFont(font4);
         label_58->setStyleSheet(QStringLiteral("color : white;"));
         label_58->setAlignment(Qt::AlignCenter);
 
@@ -829,10 +1024,10 @@ public:
         labelMaxGPUTemp = new QLabel(frame_42);
         labelMaxGPUTemp->setObjectName(QStringLiteral("labelMaxGPUTemp"));
         labelMaxGPUTemp->setMinimumSize(QSize(100, 0));
-        QFont font4;
-        font4.setFamily(QStringLiteral("Berlin Sans FB"));
-        font4.setPointSize(28);
-        labelMaxGPUTemp->setFont(font4);
+        QFont font5;
+        font5.setFamily(QStringLiteral("Berlin Sans FB"));
+        font5.setPointSize(28);
+        labelMaxGPUTemp->setFont(font5);
         labelMaxGPUTemp->setStyleSheet(QStringLiteral(""));
         labelMaxGPUTemp->setAlignment(Qt::AlignCenter);
 
@@ -873,7 +1068,7 @@ public:
         label_59 = new QLabel(frame_14);
         label_59->setObjectName(QStringLiteral("label_59"));
         label_59->setMinimumSize(QSize(0, 0));
-        label_59->setFont(font3);
+        label_59->setFont(font4);
         label_59->setStyleSheet(QStringLiteral("color : white;"));
         label_59->setAlignment(Qt::AlignCenter);
 
@@ -896,7 +1091,7 @@ public:
         labelMinGPUTemp = new QLabel(frame_45);
         labelMinGPUTemp->setObjectName(QStringLiteral("labelMinGPUTemp"));
         labelMinGPUTemp->setMinimumSize(QSize(100, 0));
-        labelMinGPUTemp->setFont(font4);
+        labelMinGPUTemp->setFont(font5);
         labelMinGPUTemp->setStyleSheet(QStringLiteral(""));
         labelMinGPUTemp->setAlignment(Qt::AlignCenter);
 
@@ -925,9 +1120,9 @@ public:
         graphicsViewTemp = new ChartView(frame_46);
         graphicsViewTemp->setObjectName(QStringLiteral("graphicsViewTemp"));
         graphicsViewTemp->setMinimumSize(QSize(150, 150));
-        QFont font5;
-        font5.setFamily(QStringLiteral("Berlin Sans FB"));
-        graphicsViewTemp->setFont(font5);
+        QFont font6;
+        font6.setFamily(QStringLiteral("Berlin Sans FB"));
+        graphicsViewTemp->setFont(font6);
         graphicsViewTemp->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 
         gridLayout_25->addWidget(graphicsViewTemp, 0, 0, 1, 1);
@@ -943,9 +1138,6 @@ public:
 
         graphicsViewTempPie = new ChartView(groupBox_2);
         graphicsViewTempPie->setObjectName(QStringLiteral("graphicsViewTempPie"));
-        QSizePolicy sizePolicy6(QSizePolicy::Minimum, QSizePolicy::Minimum);
-        sizePolicy6.setHorizontalStretch(0);
-        sizePolicy6.setVerticalStretch(0);
         sizePolicy6.setHeightForWidth(graphicsViewTempPie->sizePolicy().hasHeightForWidth());
         graphicsViewTempPie->setSizePolicy(sizePolicy6);
         graphicsViewTempPie->setMinimumSize(QSize(450, 100));
@@ -958,7 +1150,7 @@ public:
         groupBox_3 = new QGroupBox(layoutWidget1);
         groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
         groupBox_3->setMinimumSize(QSize(350, 0));
-        groupBox_3->setFont(font2);
+        groupBox_3->setFont(font3);
         groupBox_3->setStyleSheet(QLatin1String("QGroupBox::title{\n"
 "	color : white;\n"
 "	left: 10px;\n"
@@ -1027,7 +1219,7 @@ public:
         label_34 = new QLabel(frame_11);
         label_34->setObjectName(QStringLiteral("label_34"));
         label_34->setMinimumSize(QSize(88, 0));
-        label_34->setFont(font2);
+        label_34->setFont(font3);
         label_34->setStyleSheet(QStringLiteral("color : white;"));
         label_34->setAlignment(Qt::AlignCenter);
 
@@ -1047,10 +1239,10 @@ public:
         labelMinGPUClock = new QLabel(frame_12);
         labelMinGPUClock->setObjectName(QStringLiteral("labelMinGPUClock"));
         labelMinGPUClock->setMinimumSize(QSize(120, 0));
-        QFont font6;
-        font6.setFamily(QStringLiteral("Berlin Sans FB"));
-        font6.setPointSize(18);
-        labelMinGPUClock->setFont(font6);
+        QFont font7;
+        font7.setFamily(QStringLiteral("Berlin Sans FB"));
+        font7.setPointSize(18);
+        labelMinGPUClock->setFont(font7);
         labelMinGPUClock->setStyleSheet(QStringLiteral("color : white;"));
         labelMinGPUClock->setAlignment(Qt::AlignCenter);
 
@@ -1059,7 +1251,7 @@ public:
         labelMaxGPUClock = new QLabel(frame_12);
         labelMaxGPUClock->setObjectName(QStringLiteral("labelMaxGPUClock"));
         labelMaxGPUClock->setMinimumSize(QSize(120, 0));
-        labelMaxGPUClock->setFont(font6);
+        labelMaxGPUClock->setFont(font7);
         labelMaxGPUClock->setStyleSheet(QStringLiteral("color : white;"));
         labelMaxGPUClock->setAlignment(Qt::AlignCenter);
 
@@ -1068,7 +1260,7 @@ public:
         label_44 = new QLabel(frame_12);
         label_44->setObjectName(QStringLiteral("label_44"));
         label_44->setMinimumSize(QSize(50, 0));
-        label_44->setFont(font3);
+        label_44->setFont(font4);
         label_44->setStyleSheet(QStringLiteral("color : white;"));
         label_44->setAlignment(Qt::AlignCenter);
 
@@ -1077,7 +1269,7 @@ public:
         label_48 = new QLabel(frame_12);
         label_48->setObjectName(QStringLiteral("label_48"));
         label_48->setMinimumSize(QSize(50, 0));
-        label_48->setFont(font3);
+        label_48->setFont(font4);
         label_48->setStyleSheet(QStringLiteral("color : white;"));
         label_48->setAlignment(Qt::AlignCenter);
 
@@ -1114,7 +1306,7 @@ public:
         labelMaxMemClock = new QLabel(frame_33);
         labelMaxMemClock->setObjectName(QStringLiteral("labelMaxMemClock"));
         labelMaxMemClock->setMinimumSize(QSize(120, 0));
-        labelMaxMemClock->setFont(font6);
+        labelMaxMemClock->setFont(font7);
         labelMaxMemClock->setStyleSheet(QStringLiteral("color : white;"));
         labelMaxMemClock->setAlignment(Qt::AlignCenter);
 
@@ -1123,7 +1315,7 @@ public:
         label_35 = new QLabel(frame_33);
         label_35->setObjectName(QStringLiteral("label_35"));
         label_35->setMinimumSize(QSize(50, 0));
-        label_35->setFont(font3);
+        label_35->setFont(font4);
         label_35->setStyleSheet(QStringLiteral("color : white;"));
         label_35->setAlignment(Qt::AlignCenter);
 
@@ -1135,7 +1327,7 @@ public:
         label_23 = new QLabel(frame_6);
         label_23->setObjectName(QStringLiteral("label_23"));
         label_23->setMinimumSize(QSize(88, 0));
-        label_23->setFont(font2);
+        label_23->setFont(font3);
         label_23->setStyleSheet(QStringLiteral("color : white;"));
         label_23->setAlignment(Qt::AlignCenter);
 
@@ -1155,7 +1347,7 @@ public:
         labelMinMemClock = new QLabel(frame_10);
         labelMinMemClock->setObjectName(QStringLiteral("labelMinMemClock"));
         labelMinMemClock->setMinimumSize(QSize(120, 0));
-        labelMinMemClock->setFont(font6);
+        labelMinMemClock->setFont(font7);
         labelMinMemClock->setStyleSheet(QStringLiteral("color : white;"));
         labelMinMemClock->setAlignment(Qt::AlignCenter);
 
@@ -1164,7 +1356,7 @@ public:
         label_42 = new QLabel(frame_10);
         label_42->setObjectName(QStringLiteral("label_42"));
         label_42->setMinimumSize(QSize(50, 0));
-        label_42->setFont(font3);
+        label_42->setFont(font4);
         label_42->setStyleSheet(QStringLiteral("color : white;"));
         label_42->setAlignment(Qt::AlignCenter);
 
@@ -1201,7 +1393,7 @@ public:
         label_47 = new QLabel(frame_40);
         label_47->setObjectName(QStringLiteral("label_47"));
         label_47->setMinimumSize(QSize(88, 0));
-        label_47->setFont(font2);
+        label_47->setFont(font3);
         label_47->setStyleSheet(QStringLiteral("color : white;"));
         label_47->setAlignment(Qt::AlignCenter);
 
@@ -1221,7 +1413,7 @@ public:
         labelMinFanSpeed = new QLabel(frame_41);
         labelMinFanSpeed->setObjectName(QStringLiteral("labelMinFanSpeed"));
         labelMinFanSpeed->setMinimumSize(QSize(120, 0));
-        labelMinFanSpeed->setFont(font6);
+        labelMinFanSpeed->setFont(font7);
         labelMinFanSpeed->setStyleSheet(QStringLiteral("color : white;"));
         labelMinFanSpeed->setAlignment(Qt::AlignCenter);
 
@@ -1230,7 +1422,7 @@ public:
         labelMaxFanSpeed = new QLabel(frame_41);
         labelMaxFanSpeed->setObjectName(QStringLiteral("labelMaxFanSpeed"));
         labelMaxFanSpeed->setMinimumSize(QSize(120, 0));
-        labelMaxFanSpeed->setFont(font6);
+        labelMaxFanSpeed->setFont(font7);
         labelMaxFanSpeed->setStyleSheet(QStringLiteral("color : white;"));
         labelMaxFanSpeed->setAlignment(Qt::AlignCenter);
 
@@ -1239,7 +1431,7 @@ public:
         label_56 = new QLabel(frame_41);
         label_56->setObjectName(QStringLiteral("label_56"));
         label_56->setMinimumSize(QSize(50, 0));
-        label_56->setFont(font3);
+        label_56->setFont(font4);
         label_56->setStyleSheet(QStringLiteral("color : white;"));
         label_56->setAlignment(Qt::AlignCenter);
 
@@ -1248,7 +1440,7 @@ public:
         label_57 = new QLabel(frame_41);
         label_57->setObjectName(QStringLiteral("label_57"));
         label_57->setMinimumSize(QSize(50, 0));
-        label_57->setFont(font3);
+        label_57->setFont(font4);
         label_57->setStyleSheet(QStringLiteral("color : white;"));
         label_57->setAlignment(Qt::AlignCenter);
 
@@ -1277,7 +1469,7 @@ public:
         label_36 = new QLabel(frame_13);
         label_36->setObjectName(QStringLiteral("label_36"));
         label_36->setMinimumSize(QSize(88, 0));
-        label_36->setFont(font2);
+        label_36->setFont(font3);
         label_36->setStyleSheet(QStringLiteral("color : white;"));
         label_36->setAlignment(Qt::AlignCenter);
 
@@ -1297,7 +1489,7 @@ public:
         labelMinWatt = new QLabel(frame_15);
         labelMinWatt->setObjectName(QStringLiteral("labelMinWatt"));
         labelMinWatt->setMinimumSize(QSize(120, 0));
-        labelMinWatt->setFont(font6);
+        labelMinWatt->setFont(font7);
         labelMinWatt->setStyleSheet(QStringLiteral("color : white;"));
         labelMinWatt->setAlignment(Qt::AlignCenter);
 
@@ -1306,7 +1498,7 @@ public:
         labelMaxWatt = new QLabel(frame_15);
         labelMaxWatt->setObjectName(QStringLiteral("labelMaxWatt"));
         labelMaxWatt->setMinimumSize(QSize(120, 0));
-        labelMaxWatt->setFont(font6);
+        labelMaxWatt->setFont(font7);
         labelMaxWatt->setStyleSheet(QStringLiteral("color : white;"));
         labelMaxWatt->setAlignment(Qt::AlignCenter);
 
@@ -1315,7 +1507,7 @@ public:
         label_54 = new QLabel(frame_15);
         label_54->setObjectName(QStringLiteral("label_54"));
         label_54->setMinimumSize(QSize(50, 0));
-        label_54->setFont(font3);
+        label_54->setFont(font4);
         label_54->setStyleSheet(QStringLiteral("color : white;"));
         label_54->setAlignment(Qt::AlignCenter);
 
@@ -1324,7 +1516,7 @@ public:
         label_55 = new QLabel(frame_15);
         label_55->setObjectName(QStringLiteral("label_55"));
         label_55->setMinimumSize(QSize(50, 0));
-        label_55->setFont(font3);
+        label_55->setFont(font4);
         label_55->setStyleSheet(QStringLiteral("color : white;"));
         label_55->setAlignment(Qt::AlignCenter);
 
@@ -1355,12 +1547,12 @@ public:
         groupBox = new QGroupBox(splitter_2);
         groupBox->setObjectName(QStringLiteral("groupBox"));
         groupBox->setMinimumSize(QSize(800, 300));
-        QFont font7;
-        font7.setFamily(QStringLiteral("Berlin Sans FB"));
-        font7.setPointSize(14);
-        font7.setBold(false);
-        font7.setWeight(50);
-        groupBox->setFont(font7);
+        QFont font8;
+        font8.setFamily(QStringLiteral("Berlin Sans FB"));
+        font8.setPointSize(14);
+        font8.setBold(false);
+        font8.setWeight(50);
+        groupBox->setFont(font8);
         groupBox->setStyleSheet(QLatin1String("QGroupBox::title{\n"
 "	color : white;\n"
 "	left: 10px;\n"
@@ -1379,7 +1571,7 @@ public:
         horizontalLayout_6->setSpacing(0);
         horizontalLayout_6->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
-        horizontalLayout_6->setContentsMargins(0, 30, 9, 10);
+        horizontalLayout_6->setContentsMargins(0, 30, 9, 9);
         graphicsView = new ChartView(groupBox);
         graphicsView->setObjectName(QStringLiteral("graphicsView"));
         graphicsView->setMinimumSize(QSize(200, 200));
@@ -1427,7 +1619,7 @@ public:
         label_2 = new QLabel(frame);
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setMinimumSize(QSize(80, 88));
-        label_2->setFont(font2);
+        label_2->setFont(font3);
         label_2->setStyleSheet(QStringLiteral("color : white;"));
 
         gridLayout_55->addWidget(label_2, 2, 0, 1, 1);
@@ -1445,7 +1637,7 @@ public:
         labelHashExpectedIncome = new QLabel(frame_3);
         labelHashExpectedIncome->setObjectName(QStringLiteral("labelHashExpectedIncome"));
         labelHashExpectedIncome->setMinimumSize(QSize(100, 88));
-        labelHashExpectedIncome->setFont(font6);
+        labelHashExpectedIncome->setFont(font7);
         labelHashExpectedIncome->setStyleSheet(QStringLiteral("color : white;"));
         labelHashExpectedIncome->setAlignment(Qt::AlignCenter);
 
@@ -1468,7 +1660,7 @@ public:
         labelHashRate = new QLabel(frame_2);
         labelHashRate->setObjectName(QStringLiteral("labelHashRate"));
         labelHashRate->setMinimumSize(QSize(100, 88));
-        labelHashRate->setFont(font6);
+        labelHashRate->setFont(font7);
         labelHashRate->setStyleSheet(QStringLiteral(""));
         labelHashRate->setAlignment(Qt::AlignCenter);
 
@@ -1480,7 +1672,7 @@ public:
         label = new QLabel(frame);
         label->setObjectName(QStringLiteral("label"));
         label->setMinimumSize(QSize(80, 88));
-        label->setFont(font2);
+        label->setFont(font3);
         label->setStyleSheet(QStringLiteral("color : white;"));
 
         gridLayout_55->addWidget(label, 1, 0, 1, 1);
@@ -1488,7 +1680,7 @@ public:
         labelEffectiveness = new QLabel(frame);
         labelEffectiveness->setObjectName(QStringLiteral("labelEffectiveness"));
         labelEffectiveness->setMinimumSize(QSize(100, 88));
-        labelEffectiveness->setFont(font6);
+        labelEffectiveness->setFont(font7);
         labelEffectiveness->setStyleSheet(QStringLiteral("color : white;"));
         labelEffectiveness->setAlignment(Qt::AlignCenter);
 
@@ -1497,7 +1689,7 @@ public:
         label_38 = new QLabel(frame);
         label_38->setObjectName(QStringLiteral("label_38"));
         label_38->setMinimumSize(QSize(80, 88));
-        label_38->setFont(font2);
+        label_38->setFont(font3);
         label_38->setStyleSheet(QStringLiteral("color : white;"));
 
         gridLayout_55->addWidget(label_38, 3, 0, 1, 1);
@@ -1519,7 +1711,7 @@ public:
         groupBoxDiskInfo = new QGroupBox(splitter_2);
         groupBoxDiskInfo->setObjectName(QStringLiteral("groupBoxDiskInfo"));
         groupBoxDiskInfo->setMinimumSize(QSize(260, 0));
-        groupBoxDiskInfo->setFont(font2);
+        groupBoxDiskInfo->setFont(font3);
         groupBoxDiskInfo->setStyleSheet(QLatin1String("QGroupBox::title{\n"
 "	color : white;\n"
 "	left: 10px;\n"
@@ -1538,7 +1730,7 @@ public:
         gridLayout_13->setSpacing(0);
         gridLayout_13->setContentsMargins(11, 11, 11, 11);
         gridLayout_13->setObjectName(QStringLiteral("gridLayout_13"));
-        gridLayout_13->setContentsMargins(0, 30, 0, 3);
+        gridLayout_13->setContentsMargins(0, 30, 0, 9);
         widget_2 = new QWidget(groupBoxDiskInfo);
         widget_2->setObjectName(QStringLiteral("widget_2"));
         widget_2->setStyleSheet(QLatin1String("background-color: rgb(91,90,90);\n"
@@ -1691,7 +1883,7 @@ public:
         scrollArea_2->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName(QStringLiteral("scrollAreaWidgetContents_2"));
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 256, 359));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 256, 353));
         gridLayout_62 = new QGridLayout(scrollAreaWidgetContents_2);
         gridLayout_62->setSpacing(0);
         gridLayout_62->setContentsMargins(11, 11, 11, 11);
@@ -1723,6 +1915,7 @@ public:
         verticalLayout_16->setObjectName(QStringLiteral("verticalLayout_16"));
         groupBox_4 = new QGroupBox(pageMining);
         groupBox_4->setObjectName(QStringLiteral("groupBox_4"));
+        groupBox_4->setFont(font3);
         groupBox_4->setStyleSheet(QLatin1String("QGroupBox::title{\n"
 "	color : white;\n"
 "	left: 10px;\n"
@@ -1745,7 +1938,7 @@ public:
         gridLayout_76->setObjectName(QStringLiteral("gridLayout_76"));
         gridLayout_76->setHorizontalSpacing(70);
         gridLayout_76->setVerticalSpacing(0);
-        gridLayout_76->setContentsMargins(-1, 0, -1, 0);
+        gridLayout_76->setContentsMargins(12, 30, -1, 0);
         gridLayout_15 = new QGridLayout();
         gridLayout_15->setSpacing(6);
         gridLayout_15->setObjectName(QStringLiteral("gridLayout_15"));
@@ -1758,12 +1951,12 @@ public:
         labelCore->setSizePolicy(sizePolicy7);
         labelCore->setMinimumSize(QSize(80, 31));
         labelCore->setMaximumSize(QSize(100, 16777215));
-        QFont font8;
-        font8.setFamily(QStringLiteral("Berlin Sans FB"));
-        font8.setPointSize(16);
-        font8.setBold(false);
-        font8.setWeight(50);
-        labelCore->setFont(font8);
+        QFont font9;
+        font9.setFamily(QStringLiteral("Berlin Sans FB"));
+        font9.setPointSize(16);
+        font9.setBold(false);
+        font9.setWeight(50);
+        labelCore->setFont(font9);
         labelCore->setStyleSheet(QStringLiteral("color : white;"));
 
         gridLayout_15->addWidget(labelCore, 0, 0, 1, 1);
@@ -1772,7 +1965,7 @@ public:
         comboBoxCore->setObjectName(QStringLiteral("comboBoxCore"));
         comboBoxCore->setMinimumSize(QSize(150, 31));
         comboBoxCore->setMaximumSize(QSize(150, 16777215));
-        comboBoxCore->setFont(font2);
+        comboBoxCore->setFont(font3);
         comboBoxCore->setStyleSheet(QLatin1String("QComboBox {\n"
 "	border: 2px solid rgb(51,51,51);\n"
 "	border-radius: 5px;	\n"
@@ -1842,7 +2035,7 @@ public:
         labelWallet->setSizePolicy(sizePolicy7);
         labelWallet->setMinimumSize(QSize(150, 30));
         labelWallet->setMaximumSize(QSize(60, 16777215));
-        labelWallet->setFont(font8);
+        labelWallet->setFont(font9);
         labelWallet->setStyleSheet(QStringLiteral("color : white;"));
 
         horizontalLayout_14->addWidget(labelWallet);
@@ -1852,7 +2045,7 @@ public:
         sizePolicy2.setHeightForWidth(lineEditWallet->sizePolicy().hasHeightForWidth());
         lineEditWallet->setSizePolicy(sizePolicy2);
         lineEditWallet->setMinimumSize(QSize(200, 31));
-        lineEditWallet->setFont(font2);
+        lineEditWallet->setFont(font3);
         lineEditWallet->setStyleSheet(QLatin1String("QLineEdit {\n"
 "	color:rgb(255,255,255);\n"
 "	border:2px solid rgb(51,51,51);\n"
@@ -1881,7 +2074,7 @@ public:
         labelWorker->setSizePolicy(sizePolicy7);
         labelWorker->setMinimumSize(QSize(150, 31));
         labelWorker->setMaximumSize(QSize(100, 16777215));
-        labelWorker->setFont(font8);
+        labelWorker->setFont(font9);
         labelWorker->setStyleSheet(QStringLiteral("color : white;"));
 
         gridLayout_74->addWidget(labelWorker, 0, 0, 1, 1);
@@ -1891,7 +2084,7 @@ public:
         sizePolicy2.setHeightForWidth(lineEditWorker->sizePolicy().hasHeightForWidth());
         lineEditWorker->setSizePolicy(sizePolicy2);
         lineEditWorker->setMinimumSize(QSize(200, 31));
-        lineEditWorker->setFont(font2);
+        lineEditWorker->setFont(font3);
         lineEditWorker->setStyleSheet(QLatin1String("QLineEdit {\n"
 "	color:rgb(255,255,255);\n"
 "	border:2px solid rgb(51,51,51);\n"
@@ -1923,7 +2116,7 @@ public:
         comboBoxCoin->setSizePolicy(sizePolicy2);
         comboBoxCoin->setMinimumSize(QSize(150, 31));
         comboBoxCoin->setMaximumSize(QSize(150, 16777215));
-        comboBoxCoin->setFont(font2);
+        comboBoxCoin->setFont(font3);
         comboBoxCoin->setStyleSheet(QLatin1String("QComboBox {\n"
 "	border: 2px solid rgb(51,51,51);\n"
 "	border-radius: 5px;	\n"
@@ -1982,7 +2175,7 @@ public:
         labelCoin->setSizePolicy(sizePolicy7);
         labelCoin->setMinimumSize(QSize(80, 30));
         labelCoin->setMaximumSize(QSize(100, 16777215));
-        labelCoin->setFont(font8);
+        labelCoin->setFont(font9);
         labelCoin->setStyleSheet(QStringLiteral("color : white;"));
 
         gridLayout_16->addWidget(labelCoin, 0, 0, 1, 1);
@@ -1993,7 +2186,7 @@ public:
         pushButton = new QPushButton(groupBox_4);
         pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setMinimumSize(QSize(200, 180));
-        pushButton->setFont(font6);
+        pushButton->setFont(font7);
         pushButton->setStyleSheet(QLatin1String("QPushButton {\n"
 "	border: none;\n"
 "	background-color: rgba(0,0,0,0);\n"
@@ -2017,7 +2210,7 @@ public:
         labelPool->setSizePolicy(sizePolicy7);
         labelPool->setMinimumSize(QSize(80, 30));
         labelPool->setMaximumSize(QSize(100, 16777215));
-        labelPool->setFont(font8);
+        labelPool->setFont(font9);
         labelPool->setStyleSheet(QStringLiteral("color : white;"));
 
         gridLayout_73->addWidget(labelPool, 0, 0, 1, 1);
@@ -2026,7 +2219,7 @@ public:
         comboBoxPool->setObjectName(QStringLiteral("comboBoxPool"));
         comboBoxPool->setMinimumSize(QSize(150, 31));
         comboBoxPool->setMaximumSize(QSize(150, 16777215));
-        comboBoxPool->setFont(font2);
+        comboBoxPool->setFont(font3);
         comboBoxPool->setStyleSheet(QLatin1String("QComboBox {\n"
 "	border: 2px solid rgb(51,51,51);\n"
 "	border-radius: 5px;	\n"
@@ -2141,7 +2334,7 @@ public:
         pushButtonDisplayPoolStats = new QPushButton(frame_25);
         pushButtonDisplayPoolStats->setObjectName(QStringLiteral("pushButtonDisplayPoolStats"));
         pushButtonDisplayPoolStats->setMinimumSize(QSize(100, 30));
-        pushButtonDisplayPoolStats->setFont(font2);
+        pushButtonDisplayPoolStats->setFont(font3);
         pushButtonDisplayPoolStats->setStyleSheet(QLatin1String("QPushButton {\n"
 "	border: none;\n"
 "	background-color: rgba(0,0,0,0);\n"
@@ -2162,7 +2355,7 @@ public:
         frame_24 = new QFrame(groupBox_6);
         frame_24->setObjectName(QStringLiteral("frame_24"));
         frame_24->setMinimumSize(QSize(0, 320));
-        frame_24->setFont(font5);
+        frame_24->setFont(font6);
         frame_24->setStyleSheet(QLatin1String("background-color: rgb(90, 91, 91);\n"
 "color: rgb(255, 255, 255);"));
         frame_24->setFrameShape(QFrame::StyledPanel);
@@ -2174,13 +2367,13 @@ public:
         gridLayout_24->setContentsMargins(5, 5, 5, 5);
         textEdit = new QTextEdit(frame_24);
         textEdit->setObjectName(QStringLiteral("textEdit"));
-        QFont font9;
-        font9.setFamily(QStringLiteral("Berlin Sans FB"));
-        font9.setPointSize(14);
-        font9.setBold(false);
-        font9.setItalic(false);
-        font9.setWeight(50);
-        textEdit->setFont(font9);
+        QFont font10;
+        font10.setFamily(QStringLiteral("Berlin Sans FB"));
+        font10.setPointSize(14);
+        font10.setBold(false);
+        font10.setItalic(false);
+        font10.setWeight(50);
+        textEdit->setFont(font10);
         textEdit->setStyleSheet(QLatin1String("QTextEdit {\n"
 "	background-color: rgb(90, 91, 91);\n"
 "	color: rgb(255, 255, 255);\n"
@@ -2361,6 +2554,13 @@ public:
         groupBox_8 = new QGroupBox(pageHistory);
         groupBox_8->setObjectName(QStringLiteral("groupBox_8"));
         groupBox_8->setMinimumSize(QSize(0, 300));
+        QFont font11;
+        font11.setFamily(QStringLiteral("Berlin Sans FB"));
+        font11.setPointSize(14);
+        font11.setBold(false);
+        font11.setWeight(50);
+        font11.setKerning(true);
+        groupBox_8->setFont(font11);
         groupBox_8->setStyleSheet(QLatin1String("QGroupBox::title{\n"
 "	color : white;\n"
 "	left: 10px;\n"
@@ -2379,8 +2579,9 @@ public:
         gridLayout_31->setSpacing(6);
         gridLayout_31->setContentsMargins(11, 11, 11, 11);
         gridLayout_31->setObjectName(QStringLiteral("gridLayout_31"));
+        gridLayout_31->setContentsMargins(-1, 30, -1, -1);
         horizontalLayout_29 = new QHBoxLayout();
-        horizontalLayout_29->setSpacing(6);
+        horizontalLayout_29->setSpacing(0);
         horizontalLayout_29->setObjectName(QStringLiteral("horizontalLayout_29"));
         frame_29 = new QFrame(groupBox_8);
         frame_29->setObjectName(QStringLiteral("frame_29"));
@@ -2410,7 +2611,7 @@ public:
         graphicsViewHistoryInfo = new ChartView(frame_30);
         graphicsViewHistoryInfo->setObjectName(QStringLiteral("graphicsViewHistoryInfo"));
         graphicsViewHistoryInfo->setMinimumSize(QSize(700, 280));
-        graphicsViewHistoryInfo->setFont(font5);
+        graphicsViewHistoryInfo->setFont(font6);
         graphicsViewHistoryInfo->setStyleSheet(QStringLiteral("background-color: rgb(91, 90, 90);"));
         graphicsViewHistoryInfo->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 
@@ -2473,7 +2674,7 @@ public:
         spinBoxHistoryDeviceNum = new QSpinBox(frame_34);
         spinBoxHistoryDeviceNum->setObjectName(QStringLiteral("spinBoxHistoryDeviceNum"));
         spinBoxHistoryDeviceNum->setMinimumSize(QSize(140, 40));
-        spinBoxHistoryDeviceNum->setFont(font6);
+        spinBoxHistoryDeviceNum->setFont(font7);
         spinBoxHistoryDeviceNum->setStyleSheet(QLatin1String("QSpinBox { \n"
 "	border: 2px solid rgb(51,51,51);\n"
 "	border-radius: 5px;	\n"
@@ -2531,13 +2732,13 @@ public:
         dateTimeEditHistoryStartTime = new QDateTimeEdit(frame_34);
         dateTimeEditHistoryStartTime->setObjectName(QStringLiteral("dateTimeEditHistoryStartTime"));
         dateTimeEditHistoryStartTime->setMinimumSize(QSize(140, 40));
-        QFont font10;
-        font10.setFamily(QStringLiteral("Berlin Sans FB"));
-        font10.setPointSize(12);
-        font10.setBold(false);
-        font10.setItalic(false);
-        font10.setWeight(50);
-        dateTimeEditHistoryStartTime->setFont(font10);
+        QFont font12;
+        font12.setFamily(QStringLiteral("Berlin Sans FB"));
+        font12.setPointSize(12);
+        font12.setBold(false);
+        font12.setItalic(false);
+        font12.setWeight(50);
+        dateTimeEditHistoryStartTime->setFont(font12);
         dateTimeEditHistoryStartTime->setCursor(QCursor(Qt::IBeamCursor));
         dateTimeEditHistoryStartTime->setStyleSheet(QLatin1String("QDateTimeEdit { \n"
 "	border: 2px solid rgb(51,51,51);\n"
@@ -2726,7 +2927,7 @@ public:
         sizePolicy.setHeightForWidth(groupBox_13->sizePolicy().hasHeightForWidth());
         groupBox_13->setSizePolicy(sizePolicy);
         groupBox_13->setMinimumSize(QSize(0, 300));
-        groupBox_13->setFont(font2);
+        groupBox_13->setFont(font3);
         groupBox_13->setStyleSheet(QLatin1String("QGroupBox::title{\n"
 "	color : white;\n"
 "	left: 10px;\n"
@@ -2735,7 +2936,7 @@ public:
 "}\n"
 "\n"
 "QGroupBox{\n"
-"	border-width: 4px;\n"
+"	border-width: 2px;\n"
 "	border-style: solid;\n"
 "	border-color: white;\n"
 "	margin-top: 0.5ex;\n"
@@ -2754,7 +2955,7 @@ public:
         groupBoxDevicesInfo->setSizePolicy(sizePolicy);
         groupBoxDevicesInfo->setMinimumSize(QSize(0, 150));
         groupBoxDevicesInfo->setMaximumSize(QSize(16777215, 16777127));
-        groupBoxDevicesInfo->setFont(font6);
+        groupBoxDevicesInfo->setFont(font7);
         groupBoxDevicesInfo->setStyleSheet(QLatin1String("QGroupBox::title{\n"
 "	color : white;\n"
 "	left: 10px;\n"
@@ -2763,7 +2964,7 @@ public:
 "}\n"
 "\n"
 "QGroupBox{\n"
-"	border-width: 4px;\n"
+"	border-width: 2px;\n"
 "	border-style: solid;\n"
 "	border-color: white;\n"
 "	margin-top: 0.5ex;\n"
@@ -2932,7 +3133,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1291, 241));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1299, 249));
         sizePolicy.setHeightForWidth(scrollAreaWidgetContents->sizePolicy().hasHeightForWidth());
         scrollAreaWidgetContents->setSizePolicy(sizePolicy);
         scrollAreaWidgetContents->setMinimumSize(QSize(0, 200));
@@ -3013,201 +3214,17 @@ public:
 
         stackedWidgetMonitorMain->addWidget(page);
 
-        gridLayout_40->addWidget(stackedWidgetMonitorMain, 1, 0, 1, 1);
-
-        frameMonitorBar = new QFrame(pageMonitor);
-        frameMonitorBar->setObjectName(QStringLiteral("frameMonitorBar"));
-        frameMonitorBar->setMinimumSize(QSize(0, 50));
-        frameMonitorBar->setMaximumSize(QSize(16777215, 50));
-        frameMonitorBar->setStyleSheet(QLatin1String("background:#008F96;border-width: 0;\n"
-"border-radius : 0;\n"
-""));
-        frameMonitorBar->setFrameShape(QFrame::StyledPanel);
-        frameMonitorBar->setFrameShadow(QFrame::Raised);
-        horizontalLayout_5 = new QHBoxLayout(frameMonitorBar);
-        horizontalLayout_5->setSpacing(0);
-        horizontalLayout_5->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
-        horizontalLayout_5->setContentsMargins(0, 0, 0, 0);
-        frameOverview = new QFrame(frameMonitorBar);
-        frameOverview->setObjectName(QStringLiteral("frameOverview"));
-        sizePolicy6.setHeightForWidth(frameOverview->sizePolicy().hasHeightForWidth());
-        frameOverview->setSizePolicy(sizePolicy6);
-        frameOverview->setMinimumSize(QSize(50, 50));
-        frameOverview->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/monitor.png);\n"
-"background-color: rgb(0, 143, 150);\n"
-"background-repeat:no-repeat;\n"
-"background-position:center;\n"
-"border-width: 0;\n"
-"border-radius : 0;"));
-        frameOverview->setFrameShape(QFrame::StyledPanel);
-        frameOverview->setFrameShadow(QFrame::Raised);
-        gridLayout_36 = new QGridLayout(frameOverview);
-        gridLayout_36->setSpacing(0);
-        gridLayout_36->setContentsMargins(11, 11, 11, 11);
-        gridLayout_36->setObjectName(QStringLiteral("gridLayout_36"));
-        gridLayout_36->setContentsMargins(0, 0, 0, 0);
-        pushButtonMonitorPage_Overview = new QPushButton(frameOverview);
-        pushButtonMonitorPage_Overview->setObjectName(QStringLiteral("pushButtonMonitorPage_Overview"));
-        sizePolicy4.setHeightForWidth(pushButtonMonitorPage_Overview->sizePolicy().hasHeightForWidth());
-        pushButtonMonitorPage_Overview->setSizePolicy(sizePolicy4);
-        pushButtonMonitorPage_Overview->setMinimumSize(QSize(0, 50));
-        pushButtonMonitorPage_Overview->setFont(font1);
-        pushButtonMonitorPage_Overview->setStyleSheet(QLatin1String("QPushButton {\n"
-"	border: none;\n"
-"	background-color: rgba(0,0,0,0);\n"
-"	color : white;\n"
-"}\n"
-"QPushButton:hover {\n"
-"	background-color: rgb(91,90,90);\n"
-"}\n"
-"QPushButton:pressed {	\n"
-"	background-color: #7A0000;\n"
-"}"));
-
-        gridLayout_36->addWidget(pushButtonMonitorPage_Overview, 0, 0, 1, 1);
-
-
-        horizontalLayout_5->addWidget(frameOverview);
-
-        frameMiningInfo = new QFrame(frameMonitorBar);
-        frameMiningInfo->setObjectName(QStringLiteral("frameMiningInfo"));
-        frameMiningInfo->setMinimumSize(QSize(50, 50));
-        frameMiningInfo->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/computer.png);\n"
-"background-color: rgb(0, 143, 150);\n"
-"background-repeat:no-repeat;\n"
-"background-position:center;\n"
-"border-width: 0;\n"
-"border-radius : 0;"));
-        frameMiningInfo->setFrameShape(QFrame::StyledPanel);
-        frameMiningInfo->setFrameShadow(QFrame::Raised);
-        gridLayout_37 = new QGridLayout(frameMiningInfo);
-        gridLayout_37->setSpacing(0);
-        gridLayout_37->setContentsMargins(11, 11, 11, 11);
-        gridLayout_37->setObjectName(QStringLiteral("gridLayout_37"));
-        gridLayout_37->setContentsMargins(0, 0, 0, 0);
-        pushButtonMonitorPage_Mining = new QPushButton(frameMiningInfo);
-        pushButtonMonitorPage_Mining->setObjectName(QStringLiteral("pushButtonMonitorPage_Mining"));
-        sizePolicy4.setHeightForWidth(pushButtonMonitorPage_Mining->sizePolicy().hasHeightForWidth());
-        pushButtonMonitorPage_Mining->setSizePolicy(sizePolicy4);
-        pushButtonMonitorPage_Mining->setMinimumSize(QSize(0, 0));
-        pushButtonMonitorPage_Mining->setFont(font1);
-        pushButtonMonitorPage_Mining->setStyleSheet(QLatin1String("QPushButton {\n"
-"	border: none;\n"
-"	background-color: rgba(0,0,0,0);\n"
-"	color : white;\n"
-"}\n"
-"QPushButton:hover {\n"
-"	background-color: rgb(91,90,90);\n"
-"}\n"
-"QPushButton:pressed {	\n"
-"	background-color: #7A0000;\n"
-"}"));
-
-        gridLayout_37->addWidget(pushButtonMonitorPage_Mining, 0, 0, 2, 1);
-
-
-        horizontalLayout_5->addWidget(frameMiningInfo);
-
-        frameHistory = new QFrame(frameMonitorBar);
-        frameHistory->setObjectName(QStringLiteral("frameHistory"));
-        frameHistory->setMinimumSize(QSize(50, 50));
-        frameHistory->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/minimum.png);\n"
-"background-color: rgb(0, 143, 150);\n"
-"background-repeat:no-repeat;\n"
-"background-position:center;\n"
-"border-width: 0;\n"
-"border-radius : 0;"));
-        frameHistory->setFrameShape(QFrame::StyledPanel);
-        frameHistory->setFrameShadow(QFrame::Raised);
-        gridLayout_38 = new QGridLayout(frameHistory);
-        gridLayout_38->setSpacing(0);
-        gridLayout_38->setContentsMargins(11, 11, 11, 11);
-        gridLayout_38->setObjectName(QStringLiteral("gridLayout_38"));
-        gridLayout_38->setContentsMargins(0, 0, 0, 0);
-        pushButtonMonitorPage_System = new QPushButton(frameHistory);
-        pushButtonMonitorPage_System->setObjectName(QStringLiteral("pushButtonMonitorPage_System"));
-        sizePolicy4.setHeightForWidth(pushButtonMonitorPage_System->sizePolicy().hasHeightForWidth());
-        pushButtonMonitorPage_System->setSizePolicy(sizePolicy4);
-        pushButtonMonitorPage_System->setMinimumSize(QSize(50, 0));
-        pushButtonMonitorPage_System->setFont(font1);
-        pushButtonMonitorPage_System->setStyleSheet(QLatin1String("QPushButton {\n"
-"	border: none;\n"
-"	background-color: rgba(0,0,0,0);\n"
-"	color : white;\n"
-"}\n"
-"QPushButton:hover {\n"
-"	background-color: rgb(91,90,90);\n"
-"}\n"
-"QPushButton:pressed {	\n"
-"	background-color: #7A0000;\n"
-"}"));
-        QIcon icon1;
-        icon1.addFile(QStringLiteral(":/icons/icos/minimum.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButtonMonitorPage_System->setIcon(icon1);
-        pushButtonMonitorPage_System->setIconSize(QSize(0, 16));
-
-        gridLayout_38->addWidget(pushButtonMonitorPage_System, 0, 0, 1, 1);
-
-
-        horizontalLayout_5->addWidget(frameHistory);
-
-        frameDevicesInfo = new QFrame(frameMonitorBar);
-        frameDevicesInfo->setObjectName(QStringLiteral("frameDevicesInfo"));
-        frameDevicesInfo->setMinimumSize(QSize(50, 50));
-        frameDevicesInfo->setStyleSheet(QLatin1String("background-image: url(:/icons/icos/gpu.png);\n"
-"background-color: rgb(0, 143, 150);\n"
-"background-repeat:no-repeat;\n"
-"background-position:center;\n"
-"border-width: 0;\n"
-"border-radius : 0;"));
-        frameDevicesInfo->setFrameShape(QFrame::StyledPanel);
-        frameDevicesInfo->setFrameShadow(QFrame::Raised);
-        gridLayout_58 = new QGridLayout(frameDevicesInfo);
-        gridLayout_58->setSpacing(0);
-        gridLayout_58->setContentsMargins(11, 11, 11, 11);
-        gridLayout_58->setObjectName(QStringLiteral("gridLayout_58"));
-        gridLayout_58->setContentsMargins(0, 0, 0, 0);
-        pushButtonMonitorPage_DevicesInfo = new QPushButton(frameDevicesInfo);
-        pushButtonMonitorPage_DevicesInfo->setObjectName(QStringLiteral("pushButtonMonitorPage_DevicesInfo"));
-        sizePolicy4.setHeightForWidth(pushButtonMonitorPage_DevicesInfo->sizePolicy().hasHeightForWidth());
-        pushButtonMonitorPage_DevicesInfo->setSizePolicy(sizePolicy4);
-        pushButtonMonitorPage_DevicesInfo->setMinimumSize(QSize(50, 0));
-        pushButtonMonitorPage_DevicesInfo->setFont(font1);
-        pushButtonMonitorPage_DevicesInfo->setStyleSheet(QLatin1String("QPushButton {\n"
-"	border: none;\n"
-"	background-color: rgba(0,0,0,0);\n"
-"	color : white;\n"
-"}\n"
-"QPushButton:hover {\n"
-"	background-color: rgb(91,90,90);\n"
-"}\n"
-"QPushButton:pressed {	\n"
-"	background-color: #7A0000;\n"
-"}"));
-        pushButtonMonitorPage_DevicesInfo->setIconSize(QSize(0, 16));
-
-        gridLayout_58->addWidget(pushButtonMonitorPage_DevicesInfo, 0, 0, 1, 1);
-
-
-        horizontalLayout_5->addWidget(frameDevicesInfo);
-
-        horizontalSpacer = new QSpacerItem(700, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_5->addItem(horizontalSpacer);
-
-
-        gridLayout_40->addWidget(frameMonitorBar, 0, 0, 1, 1);
+        verticalLayout_10->addWidget(stackedWidgetMonitorMain);
 
         stackedWidgetMain->addWidget(pageMonitor);
         pageOC = new QWidget();
         pageOC->setObjectName(QStringLiteral("pageOC"));
-        pageOC->setMinimumSize(QSize(0, 500));
-        gridLayout_46 = new QGridLayout(pageOC);
-        gridLayout_46->setSpacing(0);
-        gridLayout_46->setContentsMargins(11, 11, 11, 11);
-        gridLayout_46->setObjectName(QStringLiteral("gridLayout_46"));
-        gridLayout_46->setContentsMargins(0, 0, 0, 0);
+        pageOC->setMinimumSize(QSize(0, 0));
+        gridLayout_11 = new QGridLayout(pageOC);
+        gridLayout_11->setSpacing(0);
+        gridLayout_11->setContentsMargins(11, 11, 11, 11);
+        gridLayout_11->setObjectName(QStringLiteral("gridLayout_11"));
+        gridLayout_11->setContentsMargins(0, 0, 0, 0);
         frameMonitorBar_2 = new QFrame(pageOC);
         frameMonitorBar_2->setObjectName(QStringLiteral("frameMonitorBar_2"));
         frameMonitorBar_2->setMinimumSize(QSize(0, 50));
@@ -3221,33 +3238,61 @@ public:
         horizontalLayout_43->setObjectName(QStringLiteral("horizontalLayout_43"));
         horizontalLayout_43->setContentsMargins(0, 0, 0, 0);
 
-        gridLayout_46->addWidget(frameMonitorBar_2, 0, 0, 1, 3);
+        gridLayout_11->addWidget(frameMonitorBar_2, 0, 0, 1, 1);
 
-        verticalLayout_2 = new QVBoxLayout();
-        verticalLayout_2->setSpacing(0);
-        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-        verticalLayout_2->setContentsMargins(20, 20, -1, 20);
+        horizontalLayout_11 = new QHBoxLayout();
+        horizontalLayout_11->setSpacing(0);
+        horizontalLayout_11->setObjectName(QStringLiteral("horizontalLayout_11"));
+        horizontalLayout_11->setContentsMargins(9, 9, 9, 9);
+        groupbox = new QGroupBox(pageOC);
+        groupbox->setObjectName(QStringLiteral("groupbox"));
+        groupbox->setFont(font3);
+        groupbox->setStyleSheet(QLatin1String("QGroupBox::title{\n"
+"	color : white;\n"
+"	left: 10px;\n"
+"	margin-left: 0px;\n"
+"	padding: 0 1px;\n"
+"}\n"
+"\n"
+"QGroupBox{\n"
+"	color : white;\n"
+"	border-width: 2px;\n"
+"	border-style: solid;\n"
+"	border-color: white;\n"
+"	margin-top: 0.5ex;\n"
+"	border-radius: 5px;\n"
+"}\n"
+""));
+        verticalLayout_11 = new QVBoxLayout(groupbox);
+        verticalLayout_11->setSpacing(0);
+        verticalLayout_11->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_11->setObjectName(QStringLiteral("verticalLayout_11"));
+        verticalLayout_11->setContentsMargins(-1, 30, -1, -1);
         horizontalLayout_7 = new QHBoxLayout();
-        horizontalLayout_7->setSpacing(20);
+        horizontalLayout_7->setSpacing(6);
         horizontalLayout_7->setObjectName(QStringLiteral("horizontalLayout_7"));
         horizontalLayout_7->setContentsMargins(20, -1, -1, -1);
-        label_52 = new QLabel(pageOC);
+        label_52 = new QLabel(groupbox);
         label_52->setObjectName(QStringLiteral("label_52"));
         QSizePolicy sizePolicy9(QSizePolicy::Fixed, QSizePolicy::Preferred);
         sizePolicy9.setHorizontalStretch(0);
         sizePolicy9.setVerticalStretch(0);
         sizePolicy9.setHeightForWidth(label_52->sizePolicy().hasHeightForWidth());
         label_52->setSizePolicy(sizePolicy9);
-        label_52->setMinimumSize(QSize(200, 80));
+        label_52->setMinimumSize(QSize(230, 80));
         label_52->setFont(font);
         label_52->setStyleSheet(QStringLiteral("color : white;"));
 
         horizontalLayout_7->addWidget(label_52);
 
-        comboBoxDevice = new QComboBox(pageOC);
+        horizontalSpacer_11 = new QSpacerItem(40, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
+
+        horizontalLayout_7->addItem(horizontalSpacer_11);
+
+        comboBoxDevice = new QComboBox(groupbox);
         comboBoxDevice->setObjectName(QStringLiteral("comboBoxDevice"));
         comboBoxDevice->setMinimumSize(QSize(200, 60));
-        comboBoxDevice->setFont(font2);
+        comboBoxDevice->setFont(font3);
         comboBoxDevice->setLayoutDirection(Qt::LeftToRight);
         comboBoxDevice->setStyleSheet(QLatin1String("QComboBox {\n"
 "	border: 2px solid rgb(51,51,51);\n"
@@ -3313,24 +3358,30 @@ public:
         horizontalLayout_7->addItem(horizontalSpacer_23);
 
 
-        verticalLayout_2->addLayout(horizontalLayout_7);
+        verticalLayout_11->addLayout(horizontalLayout_7);
 
-        horizontalLayout_38 = new QHBoxLayout();
-        horizontalLayout_38->setSpacing(20);
-        horizontalLayout_38->setObjectName(QStringLiteral("horizontalLayout_38"));
-        horizontalLayout_38->setContentsMargins(20, -1, -1, -1);
-        temperatureLimit = new QLabel(pageOC);
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        horizontalLayout_2->setContentsMargins(20, -1, -1, -1);
+        temperatureLimit = new QLabel(groupbox);
         temperatureLimit->setObjectName(QStringLiteral("temperatureLimit"));
-        temperatureLimit->setMinimumSize(QSize(200, 80));
+        sizePolicy9.setHeightForWidth(temperatureLimit->sizePolicy().hasHeightForWidth());
+        temperatureLimit->setSizePolicy(sizePolicy9);
+        temperatureLimit->setMinimumSize(QSize(230, 80));
         temperatureLimit->setFont(font);
         temperatureLimit->setStyleSheet(QStringLiteral("color : white;"));
 
-        horizontalLayout_38->addWidget(temperatureLimit);
+        horizontalLayout_2->addWidget(temperatureLimit);
 
-        spinBoxTemperature = new QSpinBox(pageOC);
+        horizontalSpacer_12 = new QSpacerItem(40, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_12);
+
+        spinBoxTemperature = new QSpinBox(groupbox);
         spinBoxTemperature->setObjectName(QStringLiteral("spinBoxTemperature"));
         spinBoxTemperature->setMinimumSize(QSize(200, 60));
-        spinBoxTemperature->setFont(font2);
+        spinBoxTemperature->setFont(font3);
         spinBoxTemperature->setAutoFillBackground(false);
         spinBoxTemperature->setStyleSheet(QLatin1String("QSpinBox { \n"
 "	border: 2px solid rgb(51,51,51);\n"
@@ -3370,20 +3421,20 @@ public:
 ""));
         spinBoxTemperature->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
 
-        horizontalLayout_38->addWidget(spinBoxTemperature);
+        horizontalLayout_2->addWidget(spinBoxTemperature);
 
         horizontalSpacer_22 = new QSpacerItem(100, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        horizontalLayout_38->addItem(horizontalSpacer_22);
+        horizontalLayout_2->addItem(horizontalSpacer_22);
 
 
-        verticalLayout_2->addLayout(horizontalLayout_38);
+        verticalLayout_11->addLayout(horizontalLayout_2);
 
         horizontalLayout_39 = new QHBoxLayout();
         horizontalLayout_39->setSpacing(6);
         horizontalLayout_39->setObjectName(QStringLiteral("horizontalLayout_39"));
         horizontalLayout_39->setContentsMargins(20, -1, -1, -1);
-        label_50 = new QLabel(pageOC);
+        label_50 = new QLabel(groupbox);
         label_50->setObjectName(QStringLiteral("label_50"));
         sizePolicy9.setHeightForWidth(label_50->sizePolicy().hasHeightForWidth());
         label_50->setSizePolicy(sizePolicy9);
@@ -3397,7 +3448,7 @@ public:
 
         horizontalLayout_39->addItem(horizontalSpacer_10);
 
-        horizontalSliderPowerPercent = new QSlider(pageOC);
+        horizontalSliderPowerPercent = new QSlider(groupbox);
         horizontalSliderPowerPercent->setObjectName(QStringLiteral("horizontalSliderPowerPercent"));
         QSizePolicy sizePolicy10(QSizePolicy::Expanding, QSizePolicy::Fixed);
         sizePolicy10.setHorizontalStretch(255);
@@ -3448,7 +3499,7 @@ public:
 
         horizontalLayout_39->addWidget(horizontalSliderPowerPercent);
 
-        labelPowerPercent = new QLabel(pageOC);
+        labelPowerPercent = new QLabel(groupbox);
         labelPowerPercent->setObjectName(QStringLiteral("labelPowerPercent"));
         labelPowerPercent->setMinimumSize(QSize(100, 0));
         labelPowerPercent->setFont(font);
@@ -3458,13 +3509,13 @@ public:
         horizontalLayout_39->addWidget(labelPowerPercent);
 
 
-        verticalLayout_2->addLayout(horizontalLayout_39);
+        verticalLayout_11->addLayout(horizontalLayout_39);
 
         horizontalLayout_40 = new QHBoxLayout();
         horizontalLayout_40->setSpacing(6);
         horizontalLayout_40->setObjectName(QStringLiteral("horizontalLayout_40"));
         horizontalLayout_40->setContentsMargins(20, -1, -1, -1);
-        label_51 = new QLabel(pageOC);
+        label_51 = new QLabel(groupbox);
         label_51->setObjectName(QStringLiteral("label_51"));
         sizePolicy9.setHeightForWidth(label_51->sizePolicy().hasHeightForWidth());
         label_51->setSizePolicy(sizePolicy9);
@@ -3478,7 +3529,7 @@ public:
 
         horizontalLayout_40->addItem(horizontalSpacer_18);
 
-        horizontalSliderGpuOffset = new QSlider(pageOC);
+        horizontalSliderGpuOffset = new QSlider(groupbox);
         horizontalSliderGpuOffset->setObjectName(QStringLiteral("horizontalSliderGpuOffset"));
         sizePolicy10.setHeightForWidth(horizontalSliderGpuOffset->sizePolicy().hasHeightForWidth());
         horizontalSliderGpuOffset->setSizePolicy(sizePolicy10);
@@ -3526,7 +3577,7 @@ public:
 
         horizontalLayout_40->addWidget(horizontalSliderGpuOffset);
 
-        labelGpuOffset = new QLabel(pageOC);
+        labelGpuOffset = new QLabel(groupbox);
         labelGpuOffset->setObjectName(QStringLiteral("labelGpuOffset"));
         labelGpuOffset->setMinimumSize(QSize(100, 0));
         labelGpuOffset->setFont(font);
@@ -3536,13 +3587,13 @@ public:
         horizontalLayout_40->addWidget(labelGpuOffset);
 
 
-        verticalLayout_2->addLayout(horizontalLayout_40);
+        verticalLayout_11->addLayout(horizontalLayout_40);
 
         horizontalLayout_41 = new QHBoxLayout();
         horizontalLayout_41->setSpacing(6);
         horizontalLayout_41->setObjectName(QStringLiteral("horizontalLayout_41"));
         horizontalLayout_41->setContentsMargins(20, -1, -1, -1);
-        label_49 = new QLabel(pageOC);
+        label_49 = new QLabel(groupbox);
         label_49->setObjectName(QStringLiteral("label_49"));
         sizePolicy9.setHeightForWidth(label_49->sizePolicy().hasHeightForWidth());
         label_49->setSizePolicy(sizePolicy9);
@@ -3556,7 +3607,7 @@ public:
 
         horizontalLayout_41->addItem(horizontalSpacer_19);
 
-        horizontalSliderMemOffset = new QSlider(pageOC);
+        horizontalSliderMemOffset = new QSlider(groupbox);
         horizontalSliderMemOffset->setObjectName(QStringLiteral("horizontalSliderMemOffset"));
         sizePolicy10.setHeightForWidth(horizontalSliderMemOffset->sizePolicy().hasHeightForWidth());
         horizontalSliderMemOffset->setSizePolicy(sizePolicy10);
@@ -3604,7 +3655,7 @@ public:
 
         horizontalLayout_41->addWidget(horizontalSliderMemOffset);
 
-        labelMemClock = new QLabel(pageOC);
+        labelMemClock = new QLabel(groupbox);
         labelMemClock->setObjectName(QStringLiteral("labelMemClock"));
         labelMemClock->setMinimumSize(QSize(100, 0));
         labelMemClock->setFont(font);
@@ -3614,13 +3665,13 @@ public:
         horizontalLayout_41->addWidget(labelMemClock);
 
 
-        verticalLayout_2->addLayout(horizontalLayout_41);
+        verticalLayout_11->addLayout(horizontalLayout_41);
 
         horizontalLayout_42 = new QHBoxLayout();
         horizontalLayout_42->setSpacing(6);
         horizontalLayout_42->setObjectName(QStringLiteral("horizontalLayout_42"));
         horizontalLayout_42->setContentsMargins(20, -1, -1, -1);
-        label_53 = new QLabel(pageOC);
+        label_53 = new QLabel(groupbox);
         label_53->setObjectName(QStringLiteral("label_53"));
         sizePolicy9.setHeightForWidth(label_53->sizePolicy().hasHeightForWidth());
         label_53->setSizePolicy(sizePolicy9);
@@ -3634,7 +3685,7 @@ public:
 
         horizontalLayout_42->addItem(horizontalSpacer_20);
 
-        horizontalSliderFanSpeed = new QSlider(pageOC);
+        horizontalSliderFanSpeed = new QSlider(groupbox);
         horizontalSliderFanSpeed->setObjectName(QStringLiteral("horizontalSliderFanSpeed"));
         sizePolicy10.setHeightForWidth(horizontalSliderFanSpeed->sizePolicy().hasHeightForWidth());
         horizontalSliderFanSpeed->setSizePolicy(sizePolicy10);
@@ -3681,7 +3732,7 @@ public:
 
         horizontalLayout_42->addWidget(horizontalSliderFanSpeed);
 
-        labelFanSpeed = new QLabel(pageOC);
+        labelFanSpeed = new QLabel(groupbox);
         labelFanSpeed->setObjectName(QStringLiteral("labelFanSpeed"));
         labelFanSpeed->setMinimumSize(QSize(100, 0));
         labelFanSpeed->setFont(font);
@@ -3691,17 +3742,17 @@ public:
         horizontalLayout_42->addWidget(labelFanSpeed);
 
 
-        verticalLayout_2->addLayout(horizontalLayout_42);
+        verticalLayout_11->addLayout(horizontalLayout_42);
 
         verticalLayout_19 = new QVBoxLayout();
         verticalLayout_19->setSpacing(6);
         verticalLayout_19->setObjectName(QStringLiteral("verticalLayout_19"));
         verticalLayout_19->setContentsMargins(20, -1, -1, -1);
-        checkBoxAutoSpeedFan = new QCheckBox(pageOC);
+        checkBoxAutoSpeedFan = new QCheckBox(groupbox);
         checkBoxAutoSpeedFan->setObjectName(QStringLiteral("checkBoxAutoSpeedFan"));
         checkBoxAutoSpeedFan->setEnabled(true);
         checkBoxAutoSpeedFan->setMinimumSize(QSize(0, 30));
-        checkBoxAutoSpeedFan->setFont(font2);
+        checkBoxAutoSpeedFan->setFont(font3);
         checkBoxAutoSpeedFan->setStyleSheet(QLatin1String("QCheckBox {\n"
 "    color:rgb(255,255,255);\n"
 "}\n"
@@ -3735,10 +3786,10 @@ public:
 
         verticalLayout_19->addWidget(checkBoxAutoSpeedFan);
 
-        checkBoxAllDevices = new QCheckBox(pageOC);
+        checkBoxAllDevices = new QCheckBox(groupbox);
         checkBoxAllDevices->setObjectName(QStringLiteral("checkBoxAllDevices"));
         checkBoxAllDevices->setMinimumSize(QSize(0, 30));
-        checkBoxAllDevices->setFont(font2);
+        checkBoxAllDevices->setFont(font3);
         checkBoxAllDevices->setStyleSheet(QLatin1String("QCheckBox {\n"
 "    color:rgb(255,255,255);\n"
 "}\n"
@@ -3772,10 +3823,10 @@ public:
 
         verticalLayout_19->addWidget(checkBoxAllDevices);
 
-        checkBoxOCMinerStart = new QCheckBox(pageOC);
+        checkBoxOCMinerStart = new QCheckBox(groupbox);
         checkBoxOCMinerStart->setObjectName(QStringLiteral("checkBoxOCMinerStart"));
         checkBoxOCMinerStart->setMinimumSize(QSize(0, 30));
-        checkBoxOCMinerStart->setFont(font2);
+        checkBoxOCMinerStart->setFont(font3);
         checkBoxOCMinerStart->setStyleSheet(QLatin1String("QCheckBox {\n"
 "    color:rgb(255,255,255);\n"
 "}\n"
@@ -3810,19 +3861,16 @@ public:
         verticalLayout_19->addWidget(checkBoxOCMinerStart);
 
 
-        verticalLayout_2->addLayout(verticalLayout_19);
+        verticalLayout_11->addLayout(verticalLayout_19);
 
-
-        gridLayout_46->addLayout(verticalLayout_2, 1, 0, 1, 2);
-
-        verticalLayout_20 = new QVBoxLayout();
-        verticalLayout_20->setSpacing(6);
-        verticalLayout_20->setObjectName(QStringLiteral("verticalLayout_20"));
-        verticalLayout_20->setContentsMargins(-1, 20, -1, -1);
-        pushButtonOCPageApply = new QPushButton(pageOC);
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setSpacing(6);
+        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
+        pushButtonOCPageApply = new QPushButton(groupbox);
         pushButtonOCPageApply->setObjectName(QStringLiteral("pushButtonOCPageApply"));
-        pushButtonOCPageApply->setMinimumSize(QSize(200, 140));
-        pushButtonOCPageApply->setFont(font6);
+        pushButtonOCPageApply->setMinimumSize(QSize(200, 100));
+        pushButtonOCPageApply->setMaximumSize(QSize(200, 16777215));
+        pushButtonOCPageApply->setFont(font7);
         pushButtonOCPageApply->setStyleSheet(QLatin1String("QPushButton {\n"
 "	border: none;\n"
 "	background-color: rgba(0,0,0,0);\n"
@@ -3835,12 +3883,13 @@ public:
 "	background-color: #7A0000;\n"
 "}"));
 
-        verticalLayout_20->addWidget(pushButtonOCPageApply);
+        horizontalLayout_4->addWidget(pushButtonOCPageApply);
 
-        pushButtonAutoOC = new QPushButton(pageOC);
+        pushButtonAutoOC = new QPushButton(groupbox);
         pushButtonAutoOC->setObjectName(QStringLiteral("pushButtonAutoOC"));
-        pushButtonAutoOC->setMinimumSize(QSize(200, 140));
-        pushButtonAutoOC->setFont(font6);
+        pushButtonAutoOC->setMinimumSize(QSize(200, 100));
+        pushButtonAutoOC->setMaximumSize(QSize(200, 16777215));
+        pushButtonAutoOC->setFont(font7);
         pushButtonAutoOC->setStyleSheet(QLatin1String("QPushButton {\n"
 "	border: none;\n"
 "	background-color: rgba(0,0,0,0);\n"
@@ -3853,14 +3902,16 @@ public:
 "	background-color: #7A0000;\n"
 "}"));
 
-        verticalLayout_20->addWidget(pushButtonAutoOC);
-
-        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout_20->addItem(verticalSpacer_2);
+        horizontalLayout_4->addWidget(pushButtonAutoOC);
 
 
-        gridLayout_46->addLayout(verticalLayout_20, 1, 2, 1, 1);
+        verticalLayout_11->addLayout(horizontalLayout_4);
+
+
+        horizontalLayout_11->addWidget(groupbox);
+
+
+        gridLayout_11->addLayout(horizontalLayout_11, 1, 0, 1, 1);
 
         stackedWidgetMain->addWidget(pageOC);
         pageHelp = new QWidget();
@@ -3892,7 +3943,7 @@ public:
         groupBox_19 = new QGroupBox(pageHelp);
         groupBox_19->setObjectName(QStringLiteral("groupBox_19"));
         groupBox_19->setMinimumSize(QSize(600, 0));
-        groupBox_19->setFont(font2);
+        groupBox_19->setFont(font3);
         groupBox_19->setLayoutDirection(Qt::LeftToRight);
         groupBox_19->setStyleSheet(QLatin1String("QGroupBox::title{\n"
 "	color : white;\n"
@@ -3902,7 +3953,7 @@ public:
 "}\n"
 "\n"
 "QGroupBox{\n"
-"	border-width: 5px;\n"
+"	border-width: 2px;\n"
 "	border-style: solid;\n"
 "	border-color: white;\n"
 "	margin-top: 0.5ex;\n"
@@ -3962,10 +4013,10 @@ public:
         sizePolicy9.setHeightForWidth(label_80->sizePolicy().hasHeightForWidth());
         label_80->setSizePolicy(sizePolicy9);
         label_80->setMinimumSize(QSize(300, 50));
-        QFont font11;
-        font11.setFamily(QStringLiteral("Berlin Sans FB"));
-        font11.setPointSize(26);
-        label_80->setFont(font11);
+        QFont font13;
+        font13.setFamily(QStringLiteral("Berlin Sans FB"));
+        font13.setPointSize(26);
+        label_80->setFont(font13);
         label_80->setStyleSheet(QStringLiteral("color : white;"));
 
         verticalLayout_6->addWidget(label_80);
@@ -3975,7 +4026,7 @@ public:
         sizePolicy9.setHeightForWidth(label_81->sizePolicy().hasHeightForWidth());
         label_81->setSizePolicy(sizePolicy9);
         label_81->setMinimumSize(QSize(100, 40));
-        label_81->setFont(font2);
+        label_81->setFont(font3);
         label_81->setStyleSheet(QStringLiteral("color : white;"));
 
         verticalLayout_6->addWidget(label_81);
@@ -4031,7 +4082,7 @@ public:
         sizePolicy9.setHeightForWidth(label_74->sizePolicy().hasHeightForWidth());
         label_74->setSizePolicy(sizePolicy9);
         label_74->setMinimumSize(QSize(300, 50));
-        label_74->setFont(font11);
+        label_74->setFont(font13);
         label_74->setStyleSheet(QStringLiteral("color : white;"));
 
         verticalLayout_26->addWidget(label_74);
@@ -4041,7 +4092,7 @@ public:
         sizePolicy9.setHeightForWidth(label_75->sizePolicy().hasHeightForWidth());
         label_75->setSizePolicy(sizePolicy9);
         label_75->setMinimumSize(QSize(100, 40));
-        label_75->setFont(font2);
+        label_75->setFont(font3);
         label_75->setStyleSheet(QStringLiteral("color : white;"));
 
         verticalLayout_26->addWidget(label_75);
@@ -4097,7 +4148,7 @@ public:
         sizePolicy9.setHeightForWidth(label_76->sizePolicy().hasHeightForWidth());
         label_76->setSizePolicy(sizePolicy9);
         label_76->setMinimumSize(QSize(300, 50));
-        label_76->setFont(font11);
+        label_76->setFont(font13);
         label_76->setStyleSheet(QStringLiteral("color : white;"));
 
         verticalLayout_27->addWidget(label_76);
@@ -4107,7 +4158,7 @@ public:
         sizePolicy9.setHeightForWidth(label_77->sizePolicy().hasHeightForWidth());
         label_77->setSizePolicy(sizePolicy9);
         label_77->setMinimumSize(QSize(100, 40));
-        label_77->setFont(font2);
+        label_77->setFont(font3);
         label_77->setStyleSheet(QStringLiteral("color : white;"));
 
         verticalLayout_27->addWidget(label_77);
@@ -4169,7 +4220,7 @@ public:
         sizePolicy9.setHeightForWidth(label_82->sizePolicy().hasHeightForWidth());
         label_82->setSizePolicy(sizePolicy9);
         label_82->setMinimumSize(QSize(300, 50));
-        label_82->setFont(font11);
+        label_82->setFont(font13);
         label_82->setStyleSheet(QStringLiteral("color : white;"));
 
         verticalLayout_28->addWidget(label_82);
@@ -4179,7 +4230,7 @@ public:
         sizePolicy9.setHeightForWidth(label_83->sizePolicy().hasHeightForWidth());
         label_83->setSizePolicy(sizePolicy9);
         label_83->setMinimumSize(QSize(100, 40));
-        label_83->setFont(font2);
+        label_83->setFont(font3);
         label_83->setStyleSheet(QStringLiteral("color : white;"));
 
         verticalLayout_28->addWidget(label_83);
@@ -4391,7 +4442,7 @@ public:
         gridLayout_82->setContentsMargins(0, -1, 0, -1);
         groupBox_27 = new QGroupBox(groupBox_15);
         groupBox_27->setObjectName(QStringLiteral("groupBox_27"));
-        groupBox_27->setFont(font2);
+        groupBox_27->setFont(font3);
         groupBox_27->setStyleSheet(QLatin1String("QGroupBox::title{\n"
 "	color : white;\n"
 "	left: 10px;\n"
@@ -4446,7 +4497,7 @@ public:
         comboBoxChangePageSize = new QComboBox(frame_37);
         comboBoxChangePageSize->setObjectName(QStringLiteral("comboBoxChangePageSize"));
         comboBoxChangePageSize->setMinimumSize(QSize(0, 40));
-        comboBoxChangePageSize->setFont(font3);
+        comboBoxChangePageSize->setFont(font4);
         comboBoxChangePageSize->setStyleSheet(QLatin1String("QComboBox {\n"
 "	border: 2px solid rgb(51,51,51);\n"
 "	border-radius: 5px;	\n"
@@ -4517,13 +4568,13 @@ public:
         spinBoxChangePageSizeMax = new QSpinBox(frame_37);
         spinBoxChangePageSizeMax->setObjectName(QStringLiteral("spinBoxChangePageSizeMax"));
         spinBoxChangePageSizeMax->setMinimumSize(QSize(0, 40));
-        QFont font12;
-        font12.setFamily(QStringLiteral("Berlin Sans FB"));
-        font12.setPointSize(16);
-        font12.setBold(false);
-        font12.setItalic(false);
-        font12.setWeight(50);
-        spinBoxChangePageSizeMax->setFont(font12);
+        QFont font14;
+        font14.setFamily(QStringLiteral("Berlin Sans FB"));
+        font14.setPointSize(16);
+        font14.setBold(false);
+        font14.setItalic(false);
+        font14.setWeight(50);
+        spinBoxChangePageSizeMax->setFont(font14);
         spinBoxChangePageSizeMax->setStyleSheet(QLatin1String("QSpinBox { \n"
 "	border: 2px solid rgb(51,51,51);\n"
 "	border-radius: 5px;	\n"
@@ -4580,7 +4631,7 @@ public:
         spinBoxChangePageSizeMin = new QSpinBox(frame_37);
         spinBoxChangePageSizeMin->setObjectName(QStringLiteral("spinBoxChangePageSizeMin"));
         spinBoxChangePageSizeMin->setMinimumSize(QSize(0, 40));
-        spinBoxChangePageSizeMin->setFont(font12);
+        spinBoxChangePageSizeMin->setFont(font14);
         spinBoxChangePageSizeMin->setStyleSheet(QLatin1String("QSpinBox { \n"
 "	border: 2px solid rgb(51,51,51);\n"
 "	border-radius: 5px;	\n"
@@ -4728,7 +4779,7 @@ public:
         label_60 = new QLabel(frame_36);
         label_60->setObjectName(QStringLiteral("label_60"));
         label_60->setMinimumSize(QSize(100, 0));
-        label_60->setFont(font6);
+        label_60->setFont(font7);
         label_60->setStyleSheet(QStringLiteral("color : white;"));
 
         horizontalLayout_32->addWidget(label_60);
@@ -5086,7 +5137,7 @@ public:
         retranslateUi(MainWindow);
 
         stackedWidgetMain->setCurrentIndex(0);
-        stackedWidgetMonitorMain->setCurrentIndex(2);
+        stackedWidgetMonitorMain->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -5100,6 +5151,10 @@ public:
         pushButtonOCPage->setText(QString());
         pushButtonSystem->setText(QString());
         pushButtonHelpPage->setText(QString());
+        pushButtonMonitorPage_Overview->setText(QString());
+        pushButtonMonitorPage_Mining->setText(QString());
+        pushButtonMonitorPage_System->setText(QString());
+        pushButtonMonitorPage_DevicesInfo->setText(QString());
         groupBox_2->setTitle(QApplication::translate("MainWindow", "Temperature", Q_NULLPTR));
         groupBox_10->setTitle(QString());
         label_58->setText(QApplication::translate("MainWindow", "MAX", Q_NULLPTR));
@@ -5147,7 +5202,7 @@ public:
         label_38->setText(QApplication::translate("MainWindow", "Effective\n"
 "Rate", Q_NULLPTR));
         groupBoxDiskInfo->setTitle(QApplication::translate("MainWindow", "Free Disk Space", Q_NULLPTR));
-        groupBox_4->setTitle(QString());
+        groupBox_4->setTitle(QApplication::translate("MainWindow", "Mining Parameters", Q_NULLPTR));
         labelCore->setText(QApplication::translate("MainWindow", "Core", Q_NULLPTR));
         comboBoxCore->clear();
         comboBoxCore->insertItems(0, QStringList()
@@ -5181,7 +5236,7 @@ public:
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Berlin Sans FB'; font-size:14pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", Q_NULLPTR));
-        groupBox_8->setTitle(QString());
+        groupBox_8->setTitle(QApplication::translate("MainWindow", "Statistics", Q_NULLPTR));
         groupBox_11->setTitle(QString());
         labelHistoryDeviceNum->setText(QApplication::translate("MainWindow", "Device#", Q_NULLPTR));
         labelHistoryDeviceNum_2->setText(QApplication::translate("MainWindow", "Start", Q_NULLPTR));
@@ -5191,17 +5246,14 @@ public:
         pushButtonSearchHistory->setText(QApplication::translate("MainWindow", "Display", Q_NULLPTR));
         groupBox_13->setTitle(QApplication::translate("MainWindow", "Devices", Q_NULLPTR));
         groupBoxDevicesInfo->setTitle(QString());
-        pushButtonMonitorPage_Overview->setText(QString());
-        pushButtonMonitorPage_Mining->setText(QString());
-        pushButtonMonitorPage_System->setText(QString());
-        pushButtonMonitorPage_DevicesInfo->setText(QString());
-        label_52->setText(QApplication::translate("MainWindow", "Devices", Q_NULLPTR));
-        temperatureLimit->setText(QApplication::translate("MainWindow", "TempLimit", Q_NULLPTR));
+        groupbox->setTitle(QApplication::translate("MainWindow", "Overclocking", Q_NULLPTR));
+        label_52->setText(QApplication::translate("MainWindow", "Device Number", Q_NULLPTR));
+        temperatureLimit->setText(QApplication::translate("MainWindow", "Temp Limit", Q_NULLPTR));
         label_50->setText(QApplication::translate("MainWindow", "Power Limit (%)", Q_NULLPTR));
         labelPowerPercent->setText(QApplication::translate("MainWindow", "0", Q_NULLPTR));
-        label_51->setText(QApplication::translate("MainWindow", "Core Clock (MHz)", Q_NULLPTR));
+        label_51->setText(QApplication::translate("MainWindow", "GPU Clock (MHz)", Q_NULLPTR));
         labelGpuOffset->setText(QApplication::translate("MainWindow", "0", Q_NULLPTR));
-        label_49->setText(QApplication::translate("MainWindow", "Mem Clock (MHz)", Q_NULLPTR));
+        label_49->setText(QApplication::translate("MainWindow", "VRAM Clock (MHz)", Q_NULLPTR));
         labelMemClock->setText(QApplication::translate("MainWindow", "0", Q_NULLPTR));
         label_53->setText(QApplication::translate("MainWindow", "Fan Speed (%)", Q_NULLPTR));
         labelFanSpeed->setText(QApplication::translate("MainWindow", "0", Q_NULLPTR));
