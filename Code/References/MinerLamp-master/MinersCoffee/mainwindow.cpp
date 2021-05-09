@@ -397,7 +397,6 @@ MainWindow::MainWindow(bool testing, QWidget *parent) :
 
     ui->dateTimeEditHistoryStartTime->setDateTime(QDateTime::currentDateTime().addDays(-5));
     ui->dateTimeEditHistoryEndTime->setDateTime(QDateTime::currentDateTime());
-    _searchHistoryMiningOverall = false;
 
     // set the current page
     // set at monitor page at index 0
