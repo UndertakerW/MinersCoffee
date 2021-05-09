@@ -25,7 +25,6 @@
 #include "nvidiaapi.h"
 #include "amdapi_adl.h"
 #include "gpumonitor.h"
-#include "nvocdialog.h"
 #include "structures.h"
 #include "database.h"
 #include "helper.h"
@@ -102,7 +101,6 @@ private:
 
     nvidiaAPI* _nvapi;
     void applyOC();
-    nvOCDialog* _dlg;
     void setComboIndex(QComboBox * comboBox, QString key);
     bool _searchHistoryMiningOverall;
     void changeLabelColor(QLabel * label, QColor color);
@@ -243,7 +241,7 @@ private:
     const QColor getTempColor(unsigned int temp);
 
     bool _testing;
-    bool _ui_refresh_enabled;
+    bool _ui_refresh_enabled = true;
 
     Helper helper;
 

@@ -3,7 +3,6 @@
 #include "minerprocess.h"
 #include "helpdialog.h"
 #include "nvidianvml.h"
-#include "nvocdialog.h"
 #include "nanopoolapi.h"
 #include "hashratecharview.h"
 #include "database.h"
@@ -126,8 +125,6 @@ MainWindow::MainWindow(bool testing, QWidget *parent) :
     if(nvDll)
     {
         // retrieve gpu info to panel
-        nvOCDialog* dlg = new nvOCDialog(_nvapi, _settings, this);
-        delete dlg;
         _nvMonitorThrd = new nvMonitorThrd(this,_nvapi);
         connect(_nvMonitorThrd, &nvMonitorThrd::gpuInfoSignal, this, &MainWindow::onNvMonitorInfo);
 
@@ -178,7 +175,8 @@ MainWindow::MainWindow(bool testing, QWidget *parent) :
 
     loadParameters();
 
-    setupToolTips();
+    // disable set tooltip
+//    setupToolTips();
 
     createActions();
 
@@ -737,24 +735,24 @@ void MainWindow::setupEditor()
 void MainWindow::setupToolTips()
 {
 
-//    ui->labelHashRate->setToolTip("Displaying the current hashrate");
+    ui->labelHashRate->setToolTip("Displaying the current hashrate");
 
 //    ui->lcdNumberGPUCount->setToolTip("Number of nVidia GPU(s)");
 
-//    ui->labelMaxGPUTemp->setToolTip("Displaying the current higher temperature");
-//    ui->labelMinGPUTemp->setToolTip("Displaying the current lower temperature");
+    ui->labelMaxGPUTemp->setToolTip("Displaying the current higher temperature");
+    ui->labelMinGPUTemp->setToolTip("Displaying the current lower temperature");
 
-//    ui->labelMaxFanSpeed->setToolTip("Displaying the current higher fan speed in percent of the max speed");
-//    ui->labelMinFanSpeed->setToolTip("Displaying the current lower fan speed in percent of the max speed");
+    ui->labelMaxFanSpeed->setToolTip("Displaying the current higher fan speed in percent of the max speed");
+    ui->labelMinFanSpeed->setToolTip("Displaying the current lower fan speed in percent of the max speed");
 
-//    ui->labelMaxMemClock->setToolTip("Displaying the current higher memory clock");
-//    ui->labelMinMemClock->setToolTip("Displaying the current lower memory clock");
+    ui->labelMaxMemClock->setToolTip("Displaying the current higher memory clock");
+    ui->labelMinMemClock->setToolTip("Displaying the current lower memory clock");
 
-//    ui->labelMaxGPUClock->setToolTip("The GPU in your rig with the higher clock");
-//    ui->labelMinGPUClock->setToolTip("The GPU in your rig with the lower clock");
+    ui->labelMaxGPUClock->setToolTip("The GPU in your rig with the higher clock");
+    ui->labelMinGPUClock->setToolTip("The GPU in your rig with the lower clock");
 
-//    ui->labelMaxWatt->setToolTip("Displaying the current higher power draw in Watt");
-//    ui->labelMinWatt->setToolTip("Displaying the current lower power draw in Watt");
+    ui->labelMaxWatt->setToolTip("Displaying the current higher power draw in Watt");
+    ui->labelMinWatt->setToolTip("Displaying the current lower power draw in Watt");
 
 //    ui->lcdNumberTotalPowerDraw->setToolTip("The total power used by the GPUs");
 
@@ -1008,8 +1006,6 @@ void MainWindow::onNvMonitorInfo(unsigned int gpucount
     ui->labelMinWatt->setText(QString().setNum((float) minpowerdraw / 1000, 'f', 2));
 
     _currentTempRate = maxgputemp;
-
-    //qDebug() << _currentTempRate;
 }
 
 GPUInfo MainWindow::getAverage(const std::vector<GPUInfo>& gpu_infos)

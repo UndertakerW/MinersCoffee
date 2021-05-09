@@ -36,6 +36,7 @@ NvocPage::NvocPage(nvidiaAPI* nvapi, QSettings* settings,
             _cardList << card;
             _comboBoxDevice->addItem(QString("device " + QString::number(i)));
         }
+        int plimit = _nvapi->getPowerLimit(0);
 
     }
 

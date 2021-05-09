@@ -42,7 +42,6 @@ SOURCES += \
     highlighter.cpp \
     helpdialog.cpp \
     nvidianvml.cpp \
-    nvocdialog.cpp \
     nvidiaapi.cpp \
     nanopoolapi.cpp \
     amdapi_adl.cpp \
@@ -64,7 +63,6 @@ HEADERS += \
     highlighter.h \
     helpdialog.h \
     nvidianvml.h \
-    nvocdialog.h \
     nvidiaapi.h \
     nanopoolapi.h \
     amdapi_adl.h \
@@ -78,8 +76,7 @@ HEADERS += \
 
 FORMS += \
     mainwindow.ui \
-    helpdialog.ui \
-    nvocdialog.ui
+    helpdialog.ui
 
 RC_ICONS += \
         eth_miner_lamp.ico
