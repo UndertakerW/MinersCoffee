@@ -15,4 +15,6 @@ const QString sparkpool_api_str = "https://www.sparkpool.com/v1/pool/stats";
 
 const QString oc_advices_path = "data/advice.txt";
 
+const QString nvml_path = "C:\\Program Files\\NVIDIA Corporation\\NVSMI\\nvml.dll";
+
 #endif // CONSTANTS_H

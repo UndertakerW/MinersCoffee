@@ -111,7 +111,7 @@ MainWindow::MainWindow(bool testing, QWidget *parent) :
     QLibrary lib("nvml.dll");
     if (!lib.load())
     {
-        lib.setFileName("C:\\Program Files\\NVIDIA Corporation\\NVSMI\\nvml.dll");
+        lib.setFileName(nvml_path);
         if(!lib.load())
         {
             ui->textEdit->append("Cannot find nvml.dll. NVAPI monitoring won't work.");
