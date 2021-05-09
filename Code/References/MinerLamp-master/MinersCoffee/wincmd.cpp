@@ -10,6 +10,7 @@
 #include <QStorageInfo>
 #include <QProcess>
 using namespace std;
+
 std::string Wincmd::UseCmd(const char* cmd) {
     std::array<char, 128> buffer;
     std::string result;
@@ -23,7 +24,7 @@ std::string Wincmd::UseCmd(const char* cmd) {
     return result;
 }
 
-//查看当前设置
+// Check current settings
 vector<QString> Wincmd::SeeSetting(){
     vector<QString> result;
     QString cmd="wmic pagefile list /format:list";
@@ -54,7 +55,7 @@ vector<QString> Wincmd::SeeSetting(){
 }
 
 
-//取消自动管理分页文件大小
+// Cancel auto page management
 void Wincmd::AutoManagePage(){
     QString cmd="wmic computersystem where name=\"%computername%\" set AutomaticManagedPagefile=False";
     //const char *command=cmd.c_str();
@@ -67,7 +68,7 @@ void Wincmd::AutoManagePage(){
 }
 //wmic computersystem where name="%computername%" set AutomaticManagedPagefile=False
 
-//修改页面文件大小 最小1024MB，最大4096MB
+// Change Page Size
 void Wincmd::ChangePageSize(QString a,QString max,QString min){
     QString cmd="wmic pagefileset where name=\""+a+":\pagefile.sys\" set InitialSize="+min+",MaximumSize="+max;
     QProcess p(0);

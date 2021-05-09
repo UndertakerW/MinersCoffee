@@ -19,7 +19,6 @@
 #include <QMessageBox>
 #include <QMainWindow>
 #include "minerprocess.h"
-#include "highlighter.h"
 #include "nvapi.h"
 #include "nvidiaapi.h"
 #include "gpumonitor.h"
@@ -81,12 +80,11 @@ protected:
     void closeEvent(QCloseEvent *event) Q_DECL_OVERRIDE;
 
 private slots:
-    void setIcon();
     void iconActivated(QSystemTrayIcon::ActivationReason reason);
 
 private:
     void createActions();
-    void createTrayIcon();
+    void InitTray();
     void setupEditor();
     void setupToolTips();
     void loadParameters();
@@ -143,29 +141,6 @@ private slots:
                          , unsigned int totalpowerdraw
                          );
 
-
-/*
-    void onNvMonitorInfo(unsigned int current_gpu
-                         , unsigned int gpu_count
-                         , std::vector<gpu_info> gpu_infos
-                         );
-*/
-//    void onAMDMonitorInfo(unsigned int gpucount
-//                          , unsigned int maxgputemp
-//                          , unsigned int mingputemp
-//                          , unsigned int maxfanspeed
-//                          , unsigned int minfanspeed
-//                          , unsigned int maxmemclock
-//                          , unsigned int minmemclock
-//                          , unsigned int maxgpuclock
-//                          , unsigned int mingpuclock
-//                          , unsigned int maxpowerdraw
-//                          , unsigned int minpowerdraw
-//                          , unsigned int totalpowerdraw
-//                          );
-
-    void onHelp();
-
     // timer to hash rate graph
     void onHrChartTimer();
 
@@ -173,7 +148,7 @@ private slots:
     // void onTempChartTimer();
 
     // timer to refresh device info
-//    void onRefreshDeviceInfoTimer();
+    //    void onRefreshDeviceInfoTimer();
 
     // pie slice
     void onMouseHoverSlice(QPieSlice * slice, bool status);
@@ -267,8 +242,6 @@ private:
     QAction* _quitAction;
     QAction* _helpAction;
 
-    Highlighter* _highlighter;
-
     // hashrate displaying
     QChart* _chart;
     QLineSeries* _series;
@@ -285,8 +258,6 @@ private:
 
     // temperature displaying
     QChart* _chartHistory;
-//    QLineSeries* _seriesHistoryTemp;
-//    QLineSeries* _seriesHistoryGpuClock;
     QList<QLineSeries *> _seriesHistory;
     QDateTimeAxis *_axisXHistory;
 

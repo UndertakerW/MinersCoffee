@@ -40,8 +40,6 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     minerprocess.cpp \
-    highlighter.cpp \
-    helpdialog.cpp \
     nvidianvml.cpp \
     nvidiaapi.cpp \
     nvocpage.cpp \
@@ -59,8 +57,6 @@ HEADERS += \
     jsonparser.h \
     mainwindow.h \
     minerprocess.h \
-    highlighter.h \
-    helpdialog.h \
     nvidianvml.h \
     nvidiaapi.h \
     nvocpage.h \
@@ -70,8 +66,7 @@ HEADERS += \
     helper.h
 
 FORMS += \
-    mainwindow.ui \
-    helpdialog.ui
+    mainwindow.ui
 
 RC_ICONS += \
         eth_miner_lamp.ico

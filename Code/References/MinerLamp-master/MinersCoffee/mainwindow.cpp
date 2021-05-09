@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "minerprocess.h"
-#include "helpdialog.h"
 #include "nvidianvml.h"
 #include "chartview.h"
 #include "database.h"
@@ -34,24 +33,11 @@
 
 #define MINERPATH           "minerpath"
 #define MINERARGS           "minerargs"
-#define AUTORESTART         "autorestart"
-#define MAX0MHS             "max0mhs"
-#define RESTARTDELAY        "restartdelay"
-#define ZEROMHSDELAY        "zeromhsdelay"
-#define AUTOSTART           "autostart"
-#define DISPLAYSHAREONLY    "shareonly"
-#define DELAYNOHASH         "delaynohash"
 #define COIN                "coin"
 #define CORE                "core"
 #define POOL                "pool"
 #define WALLET              "wallet"
 #define WORKER              "worker"
-
-#ifdef NVIDIA
-#define NVIDIAOPTION        "nvidia_options"
-#define NVOCOPTION          "nvidia_oc_options"
-
-#endif
 
 MainWindow::MainWindow(bool testing, QWidget *parent) :
     QMainWindow(parent),
@@ -101,6 +87,8 @@ MainWindow::MainWindow(bool testing, QWidget *parent) :
 
     ui->pushButtonToggle->installEventFilter(this);
 
+    // NVIDIA API
+
     _nvapi = new nvidiaAPI();
 
     bool nvDll = true;
@@ -132,27 +120,8 @@ MainWindow::MainWindow(bool testing, QWidget *parent) :
         }
 
     }
-    else
-    {
-//        ui->groupBoxNvidia->hide();
-    }
 
-    // reserved for amd
-//    QLibrary adl("atiadlxx");
-//    if(!adl.load())
-//    {
-//        ui->groupBoxAMD->hide();
-
-//    }
-//    else
-//    {
-//        adl.unload();
-
-//        _amdMonitorThrd = new amdMonitorThrd(this);
-//        connect(_amdMonitorThrd, &amdMonitorThrd::gpuInfoSignal, this, &MainWindow::onAMDMonitorInfo);
-//        _amdMonitorThrd->start();
-
-//    }
+    // AMD API (future version)
 
     _nvocPage = new NvocPage(
                 _nvapi,
@@ -169,14 +138,11 @@ MainWindow::MainWindow(bool testing, QWidget *parent) :
 
     loadParameters();
 
-    // disable set tooltip
-//    setupToolTips();
-
     createActions();
 
-    createTrayIcon();
+    InitTray();
 
-    setIcon();
+    //setIcon();
 
     connect(_trayIcon, &QSystemTrayIcon::activated, this, &MainWindow::iconActivated);
 
@@ -323,7 +289,7 @@ MainWindow::MainWindow(bool testing, QWidget *parent) :
 
     // cast the default y-axis
     QValueAxis *axisYTemp = qobject_cast<QValueAxis*>(_chartTemp->axes(Qt::Vertical).first());
-//    axisYTemp->setLabelFormat("%.1f  ");
+    // axisYTemp->setLabelFormat("%.1f  ");
 
     // set labels foramt
     _axisXTemp->setFormat("");
@@ -333,7 +299,7 @@ MainWindow::MainWindow(bool testing, QWidget *parent) :
     axisYTemp->setTickCount(5);
 
     QFont labelsFont_temp("Berlin Sans FB", 12);
-//    labelsFont_temp.setPixelSize(10);
+    // labelsFont_temp.setPixelSize(10);
     _axisXTemp->setTitleFont(labelsFont_temp);
     _chartTemp->axisY()->setTitleFont(labelsFont_temp);
     _chartTemp->axisY()->setLabelsFont(labelsFont_temp);
@@ -381,13 +347,13 @@ MainWindow::MainWindow(bool testing, QWidget *parent) :
     ui->labelHashRate->setText("0.00");
     ui->labelEffectiveness->setText("0%");
 
-    //  auto start
-//    if(ui->checkBoxAutoStart->isChecked())
-//    {
-//        _starter = new autoStart(this);
-//        connect(_starter, SIGNAL(readyToStartMiner()), this, SLOT(onReadyToStartMiner()));
-//        _starter->start();
-//    }
+    // auto start mining core (futuer version)
+    //    if(ui->checkBoxAutoStart->isChecked())
+    //    {
+    //        _starter = new autoStart(this);
+    //        connect(_starter, SIGNAL(readyToStartMiner()), this, SLOT(onReadyToStartMiner()));
+    //        _starter->start();
+    //    }
 
     ui->textEdit->show();
 
@@ -444,7 +410,6 @@ void MainWindow::setComboIndex(QComboBox * comboBox, QString key){
     if(comboIdx != -1){
         comboBox->setCurrentIndex(comboIdx);
     }
-    //qDebug() << "fetch index: " << comboIdx << "\t" << key;
 }
 
 
@@ -573,12 +538,6 @@ void MainWindow::loadParameters()
 {
     ui->lineEditMinerPath->setText(_settings->value(MINERPATH).toString());
     ui->lineEditArgs->setText(_settings->value(MINERARGS).toString());
-//    ui->groupBoxWatchdog->setChecked(_settings->value(AUTORESTART).toBool());
-//    ui->spinBoxMax0MHs->setValue(_settings->value(MAX0MHS).toInt());
-//    ui->spinBoxDelay->setValue(_settings->value(RESTARTDELAY).toInt());
-//    ui->spinBoxDelay0MHs->setValue(_settings->value(ZEROMHSDELAY).toInt());
-    ui->checkBoxOnlyShare->setChecked(_settings->value(DISPLAYSHAREONLY).toBool());
-//    ui->spinBoxDelayNoHash->setValue(_settings->value(DELAYNOHASH).toInt());
     setComboIndex(ui->comboBoxCoin, _settings->value(COIN).toString());
     setComboIndex(ui->comboBoxCore, _settings->value(CORE).toString());
     setComboIndex(ui->comboBoxPool, _settings->value(POOL).toString());
@@ -591,12 +550,6 @@ void MainWindow::saveParameters()
 {
     _settings->setValue(MINERPATH, ui->lineEditMinerPath->text());
     _settings->setValue(MINERARGS, ui->lineEditArgs->text());
-//    _settings->setValue(AUTORESTART, ui->groupBoxWatchdog->isChecked());
-//    _settings->setValue(MAX0MHS, ui->spinBoxMax0MHs->value());
-//    _settings->setValue(RESTARTDELAY, ui->spinBoxDelay->value());
-//    _settings->setValue(ZEROMHSDELAY, ui->spinBoxDelay0MHs->value());
-    _settings->setValue(DISPLAYSHAREONLY, ui->checkBoxOnlyShare->isChecked());
-//    _settings->setValue(DELAYNOHASH, ui->spinBoxDelayNoHash->value());
     _settings->setValue(COIN, ui->comboBoxCoin->currentText());
     _settings->setValue(CORE, ui->comboBoxCore->currentText());
     _settings->setValue(POOL, ui->comboBoxPool->currentText());
@@ -652,17 +605,8 @@ void MainWindow::closeEvent(QCloseEvent *event)
         hide();
         event->ignore();
         QSystemTrayIcon::MessageIcon icon = QSystemTrayIcon::MessageIcon(QSystemTrayIcon::Information);
-        _trayIcon->showMessage("Miner's Coffee still running", _isMinerRunning ? "Ethminer is running" : "Ethminer isn't running", icon, 2 * 1000);
+        _trayIcon->showMessage("Miner's Coffee still running", _isMinerRunning ? "Mining core is running" : "Mining core isn't running", icon, 2 * 1000);
     }
-}
-
-void MainWindow::setIcon()
-{
-    QIcon icon(":/images/logo.png");
-    _trayIcon->setIcon(icon);
-    _trayIcon->setToolTip("Miner's Coffee");
-
-    setWindowIcon(icon);
 }
 
 void MainWindow::iconActivated(QSystemTrayIcon::ActivationReason reason)
@@ -680,10 +624,10 @@ void MainWindow::iconActivated(QSystemTrayIcon::ActivationReason reason)
 
 void MainWindow::createActions()
 {
-    _minimizeAction = new QAction(tr("Mi&nimize"), this);
+    _minimizeAction = new QAction(tr("&Minimize"), this);
     connect(_minimizeAction, &QAction::triggered, this, &QWidget::hide);
 
-    _maximizeAction = new QAction(tr("Ma&ximize"), this);
+    _maximizeAction = new QAction(tr("&Maximize"), this);
     connect(_maximizeAction, &QAction::triggered, this, &QWidget::showMaximized);
 
     _restoreAction = new QAction(tr("&Restore"), this);
@@ -691,23 +635,24 @@ void MainWindow::createActions()
 
     _quitAction = new QAction(tr("&Close"), this);
     connect(_quitAction, &QAction::triggered, qApp, &QCoreApplication::quit);
-
-    _helpAction = new QAction(tr("&About"), this);
-    connect(_helpAction, &QAction::triggered, this, &MainWindow::onHelp);
 }
 
-void MainWindow::createTrayIcon()
+void MainWindow::InitTray()
 {
     _trayIconMenu = new QMenu(this);
     _trayIconMenu->addAction(_minimizeAction);
     _trayIconMenu->addAction(_maximizeAction);
     _trayIconMenu->addAction(_restoreAction);
-    _trayIconMenu->addAction(_helpAction);
+    //_trayIconMenu->addAction(_helpAction);
     _trayIconMenu->addSeparator();
     _trayIconMenu->addAction(_quitAction);
 
     _trayIcon = new QSystemTrayIcon(this);
     _trayIcon->setContextMenu(_trayIconMenu);
+
+    QIcon icon(":/images/logo.png");
+    _trayIcon->setIcon(icon);
+    _trayIcon->setToolTip("Miner's Coffee");
 }
 
 void MainWindow::setupEditor()
@@ -715,43 +660,15 @@ void MainWindow::setupEditor()
     QFont font;
     font.setFamily("Tahoma");
     font.setFixedPitch(true);
-    font.setPointSize(8);
+    font.setPointSize(12);
 
     ui->textEdit->setFont(font);
 
-    _highlighter = new Highlighter(ui->textEdit->document());
 }
 
 void MainWindow::setupToolTips()
 {
 
-    ui->labelHashRate->setToolTip("Displaying the current hashrate");
-
-//    ui->lcdNumberGPUCount->setToolTip("Number of nVidia GPU(s)");
-
-    ui->labelMaxGPUTemp->setToolTip("Displaying the current higher temperature");
-    ui->labelMinGPUTemp->setToolTip("Displaying the current lower temperature");
-
-    ui->labelMaxFanSpeed->setToolTip("Displaying the current higher fan speed in percent of the max speed");
-    ui->labelMinFanSpeed->setToolTip("Displaying the current lower fan speed in percent of the max speed");
-
-    ui->labelMaxMemClock->setToolTip("Displaying the current higher memory clock");
-    ui->labelMinMemClock->setToolTip("Displaying the current lower memory clock");
-
-    ui->labelMaxGPUClock->setToolTip("The GPU in your rig with the higher clock");
-    ui->labelMinGPUClock->setToolTip("The GPU in your rig with the lower clock");
-
-    ui->labelMaxWatt->setToolTip("Displaying the current higher power draw in Watt");
-    ui->labelMinWatt->setToolTip("Displaying the current lower power draw in Watt");
-
-//    ui->lcdNumberTotalPowerDraw->setToolTip("The total power used by the GPUs");
-
-//    ui->pushButtonOC->setToolTip("Manage NVIDIA overclocking");
-
-//    if(!ui->groupBoxWatchdog->isChecked())
-//        ui->groupBoxWatchdog->setToolTip("Check it to activate the following watchdog options");
-//    else
-//        ui->groupBoxWatchdog->setToolTip("");
 }
 
 void MainWindow::on_pushButton_clicked()
@@ -759,7 +676,6 @@ void MainWindow::on_pushButton_clicked()
 
     saveParameters();
 
-    //if(ui->lineEditMinerPath->text().isEmpty() || ui->lineEditArgs->text().isEmpty()) return;
 
     if(ui->lineEditWallet->text().isEmpty() || ui->lineEditWorker->text().isEmpty()) return;
 
@@ -789,13 +705,7 @@ void MainWindow::StartMiningCore()
     QString core_args = _current_core->cmds[_current_coin].arg(
                 _current_pool->cmds[_current_coin]).arg(ui->lineEditWallet->text()).arg(ui->lineEditWorker->text());
 
-    //qDebug() << core_path << core_args << endl;
-
     _process->SetAPI(_current_core);
-//    _process->setMax0MHs(ui->spinBoxMax0MHs->value());
-//    _process->setRestartDelay(ui->spinBoxDelay->value());
-//    _process->setRestartOption(ui->groupBoxWatchdog->isChecked());
-//    _process->setDelayBeforeNoHash(ui->spinBoxDelayNoHash->value());
     _process->start(core_path, core_args);
 }
 
@@ -911,7 +821,7 @@ void MainWindow::onError()
 {
     _errorCount++;
     _trayIcon->showMessage("Miner's Coffee report"
-                           , "An error has been detected in ethminer.\n");
+                           , "An error has been detected in mining core.\n");
     // + ui->groupBoxWatchdog->isChecked() ? "Miner's Coffee restarted it automaticaly" : "Check the watchdog option checkbox if you want Miner's Coffee to restart it on error");
 }
 
@@ -931,13 +841,6 @@ const QColor MainWindow::getTempColor(unsigned int temp)
 void MainWindow::onReadyToStartMiner()
 {
     on_pushButton_clicked();
-}
-
-void MainWindow::onHelp()
-{
-    helpDialog* helpdial = new helpDialog(_settings, this);
-    helpdial->exec();
-    delete helpdial;
 }
 
 autoStart::autoStart(QObject *pParent)
@@ -1041,47 +944,6 @@ GPUInfo MainWindow::getWorst(const std::vector<GPUInfo> &gpu_infos)
     gi.fanspeed = fanspeed;
     return gi;
 }
-
-/*
-void MainWindow::onNvMonitorInfo(unsigned int current_gpu
-                                 , unsigned int gpu_count
-                                 , std::vector<gpu_info> gpu_infos)
-{
-
-    // max -> worst
-    // min -> current GPU
-    gpu_info avg_info = getAverage(gpu_infos);
-    gpu_info worst_info = getWorst(gpu_infos);
-
-    ui->lcdNumberMaxGPUTemp->setPalette(getTempColor(avg_info.temp));
-    ui->lcdNumberMinGPUTemp->setPalette(getTempColor(gpu_infos[current_gpu].temp));
-
-}
-*/
-
-//void MainWindow::onAMDMonitorInfo(unsigned int gpucount, unsigned int maxgputemp, unsigned int mingputemp, unsigned int maxfanspeed, unsigned int minfanspeed, unsigned int maxmemclock, unsigned int minmemclock, unsigned int maxgpuclock, unsigned int mingpuclock, unsigned int maxpowerdraw, unsigned int minpowerdraw, unsigned int totalpowerdraw)
-//{
-//    ui->lcdNumber_AMD_MaxTemp->setPalette(getTempColor(maxgputemp));
-//    ui->lcdNumber_AMD_MinTemp->setPalette(getTempColor(mingputemp));
-
-//    ui->lcdNumber_AMD_GPUCount->display((int)gpucount);
-
-//    ui->lcdNumber_AMD_MaxTemp->display((int)maxgputemp);
-//    ui->lcdNumber_AMD_MinTemp->display((int)mingputemp);
-
-//    ui->lcdNumber_AMD_MaxFan->display((int)maxfanspeed);
-//    ui->lcdNumber_AMD_MinFan->display((int)minfanspeed);
-
-//    ui->labelMaxMemClock->setText(QString::number((int)maxmemclock));
-//    ui->labelMinMemClock->setText(QString::number((int)minmemclock));
-
-//    ui->labelMaxGPUClock->setText(QString::number((int)maxgpuclock));
-//    ui->labelMinGPUClock->setText(QString::number((int)mingpuclock));
-
-//    ui->labelMaxWatt->setText(QString("%.2f").arg(maxpowerdraw / 1000));
-//    ui->labelMinWatt->setText(QString("%.2f").arg(minpowerdraw / 1000));
-
-//}
 
 void MainWindow::onHrChartTimer()
 {
@@ -1335,18 +1197,6 @@ void MainWindow::refreshDeviceInfo()
         QString originalName = _gpusinfo->at(i).name;
         QString spacing = "   ";
         castLabel1->setText(spacing + originalName);
-        /*
-        std::string shortName="";
-        for(int i=0;i<originalName.length();i++){
-            if(originalName[i]=='T'&&originalName[i+1]=='i')
-                shortName+="Ti";
-            if(originalName[i]!='1'&&originalName[i]!='2'&&originalName[i]!='3'&&originalName[i]!='4'&&
-                    originalName[i]!='5'&&originalName[i]!='6'&&originalName[i]!='7'&&originalName[i]!='8'&&
-                    originalName[i]!='9'&&originalName[i]!='0')
-                continue;
-            shortName+=originalName[i];
-        }
-        */
 
         // set temperature at 1
         castWidgetPtr2 = layoutPtr2->itemAt(1)->widget();
@@ -1507,11 +1357,9 @@ void MainWindow::initializePieChart(){
     _tempPieChart->setBackgroundVisible(false);
     _tempPieChart->setAnimationOptions(QChart::AllAnimations);
 
-//    _effPieChart->legend()->setAlignment(Qt::AlignRight);
     _tempPieChart->legend()->hide();
 
     _tempPieChart->resize(1,1);
-    //ui->debugBox->append(QString::number(_effPieChart->legend()->size().height())+" "+QString::number(_effPieChart->legend()->size().width()));
     _tempPieSeries = new QPieSeries();
     _tempPieSeries->append("currentTemp", 50);
     _tempPieSeries->append("maxTemp", 50);
@@ -1536,14 +1384,11 @@ void MainWindow::initializePieChart(){
 
     connect(_tempPieSeries, &QPieSeries::hovered, this, &MainWindow::onMouseHoverSlice);
 
-//    _effPieChart->layout()->setContentsMargins(0,0,0,0);
-//    _effPieChart->setMargins({0, 0, 0, 0});
     _tempPieChart->setBackgroundRoundness(0);
 
     ui->graphicsViewTempPie->setChart(_tempPieChart, 1);
     _tempPieChart->setMargins(QMargins(0,0,0,0));
 
-//    connect(ui->graphicsViewEff, &hashrateCharView::resizeEvent, this, &MainWindow::resizePieEffLabel);
 
 }
 
@@ -2223,7 +2068,6 @@ void MainWindow::on_checkBoxAutoSpeedFan_clicked(bool checked)
 }
 
 void MainWindow::on_spinBoxTemperature_valueChanged(int value){
-    qDebug() << "testing " << value << endl;
     unsigned gpu = (unsigned) ui->comboBoxDevice->currentIndex();
     unsigned int temp_limit = (unsigned) value;
     _nvapi->setTempLimitOffset(gpu, temp_limit);

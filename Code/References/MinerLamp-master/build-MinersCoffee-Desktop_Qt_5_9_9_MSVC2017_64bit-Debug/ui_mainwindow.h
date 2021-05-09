@@ -221,11 +221,9 @@ public:
     QHBoxLayout *horizontalLayout_20;
     QLabel *label_40;
     QSpacerItem *horizontalSpacer_5;
+    QPushButton *pushButtonDisplayPoolStats;
     QFrame *frame_24;
     QGridLayout *gridLayout_24;
-    QPushButton *pushButtonDisplayPoolStats;
-    QSpacerItem *horizontalSpacer_17;
-    QCheckBox *checkBoxOnlyShare;
     QTextEdit *textEdit;
     QWidget *pageHistory;
     QVBoxLayout *verticalLayout_15;
@@ -409,6 +407,9 @@ public:
         font.setFamily(QStringLiteral("Berlin Sans FB"));
         font.setPointSize(16);
         MainWindow->setFont(font);
+        QIcon icon;
+        icon.addFile(QStringLiteral(":/images/logo.png"), QSize(), QIcon::Normal, QIcon::Off);
+        MainWindow->setWindowIcon(icon);
         MainWindow->setStyleSheet(QStringLiteral(""));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
@@ -787,9 +788,9 @@ public:
 "QPushButton:pressed {	\n"
 "	background-color: #7A0000;\n"
 "}"));
-        QIcon icon;
-        icon.addFile(QStringLiteral(":/icons/icos/minimum.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButtonMonitorPage_System->setIcon(icon);
+        QIcon icon1;
+        icon1.addFile(QStringLiteral(":/icons/icos/minimum.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButtonMonitorPage_System->setIcon(icon1);
         pushButtonMonitorPage_System->setIconSize(QSize(0, 16));
 
         gridLayout_38->addWidget(pushButtonMonitorPage_System, 0, 0, 1, 1);
@@ -1834,7 +1835,7 @@ public:
         scrollArea_2->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName(QStringLiteral("scrollAreaWidgetContents_2"));
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 256, 344));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 258, 327));
         gridLayout_62 = new QGridLayout(scrollAreaWidgetContents_2);
         gridLayout_62->setSpacing(0);
         gridLayout_62->setContentsMargins(11, 11, 11, 11);
@@ -2281,23 +2282,7 @@ public:
 
         horizontalLayout_20->addItem(horizontalSpacer_5);
 
-
-        verticalLayout_9->addWidget(frame_25);
-
-        frame_24 = new QFrame(groupBox_6);
-        frame_24->setObjectName(QStringLiteral("frame_24"));
-        frame_24->setMinimumSize(QSize(0, 320));
-        frame_24->setFont(font5);
-        frame_24->setStyleSheet(QLatin1String("background-color: rgb(90, 91, 91);\n"
-"color: rgb(255, 255, 255);"));
-        frame_24->setFrameShape(QFrame::StyledPanel);
-        frame_24->setFrameShadow(QFrame::Raised);
-        gridLayout_24 = new QGridLayout(frame_24);
-        gridLayout_24->setSpacing(0);
-        gridLayout_24->setContentsMargins(11, 11, 11, 11);
-        gridLayout_24->setObjectName(QStringLiteral("gridLayout_24"));
-        gridLayout_24->setContentsMargins(5, 0, 5, 5);
-        pushButtonDisplayPoolStats = new QPushButton(frame_24);
+        pushButtonDisplayPoolStats = new QPushButton(frame_25);
         pushButtonDisplayPoolStats->setObjectName(QStringLiteral("pushButtonDisplayPoolStats"));
         pushButtonDisplayPoolStats->setMinimumSize(QSize(100, 30));
         pushButtonDisplayPoolStats->setFont(font2);
@@ -2313,48 +2298,24 @@ public:
 "	background-color: #7A0000;\n"
 "}"));
 
-        gridLayout_24->addWidget(pushButtonDisplayPoolStats, 0, 2, 1, 1);
+        horizontalLayout_20->addWidget(pushButtonDisplayPoolStats);
 
-        horizontalSpacer_17 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout_24->addItem(horizontalSpacer_17, 0, 1, 1, 1);
+        verticalLayout_9->addWidget(frame_25);
 
-        checkBoxOnlyShare = new QCheckBox(frame_24);
-        checkBoxOnlyShare->setObjectName(QStringLiteral("checkBoxOnlyShare"));
-        checkBoxOnlyShare->setFont(font2);
-        checkBoxOnlyShare->setStyleSheet(QLatin1String("QCheckBox {\n"
-"    color:rgb(255,255,255);\n"
-"}\n"
-"\n"
-"QCheckBox::indicator {\n"
-"    width: 10px;\n"
-"    height: 10px;\n"
-"}\n"
-"\n"
-"QCheckBox::indicator:unchecked {\n"
-"    border:2px solid rgb(51,51,51);\n"
-"	background:rgb(91,90,90);\n"
-"}\n"
-"\n"
-"QCheckBox::indicator:unchecked:pressed {\n"
-"	border:2px solid rgb(51,51,51);\n"
-"   	background:rgb(0,143,170);\n"
-"}\n"
-"\n"
-"QCheckBox::indicator:checked {\n"
-"	background-color:rgb(0,143,170);\n"
-"    border: 2px solid rgb(51,51,51);\n"
-"}\n"
-"\n"
-"QCheckBox::indicator:checked:pressed {\n"
-"    border:2px solid rgb(51,51,51);\n"
-"	background:rgb(91,90,90);\n"
-"}\n"
-"\n"
-""));
-
-        gridLayout_24->addWidget(checkBoxOnlyShare, 0, 0, 1, 1);
-
+        frame_24 = new QFrame(groupBox_6);
+        frame_24->setObjectName(QStringLiteral("frame_24"));
+        frame_24->setMinimumSize(QSize(0, 320));
+        frame_24->setFont(font5);
+        frame_24->setStyleSheet(QLatin1String("background-color: rgb(90, 91, 91);\n"
+"color: rgb(255, 255, 255);"));
+        frame_24->setFrameShape(QFrame::StyledPanel);
+        frame_24->setFrameShadow(QFrame::Raised);
+        gridLayout_24 = new QGridLayout(frame_24);
+        gridLayout_24->setSpacing(0);
+        gridLayout_24->setContentsMargins(11, 11, 11, 11);
+        gridLayout_24->setObjectName(QStringLiteral("gridLayout_24"));
+        gridLayout_24->setContentsMargins(5, 5, 5, 5);
         textEdit = new QTextEdit(frame_24);
         textEdit->setObjectName(QStringLiteral("textEdit"));
         QFont font9;
@@ -2516,7 +2477,7 @@ public:
 " }"));
         textEdit->setReadOnly(true);
 
-        gridLayout_24->addWidget(textEdit, 1, 0, 1, 3);
+        gridLayout_24->addWidget(textEdit, 0, 0, 1, 2);
 
 
         verticalLayout_9->addWidget(frame_24);
@@ -3831,7 +3792,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 200, 226));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1297, 228));
         sizePolicy.setHeightForWidth(scrollAreaWidgetContents->sizePolicy().hasHeightForWidth());
         scrollAreaWidgetContents->setSizePolicy(sizePolicy);
         scrollAreaWidgetContents->setMinimumSize(QSize(0, 200));
@@ -3976,7 +3937,7 @@ public:
 "	border: 2px solid rgb(0,143,170);\n"
 "	border-radius: 5px;	\n"
 "	color:rgb(255,255,255);\n"
-"	background-color: rgb(0,143,170);\n"
+"	background-color: rgb(51,51,51);\n"
 "}\n"
 "\n"
 "QComboBox:editable, QComboBox::drop-down:editable {\n"
@@ -4007,8 +3968,8 @@ public:
 "    image: url(:icons/icos/arrow.png);\n"
 "}\n"
 "\n"
-"QComboBox::down-arrow:o"
-                        "n { /* shift the arrow when popup is open */\n"
+"QComboBox::down-arrow:on"
+                        " { /* shift the arrow when popup is open */\n"
 "    top: 1px;\n"
 "    left: 1px;\n"
 "}\n"
@@ -5134,7 +5095,7 @@ public:
         retranslateUi(MainWindow);
 
         stackedWidgetMain->setCurrentIndex(0);
-        stackedWidgetMonitorMain->setCurrentIndex(0);
+        stackedWidgetMonitorMain->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -5227,7 +5188,6 @@ public:
         groupBox_6->setTitle(QString());
         label_40->setText(QApplication::translate("MainWindow", " Log", Q_NULLPTR));
         pushButtonDisplayPoolStats->setText(QApplication::translate("MainWindow", "Refresh", Q_NULLPTR));
-        checkBoxOnlyShare->setText(QApplication::translate("MainWindow", "Only display share info", Q_NULLPTR));
         textEdit->setHtml(QApplication::translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
