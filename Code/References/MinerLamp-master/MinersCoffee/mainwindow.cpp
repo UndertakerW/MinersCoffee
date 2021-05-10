@@ -1816,7 +1816,7 @@ void MainWindow::on_pushButtonOCPage_clicked(){
 }
 
 void MainWindow::on_pushButtonSystem_clicked(){
-    ui->stackedWidgetMain->setCurrentIndex(3);
+    ui->stackedWidgetMain->setCurrentIndex(2);
     setPushButtonColor(ui->pushButtonMonitorPage, false);
     setPushButtonColor(ui->pushButtonOCPage, false);
     setPushButtonColor(ui->pushButtonSystem, true);
@@ -1824,7 +1824,7 @@ void MainWindow::on_pushButtonSystem_clicked(){
 }
 
 void MainWindow::on_pushButtonHelpPage_clicked(){
-    ui->stackedWidgetMain->setCurrentIndex(2);
+    ui->stackedWidgetMain->setCurrentIndex(3);
     setPushButtonColor(ui->pushButtonMonitorPage, false);
     setPushButtonColor(ui->pushButtonOCPage, false);
     setPushButtonColor(ui->pushButtonSystem, false);
@@ -2092,6 +2092,15 @@ void MainWindow::on_spinBoxTemperature_valueChanged(int value){
 
 
 void MainWindow::on_pushButtonAutoOC_clicked(){
+    static bool clicked = true;
+    if(clicked){
+        ui->pushButtonAutoOC->setText("Cancel Auto OC");
+    }
+    else{
+        ui->pushButtonAutoOC->setText("Auto OC");
+    }
+    clicked = !clicked;
+
     int gpu = ui->comboBoxDevice->currentIndex();
     ui->spinBoxTemperature->setValue(80);
     if(ui->checkBoxAllDevices->isChecked())
