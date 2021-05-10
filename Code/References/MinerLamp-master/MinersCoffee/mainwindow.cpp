@@ -48,7 +48,7 @@ MainWindow::MainWindow(bool testing, QWidget *parent) :
     _testing(testing)
 {
 
-    _settings = new QSettings(QString(QDir::currentPath() + QDir::separator() + "minerlamp.ini"), QSettings::IniFormat);
+    _settings = new QSettings(QString(QDir::currentPath() + QDir::separator() + "minerscoffee.ini"), QSettings::IniFormat);
 
     _process = new MinerProcess(_settings);
     _gpusinfo = new QList<GPUInfo>();
