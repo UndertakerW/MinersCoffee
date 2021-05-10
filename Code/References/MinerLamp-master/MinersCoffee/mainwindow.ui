@@ -69,7 +69,7 @@
       <property name="handleWidth">
        <number>0</number>
       </property>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <layout class="QVBoxLayout" name="verticalLayout_8">
         <property name="spacing">
          <number>0</number>
@@ -582,7 +582,7 @@ border-radius : 0;
 </string>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>2</number>
           </property>
           <widget class="QWidget" name="pageMonitor">
            <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -3096,7 +3096,7 @@ border-radius : 0;</string>
                             <x>0</x>
                             <y>0</y>
                             <width>256</width>
-                            <height>353</height>
+                            <height>344</height>
                            </rect>
                           </property>
                           <layout class="QGridLayout" name="gridLayout_62">
@@ -5068,8 +5068,8 @@ border-radius : 0;</string>
                              <rect>
                               <x>0</x>
                               <y>0</y>
-                              <width>1299</width>
-                              <height>249</height>
+                              <width>200</width>
+                              <height>230</height>
                              </rect>
                             </property>
                             <property name="sizePolicy">

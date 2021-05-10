@@ -217,7 +217,7 @@ void Database::Get_HistoryNew(const char* date1,const char* date2,int num){
         plot_start_index = 3;
         date_index = 2;
         retrieveQueryline = QString("select gpu_id, gpu_name, Date1,avg(TMP), avg(gpu_clock), avg(mem_clock), "
-                                   "avg(FanSpeed), avg(PowerDraw) "
+                                   "avg(FanSpeed), avg(PowerDraw)/1000 "
                                    "from main_table group by Date1, gpu_id having Date1<= '"
                                    +QString(date2)+"' and Date1>='"
                                    +QString(date1)+"' and gpu_id="

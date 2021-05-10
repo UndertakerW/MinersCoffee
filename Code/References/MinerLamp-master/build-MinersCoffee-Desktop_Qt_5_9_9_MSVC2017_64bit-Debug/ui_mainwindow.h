@@ -45,7 +45,7 @@ public:
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout_21;
     QSplitter *splitter_4;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_8;
     QFrame *frameInfo;
     QGridLayout *gridLayout_39;
@@ -65,7 +65,7 @@ public:
     QFrame *frameWestBar;
     QGridLayout *gridLayout_32;
     QSpacerItem *verticalSpacer_9;
-    QWidget *layoutWidget;
+    QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout;
     QStackedWidget *stackedWidgetMain;
     QWidget *pageMonitor;
@@ -89,7 +89,7 @@ public:
     QWidget *pageOverview;
     QVBoxLayout *verticalLayout_7;
     QSplitter *splitter;
-    QWidget *layoutWidget1;
+    QWidget *layoutWidget2;
     QHBoxLayout *horizontalLayout_30;
     QGroupBox *groupBox_2;
     QGridLayout *gridLayout_6;
@@ -264,7 +264,7 @@ public:
     QGridLayout *gridLayout_59;
     QGroupBox *groupBoxDevicesInfo;
     QGridLayout *gridLayout_9;
-    QWidget *widget1;
+    QWidget *widget;
     QGridLayout *gridLayout_60;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
@@ -425,14 +425,14 @@ public:
         splitter_4->setObjectName(QStringLiteral("splitter_4"));
         splitter_4->setOrientation(Qt::Horizontal);
         splitter_4->setHandleWidth(0);
-        widget = new QWidget(splitter_4);
-        widget->setObjectName(QStringLiteral("widget"));
-        verticalLayout_8 = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(splitter_4);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        verticalLayout_8 = new QVBoxLayout(layoutWidget);
         verticalLayout_8->setSpacing(0);
         verticalLayout_8->setContentsMargins(11, 11, 11, 11);
         verticalLayout_8->setObjectName(QStringLiteral("verticalLayout_8"));
         verticalLayout_8->setContentsMargins(0, 0, 0, 0);
-        frameInfo = new QFrame(widget);
+        frameInfo = new QFrame(layoutWidget);
         frameInfo->setObjectName(QStringLiteral("frameInfo"));
         QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Minimum);
         sizePolicy1.setHorizontalStretch(0);
@@ -480,7 +480,7 @@ public:
 
         verticalLayout_8->addWidget(frameInfo);
 
-        frameMonitor = new QFrame(widget);
+        frameMonitor = new QFrame(layoutWidget);
         frameMonitor->setObjectName(QStringLiteral("frameMonitor"));
         QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Maximum);
         sizePolicy3.setHorizontalStretch(0);
@@ -531,7 +531,7 @@ public:
 
         verticalLayout_8->addWidget(frameMonitor);
 
-        frameOC = new QFrame(widget);
+        frameOC = new QFrame(layoutWidget);
         frameOC->setObjectName(QStringLiteral("frameOC"));
         frameOC->setMinimumSize(QSize(80, 75));
         frameOC->setMaximumSize(QSize(160, 16777215));
@@ -574,7 +574,7 @@ public:
 
         verticalLayout_8->addWidget(frameOC);
 
-        frameVirtualSystem = new QFrame(widget);
+        frameVirtualSystem = new QFrame(layoutWidget);
         frameVirtualSystem->setObjectName(QStringLiteral("frameVirtualSystem"));
         frameVirtualSystem->setMinimumSize(QSize(80, 75));
         frameVirtualSystem->setMaximumSize(QSize(160, 16777215));
@@ -618,7 +618,7 @@ public:
 
         verticalLayout_8->addWidget(frameVirtualSystem);
 
-        frameHelp = new QFrame(widget);
+        frameHelp = new QFrame(layoutWidget);
         frameHelp->setObjectName(QStringLiteral("frameHelp"));
         frameHelp->setMinimumSize(QSize(80, 75));
         frameHelp->setMaximumSize(QSize(160, 16777215));
@@ -662,7 +662,7 @@ public:
 
         verticalLayout_8->addWidget(frameHelp);
 
-        frameWestBar = new QFrame(widget);
+        frameWestBar = new QFrame(layoutWidget);
         frameWestBar->setObjectName(QStringLiteral("frameWestBar"));
         frameWestBar->setMinimumSize(QSize(80, 0));
         frameWestBar->setMaximumSize(QSize(160, 16777215));
@@ -682,15 +682,15 @@ public:
 
         verticalLayout_8->addWidget(frameWestBar);
 
-        splitter_4->addWidget(widget);
-        layoutWidget = new QWidget(splitter_4);
-        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        verticalLayout = new QVBoxLayout(layoutWidget);
+        splitter_4->addWidget(layoutWidget);
+        layoutWidget1 = new QWidget(splitter_4);
+        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
+        verticalLayout = new QVBoxLayout(layoutWidget1);
         verticalLayout->setSpacing(0);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        stackedWidgetMain = new QStackedWidget(layoutWidget);
+        stackedWidgetMain = new QStackedWidget(layoutWidget1);
         stackedWidgetMain->setObjectName(QStringLiteral("stackedWidgetMain"));
         QFont font2;
         font2.setFamily(QStringLiteral("SimSun"));
@@ -906,14 +906,14 @@ public:
         splitter = new QSplitter(pageOverview);
         splitter->setObjectName(QStringLiteral("splitter"));
         splitter->setOrientation(Qt::Horizontal);
-        layoutWidget1 = new QWidget(splitter);
-        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
-        horizontalLayout_30 = new QHBoxLayout(layoutWidget1);
+        layoutWidget2 = new QWidget(splitter);
+        layoutWidget2->setObjectName(QStringLiteral("layoutWidget2"));
+        horizontalLayout_30 = new QHBoxLayout(layoutWidget2);
         horizontalLayout_30->setSpacing(6);
         horizontalLayout_30->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_30->setObjectName(QStringLiteral("horizontalLayout_30"));
         horizontalLayout_30->setContentsMargins(0, 0, 0, 0);
-        groupBox_2 = new QGroupBox(layoutWidget1);
+        groupBox_2 = new QGroupBox(layoutWidget2);
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
         groupBox_2->setMinimumSize(QSize(500, 300));
         QFont font3;
@@ -1147,7 +1147,7 @@ public:
 
         horizontalLayout_30->addWidget(groupBox_2);
 
-        groupBox_3 = new QGroupBox(layoutWidget1);
+        groupBox_3 = new QGroupBox(layoutWidget2);
         groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
         groupBox_3->setMinimumSize(QSize(350, 0));
         groupBox_3->setFont(font3);
@@ -1537,7 +1537,7 @@ public:
 
         horizontalLayout_30->addWidget(groupBox_3);
 
-        splitter->addWidget(layoutWidget1);
+        splitter->addWidget(layoutWidget2);
 
         verticalLayout_7->addWidget(splitter);
 
@@ -1883,7 +1883,7 @@ public:
         scrollArea_2->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName(QStringLiteral("scrollAreaWidgetContents_2"));
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 256, 353));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 256, 344));
         gridLayout_62 = new QGridLayout(scrollAreaWidgetContents_2);
         gridLayout_62->setSpacing(0);
         gridLayout_62->setContentsMargins(11, 11, 11, 11);
@@ -2976,21 +2976,21 @@ public:
         gridLayout_9->setContentsMargins(11, 11, 11, 11);
         gridLayout_9->setObjectName(QStringLiteral("gridLayout_9"));
         gridLayout_9->setContentsMargins(0, 0, 0, 0);
-        widget1 = new QWidget(groupBoxDevicesInfo);
-        widget1->setObjectName(QStringLiteral("widget1"));
-        sizePolicy.setHeightForWidth(widget1->sizePolicy().hasHeightForWidth());
-        widget1->setSizePolicy(sizePolicy);
-        widget1->setStyleSheet(QLatin1String("background-color: rgb(0, 143, 150);\n"
+        widget = new QWidget(groupBoxDevicesInfo);
+        widget->setObjectName(QStringLiteral("widget"));
+        sizePolicy.setHeightForWidth(widget->sizePolicy().hasHeightForWidth());
+        widget->setSizePolicy(sizePolicy);
+        widget->setStyleSheet(QLatin1String("background-color: rgb(0, 143, 150);\n"
 "background-repeat:no-repeat;\n"
 "background-position:center;\n"
 "border-width: 0;\n"
 "border-radius : 0;"));
-        gridLayout_60 = new QGridLayout(widget1);
+        gridLayout_60 = new QGridLayout(widget);
         gridLayout_60->setSpacing(0);
         gridLayout_60->setContentsMargins(11, 11, 11, 11);
         gridLayout_60->setObjectName(QStringLiteral("gridLayout_60"));
         gridLayout_60->setContentsMargins(0, 0, 0, 0);
-        scrollArea = new QScrollArea(widget1);
+        scrollArea = new QScrollArea(widget);
         scrollArea->setObjectName(QStringLiteral("scrollArea"));
         sizePolicy4.setHeightForWidth(scrollArea->sizePolicy().hasHeightForWidth());
         scrollArea->setSizePolicy(sizePolicy4);
@@ -3133,7 +3133,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1299, 249));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 200, 230));
         sizePolicy.setHeightForWidth(scrollAreaWidgetContents->sizePolicy().hasHeightForWidth());
         scrollAreaWidgetContents->setSizePolicy(sizePolicy);
         scrollAreaWidgetContents->setMinimumSize(QSize(0, 200));
@@ -3165,7 +3165,7 @@ public:
         gridLayout_60->addWidget(scrollArea, 0, 0, 1, 1);
 
 
-        gridLayout_9->addWidget(widget1, 0, 0, 1, 1);
+        gridLayout_9->addWidget(widget, 0, 0, 1, 1);
 
 
         gridLayout_59->addWidget(groupBoxDevicesInfo, 1, 0, 1, 1);
@@ -5114,7 +5114,7 @@ public:
 
         verticalLayout->addWidget(stackedWidgetMain);
 
-        splitter_4->addWidget(layoutWidget);
+        splitter_4->addWidget(layoutWidget1);
 
         verticalLayout_21->addWidget(splitter_4);
 
@@ -5136,7 +5136,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidgetMain->setCurrentIndex(0);
+        stackedWidgetMain->setCurrentIndex(2);
         stackedWidgetMonitorMain->setCurrentIndex(0);
 
 
