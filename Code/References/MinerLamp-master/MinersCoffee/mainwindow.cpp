@@ -1816,7 +1816,7 @@ void MainWindow::on_pushButtonOCPage_clicked(){
 }
 
 void MainWindow::on_pushButtonSystem_clicked(){
-    ui->stackedWidgetMain->setCurrentIndex(2);
+    ui->stackedWidgetMain->setCurrentIndex(3);
     setPushButtonColor(ui->pushButtonMonitorPage, false);
     setPushButtonColor(ui->pushButtonOCPage, false);
     setPushButtonColor(ui->pushButtonSystem, true);
@@ -1824,7 +1824,7 @@ void MainWindow::on_pushButtonSystem_clicked(){
 }
 
 void MainWindow::on_pushButtonHelpPage_clicked(){
-    ui->stackedWidgetMain->setCurrentIndex(3);
+    ui->stackedWidgetMain->setCurrentIndex(2);
     setPushButtonColor(ui->pushButtonMonitorPage, false);
     setPushButtonColor(ui->pushButtonOCPage, false);
     setPushButtonColor(ui->pushButtonSystem, false);
@@ -1859,6 +1859,7 @@ void MainWindow::isAllPromptVisable(bool status){
     static QString frameMiningInfoStyleSheet;
     static QString frameHistoryStyleSheet;
     static QString frameDevicesInfoStyleSheet;
+    static QString frameVirtualMemoryInfoStyleSheet;
     static bool hasSet = false;
 
     static QString generalFramStyle(
@@ -1880,6 +1881,7 @@ void MainWindow::isAllPromptVisable(bool status){
             frameMiningInfoStyleSheet = ui->frameMiningInfo->styleSheet();
             frameHistoryStyleSheet = ui->frameHistory->styleSheet();
             frameDevicesInfoStyleSheet = ui->frameDevicesInfo->styleSheet();
+            frameVirtualMemoryInfoStyleSheet = ui->frameVirtualSystem->styleSheet();
 
             hasSet = true;
         }
@@ -1891,6 +1893,7 @@ void MainWindow::isAllPromptVisable(bool status){
         ui->frameMiningInfo->setStyleSheet(generalFramStyle);
         ui->frameHistory->setStyleSheet(generalFramStyle);
         ui->frameDevicesInfo->setStyleSheet(generalFramStyle);
+        ui->frameVirtualSystem->setStyleSheet(generalFramStyle);
 
         ui->pushButtonMonitorPage->setText("Monitor");
         ui->pushButtonOCPage->setText("OC");
@@ -1899,6 +1902,7 @@ void MainWindow::isAllPromptVisable(bool status){
         ui->pushButtonMonitorPage_Mining->setText("Mining");
         ui->pushButtonMonitorPage_System->setText("System");
         ui->pushButtonMonitorPage_DevicesInfo->setText("Devices");
+        ui->pushButtonSystem->setText("VM");
     }
     else{
         ui->frameMonitor->setStyleSheet(frameMonitorStyleSheet);
@@ -1908,6 +1912,7 @@ void MainWindow::isAllPromptVisable(bool status){
         ui->frameMiningInfo->setStyleSheet(frameMiningInfoStyleSheet);
         ui->frameHistory->setStyleSheet(frameHistoryStyleSheet);
         ui->frameDevicesInfo->setStyleSheet(frameDevicesInfoStyleSheet);
+        ui->frameVirtualSystem->setStyleSheet(frameVirtualMemoryInfoStyleSheet);
 
         ui->pushButtonMonitorPage->setText("");
         ui->pushButtonOCPage->setText("");
@@ -1916,6 +1921,7 @@ void MainWindow::isAllPromptVisable(bool status){
         ui->pushButtonMonitorPage_Mining->setText("");
         ui->pushButtonMonitorPage_System->setText("");
         ui->pushButtonMonitorPage_DevicesInfo->setText("");
+        ui->pushButtonSystem->setText("");
     }
 }
 
