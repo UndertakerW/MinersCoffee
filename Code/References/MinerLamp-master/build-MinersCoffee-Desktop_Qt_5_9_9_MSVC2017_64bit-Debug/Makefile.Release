@@ -2140,29 +2140,7 @@ release\gpumonitor.obj: ..\MinersCoffee\gpumonitor.cpp ../MinersCoffee/gpumonito
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtTest\qttestversion.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QCoreApplication \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtTest\QSignalSpy \
-		ui_mainwindow.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QAction \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QButtonGroup \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qbuttongroup.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QDateTimeEdit \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qdatetimeedit.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QFrame \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QGridLayout \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QGroupBox \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qgroupbox.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QHeaderView \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qheaderview.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qabstractitemview.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QPushButton \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qpushbutton.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QScrollArea \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QSpacerItem \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QSplitter \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qsplitter.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QStackedWidget \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qstackedwidget.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QVBoxLayout \
-		../MinersCoffee/chartview.h
+		ui_mainwindow.h
 
 release\helppage.obj: ..\MinersCoffee\helppage.cpp ../MinersCoffee/helppage.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QSettings \
@@ -3079,29 +3057,6 @@ release\mainwindow.obj: ..\MinersCoffee\mainwindow.cpp ../MinersCoffee/mainwindo
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QLineEdit \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qlineedit.h \
 		ui_mainwindow.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QAction \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QButtonGroup \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qbuttongroup.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QDateTimeEdit \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qdatetimeedit.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QFrame \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QGridLayout \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QGroupBox \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qgroupbox.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QHeaderView \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qheaderview.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qabstractitemview.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qitemselectionmodel.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QPushButton \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qpushbutton.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QScrollArea \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QSpacerItem \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QSplitter \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qsplitter.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QStackedWidget \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qstackedwidget.h \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QVBoxLayout \
-		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QWidget \
 		../MinersCoffee/chartview.h \
 		../MinersCoffee/constants.h \
 		../MinersCoffee/wincmd.h \
@@ -3150,6 +3105,7 @@ release\mainwindow.obj: ..\MinersCoffee\mainwindow.cpp ../MinersCoffee/mainwindo
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qhistorystate.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qidentityproxymodel.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qisenum.h \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qitemselectionmodel.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qjsonarray.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qjsonvalue.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\qjsondocument.h \
@@ -3223,6 +3179,7 @@ release\mainwindow.obj: ..\MinersCoffee\mainwindow.cpp ../MinersCoffee/mainwindo
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QRect \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qsurface.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtGui\qsurfaceformat.h \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QWidget \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtTest\qtest_network.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtNetwork\QHostAddress \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtNetwork\qhostaddress.h \
@@ -3266,6 +3223,7 @@ release\mainwindow.obj: ..\MinersCoffee\mainwindow.cpp ../MinersCoffee/mainwindo
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtTest\qttestversion.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCore\QCoreApplication \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtTest\QSignalSpy \
+		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QFrame \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\QGraphicsEffect \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtWidgets\qgraphicseffect.h \
 		D:\application\Qt\Qt5.9.9\5.9.9\msvc2017_64\include\QtCharts\QAreaSeries \

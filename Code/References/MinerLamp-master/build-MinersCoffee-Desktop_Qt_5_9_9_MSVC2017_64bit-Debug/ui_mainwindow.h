@@ -1883,7 +1883,7 @@ public:
         scrollArea_2->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName(QStringLiteral("scrollAreaWidgetContents_2"));
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 256, 344));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 258, 324));
         gridLayout_62 = new QGridLayout(scrollAreaWidgetContents_2);
         gridLayout_62->setSpacing(0);
         gridLayout_62->setContentsMargins(11, 11, 11, 11);
@@ -3133,7 +3133,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 200, 230));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1302, 225));
         sizePolicy.setHeightForWidth(scrollAreaWidgetContents->sizePolicy().hasHeightForWidth());
         scrollAreaWidgetContents->setSizePolicy(sizePolicy);
         scrollAreaWidgetContents->setMinimumSize(QSize(0, 200));
@@ -3868,7 +3868,7 @@ public:
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
         pushButtonOCPageApply = new QPushButton(groupbox);
         pushButtonOCPageApply->setObjectName(QStringLiteral("pushButtonOCPageApply"));
-        pushButtonOCPageApply->setMinimumSize(QSize(200, 100));
+        pushButtonOCPageApply->setMinimumSize(QSize(220, 100));
         pushButtonOCPageApply->setMaximumSize(QSize(200, 16777215));
         pushButtonOCPageApply->setFont(font7);
         pushButtonOCPageApply->setStyleSheet(QLatin1String("QPushButton {\n"
@@ -3887,7 +3887,7 @@ public:
 
         pushButtonAutoOC = new QPushButton(groupbox);
         pushButtonAutoOC->setObjectName(QStringLiteral("pushButtonAutoOC"));
-        pushButtonAutoOC->setMinimumSize(QSize(200, 100));
+        pushButtonAutoOC->setMinimumSize(QSize(220, 100));
         pushButtonAutoOC->setMaximumSize(QSize(200, 16777215));
         pushButtonAutoOC->setFont(font7);
         pushButtonAutoOC->setStyleSheet(QLatin1String("QPushButton {\n"
@@ -5136,8 +5136,8 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidgetMain->setCurrentIndex(3);
-        stackedWidgetMonitorMain->setCurrentIndex(0);
+        stackedWidgetMain->setCurrentIndex(1);
+        stackedWidgetMonitorMain->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
