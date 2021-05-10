@@ -69,7 +69,7 @@ FORMS += \
     mainwindow.ui
 
 RC_ICONS += \
-        minerscoffee.ico
+    minerscoffee.ico
 
 RESOURCES += \
     resources.qrc

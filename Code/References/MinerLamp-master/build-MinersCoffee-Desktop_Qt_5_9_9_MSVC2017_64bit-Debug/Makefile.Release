@@ -233,7 +233,7 @@ release\qrc_resources.cpp: ..\MinersCoffee\resources.qrc \
 		..\MinersCoffee\fonts\BRLNSB.TTF \
 		..\MinersCoffee\fonts\BRLNSDB.TTF \
 		..\MinersCoffee\fonts\BRLNSR.TTF \
-		..\MinersCoffee\eth_miner_lamp.ico \
+		..\MinersCoffee\minerscoffee.ico \
 		..\MinersCoffee\icos\MaoYu.jpg \
 		..\MinersCoffee\icos\oc_setting.png \
 		..\MinersCoffee\icos\gpu.png \

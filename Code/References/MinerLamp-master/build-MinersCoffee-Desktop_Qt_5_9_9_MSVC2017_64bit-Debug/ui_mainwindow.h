@@ -45,7 +45,7 @@ public:
     QWidget *centralWidget;
     QVBoxLayout *verticalLayout_21;
     QSplitter *splitter_4;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_8;
     QFrame *frameInfo;
     QGridLayout *gridLayout_39;
@@ -65,7 +65,7 @@ public:
     QFrame *frameWestBar;
     QGridLayout *gridLayout_32;
     QSpacerItem *verticalSpacer_9;
-    QWidget *layoutWidget;
+    QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout;
     QStackedWidget *stackedWidgetMain;
     QWidget *pageMonitor;
@@ -89,7 +89,7 @@ public:
     QWidget *pageOverview;
     QVBoxLayout *verticalLayout_7;
     QSplitter *splitter;
-    QWidget *layoutWidget1;
+    QWidget *layoutWidget2;
     QHBoxLayout *horizontalLayout_30;
     QGroupBox *groupBox_2;
     QGridLayout *gridLayout_6;
@@ -264,7 +264,7 @@ public:
     QGridLayout *gridLayout_59;
     QGroupBox *groupBoxDevicesInfo;
     QGridLayout *gridLayout_9;
-    QWidget *widget1;
+    QWidget *widget;
     QGridLayout *gridLayout_60;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
@@ -323,39 +323,6 @@ public:
     QHBoxLayout *horizontalLayout_4;
     QPushButton *pushButtonOCPageApply;
     QPushButton *pushButtonAutoOC;
-    QWidget *pageHelp;
-    QVBoxLayout *verticalLayout_37;
-    QFrame *frameMonitorBar_3;
-    QHBoxLayout *horizontalLayout_49;
-    QHBoxLayout *horizontalLayout_61;
-    QGroupBox *groupBox_19;
-    QGridLayout *gridLayout_77;
-    QGroupBox *groupBox_20;
-    QGridLayout *gridLayout_65;
-    QFrame *frame_48;
-    QVBoxLayout *verticalLayout_6;
-    QLabel *label_80;
-    QLabel *label_81;
-    QGroupBox *groupBox_21;
-    QGridLayout *gridLayout_66;
-    QFrame *frame_49;
-    QVBoxLayout *verticalLayout_26;
-    QLabel *label_74;
-    QLabel *label_75;
-    QGroupBox *groupBox_22;
-    QGridLayout *gridLayout_67;
-    QFrame *frame_50;
-    QVBoxLayout *verticalLayout_27;
-    QLabel *label_76;
-    QLabel *label_77;
-    QHBoxLayout *horizontalLayout_60;
-    QGroupBox *groupBox_23;
-    QGridLayout *gridLayout_68;
-    QFrame *frame_51;
-    QVBoxLayout *verticalLayout_28;
-    QLabel *label_82;
-    QLabel *label_83;
-    QPlainTextEdit *plainTextEditHelpPage;
     QWidget *pageSystem;
     QGridLayout *gridLayout_4;
     QFrame *frameMonitorBar_4;
@@ -390,6 +357,39 @@ public:
     QHBoxLayout *horizontalLayout_33;
     QPlainTextEdit *plainTextEditSettingsSystemInfoTitle;
     QPlainTextEdit *plainTextEditSettingsSystemInfo;
+    QWidget *pageHelp;
+    QVBoxLayout *verticalLayout_37;
+    QFrame *frameMonitorBar_3;
+    QHBoxLayout *horizontalLayout_49;
+    QHBoxLayout *horizontalLayout_61;
+    QGroupBox *groupBox_19;
+    QGridLayout *gridLayout_77;
+    QGroupBox *groupBox_20;
+    QGridLayout *gridLayout_65;
+    QFrame *frame_48;
+    QVBoxLayout *verticalLayout_6;
+    QLabel *label_80;
+    QLabel *label_81;
+    QGroupBox *groupBox_21;
+    QGridLayout *gridLayout_66;
+    QFrame *frame_49;
+    QVBoxLayout *verticalLayout_26;
+    QLabel *label_74;
+    QLabel *label_75;
+    QGroupBox *groupBox_22;
+    QGridLayout *gridLayout_67;
+    QFrame *frame_50;
+    QVBoxLayout *verticalLayout_27;
+    QLabel *label_76;
+    QLabel *label_77;
+    QHBoxLayout *horizontalLayout_60;
+    QGroupBox *groupBox_23;
+    QGridLayout *gridLayout_68;
+    QFrame *frame_51;
+    QVBoxLayout *verticalLayout_28;
+    QLabel *label_82;
+    QLabel *label_83;
+    QPlainTextEdit *plainTextEditHelpPage;
     QLineEdit *lineEditArgs;
     QLineEdit *lineEditMinerPath;
 
@@ -425,14 +425,14 @@ public:
         splitter_4->setObjectName(QStringLiteral("splitter_4"));
         splitter_4->setOrientation(Qt::Horizontal);
         splitter_4->setHandleWidth(0);
-        widget = new QWidget(splitter_4);
-        widget->setObjectName(QStringLiteral("widget"));
-        verticalLayout_8 = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(splitter_4);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        verticalLayout_8 = new QVBoxLayout(layoutWidget);
         verticalLayout_8->setSpacing(0);
         verticalLayout_8->setContentsMargins(11, 11, 11, 11);
         verticalLayout_8->setObjectName(QStringLiteral("verticalLayout_8"));
         verticalLayout_8->setContentsMargins(0, 0, 0, 0);
-        frameInfo = new QFrame(widget);
+        frameInfo = new QFrame(layoutWidget);
         frameInfo->setObjectName(QStringLiteral("frameInfo"));
         QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Minimum);
         sizePolicy1.setHorizontalStretch(0);
@@ -480,7 +480,7 @@ public:
 
         verticalLayout_8->addWidget(frameInfo);
 
-        frameMonitor = new QFrame(widget);
+        frameMonitor = new QFrame(layoutWidget);
         frameMonitor->setObjectName(QStringLiteral("frameMonitor"));
         QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Maximum);
         sizePolicy3.setHorizontalStretch(0);
@@ -531,7 +531,7 @@ public:
 
         verticalLayout_8->addWidget(frameMonitor);
 
-        frameOC = new QFrame(widget);
+        frameOC = new QFrame(layoutWidget);
         frameOC->setObjectName(QStringLiteral("frameOC"));
         frameOC->setMinimumSize(QSize(80, 75));
         frameOC->setMaximumSize(QSize(160, 16777215));
@@ -574,7 +574,7 @@ public:
 
         verticalLayout_8->addWidget(frameOC);
 
-        frameVirtualSystem = new QFrame(widget);
+        frameVirtualSystem = new QFrame(layoutWidget);
         frameVirtualSystem->setObjectName(QStringLiteral("frameVirtualSystem"));
         frameVirtualSystem->setMinimumSize(QSize(80, 75));
         frameVirtualSystem->setMaximumSize(QSize(160, 16777215));
@@ -618,7 +618,7 @@ public:
 
         verticalLayout_8->addWidget(frameVirtualSystem);
 
-        frameHelp = new QFrame(widget);
+        frameHelp = new QFrame(layoutWidget);
         frameHelp->setObjectName(QStringLiteral("frameHelp"));
         frameHelp->setMinimumSize(QSize(80, 75));
         frameHelp->setMaximumSize(QSize(160, 16777215));
@@ -662,7 +662,7 @@ public:
 
         verticalLayout_8->addWidget(frameHelp);
 
-        frameWestBar = new QFrame(widget);
+        frameWestBar = new QFrame(layoutWidget);
         frameWestBar->setObjectName(QStringLiteral("frameWestBar"));
         frameWestBar->setMinimumSize(QSize(80, 0));
         frameWestBar->setMaximumSize(QSize(160, 16777215));
@@ -682,15 +682,15 @@ public:
 
         verticalLayout_8->addWidget(frameWestBar);
 
-        splitter_4->addWidget(widget);
-        layoutWidget = new QWidget(splitter_4);
-        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        verticalLayout = new QVBoxLayout(layoutWidget);
+        splitter_4->addWidget(layoutWidget);
+        layoutWidget1 = new QWidget(splitter_4);
+        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
+        verticalLayout = new QVBoxLayout(layoutWidget1);
         verticalLayout->setSpacing(0);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        stackedWidgetMain = new QStackedWidget(layoutWidget);
+        stackedWidgetMain = new QStackedWidget(layoutWidget1);
         stackedWidgetMain->setObjectName(QStringLiteral("stackedWidgetMain"));
         QFont font2;
         font2.setFamily(QStringLiteral("SimSun"));
@@ -906,14 +906,14 @@ public:
         splitter = new QSplitter(pageOverview);
         splitter->setObjectName(QStringLiteral("splitter"));
         splitter->setOrientation(Qt::Horizontal);
-        layoutWidget1 = new QWidget(splitter);
-        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
-        horizontalLayout_30 = new QHBoxLayout(layoutWidget1);
+        layoutWidget2 = new QWidget(splitter);
+        layoutWidget2->setObjectName(QStringLiteral("layoutWidget2"));
+        horizontalLayout_30 = new QHBoxLayout(layoutWidget2);
         horizontalLayout_30->setSpacing(6);
         horizontalLayout_30->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_30->setObjectName(QStringLiteral("horizontalLayout_30"));
         horizontalLayout_30->setContentsMargins(0, 0, 0, 0);
-        groupBox_2 = new QGroupBox(layoutWidget1);
+        groupBox_2 = new QGroupBox(layoutWidget2);
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
         groupBox_2->setMinimumSize(QSize(500, 300));
         QFont font3;
@@ -1147,7 +1147,7 @@ public:
 
         horizontalLayout_30->addWidget(groupBox_2);
 
-        groupBox_3 = new QGroupBox(layoutWidget1);
+        groupBox_3 = new QGroupBox(layoutWidget2);
         groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
         groupBox_3->setMinimumSize(QSize(350, 0));
         groupBox_3->setFont(font3);
@@ -1537,7 +1537,7 @@ public:
 
         horizontalLayout_30->addWidget(groupBox_3);
 
-        splitter->addWidget(layoutWidget1);
+        splitter->addWidget(layoutWidget2);
 
         verticalLayout_7->addWidget(splitter);
 
@@ -1883,7 +1883,7 @@ public:
         scrollArea_2->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName(QStringLiteral("scrollAreaWidgetContents_2"));
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 256, 353));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 256, 352));
         gridLayout_62 = new QGridLayout(scrollAreaWidgetContents_2);
         gridLayout_62->setSpacing(0);
         gridLayout_62->setContentsMargins(11, 11, 11, 11);
@@ -2976,21 +2976,21 @@ public:
         gridLayout_9->setContentsMargins(11, 11, 11, 11);
         gridLayout_9->setObjectName(QStringLiteral("gridLayout_9"));
         gridLayout_9->setContentsMargins(0, 0, 0, 0);
-        widget1 = new QWidget(groupBoxDevicesInfo);
-        widget1->setObjectName(QStringLiteral("widget1"));
-        sizePolicy.setHeightForWidth(widget1->sizePolicy().hasHeightForWidth());
-        widget1->setSizePolicy(sizePolicy);
-        widget1->setStyleSheet(QLatin1String("background-color: rgb(0, 143, 150);\n"
+        widget = new QWidget(groupBoxDevicesInfo);
+        widget->setObjectName(QStringLiteral("widget"));
+        sizePolicy.setHeightForWidth(widget->sizePolicy().hasHeightForWidth());
+        widget->setSizePolicy(sizePolicy);
+        widget->setStyleSheet(QLatin1String("background-color: rgb(0, 143, 150);\n"
 "background-repeat:no-repeat;\n"
 "background-position:center;\n"
 "border-width: 0;\n"
 "border-radius : 0;"));
-        gridLayout_60 = new QGridLayout(widget1);
+        gridLayout_60 = new QGridLayout(widget);
         gridLayout_60->setSpacing(0);
         gridLayout_60->setContentsMargins(11, 11, 11, 11);
         gridLayout_60->setObjectName(QStringLiteral("gridLayout_60"));
         gridLayout_60->setContentsMargins(0, 0, 0, 0);
-        scrollArea = new QScrollArea(widget1);
+        scrollArea = new QScrollArea(widget);
         scrollArea->setObjectName(QStringLiteral("scrollArea"));
         sizePolicy4.setHeightForWidth(scrollArea->sizePolicy().hasHeightForWidth());
         scrollArea->setSizePolicy(sizePolicy4);
@@ -3133,7 +3133,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 1299, 249));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 200, 234));
         sizePolicy.setHeightForWidth(scrollAreaWidgetContents->sizePolicy().hasHeightForWidth());
         scrollAreaWidgetContents->setSizePolicy(sizePolicy);
         scrollAreaWidgetContents->setMinimumSize(QSize(0, 200));
@@ -3165,7 +3165,7 @@ public:
         gridLayout_60->addWidget(scrollArea, 0, 0, 1, 1);
 
 
-        gridLayout_9->addWidget(widget1, 0, 0, 1, 1);
+        gridLayout_9->addWidget(widget, 0, 0, 1, 1);
 
 
         gridLayout_59->addWidget(groupBoxDevicesInfo, 1, 0, 1, 1);
@@ -3914,485 +3914,6 @@ public:
         gridLayout_11->addLayout(horizontalLayout_11, 1, 0, 1, 1);
 
         stackedWidgetMain->addWidget(pageOC);
-        pageHelp = new QWidget();
-        pageHelp->setObjectName(QStringLiteral("pageHelp"));
-        verticalLayout_37 = new QVBoxLayout(pageHelp);
-        verticalLayout_37->setSpacing(0);
-        verticalLayout_37->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_37->setObjectName(QStringLiteral("verticalLayout_37"));
-        verticalLayout_37->setContentsMargins(0, 0, 0, 0);
-        frameMonitorBar_3 = new QFrame(pageHelp);
-        frameMonitorBar_3->setObjectName(QStringLiteral("frameMonitorBar_3"));
-        frameMonitorBar_3->setMinimumSize(QSize(0, 50));
-        frameMonitorBar_3->setMaximumSize(QSize(16777215, 50));
-        frameMonitorBar_3->setStyleSheet(QStringLiteral("background:#008F96;"));
-        frameMonitorBar_3->setFrameShape(QFrame::StyledPanel);
-        frameMonitorBar_3->setFrameShadow(QFrame::Raised);
-        horizontalLayout_49 = new QHBoxLayout(frameMonitorBar_3);
-        horizontalLayout_49->setSpacing(0);
-        horizontalLayout_49->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_49->setObjectName(QStringLiteral("horizontalLayout_49"));
-        horizontalLayout_49->setContentsMargins(0, 0, 0, 0);
-
-        verticalLayout_37->addWidget(frameMonitorBar_3);
-
-        horizontalLayout_61 = new QHBoxLayout();
-        horizontalLayout_61->setSpacing(9);
-        horizontalLayout_61->setObjectName(QStringLiteral("horizontalLayout_61"));
-        horizontalLayout_61->setContentsMargins(9, 9, 9, 9);
-        groupBox_19 = new QGroupBox(pageHelp);
-        groupBox_19->setObjectName(QStringLiteral("groupBox_19"));
-        groupBox_19->setMinimumSize(QSize(600, 0));
-        groupBox_19->setFont(font3);
-        groupBox_19->setLayoutDirection(Qt::LeftToRight);
-        groupBox_19->setStyleSheet(QLatin1String("QGroupBox::title{\n"
-"	color : white;\n"
-"	left: 10px;\n"
-"	margin-left: 0px;\n"
-"	padding: 0 1px;\n"
-"}\n"
-"\n"
-"QGroupBox{\n"
-"	border-width: 2px;\n"
-"	border-style: solid;\n"
-"	border-color: white;\n"
-"	margin-top: 0.5ex;\n"
-"	border-radius: 5px;\n"
-"}"));
-        gridLayout_77 = new QGridLayout(groupBox_19);
-        gridLayout_77->setSpacing(6);
-        gridLayout_77->setContentsMargins(11, 11, 11, 11);
-        gridLayout_77->setObjectName(QStringLiteral("gridLayout_77"));
-        gridLayout_77->setContentsMargins(-1, 30, -1, -1);
-        groupBox_20 = new QGroupBox(groupBox_19);
-        groupBox_20->setObjectName(QStringLiteral("groupBox_20"));
-        groupBox_20->setMinimumSize(QSize(125, 125));
-        groupBox_20->setMaximumSize(QSize(125, 125));
-        groupBox_20->setStyleSheet(QLatin1String("QGroupBox::title{\n"
-"	color : white;\n"
-"	left: 10px;\n"
-"	margin-left: 0px;\n"
-"	padding: 0 1px;\n"
-"}\n"
-"\n"
-"QGroupBox{\n"
-"	border-width: 3px;\n"
-"	border-style: solid;\n"
-"	border-color: white;\n"
-"	margin-top: 0.5ex;\n"
-"	border-radius: 5px;\n"
-"	background: rgb(0,0,0,0);\n"
-"}"));
-        gridLayout_65 = new QGridLayout(groupBox_20);
-        gridLayout_65->setSpacing(0);
-        gridLayout_65->setContentsMargins(11, 11, 11, 11);
-        gridLayout_65->setObjectName(QStringLiteral("gridLayout_65"));
-        gridLayout_65->setContentsMargins(0, 0, 0, 0);
-        frame_48 = new QFrame(groupBox_20);
-        frame_48->setObjectName(QStringLiteral("frame_48"));
-        frame_48->setMinimumSize(QSize(120, 120));
-        frame_48->setMaximumSize(QSize(120, 130));
-        frame_48->setStyleSheet(QLatin1String("QFrame\n"
-"{\n"
-"   border-image: url(:/icons/icos/MaHaotian.jpg) 0 0 0 0 stretch stretch;\n"
-"   border-width: 0px;\n"
-"}"));
-        frame_48->setFrameShape(QFrame::StyledPanel);
-        frame_48->setFrameShadow(QFrame::Raised);
-
-        gridLayout_65->addWidget(frame_48, 0, 0, 1, 1);
-
-
-        gridLayout_77->addWidget(groupBox_20, 0, 0, 1, 1);
-
-        verticalLayout_6 = new QVBoxLayout();
-        verticalLayout_6->setSpacing(6);
-        verticalLayout_6->setObjectName(QStringLiteral("verticalLayout_6"));
-        label_80 = new QLabel(groupBox_19);
-        label_80->setObjectName(QStringLiteral("label_80"));
-        sizePolicy9.setHeightForWidth(label_80->sizePolicy().hasHeightForWidth());
-        label_80->setSizePolicy(sizePolicy9);
-        label_80->setMinimumSize(QSize(300, 50));
-        QFont font13;
-        font13.setFamily(QStringLiteral("Berlin Sans FB"));
-        font13.setPointSize(26);
-        label_80->setFont(font13);
-        label_80->setStyleSheet(QStringLiteral("color : white;"));
-
-        verticalLayout_6->addWidget(label_80);
-
-        label_81 = new QLabel(groupBox_19);
-        label_81->setObjectName(QStringLiteral("label_81"));
-        sizePolicy9.setHeightForWidth(label_81->sizePolicy().hasHeightForWidth());
-        label_81->setSizePolicy(sizePolicy9);
-        label_81->setMinimumSize(QSize(100, 40));
-        label_81->setFont(font3);
-        label_81->setStyleSheet(QStringLiteral("color : white;"));
-
-        verticalLayout_6->addWidget(label_81);
-
-
-        gridLayout_77->addLayout(verticalLayout_6, 0, 1, 1, 1);
-
-        groupBox_21 = new QGroupBox(groupBox_19);
-        groupBox_21->setObjectName(QStringLiteral("groupBox_21"));
-        groupBox_21->setMinimumSize(QSize(125, 125));
-        groupBox_21->setMaximumSize(QSize(125, 130));
-        groupBox_21->setStyleSheet(QLatin1String("QGroupBox::title{\n"
-"	color : white;\n"
-"	left: 10px;\n"
-"	margin-left: 0px;\n"
-"	padding: 0 1px;\n"
-"}\n"
-"\n"
-"QGroupBox{\n"
-"	border-width: 3px;\n"
-"	border-style: solid;\n"
-"	border-color: white;\n"
-"	margin-top: 0.5ex;\n"
-"	border-radius: 5px;\n"
-"	background: rgb(0,0,0,0);\n"
-"}"));
-        gridLayout_66 = new QGridLayout(groupBox_21);
-        gridLayout_66->setSpacing(0);
-        gridLayout_66->setContentsMargins(11, 11, 11, 11);
-        gridLayout_66->setObjectName(QStringLiteral("gridLayout_66"));
-        gridLayout_66->setContentsMargins(0, 0, 0, 0);
-        frame_49 = new QFrame(groupBox_21);
-        frame_49->setObjectName(QStringLiteral("frame_49"));
-        frame_49->setMinimumSize(QSize(120, 120));
-        frame_49->setStyleSheet(QLatin1String("QFrame\n"
-"{\n"
-"   border-image: url(:/icons/icos/MaoYu.jpg) 0 0 0 0 stretch stretch;\n"
-"   border-width: 0px;\n"
-"}"));
-        frame_49->setFrameShape(QFrame::StyledPanel);
-        frame_49->setFrameShadow(QFrame::Raised);
-
-        gridLayout_66->addWidget(frame_49, 0, 0, 1, 1);
-
-
-        gridLayout_77->addWidget(groupBox_21, 1, 0, 1, 1);
-
-        verticalLayout_26 = new QVBoxLayout();
-        verticalLayout_26->setSpacing(6);
-        verticalLayout_26->setObjectName(QStringLiteral("verticalLayout_26"));
-        label_74 = new QLabel(groupBox_19);
-        label_74->setObjectName(QStringLiteral("label_74"));
-        sizePolicy9.setHeightForWidth(label_74->sizePolicy().hasHeightForWidth());
-        label_74->setSizePolicy(sizePolicy9);
-        label_74->setMinimumSize(QSize(300, 50));
-        label_74->setFont(font13);
-        label_74->setStyleSheet(QStringLiteral("color : white;"));
-
-        verticalLayout_26->addWidget(label_74);
-
-        label_75 = new QLabel(groupBox_19);
-        label_75->setObjectName(QStringLiteral("label_75"));
-        sizePolicy9.setHeightForWidth(label_75->sizePolicy().hasHeightForWidth());
-        label_75->setSizePolicy(sizePolicy9);
-        label_75->setMinimumSize(QSize(100, 40));
-        label_75->setFont(font3);
-        label_75->setStyleSheet(QStringLiteral("color : white;"));
-
-        verticalLayout_26->addWidget(label_75);
-
-
-        gridLayout_77->addLayout(verticalLayout_26, 1, 1, 1, 1);
-
-        groupBox_22 = new QGroupBox(groupBox_19);
-        groupBox_22->setObjectName(QStringLiteral("groupBox_22"));
-        groupBox_22->setMinimumSize(QSize(125, 125));
-        groupBox_22->setMaximumSize(QSize(125, 130));
-        groupBox_22->setStyleSheet(QLatin1String("QGroupBox::title{\n"
-"	color : white;\n"
-"	left: 10px;\n"
-"	margin-left: 0px;\n"
-"	padding: 0 1px;\n"
-"}\n"
-"\n"
-"QGroupBox{\n"
-"	border-width: 3px;\n"
-"	border-style: solid;\n"
-"	border-color: white;\n"
-"	margin-top: 0.5ex;\n"
-"	border-radius: 5px;\n"
-"	background: rgb(0,0,0,0);\n"
-"}"));
-        gridLayout_67 = new QGridLayout(groupBox_22);
-        gridLayout_67->setSpacing(0);
-        gridLayout_67->setContentsMargins(11, 11, 11, 11);
-        gridLayout_67->setObjectName(QStringLiteral("gridLayout_67"));
-        gridLayout_67->setContentsMargins(0, 0, 0, 0);
-        frame_50 = new QFrame(groupBox_22);
-        frame_50->setObjectName(QStringLiteral("frame_50"));
-        frame_50->setMinimumSize(QSize(120, 120));
-        frame_50->setStyleSheet(QLatin1String("QFrame\n"
-"{\n"
-"   border-image: url(:/icons/icos/WuWei.jpg) 0 0 0 0 stretch stretch;\n"
-"   border-width: 0px;\n"
-"}"));
-        frame_50->setFrameShape(QFrame::StyledPanel);
-        frame_50->setFrameShadow(QFrame::Raised);
-
-        gridLayout_67->addWidget(frame_50, 0, 0, 1, 1);
-
-
-        gridLayout_77->addWidget(groupBox_22, 2, 0, 1, 1);
-
-        verticalLayout_27 = new QVBoxLayout();
-        verticalLayout_27->setSpacing(6);
-        verticalLayout_27->setObjectName(QStringLiteral("verticalLayout_27"));
-        label_76 = new QLabel(groupBox_19);
-        label_76->setObjectName(QStringLiteral("label_76"));
-        sizePolicy9.setHeightForWidth(label_76->sizePolicy().hasHeightForWidth());
-        label_76->setSizePolicy(sizePolicy9);
-        label_76->setMinimumSize(QSize(300, 50));
-        label_76->setFont(font13);
-        label_76->setStyleSheet(QStringLiteral("color : white;"));
-
-        verticalLayout_27->addWidget(label_76);
-
-        label_77 = new QLabel(groupBox_19);
-        label_77->setObjectName(QStringLiteral("label_77"));
-        sizePolicy9.setHeightForWidth(label_77->sizePolicy().hasHeightForWidth());
-        label_77->setSizePolicy(sizePolicy9);
-        label_77->setMinimumSize(QSize(100, 40));
-        label_77->setFont(font3);
-        label_77->setStyleSheet(QStringLiteral("color : white;"));
-
-        verticalLayout_27->addWidget(label_77);
-
-
-        gridLayout_77->addLayout(verticalLayout_27, 2, 1, 1, 1);
-
-        horizontalLayout_60 = new QHBoxLayout();
-        horizontalLayout_60->setSpacing(6);
-        horizontalLayout_60->setObjectName(QStringLiteral("horizontalLayout_60"));
-        groupBox_23 = new QGroupBox(groupBox_19);
-        groupBox_23->setObjectName(QStringLiteral("groupBox_23"));
-        groupBox_23->setMinimumSize(QSize(125, 125));
-        groupBox_23->setMaximumSize(QSize(125, 130));
-        groupBox_23->setStyleSheet(QLatin1String("QGroupBox::title{\n"
-"	color : white;\n"
-"	left: 10px;\n"
-"	margin-left: 0px;\n"
-"	padding: 0 1px;\n"
-"}\n"
-"\n"
-"QGroupBox{\n"
-"	border-width: 3px;\n"
-"	border-style: solid;\n"
-"	border-color: white;\n"
-"	margin-top: 0.5ex;\n"
-"	border-radius: 5px;\n"
-"	background: rgb(0,0,0,0);\n"
-"}"));
-        gridLayout_68 = new QGridLayout(groupBox_23);
-        gridLayout_68->setSpacing(0);
-        gridLayout_68->setContentsMargins(11, 11, 11, 11);
-        gridLayout_68->setObjectName(QStringLiteral("gridLayout_68"));
-        gridLayout_68->setContentsMargins(0, 0, 0, 0);
-        frame_51 = new QFrame(groupBox_23);
-        frame_51->setObjectName(QStringLiteral("frame_51"));
-        frame_51->setMinimumSize(QSize(120, 120));
-        frame_51->setStyleSheet(QLatin1String("QFrame\n"
-"{\n"
-"   border-image: url(:/icons/icos/ZhangShiqi.jpg) 0 0 0 0 stretch stretch;\n"
-"   border-width: 0px;\n"
-"}"));
-        frame_51->setFrameShape(QFrame::StyledPanel);
-        frame_51->setFrameShadow(QFrame::Raised);
-
-        gridLayout_68->addWidget(frame_51, 0, 0, 1, 1);
-
-
-        horizontalLayout_60->addWidget(groupBox_23);
-
-
-        gridLayout_77->addLayout(horizontalLayout_60, 3, 0, 1, 1);
-
-        verticalLayout_28 = new QVBoxLayout();
-        verticalLayout_28->setSpacing(6);
-        verticalLayout_28->setObjectName(QStringLiteral("verticalLayout_28"));
-        label_82 = new QLabel(groupBox_19);
-        label_82->setObjectName(QStringLiteral("label_82"));
-        sizePolicy9.setHeightForWidth(label_82->sizePolicy().hasHeightForWidth());
-        label_82->setSizePolicy(sizePolicy9);
-        label_82->setMinimumSize(QSize(300, 50));
-        label_82->setFont(font13);
-        label_82->setStyleSheet(QStringLiteral("color : white;"));
-
-        verticalLayout_28->addWidget(label_82);
-
-        label_83 = new QLabel(groupBox_19);
-        label_83->setObjectName(QStringLiteral("label_83"));
-        sizePolicy9.setHeightForWidth(label_83->sizePolicy().hasHeightForWidth());
-        label_83->setSizePolicy(sizePolicy9);
-        label_83->setMinimumSize(QSize(100, 40));
-        label_83->setFont(font3);
-        label_83->setStyleSheet(QStringLiteral("color : white;"));
-
-        verticalLayout_28->addWidget(label_83);
-
-
-        gridLayout_77->addLayout(verticalLayout_28, 3, 1, 1, 1);
-
-
-        horizontalLayout_61->addWidget(groupBox_19);
-
-        plainTextEditHelpPage = new QPlainTextEdit(pageHelp);
-        plainTextEditHelpPage->setObjectName(QStringLiteral("plainTextEditHelpPage"));
-        plainTextEditHelpPage->setFont(font);
-        plainTextEditHelpPage->setStyleSheet(QLatin1String("QPlainTextEdit{\n"
-"	position:center;\n"
-"	color:white;\n"
-"}\n"
-" QScrollBar:horizontal\n"
-" {\n"
-"     height: 15px;\n"
-"     margin: 3px 15px 3px 15px;\n"
-"     border: 1px transparent #2A2929;\n"
-"     border-radius: 4px;\n"
-"     background-color: rgb(0, 143, 150);\n"
-" }\n"
-"\n"
-" QScrollBar::handle:horizontal\n"
-" {\n"
-"     background-color: rgb(51,51,51,220);\n"
-"     min-width: 5px;\n"
-"     border-radius: 4px;\n"
-" }\n"
-"\n"
-" QScrollBar::add-line:horizontal\n"
-" {\n"
-"     margin: 0px 3px 0px 3px;\n"
-"     border-image: url(:/qss_icons/rc/right_arrow_disabled.png);\n"
-"     width: 10px;\n"
-"     height: 10px;\n"
-"     subcontrol-position: right;\n"
-"     subcontrol-origin: margin;\n"
-" }\n"
-"\n"
-" QScrollBar::sub-line:horizontal\n"
-" {\n"
-"     margin: 0px 3px 0px 3px;\n"
-"     border-image: url(:/qss_icons/rc/left_arrow_disabled.png);\n"
-"     height: 10px;\n"
-"     width: 10px;\n"
-"     subcontrol-position: left;\n"
-"     subcontrol-origin: margin;\n"
-" }\n"
-"\n"
-" QScrollBar::add-line:horizontal"
-                        ":hover,QScrollBar::add-line:horizontal:on\n"
-" {\n"
-"     border-image: url(:/qss_icons/rc/right_arrow.png);\n"
-"     height: 10px;\n"
-"     width: 10px;\n"
-"     subcontrol-position: right;\n"
-"     subcontrol-origin: margin;\n"
-" }\n"
-"\n"
-"\n"
-" QScrollBar::sub-line:horizontal:hover, QScrollBar::sub-line:horizontal:on\n"
-" {\n"
-"     border-image: url(:/qss_icons/rc/left_arrow.png);\n"
-"     height: 10px;\n"
-"     width: 10px;\n"
-"     subcontrol-position: left;\n"
-"     subcontrol-origin: margin;\n"
-" }\n"
-"\n"
-" QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal\n"
-" {\n"
-"     background: none;\n"
-" }\n"
-"\n"
-"\n"
-" QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal\n"
-" {\n"
-"     background: none;\n"
-" }\n"
-"\n"
-" QScrollBar:vertical\n"
-" {\n"
-"     background:rgb(0, 143, 150);\n"
-"     width: 15px;\n"
-"     margin: 15px 3px 15px 3px;\n"
-"     border: 1px transparent #2A2929;\n"
-"     border-radius: 4px;\n"
-" }\n"
-"\n"
-" QScrollBar::handle:vertical\n"
-" {\n"
-"     backgrou"
-                        "nd-color: rgb(51,51,51,220);\n"
-"     min-height: 5px;\n"
-"     border-radius: 4px;\n"
-" }\n"
-"\n"
-" QScrollBar::sub-line:vertical\n"
-" {\n"
-"     margin: 3px 0px 3px 0px;\n"
-"     border-image: url(:/qss_icons/rc/up_arrow_disabled.png);\n"
-"     height: 10px;\n"
-"     width: 10px;\n"
-"     subcontrol-position: top;\n"
-"     subcontrol-origin: margin;\n"
-" }\n"
-"\n"
-" QScrollBar::add-line:vertical\n"
-" {\n"
-"     margin: 3px 0px 3px 0px;\n"
-"     border-image: url(:/qss_icons/rc/down_arrow_disabled.png);\n"
-"     height: 10px;\n"
-"     width: 10px;\n"
-"     subcontrol-position: bottom;\n"
-"     subcontrol-origin: margin;\n"
-" }\n"
-"\n"
-" QScrollBar::sub-line:vertical:hover,QScrollBar::sub-line:vertical:on\n"
-" {\n"
-"\n"
-"     border-image: url(:/qss_icons/rc/up_arrow.png);\n"
-"     height: 10px;\n"
-"     width: 10px;\n"
-"     subcontrol-position: top;\n"
-"     subcontrol-origin: margin;\n"
-" }\n"
-"\n"
-"\n"
-" QScrollBar::add-line:vertical:hover, QScrollBar::add-line:vertical:on\n"
-" {\n"
-"     border-image: url"
-                        "(:/qss_icons/rc/down_arrow.png);\n"
-"     height: 10px;\n"
-"     width: 10px;\n"
-"     subcontrol-position: bottom;\n"
-"     subcontrol-origin: margin;\n"
-" }\n"
-"\n"
-" QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical\n"
-" {\n"
-"     background: none;\n"
-" }\n"
-"\n"
-"\n"
-" QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical\n"
-" {\n"
-"     background: none;\n"
-" }"));
-        plainTextEditHelpPage->setFrameShape(QFrame::NoFrame);
-        plainTextEditHelpPage->setLineWidth(0);
-        plainTextEditHelpPage->setReadOnly(true);
-
-        horizontalLayout_61->addWidget(plainTextEditHelpPage);
-
-
-        verticalLayout_37->addLayout(horizontalLayout_61);
-
-        stackedWidgetMain->addWidget(pageHelp);
         pageSystem = new QWidget();
         pageSystem->setObjectName(QStringLiteral("pageSystem"));
         gridLayout_4 = new QGridLayout(pageSystem);
@@ -4568,13 +4089,13 @@ public:
         spinBoxChangePageSizeMax = new QSpinBox(frame_37);
         spinBoxChangePageSizeMax->setObjectName(QStringLiteral("spinBoxChangePageSizeMax"));
         spinBoxChangePageSizeMax->setMinimumSize(QSize(0, 40));
-        QFont font14;
-        font14.setFamily(QStringLiteral("Berlin Sans FB"));
-        font14.setPointSize(16);
-        font14.setBold(false);
-        font14.setItalic(false);
-        font14.setWeight(50);
-        spinBoxChangePageSizeMax->setFont(font14);
+        QFont font13;
+        font13.setFamily(QStringLiteral("Berlin Sans FB"));
+        font13.setPointSize(16);
+        font13.setBold(false);
+        font13.setItalic(false);
+        font13.setWeight(50);
+        spinBoxChangePageSizeMax->setFont(font13);
         spinBoxChangePageSizeMax->setStyleSheet(QLatin1String("QSpinBox { \n"
 "	border: 2px solid rgb(51,51,51);\n"
 "	border-radius: 5px;	\n"
@@ -4631,7 +4152,7 @@ public:
         spinBoxChangePageSizeMin = new QSpinBox(frame_37);
         spinBoxChangePageSizeMin->setObjectName(QStringLiteral("spinBoxChangePageSizeMin"));
         spinBoxChangePageSizeMin->setMinimumSize(QSize(0, 40));
-        spinBoxChangePageSizeMin->setFont(font14);
+        spinBoxChangePageSizeMin->setFont(font13);
         spinBoxChangePageSizeMin->setStyleSheet(QLatin1String("QSpinBox { \n"
 "	border: 2px solid rgb(51,51,51);\n"
 "	border-radius: 5px;	\n"
@@ -5111,10 +4632,489 @@ public:
         gridLayout_4->addWidget(groupBox_15, 1, 0, 1, 1);
 
         stackedWidgetMain->addWidget(pageSystem);
+        pageHelp = new QWidget();
+        pageHelp->setObjectName(QStringLiteral("pageHelp"));
+        verticalLayout_37 = new QVBoxLayout(pageHelp);
+        verticalLayout_37->setSpacing(0);
+        verticalLayout_37->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_37->setObjectName(QStringLiteral("verticalLayout_37"));
+        verticalLayout_37->setContentsMargins(0, 0, 0, 0);
+        frameMonitorBar_3 = new QFrame(pageHelp);
+        frameMonitorBar_3->setObjectName(QStringLiteral("frameMonitorBar_3"));
+        frameMonitorBar_3->setMinimumSize(QSize(0, 50));
+        frameMonitorBar_3->setMaximumSize(QSize(16777215, 50));
+        frameMonitorBar_3->setStyleSheet(QStringLiteral("background:#008F96;"));
+        frameMonitorBar_3->setFrameShape(QFrame::StyledPanel);
+        frameMonitorBar_3->setFrameShadow(QFrame::Raised);
+        horizontalLayout_49 = new QHBoxLayout(frameMonitorBar_3);
+        horizontalLayout_49->setSpacing(0);
+        horizontalLayout_49->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_49->setObjectName(QStringLiteral("horizontalLayout_49"));
+        horizontalLayout_49->setContentsMargins(0, 0, 0, 0);
+
+        verticalLayout_37->addWidget(frameMonitorBar_3);
+
+        horizontalLayout_61 = new QHBoxLayout();
+        horizontalLayout_61->setSpacing(9);
+        horizontalLayout_61->setObjectName(QStringLiteral("horizontalLayout_61"));
+        horizontalLayout_61->setContentsMargins(9, 9, 9, 9);
+        groupBox_19 = new QGroupBox(pageHelp);
+        groupBox_19->setObjectName(QStringLiteral("groupBox_19"));
+        groupBox_19->setMinimumSize(QSize(600, 0));
+        groupBox_19->setFont(font3);
+        groupBox_19->setLayoutDirection(Qt::LeftToRight);
+        groupBox_19->setStyleSheet(QLatin1String("QGroupBox::title{\n"
+"	color : white;\n"
+"	left: 10px;\n"
+"	margin-left: 0px;\n"
+"	padding: 0 1px;\n"
+"}\n"
+"\n"
+"QGroupBox{\n"
+"	border-width: 2px;\n"
+"	border-style: solid;\n"
+"	border-color: white;\n"
+"	margin-top: 0.5ex;\n"
+"	border-radius: 5px;\n"
+"}"));
+        gridLayout_77 = new QGridLayout(groupBox_19);
+        gridLayout_77->setSpacing(6);
+        gridLayout_77->setContentsMargins(11, 11, 11, 11);
+        gridLayout_77->setObjectName(QStringLiteral("gridLayout_77"));
+        gridLayout_77->setContentsMargins(-1, 30, -1, -1);
+        groupBox_20 = new QGroupBox(groupBox_19);
+        groupBox_20->setObjectName(QStringLiteral("groupBox_20"));
+        groupBox_20->setMinimumSize(QSize(125, 125));
+        groupBox_20->setMaximumSize(QSize(125, 125));
+        groupBox_20->setStyleSheet(QLatin1String("QGroupBox::title{\n"
+"	color : white;\n"
+"	left: 10px;\n"
+"	margin-left: 0px;\n"
+"	padding: 0 1px;\n"
+"}\n"
+"\n"
+"QGroupBox{\n"
+"	border-width: 3px;\n"
+"	border-style: solid;\n"
+"	border-color: white;\n"
+"	margin-top: 0.5ex;\n"
+"	border-radius: 5px;\n"
+"	background: rgb(0,0,0,0);\n"
+"}"));
+        gridLayout_65 = new QGridLayout(groupBox_20);
+        gridLayout_65->setSpacing(0);
+        gridLayout_65->setContentsMargins(11, 11, 11, 11);
+        gridLayout_65->setObjectName(QStringLiteral("gridLayout_65"));
+        gridLayout_65->setContentsMargins(0, 0, 0, 0);
+        frame_48 = new QFrame(groupBox_20);
+        frame_48->setObjectName(QStringLiteral("frame_48"));
+        frame_48->setMinimumSize(QSize(120, 120));
+        frame_48->setMaximumSize(QSize(120, 130));
+        frame_48->setStyleSheet(QLatin1String("QFrame\n"
+"{\n"
+"   border-image: url(:/icons/icos/MaHaotian.jpg) 0 0 0 0 stretch stretch;\n"
+"   border-width: 0px;\n"
+"}"));
+        frame_48->setFrameShape(QFrame::StyledPanel);
+        frame_48->setFrameShadow(QFrame::Raised);
+
+        gridLayout_65->addWidget(frame_48, 0, 0, 1, 1);
+
+
+        gridLayout_77->addWidget(groupBox_20, 0, 0, 1, 1);
+
+        verticalLayout_6 = new QVBoxLayout();
+        verticalLayout_6->setSpacing(6);
+        verticalLayout_6->setObjectName(QStringLiteral("verticalLayout_6"));
+        label_80 = new QLabel(groupBox_19);
+        label_80->setObjectName(QStringLiteral("label_80"));
+        sizePolicy9.setHeightForWidth(label_80->sizePolicy().hasHeightForWidth());
+        label_80->setSizePolicy(sizePolicy9);
+        label_80->setMinimumSize(QSize(300, 50));
+        QFont font14;
+        font14.setFamily(QStringLiteral("Berlin Sans FB"));
+        font14.setPointSize(26);
+        label_80->setFont(font14);
+        label_80->setStyleSheet(QStringLiteral("color : white;"));
+
+        verticalLayout_6->addWidget(label_80);
+
+        label_81 = new QLabel(groupBox_19);
+        label_81->setObjectName(QStringLiteral("label_81"));
+        sizePolicy9.setHeightForWidth(label_81->sizePolicy().hasHeightForWidth());
+        label_81->setSizePolicy(sizePolicy9);
+        label_81->setMinimumSize(QSize(100, 40));
+        label_81->setFont(font3);
+        label_81->setStyleSheet(QStringLiteral("color : white;"));
+
+        verticalLayout_6->addWidget(label_81);
+
+
+        gridLayout_77->addLayout(verticalLayout_6, 0, 1, 1, 1);
+
+        groupBox_21 = new QGroupBox(groupBox_19);
+        groupBox_21->setObjectName(QStringLiteral("groupBox_21"));
+        groupBox_21->setMinimumSize(QSize(125, 125));
+        groupBox_21->setMaximumSize(QSize(125, 130));
+        groupBox_21->setStyleSheet(QLatin1String("QGroupBox::title{\n"
+"	color : white;\n"
+"	left: 10px;\n"
+"	margin-left: 0px;\n"
+"	padding: 0 1px;\n"
+"}\n"
+"\n"
+"QGroupBox{\n"
+"	border-width: 3px;\n"
+"	border-style: solid;\n"
+"	border-color: white;\n"
+"	margin-top: 0.5ex;\n"
+"	border-radius: 5px;\n"
+"	background: rgb(0,0,0,0);\n"
+"}"));
+        gridLayout_66 = new QGridLayout(groupBox_21);
+        gridLayout_66->setSpacing(0);
+        gridLayout_66->setContentsMargins(11, 11, 11, 11);
+        gridLayout_66->setObjectName(QStringLiteral("gridLayout_66"));
+        gridLayout_66->setContentsMargins(0, 0, 0, 0);
+        frame_49 = new QFrame(groupBox_21);
+        frame_49->setObjectName(QStringLiteral("frame_49"));
+        frame_49->setMinimumSize(QSize(120, 120));
+        frame_49->setStyleSheet(QLatin1String("QFrame\n"
+"{\n"
+"   border-image: url(:/icons/icos/MaoYu.jpg) 0 0 0 0 stretch stretch;\n"
+"   border-width: 0px;\n"
+"}"));
+        frame_49->setFrameShape(QFrame::StyledPanel);
+        frame_49->setFrameShadow(QFrame::Raised);
+
+        gridLayout_66->addWidget(frame_49, 0, 0, 1, 1);
+
+
+        gridLayout_77->addWidget(groupBox_21, 1, 0, 1, 1);
+
+        verticalLayout_26 = new QVBoxLayout();
+        verticalLayout_26->setSpacing(6);
+        verticalLayout_26->setObjectName(QStringLiteral("verticalLayout_26"));
+        label_74 = new QLabel(groupBox_19);
+        label_74->setObjectName(QStringLiteral("label_74"));
+        sizePolicy9.setHeightForWidth(label_74->sizePolicy().hasHeightForWidth());
+        label_74->setSizePolicy(sizePolicy9);
+        label_74->setMinimumSize(QSize(300, 50));
+        label_74->setFont(font14);
+        label_74->setStyleSheet(QStringLiteral("color : white;"));
+
+        verticalLayout_26->addWidget(label_74);
+
+        label_75 = new QLabel(groupBox_19);
+        label_75->setObjectName(QStringLiteral("label_75"));
+        sizePolicy9.setHeightForWidth(label_75->sizePolicy().hasHeightForWidth());
+        label_75->setSizePolicy(sizePolicy9);
+        label_75->setMinimumSize(QSize(100, 40));
+        label_75->setFont(font3);
+        label_75->setStyleSheet(QStringLiteral("color : white;"));
+
+        verticalLayout_26->addWidget(label_75);
+
+
+        gridLayout_77->addLayout(verticalLayout_26, 1, 1, 1, 1);
+
+        groupBox_22 = new QGroupBox(groupBox_19);
+        groupBox_22->setObjectName(QStringLiteral("groupBox_22"));
+        groupBox_22->setMinimumSize(QSize(125, 125));
+        groupBox_22->setMaximumSize(QSize(125, 130));
+        groupBox_22->setStyleSheet(QLatin1String("QGroupBox::title{\n"
+"	color : white;\n"
+"	left: 10px;\n"
+"	margin-left: 0px;\n"
+"	padding: 0 1px;\n"
+"}\n"
+"\n"
+"QGroupBox{\n"
+"	border-width: 3px;\n"
+"	border-style: solid;\n"
+"	border-color: white;\n"
+"	margin-top: 0.5ex;\n"
+"	border-radius: 5px;\n"
+"	background: rgb(0,0,0,0);\n"
+"}"));
+        gridLayout_67 = new QGridLayout(groupBox_22);
+        gridLayout_67->setSpacing(0);
+        gridLayout_67->setContentsMargins(11, 11, 11, 11);
+        gridLayout_67->setObjectName(QStringLiteral("gridLayout_67"));
+        gridLayout_67->setContentsMargins(0, 0, 0, 0);
+        frame_50 = new QFrame(groupBox_22);
+        frame_50->setObjectName(QStringLiteral("frame_50"));
+        frame_50->setMinimumSize(QSize(120, 120));
+        frame_50->setStyleSheet(QLatin1String("QFrame\n"
+"{\n"
+"   border-image: url(:/icons/icos/WuWei.jpg) 0 0 0 0 stretch stretch;\n"
+"   border-width: 0px;\n"
+"}"));
+        frame_50->setFrameShape(QFrame::StyledPanel);
+        frame_50->setFrameShadow(QFrame::Raised);
+
+        gridLayout_67->addWidget(frame_50, 0, 0, 1, 1);
+
+
+        gridLayout_77->addWidget(groupBox_22, 2, 0, 1, 1);
+
+        verticalLayout_27 = new QVBoxLayout();
+        verticalLayout_27->setSpacing(6);
+        verticalLayout_27->setObjectName(QStringLiteral("verticalLayout_27"));
+        label_76 = new QLabel(groupBox_19);
+        label_76->setObjectName(QStringLiteral("label_76"));
+        sizePolicy9.setHeightForWidth(label_76->sizePolicy().hasHeightForWidth());
+        label_76->setSizePolicy(sizePolicy9);
+        label_76->setMinimumSize(QSize(300, 50));
+        label_76->setFont(font14);
+        label_76->setStyleSheet(QStringLiteral("color : white;"));
+
+        verticalLayout_27->addWidget(label_76);
+
+        label_77 = new QLabel(groupBox_19);
+        label_77->setObjectName(QStringLiteral("label_77"));
+        sizePolicy9.setHeightForWidth(label_77->sizePolicy().hasHeightForWidth());
+        label_77->setSizePolicy(sizePolicy9);
+        label_77->setMinimumSize(QSize(100, 40));
+        label_77->setFont(font3);
+        label_77->setStyleSheet(QStringLiteral("color : white;"));
+
+        verticalLayout_27->addWidget(label_77);
+
+
+        gridLayout_77->addLayout(verticalLayout_27, 2, 1, 1, 1);
+
+        horizontalLayout_60 = new QHBoxLayout();
+        horizontalLayout_60->setSpacing(6);
+        horizontalLayout_60->setObjectName(QStringLiteral("horizontalLayout_60"));
+        groupBox_23 = new QGroupBox(groupBox_19);
+        groupBox_23->setObjectName(QStringLiteral("groupBox_23"));
+        groupBox_23->setMinimumSize(QSize(125, 125));
+        groupBox_23->setMaximumSize(QSize(125, 130));
+        groupBox_23->setStyleSheet(QLatin1String("QGroupBox::title{\n"
+"	color : white;\n"
+"	left: 10px;\n"
+"	margin-left: 0px;\n"
+"	padding: 0 1px;\n"
+"}\n"
+"\n"
+"QGroupBox{\n"
+"	border-width: 3px;\n"
+"	border-style: solid;\n"
+"	border-color: white;\n"
+"	margin-top: 0.5ex;\n"
+"	border-radius: 5px;\n"
+"	background: rgb(0,0,0,0);\n"
+"}"));
+        gridLayout_68 = new QGridLayout(groupBox_23);
+        gridLayout_68->setSpacing(0);
+        gridLayout_68->setContentsMargins(11, 11, 11, 11);
+        gridLayout_68->setObjectName(QStringLiteral("gridLayout_68"));
+        gridLayout_68->setContentsMargins(0, 0, 0, 0);
+        frame_51 = new QFrame(groupBox_23);
+        frame_51->setObjectName(QStringLiteral("frame_51"));
+        frame_51->setMinimumSize(QSize(120, 120));
+        frame_51->setStyleSheet(QLatin1String("QFrame\n"
+"{\n"
+"   border-image: url(:/icons/icos/ZhangShiqi.jpg) 0 0 0 0 stretch stretch;\n"
+"   border-width: 0px;\n"
+"}"));
+        frame_51->setFrameShape(QFrame::StyledPanel);
+        frame_51->setFrameShadow(QFrame::Raised);
+
+        gridLayout_68->addWidget(frame_51, 0, 0, 1, 1);
+
+
+        horizontalLayout_60->addWidget(groupBox_23);
+
+
+        gridLayout_77->addLayout(horizontalLayout_60, 3, 0, 1, 1);
+
+        verticalLayout_28 = new QVBoxLayout();
+        verticalLayout_28->setSpacing(6);
+        verticalLayout_28->setObjectName(QStringLiteral("verticalLayout_28"));
+        label_82 = new QLabel(groupBox_19);
+        label_82->setObjectName(QStringLiteral("label_82"));
+        sizePolicy9.setHeightForWidth(label_82->sizePolicy().hasHeightForWidth());
+        label_82->setSizePolicy(sizePolicy9);
+        label_82->setMinimumSize(QSize(300, 50));
+        label_82->setFont(font14);
+        label_82->setStyleSheet(QStringLiteral("color : white;"));
+
+        verticalLayout_28->addWidget(label_82);
+
+        label_83 = new QLabel(groupBox_19);
+        label_83->setObjectName(QStringLiteral("label_83"));
+        sizePolicy9.setHeightForWidth(label_83->sizePolicy().hasHeightForWidth());
+        label_83->setSizePolicy(sizePolicy9);
+        label_83->setMinimumSize(QSize(100, 40));
+        label_83->setFont(font3);
+        label_83->setStyleSheet(QStringLiteral("color : white;"));
+
+        verticalLayout_28->addWidget(label_83);
+
+
+        gridLayout_77->addLayout(verticalLayout_28, 3, 1, 1, 1);
+
+
+        horizontalLayout_61->addWidget(groupBox_19);
+
+        plainTextEditHelpPage = new QPlainTextEdit(pageHelp);
+        plainTextEditHelpPage->setObjectName(QStringLiteral("plainTextEditHelpPage"));
+        plainTextEditHelpPage->setFont(font);
+        plainTextEditHelpPage->setStyleSheet(QLatin1String("QPlainTextEdit{\n"
+"	position:center;\n"
+"	color:white;\n"
+"}\n"
+" QScrollBar:horizontal\n"
+" {\n"
+"     height: 15px;\n"
+"     margin: 3px 15px 3px 15px;\n"
+"     border: 1px transparent #2A2929;\n"
+"     border-radius: 4px;\n"
+"     background-color: rgb(0, 143, 150);\n"
+" }\n"
+"\n"
+" QScrollBar::handle:horizontal\n"
+" {\n"
+"     background-color: rgb(51,51,51,220);\n"
+"     min-width: 5px;\n"
+"     border-radius: 4px;\n"
+" }\n"
+"\n"
+" QScrollBar::add-line:horizontal\n"
+" {\n"
+"     margin: 0px 3px 0px 3px;\n"
+"     border-image: url(:/qss_icons/rc/right_arrow_disabled.png);\n"
+"     width: 10px;\n"
+"     height: 10px;\n"
+"     subcontrol-position: right;\n"
+"     subcontrol-origin: margin;\n"
+" }\n"
+"\n"
+" QScrollBar::sub-line:horizontal\n"
+" {\n"
+"     margin: 0px 3px 0px 3px;\n"
+"     border-image: url(:/qss_icons/rc/left_arrow_disabled.png);\n"
+"     height: 10px;\n"
+"     width: 10px;\n"
+"     subcontrol-position: left;\n"
+"     subcontrol-origin: margin;\n"
+" }\n"
+"\n"
+" QScrollBar::add-line:horizontal"
+                        ":hover,QScrollBar::add-line:horizontal:on\n"
+" {\n"
+"     border-image: url(:/qss_icons/rc/right_arrow.png);\n"
+"     height: 10px;\n"
+"     width: 10px;\n"
+"     subcontrol-position: right;\n"
+"     subcontrol-origin: margin;\n"
+" }\n"
+"\n"
+"\n"
+" QScrollBar::sub-line:horizontal:hover, QScrollBar::sub-line:horizontal:on\n"
+" {\n"
+"     border-image: url(:/qss_icons/rc/left_arrow.png);\n"
+"     height: 10px;\n"
+"     width: 10px;\n"
+"     subcontrol-position: left;\n"
+"     subcontrol-origin: margin;\n"
+" }\n"
+"\n"
+" QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal\n"
+" {\n"
+"     background: none;\n"
+" }\n"
+"\n"
+"\n"
+" QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal\n"
+" {\n"
+"     background: none;\n"
+" }\n"
+"\n"
+" QScrollBar:vertical\n"
+" {\n"
+"     background:rgb(0, 143, 150);\n"
+"     width: 15px;\n"
+"     margin: 15px 3px 15px 3px;\n"
+"     border: 1px transparent #2A2929;\n"
+"     border-radius: 4px;\n"
+" }\n"
+"\n"
+" QScrollBar::handle:vertical\n"
+" {\n"
+"     backgrou"
+                        "nd-color: rgb(51,51,51,220);\n"
+"     min-height: 5px;\n"
+"     border-radius: 4px;\n"
+" }\n"
+"\n"
+" QScrollBar::sub-line:vertical\n"
+" {\n"
+"     margin: 3px 0px 3px 0px;\n"
+"     border-image: url(:/qss_icons/rc/up_arrow_disabled.png);\n"
+"     height: 10px;\n"
+"     width: 10px;\n"
+"     subcontrol-position: top;\n"
+"     subcontrol-origin: margin;\n"
+" }\n"
+"\n"
+" QScrollBar::add-line:vertical\n"
+" {\n"
+"     margin: 3px 0px 3px 0px;\n"
+"     border-image: url(:/qss_icons/rc/down_arrow_disabled.png);\n"
+"     height: 10px;\n"
+"     width: 10px;\n"
+"     subcontrol-position: bottom;\n"
+"     subcontrol-origin: margin;\n"
+" }\n"
+"\n"
+" QScrollBar::sub-line:vertical:hover,QScrollBar::sub-line:vertical:on\n"
+" {\n"
+"\n"
+"     border-image: url(:/qss_icons/rc/up_arrow.png);\n"
+"     height: 10px;\n"
+"     width: 10px;\n"
+"     subcontrol-position: top;\n"
+"     subcontrol-origin: margin;\n"
+" }\n"
+"\n"
+"\n"
+" QScrollBar::add-line:vertical:hover, QScrollBar::add-line:vertical:on\n"
+" {\n"
+"     border-image: url"
+                        "(:/qss_icons/rc/down_arrow.png);\n"
+"     height: 10px;\n"
+"     width: 10px;\n"
+"     subcontrol-position: bottom;\n"
+"     subcontrol-origin: margin;\n"
+" }\n"
+"\n"
+" QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical\n"
+" {\n"
+"     background: none;\n"
+" }\n"
+"\n"
+"\n"
+" QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical\n"
+" {\n"
+"     background: none;\n"
+" }"));
+        plainTextEditHelpPage->setFrameShape(QFrame::NoFrame);
+        plainTextEditHelpPage->setLineWidth(0);
+        plainTextEditHelpPage->setReadOnly(true);
+
+        horizontalLayout_61->addWidget(plainTextEditHelpPage);
+
+
+        verticalLayout_37->addLayout(horizontalLayout_61);
+
+        stackedWidgetMain->addWidget(pageHelp);
 
         verticalLayout->addWidget(stackedWidgetMain);
 
-        splitter_4->addWidget(layoutWidget);
+        splitter_4->addWidget(layoutWidget1);
 
         verticalLayout_21->addWidget(splitter_4);
 
@@ -5136,7 +5136,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidgetMain->setCurrentIndex(0);
+        stackedWidgetMain->setCurrentIndex(3);
         stackedWidgetMonitorMain->setCurrentIndex(0);
 
 
@@ -5262,20 +5262,6 @@ public:
         checkBoxOCMinerStart->setText(QApplication::translate("MainWindow", "Apply on each ethminer (re)start", Q_NULLPTR));
         pushButtonOCPageApply->setText(QApplication::translate("MainWindow", "Apply", Q_NULLPTR));
         pushButtonAutoOC->setText(QApplication::translate("MainWindow", "Auto OC", Q_NULLPTR));
-        groupBox_19->setTitle(QApplication::translate("MainWindow", "Dev Team", Q_NULLPTR));
-        groupBox_20->setTitle(QString());
-        label_80->setText(QApplication::translate("MainWindow", "Haotian Ma", Q_NULLPTR));
-        label_81->setText(QApplication::translate("MainWindow", "118010220", Q_NULLPTR));
-        groupBox_21->setTitle(QString());
-        label_74->setText(QApplication::translate("MainWindow", "Yu Mao", Q_NULLPTR));
-        label_75->setText(QApplication::translate("MainWindow", "118010224", Q_NULLPTR));
-        groupBox_22->setTitle(QString());
-        label_76->setText(QApplication::translate("MainWindow", "Wei Wu", Q_NULLPTR));
-        label_77->setText(QApplication::translate("MainWindow", "118010335", Q_NULLPTR));
-        groupBox_23->setTitle(QString());
-        label_82->setText(QApplication::translate("MainWindow", "Shiqi Zhang", Q_NULLPTR));
-        label_83->setText(QApplication::translate("MainWindow", "118010416", Q_NULLPTR));
-        plainTextEditHelpPage->setPlainText(QString());
         groupBox_15->setTitle(QString());
         groupBox_27->setTitle(QApplication::translate("MainWindow", "Virtual Memory", Q_NULLPTR));
         label_61->setText(QApplication::translate("MainWindow", " Disk Part.", Q_NULLPTR));
@@ -5295,6 +5281,20 @@ public:
 "Status	\n"
 "TempPageFile", Q_NULLPTR));
         plainTextEditSettingsSystemInfo->setPlainText(QString());
+        groupBox_19->setTitle(QApplication::translate("MainWindow", "Dev Team", Q_NULLPTR));
+        groupBox_20->setTitle(QString());
+        label_80->setText(QApplication::translate("MainWindow", "Haotian Ma", Q_NULLPTR));
+        label_81->setText(QApplication::translate("MainWindow", "118010220", Q_NULLPTR));
+        groupBox_21->setTitle(QString());
+        label_74->setText(QApplication::translate("MainWindow", "Yu Mao", Q_NULLPTR));
+        label_75->setText(QApplication::translate("MainWindow", "118010224", Q_NULLPTR));
+        groupBox_22->setTitle(QString());
+        label_76->setText(QApplication::translate("MainWindow", "Wei Wu", Q_NULLPTR));
+        label_77->setText(QApplication::translate("MainWindow", "118010335", Q_NULLPTR));
+        groupBox_23->setTitle(QString());
+        label_82->setText(QApplication::translate("MainWindow", "Shiqi Zhang", Q_NULLPTR));
+        label_83->setText(QApplication::translate("MainWindow", "118010416", Q_NULLPTR));
+        plainTextEditHelpPage->setPlainText(QString());
     } // retranslateUi
 
 };

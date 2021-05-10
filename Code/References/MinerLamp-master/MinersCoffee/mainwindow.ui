@@ -69,7 +69,7 @@
       <property name="handleWidth">
        <number>0</number>
       </property>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <layout class="QVBoxLayout" name="verticalLayout_8">
         <property name="spacing">
          <number>0</number>
@@ -582,7 +582,7 @@ border-radius : 0;
 </string>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>3</number>
           </property>
           <widget class="QWidget" name="pageMonitor">
            <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -3096,7 +3096,7 @@ border-radius : 0;</string>
                             <x>0</x>
                             <y>0</y>
                             <width>256</width>
-                            <height>353</height>
+                            <height>352</height>
                            </rect>
                           </property>
                           <layout class="QGridLayout" name="gridLayout_62">
@@ -5068,8 +5068,8 @@ border-radius : 0;</string>
                              <rect>
                               <x>0</x>
                               <y>0</y>
-                              <width>1299</width>
-                              <height>249</height>
+                              <width>200</width>
+                              <height>234</height>
                              </rect>
                             </property>
                             <property name="sizePolicy">
@@ -6387,843 +6387,6 @@ QPushButton:pressed {
             </item>
            </layout>
           </widget>
-          <widget class="QWidget" name="pageHelp">
-           <layout class="QVBoxLayout" name="verticalLayout_37">
-            <property name="spacing">
-             <number>0</number>
-            </property>
-            <property name="leftMargin">
-             <number>0</number>
-            </property>
-            <property name="topMargin">
-             <number>0</number>
-            </property>
-            <property name="rightMargin">
-             <number>0</number>
-            </property>
-            <property name="bottomMargin">
-             <number>0</number>
-            </property>
-            <item>
-             <widget class="QFrame" name="frameMonitorBar_3">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>50</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>16777215</width>
-                <height>50</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">background:#008F96;</string>
-              </property>
-              <property name="frameShape">
-               <enum>QFrame::StyledPanel</enum>
-              </property>
-              <property name="frameShadow">
-               <enum>QFrame::Raised</enum>
-              </property>
-              <layout class="QHBoxLayout" name="horizontalLayout_49">
-               <property name="spacing">
-                <number>0</number>
-               </property>
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="topMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <property name="bottomMargin">
-                <number>0</number>
-               </property>
-              </layout>
-             </widget>
-            </item>
-            <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_61">
-              <property name="spacing">
-               <number>9</number>
-              </property>
-              <property name="leftMargin">
-               <number>9</number>
-              </property>
-              <property name="topMargin">
-               <number>9</number>
-              </property>
-              <property name="rightMargin">
-               <number>9</number>
-              </property>
-              <property name="bottomMargin">
-               <number>9</number>
-              </property>
-              <item>
-               <widget class="QGroupBox" name="groupBox_19">
-                <property name="minimumSize">
-                 <size>
-                  <width>600</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <family>Berlin Sans FB</family>
-                  <pointsize>14</pointsize>
-                 </font>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::LeftToRight</enum>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QGroupBox::title{
-	color : white;
-	left: 10px;
-	margin-left: 0px;
-	padding: 0 1px;
-}
-
-QGroupBox{
-	border-width: 2px;
-	border-style: solid;
-	border-color: white;
-	margin-top: 0.5ex;
-	border-radius: 5px;
-}</string>
-                </property>
-                <property name="title">
-                 <string>Dev Team</string>
-                </property>
-                <layout class="QGridLayout" name="gridLayout_77">
-                 <property name="topMargin">
-                  <number>30</number>
-                 </property>
-                 <item row="0" column="0">
-                  <widget class="QGroupBox" name="groupBox_20">
-                   <property name="minimumSize">
-                    <size>
-                     <width>125</width>
-                     <height>125</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>125</width>
-                     <height>125</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QGroupBox::title{
-	color : white;
-	left: 10px;
-	margin-left: 0px;
-	padding: 0 1px;
-}
-
-QGroupBox{
-	border-width: 3px;
-	border-style: solid;
-	border-color: white;
-	margin-top: 0.5ex;
-	border-radius: 5px;
-	background: rgb(0,0,0,0);
-}</string>
-                   </property>
-                   <property name="title">
-                    <string/>
-                   </property>
-                   <layout class="QGridLayout" name="gridLayout_65">
-                    <property name="leftMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="spacing">
-                     <number>0</number>
-                    </property>
-                    <item row="0" column="0">
-                     <widget class="QFrame" name="frame_48">
-                      <property name="minimumSize">
-                       <size>
-                        <width>120</width>
-                        <height>120</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>120</width>
-                        <height>130</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">QFrame
-{
-   border-image: url(:/icons/icos/MaHaotian.jpg) 0 0 0 0 stretch stretch;
-   border-width: 0px;
-}</string>
-                      </property>
-                      <property name="frameShape">
-                       <enum>QFrame::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item row="0" column="1">
-                  <layout class="QVBoxLayout" name="verticalLayout_6">
-                   <item>
-                    <widget class="QLabel" name="label_80">
-                     <property name="sizePolicy">
-                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-                       <horstretch>0</horstretch>
-                       <verstretch>0</verstretch>
-                      </sizepolicy>
-                     </property>
-                     <property name="minimumSize">
-                      <size>
-                       <width>300</width>
-                       <height>50</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <family>Berlin Sans FB</family>
-                       <pointsize>26</pointsize>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">color : white;</string>
-                     </property>
-                     <property name="text">
-                      <string>Haotian Ma</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_81">
-                     <property name="sizePolicy">
-                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-                       <horstretch>0</horstretch>
-                       <verstretch>0</verstretch>
-                      </sizepolicy>
-                     </property>
-                     <property name="minimumSize">
-                      <size>
-                       <width>100</width>
-                       <height>40</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <family>Berlin Sans FB</family>
-                       <pointsize>14</pointsize>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">color : white;</string>
-                     </property>
-                     <property name="text">
-                      <string>118010220</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                 <item row="1" column="0">
-                  <widget class="QGroupBox" name="groupBox_21">
-                   <property name="minimumSize">
-                    <size>
-                     <width>125</width>
-                     <height>125</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>125</width>
-                     <height>130</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QGroupBox::title{
-	color : white;
-	left: 10px;
-	margin-left: 0px;
-	padding: 0 1px;
-}
-
-QGroupBox{
-	border-width: 3px;
-	border-style: solid;
-	border-color: white;
-	margin-top: 0.5ex;
-	border-radius: 5px;
-	background: rgb(0,0,0,0);
-}</string>
-                   </property>
-                   <property name="title">
-                    <string/>
-                   </property>
-                   <layout class="QGridLayout" name="gridLayout_66">
-                    <property name="leftMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="spacing">
-                     <number>0</number>
-                    </property>
-                    <item row="0" column="0">
-                     <widget class="QFrame" name="frame_49">
-                      <property name="minimumSize">
-                       <size>
-                        <width>120</width>
-                        <height>120</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">QFrame
-{
-   border-image: url(:/icons/icos/MaoYu.jpg) 0 0 0 0 stretch stretch;
-   border-width: 0px;
-}</string>
-                      </property>
-                      <property name="frameShape">
-                       <enum>QFrame::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item row="1" column="1">
-                  <layout class="QVBoxLayout" name="verticalLayout_26">
-                   <item>
-                    <widget class="QLabel" name="label_74">
-                     <property name="sizePolicy">
-                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-                       <horstretch>0</horstretch>
-                       <verstretch>0</verstretch>
-                      </sizepolicy>
-                     </property>
-                     <property name="minimumSize">
-                      <size>
-                       <width>300</width>
-                       <height>50</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <family>Berlin Sans FB</family>
-                       <pointsize>26</pointsize>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">color : white;</string>
-                     </property>
-                     <property name="text">
-                      <string>Yu Mao</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_75">
-                     <property name="sizePolicy">
-                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-                       <horstretch>0</horstretch>
-                       <verstretch>0</verstretch>
-                      </sizepolicy>
-                     </property>
-                     <property name="minimumSize">
-                      <size>
-                       <width>100</width>
-                       <height>40</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <family>Berlin Sans FB</family>
-                       <pointsize>14</pointsize>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">color : white;</string>
-                     </property>
-                     <property name="text">
-                      <string>118010224</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                 <item row="2" column="0">
-                  <widget class="QGroupBox" name="groupBox_22">
-                   <property name="minimumSize">
-                    <size>
-                     <width>125</width>
-                     <height>125</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>125</width>
-                     <height>130</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QGroupBox::title{
-	color : white;
-	left: 10px;
-	margin-left: 0px;
-	padding: 0 1px;
-}
-
-QGroupBox{
-	border-width: 3px;
-	border-style: solid;
-	border-color: white;
-	margin-top: 0.5ex;
-	border-radius: 5px;
-	background: rgb(0,0,0,0);
-}</string>
-                   </property>
-                   <property name="title">
-                    <string/>
-                   </property>
-                   <layout class="QGridLayout" name="gridLayout_67">
-                    <property name="leftMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>0</number>
-                    </property>
-                    <property name="spacing">
-                     <number>0</number>
-                    </property>
-                    <item row="0" column="0">
-                     <widget class="QFrame" name="frame_50">
-                      <property name="minimumSize">
-                       <size>
-                        <width>120</width>
-                        <height>120</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">QFrame
-{
-   border-image: url(:/icons/icos/WuWei.jpg) 0 0 0 0 stretch stretch;
-   border-width: 0px;
-}</string>
-                      </property>
-                      <property name="frameShape">
-                       <enum>QFrame::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item row="2" column="1">
-                  <layout class="QVBoxLayout" name="verticalLayout_27">
-                   <item>
-                    <widget class="QLabel" name="label_76">
-                     <property name="sizePolicy">
-                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-                       <horstretch>0</horstretch>
-                       <verstretch>0</verstretch>
-                      </sizepolicy>
-                     </property>
-                     <property name="minimumSize">
-                      <size>
-                       <width>300</width>
-                       <height>50</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <family>Berlin Sans FB</family>
-                       <pointsize>26</pointsize>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">color : white;</string>
-                     </property>
-                     <property name="text">
-                      <string>Wei Wu</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_77">
-                     <property name="sizePolicy">
-                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-                       <horstretch>0</horstretch>
-                       <verstretch>0</verstretch>
-                      </sizepolicy>
-                     </property>
-                     <property name="minimumSize">
-                      <size>
-                       <width>100</width>
-                       <height>40</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <family>Berlin Sans FB</family>
-                       <pointsize>14</pointsize>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">color : white;</string>
-                     </property>
-                     <property name="text">
-                      <string>118010335</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                 <item row="3" column="0">
-                  <layout class="QHBoxLayout" name="horizontalLayout_60">
-                   <item>
-                    <widget class="QGroupBox" name="groupBox_23">
-                     <property name="minimumSize">
-                      <size>
-                       <width>125</width>
-                       <height>125</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>125</width>
-                       <height>130</height>
-                      </size>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QGroupBox::title{
-	color : white;
-	left: 10px;
-	margin-left: 0px;
-	padding: 0 1px;
-}
-
-QGroupBox{
-	border-width: 3px;
-	border-style: solid;
-	border-color: white;
-	margin-top: 0.5ex;
-	border-radius: 5px;
-	background: rgb(0,0,0,0);
-}</string>
-                     </property>
-                     <property name="title">
-                      <string/>
-                     </property>
-                     <layout class="QGridLayout" name="gridLayout_68">
-                      <property name="leftMargin">
-                       <number>0</number>
-                      </property>
-                      <property name="topMargin">
-                       <number>0</number>
-                      </property>
-                      <property name="rightMargin">
-                       <number>0</number>
-                      </property>
-                      <property name="bottomMargin">
-                       <number>0</number>
-                      </property>
-                      <property name="spacing">
-                       <number>0</number>
-                      </property>
-                      <item row="0" column="0">
-                       <widget class="QFrame" name="frame_51">
-                        <property name="minimumSize">
-                         <size>
-                          <width>120</width>
-                          <height>120</height>
-                         </size>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">QFrame
-{
-   border-image: url(:/icons/icos/ZhangShiqi.jpg) 0 0 0 0 stretch stretch;
-   border-width: 0px;
-}</string>
-                        </property>
-                        <property name="frameShape">
-                         <enum>QFrame::StyledPanel</enum>
-                        </property>
-                        <property name="frameShadow">
-                         <enum>QFrame::Raised</enum>
-                        </property>
-                       </widget>
-                      </item>
-                     </layout>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                 <item row="3" column="1">
-                  <layout class="QVBoxLayout" name="verticalLayout_28">
-                   <item>
-                    <widget class="QLabel" name="label_82">
-                     <property name="sizePolicy">
-                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-                       <horstretch>0</horstretch>
-                       <verstretch>0</verstretch>
-                      </sizepolicy>
-                     </property>
-                     <property name="minimumSize">
-                      <size>
-                       <width>300</width>
-                       <height>50</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <family>Berlin Sans FB</family>
-                       <pointsize>26</pointsize>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">color : white;</string>
-                     </property>
-                     <property name="text">
-                      <string>Shiqi Zhang</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="label_83">
-                     <property name="sizePolicy">
-                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-                       <horstretch>0</horstretch>
-                       <verstretch>0</verstretch>
-                      </sizepolicy>
-                     </property>
-                     <property name="minimumSize">
-                      <size>
-                       <width>100</width>
-                       <height>40</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <family>Berlin Sans FB</family>
-                       <pointsize>14</pointsize>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">color : white;</string>
-                     </property>
-                     <property name="text">
-                      <string>118010416</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPlainTextEdit" name="plainTextEditHelpPage">
-                <property name="font">
-                 <font>
-                  <family>Berlin Sans FB</family>
-                  <pointsize>16</pointsize>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QPlainTextEdit{
-	position:center;
-	color:white;
-}
- QScrollBar:horizontal
- {
-     height: 15px;
-     margin: 3px 15px 3px 15px;
-     border: 1px transparent #2A2929;
-     border-radius: 4px;
-     background-color: rgb(0, 143, 150);
- }
-
- QScrollBar::handle:horizontal
- {
-     background-color: rgb(51,51,51,220);
-     min-width: 5px;
-     border-radius: 4px;
- }
-
- QScrollBar::add-line:horizontal
- {
-     margin: 0px 3px 0px 3px;
-     border-image: url(:/qss_icons/rc/right_arrow_disabled.png);
-     width: 10px;
-     height: 10px;
-     subcontrol-position: right;
-     subcontrol-origin: margin;
- }
-
- QScrollBar::sub-line:horizontal
- {
-     margin: 0px 3px 0px 3px;
-     border-image: url(:/qss_icons/rc/left_arrow_disabled.png);
-     height: 10px;
-     width: 10px;
-     subcontrol-position: left;
-     subcontrol-origin: margin;
- }
-
- QScrollBar::add-line:horizontal:hover,QScrollBar::add-line:horizontal:on
- {
-     border-image: url(:/qss_icons/rc/right_arrow.png);
-     height: 10px;
-     width: 10px;
-     subcontrol-position: right;
-     subcontrol-origin: margin;
- }
-
-
- QScrollBar::sub-line:horizontal:hover, QScrollBar::sub-line:horizontal:on
- {
-     border-image: url(:/qss_icons/rc/left_arrow.png);
-     height: 10px;
-     width: 10px;
-     subcontrol-position: left;
-     subcontrol-origin: margin;
- }
-
- QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal
- {
-     background: none;
- }
-
-
- QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
- {
-     background: none;
- }
-
- QScrollBar:vertical
- {
-     background:rgb(0, 143, 150);
-     width: 15px;
-     margin: 15px 3px 15px 3px;
-     border: 1px transparent #2A2929;
-     border-radius: 4px;
- }
-
- QScrollBar::handle:vertical
- {
-     background-color: rgb(51,51,51,220);
-     min-height: 5px;
-     border-radius: 4px;
- }
-
- QScrollBar::sub-line:vertical
- {
-     margin: 3px 0px 3px 0px;
-     border-image: url(:/qss_icons/rc/up_arrow_disabled.png);
-     height: 10px;
-     width: 10px;
-     subcontrol-position: top;
-     subcontrol-origin: margin;
- }
-
- QScrollBar::add-line:vertical
- {
-     margin: 3px 0px 3px 0px;
-     border-image: url(:/qss_icons/rc/down_arrow_disabled.png);
-     height: 10px;
-     width: 10px;
-     subcontrol-position: bottom;
-     subcontrol-origin: margin;
- }
-
- QScrollBar::sub-line:vertical:hover,QScrollBar::sub-line:vertical:on
- {
-
-     border-image: url(:/qss_icons/rc/up_arrow.png);
-     height: 10px;
-     width: 10px;
-     subcontrol-position: top;
-     subcontrol-origin: margin;
- }
-
-
- QScrollBar::add-line:vertical:hover, QScrollBar::add-line:vertical:on
- {
-     border-image: url(:/qss_icons/rc/down_arrow.png);
-     height: 10px;
-     width: 10px;
-     subcontrol-position: bottom;
-     subcontrol-origin: margin;
- }
-
- QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical
- {
-     background: none;
- }
-
-
- QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical
- {
-     background: none;
- }</string>
-                </property>
-                <property name="frameShape">
-                 <enum>QFrame::NoFrame</enum>
-                </property>
-                <property name="lineWidth">
-                 <number>0</number>
-                </property>
-                <property name="readOnly">
-                 <bool>true</bool>
-                </property>
-                <property name="plainText">
-                 <string/>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-           </layout>
-          </widget>
           <widget class="QWidget" name="pageSystem">
            <layout class="QGridLayout" name="gridLayout_4">
             <property name="leftMargin">
@@ -8235,6 +7398,843 @@ border-radius : 0;color:white;}
                </item>
               </layout>
              </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="pageHelp">
+           <layout class="QVBoxLayout" name="verticalLayout_37">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QFrame" name="frameMonitorBar_3">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>50</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background:#008F96;</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QHBoxLayout" name="horizontalLayout_49">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_61">
+              <property name="spacing">
+               <number>9</number>
+              </property>
+              <property name="leftMargin">
+               <number>9</number>
+              </property>
+              <property name="topMargin">
+               <number>9</number>
+              </property>
+              <property name="rightMargin">
+               <number>9</number>
+              </property>
+              <property name="bottomMargin">
+               <number>9</number>
+              </property>
+              <item>
+               <widget class="QGroupBox" name="groupBox_19">
+                <property name="minimumSize">
+                 <size>
+                  <width>600</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>Berlin Sans FB</family>
+                  <pointsize>14</pointsize>
+                 </font>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QGroupBox::title{
+	color : white;
+	left: 10px;
+	margin-left: 0px;
+	padding: 0 1px;
+}
+
+QGroupBox{
+	border-width: 2px;
+	border-style: solid;
+	border-color: white;
+	margin-top: 0.5ex;
+	border-radius: 5px;
+}</string>
+                </property>
+                <property name="title">
+                 <string>Dev Team</string>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_77">
+                 <property name="topMargin">
+                  <number>30</number>
+                 </property>
+                 <item row="0" column="0">
+                  <widget class="QGroupBox" name="groupBox_20">
+                   <property name="minimumSize">
+                    <size>
+                     <width>125</width>
+                     <height>125</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>125</width>
+                     <height>125</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QGroupBox::title{
+	color : white;
+	left: 10px;
+	margin-left: 0px;
+	padding: 0 1px;
+}
+
+QGroupBox{
+	border-width: 3px;
+	border-style: solid;
+	border-color: white;
+	margin-top: 0.5ex;
+	border-radius: 5px;
+	background: rgb(0,0,0,0);
+}</string>
+                   </property>
+                   <property name="title">
+                    <string/>
+                   </property>
+                   <layout class="QGridLayout" name="gridLayout_65">
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <item row="0" column="0">
+                     <widget class="QFrame" name="frame_48">
+                      <property name="minimumSize">
+                       <size>
+                        <width>120</width>
+                        <height>120</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>120</width>
+                        <height>130</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QFrame
+{
+   border-image: url(:/icons/icos/MaHaotian.jpg) 0 0 0 0 stretch stretch;
+   border-width: 0px;
+}</string>
+                      </property>
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <layout class="QVBoxLayout" name="verticalLayout_6">
+                   <item>
+                    <widget class="QLabel" name="label_80">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>300</width>
+                       <height>50</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Berlin Sans FB</family>
+                       <pointsize>26</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color : white;</string>
+                     </property>
+                     <property name="text">
+                      <string>Haotian Ma</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_81">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>100</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Berlin Sans FB</family>
+                       <pointsize>14</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color : white;</string>
+                     </property>
+                     <property name="text">
+                      <string>118010220</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QGroupBox" name="groupBox_21">
+                   <property name="minimumSize">
+                    <size>
+                     <width>125</width>
+                     <height>125</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>125</width>
+                     <height>130</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QGroupBox::title{
+	color : white;
+	left: 10px;
+	margin-left: 0px;
+	padding: 0 1px;
+}
+
+QGroupBox{
+	border-width: 3px;
+	border-style: solid;
+	border-color: white;
+	margin-top: 0.5ex;
+	border-radius: 5px;
+	background: rgb(0,0,0,0);
+}</string>
+                   </property>
+                   <property name="title">
+                    <string/>
+                   </property>
+                   <layout class="QGridLayout" name="gridLayout_66">
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <item row="0" column="0">
+                     <widget class="QFrame" name="frame_49">
+                      <property name="minimumSize">
+                       <size>
+                        <width>120</width>
+                        <height>120</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QFrame
+{
+   border-image: url(:/icons/icos/MaoYu.jpg) 0 0 0 0 stretch stretch;
+   border-width: 0px;
+}</string>
+                      </property>
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item row="1" column="1">
+                  <layout class="QVBoxLayout" name="verticalLayout_26">
+                   <item>
+                    <widget class="QLabel" name="label_74">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>300</width>
+                       <height>50</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Berlin Sans FB</family>
+                       <pointsize>26</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color : white;</string>
+                     </property>
+                     <property name="text">
+                      <string>Yu Mao</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_75">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>100</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Berlin Sans FB</family>
+                       <pointsize>14</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color : white;</string>
+                     </property>
+                     <property name="text">
+                      <string>118010224</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item row="2" column="0">
+                  <widget class="QGroupBox" name="groupBox_22">
+                   <property name="minimumSize">
+                    <size>
+                     <width>125</width>
+                     <height>125</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>125</width>
+                     <height>130</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QGroupBox::title{
+	color : white;
+	left: 10px;
+	margin-left: 0px;
+	padding: 0 1px;
+}
+
+QGroupBox{
+	border-width: 3px;
+	border-style: solid;
+	border-color: white;
+	margin-top: 0.5ex;
+	border-radius: 5px;
+	background: rgb(0,0,0,0);
+}</string>
+                   </property>
+                   <property name="title">
+                    <string/>
+                   </property>
+                   <layout class="QGridLayout" name="gridLayout_67">
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>0</number>
+                    </property>
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                    <item row="0" column="0">
+                     <widget class="QFrame" name="frame_50">
+                      <property name="minimumSize">
+                       <size>
+                        <width>120</width>
+                        <height>120</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QFrame
+{
+   border-image: url(:/icons/icos/WuWei.jpg) 0 0 0 0 stretch stretch;
+   border-width: 0px;
+}</string>
+                      </property>
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item row="2" column="1">
+                  <layout class="QVBoxLayout" name="verticalLayout_27">
+                   <item>
+                    <widget class="QLabel" name="label_76">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>300</width>
+                       <height>50</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Berlin Sans FB</family>
+                       <pointsize>26</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color : white;</string>
+                     </property>
+                     <property name="text">
+                      <string>Wei Wu</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_77">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>100</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Berlin Sans FB</family>
+                       <pointsize>14</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color : white;</string>
+                     </property>
+                     <property name="text">
+                      <string>118010335</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item row="3" column="0">
+                  <layout class="QHBoxLayout" name="horizontalLayout_60">
+                   <item>
+                    <widget class="QGroupBox" name="groupBox_23">
+                     <property name="minimumSize">
+                      <size>
+                       <width>125</width>
+                       <height>125</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>125</width>
+                       <height>130</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QGroupBox::title{
+	color : white;
+	left: 10px;
+	margin-left: 0px;
+	padding: 0 1px;
+}
+
+QGroupBox{
+	border-width: 3px;
+	border-style: solid;
+	border-color: white;
+	margin-top: 0.5ex;
+	border-radius: 5px;
+	background: rgb(0,0,0,0);
+}</string>
+                     </property>
+                     <property name="title">
+                      <string/>
+                     </property>
+                     <layout class="QGridLayout" name="gridLayout_68">
+                      <property name="leftMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="topMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="rightMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="bottomMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="spacing">
+                       <number>0</number>
+                      </property>
+                      <item row="0" column="0">
+                       <widget class="QFrame" name="frame_51">
+                        <property name="minimumSize">
+                         <size>
+                          <width>120</width>
+                          <height>120</height>
+                         </size>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">QFrame
+{
+   border-image: url(:/icons/icos/ZhangShiqi.jpg) 0 0 0 0 stretch stretch;
+   border-width: 0px;
+}</string>
+                        </property>
+                        <property name="frameShape">
+                         <enum>QFrame::StyledPanel</enum>
+                        </property>
+                        <property name="frameShadow">
+                         <enum>QFrame::Raised</enum>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item row="3" column="1">
+                  <layout class="QVBoxLayout" name="verticalLayout_28">
+                   <item>
+                    <widget class="QLabel" name="label_82">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>300</width>
+                       <height>50</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Berlin Sans FB</family>
+                       <pointsize>26</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color : white;</string>
+                     </property>
+                     <property name="text">
+                      <string>Shiqi Zhang</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_83">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>100</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Berlin Sans FB</family>
+                       <pointsize>14</pointsize>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color : white;</string>
+                     </property>
+                     <property name="text">
+                      <string>118010416</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPlainTextEdit" name="plainTextEditHelpPage">
+                <property name="font">
+                 <font>
+                  <family>Berlin Sans FB</family>
+                  <pointsize>16</pointsize>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPlainTextEdit{
+	position:center;
+	color:white;
+}
+ QScrollBar:horizontal
+ {
+     height: 15px;
+     margin: 3px 15px 3px 15px;
+     border: 1px transparent #2A2929;
+     border-radius: 4px;
+     background-color: rgb(0, 143, 150);
+ }
+
+ QScrollBar::handle:horizontal
+ {
+     background-color: rgb(51,51,51,220);
+     min-width: 5px;
+     border-radius: 4px;
+ }
+
+ QScrollBar::add-line:horizontal
+ {
+     margin: 0px 3px 0px 3px;
+     border-image: url(:/qss_icons/rc/right_arrow_disabled.png);
+     width: 10px;
+     height: 10px;
+     subcontrol-position: right;
+     subcontrol-origin: margin;
+ }
+
+ QScrollBar::sub-line:horizontal
+ {
+     margin: 0px 3px 0px 3px;
+     border-image: url(:/qss_icons/rc/left_arrow_disabled.png);
+     height: 10px;
+     width: 10px;
+     subcontrol-position: left;
+     subcontrol-origin: margin;
+ }
+
+ QScrollBar::add-line:horizontal:hover,QScrollBar::add-line:horizontal:on
+ {
+     border-image: url(:/qss_icons/rc/right_arrow.png);
+     height: 10px;
+     width: 10px;
+     subcontrol-position: right;
+     subcontrol-origin: margin;
+ }
+
+
+ QScrollBar::sub-line:horizontal:hover, QScrollBar::sub-line:horizontal:on
+ {
+     border-image: url(:/qss_icons/rc/left_arrow.png);
+     height: 10px;
+     width: 10px;
+     subcontrol-position: left;
+     subcontrol-origin: margin;
+ }
+
+ QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal
+ {
+     background: none;
+ }
+
+
+ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
+ {
+     background: none;
+ }
+
+ QScrollBar:vertical
+ {
+     background:rgb(0, 143, 150);
+     width: 15px;
+     margin: 15px 3px 15px 3px;
+     border: 1px transparent #2A2929;
+     border-radius: 4px;
+ }
+
+ QScrollBar::handle:vertical
+ {
+     background-color: rgb(51,51,51,220);
+     min-height: 5px;
+     border-radius: 4px;
+ }
+
+ QScrollBar::sub-line:vertical
+ {
+     margin: 3px 0px 3px 0px;
+     border-image: url(:/qss_icons/rc/up_arrow_disabled.png);
+     height: 10px;
+     width: 10px;
+     subcontrol-position: top;
+     subcontrol-origin: margin;
+ }
+
+ QScrollBar::add-line:vertical
+ {
+     margin: 3px 0px 3px 0px;
+     border-image: url(:/qss_icons/rc/down_arrow_disabled.png);
+     height: 10px;
+     width: 10px;
+     subcontrol-position: bottom;
+     subcontrol-origin: margin;
+ }
+
+ QScrollBar::sub-line:vertical:hover,QScrollBar::sub-line:vertical:on
+ {
+
+     border-image: url(:/qss_icons/rc/up_arrow.png);
+     height: 10px;
+     width: 10px;
+     subcontrol-position: top;
+     subcontrol-origin: margin;
+ }
+
+
+ QScrollBar::add-line:vertical:hover, QScrollBar::add-line:vertical:on
+ {
+     border-image: url(:/qss_icons/rc/down_arrow.png);
+     height: 10px;
+     width: 10px;
+     subcontrol-position: bottom;
+     subcontrol-origin: margin;
+ }
+
+ QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical
+ {
+     background: none;
+ }
+
+
+ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical
+ {
+     background: none;
+ }</string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::NoFrame</enum>
+                </property>
+                <property name="lineWidth">
+                 <number>0</number>
+                </property>
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+                <property name="plainText">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </item>
            </layout>
           </widget>

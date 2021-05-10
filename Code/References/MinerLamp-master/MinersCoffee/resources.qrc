@@ -38,7 +38,7 @@
         <file>icos/MaHaotian.jpg</file>
         <file>icos/gpu.png</file>
         <file>icos/gpuLarger.png</file>
-        <file>eth_miner_lamp.ico</file>
+        <file>minerscoffee.ico</file>
     </qresource>
     <qresource prefix="/images">
         <file>logo.png</file>
@@ -48,4 +48,5 @@
         <file>fonts/BRLNSDB.TTF</file>
         <file>fonts/BRLNSR.TTF</file>
     </qresource>
+    <qresource prefix="/"/>
 </RCC>

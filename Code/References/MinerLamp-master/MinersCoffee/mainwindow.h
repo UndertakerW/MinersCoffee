@@ -183,10 +183,6 @@ public:
 
 private:
 
-    void AddCoinToMap(Coin* coin);
-    void AddCoreToMap(Core* core);
-    void AddPoolToMap(Pool* pool);
-
     Coin* AddCoin(QString coin_name);
     Core* AddCore(QString core_name, const QString& path, const QString& api, Coin* coin, const QString& cmd);
     Core* AddCore(QString core_name, const QString& path, const QString& api, QString coin_name, const QString& cmd);
