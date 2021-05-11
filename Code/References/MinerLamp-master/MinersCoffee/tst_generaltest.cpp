@@ -1,6 +1,5 @@
 #include "tst_generaltest.h"
-#include "wincmd.h"
-#include "QString"
+
 GeneralTest::GeneralTest()
 {
 
@@ -82,7 +81,7 @@ void GeneralTest::test_FullSystem()
     QCOMPARE(success, true);
 
     test_TempPieChart();
-    //test_HashrateLineChart();
+    test_HashrateLineChart();
 
 }
 
@@ -201,11 +200,15 @@ void GeneralTest::test_TempPieChart()
         spy.wait(10); // event loop runs here
     }
 
-    float temp_api = w->_nvMonitorThrd->nvml->getHigherTemp();
+    float temp_api = w->_nvMonitorThrd->_nvml->getHigherTemp();
 
     float temp_ui = pieSlices->at(0)->value();
 
-    QCOMPARE(temp_ui, temp_api);
+    bool success = false;
+    if (abs(temp_ui-temp_api) < 2)
+        success = true;
+
+    QCOMPARE(success, true);
 }
 
 void GeneralTest::test_HashrateLineChart()
@@ -276,7 +279,11 @@ void GeneralTest::test_HashrateLineChart()
 
     w->StopMiningCore();
 
-    QCOMPARE(hashrate_ui, hashrate_api);
+    bool success2 = false;
+    if (abs(hashrate_ui-hashrate_api) < 1)
+        success2 = true;
+
+    QCOMPARE(success2, true);
 }
 
 void GeneralTest::test_ParsePoolInfo()
@@ -320,8 +327,8 @@ void GeneralTest::test_Cmd(){
 }
 
 void GeneralTest::test_NvidiaapiSignleunite(){
-    nvidiaAPI *n=new nvidiaAPI();
-    nvidiaNVML *nvm=new nvidiaNVML();
+    NvidiaAPI *n=new NvidiaAPI();
+    NvidiaNVML *nvm=new NvidiaNVML();
     int gpucount = n->getGPUCount();
     int nvm_gpucount=nvm->getGPUCount();
     QCOMPARE(gpucount,nvm_gpucount);
@@ -372,8 +379,8 @@ void GeneralTest::test_NvidiaapiSignleunite_data(){
 }
 
 void GeneralTest::test_NvidiaapiComplex(){
-    nvidiaAPI *n=new nvidiaAPI();
-    nvidiaNVML *nvm=new nvidiaNVML();
+    NvidiaAPI *n=new NvidiaAPI();
+    NvidiaNVML *nvm=new NvidiaNVML();
     int input_gpu=0;
     int org_gpu_offset,org_mem_offset,org_fanspeed;
     bool ControlTemp;
@@ -723,8 +730,7 @@ void GeneralTest::test_Database_getAdvice(){
     QFETCH(int, mem_clock);
     //QFETCH(unsigned int, power);
     //QFETCH(unsigned int, prediction);
-    Database db;
-    QStringList info=db.getAdvice(type.toStdString().c_str());
+    QStringList info=w->_nvocPage->getAdvice(type.toStdString().c_str());
     int str=atoi(info.front().toStdString().c_str());
     int out1=str;
     info.pop_front();
@@ -733,9 +739,10 @@ void GeneralTest::test_Database_getAdvice(){
     QCOMPARE(out1, gpu_clock);
     QCOMPARE(out2, mem_clock);
     QBENCHMARK {
-        QStringList info=db.getAdvice(type.toStdString().c_str());
+        QStringList info=w->_nvocPage->getAdvice(type.toStdString().c_str());
     }
 }
+
 void GeneralTest::test_Database_getAdvice_data(){
     QTest::addColumn<QString>("type");
     QTest::addColumn<int>("gpu_clock");
@@ -752,6 +759,9 @@ void GeneralTest::test_Database_getAdvice_data(){
     QTest::newRow("2060super") << "2060super" << -50<< 850;
     QTest::newRow("2060") << "2060" << -50<< 700;
 }
+
+// Utilities
+
 void GeneralTest::ShowDataError(const QString& filename1, const QString& filename2)
 {
     QString path1 = qApp->applicationDirPath() + "/test/" + filename1;

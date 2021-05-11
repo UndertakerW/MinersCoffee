@@ -6,7 +6,7 @@
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../MinerLamp-master/nvidiaapi.h"
+#include "../../MinersCoffee/nvidiaapi.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
@@ -110,27 +110,27 @@ int fanSpeedThread::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     }
     return _id;
 }
-struct qt_meta_stringdata_nvidiaAPI_t {
+struct qt_meta_stringdata_NvidiaAPI_t {
     QByteArrayData data[3];
     char stringdata0[29];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_nvidiaAPI_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_NvidiaAPI_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_nvidiaAPI_t qt_meta_stringdata_nvidiaAPI = {
+static const qt_meta_stringdata_NvidiaAPI_t qt_meta_stringdata_NvidiaAPI = {
     {
-QT_MOC_LITERAL(0, 0, 9), // "nvidiaAPI"
+QT_MOC_LITERAL(0, 0, 9), // "NvidiaAPI"
 QT_MOC_LITERAL(1, 10, 17), // "stopFanThrdSignal"
 QT_MOC_LITERAL(2, 28, 0) // ""
 
     },
-    "nvidiaAPI\0stopFanThrdSignal\0"
+    "NvidiaAPI\0stopFanThrdSignal\0"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_nvidiaAPI[] = {
+static const uint qt_meta_data_NvidiaAPI[] = {
 
  // content:
        7,       // revision
@@ -152,10 +152,10 @@ static const uint qt_meta_data_nvidiaAPI[] = {
        0        // eod
 };
 
-void nvidiaAPI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void NvidiaAPI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        nvidiaAPI *_t = static_cast<nvidiaAPI *>(_o);
+        NvidiaAPI *_t = static_cast<NvidiaAPI *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->stopFanThrdSignal(); break;
@@ -164,8 +164,8 @@ void nvidiaAPI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            typedef void (nvidiaAPI::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&nvidiaAPI::stopFanThrdSignal)) {
+            typedef void (NvidiaAPI::*_t)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&NvidiaAPI::stopFanThrdSignal)) {
                 *result = 0;
                 return;
             }
@@ -174,26 +174,26 @@ void nvidiaAPI::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
     Q_UNUSED(_a);
 }
 
-const QMetaObject nvidiaAPI::staticMetaObject = {
-    { &QLibrary::staticMetaObject, qt_meta_stringdata_nvidiaAPI.data,
-      qt_meta_data_nvidiaAPI,  qt_static_metacall, nullptr, nullptr}
+const QMetaObject NvidiaAPI::staticMetaObject = {
+    { &QLibrary::staticMetaObject, qt_meta_stringdata_NvidiaAPI.data,
+      qt_meta_data_NvidiaAPI,  qt_static_metacall, nullptr, nullptr}
 };
 
 
-const QMetaObject *nvidiaAPI::metaObject() const
+const QMetaObject *NvidiaAPI::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *nvidiaAPI::qt_metacast(const char *_clname)
+void *NvidiaAPI::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_nvidiaAPI.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_NvidiaAPI.stringdata0))
         return static_cast<void*>(this);
     return QLibrary::qt_metacast(_clname);
 }
 
-int nvidiaAPI::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int NvidiaAPI::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QLibrary::qt_metacall(_c, _id, _a);
     if (_id < 0)
@@ -211,7 +211,7 @@ int nvidiaAPI::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void nvidiaAPI::stopFanThrdSignal()
+void NvidiaAPI::stopFanThrdSignal()
 {
     QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
 }

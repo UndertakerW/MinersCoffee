@@ -8,6 +8,7 @@
 #include <QObject>
 #include <QFile>
 #include <QDebug>
+#include <QString>
 #include <QSignalSpy>
 #include <qtest.h>
 #include <sstream>
@@ -20,6 +21,7 @@
 #include "helper.h"
 #include "constants.h"
 #include "urlapi.h"
+#include "wincmd.h"
 
 namespace Ui {
 class MainWindow;
@@ -40,6 +42,8 @@ private:
 private slots:
     void initTestCase();
     void cleanupTestCase();
+
+    //Unit Test
     void test_ParseJsonForMining();
     void test_ParseJsonForMining_data();
     void test_ParseJsonForPool();
@@ -54,17 +58,20 @@ private slots:
     void test_ui_HashrateLineChart();
     void test_ui_HashrateLineChart_data();
     void test_Cmd();
-    void test_NvidiaapiSignleunite();
-    void test_NvidiaapiSignleunite_data();
-    void test_NvidiaapiComplex();
     void test_Database_getAdvice();
     void test_Database_getAdvice_data();
+
+    //Component/Subsystem Test
     void test_TempPieChart();
     void test_HashrateLineChart();
     void test_MiningCore();
     void test_MiningArgs(); 
     void test_ParsePoolInfo();
+    void test_NvidiaapiSignleunite();
+    void test_NvidiaapiSignleunite_data();
+    void test_NvidiaapiComplex();
 
+    //Full System Test
     void test_FullSystem();
 
 

@@ -9,6 +9,7 @@
 #include <QFile>
 #include <QDebug>
 #include <QSignalSpy>
+#include <QString>
 #include <qtest.h>
 #include <sstream>
 
@@ -20,6 +21,9 @@
 #include "helper.h"
 #include "constants.h"
 #include "urlapi.h"
+#include "wincmd.h"
+#include "nvidiaapi.h"
+#include "nvidianvml.h"
 
 namespace Ui {
 class MainWindow;

@@ -1,6 +1,5 @@
 #include "tst_generaltest.h"
-#include "wincmd.h"
-#include "QString"
+
 GeneralTest::GeneralTest()
 {
 
@@ -82,7 +81,7 @@ void GeneralTest::test_FullSystem()
     QCOMPARE(success, true);
 
     test_TempPieChart();
-    //test_HashrateLineChart();
+    test_HashrateLineChart();
 
 }
 
