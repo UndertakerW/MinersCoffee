@@ -104,7 +104,6 @@ void MinerProcess::onExit()
 {
     _log->append("Mining Core Stopped");
     _isRunning = false;
-
     emit emitStoped();
 }
 

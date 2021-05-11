@@ -154,8 +154,8 @@ int MiningInfoThread::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 struct qt_meta_stringdata_MinerProcess_t {
-    QByteArrayData data[13];
-    char stringdata0[155];
+    QByteArrayData data[14];
+    char stringdata0[158];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -175,14 +175,16 @@ QT_MOC_LITERAL(7, 73, 8), // "mingInfo"
 QT_MOC_LITERAL(8, 82, 12), // "emitPoolInfo"
 QT_MOC_LITERAL(9, 95, 15), // "QList<PoolInfo>"
 QT_MOC_LITERAL(10, 111, 9), // "poolInfos"
-QT_MOC_LITERAL(11, 121, 17), // "refreshMiningInfo"
-QT_MOC_LITERAL(12, 139, 15) // "refreshPoolInfo"
+QT_MOC_LITERAL(11, 121, 19), // "onReadyToReadStdout"
+QT_MOC_LITERAL(12, 141, 6), // "onExit"
+QT_MOC_LITERAL(13, 148, 9) // "onStarted"
 
     },
     "MinerProcess\0emitStarted\0\0emitStoped\0"
     "emitError\0emitMiningInfo\0MiningInfo\0"
     "mingInfo\0emitPoolInfo\0QList<PoolInfo>\0"
-    "poolInfos\0refreshMiningInfo\0refreshPoolInfo"
+    "poolInfos\0onReadyToReadStdout\0onExit\0"
+    "onStarted"
 };
 #undef QT_MOC_LITERAL
 
@@ -192,7 +194,7 @@ static const uint qt_meta_data_MinerProcess[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       7,   14, // methods
+       8,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -200,15 +202,16 @@ static const uint qt_meta_data_MinerProcess[] = {
        5,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   49,    2, 0x06 /* Public */,
-       3,    0,   50,    2, 0x06 /* Public */,
-       4,    0,   51,    2, 0x06 /* Public */,
-       5,    1,   52,    2, 0x06 /* Public */,
-       8,    1,   55,    2, 0x06 /* Public */,
+       1,    0,   54,    2, 0x06 /* Public */,
+       3,    0,   55,    2, 0x06 /* Public */,
+       4,    0,   56,    2, 0x06 /* Public */,
+       5,    1,   57,    2, 0x06 /* Public */,
+       8,    1,   60,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-      11,    0,   58,    2, 0x0a /* Public */,
-      12,    0,   59,    2, 0x0a /* Public */,
+      11,    0,   63,    2, 0x0a /* Public */,
+      12,    0,   64,    2, 0x0a /* Public */,
+      13,    0,   65,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void,
@@ -218,6 +221,7 @@ static const uint qt_meta_data_MinerProcess[] = {
     QMetaType::Void, 0x80000000 | 9,   10,
 
  // slots: parameters
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -235,8 +239,9 @@ void MinerProcess::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 2: _t->emitError(); break;
         case 3: _t->emitMiningInfo((*reinterpret_cast< MiningInfo(*)>(_a[1]))); break;
         case 4: _t->emitPoolInfo((*reinterpret_cast< QList<PoolInfo>(*)>(_a[1]))); break;
-        case 5: _t->refreshMiningInfo(); break;
-        case 6: _t->refreshPoolInfo(); break;
+        case 5: _t->onReadyToReadStdout(); break;
+        case 6: _t->onExit(); break;
+        case 7: _t->onStarted(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -304,13 +309,13 @@ int MinerProcess::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 7)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 8;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 7)
+        if (_id < 8)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 7;
+        _id -= 8;
     }
     return _id;
 }

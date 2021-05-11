@@ -52,14 +52,13 @@ public:
     void setLogControl(QTextEdit* log){_log = log;}
     bool isRunning(){return _isRunning;}
     void SetAPI(Core* core);
-
     MiningInfo getStatus();
     QList<PoolInfo> getPoolStatus();
     QList<unsigned long> GetChildrenPID(unsigned long ppid);
+    void refreshMiningInfo();
+    void refreshPoolInfo();
 
 private:
-
-    float refresh_rate = 3;
     UrlAPI* urlAPI;
     std::string core_api_str;
     MinerJsonParser* jsonParser = nullptr;
@@ -76,13 +75,11 @@ private:
     QString _outHelper = QString();
     bool _isRunning;
 
+public slots:
     void onReadyToReadStdout();
     void onExit();
     void onStarted();
 
-public slots:
-    void refreshMiningInfo();
-    void refreshPoolInfo();
 
 signals:
     void emitStarted();
