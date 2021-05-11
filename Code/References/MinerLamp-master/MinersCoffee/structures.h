@@ -27,7 +27,7 @@ public:
     QString path;
     QString api;
     QMap<Coin*, QString> cmds;
-    int ver;
+    QString ver;
 
 public:
     Core(QString core_name, const QString& path, const QString& api);
