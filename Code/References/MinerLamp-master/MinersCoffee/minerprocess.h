@@ -44,19 +44,6 @@ private:
 class MinerProcess : public QObject
 {
     Q_OBJECT
-public:
-    MinerProcess(QSettings* settings);
-    ~MinerProcess();
-    void start(const QString& path, const QString& args);
-    void stop();
-    void setLogControl(QTextEdit* log){_log = log;}
-    bool isRunning(){return _isRunning;}
-    void SetAPI(Core* core);
-    MiningInfo getStatus();
-    QList<PoolInfo> getPoolStatus();
-    QList<unsigned long> GetChildrenPID(unsigned long ppid);
-    void refreshMiningInfo();
-    void refreshPoolInfo();
 
 private:
     UrlAPI* urlAPI;
@@ -75,11 +62,24 @@ private:
     QString _outHelper = QString();
     bool _isRunning;
 
+public:
+    MinerProcess(QSettings* settings);
+    ~MinerProcess();
+    void start(const QString& path, const QString& args);
+    void stop();
+    void setLogControl(QTextEdit* log){_log = log;}
+    bool isRunning(){return _isRunning;}
+    void SetAPI(Core* core);
+    MiningInfo getStatus();
+    QList<PoolInfo> getPoolStatus();
+    QList<unsigned long> GetChildrenPID(unsigned long ppid);
+    void refreshMiningInfo();
+    void refreshPoolInfo();
+
 public slots:
     void onReadyToReadStdout();
     void onExit();
     void onStarted();
-
 
 signals:
     void emitStarted();
