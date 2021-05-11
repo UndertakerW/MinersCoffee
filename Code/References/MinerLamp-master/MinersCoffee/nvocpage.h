@@ -16,7 +16,7 @@
 class NvocPage
 {
 public:
-    NvocPage(nvidiaAPI* nvapi, QSettings* settings,
+    NvocPage(NvidiaAPI* nvapi, QSettings* settings,
              QSpinBox* spinBoxTemperature,
              QPushButton* pushButtonAutoOC,
              QCheckBox* checkBoxAllDevices,
@@ -35,7 +35,7 @@ public:
     QSettings* _settings;
     NvidiaNVML* _nvml;
 
-    nvidiaAPI* _nvapi;
+    NvidiaAPI* _nvapi;
 
     QList<nvCard> _cardList;
 

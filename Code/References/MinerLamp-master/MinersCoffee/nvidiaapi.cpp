@@ -1,7 +1,7 @@
 #include "nvidiaapi.h"
 #include <QDebug>
 
-fanSpeedThread::fanSpeedThread(nvidiaAPI *nvapi, QObject */*pParent*/) :
+fanSpeedThread::fanSpeedThread(NvidiaAPI *nvapi, QObject */*pParent*/) :
     _nvapi(nvapi),
     _downLimit(30),
     _upLimit(65)
@@ -34,7 +34,7 @@ void fanSpeedThread::run()
     }
 }
 
-nvidiaAPI::nvidiaAPI():
+NvidiaAPI::NvidiaAPI():
     QLibrary("nvapi64"),
     _gpuHandles{0},
     _gpuCount(0),
@@ -98,20 +98,20 @@ nvidiaAPI::nvidiaAPI():
     }
 }
 
-nvidiaAPI::~nvidiaAPI()
+NvidiaAPI::~NvidiaAPI()
 {
 
 
 }
 
-unsigned int nvidiaAPI::getGPUCount()
+unsigned int NvidiaAPI::getGPUCount()
 {
     NvEnumGPUs(_gpuHandles, &_gpuCount);
     return _gpuCount;
 }
 
 
-void nvidiaAPI::setLED(unsigned int gpu, int color)
+void NvidiaAPI::setLED(unsigned int gpu, int color)
 {
     NvAPI_Status ret = NVAPI_OK;
     NV_GPU_QUERY_ILLUMINATION_SUPPORT_PARM illu;
@@ -139,7 +139,7 @@ void nvidiaAPI::setLED(unsigned int gpu, int color)
     }
 }
 
-int nvidiaAPI::getGpuTemperature(unsigned int gpu)
+int NvidiaAPI::getGpuTemperature(unsigned int gpu)
 {
     NvAPI_Status ret;
 
@@ -160,7 +160,7 @@ int nvidiaAPI::getGpuTemperature(unsigned int gpu)
     return thermal.sensor[0].currentTemp;
 
 }
-int nvidiaAPI::ControlGpuTemperature(unsigned int gpu)
+int NvidiaAPI::ControlGpuTemperature(unsigned int gpu)
 {
     NvAPI_Status ret;
 
@@ -190,7 +190,7 @@ int nvidiaAPI::ControlGpuTemperature(unsigned int gpu)
 }
 
 
-int nvidiaAPI::getGPUOffset(unsigned int gpu)
+int NvidiaAPI::getGPUOffset(unsigned int gpu)
 {
     NvAPI_Status ret;
 
@@ -209,7 +209,7 @@ int nvidiaAPI::getGPUOffset(unsigned int gpu)
     return 0;
 }
 
-int nvidiaAPI::getMemOffset(unsigned int gpu)
+int NvidiaAPI::getMemOffset(unsigned int gpu)
 {
     NvAPI_Status ret;
 
@@ -228,7 +228,7 @@ int nvidiaAPI::getMemOffset(unsigned int gpu)
     return 0;
 }
 
-int nvidiaAPI::getMemClock(unsigned int gpu)
+int NvidiaAPI::getMemClock(unsigned int gpu)
 {
     NvAPI_Status ret;
 
@@ -247,7 +247,7 @@ int nvidiaAPI::getMemClock(unsigned int gpu)
 }
 
 
-unsigned int nvidiaAPI::getGpuClock(unsigned int gpu)
+unsigned int NvidiaAPI::getGpuClock(unsigned int gpu)
 {
     NvAPI_Status ret = NVAPI_OK;
     unsigned int freq = 0;
@@ -262,7 +262,7 @@ unsigned int nvidiaAPI::getGpuClock(unsigned int gpu)
     return freq; // in MHz
 }
 
-unsigned int nvidiaAPI::getPowerLimit(unsigned int gpu)
+unsigned int NvidiaAPI::getPowerLimit(unsigned int gpu)
 {
     NvAPI_Status ret = NVAPI_OK;
     NVAPI_GPU_POWER_STATUS pol = { 0 };
@@ -277,7 +277,7 @@ unsigned int nvidiaAPI::getPowerLimit(unsigned int gpu)
 
 }
 
-unsigned int nvidiaAPI::getFanSpeed(unsigned int gpu)
+unsigned int NvidiaAPI::getFanSpeed(unsigned int gpu)
 {
     NV_GPU_COOLER_SETTINGS coolerSettings;
     coolerSettings.version = NV_GPU_COOLER_SETTINGS_VER;
@@ -292,7 +292,7 @@ unsigned int nvidiaAPI::getFanSpeed(unsigned int gpu)
 
 
 
-int nvidiaAPI::setPowerLimitPercent(unsigned int gpu, unsigned int percent)
+int NvidiaAPI::setPowerLimitPercent(unsigned int gpu, unsigned int percent)
 {
     NvAPI_Status ret = NVAPI_OK;
 
@@ -322,7 +322,7 @@ int nvidiaAPI::setPowerLimitPercent(unsigned int gpu, unsigned int percent)
     return ret;
 }
 
-int nvidiaAPI::setMemClockOffset(unsigned int gpu, int clock)
+int NvidiaAPI::setMemClockOffset(unsigned int gpu, int clock)
 {
     NvAPI_Status ret;
     NvS32 deltaKHz = clock * 1000;
@@ -341,7 +341,7 @@ int nvidiaAPI::setMemClockOffset(unsigned int gpu, int clock)
     return ret;
 }
 
-int nvidiaAPI::setGPUOffset(unsigned int gpu, int offset)
+int NvidiaAPI::setGPUOffset(unsigned int gpu, int offset)
 {
     NvAPI_Status ret;
     NvS32 deltaKHz = offset * 1000;
@@ -360,7 +360,7 @@ int nvidiaAPI::setGPUOffset(unsigned int gpu, int offset)
 
 }
 
-int nvidiaAPI::setTempLimitOffset(unsigned int gpu, unsigned int offset)
+int NvidiaAPI::setTempLimitOffset(unsigned int gpu, unsigned int offset)
 {
     NvAPI_Status ret;
     NvS32 deltaKHz = offset;
@@ -381,11 +381,11 @@ int nvidiaAPI::setTempLimitOffset(unsigned int gpu, unsigned int offset)
     return ret;
 }
 
-int nvidiaAPI::getTempLimitOffset(unsigned int gpu){
+int NvidiaAPI::getTempLimitOffset(unsigned int gpu){
     return TempLimit;
 }
 
-int nvidiaAPI::setFanSpeed(unsigned int gpu, unsigned int percent)
+int NvidiaAPI::setFanSpeed(unsigned int gpu, unsigned int percent)
 {
     NV_GPU_COOLER_LEVELS coolerLvl;
     coolerLvl.cooler[0].policy = 1;
@@ -397,13 +397,13 @@ int nvidiaAPI::setFanSpeed(unsigned int gpu, unsigned int percent)
     return ret;
 }
 
-void nvidiaAPI::setAllLED(int color)
+void NvidiaAPI::setAllLED(int color)
 {
     for(unsigned int i = 0; i < _gpuCount; i++)
         setLED(i, color);
 }
 
-void nvidiaAPI::startFanThread()
+void NvidiaAPI::startFanThread()
 {
     //if(!_fanThread->isRunning())
     _fanThread = new fanSpeedThread(this);
@@ -412,7 +412,7 @@ void nvidiaAPI::startFanThread()
     _fanThread->start();
 }
 
-void nvidiaAPI::stopFanThread()
+void NvidiaAPI::stopFanThread()
 {
     //if(_fanThread->isRunning())
     emit stopFanThrdSignal();

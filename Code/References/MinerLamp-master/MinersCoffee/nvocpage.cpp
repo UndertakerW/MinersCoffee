@@ -2,7 +2,7 @@
 #include "helper.h"
 #include "constants.h"
 
-NvocPage::NvocPage(nvidiaAPI* nvapi, QSettings* settings,
+NvocPage::NvocPage(NvidiaAPI* nvapi, QSettings* settings,
                    QSpinBox* spinBoxTemperature,
                    QPushButton* pushButtonAutoOC,
                    QCheckBox* checkBoxAllDevices,

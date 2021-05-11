@@ -31,7 +31,7 @@ class GeneralTest;
 
 class NvidiaNVML;
 
-class GPUMonitor : public QThread
+class GPUMonitorThrd : public QThread
 {
     Q_OBJECT
 
@@ -40,14 +40,11 @@ protected:
     QDateTime last_refresh = QDateTime();
 
 public:
-    GPUMonitor(QObject* p = Q_NULLPTR);
-
+    GPUMonitorThrd(QObject* p = Q_NULLPTR);
     virtual QList<GPUInfo> getStatus() = 0;
 
 signals:
-
     void gpusInfoSignalRefresh(QList<GPUInfo> gpusinfo);
-
     void gpuInfoSignal(unsigned int gpucount
                        , unsigned int maxgputemp
                        , unsigned int mingputemp
@@ -65,37 +62,34 @@ signals:
 };
 
 
-class nvMonitorThrd : public GPUMonitor
+class NvMonitorThrd : public GPUMonitorThrd
 {
 private:
-    NvidiaNVML* nvml;
-    nvidiaAPI *_nvapi;
+    // API for monitoring
+    NvidiaNVML* _nvml;
+    // API for overclocking
+    NvidiaAPI *_nvapi;
+
 public:
-    nvMonitorThrd(QObject* p = Q_NULLPTR,nvidiaAPI *nvapi=NULL);
-
+    NvMonitorThrd(QObject* p = Q_NULLPTR, NvidiaAPI *nvapi = NULL);
     void run() override;
-
     QList<GPUInfo> getStatus() override;
 
     friend class GeneralTest;
-
 };
 
-class amdMonitorThrd : public GPUMonitor
+// Future Work
+class AmdMonitorThrd : public GPUMonitorThrd
 {
 public:
-    amdMonitorThrd(QObject* = Q_NULLPTR);
-
+    AmdMonitorThrd(QObject* = Q_NULLPTR);
     void run() override;
-
     QList<GPUInfo> getStatus() override;
-
 
 private:
     // amdADL* _adl;
 
     friend class GeneralTest;
-
 };
 
 

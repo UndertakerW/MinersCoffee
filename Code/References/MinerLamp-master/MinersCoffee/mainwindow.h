@@ -95,7 +95,7 @@ private:
     void plotGrapgh(QString dateStart, QString dateEnd, int deviceNum);
     void isAllPromptVisable(bool status);
 
-    nvidiaAPI* _nvapi;
+    NvidiaAPI* _nvapi;
     void applyOC();
     void setComboIndex(QComboBox * comboBox, QString key);
     void changeLabelColor(QLabel * label, QColor color);
@@ -277,9 +277,9 @@ private:
     //QThreads
     autoStart* _starter;
 
-    nvMonitorThrd* _nvMonitorThrd;
+    NvMonitorThrd* _nvMonitorThrd;
 
-    amdMonitorThrd* _amdMonitorThrd;
+    AmdMonitorThrd* _amdMonitorThrd;
 
     Core* _current_core = nullptr;
     Coin* _current_coin = nullptr;

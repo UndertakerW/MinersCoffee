@@ -86,7 +86,7 @@ MainWindow::MainWindow(bool testing, QWidget *parent) :
 
     // NVIDIA API
 
-    _nvapi = new nvidiaAPI();
+    _nvapi = new NvidiaAPI();
 
     bool nvDll = true;
     QLibrary lib("nvml.dll");
@@ -104,11 +104,11 @@ MainWindow::MainWindow(bool testing, QWidget *parent) :
     if(nvDll)
     {
         // retrieve gpu info to panel
-        _nvMonitorThrd = new nvMonitorThrd(this,_nvapi);
-        connect(_nvMonitorThrd, &nvMonitorThrd::gpuInfoSignal, this, &MainWindow::onNvMonitorInfo);
+        _nvMonitorThrd = new NvMonitorThrd(this,_nvapi);
+        connect(_nvMonitorThrd, &NvMonitorThrd::gpuInfoSignal, this, &MainWindow::onNvMonitorInfo);
 
         qRegisterMetaType<QList<GPUInfo>>("QList<GPUInfo>");
-        connect(_nvMonitorThrd, &nvMonitorThrd::gpusInfoSignalRefresh, this, &MainWindow::onGPUInfosReceived);
+        connect(_nvMonitorThrd, &NvMonitorThrd::gpusInfoSignalRefresh, this, &MainWindow::onGPUInfosReceived);
         _nvMonitorThrd->start();
 
         if(_nvapi->libLoaded())
