@@ -4,41 +4,41 @@
 #include "constants.h"
 #include "tst_generaltest.h"
 
-GPUMonitor::GPUMonitor(QObject *p)
+GPUMonitorThrd::GPUMonitorThrd(QObject *p)
 {
 
 }
 
-nvMonitorThrd::nvMonitorThrd(QObject *p, nvidiaAPI *nvapi) : GPUMonitor(p),_nvapi(nvapi)
+NvMonitorThrd::NvMonitorThrd(QObject *p, NvidiaAPI *nvapi) : GPUMonitorThrd(p),_nvapi(nvapi)
 {
 
 }
 
-void nvMonitorThrd::run()
+void NvMonitorThrd::run()
 {
-    nvml = new NvidiaNVML();
-    if(!nvml->initNVML()) return;
+    _nvml = new NvidiaNVML();
+    if(!_nvml->initNVML()) return;
 
     while(1)
     {
-        QList<GPUInfo> gpuInfos = nvml->getStatus();
+        QList<GPUInfo> gpuInfos = _nvml->getStatus();
 
-        unsigned int gpucount = nvml->getGPUCount();
-        unsigned int maxTemp = nvml->getHigherTemp();
-        unsigned int minTemp = nvml->getLowerTemp();
-        unsigned int tempLimit = nvml->getTempLimit();
-        unsigned int maxfanspeed = nvml->getHigherFanSpeed();
-        unsigned int minfanspeed = nvml->getLowerFanSpeed();
-        unsigned int maxmemclock = nvml->getMemMaxClock();
-        unsigned int minmemclock = nvml->getMemLowerClock();
-        unsigned int maxgpuclock = nvml->getGPUMaxClock();
-        unsigned int mingpuclock = nvml->getGPUMinClock();
-        unsigned int maxpowerdraw = nvml->getMaxPowerDraw();
-        unsigned int minpowerdraw = nvml->getMinPowerDraw();
-        unsigned int totalpowerdraw = nvml->getPowerDrawSum();
+        unsigned int gpucount = _nvml->getGPUCount();
+        unsigned int maxTemp = _nvml->getHigherTemp();
+        unsigned int minTemp = _nvml->getLowerTemp();
+        unsigned int tempLimit = _nvml->getTempLimit();
+        unsigned int maxfanspeed = _nvml->getHigherFanSpeed();
+        unsigned int minfanspeed = _nvml->getLowerFanSpeed();
+        unsigned int maxmemclock = _nvml->getMemMaxClock();
+        unsigned int minmemclock = _nvml->getMemLowerClock();
+        unsigned int maxgpuclock = _nvml->getGPUMaxClock();
+        unsigned int mingpuclock = _nvml->getGPUMinClock();
+        unsigned int maxpowerdraw = _nvml->getMaxPowerDraw();
+        unsigned int minpowerdraw = _nvml->getMinPowerDraw();
+        unsigned int totalpowerdraw = _nvml->getPowerDrawSum();
 
 
-        for(int i = 0;i < nvml->getGPUCount(); i++)
+        for(int i = 0;i < _nvml->getGPUCount(); i++)
         {
             if(maxTemp > _nvapi->getTempLimitOffset(i))
             {
@@ -66,25 +66,25 @@ void nvMonitorThrd::run()
         QThread::sleep(refresh_rate);
     }
 
-    nvml->shutDownNVML();
+    _nvml->shutDownNVML();
 }
 
 
-QList<GPUInfo> nvMonitorThrd::getStatus()
+QList<GPUInfo> NvMonitorThrd::getStatus()
 {
-    return nvml->getStatus();
+    return _nvml->getStatus();
 }
 
 
 
-amdMonitorThrd::amdMonitorThrd(QObject * p) : GPUMonitor(p) {}
+AmdMonitorThrd::AmdMonitorThrd(QObject * p) : GPUMonitorThrd(p) {}
 
-void amdMonitorThrd::run()
+void AmdMonitorThrd::run()
 {
 
 }
 
-QList<GPUInfo> amdMonitorThrd::getStatus()
+QList<GPUInfo> AmdMonitorThrd::getStatus()
 {
     QList<GPUInfo> gpuInfos;
     return gpuInfos;

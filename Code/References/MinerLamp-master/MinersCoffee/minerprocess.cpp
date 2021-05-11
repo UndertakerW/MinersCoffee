@@ -31,19 +31,31 @@ void PoolInfoThread::run()
     while(1)
     {
         _pParent->refreshPoolInfo();
-
         QThread::sleep(refresh_rate);
     }
 }
 
+MiningInfoThread::MiningInfoThread(float ref_rate, QObject *pParent) : QThread(pParent)
+  , _pParent((MinerProcess*)pParent)
+{
+    if (ref_rate > 0)
+    {
+        refresh_rate = ref_rate;
+    }
+}
+
+void MiningInfoThread::run()
+{
+    while(1)
+    {
+        _pParent->refreshMiningInfo();
+        QThread::sleep(refresh_rate);
+    }
+}
 
 MinerProcess::MinerProcess(QSettings* settings):
     _isRunning(false),
     _settings(settings)
-  #ifdef DONATE
-  , _donate(Q_NULLPTR)
-  #endif
-
 {
 
     connect(&_miner, &QProcess::readyReadStandardOutput,
@@ -60,6 +72,9 @@ MinerProcess::MinerProcess(QSettings* settings):
 
     _poolInfoThread = new PoolInfoThread(60, this);
     _poolInfoThread->start();
+
+    _miningInfoThread = new MiningInfoThread(3, this);
+    _miningInfoThread->start();
 
     // Init Pool Json Parser
     // Default: Sparkpool

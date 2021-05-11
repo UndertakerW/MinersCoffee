@@ -305,18 +305,18 @@ typedef NV_GPU_COOLER_LEVELS_V1 NV_GPU_COOLER_LEVELS;
 #define NV_GPU_COOLER_LEVELS_VER_1  MAKE_NVAPI_VERSION(NV_GPU_COOLER_LEVELS_V1,1)
 #define NV_GPU_COOLER_LEVELS_VER    NV_GPU_COOLER_LEVELS_VER_1
 
-class nvidiaAPI;
+class NvidiaAPI;
 
 class fanSpeedThread: public QThread
 {
     Q_OBJECT
 public:
-    fanSpeedThread(nvidiaAPI* nvapi, QObject* = Q_NULLPTR);
+    fanSpeedThread(NvidiaAPI* nvapi, QObject* = Q_NULLPTR);
 
     void run();
 private:
 
-    nvidiaAPI* _nvapi;
+    NvidiaAPI* _nvapi;
 
     int _upLimit;
     int _downLimit;
@@ -329,12 +329,12 @@ public slots:
 
 };
 
-class nvidiaAPI : public QLibrary
+class NvidiaAPI : public QLibrary
 {
     Q_OBJECT
 public:
-    nvidiaAPI();
-    ~nvidiaAPI();
+    NvidiaAPI();
+    ~NvidiaAPI();
 
     unsigned int getGPUCount();
 

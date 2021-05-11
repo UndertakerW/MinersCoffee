@@ -341,7 +341,7 @@ MainWindow::MainWindow(bool testing, QWidget *parent) :
     _tempChartTimer.setInterval(1000);
     _tempChartTimer.start();
 
-    ui->labelHashRate->setText("0.00");
+    ui->labelHashRate->setText("N/A");
     ui->labelEffectiveness->setText("0%");
 
     // auto start mining core (futuer version)
@@ -764,7 +764,7 @@ void MainWindow::onMinerStoped()
 
     this->setWindowTitle(QString("Miner's Coffee"));
     changeLabelColor(ui->labelHashRate, Qt::white);
-    ui->labelHashRate->setText("0.00");
+    ui->labelHashRate->setText("N/A");
     changeLabelColor(ui->labelEffectiveness, Qt::white);
     ui->labelEffectiveness->setText("0%");
 
@@ -775,7 +775,7 @@ void MainWindow::onMinerStoped()
 
 void MainWindow::RefreshHashrate(QString &hashrate)
 {
-    if(hashrate == "nan"){
+    if (hashrate == "nan"){
         changeLabelColor(ui->labelHashRate, Qt::red);
         ui->labelHashRate->setText("N/A");
         return;
@@ -783,19 +783,19 @@ void MainWindow::RefreshHashrate(QString &hashrate)
 
     QString hrValue = hashrate.mid(0, hashrate.indexOf("Mh/s"));
 
-    this->setWindowTitle(QString("Miner's Coffee - " + hashrate + " - Restart count: " + QString::number(_errorCount)));
+    //this->setWindowTitle(QString("Miner's Coffee - " + hashrate + " - Restart count: " + QString::number(_errorCount)));
 
     if(hrValue.toDouble() == 0)
         changeLabelColor(ui->labelHashRate, Qt::red);
     else
-        changeLabelColor(ui->labelHashRate, Qt::green);
+        changeLabelColor(ui->labelHashRate, Qt::white);
 
     _currentHashRate = hrValue.toDouble();
-    ui->labelHashRate->setText(QString().setNum(_currentHashRate, 'f', 2)+" Mh/h");
+    ui->labelHashRate->setText(QString().setNum(_currentHashRate, 'f', 2)+" MH/s");
 
-    //set hash rate
+    //set effective rate
     if(_miningInfo != nullptr){
-        if(_miningInfo->accepted_shares!=0){
+        if(_miningInfo->accepted_shares != 0){
             double effectiveness = _miningInfo->accepted_shares / (_miningInfo->accepted_shares + _miningInfo->invalid_shares
                                                                   + _miningInfo->rejected_shares);
             int effPercent = (int) (effectiveness * 100);
@@ -825,7 +825,7 @@ void MainWindow::onError()
 const QColor MainWindow::getTempColor(unsigned int temp)
 {
     if(temp < 50)
-        return Qt::green;
+        return Qt::white;
     else if(temp < 65)
         return Qt::yellow;
     else if(temp < 72)
@@ -1624,11 +1624,14 @@ void MainWindow::EstimateOutput()
 
     _total_hash_rate = total_hashrate;
     QString totalhashRateString = QString::number((double) total_hashrate/(1024*1024));
-    if(!_isMinerRunning){
+    totalhashRateString += "Mh/s";
+    if (!_isMinerRunning)
+    {
         changeLabelColor(ui->labelHashRate, Qt::white);
         ui->labelHashRate->setText("N/A");
     }
-    else{
+    else
+    {
         RefreshHashrate(totalhashRateString);
     }
 
