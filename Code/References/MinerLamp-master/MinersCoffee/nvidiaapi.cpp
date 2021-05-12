@@ -185,7 +185,7 @@ int NvidiaAPI::ControlGpuTemperature(unsigned int gpu)
         setFanSpeed(gpu,getFanSpeed(gpu)*1.2+1);
     }
 
-    return thermal.sensor[0].currentTemp;
+    return ret;
 
 }
 

@@ -318,7 +318,66 @@ void GeneralTest::test_Cmd(){
 
 }
 
-void GeneralTest::test_NvidiaapiSignleunite(){
+
+void test_NvidiaapiSetTempLimit(){
+    nvidiaAPI *n=new nvidiaAPI();
+    QFETCH(int, input_gpu);
+    QFETCH(int, input_TempLimit);
+    int ret=n->setTempLimitOffset(input_gpu,input_TempLimit);
+    QCOMPARE(ret,0);
+    delete n;
+}
+void test_NvidiaapiSetTempLimit_data(){
+    QTest::addColumn<int>("input_gpu");
+    QTest::addColumn<int>("input_TempLimit");
+    QTest::newRow("1")  <<  0<<80;
+    QTest::newRow("2")  << 0<<90;
+    QTest::newRow("3")  << 0<<100;
+    QTest::newRow("4")  << 0<<80;
+    QTest::newRow("5")  << 0<<70;
+}
+void test_NvidiaapiSetGPUoffset(){
+    nvidiaAPI *n=new nvidiaAPI();
+    QFETCH(int, input_gpu);
+    QFETCH(int, input_GPUoffset);
+    int ret=n->setGPUOffset(input_gpu,input_GPUoffset);
+    QCOMPARE(ret,0);
+    delete n;
+}
+void test_NvidiaapiSetGPUoffset_data(){
+    QTest::addColumn<int>("input_gpu");
+    QTest::addColumn<int>("input_GPUoffset");
+    QTest::newRow("1")  <<  0<<80;
+    QTest::newRow("2")  << 0<<900;
+    QTest::newRow("3")  << 0<<100;
+    QTest::newRow("4")  << 0<<0;
+    QTest::newRow("5")  << 0<<-10;
+}
+void test_NvidiaapiSetMemoffset(){
+    nvidiaAPI *n=new nvidiaAPI();
+    QFETCH(int, input_gpu);
+    QFETCH(int, input_Memoffset);
+    int ret=n->setMemClockOffset(input_gpu,input_Memoffset);
+    QCOMPARE(ret,0);
+    delete n;
+}
+void test_NvidiaapiSetMemoffset_data(){
+    QTest::addColumn<int>("input_gpu");
+    QTest::addColumn<int>("input_Memoffset");
+    QTest::newRow("1")  <<  0<<80;
+    QTest::newRow("2")  << 0<<200;
+    QTest::newRow("3")  << 0<<0;
+    QTest::newRow("4")  << 0<<-70;
+    QTest::newRow("5")  << 0<<-10;
+}
+void test_NvidiaapiGetTemp(){
+    nvidiaAPI *n=new nvidiaAPI();
+    bool Temp=n->getGpuTemperature(0)==-1;
+    QCOMPARE(false,Temp);
+    delete n;
+}
+
+void GeneralTest::test_NvidiaapiComponent(){
     nvidiaAPI *n=new nvidiaAPI();
     nvidiaNVML *nvm=new nvidiaNVML();
     int gpucount = n->getGPUCount();
@@ -358,7 +417,7 @@ void GeneralTest::test_NvidiaapiSignleunite(){
 }
 
 
-void GeneralTest::test_NvidiaapiSignleunite_data(){
+void GeneralTest::test_NvidiaapiComponent_data(){
     QTest::addColumn<int>("input_gpu");
     QTest::addColumn<int>("input_gpuoffset");
     QTest::addColumn<int>("input_memoffset");
@@ -370,7 +429,7 @@ void GeneralTest::test_NvidiaapiSignleunite_data(){
     QTest::newRow("5")  << 0<<10<<10<<0;
 }
 
-void GeneralTest::test_NvidiaapiComplex(){
+void GeneralTest::test_NvidiaapiControlTest(){
     nvidiaAPI *n=new nvidiaAPI();
     nvidiaNVML *nvm=new nvidiaNVML();
     int input_gpu=0;

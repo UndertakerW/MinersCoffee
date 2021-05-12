@@ -1,10 +1,10 @@
 #include <windows.h>
 
-IDI_ICON1	ICON	DISCARDABLE	"D:\\CUHK\\Y3T2\\CSC4001\\project\\MinersCoffee\\Code\\References\\MinerLamp-master\\MinersCoffee\\minerscoffee.ico"
+IDI_ICON1	ICON	DISCARDABLE	"E:\\C\\CSC4001\\MinersCoffee\\Code\\References\\MinerLamp-master\\MinersCoffee\\minerscoffee.ico"
 
 VS_VERSION_INFO VERSIONINFO
-	FILEVERSION 0,1,4,4
-	PRODUCTVERSION 0,1,4,4
+	FILEVERSION 1,0,0,0
+	PRODUCTVERSION 1,0,0,0
 	FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
 	FILEFLAGS VS_FF_DEBUG
@@ -21,11 +21,11 @@ VS_VERSION_INFO VERSIONINFO
 			BEGIN
 				VALUE "CompanyName", "\0"
 				VALUE "FileDescription", "\0"
-				VALUE "FileVersion", "0.1.4.4\0"
+				VALUE "FileVersion", "1.0.0.0\0"
 				VALUE "LegalCopyright", "\0"
 				VALUE "OriginalFilename", "MinersCoffee.exe\0"
 				VALUE "ProductName", "MinersCoffee\0"
-				VALUE "ProductVersion", "0.1.4.4\0"
+				VALUE "ProductVersion", "1.0.0.0\0"
 			END
 		END
 		BLOCK "VarFileInfo"
