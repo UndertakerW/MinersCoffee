@@ -27,11 +27,6 @@ public:
              );
     ~NvocPage();
 
-    Database * _db;
-
-//    bool loadConfig();
-    void saveConfig();
-
     QSettings* _settings;
     NvidiaNVML* _nvml;
 

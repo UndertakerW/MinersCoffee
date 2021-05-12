@@ -16,7 +16,6 @@ public:
 
     void setChart(QChart *chart);
     void setChart(QChart *chart, int mode);
-    void setPieCenterLabel(QLabel * label);
 
 protected:
     void mouseMoveEvent(QMouseEvent *event);
@@ -24,8 +23,6 @@ protected:
     void resizeEvent(QResizeEvent *event);
 
 private:
-    QDateTime _startTime;
-    QLabel * _centerPieLabel = nullptr;
     int graphMode = 0;
 };
 

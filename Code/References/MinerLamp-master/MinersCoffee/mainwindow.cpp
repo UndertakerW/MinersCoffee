@@ -2128,9 +2128,7 @@ void MainWindow::on_pushButtonAutoOC_clicked(){
             //
             const char *p;
             p=n.c_str();
-            if(_nvocPage->_db != nullptr){
-                l=_nvocPage->getAdvice(p);
-            }
+            l=_nvocPage->getAdvice(p);
             qDebug("query name %s",n.c_str());
             //db.FreeConnect();
             int str=atoi(l.front().toStdString().c_str());
@@ -2165,9 +2163,7 @@ void MainWindow::on_pushButtonAutoOC_clicked(){
         //
         const char *p;
         p=n.c_str();
-        if(_nvocPage->_db != nullptr){
-            l=_nvocPage->getAdvice(p);
-        }
+        l=_nvocPage->getAdvice(p);
         qDebug("query name %s",n.c_str());
         //db.FreeConnect();
         int str=atoi(l.front().toStdString().c_str());

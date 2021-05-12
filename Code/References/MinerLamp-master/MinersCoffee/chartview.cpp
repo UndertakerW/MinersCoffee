@@ -70,15 +70,5 @@ void ChartView::wheelEvent(QWheelEvent *event)
 }
 
 void ChartView::resizeEvent(QResizeEvent *event){
-    if(_centerPieLabel != nullptr){
-        QFont font = _centerPieLabel->font();
-        double minSize = (this->size().width() >= this->size().height() )? this->size().height() : this->size().width();
-        font.setPointSize(int(minSize/20));
-        _centerPieLabel->setFont(font);
-    }
     QChartView::resizeEvent(event);
-}
-
-void ChartView::setPieCenterLabel(QLabel *label){
-    _centerPieLabel = label;
 }
