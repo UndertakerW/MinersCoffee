@@ -5,7 +5,6 @@
 #include <QLibrary>
 #include <QByteArray>
 #include <QThread>
-
 #include "nvapi.h"
 
 typedef struct {
