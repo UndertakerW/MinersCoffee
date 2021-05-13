@@ -87,6 +87,10 @@ MinerProcess::~MinerProcess()
 {
     if(_poolInfoThread && _poolInfoThread->isRunning()) _poolInfoThread->terminate();
     delete  _poolInfoThread;
+
+
+    if(_miningInfoThread && _miningInfoThread->isRunning()) _miningInfoThread->terminate();
+    delete  _miningInfoThread;
 }
 
 void MinerProcess::onReadyToReadStdout()
