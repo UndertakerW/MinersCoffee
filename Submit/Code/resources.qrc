@@ -1,0 +1,52 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>icos/bookAsset 57.png</file>
+        <file>icos/bugAsset 47.png</file>
+        <file>icos/bulletAsset 54.png</file>
+        <file>icos/cleanAsset 59.png</file>
+        <file>icos/closeAsset 43.png</file>
+        <file>icos/cloudAsset 48.png</file>
+        <file>icos/dragAsset 52.png</file>
+        <file>icos/errorAsset 55.png</file>
+        <file>icos/gameAsset 61.png</file>
+        <file>icos/hideAsset 53.png</file>
+        <file>icos/homeAsset 46.png</file>
+        <file>icos/logo.png</file>
+        <file>icos/max.png</file>
+        <file>icos/peopleAsset 62.png</file>
+        <file>icos/peple.png</file>
+        <file>icos/restore.png</file>
+        <file>icos/settAsset 50.png</file>
+        <file>icos/smile2Asset 1.png</file>
+        <file>icos/smileAsset 1.png</file>
+        <file>icos/windAsset 51.png</file>
+        <file>icos/worldAsset 60.png</file>
+        <file>icos/oc_setting.png</file>
+        <file>icos/more_info.png</file>
+        <file>icos/computer.png</file>
+        <file>icos/memory.png</file>
+        <file>icos/display.png</file>
+        <file>icos/monitor.png</file>
+        <file>icos/maximum.png</file>
+        <file>icos/minimum.png</file>
+        <file>icos/icons8-down-48.png</file>
+        <file>icos/icons8-up-48.png</file>
+        <file>icos/arrow.png</file>
+        <file>icos/MaoYu.jpg</file>
+        <file>icos/WuWei.jpg</file>
+        <file>icos/ZhangShiqi.jpg</file>
+        <file>icos/MaHaotian.jpg</file>
+        <file>icos/gpu.png</file>
+        <file>icos/gpuLarger.png</file>
+        <file>minerscoffee.ico</file>
+    </qresource>
+    <qresource prefix="/images">
+        <file>logo.png</file>
+    </qresource>
+    <qresource prefix="/fonts">
+        <file>fonts/BRLNSB.TTF</file>
+        <file>fonts/BRLNSDB.TTF</file>
+        <file>fonts/BRLNSR.TTF</file>
+    </qresource>
+    <qresource prefix="/"/>
+</RCC>
